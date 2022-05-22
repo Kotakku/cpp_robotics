@@ -1,0 +1,5 @@
+#include "src/system/discret.hpp"
+#include "src/system/state_space_system.hpp"
+#include "src/system/transfer_function.hpp"
+#include "src/system/bode.hpp"
+#include "src/system/time_responce.hpp"
