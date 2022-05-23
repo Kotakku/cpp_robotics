@@ -2522,15 +2522,17 @@ inline void set_zlabel(const std::string &str, const std::map<std::string, std::
     if (res) Py_DECREF(res);
 }
 
-inline void grid(bool flag)
+inline void grid(bool flag, std::string which="major", std::string axis="both")
 {
     detail::_interpreter::get();
 
     PyObject* pyflag = flag ? Py_True : Py_False;
     Py_INCREF(pyflag);
 
-    PyObject* args = PyTuple_New(1);
+    PyObject* args = PyTuple_New(3);
     PyTuple_SetItem(args, 0, pyflag);
+    PyTuple_SetItem(args, 1, PyString_FromString(which.c_str()));
+    PyTuple_SetItem(args, 2, PyString_FromString(axis.c_str()));
 
     PyObject* res = PyObject_CallObject(detail::_interpreter::get().s_python_function_grid, args);
     if(!res) throw std::runtime_error("Call to grid() failed.");

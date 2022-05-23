@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <vector>
+#include <functional>
 #include "../utility/math_utils.hpp"
 
 namespace cpp_robotics
@@ -35,6 +36,21 @@ static std::vector<double> logspace(double start, double end, size_t n = 100)
         vec[i] = std::pow(10.0, lerp(start, end, static_cast<double>(i) / (n-1)));
     }
     return vec;
+}
+
+static std::vector<double> funcspace(std::function<double(size_t, size_t)> f, size_t n = 100)
+{
+    std::vector<double> vec(n);
+    for(size_t i = 0; i < n; i++)
+    {
+        vec[i] = f(i, n);
+    }
+    return vec;
+}
+
+static std::vector<double> sinspace(double a, double b, size_t n = 100)
+{
+    return funcspace([a, b](size_t i, size_t n_){ return a * std::sin(b * i); }, n );
 }
 
 }

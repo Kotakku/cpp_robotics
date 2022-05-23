@@ -34,4 +34,18 @@ static std::tuple<std::vector<double>, std::vector<double>> step(TransferFunctio
     return {t, res};
 }
 
+template<size_t NUM, size_t DEN>
+static std::tuple<std::vector<double>, std::vector<double>> lsim(TransferFunction<NUM, DEN> &sys, std::vector<double> input)
+{
+    std::vector<double> t = linspace(0, sys.Ts*input.size(), input.size());
+    std::vector<double> res(t.size());
+
+    for(size_t i = 0; i < res.size(); i++)
+    {
+        res[i] = sys.responce(input[i]);
+    }
+
+    return {t, res};
+}
+
 }

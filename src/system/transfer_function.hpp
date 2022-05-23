@@ -17,7 +17,7 @@ public:
     TransferFunction(std::array<double, NUM+1> _num, std::array<double, DEN+1> _den, const double _Ts):
         num_array(_num), den_array(_den), Ts(_Ts)
     {
-        static_assert(NUM < DEN);
+        // static_assert(NUM < DEN);
         assert(den_array[0] != 0);
 
         using a_mat_t = typename ss::a_mat_t;
@@ -44,6 +44,16 @@ public:
         }
 
         ss::set_continuous(A, B, C, Ts);
+    }
+
+    size_t num_deg(size_t num_idx = 0) const
+    {
+        return tf_num - num_idx;
+    }
+
+    size_t den_deg(size_t num_idx = 0) const
+    {
+        return tf_den - num_idx;
     }
 
     const std::array<double, NUM+1> num_array;
