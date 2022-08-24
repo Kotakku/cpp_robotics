@@ -1,5 +1,0 @@
-#include "src/vector/vector2.hpp"
-#include "src/vector/vector3.hpp"
-#include "src/vector/vector4.hpp"
-#include "src/vector/transform.hpp"
-#include "src/vector/quaternion.hpp"
