@@ -22,13 +22,13 @@ int main()
         };
 
         std::vector<Eigen::Vector2d> p2 = fixed;
-        // for(size_t i = 0; i < fixed.size(); i++)
-        // {
-        //     // p2[i][0] = fixed[i][1] + 1;
-        //     // p2[i][1] = -fixed[i][0];
-        //     p2[i][0] = fixed[i][0];
-        //     p2[i][1] = fixed[i][1];
-        // }
+        for(size_t i = 0; i < fixed.size(); i++)
+        {
+            // p2[i][0] = fixed[i][1] + 1;
+            // p2[i][1] = -fixed[i][0];
+            p2[i][0] += 3.0; //fixed[i][0];
+            p2[i][1] += 1.0; //fixed[i][1];
+        }
         auto [R, T] = cr::calcu_transformatoin<2>(p2, fixed);
 
         std::cout << "R = " << std::endl;

@@ -22,25 +22,28 @@ find_package(Python3 COMPONENTS Development NumPy)
 
 #################### example ####################
 set(example_files
-  hello_world
-  controller/pid_vs_nctf
-  controller/lqr
-  system/system
-  system/bode_nyquist
-  algorithm/kdtree_sample
-  algorithm/icp_sample
+  # hello_world
+  # controller/pid_vs_nctf
+  # controller/lqr
+  controller/canonicalize
+  controller/place
+  # system/step_responce
+  # system/bode_nyquist
+  # system/state_space_system
+  # algorithm/kdtree_sample
+  # algorithm/icp_sample
 
-  optimize/optimize_scalar
-  optimize/optimize
-  optimize/optimize_rosenbrock
-  optimize/optimize_with_constraint
-  optimize/active_set_method_example
-  optimize/sqp_example
-  optimize/bfgs_test
+  # optimize/optimize_scalar
+  # optimize/optimize
+  # optimize/optimize_rosenbrock
+  # optimize/optimize_with_constraint
+  # optimize/active_set_method_example
+  # optimize/sqp_example
+  # optimize/bfgs_test
 
-  path_planning/dubins_path
+  # path_planning/dubins_path
 
-  units/unit_test
+  # units/unit_test
 )
 
 foreach(example_file ${example_files})

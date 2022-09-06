@@ -7,105 +7,156 @@
 namespace cpp_robotics
 {
 
-template<size_t STATE_SIZE, size_t INPUT_SIZE = 1, size_t OUTPUT_SIZE = 1>
 class StateSpaceSystem
 {
 public:
-    static constexpr size_t state_size = STATE_SIZE;
-    static constexpr size_t input_size = INPUT_SIZE;
-    static constexpr size_t output_size = OUTPUT_SIZE;
+    StateSpaceSystem() = default;
 
-    using a_mat_t = Eigen::Matrix<double, state_size, state_size>;
-    using b_mat_t = Eigen::Matrix<double, state_size, input_size>;
-    using c_mat_t = Eigen::Matrix<double, output_size, state_size>;
-
-    using x_vec_t = Eigen::Matrix<double, state_size, 1>;
-    using u_vec_t = Eigen::Matrix<double, input_size, 1>;
-    using y_vec_t = Eigen::Matrix<double, output_size, 1>;
-    
-    StateSpaceSystem()
+    template<typename DerivedA, typename DerivedB, typename DerivedC>
+    StateSpaceSystem(const Eigen::MatrixBase<DerivedA> &A, const Eigen::MatrixBase<DerivedB> &B, const Eigen::MatrixBase<DerivedC> &C, const double Ts)
     {
-        x_.setZero();
+        set_continuous(A, B, C, Ts);
     }
 
-    void set_continuous(const a_mat_t &A, const b_mat_t &B, const c_mat_t &C, const double Ts)
+    template<typename DerivedA, typename DerivedB, typename DerivedC, typename DerivedD>
+    StateSpaceSystem(const Eigen::MatrixBase<DerivedA> &A, const Eigen::MatrixBase<DerivedB> &B, const Eigen::MatrixBase<DerivedC> &C, const Eigen::MatrixBase<DerivedD> &D, const double Ts)
     {
+        set_continuous(A, B, C, D, Ts);
+    }
+
+    template<typename DerivedA, typename DerivedB, typename DerivedC>
+    void set_continuous(const Eigen::MatrixBase<DerivedA> &A, const Eigen::MatrixBase<DerivedB> &B, const Eigen::MatrixBase<DerivedC> &C, const double Ts, const bool skip_state_reset = false)
+    {
+        input_size_ = B.cols();
+        output_size_ = C.rows();
+        set_continuous(A, B, C, Eigen::MatrixXd::Zero(output_size_, input_size_), Ts, skip_state_reset);
+    }
+
+    template<typename DerivedA, typename DerivedB, typename DerivedC, typename DerivedD>
+    void set_continuous(const Eigen::MatrixBase<DerivedA> &A, const Eigen::MatrixBase<DerivedB> &B, const Eigen::MatrixBase<DerivedC> &C, const Eigen::MatrixBase<DerivedD> &D, const double Ts, const bool skip_state_reset = false)
+    {
+        assert(A.rows() == A.cols());
+        assert(A.rows() == B.rows());
+        assert(A.cols() == C.cols());
+        assert(C.rows() == D.rows());
+        
+        state_size_ = A.rows();
+        input_size_ = B.cols();
+        output_size_ = C.rows();
+
         A_ = A;
         B_ = B;
         Ts_ = Ts;
         std::tie(Ad_, Bd_) = Discret::discritize(A, B, Ts);
         Cd_ = C;
+        Dd_ = D;
+
+        if(not skip_state_reset)
+            set_state_zero();
     }
 
-    void set_discrite(const a_mat_t &Ad, const b_mat_t &Bd, const c_mat_t &Cd)
+    template<typename DerivedA, typename DerivedB, typename DerivedC>
+    void set_discrite(const Eigen::MatrixBase<DerivedA> &Ad, const Eigen::MatrixBase<DerivedB> &Bd, const Eigen::MatrixBase<DerivedC> &Cd, const double Ts, const bool skip_state_reset = false)
     {
+        input_size_ = Bd.cols();
+        output_size_ = Cd.rows();
+        set_discrite(Ad, Bd, Cd, Eigen::MatrixXd::Zero(output_size_, input_size_), Ts, skip_state_reset);
+    }
+
+    template<typename DerivedA, typename DerivedB, typename DerivedC, typename DerivedD>
+    void set_discrite(const Eigen::MatrixBase<DerivedA> &Ad, const Eigen::MatrixBase<DerivedB> &Bd, const Eigen::MatrixBase<DerivedC> &Cd, const Eigen::MatrixBase<DerivedD> &Dd, const double Ts, const bool skip_state_reset = false)
+    {
+        assert(Ad.rows() == Ad.cols());
+        assert(Ad.rows() == Bd.rows());
+        assert(Ad.cols() == Cd.cols());
+        assert(Cd.rows() == Dd.rows());
+        
+        state_size_ = Ad.rows();
+        input_size_ = Bd.cols();
+        output_size_ = Cd.rows();
+
         A_ = std::nullopt;
         B_ = std::nullopt;
-        Ts_ = std::nullopt;
+        Ts_ = Ts;
         
         Ad_ = Ad;
         Bd_ = Bd;
         Cd_ = Cd;
+        Dd_ = Dd;
+
+        if(not skip_state_reset)
+            set_state_zero();
     }
+
+    size_t state_size() const { return state_size_; }
+    size_t input_size() const { return input_size_; }
+    size_t output_size() const { return output_size_; }
+
+    bool is_siso_model() const { return (input_size() == 1 && output_size() == 1); }
 
     inline void set_state_zero()
     {
-        set_state(x_vec_t::Zero());
+        set_state(Eigen::VectorXd::Zero(state_size()));
     }
 
-    void set_state(const x_vec_t &x)
+    void set_state(const Eigen::VectorXd &x)
     {
         x_ = x;
     }
 
     void set_state(const double &x)
     {
-        static_assert(input_size == 1 && output_size == 1, "system is not SISO");
-        x_vec_t x_vec;
+        assert(input_size() == 1 && output_size() == 1);
+        Eigen::VectorXd x_vec(1);
         x_vec(0) = x;
         set_state(x_vec);
     }
 
-    y_vec_t responce(const u_vec_t &u)
+    auto responce(const Eigen::VectorXd &u)
     {
-        x_ =  Ad_*x_ + Bd_*u;
-        return Cd_*x_;
+        x_ = Ad_*x_ + Bd_*u;
+        return Cd_*x_ + Dd_*u;
     }
 
     double responce(double u)
     {
-        static_assert(input_size == 1 && output_size == 1, "system is not SISO");
-        u_vec_t u_vec;
+        assert(input_size() == 1 && output_size() == 1);
+        Eigen::VectorXd u_vec(1);
         u_vec(0) = u;
         return responce(u_vec)(0);
     }
 
-    std::optional<a_mat_t> A() const { return A_; }
-    std::optional<b_mat_t> B() const { return B_; }
-    std::optional<double>  Ts() const { return Ts_; }
+    std::optional<Eigen::MatrixXd> A() const { return A_; }
+    std::optional<Eigen::MatrixXd> B() const { return B_; }
+    double Ts() const { return Ts_; }
 
-    a_mat_t Ad() const { return Ad_; }
-    b_mat_t Bd() const { return Bd_; }
+    Eigen::MatrixXd Ad() const { return Ad_; }
+    Eigen::MatrixXd Bd() const { return Bd_; }
 
-    c_mat_t C()  const { return Cd_; }
-    c_mat_t Cd() const { return Cd_; }
+    Eigen::MatrixXd C()  const { return Cd_; }
+    Eigen::MatrixXd Cd() const { return Cd_; }
 
-    x_vec_t x() const { return x_; }
-    y_vec_t y() const { return Cd_*x_; }
+    Eigen::MatrixXd D()  const { return Dd_; }
+    Eigen::MatrixXd Dd() const { return Dd_; }
+
+    Eigen::VectorXd x() const { return x_; }
+    Eigen::VectorXd y() const { return Cd_*x_; }
 
 private:
-    a_mat_t Ad_;
-    b_mat_t Bd_;
-    c_mat_t Cd_;
+    Eigen::MatrixXd Ad_;
+    Eigen::MatrixXd Bd_;
+    Eigen::MatrixXd Cd_;
+    Eigen::MatrixXd Dd_;
 
-    std::optional<a_mat_t> A_;
-    std::optional<b_mat_t> B_;
-    std::optional<double> Ts_;
+    std::optional<Eigen::MatrixXd> A_;
+    std::optional<Eigen::MatrixXd> B_;
+    double Ts_;
 
-    x_vec_t x_;
+    size_t state_size_;
+    size_t input_size_;
+    size_t output_size_;
+
+    Eigen::VectorXd x_;
 };
-
-// 可制御マトリックス
-// 可観測マトリックス
 
 }

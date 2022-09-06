@@ -12,8 +12,7 @@
 namespace cpp_robotics
 {
 
-template<size_t NUM, size_t DEN>
-static std::tuple<std::vector<double>, std::vector<double>> nyquist(TransferFunction<NUM, DEN> &tf, const std::vector<double> &omegas = logspace(-2, 2, 500))
+static std::tuple<std::vector<double>, std::vector<double>> nyquist(TransferFunction &tf, const std::vector<double> &omegas = logspace(-2, 2, 500))
 {
     size_t n = omegas.size();
     std::vector<double> Re(n), Im(n);
@@ -32,8 +31,7 @@ static std::tuple<std::vector<double>, std::vector<double>> nyquist(TransferFunc
     return {Re, Im};
 }
 
-template<size_t NUM, size_t DEN>
-static void nyquist_plot(TransferFunction<NUM, DEN> &tf, const std::vector<double> &omegas = logspace(-2, 2, 500))
+static void nyquist_plot(TransferFunction &tf, const std::vector<double> &omegas = logspace(-2, 2, 500))
 {
     namespace plt = matplotlibcpp;
     auto [Re, Im] = nyquist(tf, omegas);

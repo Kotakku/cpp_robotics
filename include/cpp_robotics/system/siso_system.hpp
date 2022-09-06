@@ -100,8 +100,7 @@ static void set_controller(SisoFeedbackSystem::func_list_t &fn, NctfController &
     fn.controller = [&](double e){ return controller.control(e); };
 }
 
-template<size_t NUM, size_t DEN>
-static void set_system(SisoFeedbackSystem::func_list_t &fn, TransferFunction<NUM, DEN> &system)
+static void set_system(SisoFeedbackSystem::func_list_t &fn, TransferFunction &system)
 {
     // fn.system_obj = system;
     fn.system_reset = [&](){ return system.set_state_zero(); };

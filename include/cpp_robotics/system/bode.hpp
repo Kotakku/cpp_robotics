@@ -12,15 +12,17 @@
 namespace cpp_robotics
 {
 
-template<size_t NUM, size_t DEN>
-static std::tuple<std::vector<double>, std::vector<double>> bode(TransferFunction<NUM, DEN> &tf, const std::vector<double> &omegas = logspace(-2, 2, 500), bool gain_db_mode = true, bool phase_deg_mode = true)
+static std::tuple<std::vector<double>, std::vector<double>> bode(TransferFunction &tf, const std::vector<double> &omegas = logspace(-2, 2, 500), bool gain_db_mode = true, bool phase_deg_mode = true)
 {
     size_t n = omegas.size();
     std::vector<double> gain_db(n), phase_deg(n);
 
     Vector2d num_vec, den_vec;
-    Polynomial num_poly(tf.num_array.begin(), tf.num_array.end());
-    Polynomial den_poly(tf.den_array.begin(), tf.den_array.end());
+    auto num_array = tf.num_array();
+    auto den_array = tf.den_array();
+    
+    Polynomial num_poly(num_array.begin(), num_array.end());
+    Polynomial den_poly(den_array.begin(), den_array.end());
 
     for(size_t i = 0; i < n; i++)
     {
@@ -104,31 +106,31 @@ static std::tuple<std::vector<double>, std::vector<double>> bode(TransferFunctio
         {
             num_vec = Vector2d::zero();
             den_vec = Vector2d::zero();
-            for(size_t didx = 0; didx < tf.num_array.size(); didx++)
+            for(size_t didx = 0; didx < tf.num_array().size(); didx++)
             {
                 size_t deg = tf.num_deg(didx);
                 if(deg == 0)
                 {
-                    num_vec.x += tf.num_array[didx];
+                    num_vec.x += tf.num_array()[didx];
                 }
                 else
                 {
                     double s = std::pow(omegas[i], deg);
-                    num_vec.y += s * tf.num_array[didx];
+                    num_vec.y += s * tf.num_array()[didx];
                 }
             }
             
-            for(size_t didx = 0; didx < tf.den_array.size(); didx++)
+            for(size_t didx = 0; didx < tf.den_array().size(); didx++)
             {
                 size_t deg = tf.den_deg(didx);
                 if(deg == 0)
                 {
-                    den_vec.x += tf.den_array[didx];
+                    den_vec.x += tf.den_array()[didx];
                 }
                 else
                 {
                     double s = std::pow(omegas[i], deg);
-                    den_vec.y += s * tf.den_array[didx];
+                    den_vec.y += s * tf.den_array()[didx];
                 }
             }
             
@@ -144,8 +146,7 @@ static std::tuple<std::vector<double>, std::vector<double>> bode(TransferFunctio
     return {gain_db, phase_deg};
 }
 
-template<size_t NUM, size_t DEN>
-static void bode_plot(TransferFunction<NUM, DEN> &tf, const std::vector<double> &omegas = logspace(-2, 2, 500))
+static void bode_plot(TransferFunction &tf, const std::vector<double> &omegas = logspace(-2, 2, 500))
 {
     namespace plt = matplotlibcpp;
     auto [g, ph] = bode(tf, omegas);

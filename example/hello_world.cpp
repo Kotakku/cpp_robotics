@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     cr::Polynomial p1 = cr::Polynomial({1, -2}) * cr::Polynomial({1, 2});
     std::cout << p1 << std::endl;
 
-    cr::TransferFunction<0, 1> tf({1.0}, {1, 1.0}, 0.01);
+    cr::TransferFunction tf({1.0}, {1, 1.0}, 0.01);
 
     namespace plt = matplotlibcpp;
     std::cout << "transfer function step responce" << std::endl;

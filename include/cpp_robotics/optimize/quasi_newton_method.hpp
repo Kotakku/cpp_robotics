@@ -28,7 +28,7 @@ static std::tuple<bool, Eigen::VectorXd, size_t> quasi_newton_method(std::functi
 
         // 疑似ヘッセ行列の更新
         // BFGS法
-        double a = bracketing_serach(f, grad, x, dx); // 直線探索
+        double a = bracketing_serach([&](double v){ return f(x + v*dx); }); // 直線探索
         x += a * dx;
         y = -gx;
         gx = grad(x);

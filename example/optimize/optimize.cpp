@@ -18,9 +18,9 @@ int main()
 
     auto f = [](Eigen::VectorXd x)
     {
-        return 4.5*(std::pow(std::cos(x(0)), 4) + std::pow(std::cos(x(1)), 4));
+        //return 4.5*(std::pow(std::cos(x(0)), 4) + std::pow(std::cos(x(1)), 4));
         // return std::sin(x(0)) + std::sin(x(1));
-        // return std::pow(x(0)-2,2) + std::pow(x(1)-3,2);
+        return std::pow(x(0)-2,2) + std::pow(x(1)-3,2);
     };
 
     auto g = [&](const Eigen::VectorXd &x)

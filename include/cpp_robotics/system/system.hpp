@@ -5,5 +5,4 @@
 #include "./bode.hpp"
 #include "./nyquist.hpp"
 #include "./time_responce.hpp"
-#include "./place.hpp"
 #include "./siso_system.hpp"

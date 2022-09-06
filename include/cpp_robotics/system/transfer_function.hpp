@@ -3,67 +3,62 @@
 #include <Eigen/Dense>
 #include "state_space_system.hpp"
 
+#include <iostream>
+
 namespace cpp_robotics
 {
 
-template<size_t NUM, size_t DEN>
-class TransferFunction : public StateSpaceSystem<DEN>
+class TransferFunction : public StateSpaceSystem
 {
 public:
-    using ss = StateSpaceSystem<DEN>;
-    static constexpr size_t tf_num = NUM;
-    static constexpr size_t tf_den = DEN;
-
-    TransferFunction(std::array<double, NUM+1> _num, std::array<double, DEN+1> _den, const double _Ts):
-        num_array(_num), den_array(_den), Ts(_Ts)
+    TransferFunction(std::vector<double> num, std::vector<double> den, const double Ts):
+        num_array_(num), den_array_(den)
     {
-        // static_assert(NUM < DEN);
-        assert(den_array[0] != 0);
+        // 伝達関数を可制御正準系に変換して保存
+        const size_t num_size = num_array_.size();
+        const size_t den_size = den_array_.size();
+        const size_t state_size = den_deg();
 
-        using a_mat_t = typename ss::a_mat_t;
-        using b_mat_t = typename ss::b_mat_t;
-        using c_mat_t = typename ss::c_mat_t;
-
-        a_mat_t A = a_mat_t::Zero();
-        for(size_t i = 0; i < DEN-1; i++)
+        Eigen::MatrixXd A = Eigen::MatrixXd::Zero(state_size, state_size);
+        // 対角要素の1個右隣を1埋め
+        for(size_t i = 0; i < state_size-1; i++)
         {
             A(i, i+1) = 1;
         }
-        for(size_t i = 0; i < DEN; i++)
+        // 一番下の行を伝達関数の要素で埋め
+        for(size_t i = 0; i < state_size; i++)
         {
-            A(DEN-1, i) = -den_array[DEN - i] / den_array[0];
+            A(state_size-1, i) = -den_array_[state_size - i] / den_array_[0];
 		}
 
-        b_mat_t B = b_mat_t::Zero();
-        B(DEN-1) = 1;
+        Eigen::MatrixXd B = Eigen::VectorXd::Zero(state_size);
+        B(state_size-1) = 1;
 
-        c_mat_t C = c_mat_t::Zero();
-        for(size_t i = 0; i <= NUM; i++)
+        Eigen::MatrixXd C = Eigen::RowVectorXd::Zero(state_size);
+        for(size_t i = 0; i <= num_size; i++)
         {
-            C(i) = num_array[i] / den_array[0];
+            C(i) = num_array_[i] / den_array_[0];
         }
 
-        ss::set_continuous(A, B, C, Ts);
+        set_continuous(A, B, C, Ts);
     }
 
     size_t num_deg(size_t num_idx = 0) const
     {
-        return tf_num - num_idx;
+        return num_array_.size()-1 - num_idx;
     }
 
     size_t den_deg(size_t num_idx = 0) const
     {
-        return tf_den - num_idx;
+        return den_array_.size()-1 - num_idx;
     }
 
-    const std::array<double, NUM+1> num_array;
-    const std::array<double, DEN+1> den_array;
-    const double Ts;
-};
+    std::vector<double> num_array() const { return num_array_; }
+    std::vector<double> den_array() const { return den_array_; }
 
-static auto make_integrar(const double dt)
-{
-    return TransferFunction<1, 2>({1}, {1, 0}, dt);
-}
+private:
+    std::vector<double> num_array_;
+    std::vector<double> den_array_;
+};
 
 }

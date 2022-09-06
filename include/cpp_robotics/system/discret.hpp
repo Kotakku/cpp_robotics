@@ -57,7 +57,15 @@ public:
 
         if(rank == A.rows())
         {
-            return static_cast<Derived2>(A.inverse() * (expm(A*Ts) - Derived1::Identity()) * B);
+            if constexpr (Derived1::SizeAtCompileTime==Eigen::Dynamic)
+            {
+                Derived1 I = Derived1::Identity(A.rows(), A.cols());
+                return static_cast<Derived2>(A.inverse() * (expm(A*Ts) - I) * B);
+            }
+            else
+            {
+                return static_cast<Derived2>(A.inverse() * (expm(A*Ts) - Derived1::Identity()) * B);
+            }
         }
 
         return static_cast<Derived2>(integral_expm(A, Ts, hdiv)*B);

@@ -93,10 +93,10 @@ static std::tuple<std::vector<Eigen::Matrix<double, DIM, 1>>, size_t>
 
         auto [R, T] = calcu_transformatoin<DIM>(dest, target);
 
-        // std::cout << "R = " << std::endl;
-        // std::cout << R << std::endl << std::endl;
-        // std::cout << "T = " << std::endl;
-        // std::cout << T << std::endl << std::endl;
+        std::cout << "R = " << std::endl;
+        std::cout << R << std::endl << std::endl;
+        std::cout << "T = " << std::endl;
+        std::cout << T << std::endl << std::endl;
         
         for(size_t j = 0; j < dest.size(); j++)
         {

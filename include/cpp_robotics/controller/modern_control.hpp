@@ -2,18 +2,20 @@
 
 #include <array>
 #include <Eigen/Dense>
+#include "../system/state_space_system.hpp"
+#include "../system/polynomial.hpp"
 
-namespace STB::ModernControl
+namespace cpp_robotics
 {
     // 可制御性行列
-    static Eigen::MatrixXd controllability_matrix(const Eigen::MatrixXd& A, const Eigen::VectorXd& b)
+    static Eigen::MatrixXd controllability_matrix(const Eigen::MatrixXd& A, const Eigen::VectorXd& B)
     {
         assert(A.rows() == A.cols());
-        assert(A.rows() == b.size());
+        assert(A.rows() == B.size());
         const int dim = A.rows();
 
         Eigen::MatrixXd Uc(dim, dim);
-        Eigen::VectorXd colv = b;
+        Eigen::VectorXd colv = B;
 
         for(int i = 0; i < dim; i++)
         {
@@ -25,25 +27,28 @@ namespace STB::ModernControl
     }
 
     // 可制御性の判別
-    static bool is_controllable(const Eigen::MatrixXd&& A, const Eigen::MatrixXd& b)
+    static bool is_controllable(const Eigen::MatrixXd& A, const Eigen::VectorXd& B)
     {
-        assert(A.rows() == A.cols());
-        assert(A.rows() == b.size());
         const int dim = A.rows();
-
-        Eigen::FullPivLU<Eigen::MatrixXd> lu(controllability_matrix(A, b));
+        Eigen::FullPivLU<Eigen::MatrixXd> lu(controllability_matrix(A, B));
         return (lu.rank() == dim);
     }
+    
+    static bool is_controllable(const StateSpaceSystem& sys)
+    {
+        return is_controllable(sys.A().value(), sys.B().value());
+    }
+
 
     // 可観測性行列
-    static Eigen::MatrixXd observability_matrix(const Eigen::MatrixXd& A, const Eigen::VectorXd& c)
+    static Eigen::MatrixXd observability_matrix(const Eigen::MatrixXd& A, const Eigen::RowVectorXd& C)
     {
         assert(A.rows() == A.cols());
-        assert(A.rows() == c.size());
+        assert(A.rows() == C.size());
         const int dim = A.rows();
 
         Eigen::MatrixXd Uo(dim, dim);
-        Eigen::VectorXd colv = c.transpose();
+        Eigen::RowVectorXd colv = C;
 
         for(int i = 0; i < dim; i++)
         {
@@ -55,271 +60,103 @@ namespace STB::ModernControl
     }
 
     // 可観測性の判別
-    static bool is_observable(const Eigen::MatrixXd&& A, const Eigen::MatrixXd& c)
+    static bool is_observable(const Eigen::MatrixXd& A, const Eigen::RowVectorXd& C)
     {
-        assert(A.rows() == A.cols());
-        assert(A.rows() == c.size());
         const int dim = A.rows();
-
-        Eigen::FullPivLU<Eigen::MatrixXd> lu(observability_matrix(A, c));
+        Eigen::FullPivLU<Eigen::MatrixXd> lu(observability_matrix(A, C));
         return (lu.rank() == dim);
     }
 
-    // template<typename Scalar, size_t Dim>
-    // static constexpr std::tuple<Matrix<Scalar, Dim, Dim>, Matrix<Scalar, Dim, Dim>> A_tilda(const Matrix<Scalar, Dim, Dim>& A, const Matrix<Scalar, Dim, 1>& b)
-    // {
-    //     auto Uc = controllability_mat(A, b);
-
-    //     if(Uc.rank() != Dim)
-    //         throw "this matrix is not full rank";
-
-    //     return {(Uc.inverse()*A*Uc).transpose(), Uc};
-    // }
-
-    // template<typename Scalar, size_t Dim>
-    // static constexpr Matrix<Scalar, Dim, Dim> transpose_mat(const Matrix<Scalar, Dim, Dim>& A, const Matrix<Scalar, Dim, 1>& b)
-    // {
-    //     auto AtilUc = A_tilda(A, b);
-    //     auto Atil = std::get<0>(AtilUc);
-    //     auto Uc   = std::get<1>(AtilUc);
-
-    //     if(Uc.rank() != Dim)
-    //         throw "this matrix is not full rank";
-
-    //     Matrix<Scalar, Dim, Dim> W = MatrixHelper::gen_matrix<Dim, Dim>([&Atil](size_t i, size_t j){
-    //         if(i+j < Dim-1)
-    //             return -Atil(Dim-1, 1+i+j);
-    //         else if (i+j == Dim-1)
-    //             return Scalar(1);
-    //         return Scalar(0);
-    //     });
-
-    //     auto T = Uc*W;
-    //     T = T.inverse();
-
-    //     return Atil;
-    // }
-
-    // template<typename Scalar, size_t Dim>
-    // static constexpr Matrix<Scalar, 1, Dim> feedback_vec(const Matrix<Scalar, Dim, Dim>& A, const Matrix<Scalar, Dim, 1>& b, Matrix<Scalar, 1, Dim> pole_coeff, const std::tuple<Matrix<Scalar, Dim, Dim>, Matrix<Scalar, Dim, Dim>>& AtilUc)
-    // {
-    //     //auto AtilUc = A_tilda(A, b);
-    //     auto Atil = std::get<0>(AtilUc);
-    //     auto Uc   = std::get<1>(AtilUc);
-
-    //     if(Uc.rank() != Dim)
-    //         throw "this matrix is not full rank";
-
-    //     Matrix<Scalar, Dim, Dim> W = MatrixHelper::gen_matrix<Dim, Dim>([&Atil](size_t i, size_t j){
-    //         if(i+j < Dim-1)
-    //             return -Atil(Dim-1, 1+i+j);
-    //         else if (i+j == Dim-1)
-    //             return Scalar(1);
-    //         return Scalar(0);
-    //     });
-
-    //     Matrix<Scalar, 1, Dim> a_coeff = MatrixHelper::gen_matrix<1, Dim>([&Atil](size_t i, size_t j){
-    //         return -Atil(Dim-1, j);
-    //     });
-
-    //     auto T = Uc*W;
-    //     T = T.inverse();
-
-    //     return (pole_coeff-a_coeff)*T;
-    // }
-
-    // template<typename Scalar, size_t Dim>
-    // static constexpr std::tuple<Matrix<Scalar, Dim+1, Dim+1>, Matrix<Scalar, Dim+1, Dim+1>> extend_controllability_mat(const Matrix<Scalar, Dim, Dim>& A, const Matrix<Scalar, Dim, 1>& b, const Matrix<Scalar, 1, Dim>& c)
-    // {
-    //     Matrix<Scalar, Dim, Dim> mUc = controllability_mat(A, b);
-    //     Matrix<Scalar, Dim+1, Dim+1> U = {}, W = {};
-
-    //     U.set_sub_mat(A, 0, 0);
-    //     U.set_sub_mat(b, 0, Dim);
-    //     U.set_sub_mat(-c, Dim, 0);
-
-    //     W(Dim, 0) = 1;
-    //     W.set_sub_mat(mUc, 0, 1);
-
-    //     return {U, U*W};
-    // }
-	
-
-
-    // constexpr unsigned long fact(const unsigned long n)
-    // {
-    //     if(n == 0)
-    //         return 1;
-    //     return n * fact(n-1);
-    // }
-
-    // constexpr unsigned long combination(const unsigned long n, const unsigned long r)
-    // {
-    //     if (n == 0)
-    //         return 1;
-    //     else if (r == 0)
-    //         return 1;
-    //     else if (n == r)
-    //         return 1;
-    //     else
-    //         return combination(n - 1, r) + combination(n - 1, r - 1);
-    // }
-
-    // template<int N, int R, typename Callable>
-    // constexpr void combi_call_impl(int num, size_t K[R], int p, int w, int n, int r, Callable && f)
-    // {
-    //     std::array<size_t, R> comb = {};
-
-    //     if (p > 0)
-    //     {
-    //         for (int i = 0; i <= w; i++)
-    //         {
-    //             K[p] = i;
-    //             combi_call_impl(num, K, p - 1, w - i, n, r, f);
-    //         }
-    //     }
-    //     else
-    //     {
-    //         int m = 0, pick = 0;
-
-    //         for (int i = 1; i <= r; i++)
-    //         {
-    //             for (int j = 0; j < K[i]; j++, m++)
-    //                 pick++;
-    //             comb[m] = pick;
-    //             m++;
-    //         }
-    //         f(num, p);
-    //         num++;
-    //     }
-    // }
-
-    // template<int N, int R, typename Callable>
-    // constexpr void combi_call(Callable && f)
-    // {
-        
-    //     size_t K[R] = {};
-    //     size_t num = 0;
-
-    //     combi_call_impl(num, K, R, N-R, N, R, f);
-
-    //     // auto combi_impl = [&f, &comb, &K, &num, &combi_impl](int p, int w, int n, int r) {
-    //     //     if (p > 0)
-    //     //     {
-    //     //         for (int i = 0; i <= w; i++)
-    //     //         {
-    //     //             K[p] = i;
-    //     //             combi_impl(p - 1, w - i, n, r);
-    //     //         }
-    //     //     }
-    //     //     else
-    //     //     {
-    //     //         int m = 0, pick = 0;
-
-    //     //         for (int i = 1; i <= r; i++)
-    //     //         {
-    //     //             for (int j = 0; j < K[i]; j++, m++)
-    //     //                 pick++;
-    //     //             comb[m] = pick;
-    //     //             m++;
-    //     //         });
-    //     //         f(num, p);
-    //     //         num++;
-    //     //     }
-    //     // }(R, N - R, N, R);
-        
-    // }
-
-    // template<int N = 5, int R = 3>
-    // constexpr auto combi_call_test()
-    // {
-    //     std::array<std::array<size_t, R>, combination(N, R)> re = {};
-    //     combi_call<N, R>([&re](size_t num, auto p){
-    //         //re[num] = p;
-    //     });
-
-    //     return re;
-    // }
-
-    // template<size_t conum>
-    // using twcoeff = std::array<size_t, conum>;
-
-    // template<>
-    // using twcoeff = std::array<size_t, 3>{1, 2, 1};
-
-    // template<>
-    // using twcoeff = std::array<size_t, 4>{1, 3, 3, 1};
-
-    
-
-    // template<typename Scalar, size_t Dim>
-    // static constexpr std::array<Scalar, Dim> pole_to_coeff(const std::array<Scalar, Dim>& pole)
-    // {
-    //     std::array<Scalar, Dim> coeff = {};
-
-    //     for(size_t i = 0; i < Dim; i++)
-    //     {
-    //         for(size_t c = 0; c < twcoeff<Dim+1>[i]; c++)
-    //         {
-    //             Scalar t = 1;
-    //             for(size_t m = 0; m < (Dim-i); m++)
-    //             {
-    //                 t *= pole[m];
-    //             }
-    //             coeff[i] += t;
-    //         }
-    //     }
-
-    //     return coeff;
-    // }
-
-    // template<typename Scalar>
-    // static bool is_controllable(Eigen::Matrix<Scalar, 2, 2> A, Eigen::Matrix<Scalar, 2, 1> b)
-    // {
-    //     Eigen::Matrix<Scalar, 2, 2> M;
-    //     M << b, A*b;
-    //     return (M.determinant() != static_cast<Scalar>(0.0));
-    // }
-
-    // static bool is_observable()
-    // {
-    //     return false;
-    // }
-
-    // namespace
-    // {
-    //     template<typename Scalar, int Dim>
-    //     auto solve_sim_equ(Eigen::Matrix<Scalar, Dim, Dim> A, Eigen::Matrix<Scalar, Dim, 1> b)
-    //     {
-    //         return A.fullPivLu().solve(b);
-    //     }
-    // }
-
-    /*
-    template<typename Scalar, int Dim>
-    auto ppol(Eigen::Matrix<Scalar, Dim, Dim>& A, Eigen::Matrix<Scalar, Dim, 1>& b)
+    static bool is_observable(const StateSpaceSystem& sys)
     {
-        return solve_sim_equ(A, b);
+        return is_observable(sys.A().value(), sys.C());
     }
-    */
 
-    // 任意の次元に対応する
-    // 状態フィードバック(サーボ問題)もこれのDim = 3で解ける
-    // template<typename Scalar>
-    // static auto ppol(Matrix<Scalar, 2, 2> A, Matrix<Scalar, 2, 1> b, Matrix<Scalar, 2, 1> k)
-    // {
-    //     using namespace std;
+    enum class CanonicalizeMode
+    {
+        // MODEL,
+        COMPANION,
+        OBSERBAVLE,
+        CONTROLLABLE
+    };
 
-    //     Matrix<Scalar, 2, 2> Am = {b(0), b(1),
-    //         (b(0)*A(1, 1) - b(1)*A(0, 1)), (b(1)*A(0, 0) - b(0)*A(1, 0))};
+    // 同値変換による可制御正準形への変換
+    // https://www.mathworks.com/help/control/ug/canonical-state-space-realizations.html
+    static std::tuple<Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd> canonicalize_system(const Eigen::MatrixXd& A, const Eigen::MatrixXd& B, const Eigen::MatrixXd& C, const Eigen::MatrixXd& D, CanonicalizeMode mode = CanonicalizeMode::COMPANION)
+    {
+        // if(mode == MODEL)
+        // else
+        if(mode == CanonicalizeMode::CONTROLLABLE || mode == CanonicalizeMode::COMPANION || mode == CanonicalizeMode::OBSERBAVLE)
+        {
+            
+            Eigen::MatrixXd Uc = controllability_matrix(A, B);
+            Eigen::MatrixXd Ucinv = Uc.inverse();
 
-    //     Matrix<Scalar, 2, 1> bm = {
-    //         (k(0)+k(1)) + A(0, 0) + A(1, 1),
-    //         -(k(0)*k(1)) + A(1, 1)*A(0, 0) - A(1, 0)*A(0, 1);
-    //     };
+            if(mode == CanonicalizeMode::CONTROLLABLE)
+            {
+                auto [A_tilda, B_tilda, C_tilda, D_tilda] = canonicalize_system(A, B, C, D, CanonicalizeMode::COMPANION);
+                return {
+                    A_tilda.transpose(),
+                    C_tilda.transpose(),
+                    B_tilda.transpose(),
+                    D_tilda
+                };
+            }
+            else
+            {
+                return {
+                    Ucinv*A*Uc,
+                    Ucinv*B,
+                    C*Uc,
+                    D
+                };
+            }
+        }
 
-    //     //  cout << "B =\n" << bm << endl;
-        
-    //     return Am.fullPivLu().solve(bm).eval();
-    // }
+        return canonicalize_system(A, B, C, D, CanonicalizeMode::COMPANION);
+    }
+
+    static std::tuple<Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd> canonicalize_system(const Eigen::MatrixXd& A, const Eigen::MatrixXd& B, const Eigen::MatrixXd& C, CanonicalizeMode mode = CanonicalizeMode::COMPANION)
+    {
+        const size_t input_size = B.cols();
+        const size_t output_size = C.rows();
+
+        return canonicalize_system(A, B, C, Eigen::MatrixXd::Zero(output_size, input_size), mode);
+    }
+
+    static std::tuple<Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd> canonicalize_system(const StateSpaceSystem& sys, CanonicalizeMode mode = CanonicalizeMode::COMPANION)
+    {
+        return canonicalize_system(sys.A().value(), sys.B().value(), sys.C(), sys.D(), mode);
+    }
+
+    // SISOモデルに対してのアッカーマン法
+    // https://ossyaritoori.hatenablog.com/entry/2018/05/16/%E6%A5%B5%E9%85%8D%E7%BD%AE%E3%81%AE%E5%AE%9F%E8%A3%85%EF%BC%9A%E3%82%A2%E3%83%83%E3%82%AB%E3%83%BC%E3%83%9E%E3%83%B3%E6%B3%95%E3%81%AEMATLAB%E5%AE%9F%E8%A3%85#Outline
+    static Eigen::VectorXd place(const StateSpaceSystem& sys, std::vector<double> poles)
+    {
+        assert(sys.state_size() == poles.size());
+        assert(sys.is_siso_model());
+
+        auto pole_poly = Polynomial::expand(poles);
+
+        auto Uc = controllability_matrix(sys.A().value(), sys.B().value());
+
+        Eigen::MatrixXd tmp = Eigen::MatrixXd::Zero(sys.state_size(), sys.state_size());
+        Eigen::MatrixXd An = Eigen::MatrixXd::Identity(sys.state_size(), sys.state_size());
+
+        for(size_t i = 0; i < sys.state_size(); i++)
+        {
+            tmp += pole_poly.at_degree(i)*An;
+            An *= sys.A().value();
+        }
+        tmp += An;
+
+        return (Uc.inverse() * tmp).row(sys.state_size()-1);
+    }
+
+    // 可制御正準形の\tilda{A}の係数比較により極配置を行う
+    // https://www.youtube.com/watch?v=yiFgI6Oos88
+//     static Eigen::VectorXd place(const StateSpaceSystem& sys, std::vector<double> poles)
+//     {
+
+//     }
 }

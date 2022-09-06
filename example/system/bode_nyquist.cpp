@@ -8,7 +8,7 @@ int main()
 
     // 伝達関数
     // tf(s) = 1 / (s + 1)
-    cr::TransferFunction<0, 1> tf({1.0}, {1.0, 1.0}, 0.01);
+    cr::TransferFunction tf({1.0}, {1.0, 1.0}, 0.01);
 
     // ボード線図
     cr::bode_plot(tf);

@@ -24,8 +24,7 @@ static double bracketing_serach(std::function<double(Eigen::VectorXd)> func, std
     return a;
 }
 
-// 簡単な直線探索
-static double simple_line_serach(std::function<double(double)> func, double step = 1e-9, const double inc_step = 1e-6, const size_t max_iter = 1000)
+static double bracketing_serach(std::function<double(double)> func, /*double max_step = 1.0, */double step = 1e-6, const double inc_step = 1e-6, const size_t max_iter = 1000)
 {
     double a = 0;
     double fval = func(a);

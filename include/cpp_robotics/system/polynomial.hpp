@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include <initializer_list>
+// #include <initializer_list>
 #include <cassert>
 #include "../utility/cpp_support.hpp"
 
@@ -22,27 +22,31 @@ struct Polynomial
     Polynomial(IteratorType begin, IteratorType end):
         _coeff(begin, end) {}
 
-    static Polynomial poly_roots(std::initializer_list<double> roots)
+    // (x-a1)(x-a2)...(x-aN)の{a...aN}を引数にとり展開した多項式を返す
+    static Polynomial expand(std::vector<double> roots)
     {
         std::vector<double> coeff, buf;
-        coeff.resize(roots.size()+1);
-        buf.resize(roots.size());
+        coeff.reserve(roots.size()+1);
+        buf.reserve(roots.size());
+        coeff.resize(1);
         
         coeff[0] = 1;
-        auto it = roots.begin();
-        for(size_t i = 0; i < roots.size(); i++)
+        for(auto &c : roots)
         {
-            double cn = (*it++);
-            for(size_t j = 0; j <= i; j++)
-            {
-                buf[j] = coeff[j] * (-cn);
-            }
+            ////////// (x^m+a*x^m-1 ... c)(x+d)を計算する
 
-            shift_right(coeff.begin(), coeff.end(), 1);
+            // (x^m+a*x^m-1 ... c) * xを計算する
+            buf = coeff;
+            coeff.push_back(0);
 
-            for(size_t j = 0; j <= i; j++)
+            // (x^m+a*x^m-1 ... c) * dを計算する
+            for(auto &bval : buf)
+                bval *= -c;
+
+            // (x^m+a*x^m-1 ... c) * dを加算する
+            for(size_t i = 0; i < buf.size(); i++)
             {
-                coeff[j] += buf[j];
+                coeff[i+1] += buf[i];
             }
         }
 
@@ -57,7 +61,10 @@ struct Polynomial
     std::vector<double> coeff() const { return _coeff; }
 
     double &at(size_t i) { return _coeff[i]; }
-    double at(size_t i) const { return _coeff[i]; }
+    double  at(size_t i) const { return _coeff[i]; }
+
+    double &at_degree(size_t i) { return _coeff[degree()-i]; }
+    double  at_degree(size_t i) const { return _coeff[degree()-i]; }
 
     double &operator [](size_t i) { return at(i); }
     double operator [](size_t i) const { return at(i); }

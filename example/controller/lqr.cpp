@@ -4,7 +4,8 @@
 
 int main()
 {
-    using namespace cpp_robotics;
+    namespace cr = cpp_robotics;
+    namespace plt = matplotlibcpp;
 
     const double dt = 0.01;
 
@@ -14,14 +15,14 @@ int main()
     B << 0, 1;
     C.setIdentity();
 
-    StateSpaceSystem<2,1,2> sys;
+    cr::StateSpaceSystem sys;
     sys.set_continuous(A, B, C, dt);
 
     //////////////////// controller ////////////////////
     Eigen::MatrixXd Q(2,2), R(1,1);
     Q << 3000, 0, 0, 60;
     R << 0.01;
-    Eigen::MatrixXd K = lqr(A, B, Q, R);
+    Eigen::MatrixXd K = cr::lqr(A, B, Q, R);
 
     std::cout << "fb gain" << std::endl;
     std::cout << K << std::endl;
@@ -31,8 +32,8 @@ int main()
     
 
     {
-        namespace plt = matplotlibcpp;
-        auto t = arrange(0, 5.0, dt);
+        
+        auto t = cr::arrange(0, 5.0, dt);
         std::vector<double> x1(t.size()), x2(t.size()), x1_ref(t.size());
 
         //////////////////// simulation ////////////////////
