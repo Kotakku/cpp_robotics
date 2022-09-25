@@ -17,23 +17,23 @@ summary: 四角形
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[Quad](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quad/#function-quad)**() =default |
-| constexpr | **[Quad](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quad/#function-quad)**(const std::array< [Vector2d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d), 4 > & points) |
-| constexpr | **[Quad](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quad/#function-quad)**(const [Vector2d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p0, const [Vector2d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p1, const [Vector2d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p2, const [Vector2d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p3) |
-| void | **[set](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quad/#function-set)**(const [Vector2d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p0_, const [Vector2d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p1_, const [Vector2d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p2_, const [Vector2d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p3_) |
-| constexpr bool | **[has_area](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quad/#function-has-area)**() const |
-| constexpr float | **[area](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quad/#function-area)**() const |
-| constexpr std::array< [Vector2d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d), 4 > | **[vertex](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quad/#function-vertex)**() const |
-| constexpr std::array< [Line](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Line/), 4 > | **[outline](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quad/#function-outline)**() const |
+| | **[Quad](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quad/#function-quad)**() =default |
+| constexpr | **[Quad](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quad/#function-quad)**(const std::array< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d), 4 > & points) |
+| constexpr | **[Quad](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quad/#function-quad)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p0, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p1, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p2, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p3) |
+| void | **[set](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quad/#function-set)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p0_, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p1_, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p2_, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p3_) |
+| constexpr bool | **[has_area](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quad/#function-has-area)**() const |
+| constexpr float | **[area](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quad/#function-area)**() const |
+| constexpr std::array< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d), 4 > | **[vertex](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quad/#function-vertex)**() const |
+| constexpr std::array< [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/), 4 > | **[outline](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quad/#function-outline)**() const |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| [Vector2d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) | **[p0](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quad/#variable-p0)**  |
-| [Vector2d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) | **[p1](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quad/#variable-p1)**  |
-| [Vector2d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) | **[p2](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quad/#variable-p2)**  |
-| [Vector2d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) | **[p3](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quad/#variable-p3)**  |
+| [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) | **[p0](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quad/#variable-p0)**  |
+| [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) | **[p1](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quad/#variable-p1)**  |
+| [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) | **[p2](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quad/#variable-p2)**  |
+| [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) | **[p3](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quad/#variable-p3)**  |
 
 ## Public Functions Documentation
 
@@ -137,4 +137,4 @@ Vector2d p3;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

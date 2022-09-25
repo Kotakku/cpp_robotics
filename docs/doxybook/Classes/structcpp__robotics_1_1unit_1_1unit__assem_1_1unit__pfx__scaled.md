@@ -16,7 +16,7 @@ title: cpp_robotics::unit::unit_assem::unit_pfx_scaled
 
 |                | Name           |
 | -------------- | -------------- |
-| using [Unit](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< typename UnitType::value_type, typename UnitType::unit_dimention_type, typename [prefix::pfx_mul](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/)< typename UnitType::prefix_type, PrefixType >::prefix, UnitType::tag > | **[unit](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__pfx__scaled/#using-unit)**  |
+| using [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< typename UnitType::value_type, typename UnitType::unit_dimention_type, typename [prefix::pfx_mul](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/)< typename UnitType::prefix_type, PrefixType >::prefix, UnitType::tag > | **[unit](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__pfx__scaled/#using-unit)**  |
 
 ## Detailed Description
 
@@ -37,4 +37,4 @@ using cpp_robotics::unit::unit_assem::unit_pfx_scaled< UnitType, PrefixType >::u
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

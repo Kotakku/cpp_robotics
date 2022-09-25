@@ -16,31 +16,31 @@ title: cpp_robotics::Quaternion
 
 |                | Name           |
 | -------------- | -------------- |
-| using FLOATING_TYPE | **[value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type)**  |
+| using FLOATING_TYPE | **[value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type)**  |
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| constexpr | **[Quaternion](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-quaternion)**() |
-| constexpr | **[Quaternion](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-quaternion)**([value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) nx, [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) ny, [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) nz, [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) nw) |
-| [Quaternion](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/) | **[get_product](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-get-product)**([Quaternion](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/) q) |
-| constexpr [Quaternion](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/) | **[conjugate](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-conjugate)**() const |
-| constexpr [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) | **[norm](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-norm)**() const |
-| constexpr void | **[normalize](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-normalize)**() |
-| constexpr [Quaternion](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/) | **[get_normalized](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-get-normalized)**() const |
-| constexpr void | **[set_rpy](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-set-rpy)**([value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) roll, [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) pitch, [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) yaw) |
-| constexpr [Vector3d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector3d) | **[get_rpy](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-get-rpy)**() const |
-| constexpr [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) | **[operator[]](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-operator[])**(const int index) const |
+| constexpr | **[Quaternion](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-quaternion)**() |
+| constexpr | **[Quaternion](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-quaternion)**([value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) nx, [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) ny, [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) nz, [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) nw) |
+| [Quaternion](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/) | **[get_product](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-get-product)**([Quaternion](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/) q) |
+| constexpr [Quaternion](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/) | **[conjugate](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-conjugate)**() const |
+| constexpr [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) | **[norm](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-norm)**() const |
+| constexpr void | **[normalize](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-normalize)**() |
+| constexpr [Quaternion](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/) | **[get_normalized](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-get-normalized)**() const |
+| constexpr void | **[set_rpy](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-set-rpy)**([value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) roll, [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) pitch, [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) yaw) |
+| constexpr [Vector3d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector3d) | **[get_rpy](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-get-rpy)**() const |
+| constexpr [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) | **[operator[]](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#function-operator[])**(const int index) const |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) | **[x](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#variable-x)**  |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) | **[y](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#variable-y)**  |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) | **[z](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#variable-z)**  |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) | **[w](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/#variable-w)**  |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) | **[x](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#variable-x)**  |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) | **[y](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#variable-y)**  |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) | **[z](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#variable-z)**  |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#using-value-type) | **[w](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/#variable-w)**  |
 
 ## Detailed Description
 
@@ -182,4 +182,4 @@ value_type w;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

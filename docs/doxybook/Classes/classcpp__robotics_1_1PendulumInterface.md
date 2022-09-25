@@ -16,16 +16,16 @@ title: cpp_robotics::PendulumInterface
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[Input](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1Input/)**  |
-| struct | **[State](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/)**  |
+| struct | **[Input](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1Input/)**  |
+| struct | **[State](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/)**  |
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[PendulumInterface](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1PendulumInterface/#function-penduluminterface)**() =default |
-| virtual [State](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/) | **[get_state](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1PendulumInterface/#function-get-state)**() =0 |
-| virtual void | **[control](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1PendulumInterface/#function-control)**(const [Input](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1Input/) & input) =0 |
+| | **[PendulumInterface](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PendulumInterface/#function-penduluminterface)**() =default |
+| virtual [State](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/) | **[get_state](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PendulumInterface/#function-get-state)**() =0 |
+| virtual void | **[control](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PendulumInterface/#function-control)**(const [Input](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1Input/) & input) =0 |
 
 ## Public Functions Documentation
 
@@ -54,4 +54,4 @@ virtual void control(
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

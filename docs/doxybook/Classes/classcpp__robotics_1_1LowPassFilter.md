@@ -16,9 +16,9 @@ title: cpp_robotics::LowPassFilter
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[LowPassFilter](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-lowpassfilter)**(double T, double dt) |
-| void | **[reset](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-reset)**(double val =0) |
-| double | **[filtering](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-filtering)**(double u) |
+| | **[LowPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-lowpassfilter)**(double T, double dt) |
+| void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-reset)**(double val =0) |
+| double | **[filtering](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-filtering)**(double u) |
 
 ## Public Functions Documentation
 
@@ -52,4 +52,4 @@ inline double filtering(
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

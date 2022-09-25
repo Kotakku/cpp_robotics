@@ -11,13 +11,13 @@ title: include/cpp_robotics/robots/robot_utils/robot_utils.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cpp_robotics::is_base_of_robot_if](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1is__base__of__robot__if/)**  |
+| struct | **[cpp_robotics::is_base_of_robot_if](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1is__base__of__robot__if/)**  |
 
 
 
@@ -48,4 +48,4 @@ static constexpr bool is_base_of_robot_if_v = is_base_of_robot_if<Interface, Use
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

@@ -16,8 +16,8 @@ title: cpp_robotics::PendulumInterface::Input
 
 |                | Name           |
 | -------------- | -------------- |
-| double | **[input](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1Input/#variable-input)**  |
-| std::shared_ptr< void > | **[arg](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1Input/#variable-arg)**  |
+| double | **[input](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1Input/#variable-input)**  |
+| std::shared_ptr< void > | **[arg](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1Input/#variable-arg)**  |
 
 ## Public Attributes Documentation
 
@@ -37,4 +37,4 @@ std::shared_ptr< void > arg;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

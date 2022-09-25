@@ -11,14 +11,14 @@ title: include/cpp_robotics/vector/vector3.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cpp_robotics::Vector3](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector3/)** <br>3次元のベクトル  |
-| struct | **[cpp_robotics::Vector3](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector3/)** <br>3次元のベクトル  |
+| struct | **[cpp_robotics::Vector3](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector3/)** <br>3次元のベクトル  |
+| struct | **[cpp_robotics::Vector3](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector3/)** <br>3次元のベクトル  |
 
 
 
@@ -261,4 +261,4 @@ namespace cpp_robotics
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

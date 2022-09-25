@@ -11,19 +11,19 @@ title: cpp_robotics::grid_path_planning_utils
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cpp_robotics::grid_path_planning_utils::GridNode](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/)**  |
+| struct | **[cpp_robotics::grid_path_planning_utils::GridNode](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/)**  |
 
 ## Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| bool | **[contain_in_map](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/#function-contain-in-map)**(const Eigen::MatrixXi & map, const Eigen::Vector2i & p) |
-| int | **[dist](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/#function-dist)**(const Eigen::Vector2i & pos, const Eigen::Vector2i & end) |
-| template <typename T \> <br>bool | **[in_range_open](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/#function-in-range-open)**(T x, T min, T max) |
-| bool | **[is_valid](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/#function-is-valid)**(const Eigen::Vector2i & pos, size_t row, size_t col) |
-| bool | **[is_wall](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/#function-is-wall)**(const Eigen::Vector2i & pos, size_t row, size_t col) |
-| bool | **[is_correct_step](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/#function-is-correct-step)**(const Eigen::Vector2i & pos, const Eigen::MatrixXi & map) |
-| bool | **[exist](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/#function-exist)**(std::list< [GridNode](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/) > & open, std::list< [GridNode](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/) > & closed, const Eigen::Vector2i & p, int cost) |
+| bool | **[contain_in_map](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/#function-contain-in-map)**(const Eigen::MatrixXi & map, const Eigen::Vector2i & p) |
+| int | **[dist](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/#function-dist)**(const Eigen::Vector2i & pos, const Eigen::Vector2i & end) |
+| template <typename T \> <br>bool | **[in_range_open](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/#function-in-range-open)**(T x, T min, T max) |
+| bool | **[is_valid](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/#function-is-valid)**(const Eigen::Vector2i & pos, size_t row, size_t col) |
+| bool | **[is_wall](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/#function-is-wall)**(const Eigen::Vector2i & pos, size_t row, size_t col) |
+| bool | **[is_correct_step](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/#function-is-correct-step)**(const Eigen::Vector2i & pos, const Eigen::MatrixXi & map) |
+| bool | **[exist](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/#function-exist)**(std::list< [GridNode](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/) > & open, std::list< [GridNode](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/) > & closed, const Eigen::Vector2i & p, int cost) |
 
 
 ## Functions Documentation
@@ -110,4 +110,4 @@ bool exist(
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

@@ -16,13 +16,13 @@ title: cpp_robotics::PendulumInterface::State
 
 |                | Name           |
 | -------------- | -------------- |
-| double | **[angle](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/#variable-angle)**  |
-| double | **[omega](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/#variable-omega)**  |
-| double | **[domega](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/#variable-domega)**  |
-| double | **[pos](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/#variable-pos)**  |
-| double | **[vel](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/#variable-vel)**  |
-| double | **[acc](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/#variable-acc)**  |
-| std::shared_ptr< void > | **[arg](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/#variable-arg)**  |
+| double | **[angle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/#variable-angle)**  |
+| double | **[omega](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/#variable-omega)**  |
+| double | **[domega](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/#variable-domega)**  |
+| double | **[pos](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/#variable-pos)**  |
+| double | **[vel](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/#variable-vel)**  |
+| double | **[acc](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/#variable-acc)**  |
+| std::shared_ptr< void > | **[arg](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/#variable-arg)**  |
 
 ## Public Attributes Documentation
 
@@ -77,4 +77,4 @@ std::shared_ptr< void > arg;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

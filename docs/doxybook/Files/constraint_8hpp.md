@@ -11,14 +11,14 @@ title: include/cpp_robotics/optimize/constraint.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cpp_robotics::Constraint](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Constraint/)**  |
-| class | **[cpp_robotics::ConstraintArray](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1ConstraintArray/)**  |
+| struct | **[cpp_robotics::Constraint](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Constraint/)**  |
+| class | **[cpp_robotics::ConstraintArray](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ConstraintArray/)**  |
 
 
 
@@ -194,4 +194,4 @@ public:
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

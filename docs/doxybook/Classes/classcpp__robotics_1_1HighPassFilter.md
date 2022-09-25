@@ -16,9 +16,9 @@ title: cpp_robotics::HighPassFilter
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[HighPassFilter](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1HighPassFilter/#function-highpassfilter)**(double T, double dt) |
-| void | **[reset](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1HighPassFilter/#function-reset)**(double val =0) |
-| double | **[filtering](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1HighPassFilter/#function-filtering)**(double u) |
+| | **[HighPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1HighPassFilter/#function-highpassfilter)**(double T, double dt) |
+| void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1HighPassFilter/#function-reset)**(double val =0) |
+| double | **[filtering](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1HighPassFilter/#function-filtering)**(double u) |
 
 ## Public Functions Documentation
 
@@ -52,4 +52,4 @@ inline double filtering(
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

@@ -11,26 +11,26 @@ title: cpp_robotics::unit::prefix
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cpp_robotics::unit::prefix::pfx_div](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__div/)**  |
-| struct | **[cpp_robotics::unit::prefix::pfx_inv](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__inv/)**  |
-| struct | **[cpp_robotics::unit::prefix::pfx_min](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__min/)**  |
-| struct | **[cpp_robotics::unit::prefix::pfx_mul](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/)**  |
+| struct | **[cpp_robotics::unit::prefix::pfx_div](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__div/)**  |
+| struct | **[cpp_robotics::unit::prefix::pfx_inv](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__inv/)**  |
+| struct | **[cpp_robotics::unit::prefix::pfx_min](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__min/)**  |
+| struct | **[cpp_robotics::unit::prefix::pfx_mul](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/)**  |
 
 ## Types
 
 |                | Name           |
 | -------------- | -------------- |
-| using [Prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1, 1000000000 > | **[nano](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-nano)**  |
-| using [Prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1, 1000000 > | **[micro](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-micro)**  |
-| using [Prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1, 1000 > | **[milli](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-milli)**  |
-| using [Prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1, 100 > | **[centi](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-centi)**  |
-| using [Prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1, 10 > | **[deci](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-deci)**  |
-| using [Prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1, 1 > | **[none](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-none)**  |
-| using [Prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 10, 1 > | **[deca](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-deca)**  |
-| using [Prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 100, 1 > | **[hecto](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-hecto)**  |
-| using [Prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1000, 1 > | **[kilo](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-kilo)**  |
-| using [Prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1000000, 1 > | **[mega](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-mega)**  |
-| using [Prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1000000000, 1 > | **[giga](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-giga)**  |
+| using [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1, 1000000000 > | **[nano](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-nano)**  |
+| using [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1, 1000000 > | **[micro](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-micro)**  |
+| using [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1, 1000 > | **[milli](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-milli)**  |
+| using [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1, 100 > | **[centi](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-centi)**  |
+| using [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1, 10 > | **[deci](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-deci)**  |
+| using [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1, 1 > | **[none](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-none)**  |
+| using [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 10, 1 > | **[deca](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-deca)**  |
+| using [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 100, 1 > | **[hecto](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-hecto)**  |
+| using [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1000, 1 > | **[kilo](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-kilo)**  |
+| using [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1000000, 1 > | **[mega](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-mega)**  |
+| using [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< 1000000000, 1 > | **[giga](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-giga)**  |
 
 ## Types Documentation
 
@@ -118,4 +118,4 @@ using cpp_robotics::unit::prefix::giga = typedef Prefix<1000000000, 1>;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

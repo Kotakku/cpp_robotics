@@ -16,41 +16,41 @@ title: cpp_robotics::Polynomial
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polynomial)**(std::initializer_list< double > coeff) |
-| | **[Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polynomial)**(const std::vector< double > & coeff) |
-| template <class IteratorType \> <br>| **[Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polynomial)**(IteratorType begin, IteratorType end) |
-| void | **[set_degree](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-set-degree)**(size_t deg) |
-| size_t | **[size](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-size)**() const |
-| size_t | **[degree](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-degree)**() const |
-| std::vector< double > | **[coeff](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-coeff)**() const |
-| double & | **[at](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-at)**(size_t i) |
-| double | **[at](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-at)**(size_t i) const |
-| double & | **[at_degree](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-at-degree)**(size_t i) |
-| double | **[at_degree](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-at-degree)**(size_t i) const |
-| double & | **[operator[]](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator[])**(size_t i) |
-| double | **[operator[]](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator[])**(size_t i) const |
-| void | **[check_degree](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-check-degree)**() |
-| double | **[evalute](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-evalute)**(double x) const |
-| [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[polyder](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polyder)**(size_t i) const |
-| [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[polyint](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polyint)**(double C =0) const |
-| void | **[swap](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-swap)**([Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & poly) |
-| double | **[operator()](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator())**(double x) const |
-| [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator+](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator+)**() const |
-| [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator-](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator-)**() const |
-| [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator+](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator+)**(double s) const |
-| [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator-](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator-)**(double s) const |
-| [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator*](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator*)**(double s) const |
-| [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator/](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator/)**(double s) const |
-| [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator*](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator*)**(const [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & p) const |
-| [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[expand](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-expand)**(std::vector< double > roots) |
+| | **[Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polynomial)**(std::initializer_list< double > coeff) |
+| | **[Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polynomial)**(const std::vector< double > & coeff) |
+| template <class IteratorType \> <br>| **[Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polynomial)**(IteratorType begin, IteratorType end) |
+| void | **[set_degree](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-set-degree)**(size_t deg) |
+| size_t | **[size](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-size)**() const |
+| size_t | **[degree](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-degree)**() const |
+| std::vector< double > | **[coeff](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-coeff)**() const |
+| double & | **[at](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-at)**(size_t i) |
+| double | **[at](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-at)**(size_t i) const |
+| double & | **[at_degree](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-at-degree)**(size_t i) |
+| double | **[at_degree](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-at-degree)**(size_t i) const |
+| double & | **[operator[]](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator[])**(size_t i) |
+| double | **[operator[]](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator[])**(size_t i) const |
+| void | **[check_degree](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-check-degree)**() |
+| double | **[evalute](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-evalute)**(double x) const |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[polyder](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polyder)**(size_t i) const |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[polyint](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polyint)**(double C =0) const |
+| void | **[swap](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-swap)**([Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & poly) |
+| double | **[operator()](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator())**(double x) const |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator+](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator+)**() const |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator-](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator-)**() const |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator+](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator+)**(double s) const |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator-](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator-)**(double s) const |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator*](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator*)**(double s) const |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator/](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator/)**(double s) const |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator*](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator*)**(const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & p) const |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[expand](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-expand)**(std::vector< double > roots) |
 
 ## Friends
 
 |                | Name           |
 | -------------- | -------------- |
-| [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator*](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#friend-operator*)**(double s, const [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & poly)  |
-| bool | **[operator==](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#friend-operator==)**(const [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & lhs, const [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & rhs)  |
-| bool | **[operator!=](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/#friend-operator!=)**(const [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & lhs, const [Polynomial](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & rhs)  |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator*](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#friend-operator*)**(double s, const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & poly)  |
+| bool | **[operator==](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#friend-operator==)**(const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & lhs, const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & rhs)  |
+| bool | **[operator!=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#friend-operator!=)**(const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & lhs, const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & rhs)  |
 
 ## Public Functions Documentation
 
@@ -324,4 +324,4 @@ friend bool operator!=(
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

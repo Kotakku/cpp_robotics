@@ -16,12 +16,12 @@ title: cpp_robotics::QuadProg::Param
 
 |                | Name           |
 | -------------- | -------------- |
-| double | **[tol_step](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-tol-step)**  |
-| double | **[tol_con](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-tol-con)**  |
-| double | **[eta](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-eta)**  |
-| double | **[beta](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-beta)**  |
-| double | **[t](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-t)**  |
-| size_t | **[max_iter](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-max-iter)**  |
+| double | **[tol_step](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-tol-step)**  |
+| double | **[tol_con](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-tol-con)**  |
+| double | **[eta](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-eta)**  |
+| double | **[beta](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-beta)**  |
+| double | **[t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-t)**  |
+| size_t | **[max_iter](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-max-iter)**  |
 
 ## Public Attributes Documentation
 
@@ -69,4 +69,4 @@ size_t max_iter = 100;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

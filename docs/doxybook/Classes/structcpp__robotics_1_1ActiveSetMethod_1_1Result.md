@@ -16,10 +16,10 @@ title: cpp_robotics::ActiveSetMethod::Result
 
 |                | Name           |
 | -------------- | -------------- |
-| bool | **[is_solved](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/#variable-is-solved)**  |
-| Eigen::VectorXd | **[x_opt](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/#variable-x-opt)**  |
-| Eigen::VectorXd | **[lambda_opt](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/#variable-lambda-opt)**  |
-| size_t | **[iter_cnt](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/#variable-iter-cnt)**  |
+| bool | **[is_solved](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/#variable-is-solved)**  |
+| Eigen::VectorXd | **[x_opt](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/#variable-x-opt)**  |
+| Eigen::VectorXd | **[lambda_opt](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/#variable-lambda-opt)**  |
+| size_t | **[iter_cnt](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/#variable-iter-cnt)**  |
 
 ## Public Attributes Documentation
 
@@ -53,4 +53,4 @@ size_t iter_cnt = 0;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

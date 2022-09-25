@@ -11,14 +11,14 @@ title: include/cpp_robotics/utility/math_utils.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
-| **[cpp_robotics::constants](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1constants/)** <br>数学・物理定数  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics::constants](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/)** <br>数学・物理定数  |
 
 ## Defines
 
 |                | Name           |
 | -------------- | -------------- |
-|  | **[M_PI](/cpp_robotics_core/doxybook/Files/math__utils_8hpp/#define-m-pi)**  |
+|  | **[M_PI](/cpp_robotics/doxybook/Files/math__utils_8hpp/#define-m-pi)**  |
 
 
 
@@ -136,4 +136,4 @@ constexpr inline float approx_zero(const float a) { return (std::abs(a) < 1e-12)
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

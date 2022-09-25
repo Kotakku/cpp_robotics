@@ -11,14 +11,14 @@ title: include/cpp_robotics/path_planning/grid_path_planning_utils.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
-| **[cpp_robotics::grid_path_planning_utils](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics::grid_path_planning_utils](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cpp_robotics::grid_path_planning_utils::GridNode](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/)**  |
+| struct | **[cpp_robotics::grid_path_planning_utils::GridNode](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/)**  |
 
 
 
@@ -109,4 +109,4 @@ bool exist(std::list<GridNode> &open, std::list<GridNode> &closed, const Eigen::
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

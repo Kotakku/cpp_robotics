@@ -11,7 +11,7 @@ title: include/cpp_robotics/system/time_responce.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
 
 
@@ -84,4 +84,4 @@ static std::tuple<std::vector<double>, std::vector<double>> lsim(TransferFunctio
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

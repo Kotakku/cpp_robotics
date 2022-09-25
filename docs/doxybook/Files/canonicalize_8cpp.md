@@ -11,13 +11,13 @@ title: example/controller/canonicalize.cpp
 
 |                | Name           |
 | -------------- | -------------- |
-| int | **[main](/cpp_robotics_core/doxybook/Files/canonicalize_8cpp/#function-main)**() |
+| int | **[main](/cpp_robotics/doxybook/Files/canonicalize_8cpp/#function-main)**() |
 
 ## Defines
 
 |                | Name           |
 | -------------- | -------------- |
-|  | **[PRINT_MAT](/cpp_robotics_core/doxybook/Files/canonicalize_8cpp/#define-print-mat)**(MAT)  |
+|  | **[PRINT_MAT](/cpp_robotics/doxybook/Files/canonicalize_8cpp/#define-print-mat)**(MAT)  |
 
 
 ## Functions Documentation
@@ -96,4 +96,4 @@ int main()
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

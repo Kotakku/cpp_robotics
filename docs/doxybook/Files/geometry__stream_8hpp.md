@@ -11,7 +11,7 @@ title: include/cpp_robotics/geometry/geometry_stream.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
 
 
@@ -59,4 +59,4 @@ std::ostream& operator << (std::ostream& os, const Transformd& v)
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

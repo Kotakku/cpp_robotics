@@ -16,14 +16,14 @@ title: cpp_robotics::ActiveSetMethod
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[Problem](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/)**  |
-| struct | **[Result](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/)**  |
+| struct | **[Problem](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/)**  |
+| struct | **[Result](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/)**  |
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| [Result](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/) | **[solve](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1ActiveSetMethod/#function-solve)**([Problem](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/) prob, Eigen::VectorXd x) |
+| [Result](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/) | **[solve](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ActiveSetMethod/#function-solve)**([Problem](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/) prob, Eigen::VectorXd x) |
 
 ## Public Functions Documentation
 
@@ -39,4 +39,4 @@ inline Result solve(
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

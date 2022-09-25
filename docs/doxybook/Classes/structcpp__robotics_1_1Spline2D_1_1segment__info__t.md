@@ -16,8 +16,8 @@ title: cpp_robotics::Spline2D::segment_info_t
 
 |                | Name           |
 | -------------- | -------------- |
-| size_t | **[i](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__info__t/#variable-i)**  |
-| double | **[t](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__info__t/#variable-t)**  |
+| size_t | **[i](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__info__t/#variable-i)**  |
+| double | **[t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__info__t/#variable-t)**  |
 
 ## Public Attributes Documentation
 
@@ -37,4 +37,4 @@ double t;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

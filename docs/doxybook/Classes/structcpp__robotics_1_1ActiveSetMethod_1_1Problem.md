@@ -16,24 +16,24 @@ title: cpp_robotics::ActiveSetMethod::Problem
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[Problem](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#function-problem)**() =default |
-| | **[Problem](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#function-problem)**(size_t x_size_) |
-| void | **[add_inequality_constraint](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#function-add-inequality-constraint)**(const Eigen::MatrixXd & An, Eigen::VectorXd bn) |
-| void | **[add_equality_constraint](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#function-add-equality-constraint)**(const Eigen::MatrixXd & An, Eigen::VectorXd bn) |
+| | **[Problem](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#function-problem)**() =default |
+| | **[Problem](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#function-problem)**(size_t x_size_) |
+| void | **[add_inequality_constraint](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#function-add-inequality-constraint)**(const Eigen::MatrixXd & An, Eigen::VectorXd bn) |
+| void | **[add_equality_constraint](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#function-add-equality-constraint)**(const Eigen::MatrixXd & An, Eigen::VectorXd bn) |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| Eigen::MatrixXd | **[Q](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-q)**  |
-| Eigen::VectorXd | **[c](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-c)**  |
-| Eigen::MatrixXd | **[A](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-a)**  |
-| Eigen::VectorXd | **[b](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-b)**  |
-| size_t | **[max_iter](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-max-iter)**  |
-| size_t | **[max_iter_get_initial_feasible_x](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-max-iter-get-initial-feasible-x)**  |
-| size_t | **[x_size](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-x-size)**  |
-| size_t | **[constraint_size](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-constraint-size)**  |
-| double | **[alpha](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-alpha)**  |
+| Eigen::MatrixXd | **[Q](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-q)**  |
+| Eigen::VectorXd | **[c](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-c)**  |
+| Eigen::MatrixXd | **[A](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-a)**  |
+| Eigen::VectorXd | **[b](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-b)**  |
+| size_t | **[max_iter](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-max-iter)**  |
+| size_t | **[max_iter_get_initial_feasible_x](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-max-iter-get-initial-feasible-x)**  |
+| size_t | **[x_size](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-x-size)**  |
+| size_t | **[constraint_size](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-constraint-size)**  |
+| double | **[alpha](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/#variable-alpha)**  |
 
 ## Public Functions Documentation
 
@@ -140,4 +140,4 @@ double alpha = 1.1;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

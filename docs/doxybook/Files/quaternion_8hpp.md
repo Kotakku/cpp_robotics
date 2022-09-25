@@ -11,14 +11,14 @@ title: include/cpp_robotics/vector/quaternion.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::Quaternion](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/)**  |
-| class | **[cpp_robotics::Quaternion](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Quaternion/)**  |
+| class | **[cpp_robotics::Quaternion](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/)**  |
+| class | **[cpp_robotics::Quaternion](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/)**  |
 
 ## Detailed Description
 
@@ -144,4 +144,4 @@ public:
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

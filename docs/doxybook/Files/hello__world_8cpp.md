@@ -11,7 +11,7 @@ title: example/hello_world.cpp
 
 |                | Name           |
 | -------------- | -------------- |
-| int | **[main](/cpp_robotics_core/doxybook/Files/hello__world_8cpp/#function-main)**(int argc, char * argv[]) |
+| int | **[main](/cpp_robotics/doxybook/Files/hello__world_8cpp/#function-main)**(int argc, char * argv[]) |
 
 
 ## Functions Documentation
@@ -91,4 +91,4 @@ int main(int argc, char *argv[])
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

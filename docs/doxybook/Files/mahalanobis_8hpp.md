@@ -11,7 +11,7 @@ title: include/cpp_robotics/algorithm/mahalanobis.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
 
 
@@ -39,4 +39,4 @@ double mahalanobis(const Eigen::VectorXd &a, const Eigen::VectorXd &b, const Eig
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

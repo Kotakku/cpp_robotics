@@ -17,57 +17,57 @@ summary: 4次元のベクトル
 
 |                | Name           |
 | -------------- | -------------- |
-| using FLOATING_TYPE | **[value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type)**  |
+| using FLOATING_TYPE | **[value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type)**  |
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-vector4)**() =default<br>Construct a new Vector 4 object.  |
-| constexpr | **[Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-vector4)**([value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) vx, [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) vy, [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) vz, [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) vw)<br>Construct a new Vector 4 object.  |
-| | **[Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-vector4)**(const [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & v) =default<br>Construct a new Vector 4 object.  |
-| void | **[set](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-set)**([value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) vx, [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) vy, [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) vz, [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) vw) |
-| constexpr [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[dot](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-dot)**(const [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & v) const |
-| constexpr [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[norm_sq](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-norm-sq)**() const |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[norm](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-norm)**()<br>Get the Magnitude object.  |
-| void | **[normalize](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-normalize)**()<br>単位ベクトル化  |
-| [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[get_normalized](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-get-normalized)**()<br>Get the Normalized object.  |
-| constexpr bool | **[is_zero](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-is-zero)**() const |
-| constexpr bool | **[has_nan](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-has-nan)**() const |
-| constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[lerp](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-lerp)**(const [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & b, const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) t) const |
-| constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[operator+](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator+)**() const |
-| constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[operator-](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator-)**() const |
-| bool | **[operator==](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator==)**(const [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & v) const |
-| bool | **[operator!=](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator!=)**(const [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & v) const |
-| constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[operator+](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator+)**(const [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & v) const |
-| constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[operator-](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator-)**(const [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & v) const |
-| constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[operator*](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator*)**(const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) value) const |
-| constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[operator/](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator/)**(const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) value) const |
-| constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & | **[operator+=](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator+=)**(const [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & v) |
-| constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & | **[operator-=](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator-=)**(const [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & v) |
-| constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & | **[operator*=](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator*=)**(const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) value) |
-| constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & | **[operator/=](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator/=)**(const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) value) |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) & | **[operator[]](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator[])**(const int index) |
-| constexpr [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[operator[]](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator[])**(const int index) const |
-| constexpr [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[dot](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-dot)**(const [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & a, const [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & b) |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[distance](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-distance)**(const [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & a, const [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & b) |
-| constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[lerp](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-lerp)**(const [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & a, const [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) & b, const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) t) |
-| constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[zero](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-zero)**() |
+| | **[Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-vector4)**() =default<br>Construct a new Vector 4 object.  |
+| constexpr | **[Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-vector4)**([value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) vx, [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) vy, [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) vz, [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) vw)<br>Construct a new Vector 4 object.  |
+| | **[Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-vector4)**(const [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & v) =default<br>Construct a new Vector 4 object.  |
+| void | **[set](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-set)**([value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) vx, [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) vy, [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) vz, [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) vw) |
+| constexpr [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[dot](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-dot)**(const [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & v) const |
+| constexpr [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[norm_sq](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-norm-sq)**() const |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[norm](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-norm)**()<br>Get the Magnitude object.  |
+| void | **[normalize](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-normalize)**()<br>単位ベクトル化  |
+| [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[get_normalized](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-get-normalized)**()<br>Get the Normalized object.  |
+| constexpr bool | **[is_zero](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-is-zero)**() const |
+| constexpr bool | **[has_nan](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-has-nan)**() const |
+| constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[lerp](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-lerp)**(const [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & b, const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) t) const |
+| constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[operator+](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator+)**() const |
+| constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[operator-](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator-)**() const |
+| bool | **[operator==](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator==)**(const [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & v) const |
+| bool | **[operator!=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator!=)**(const [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & v) const |
+| constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[operator+](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator+)**(const [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & v) const |
+| constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[operator-](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator-)**(const [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & v) const |
+| constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[operator*](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator*)**(const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) value) const |
+| constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[operator/](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator/)**(const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) value) const |
+| constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & | **[operator+=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator+=)**(const [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & v) |
+| constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & | **[operator-=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator-=)**(const [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & v) |
+| constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & | **[operator*=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator*=)**(const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) value) |
+| constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & | **[operator/=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator/=)**(const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) value) |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) & | **[operator[]](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator[])**(const int index) |
+| constexpr [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[operator[]](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-operator[])**(const int index) const |
+| constexpr [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[dot](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-dot)**(const [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & a, const [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & b) |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[distance](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-distance)**(const [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & a, const [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & b) |
+| constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[lerp](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-lerp)**(const [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & a, const [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) & b, const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) t) |
+| constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[zero](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#function-zero)**() |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[x](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#variable-x)**  |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[y](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#variable-y)**  |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[z](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#variable-z)**  |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[w](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#variable-w)**  |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[x](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#variable-x)**  |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[y](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#variable-y)**  |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[z](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#variable-z)**  |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#using-value-type) | **[w](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#variable-w)**  |
 
 ## Friends
 
 |                | Name           |
 | -------------- | -------------- |
-| constexpr friend [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[operator*](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/#friend-operator*)**(Scaler s, [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/) v)  |
+| constexpr friend [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) | **[operator*](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/#friend-operator*)**(Scaler s, [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/) v)  |
 
 ## Detailed Description
 
@@ -203,7 +203,7 @@ inline Vector4 get_normalized()
 
 Get the Normalized object. 
 
-**Return**: [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/)
+**Return**: [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)
 
 ### function is_zero
 
@@ -247,7 +247,7 @@ inline constexpr Vector4 lerp(
   * **t** 
 
 
-**Return**: constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/)
+**Return**: constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)
 
 ### function operator+
 
@@ -256,7 +256,7 @@ inline constexpr Vector4 operator+() const
 ```
 
 
-**Return**: constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/)
+**Return**: constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)
 
 ### function operator-
 
@@ -265,7 +265,7 @@ inline constexpr Vector4 operator-() const
 ```
 
 
-**Return**: constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/)
+**Return**: constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)
 
 ### function operator==
 
@@ -321,7 +321,7 @@ inline constexpr Vector4 operator+(
   * **v** 
 
 
-**Return**: [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/)
+**Return**: [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)
 
 ### function operator-
 
@@ -337,7 +337,7 @@ inline constexpr Vector4 operator-(
   * **v** 
 
 
-**Return**: [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/)
+**Return**: [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)
 
 ### function operator*
 
@@ -353,7 +353,7 @@ inline constexpr Vector4 operator*(
   * **value** 
 
 
-**Return**: [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/)
+**Return**: [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)
 
 ### function operator/
 
@@ -369,7 +369,7 @@ inline constexpr Vector4 operator/(
   * **value** 
 
 
-**Return**: [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/)
+**Return**: [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)
 
 ### function operator+=
 
@@ -385,7 +385,7 @@ inline constexpr Vector4 & operator+=(
   * **v** 
 
 
-**Return**: [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/)& 
+**Return**: [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)& 
 
 ### function operator-=
 
@@ -401,7 +401,7 @@ inline constexpr Vector4 & operator-=(
   * **v** 
 
 
-**Return**: [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/)& 
+**Return**: [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)& 
 
 ### function operator*=
 
@@ -417,7 +417,7 @@ inline constexpr Vector4 & operator*=(
   * **value** 
 
 
-**Return**: [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/)& 
+**Return**: [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)& 
 
 ### function operator/=
 
@@ -433,7 +433,7 @@ inline constexpr Vector4 & operator/=(
   * **value** 
 
 
-**Return**: [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/)& 
+**Return**: [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)& 
 
 ### function operator[]
 
@@ -521,7 +521,7 @@ static inline constexpr Vector4 lerp(
   * **t** 
 
 
-**Return**: constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/)
+**Return**: constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)
 
 ### function zero
 
@@ -530,7 +530,7 @@ static inline constexpr Vector4 zero()
 ```
 
 
-**Return**: [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/)
+**Return**: [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)
 
 ## Public Attributes Documentation
 
@@ -586,8 +586,8 @@ friend constexpr friend Vector4 operator*(
   * **Scaler** 
 
 
-**Return**: constexpr [Vector4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector4/)
+**Return**: constexpr [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

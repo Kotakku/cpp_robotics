@@ -16,9 +16,9 @@ title: cpp_robotics::Discret
 
 |                | Name           |
 | -------------- | -------------- |
-| template <typename Derived \> <br>auto | **[discretize_a](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1Discret/#function-discretize-a)**(const Eigen::MatrixBase< Derived > & A, const float Ts) |
-| template <typename Derived1 ,typename Derived2 \> <br>auto | **[discretize_b](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1Discret/#function-discretize-b)**(const Eigen::MatrixBase< Derived1 > & A, const Eigen::MatrixBase< Derived2 > & B, const float & Ts, size_t hdiv =1000) |
-| template <typename Derived1 ,typename Derived2 \> <br>auto | **[discritize](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1Discret/#function-discritize)**(const Eigen::MatrixBase< Derived1 > & A, const Eigen::MatrixBase< Derived2 > & B, const float & Ts, size_t hdiv =1000) |
+| template <typename Derived \> <br>auto | **[discretize_a](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/#function-discretize-a)**(const Eigen::MatrixBase< Derived > & A, const float Ts) |
+| template <typename Derived1 ,typename Derived2 \> <br>auto | **[discretize_b](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/#function-discretize-b)**(const Eigen::MatrixBase< Derived1 > & A, const Eigen::MatrixBase< Derived2 > & B, const float & Ts, size_t hdiv =1000) |
+| template <typename Derived1 ,typename Derived2 \> <br>auto | **[discritize](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/#function-discritize)**(const Eigen::MatrixBase< Derived1 > & A, const Eigen::MatrixBase< Derived2 > & B, const float & Ts, size_t hdiv =1000) |
 
 ## Public Functions Documentation
 
@@ -63,4 +63,4 @@ static inline auto discritize(
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

@@ -16,30 +16,30 @@ title: cpp_robotics::KDTree
 
 |                | Name           |
 | -------------- | -------------- |
-| using POINT_T | **[point_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type)**  |
+| using POINT_T | **[point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type)**  |
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[KDTree](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-kdtree)**() =default |
-| | **[KDTree](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-kdtree)**(std::vector< [point_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > point) |
-| void | **[clear](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-clear)**() |
-| void | **[build](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-build)**(std::vector< [point_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > point) |
-| size_t | **[nn_search](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-nn-search)**(const [point_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) & point) const |
-| std::vector< size_t > | **[nn_search](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-nn-search)**(const std::vector< [point_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > & point) const |
-| std::vector< size_t > | **[knn_search](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-knn-search)**(const [point_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) & point, size_t k) const |
-| std::vector< size_t > | **[radius_search](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-radius-search)**(const [point_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) & point, double radius) const |
-| std::vector< [point_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > | **[get_points](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-get-points)**(const std::vector< size_t > & idx) const |
-| std::vector< [point_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > | **[knn_search_points](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-knn-search-points)**(const [point_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) & point, size_t k) const |
-| std::vector< [point_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > | **[radius_search_points](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-radius-search-points)**(const [point_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) & point, double radius) const |
-| void | **[debug_node](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-debug-node)**() |
+| | **[KDTree](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-kdtree)**() =default |
+| | **[KDTree](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-kdtree)**(std::vector< [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > point) |
+| void | **[clear](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-clear)**() |
+| void | **[build](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-build)**(std::vector< [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > point) |
+| size_t | **[nn_search](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-nn-search)**(const [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) & point) const |
+| std::vector< size_t > | **[nn_search](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-nn-search)**(const std::vector< [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > & point) const |
+| std::vector< size_t > | **[knn_search](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-knn-search)**(const [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) & point, size_t k) const |
+| std::vector< size_t > | **[radius_search](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-radius-search)**(const [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) & point, double radius) const |
+| std::vector< [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > | **[get_points](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-get-points)**(const std::vector< size_t > & idx) const |
+| std::vector< [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > | **[knn_search_points](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-knn-search-points)**(const [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) & point, size_t k) const |
+| std::vector< [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > | **[radius_search_points](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-radius-search-points)**(const [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) & point, double radius) const |
+| void | **[debug_node](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-debug-node)**() |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| constexpr size_t | **[dimention](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KDTree/#variable-dimention)**  |
+| constexpr size_t | **[dimention](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#variable-dimention)**  |
 
 ## Detailed Description
 
@@ -177,4 +177,4 @@ static constexpr size_t dimention = DIM;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

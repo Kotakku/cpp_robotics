@@ -16,19 +16,19 @@ title: cpp_robotics::grid_path_planning_utils::GridNode
 
 |                | Name           |
 | -------------- | -------------- |
-| bool | **[operator==](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#function-operator==)**(const [GridNode](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/) & o) |
-| bool | **[operator==](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#function-operator==)**(const Eigen::Vector2i & o) |
-| bool | **[operator<](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#function-operator<)**(const [GridNode](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/) & o) |
-| int | **[score](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#function-score)**() |
+| bool | **[operator==](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#function-operator==)**(const [GridNode](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/) & o) |
+| bool | **[operator==](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#function-operator==)**(const Eigen::Vector2i & o) |
+| bool | **[operator<](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#function-operator<)**(const [GridNode](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/) & o) |
+| int | **[score](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#function-score)**() |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| Eigen::Vector2i | **[pos](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#variable-pos)**  |
-| Eigen::Vector2i | **[parent](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#variable-parent)**  |
-| int | **[cost](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#variable-cost)**  |
-| int | **[hcost](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#variable-hcost)**  |
+| Eigen::Vector2i | **[pos](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#variable-pos)**  |
+| Eigen::Vector2i | **[parent](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#variable-parent)**  |
+| int | **[cost](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#variable-cost)**  |
+| int | **[hcost](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#variable-hcost)**  |
 
 ## Public Functions Documentation
 
@@ -98,4 +98,4 @@ int hcost;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

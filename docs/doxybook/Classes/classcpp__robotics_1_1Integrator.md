@@ -16,9 +16,9 @@ title: cpp_robotics::Integrator
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[Integrator](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1Integrator/#function-integrator)**(double Ts) |
-| void | **[reset](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1Integrator/#function-reset)**(double val =0) |
-| double | **[filtering](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1Integrator/#function-filtering)**(double u) |
+| | **[Integrator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/#function-integrator)**(double Ts) |
+| void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/#function-reset)**(double val =0) |
+| double | **[filtering](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/#function-filtering)**(double u) |
 
 ## Public Functions Documentation
 
@@ -51,4 +51,4 @@ inline double filtering(
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

@@ -16,8 +16,8 @@ title: cpp_robotics::PendulumController
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[PendulumController](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1PendulumController/#function-pendulumcontroller)**() =default |
-| void | **[control](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1PendulumController/#function-control)**() |
+| | **[PendulumController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PendulumController/#function-pendulumcontroller)**() =default |
+| void | **[control](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PendulumController/#function-control)**() |
 
 ## Detailed Description
 
@@ -44,4 +44,4 @@ inline void control()
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

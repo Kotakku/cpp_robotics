@@ -11,15 +11,15 @@ title: include/cpp_robotics/optimize/active_set_method.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::ActiveSetMethod](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1ActiveSetMethod/)**  |
-| struct | **[cpp_robotics::ActiveSetMethod::Problem](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/)**  |
-| struct | **[cpp_robotics::ActiveSetMethod::Result](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/)**  |
+| class | **[cpp_robotics::ActiveSetMethod](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ActiveSetMethod/)**  |
+| struct | **[cpp_robotics::ActiveSetMethod::Problem](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/)**  |
+| struct | **[cpp_robotics::ActiveSetMethod::Result](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/)**  |
 
 
 
@@ -453,4 +453,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

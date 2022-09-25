@@ -16,7 +16,7 @@ title: cpp_robotics::is_base_of_robot_if
 
 |                | Name           |
 | -------------- | -------------- |
-| constexpr bool | **[value](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1is__base__of__robot__if/#variable-value)**  |
+| constexpr bool | **[value](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1is__base__of__robot__if/#variable-value)**  |
 
 ## Detailed Description
 
@@ -37,4 +37,4 @@ static constexpr bool value = std::is_base_of<Interface, UserInterface>::value;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

@@ -16,7 +16,7 @@ title: cpp_robotics::unit::prefix::pfx_inv
 
 |                | Name           |
 | -------------- | -------------- |
-| using [Prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< P::den, P::num > | **[prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__inv/#using-prefix)**  |
+| using [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< P::den, P::num > | **[prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__inv/#using-prefix)**  |
 
 ## Detailed Description
 
@@ -36,4 +36,4 @@ using cpp_robotics::unit::prefix::pfx_inv< P >::prefix =  Prefix<P::den, P::num>
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

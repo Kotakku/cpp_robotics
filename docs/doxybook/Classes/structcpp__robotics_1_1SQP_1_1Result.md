@@ -16,9 +16,9 @@ title: cpp_robotics::SQP::Result
 
 |                | Name           |
 | -------------- | -------------- |
-| bool | **[is_solved](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Result/#variable-is-solved)**  |
-| Eigen::VectorXd | **[x](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Result/#variable-x)**  |
-| size_t | **[iter_cnt](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Result/#variable-iter-cnt)**  |
+| bool | **[is_solved](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Result/#variable-is-solved)**  |
+| Eigen::VectorXd | **[x](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Result/#variable-x)**  |
+| size_t | **[iter_cnt](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Result/#variable-iter-cnt)**  |
 
 ## Public Attributes Documentation
 
@@ -45,4 +45,4 @@ size_t iter_cnt = 0;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

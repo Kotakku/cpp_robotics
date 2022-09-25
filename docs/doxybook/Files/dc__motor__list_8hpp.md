@@ -11,7 +11,7 @@ title: include/cpp_robotics/motor/dc_motor_list.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
 
 
@@ -121,4 +121,4 @@ inline constexpr GearHeadParam IG32_100 = { 1/100.0f, 0.6f };
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

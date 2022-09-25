@@ -17,60 +17,60 @@ summary: 2次元のロボットの座標を扱うクラス
 
 |                | Name           |
 | -------------- | -------------- |
-| using FLOATING_TYPE | **[value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type)**  |
-| using [Vector2](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Vector2/)< [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) > | **[vector_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-vector-type)**  |
+| using FLOATING_TYPE | **[value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type)**  |
+| using [Vector2](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector2/)< [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) > | **[vector_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-vector-type)**  |
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-transform)**() =default<br>Construct a new Field Vector 2 object.  |
-| constexpr | **[Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-transform)**(const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) _x, const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) _y, const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) _theta)<br>Construct a new Field Vector 2 object.  |
-| constexpr | **[Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-transform)**(const [vector_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-vector-type) & _xy, const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) _theta)<br>Construct a new Field Vector 2 object.  |
-| constexpr | **[Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-transform)**(const [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & ) =default<br>Construct a new Field Vector 2 object.  |
-| constexpr [vector_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-vector-type) | **[make_vector2](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-make-vector2)**() const<br>xy成分のVector2を生成  |
-| constexpr void | **[set](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-set)**([value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) vx, [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) vy, [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) vtheta) |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) | **[distance](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-distance)**() const<br>原点からxy座標までの距離を返す  |
-| void | **[rotate](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-rotate)**(const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) theta)<br>原点中心に回転  |
-| void | **[rotate](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-rotate)**(const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) rotX, const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) rotY, const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) theta)<br>指定座標中心に回転  |
-| void | **[rotate](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-rotate)**([vector_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-vector-type) rotPos, const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) theta)<br>指定座標中心に回転  |
-| void | **[set_polar](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-set-polar)**(const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) radius, const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) angle, const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) robotTheta)<br>極座標指定  |
-| bool | **[is_zero](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-is-zero)**() const |
-| bool | **[is_zero_pos](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-is-zero-pos)**() const |
-| bool | **[is_zero_angle](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-is-zero-angle)**() const |
-| bool | **[has_nan](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-has-nan)**() const |
-| constexpr bool | **[operator==](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator==)**(const [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) v) const |
-| constexpr bool | **[operator!=](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator!=)**(const [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & v) const |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[operator+](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator+)**(const [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & v) const |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[operator-](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator-)**(const [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & v) const |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & | **[operator+=](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator+=)**(const [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & v) |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & | **[operator-=](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator-=)**(const [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & v) |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[operator+](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator+)**(const [vector_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-vector-type) & v) const |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[operator-](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator-)**(const [vector_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-vector-type) & v) const |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[operator+](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator+)**(const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) angle) const |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[operator-](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator-)**(const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) angle) const |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & | **[operator+=](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator+=)**(const [vector_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-vector-type) & v) |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & | **[operator-=](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator-=)**(const [vector_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-vector-type) & v) |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & | **[operator+=](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator+=)**(const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) angle) |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & | **[operator-=](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator-=)**(const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) angle) |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[operator*](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator*)**(const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) value) const |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[operator/](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator/)**(const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) value) const |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & | **[operator*=](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator*=)**(const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) value) |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & | **[operator/=](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator/=)**(const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) value) |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) & | **[operator[]](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator[])**(const int index) |
-| constexpr [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) | **[operator[]](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator[])**(const int index) const |
-| constexpr [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) | **[get_angle](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-get-angle)**([Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & a, [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & b)<br>Get the Angle object.  |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) | **[get_distance](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-get-distance)**([Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & a, [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & b)<br>Get the Distance object.  |
-| [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[get_lerp](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-get-lerp)**([Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & a, [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) & b, const [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) t)<br>lerp function  |
-| constexpr [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[origin](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#function-origin)**() |
+| | **[Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-transform)**() =default<br>Construct a new Field Vector 2 object.  |
+| constexpr | **[Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-transform)**(const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) _x, const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) _y, const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) _theta)<br>Construct a new Field Vector 2 object.  |
+| constexpr | **[Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-transform)**(const [vector_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-vector-type) & _xy, const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) _theta)<br>Construct a new Field Vector 2 object.  |
+| constexpr | **[Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-transform)**(const [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & ) =default<br>Construct a new Field Vector 2 object.  |
+| constexpr [vector_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-vector-type) | **[make_vector2](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-make-vector2)**() const<br>xy成分のVector2を生成  |
+| constexpr void | **[set](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-set)**([value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) vx, [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) vy, [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) vtheta) |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) | **[distance](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-distance)**() const<br>原点からxy座標までの距離を返す  |
+| void | **[rotate](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-rotate)**(const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) theta)<br>原点中心に回転  |
+| void | **[rotate](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-rotate)**(const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) rotX, const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) rotY, const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) theta)<br>指定座標中心に回転  |
+| void | **[rotate](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-rotate)**([vector_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-vector-type) rotPos, const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) theta)<br>指定座標中心に回転  |
+| void | **[set_polar](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-set-polar)**(const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) radius, const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) angle, const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) robotTheta)<br>極座標指定  |
+| bool | **[is_zero](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-is-zero)**() const |
+| bool | **[is_zero_pos](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-is-zero-pos)**() const |
+| bool | **[is_zero_angle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-is-zero-angle)**() const |
+| bool | **[has_nan](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-has-nan)**() const |
+| constexpr bool | **[operator==](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator==)**(const [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) v) const |
+| constexpr bool | **[operator!=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator!=)**(const [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & v) const |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[operator+](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator+)**(const [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & v) const |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[operator-](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator-)**(const [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & v) const |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & | **[operator+=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator+=)**(const [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & v) |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & | **[operator-=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator-=)**(const [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & v) |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[operator+](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator+)**(const [vector_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-vector-type) & v) const |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[operator-](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator-)**(const [vector_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-vector-type) & v) const |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[operator+](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator+)**(const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) angle) const |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[operator-](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator-)**(const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) angle) const |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & | **[operator+=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator+=)**(const [vector_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-vector-type) & v) |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & | **[operator-=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator-=)**(const [vector_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-vector-type) & v) |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & | **[operator+=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator+=)**(const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) angle) |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & | **[operator-=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator-=)**(const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) angle) |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[operator*](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator*)**(const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) value) const |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[operator/](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator/)**(const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) value) const |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & | **[operator*=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator*=)**(const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) value) |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & | **[operator/=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator/=)**(const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) value) |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) & | **[operator[]](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator[])**(const int index) |
+| constexpr [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) | **[operator[]](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-operator[])**(const int index) const |
+| constexpr [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) | **[get_angle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-get-angle)**([Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & a, [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & b)<br>Get the Angle object.  |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) | **[get_distance](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-get-distance)**([Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & a, [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & b)<br>Get the Distance object.  |
+| [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[get_lerp](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-get-lerp)**([Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & a, [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) & b, const [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) t)<br>lerp function  |
+| constexpr [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/) | **[origin](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#function-origin)**() |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) | **[x](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#variable-x)**  |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) | **[y](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#variable-y)**  |
-| [value_type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) | **[theta](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/#variable-theta)**  |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) | **[x](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#variable-x)**  |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) | **[y](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#variable-y)**  |
+| [value_type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#using-value-type) | **[theta](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/#variable-theta)**  |
 
 ## Detailed Description
 
@@ -363,7 +363,7 @@ inline constexpr Transform operator+(
   * **v** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)
 
 ### function operator-
 
@@ -379,7 +379,7 @@ inline constexpr Transform operator-(
   * **v** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)
 
 ### function operator+=
 
@@ -395,7 +395,7 @@ inline constexpr Transform & operator+=(
   * **v** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)& 
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)& 
 
 ### function operator-=
 
@@ -411,7 +411,7 @@ inline constexpr Transform & operator-=(
   * **v** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)& 
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)& 
 
 ### function operator+
 
@@ -427,7 +427,7 @@ inline constexpr Transform operator+(
   * **v** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)
 
 ### function operator-
 
@@ -443,7 +443,7 @@ inline constexpr Transform operator-(
   * **v** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)
 
 ### function operator+
 
@@ -459,7 +459,7 @@ inline constexpr Transform operator+(
   * **angle** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)
 
 ### function operator-
 
@@ -475,7 +475,7 @@ inline constexpr Transform operator-(
   * **angle** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)
 
 ### function operator+=
 
@@ -491,7 +491,7 @@ inline constexpr Transform & operator+=(
   * **v** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)& 
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)& 
 
 ### function operator-=
 
@@ -507,7 +507,7 @@ inline constexpr Transform & operator-=(
   * **v** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)& 
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)& 
 
 ### function operator+=
 
@@ -523,7 +523,7 @@ inline constexpr Transform & operator+=(
   * **angle** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)& 
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)& 
 
 ### function operator-=
 
@@ -539,7 +539,7 @@ inline constexpr Transform & operator-=(
   * **angle** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)& 
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)& 
 
 ### function operator*
 
@@ -555,7 +555,7 @@ inline constexpr Transform operator*(
   * **value** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)
 
 ### function operator/
 
@@ -571,7 +571,7 @@ inline constexpr Transform operator/(
   * **value** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)
 
 ### function operator*=
 
@@ -587,7 +587,7 @@ inline constexpr Transform & operator*=(
   * **value** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)& 
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)& 
 
 ### function operator/=
 
@@ -603,7 +603,7 @@ inline constexpr Transform & operator/=(
   * **value** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)& 
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)& 
 
 ### function operator[]
 
@@ -694,7 +694,7 @@ lerp function
   * **t** 
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)
 
 ### function origin
 
@@ -703,7 +703,7 @@ static inline constexpr Transform origin()
 ```
 
 
-**Return**: [Transform](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Transform/)
+**Return**: [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)
 
 ## Public Attributes Documentation
 
@@ -730,4 +730,4 @@ value_type theta;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

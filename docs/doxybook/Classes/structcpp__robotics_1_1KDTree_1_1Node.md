@@ -13,9 +13,9 @@ title: cpp_robotics::KDTree::Node
 
 |                | Name           |
 | -------------- | -------------- |
-| int | **[idx](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1KDTree_1_1Node/#variable-idx)**  |
-| int | **[axis](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1KDTree_1_1Node/#variable-axis)**  |
-| std::unique_ptr< Node > | **[child](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1KDTree_1_1Node/#variable-child)**  |
+| int | **[idx](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1KDTree_1_1Node/#variable-idx)**  |
+| int | **[axis](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1KDTree_1_1Node/#variable-axis)**  |
+| std::unique_ptr< Node > | **[child](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1KDTree_1_1Node/#variable-child)**  |
 
 ## Public Attributes Documentation
 
@@ -42,4 +42,4 @@ std::unique_ptr< Node > child = {nullptr, nullptr};
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

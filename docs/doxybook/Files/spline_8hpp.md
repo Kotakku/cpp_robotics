@@ -11,17 +11,17 @@ title: include/cpp_robotics/spline/spline.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
-| **[cpp_robotics::spline](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1spline/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics::spline](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cpp_robotics::spline::spline_c](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/)**  |
-| class | **[cpp_robotics::Spline2D](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1Spline2D/)**  |
-| class | **[cpp_robotics::CatumullRom2D](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1CatumullRom2D/)**  |
-| class | **[cpp_robotics::CubicSpline](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1CubicSpline/)**  |
+| struct | **[cpp_robotics::spline::spline_c](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/)**  |
+| class | **[cpp_robotics::Spline2D](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/)**  |
+| class | **[cpp_robotics::CatumullRom2D](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRom2D/)**  |
+| class | **[cpp_robotics::CubicSpline](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CubicSpline/)**  |
 
 
 
@@ -507,4 +507,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

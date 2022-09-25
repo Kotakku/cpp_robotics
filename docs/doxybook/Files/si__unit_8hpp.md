@@ -11,9 +11,9 @@ title: include/cpp_robotics/units/si_unit.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
-| **[cpp_robotics::unit](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit/)**  |
-| **[cpp_robotics::unit::unit_dimention](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__dimention/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics::unit](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/)**  |
+| **[cpp_robotics::unit::unit_dimention](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__dimention/)**  |
 
 
 
@@ -185,4 +185,4 @@ GENERATE_UNIT_SUFFIX(cpp_robotics::Rps, rps)
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

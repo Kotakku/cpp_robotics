@@ -16,27 +16,27 @@ title: cpp_robotics::AngleRange
 
 |                | Name           |
 | -------------- | -------------- |
-| using std::pair< double, double > | **[range_pair_t](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1AngleRange/#using-range-pair-t)**  |
+| using std::pair< double, double > | **[range_pair_t](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/#using-range-pair-t)**  |
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[AngleRange](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-anglerange)**() =default |
-| void | **[add_range](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-add-range)**(const [AngleRange](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1AngleRange/) & range) |
-| void | **[add_range](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-add-range)**(double start, double end) |
-| size_t | **[size](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-size)**() const |
-| [AngleRange](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1AngleRange/) | **[invert](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-invert)**() const |
-| double | **[most_near_by](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-most-near-by)**(double angle) |
-| bool | **[in_range_part](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-in-range-part)**([range_pair_t](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1AngleRange/#using-range-pair-t) & range, double angle) |
-| bool | **[in_range](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-in-range)**(double angle) |
-| std::vector< [range_pair_t](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1AngleRange/#using-range-pair-t) > | **[ranges](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-ranges)**() const |
+| | **[AngleRange](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-anglerange)**() =default |
+| void | **[add_range](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-add-range)**(const [AngleRange](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/) & range) |
+| void | **[add_range](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-add-range)**(double start, double end) |
+| size_t | **[size](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-size)**() const |
+| [AngleRange](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/) | **[invert](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-invert)**() const |
+| double | **[most_near_by](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-most-near-by)**(double angle) |
+| bool | **[in_range_part](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-in-range-part)**([range_pair_t](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/#using-range-pair-t) & range, double angle) |
+| bool | **[in_range](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-in-range)**(double angle) |
+| std::vector< [range_pair_t](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/#using-range-pair-t) > | **[ranges](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/#function-ranges)**() const |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| constexpr static double | **[PI](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1AngleRange/#variable-pi)**  |
+| constexpr static double | **[PI](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/#variable-pi)**  |
 
 ## Public Types Documentation
 
@@ -135,4 +135,4 @@ static constexpr static double PI = M_PI;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

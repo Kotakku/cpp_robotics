@@ -16,9 +16,9 @@ title: cpp_robotics::PurePursuit
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[PurePursuit](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1PurePursuit/#function-purepursuit)**(double K) |
-| void | **[set_K](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1PurePursuit/#function-set-k)**(double K) |
-| std::tuple< bool, double > | **[control](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1PurePursuit/#function-control)**(std::function< [Vector2d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d)(double)> traj_ref, double traj_progress, [Vector2d](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) pos_present, double vel, double angle_present) |
+| | **[PurePursuit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PurePursuit/#function-purepursuit)**(double K) |
+| void | **[set_K](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PurePursuit/#function-set-k)**(double K) |
+| std::tuple< bool, double > | **[control](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PurePursuit/#function-control)**(std::function< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d)(double)> traj_ref, double traj_progress, [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) pos_present, double vel, double angle_present) |
 
 ## Public Functions Documentation
 
@@ -67,4 +67,4 @@ inline std::tuple< bool, double > control(
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

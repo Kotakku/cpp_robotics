@@ -16,7 +16,7 @@ title: cpp_robotics::unit::unit_dim_assem::udim_pow
 
 |                | Name           |
 | -------------- | -------------- |
-| using [UnitType](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/)< U1::dim1 *N, U1::dim2 *N, U1::dim3 *N, U1::dim4 *N, U1::dim5 *N, U1::dim6 *N, U1::dim7 *N > | **[unit](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__pow/#using-unit)**  |
+| using [UnitType](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/)< U1::dim1 *N, U1::dim2 *N, U1::dim3 *N, U1::dim4 *N, U1::dim5 *N, U1::dim6 *N, U1::dim7 *N > | **[unit](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__pow/#using-unit)**  |
 
 ## Detailed Description
 
@@ -37,4 +37,4 @@ using cpp_robotics::unit::unit_dim_assem::udim_pow< U1, N >::unit =  UnitType< U
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

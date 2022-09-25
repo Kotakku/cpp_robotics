@@ -16,14 +16,14 @@ title: cpp_robotics::GearHeadParam
 
 |                | Name           |
 | -------------- | -------------- |
-| constexpr | **[GearHeadParam](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/#function-gearheadparam)**(double ratio_, double efficiency_) |
+| constexpr | **[GearHeadParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/#function-gearheadparam)**(double ratio_, double efficiency_) |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| const double | **[ratio](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/#variable-ratio)**  |
-| const double | **[efficiency](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/#variable-efficiency)**  |
+| const double | **[ratio](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/#variable-ratio)**  |
+| const double | **[efficiency](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/#variable-efficiency)**  |
 
 ## Public Functions Documentation
 
@@ -55,4 +55,4 @@ const double efficiency;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

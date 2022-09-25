@@ -11,15 +11,15 @@ title: include/cpp_robotics/robots/penbulum/interface.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::PendulumInterface](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1PendulumInterface/)**  |
-| struct | **[cpp_robotics::PendulumInterface::State](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/)**  |
-| struct | **[cpp_robotics::PendulumInterface::Input](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1Input/)**  |
+| class | **[cpp_robotics::PendulumInterface](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PendulumInterface/)**  |
+| struct | **[cpp_robotics::PendulumInterface::State](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/)**  |
+| struct | **[cpp_robotics::PendulumInterface::Input](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1Input/)**  |
 
 
 
@@ -71,4 +71,4 @@ public:
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

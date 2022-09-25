@@ -12,28 +12,28 @@ title: cpp_robotics::unit::Prefix
 
 `#include <unit_core.hpp>`
 
-Inherits from [cpp_robotics::unit::PrefixBase](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1PrefixBase/)
+Inherits from [cpp_robotics::unit::PrefixBase](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1PrefixBase/)
 
 ## Public Types
 
 |                | Name           |
 | -------------- | -------------- |
-| using [Prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< N, D > | **[type](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/#using-type)**  |
+| using [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< N, D > | **[type](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/#using-type)**  |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| constexpr uint32_t | **[num](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/#variable-num)**  |
-| constexpr uint32_t | **[den](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/#variable-den)**  |
+| constexpr uint32_t | **[num](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/#variable-num)**  |
+| constexpr uint32_t | **[den](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/#variable-den)**  |
 
 ## Additional inherited members
 
-**Public Functions inherited from [cpp_robotics::unit::PrefixBase](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1PrefixBase/)**
+**Public Functions inherited from [cpp_robotics::unit::PrefixBase](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1PrefixBase/)**
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[PrefixBase](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1PrefixBase/#function-prefixbase)**() =delete |
+| | **[PrefixBase](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1PrefixBase/#function-prefixbase)**() =delete |
 
 
 ## Detailed Description
@@ -71,4 +71,4 @@ static constexpr uint32_t den = D / std::gcd(N, D);
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

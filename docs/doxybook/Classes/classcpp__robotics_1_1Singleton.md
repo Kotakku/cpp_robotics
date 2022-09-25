@@ -16,7 +16,7 @@ title: cpp_robotics::Singleton
 
 |                | Name           |
 | -------------- | -------------- |
-| std::shared_ptr< T > | **[get_instance](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1Singleton/#function-get-instance)**() |
+| std::shared_ptr< T > | **[get_instance](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Singleton/#function-get-instance)**() |
 
 ## Detailed Description
 
@@ -36,4 +36,4 @@ static inline std::shared_ptr< T > get_instance()
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

@@ -29,4 +29,4 @@ title: include/cpp_robotics/core.hpp
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

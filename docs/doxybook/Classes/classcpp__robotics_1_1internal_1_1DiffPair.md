@@ -16,10 +16,10 @@ title: cpp_robotics::internal::DiffPair
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[DiffPair](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1internal_1_1DiffPair/#function-diffpair)**(double Ts_, double gpd_) |
-| void | **[reset](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1internal_1_1DiffPair/#function-reset)**() |
-| void | **[reset](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1internal_1_1DiffPair/#function-reset)**(double u) |
-| std::tuple< double, double > | **[filtering](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1internal_1_1DiffPair/#function-filtering)**(double u) |
+| | **[DiffPair](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1internal_1_1DiffPair/#function-diffpair)**(double Ts_, double gpd_) |
+| void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1internal_1_1DiffPair/#function-reset)**() |
+| void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1internal_1_1DiffPair/#function-reset)**(double u) |
+| std::tuple< double, double > | **[filtering](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1internal_1_1DiffPair/#function-filtering)**(double u) |
 
 ## Public Functions Documentation
 
@@ -60,4 +60,4 @@ inline std::tuple< double, double > filtering(
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

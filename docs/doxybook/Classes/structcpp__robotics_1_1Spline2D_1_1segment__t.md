@@ -16,8 +16,8 @@ title: cpp_robotics::Spline2D::segment_t
 
 |                | Name           |
 | -------------- | -------------- |
-| [spline::spline_c](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/) | **[coeff](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__t/#variable-coeff)**  |
-| double | **[length](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__t/#variable-length)**  |
+| [spline::spline_c](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/) | **[coeff](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__t/#variable-coeff)**  |
+| double | **[length](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__t/#variable-length)**  |
 
 ## Public Attributes Documentation
 
@@ -37,4 +37,4 @@ double length;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

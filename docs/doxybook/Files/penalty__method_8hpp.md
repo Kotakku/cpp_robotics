@@ -11,7 +11,7 @@ title: include/cpp_robotics/optimize/penalty_method.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
 
 
@@ -80,4 +80,4 @@ static std::tuple<bool, Eigen::VectorXd, size_t> penalty_method(std::function<do
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

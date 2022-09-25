@@ -16,14 +16,14 @@ title: cpp_robotics::unit::prefix::pfx_mul
 
 |                | Name           |
 | -------------- | -------------- |
-| using [Prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< [raw_num](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/#variable-raw-num), [raw_den](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/#variable-raw-den) > | **[prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/#using-prefix)**  |
+| using [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)< [raw_num](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/#variable-raw-num), [raw_den](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/#variable-raw-den) > | **[prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/#using-prefix)**  |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| constexpr uint32_t | **[raw_num](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/#variable-raw-num)**  |
-| constexpr uint32_t | **[raw_den](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/#variable-raw-den)**  |
+| constexpr uint32_t | **[raw_num](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/#variable-raw-num)**  |
+| constexpr uint32_t | **[raw_den](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/#variable-raw-den)**  |
 
 ## Detailed Description
 
@@ -60,4 +60,4 @@ static constexpr uint32_t raw_den = P2::den * P1::den;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

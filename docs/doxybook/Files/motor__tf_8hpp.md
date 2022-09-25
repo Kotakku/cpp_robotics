@@ -11,7 +11,7 @@ title: include/cpp_robotics/motor/motor_tf.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
 
 
@@ -61,4 +61,4 @@ static TransferFunction make_geared_motor_pos_tf(const DCGearedMotorParam &geare
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

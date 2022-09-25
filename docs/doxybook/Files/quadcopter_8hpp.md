@@ -11,13 +11,13 @@ title: include/cpp_robotics/robots/quadcopter/quadcopter.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::QuadCopterController](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1QuadCopterController/)**  |
+| class | **[cpp_robotics::QuadCopterController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadCopterController/)**  |
 
 
 
@@ -42,4 +42,4 @@ class QuadCopterController
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

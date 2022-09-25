@@ -12,39 +12,39 @@ title: cpp_robotics::StateSpaceSystem
 
 `#include <state_space_system.hpp>`
 
-Inherited by [cpp_robotics::TransferFunction](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1TransferFunction/)
+Inherited by [cpp_robotics::TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/)
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[StateSpaceSystem](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-statespacesystem)**() =default |
-| template <typename DerivedA ,typename DerivedB ,typename DerivedC \> <br>| **[StateSpaceSystem](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-statespacesystem)**(const Eigen::MatrixBase< DerivedA > & A, const Eigen::MatrixBase< DerivedB > & B, const Eigen::MatrixBase< DerivedC > & C, const double Ts) |
-| template <typename DerivedA ,typename DerivedB ,typename DerivedC ,typename DerivedD \> <br>| **[StateSpaceSystem](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-statespacesystem)**(const Eigen::MatrixBase< DerivedA > & A, const Eigen::MatrixBase< DerivedB > & B, const Eigen::MatrixBase< DerivedC > & C, const Eigen::MatrixBase< DerivedD > & D, const double Ts) |
-| template <typename DerivedA ,typename DerivedB ,typename DerivedC \> <br>void | **[set_continuous](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-continuous)**(const Eigen::MatrixBase< DerivedA > & A, const Eigen::MatrixBase< DerivedB > & B, const Eigen::MatrixBase< DerivedC > & C, const double Ts, const bool skip_state_reset =false) |
-| template <typename DerivedA ,typename DerivedB ,typename DerivedC ,typename DerivedD \> <br>void | **[set_continuous](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-continuous)**(const Eigen::MatrixBase< DerivedA > & A, const Eigen::MatrixBase< DerivedB > & B, const Eigen::MatrixBase< DerivedC > & C, const Eigen::MatrixBase< DerivedD > & D, const double Ts, const bool skip_state_reset =false) |
-| template <typename DerivedA ,typename DerivedB ,typename DerivedC \> <br>void | **[set_discrite](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-discrite)**(const Eigen::MatrixBase< DerivedA > & Ad, const Eigen::MatrixBase< DerivedB > & Bd, const Eigen::MatrixBase< DerivedC > & Cd, const double Ts, const bool skip_state_reset =false) |
-| template <typename DerivedA ,typename DerivedB ,typename DerivedC ,typename DerivedD \> <br>void | **[set_discrite](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-discrite)**(const Eigen::MatrixBase< DerivedA > & Ad, const Eigen::MatrixBase< DerivedB > & Bd, const Eigen::MatrixBase< DerivedC > & Cd, const Eigen::MatrixBase< DerivedD > & Dd, const double Ts, const bool skip_state_reset =false) |
-| size_t | **[state_size](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-state-size)**() const |
-| size_t | **[input_size](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-input-size)**() const |
-| size_t | **[output_size](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-output-size)**() const |
-| bool | **[is_siso_model](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-is-siso-model)**() const |
-| void | **[set_state_zero](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-state-zero)**() |
-| void | **[set_state](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-state)**(const Eigen::VectorXd & x) |
-| void | **[set_state](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-state)**(const double & x) |
-| auto | **[responce](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-responce)**(const Eigen::VectorXd & u) |
-| double | **[responce](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-responce)**(double u) |
-| std::optional< Eigen::MatrixXd > | **[A](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-a)**() const |
-| std::optional< Eigen::MatrixXd > | **[B](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-b)**() const |
-| double | **[Ts](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-ts)**() const |
-| Eigen::MatrixXd | **[Ad](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-ad)**() const |
-| Eigen::MatrixXd | **[Bd](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-bd)**() const |
-| Eigen::MatrixXd | **[C](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-c)**() const |
-| Eigen::MatrixXd | **[Cd](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-cd)**() const |
-| Eigen::MatrixXd | **[D](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-d)**() const |
-| Eigen::MatrixXd | **[Dd](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-dd)**() const |
-| Eigen::VectorXd | **[x](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-x)**() const |
-| Eigen::VectorXd | **[y](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-y)**() const |
+| | **[StateSpaceSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-statespacesystem)**() =default |
+| template <typename DerivedA ,typename DerivedB ,typename DerivedC \> <br>| **[StateSpaceSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-statespacesystem)**(const Eigen::MatrixBase< DerivedA > & A, const Eigen::MatrixBase< DerivedB > & B, const Eigen::MatrixBase< DerivedC > & C, const double Ts) |
+| template <typename DerivedA ,typename DerivedB ,typename DerivedC ,typename DerivedD \> <br>| **[StateSpaceSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-statespacesystem)**(const Eigen::MatrixBase< DerivedA > & A, const Eigen::MatrixBase< DerivedB > & B, const Eigen::MatrixBase< DerivedC > & C, const Eigen::MatrixBase< DerivedD > & D, const double Ts) |
+| template <typename DerivedA ,typename DerivedB ,typename DerivedC \> <br>void | **[set_continuous](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-continuous)**(const Eigen::MatrixBase< DerivedA > & A, const Eigen::MatrixBase< DerivedB > & B, const Eigen::MatrixBase< DerivedC > & C, const double Ts, const bool skip_state_reset =false) |
+| template <typename DerivedA ,typename DerivedB ,typename DerivedC ,typename DerivedD \> <br>void | **[set_continuous](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-continuous)**(const Eigen::MatrixBase< DerivedA > & A, const Eigen::MatrixBase< DerivedB > & B, const Eigen::MatrixBase< DerivedC > & C, const Eigen::MatrixBase< DerivedD > & D, const double Ts, const bool skip_state_reset =false) |
+| template <typename DerivedA ,typename DerivedB ,typename DerivedC \> <br>void | **[set_discrite](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-discrite)**(const Eigen::MatrixBase< DerivedA > & Ad, const Eigen::MatrixBase< DerivedB > & Bd, const Eigen::MatrixBase< DerivedC > & Cd, const double Ts, const bool skip_state_reset =false) |
+| template <typename DerivedA ,typename DerivedB ,typename DerivedC ,typename DerivedD \> <br>void | **[set_discrite](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-discrite)**(const Eigen::MatrixBase< DerivedA > & Ad, const Eigen::MatrixBase< DerivedB > & Bd, const Eigen::MatrixBase< DerivedC > & Cd, const Eigen::MatrixBase< DerivedD > & Dd, const double Ts, const bool skip_state_reset =false) |
+| size_t | **[state_size](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-state-size)**() const |
+| size_t | **[input_size](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-input-size)**() const |
+| size_t | **[output_size](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-output-size)**() const |
+| bool | **[is_siso_model](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-is-siso-model)**() const |
+| void | **[set_state_zero](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-state-zero)**() |
+| void | **[set_state](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-state)**(const Eigen::VectorXd & x) |
+| void | **[set_state](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-state)**(const double & x) |
+| auto | **[responce](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-responce)**(const Eigen::VectorXd & u) |
+| double | **[responce](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-responce)**(double u) |
+| std::optional< Eigen::MatrixXd > | **[A](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-a)**() const |
+| std::optional< Eigen::MatrixXd > | **[B](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-b)**() const |
+| double | **[Ts](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-ts)**() const |
+| Eigen::MatrixXd | **[Ad](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-ad)**() const |
+| Eigen::MatrixXd | **[Bd](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-bd)**() const |
+| Eigen::MatrixXd | **[C](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-c)**() const |
+| Eigen::MatrixXd | **[Cd](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-cd)**() const |
+| Eigen::MatrixXd | **[D](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-d)**() const |
+| Eigen::MatrixXd | **[Dd](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-dd)**() const |
+| Eigen::VectorXd | **[x](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-x)**() const |
+| Eigen::VectorXd | **[y](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-y)**() const |
 
 ## Public Functions Documentation
 
@@ -305,4 +305,4 @@ inline Eigen::VectorXd y() const
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

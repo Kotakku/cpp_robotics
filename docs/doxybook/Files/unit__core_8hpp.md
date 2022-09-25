@@ -11,44 +11,44 @@ title: include/cpp_robotics/units/unit_core.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
-| **[cpp_robotics::unit](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit/)**  |
-| **[cpp_robotics::unit::unit_dim_assem](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__dim__assem/)**  |
-| **[cpp_robotics::unit::prefix](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/)**  |
-| **[cpp_robotics::unit::tag](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1tag/)**  |
-| **[cpp_robotics::unit::unit_assem](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__assem/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics::unit](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/)**  |
+| **[cpp_robotics::unit::unit_dim_assem](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__dim__assem/)**  |
+| **[cpp_robotics::unit::prefix](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/)**  |
+| **[cpp_robotics::unit::tag](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1tag/)**  |
+| **[cpp_robotics::unit::unit_assem](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__assem/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cpp_robotics::unit::UnitType](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/)**  |
-| struct | **[cpp_robotics::unit::unit_dim_assem::udim_mul](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__mul/)**  |
-| struct | **[cpp_robotics::unit::unit_dim_assem::udim_div](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__div/)**  |
-| struct | **[cpp_robotics::unit::unit_dim_assem::udim_pow](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__pow/)**  |
-| struct | **[cpp_robotics::unit::unit_dim_assem::udim_inv](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__inv/)**  |
-| struct | **[cpp_robotics::unit::PrefixBase](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1PrefixBase/)**  |
-| struct | **[cpp_robotics::unit::Prefix](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)**  |
-| struct | **[cpp_robotics::unit::prefix::pfx_mul](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/)**  |
-| struct | **[cpp_robotics::unit::prefix::pfx_div](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__div/)**  |
-| struct | **[cpp_robotics::unit::prefix::pfx_inv](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__inv/)**  |
-| struct | **[cpp_robotics::unit::prefix::pfx_min](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__min/)**  |
-| struct | **[cpp_robotics::unit::tag::is_normal_tag](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1tag_1_1is__normal__tag/)**  |
-| struct | **[cpp_robotics::unit::tag::is_normal_tag<-1 >](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1tag_1_1is__normal__tag_3-1_01_4/)**  |
-| struct | **[cpp_robotics::unit::tag::is_normal_tag< 0 >](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1tag_1_1is__normal__tag_3_010_01_4/)**  |
-| class | **[cpp_robotics::unit::Unit](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)**  |
-| struct | **[cpp_robotics::unit::unit_assem::unit_mul](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__mul/)**  |
-| struct | **[cpp_robotics::unit::unit_assem::unit_div](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__div/)**  |
-| struct | **[cpp_robotics::unit::unit_assem::unit_inv](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__inv/)**  |
-| struct | **[cpp_robotics::unit::unit_assem::unit_pfx_scaled](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__pfx__scaled/)**  |
+| struct | **[cpp_robotics::unit::UnitType](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/)**  |
+| struct | **[cpp_robotics::unit::unit_dim_assem::udim_mul](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__mul/)**  |
+| struct | **[cpp_robotics::unit::unit_dim_assem::udim_div](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__div/)**  |
+| struct | **[cpp_robotics::unit::unit_dim_assem::udim_pow](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__pow/)**  |
+| struct | **[cpp_robotics::unit::unit_dim_assem::udim_inv](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__inv/)**  |
+| struct | **[cpp_robotics::unit::PrefixBase](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1PrefixBase/)**  |
+| struct | **[cpp_robotics::unit::Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)**  |
+| struct | **[cpp_robotics::unit::prefix::pfx_mul](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/)**  |
+| struct | **[cpp_robotics::unit::prefix::pfx_div](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__div/)**  |
+| struct | **[cpp_robotics::unit::prefix::pfx_inv](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__inv/)**  |
+| struct | **[cpp_robotics::unit::prefix::pfx_min](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__min/)**  |
+| struct | **[cpp_robotics::unit::tag::is_normal_tag](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1tag_1_1is__normal__tag/)**  |
+| struct | **[cpp_robotics::unit::tag::is_normal_tag<-1 >](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1tag_1_1is__normal__tag_3-1_01_4/)**  |
+| struct | **[cpp_robotics::unit::tag::is_normal_tag< 0 >](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1tag_1_1is__normal__tag_3_010_01_4/)**  |
+| class | **[cpp_robotics::unit::Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)**  |
+| struct | **[cpp_robotics::unit::unit_assem::unit_mul](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__mul/)**  |
+| struct | **[cpp_robotics::unit::unit_assem::unit_div](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__div/)**  |
+| struct | **[cpp_robotics::unit::unit_assem::unit_inv](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__inv/)**  |
+| struct | **[cpp_robotics::unit::unit_assem::unit_pfx_scaled](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__pfx__scaled/)**  |
 
 ## Defines
 
 |                | Name           |
 | -------------- | -------------- |
-|  | **[GENERATE_CONV_FACTOR](/cpp_robotics_core/doxybook/Files/unit__core_8hpp/#define-generate-conv-factor)**(unit_dim, from_tag, to_tag, factor)  |
-|  | **[GENERATE_UNIT_SUFFIX](/cpp_robotics_core/doxybook/Files/unit__core_8hpp/#define-generate-unit-suffix)**(unit, suffix)  |
-|  | **[GENERATE_UNIT_PFX_SUFFIX](/cpp_robotics_core/doxybook/Files/unit__core_8hpp/#define-generate-unit-pfx-suffix)**(unit_type, prefix, suffix)  |
+|  | **[GENERATE_CONV_FACTOR](/cpp_robotics/doxybook/Files/unit__core_8hpp/#define-generate-conv-factor)**(unit_dim, from_tag, to_tag, factor)  |
+|  | **[GENERATE_UNIT_SUFFIX](/cpp_robotics/doxybook/Files/unit__core_8hpp/#define-generate-unit-suffix)**(unit, suffix)  |
+|  | **[GENERATE_UNIT_PFX_SUFFIX](/cpp_robotics/doxybook/Files/unit__core_8hpp/#define-generate-unit-pfx-suffix)**(unit_type, prefix, suffix)  |
 
 
 
@@ -569,4 +569,4 @@ constexpr auto operator"" _## suffix(long double val)\
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

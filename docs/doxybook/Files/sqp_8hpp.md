@@ -11,15 +11,15 @@ title: include/cpp_robotics/optimize/sqp.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::SQP](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1SQP/)**  |
-| struct | **[cpp_robotics::SQP::Problem](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Problem/)**  |
-| struct | **[cpp_robotics::SQP::Result](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Result/)**  |
+| class | **[cpp_robotics::SQP](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SQP/)**  |
+| struct | **[cpp_robotics::SQP::Problem](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Problem/)**  |
+| struct | **[cpp_robotics::SQP::Result](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Result/)**  |
 
 
 
@@ -250,4 +250,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

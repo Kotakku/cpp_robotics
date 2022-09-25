@@ -16,13 +16,13 @@ title: cpp_robotics::unit::UnitType
 
 |                | Name           |
 | -------------- | -------------- |
-| constexpr int | **[dim1](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim1)**  |
-| constexpr int | **[dim2](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim2)**  |
-| constexpr int | **[dim3](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim3)**  |
-| constexpr int | **[dim4](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim4)**  |
-| constexpr int | **[dim5](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim5)**  |
-| constexpr int | **[dim6](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim6)**  |
-| constexpr int | **[dim7](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim7)**  |
+| constexpr int | **[dim1](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim1)**  |
+| constexpr int | **[dim2](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim2)**  |
+| constexpr int | **[dim3](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim3)**  |
+| constexpr int | **[dim4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim4)**  |
+| constexpr int | **[dim5](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim5)**  |
+| constexpr int | **[dim6](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim6)**  |
+| constexpr int | **[dim7](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim7)**  |
 
 ## Detailed Description
 
@@ -90,4 +90,4 @@ static constexpr int dim7 = DIM7;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

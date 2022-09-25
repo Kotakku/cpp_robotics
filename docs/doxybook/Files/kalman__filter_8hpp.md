@@ -11,13 +11,13 @@ title: include/cpp_robotics/filter/kalman_filter.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::KalmanFilter](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1KalmanFilter/)**  |
+| class | **[cpp_robotics::KalmanFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KalmanFilter/)**  |
 
 
 
@@ -146,4 +146,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

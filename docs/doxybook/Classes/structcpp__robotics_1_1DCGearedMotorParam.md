@@ -16,19 +16,19 @@ title: cpp_robotics::DCGearedMotorParam
 
 |                | Name           |
 | -------------- | -------------- |
-| constexpr | **[DCGearedMotorParam](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/#function-dcgearedmotorparam)**([Volt](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-volt) voltage_, [DCMotorParam](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1DCMotorParam/) motor_, [GearHeadParam](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/) gear_head_, const double optional_gear_ratio_ =1) |
-| constexpr [Rpm](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-rpm) | **[calcu_gear_head_steady_free_velocity](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/#function-calcu-gear-head-steady-free-velocity)**([Volt](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-volt) v) const |
-| constexpr [Rpm](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-rpm) | **[calcu_endpoint_steady_free_velocity](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/#function-calcu-endpoint-steady-free-velocity)**([Volt](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-volt) v) const |
-| constexpr [AngularAcceleration](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-angularacceleration) | **[calcu_endpoint_max_angular_accleleration](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/#function-calcu-endpoint-max-angular-accleleration)**([Inertia](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-inertia) optional_inertina =0) const |
+| constexpr | **[DCGearedMotorParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/#function-dcgearedmotorparam)**([Volt](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-volt) voltage_, [DCMotorParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCMotorParam/) motor_, [GearHeadParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/) gear_head_, const double optional_gear_ratio_ =1) |
+| constexpr [Rpm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-rpm) | **[calcu_gear_head_steady_free_velocity](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/#function-calcu-gear-head-steady-free-velocity)**([Volt](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-volt) v) const |
+| constexpr [Rpm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-rpm) | **[calcu_endpoint_steady_free_velocity](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/#function-calcu-endpoint-steady-free-velocity)**([Volt](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-volt) v) const |
+| constexpr [AngularAcceleration](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-angularacceleration) | **[calcu_endpoint_max_angular_accleleration](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/#function-calcu-endpoint-max-angular-accleleration)**([Inertia](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-inertia) optional_inertina =0) const |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| const [Volt](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/#using-volt) | **[voltage](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/#variable-voltage)**  |
-| const [DCMotorParam](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1DCMotorParam/) | **[motor](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/#variable-motor)**  |
-| const [GearHeadParam](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/) | **[gear_head](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/#variable-gear-head)**  |
-| const double | **[optional_gear_ratio](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/#variable-optional-gear-ratio)**  |
+| const [Volt](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-volt) | **[voltage](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/#variable-voltage)**  |
+| const [DCMotorParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCMotorParam/) | **[motor](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/#variable-motor)**  |
+| const [GearHeadParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/) | **[gear_head](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/#variable-gear-head)**  |
+| const double | **[optional_gear_ratio](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/#variable-optional-gear-ratio)**  |
 
 ## Public Functions Documentation
 
@@ -108,4 +108,4 @@ const double optional_gear_ratio;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

@@ -11,16 +11,16 @@ title: include/cpp_robotics/motor/dc_motor_param.hpp
 
 | Name           |
 | -------------- |
-| **[cpp_robotics](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics/)**  |
-| **[cpp_robotics::unit](/cpp_robotics_core/doxybook/Namespaces/namespacecpp__robotics_1_1unit/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
+| **[cpp_robotics::unit](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cpp_robotics::DCMotorParam](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1DCMotorParam/)**  |
-| struct | **[cpp_robotics::GearHeadParam](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/)**  |
-| struct | **[cpp_robotics::DCGearedMotorParam](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/)**  |
+| struct | **[cpp_robotics::DCMotorParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCMotorParam/)**  |
+| struct | **[cpp_robotics::GearHeadParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/)**  |
+| struct | **[cpp_robotics::DCGearedMotorParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/)**  |
 
 
 
@@ -209,4 +209,4 @@ inline constexpr DCMotorParam generate_maxon_brush_motor_param(
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:39 +0900

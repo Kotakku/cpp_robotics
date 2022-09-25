@@ -13,10 +13,10 @@ title: cpp_robotics::DubinsPath::PlanningResult
 
 |                | Name           |
 | -------------- | -------------- |
-| double | **[t](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1DubinsPath_1_1PlanningResult/#variable-t)**  |
-| double | **[p](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1DubinsPath_1_1PlanningResult/#variable-p)**  |
-| double | **[q](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1DubinsPath_1_1PlanningResult/#variable-q)**  |
-| [Mode](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1DubinsPath/#enum-mode) | **[mode](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1DubinsPath_1_1PlanningResult/#variable-mode)**  |
+| double | **[t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DubinsPath_1_1PlanningResult/#variable-t)**  |
+| double | **[p](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DubinsPath_1_1PlanningResult/#variable-p)**  |
+| double | **[q](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DubinsPath_1_1PlanningResult/#variable-q)**  |
+| [Mode](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DubinsPath/#enum-mode) | **[mode](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DubinsPath_1_1PlanningResult/#variable-mode)**  |
 
 ## Public Attributes Documentation
 
@@ -50,4 +50,4 @@ Mode mode = Mode::NONE;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

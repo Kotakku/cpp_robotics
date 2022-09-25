@@ -16,20 +16,20 @@ title: cpp_robotics::SisoFeedbackSystem
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[func_list_t](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1SisoFeedbackSystem_1_1func__list__t/)**  |
+| struct | **[func_list_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SisoFeedbackSystem_1_1func__list__t/)**  |
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[SisoFeedbackSystem](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-sisofeedbacksystem)**() =default |
-| | **[SisoFeedbackSystem](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-sisofeedbacksystem)**([func_list_t](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1SisoFeedbackSystem_1_1func__list__t/) fn) |
-| void | **[reset](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-reset)**() |
-| double | **[control](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-control)**(double target) |
-| double | **[u](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-u)**() const |
-| double | **[y](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-y)**() const |
-| std::function< double(double)> | **[make_control_function](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-make-control-function)**() |
-| | **[operator std::function< double](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-operator-stdfunction<-double)**(double ) |
+| | **[SisoFeedbackSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-sisofeedbacksystem)**() =default |
+| | **[SisoFeedbackSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-sisofeedbacksystem)**([func_list_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SisoFeedbackSystem_1_1func__list__t/) fn) |
+| void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-reset)**() |
+| double | **[control](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-control)**(double target) |
+| double | **[u](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-u)**() const |
+| double | **[y](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-y)**() const |
+| std::function< double(double)> | **[make_control_function](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-make-control-function)**() |
+| | **[operator std::function< double](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-operator-stdfunction<-double)**(double ) |
 
 ## Public Functions Documentation
 
@@ -97,4 +97,4 @@ inline operator std::function< double(
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

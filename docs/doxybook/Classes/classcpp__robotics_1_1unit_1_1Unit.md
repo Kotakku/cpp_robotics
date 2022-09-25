@@ -16,37 +16,37 @@ title: cpp_robotics::unit::Unit
 
 |                | Name           |
 | -------------- | -------------- |
-| using T | **[value_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-value-type)**  |
-| using UnitDimType | **[unit_dimention_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-dimention-type)**  |
-| using P | **[prefix_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-prefix-type)**  |
-| using [Unit](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDimType, P > | **[unit_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type)**  |
+| using T | **[value_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-value-type)**  |
+| using UnitDimType | **[unit_dimention_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-dimention-type)**  |
+| using P | **[prefix_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-prefix-type)**  |
+| using [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDimType, P > | **[unit_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type)**  |
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[Unit](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-unit)**() =default |
-| constexpr | **[Unit](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-unit)**(T val) |
-| constexpr T | **[value](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-value)**() const |
-| constexpr T | **[raw_value](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-raw-value)**() const |
-| constexpr [unit_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) | **[operator+](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator+)**() const |
-| constexpr [unit_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) | **[operator-](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator-)**() const |
-| constexpr [unit_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) | **[operator+](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator+)**(const [unit_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & rhl) const |
-| constexpr [unit_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) | **[operator-](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator-)**(const [unit_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & rhl) const |
-| constexpr auto | **[operator*](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator*)**(const [unit_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & rhl) const |
-| constexpr [unit_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & | **[operator+=](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator+=)**(const [unit_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & rhl) |
-| constexpr [unit_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & | **[operator-=](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator-=)**(const [unit_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & rhl) |
-| template <int R_Tag\> <br>constexpr | **[operator Unit< value_type, unit_dimention_type, prefix_type, R_Tag >](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator-unit<-value-type,-unit-dimention-type,-prefix-type,-r-tag->)**() const |
-| template <class R_P \> <br>constexpr | **[operator Unit< value_type, unit_dimention_type, R_P, tag >](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator-unit<-value-type,-unit-dimention-type,-r-p,-tag->)**() const |
-| constexpr | **[operator value_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator-value-type)**() const |
-| constexpr bool | **[operator==](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator==)**(const [unit_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & r_value) |
-| constexpr bool | **[operator!=](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator!=)**(const [unit_type](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & r_value) |
+| | **[Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-unit)**() =default |
+| constexpr | **[Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-unit)**(T val) |
+| constexpr T | **[value](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-value)**() const |
+| constexpr T | **[raw_value](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-raw-value)**() const |
+| constexpr [unit_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) | **[operator+](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator+)**() const |
+| constexpr [unit_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) | **[operator-](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator-)**() const |
+| constexpr [unit_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) | **[operator+](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator+)**(const [unit_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & rhl) const |
+| constexpr [unit_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) | **[operator-](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator-)**(const [unit_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & rhl) const |
+| constexpr auto | **[operator*](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator*)**(const [unit_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & rhl) const |
+| constexpr [unit_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & | **[operator+=](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator+=)**(const [unit_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & rhl) |
+| constexpr [unit_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & | **[operator-=](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator-=)**(const [unit_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & rhl) |
+| template <int R_Tag\> <br>constexpr | **[operator Unit< value_type, unit_dimention_type, prefix_type, R_Tag >](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator-unit<-value-type,-unit-dimention-type,-prefix-type,-r-tag->)**() const |
+| template <class R_P \> <br>constexpr | **[operator Unit< value_type, unit_dimention_type, R_P, tag >](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator-unit<-value-type,-unit-dimention-type,-r-p,-tag->)**() const |
+| constexpr | **[operator value_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator-value-type)**() const |
+| constexpr bool | **[operator==](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator==)**(const [unit_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & r_value) |
+| constexpr bool | **[operator!=](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#function-operator!=)**(const [unit_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#using-unit-type) & r_value) |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| constexpr int | **[tag](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#variable-tag)**  |
+| constexpr int | **[tag](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/#variable-tag)**  |
 
 ## Detailed Description
 
@@ -231,4 +231,4 @@ static constexpr int tag = Tag;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

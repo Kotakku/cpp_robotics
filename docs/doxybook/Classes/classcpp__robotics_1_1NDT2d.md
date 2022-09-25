@@ -16,7 +16,7 @@ title: cpp_robotics::NDT2d
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[NDT2d](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1NDT2d/#function-ndt2d)**() =default |
+| | **[NDT2d](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NDT2d/#function-ndt2d)**() =default |
 
 ## Public Functions Documentation
 
@@ -29,4 +29,4 @@ NDT2d() =default
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900

@@ -16,18 +16,18 @@ title: cpp_robotics::PID2Controller
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[pid_param_t](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PID2Controller_1_1pid__param__t/)**  |
+| struct | **[pid_param_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PID2Controller_1_1pid__param__t/)**  |
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[PID2Controller](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1PID2Controller/#function-pid2controller)**([pid_param_t](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PID2Controller_1_1pid__param__t/) param) |
-| void | **[setParam](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1PID2Controller/#function-setparam)**([pid_param_t](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PID2Controller_1_1pid__param__t/) param) |
-| void | **[set_param](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1PID2Controller/#function-set-param)**([pid_param_t](/cpp_robotics_core/doxybook/Classes/structcpp__robotics_1_1PID2Controller_1_1pid__param__t/) param) |
-| void | **[reset](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1PID2Controller/#function-reset)**() |
-| double | **[calculate](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1PID2Controller/#function-calculate)**(double target, double present, double dt) |
-| double | **[calculate](/cpp_robotics_core/doxybook/Classes/classcpp__robotics_1_1PID2Controller/#function-calculate)**(double target, double present) |
+| | **[PID2Controller](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PID2Controller/#function-pid2controller)**([pid_param_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PID2Controller_1_1pid__param__t/) param) |
+| void | **[setParam](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PID2Controller/#function-setparam)**([pid_param_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PID2Controller_1_1pid__param__t/) param) |
+| void | **[set_param](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PID2Controller/#function-set-param)**([pid_param_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PID2Controller_1_1pid__param__t/) param) |
+| void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PID2Controller/#function-reset)**() |
+| double | **[calculate](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PID2Controller/#function-calculate)**(double target, double present, double dt) |
+| double | **[calculate](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PID2Controller/#function-calculate)**(double target, double present) |
 
 ## Public Functions Documentation
 
@@ -88,4 +88,4 @@ inline double calculate(
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:11:52 +0900
+Updated on 2022-09-25 at 23:20:38 +0900
