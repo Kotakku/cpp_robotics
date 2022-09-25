@@ -72,4 +72,4 @@ static void powells_modified_bfgs_step(Eigen::MatrixXd &hess, Eigen::VectorXd s,
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:29:49 +0900
+Updated on 2022-09-25 at 23:50:01 +0900

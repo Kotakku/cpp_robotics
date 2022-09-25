@@ -67,4 +67,4 @@ inline std::tuple< bool, double > control(
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:29:49 +0900
+Updated on 2022-09-25 at 23:50:01 +0900

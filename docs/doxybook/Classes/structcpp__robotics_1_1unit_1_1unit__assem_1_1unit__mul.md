@@ -53,4 +53,4 @@ using cpp_robotics::unit::unit_assem::unit_mul< Unit1, Unit2 >::unit =  Unit<typ
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:29:49 +0900
+Updated on 2022-09-25 at 23:50:01 +0900
