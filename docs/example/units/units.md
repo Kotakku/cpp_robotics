@@ -1,7 +1,5 @@
 # 単位系
 
-[HelloWorld](example/hello_world/)
-
 ```cpp
 #include <iostream>
 // #include <cpp_robotics/core.hpp>
