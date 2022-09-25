@@ -39,6 +39,7 @@ public:
         // std::any system_obj;
     };
 
+    SisoFeedbackSystem() = default;
     SisoFeedbackSystem(func_list_t fn): func_list_(fn) {}
 
     void reset()

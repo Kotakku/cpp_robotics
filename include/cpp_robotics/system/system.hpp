@@ -1,6 +1,7 @@
 #include "./discret.hpp"
 #include "./state_space_system.hpp"
 #include "./transfer_function.hpp"
+#include "./discrete_transfer_function.hpp"
 #include "./polynomial.hpp"
 #include "./bode.hpp"
 #include "./nyquist.hpp"

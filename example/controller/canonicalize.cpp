@@ -34,11 +34,11 @@ int main()
     
     std::cout << "\n//////////////////////////////" << std::endl;
     std::cout << "canonicalize" << std::endl;
-    auto [A_tilda, B_tilda, C_tilda, D_tilda] = cr::canonicalize_system(sys, cr::CanonicalizeMode::CONTROLLABLE );
+    auto [A_tilde, B_tilde, C_tilde, D_tilde] = cr::canonicalize_system(sys, cr::CanonicalizeMode::CONTROLLABLE );
     
     std::cout << std::fixed << std::setprecision(2);
-    PRINT_MAT(A_tilda);
-    PRINT_MAT(B_tilda);
-    PRINT_MAT(C_tilda);
-    PRINT_MAT(D_tilda);
+    PRINT_MAT(A_tilde);
+    PRINT_MAT(B_tilde);
+    PRINT_MAT(C_tilde);
+    PRINT_MAT(D_tilde);
 }

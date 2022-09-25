@@ -40,11 +40,6 @@ public:
     {
         double state_e_dot = diff_.filtering(e);
         double nct_e_dot = nct_(e);
-
-        // e_.push_back(e);
-        // e_dot_.push_back(state_e_dot);
-        // target_e_dot_.push_back(nct_e_dot);
-
         return pid_.calculate(-(nct_e_dot - state_e_dot));
     }
 
@@ -52,8 +47,6 @@ public:
     {
         return nct_;
     }
-
-    // std::vector<double> e_, e_dot_, target_e_dot_;
 
 private:
     std::function<double(double)> nct_;

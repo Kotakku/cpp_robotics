@@ -11,6 +11,19 @@ namespace cpp_robotics
 class TransferFunction : public StateSpaceSystem
 {
 public:
+    static TransferFunction make_first_order_system(const double T, const double Ts)
+    {
+        return TransferFunction({1}, {T, 1}, Ts);
+    }
+
+    static TransferFunction make_second_order_system(const double omega, const double zeta, const double Ts)
+    {
+        return TransferFunction({omega*omega}, {1.0, 2.0*zeta*omega, omega*omega}, Ts);
+    }
+
+    TransferFunction():
+        StateSpaceSystem() {}
+    
     TransferFunction(std::vector<double> num, std::vector<double> den, const double Ts):
         num_array_(num), den_array_(den)
     {

@@ -24,20 +24,19 @@ static double bracketing_serach(std::function<double(Eigen::VectorXd)> func, std
     return a;
 }
 
-static double bracketing_serach(std::function<double(double)> func, /*double max_step = 1.0, */double step = 1e-6, const double inc_step = 1e-6, const size_t max_iter = 1000)
+static double bracketing_serach(std::function<double(double)> func, const double init = 1.0, const double beta = 0.9, const size_t max_iter = 1000)
 {
-    double a = 0;
+    double a = init;
     double fval = func(a);
     double new_fval;
 
     for(size_t i = 0; i < max_iter; i++)
     {
-        new_fval = func(a + step);
-        step += inc_step;
-        
+        new_fval = func(a*beta);
+
         if(new_fval > fval)
             return a;
-        a += step;
+        a *= beta;
         fval = new_fval;
     }
 

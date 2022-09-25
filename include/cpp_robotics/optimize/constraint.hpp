@@ -39,6 +39,20 @@ struct Constraint
         return con_f(x);
     }
 
+    bool satisfy(const Eigen::VectorXd &x, const double tol) const
+    {
+        const double val = eval(x);
+        std::cout << "eval: " << val << std::endl;
+        if(type == Type::Eq)
+        {
+            return std::abs(val) < tol;
+        }
+        else
+        {
+            return val < tol;
+        }
+    }
+
     Eigen::VectorXd grad(Eigen::VectorXd x)
     {
         if(con_grad_f)
@@ -79,6 +93,26 @@ public:
     {
         auto val = eval(x);
         return std::accumulate(val.begin(), val.end(), 0.0);
+    }
+
+    bool all_satisfy(const Eigen::VectorXd &x, const double tol) const
+    {
+        bool satisfy = true;
+
+        for(auto & con : *this)
+        {
+            if(not con.satisfy(x, tol))
+            {
+                std::cout << "not satisfy" << std::endl;
+                satisfy = false;
+            }
+            else
+            {
+                std::cout << "satisfy" << std::endl;
+                
+            }
+        }
+        return satisfy;
     }
 
     std::vector<Constraint>::size_type eq_constraint_size() const
