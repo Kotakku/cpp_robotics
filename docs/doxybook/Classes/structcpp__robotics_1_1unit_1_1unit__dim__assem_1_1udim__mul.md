@@ -37,4 +37,4 @@ using cpp_robotics::unit::unit_dim_assem::udim_mul< U1, U2 >::unit =  UnitType< 
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:20:38 +0900
+Updated on 2022-09-25 at 23:29:49 +0900

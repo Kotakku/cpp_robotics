@@ -37,4 +37,4 @@ static constexpr bool value = std::is_base_of<Interface, UserInterface>::value;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:20:38 +0900
+Updated on 2022-09-25 at 23:29:48 +0900

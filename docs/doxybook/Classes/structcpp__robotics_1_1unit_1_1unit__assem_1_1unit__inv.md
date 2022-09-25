@@ -52,4 +52,4 @@ using cpp_robotics::unit::unit_assem::unit_inv< UnitType >::unit =  Unit<typenam
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:20:38 +0900
+Updated on 2022-09-25 at 23:29:49 +0900

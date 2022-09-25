@@ -1,10 +1,10 @@
 # API
 
-- **[Namespace](/cpp_robotics_core/doxybook/namespaces/)**
+- **[Namespace](/cpp_robotics/doxybook/namespaces/)**
     名前空間
-- **[Files](/cpp_robotics_core/doxybook/files/)**
+- **[Files](/cpp_robotics/doxybook/files/)**
     ファイル一覧
-- **[Classes](/cpp_robotics_core/doxybook/classes/)**
+- **[Classes](/cpp_robotics/doxybook/classes/)**
     クラス一覧
 
 Doxygenで生成

@@ -71,4 +71,4 @@ static Eigen::MatrixXd approx_hessian(std::function<double(Eigen::VectorXd)> f, 
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:20:39 +0900
+Updated on 2022-09-25 at 23:29:49 +0900
