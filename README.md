@@ -15,7 +15,7 @@
 - matplotlib
 
 # ドキュメント
-- [https://kotakku.github.io/cpp_robotics_core/](https://kotakku.github.io/cpp_robotics_core/)
+- [https://kotakku.github.io/cpp_robotics/](https://kotakku.github.io/cpp_robotics/)
 
 ## ドキュメント生成
 doxybook2とmkdocsをインストール後に
