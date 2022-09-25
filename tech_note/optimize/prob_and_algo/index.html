@@ -1,0 +1,2929 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="cpp_robotics: A C++ library for robotics">
+      
+      
+        <meta name="author" content="Takumi Odashima">
+      
+      
+        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics_core/tech_note/optimize/prob_and_algo/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.3">
+    
+    
+      
+        <title>数理計画問題とアルゴリズム一覧 - cpp_robotics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7a952b86.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../.." title="cpp_robotics" class="md-header__button md-logo" aria-label="cpp_robotics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M320 0c17.7 0 32 14.3 32 32v64h128c35.3 0 64 28.7 64 64v288c0 35.3-28.7 64-64 64H160c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h128V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zM264 256c0-22.1-17.9-40-40-40s-40 17.9-40 40 17.9 40 40 40 40-17.9 40-40zm152 40c22.1 0 40-17.9 40-40s-17.9-40-40-40-40 17.9-40 40 17.9 40 40 40zM48 224h16v192H48c-26.5 0-48-21.5-48-48v-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48h-16V224h16z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            cpp_robotics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              数理計画問題とアルゴリズム一覧
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Kotakku/cpp_robotics" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Kotakku/cpp_robotics
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      概要
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../api/api/" class="md-tabs__link">
+      API
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../example/hello_world/" class="md-tabs__link">
+        プログラム例
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../system/transfer_function/" class="md-tabs__link md-tabs__link--active">
+        技術資料
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../impl_memo/" class="md-tabs__link">
+      実装したもの・したいもの
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="cpp_robotics" class="md-nav__button md-logo" aria-label="cpp_robotics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M320 0c17.7 0 32 14.3 32 32v64h128c35.3 0 64 28.7 64 64v288c0 35.3-28.7 64-64 64H160c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h128V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zM264 256c0-22.1-17.9-40-40-40s-40 17.9-40 40 17.9 40 40 40 40-17.9 40-40zm152 40c22.1 0 40-17.9 40-40s-17.9-40-40-40-40 17.9-40 40 17.9 40 40 40zM48 224h16v192H48c-26.5 0-48-21.5-48-48v-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48h-16V224h16z"/></svg>
+
+    </a>
+    cpp_robotics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Kotakku/cpp_robotics" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Kotakku/cpp_robotics
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        概要
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/api/" class="md-nav__link">
+        API
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          プログラム例
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="プログラム例" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          プログラム例
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/hello_world/" class="md-nav__link">
+        HelloWorld
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          アルゴリズム
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="アルゴリズム" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          アルゴリズム
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/algorithm/icp_sample/" class="md-nav__link">
+        ICP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/algorithm/kdtree_sample/" class="md-nav__link">
+        KDtree
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          制御
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="制御" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          制御
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/control/pid_vs_nctf/" class="md-nav__link">
+        PID vs NCTF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/control/lqr/" class="md-nav__link">
+        LQR
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/control/canonicalize/" class="md-nav__link">
+        正準形
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/control/place/" class="md-nav__link">
+        極配置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/control/pure_pursuit/" class="md-nav__link">
+        Pure pursuit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          最適化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="最適化" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          最適化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/optimize/optimize_scalar/" class="md-nav__link">
+        スカラー関数の最適化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/optimize/optimize_without_constraint/" class="md-nav__link">
+        無制約最適化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/optimize/optimize_rosenbrock/" class="md-nav__link">
+        Rosenbrock関数の最適化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/optimize/optimize_with_constraint/" class="md-nav__link">
+        制約付き最適化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/optimize/active_set_method_example/" class="md-nav__link">
+        有効制約法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/optimize/sqp_example/" class="md-nav__link">
+        SQP(逐次二次計画法)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          システム
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="システム" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          システム
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/system/step_responce/" class="md-nav__link">
+        伝達関数のステップ応答
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/system/bode_nyquist/" class="md-nav__link">
+        ボード線図・ナイキスト線図
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/system/state_space_system/" class="md-nav__link">
+        状態空間表現
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/system/disc_tf/" class="md-nav__link">
+        z伝達関数のステップ応答
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          パスプランニング
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="パスプランニング" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          パスプランニング
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/path_planning/dubins_path/" class="md-nav__link">
+        Dubins曲線
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_7">
+          単位系
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="単位系" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          単位系
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/units/units/" class="md-nav__link">
+        constexpr単位系
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          技術資料
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="技術資料" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          技術資料
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          モデル表現
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="モデル表現" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          モデル表現
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/transfer_function/" class="md-nav__link">
+        伝達関数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/state_space_system/" class="md-nav__link">
+        状態空間表現
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/discrete/" class="md-nav__link">
+        離散化
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          最適化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="最適化" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          最適化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algo_abst/" class="md-nav__link">
+        アルゴリズムの概要
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          数理計画問題とアルゴリズム一覧
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        数理計画問題とアルゴリズム一覧
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    数理計画問題
+  </a>
+  
+    <nav class="md-nav" aria-label="数理計画問題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lp-linear-programming" class="md-nav__link">
+    LP (Linear Programming : 線形計画問題)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#milp-mixed-integer-linear-programming" class="md-nav__link">
+    MILP (Mixed Integer Linear Programming : 混合整数計画問題)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miqp-mixed-integer-quadratic-programming" class="md-nav__link">
+    MIQP (Mixed Integer Quadratic Programming : 混合整数二次計画問題)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minlp-mixed-integer-nonlinear-programming" class="md-nav__link">
+    MINLP (Mixed Integer Nonlinear Programming : 混合整数非線形計画問題)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cqp-convex-quadratic-programming" class="md-nav__link">
+    CQP (Convex Quadratic Programming : 凸二次計画問題)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cp-convex-programming" class="md-nav__link">
+    CP (Convex Programming : 凸計画問題)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nlp-nonlinear-programming" class="md-nav__link">
+    NLP (Nonlinear Programming : 非線形計画問題)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdp-semidefinite-programing" class="md-nav__link">
+    SDP (SemiDefinite Programing : 半正定値計画問題)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nlsdp-nonlinear-semidefinite-programing" class="md-nav__link">
+    NLSDP (NonLinear SemiDefinite Programing : 非線形半正定値計画問題)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wcsp-weighted-constraint-satisfaction-problem" class="md-nav__link">
+    WCSP (Weighted Constraint Satisfaction Problem : 重み付き制約充足問題)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rcpsp-resource-constrained-project-scheduling-problem" class="md-nav__link">
+    RCPSP (Resource Constrained Project Scheduling Problem : 資源制約付きスケジューリング問題)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    アルゴリズム一覧
+  </a>
+  
+    <nav class="md-nav" aria-label="アルゴリズム一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simplex" class="md-nav__link">
+    simplex : 単体法()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dual_simplex-dual_simplex" class="md-nav__link">
+    dual_simplex : 双対単体法(DUAL_SIMPLEX)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asqp-active_set_qp" class="md-nav__link">
+    asqp : 有効制約法(ACTIVE_SET_QP)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#higher-higher_order" class="md-nav__link">
+    higher : 線形計画問題専用内点法(HIGHER_ORDER)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lipm-line_search_ipm" class="md-nav__link">
+    lipm : (新版)直線探索法(LINE_SEARCH_IPM)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lepm-line_search_epm" class="md-nav__link">
+    lepm : 直線探索外点法(LINE_SEARCH_EPM)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line-line_search" class="md-nav__link">
+    line : (旧版)直線探索内点法(LINE_SEARCH)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfgs-bfgs_line_search" class="md-nav__link">
+    bfgs : 準ニュートン法(BFGS_LINE_SEARCH)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipm-trust_region_ipm" class="md-nav__link">
+    tipm : (新版)信頼領域内点法(TRUST_REGION_IPM)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tepm-trust_region_epm" class="md-nav__link">
+    tepm : 信頼領域外点法(TRUST_REGION_EPM)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trust-trust_region" class="md-nav__link">
+    trust : (旧版)信頼領域法内点法(TRUST_REGION)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lsqp-line_search_sqp" class="md-nav__link">
+    lsqp : 直線探索法に基づく逐次二次計画法(LINE_SEARCH_SQP)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tsqp-trust_region_sqp" class="md-nav__link">
+    tsqp : 信頼領域法に基づく逐次二次計画法(TRUST_REGION_SQP)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slpsqp-slp-sqp" class="md-nav__link">
+    slpsqp : 逐次線形二次計画法(SLP-SQP)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lsdp" class="md-nav__link">
+    lsdp : 線形半正定値計画問題に対する主双対内点法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csdp" class="md-nav__link">
+    csdp : 凸半正定値計画問題に対する主双対内点法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qnsdp" class="md-nav__link">
+    qnsdp : 準ニュートン法を用いた非線形半正定値計画問題に対する主双対内点法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lmsdp-levenberg-marquardt" class="md-nav__link">
+    lmsdp : Levenberg-Marquardt法を用いた非線形半正定値計画問題に対する主双対内点法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wcsp-wcsp" class="md-nav__link">
+    wcsp : 制約充足問題ソルバ(WCSP)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wcsplp" class="md-nav__link">
+    wcsplp : 混合整数計画問題専用の制約充足問題ソルバ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rcpsp-rcpsp" class="md-nav__link">
+    rcpsp : 資源制約付きスケジューリング問題ソルバ(RCPSP)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    数理計画問題とアルゴリズムの対応
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../derivative/" class="md-nav__link">
+        数値微分
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scalar_opt/" class="md-nav__link">
+        スカラー最適化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../least_squares_method/" class="md-nav__link">
+        最小二乗法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_6" type="checkbox" id="__nav_4_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_6">
+          無制約最適化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="無制約最適化" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          無制約最適化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conj_grad/" class="md-nav__link">
+        最急降下法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../newton/" class="md-nav__link">
+        ニュートン法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quasi_newton/" class="md-nav__link">
+        準ニュートン法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../benchmark_cont/" class="md-nav__link">
+        ベンチマーク
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_7" type="checkbox" id="__nav_4_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_7">
+          制約付き最適化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="制約付き最適化" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          制約付き最適化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kkt_condition/" class="md-nav__link">
+        KKT条件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quadprog/" class="md-nav__link">
+        二次計画法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../active_set_method/" class="md-nav__link">
+        有効制約法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../barrier_method/" class="md-nav__link">
+        バリア法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../penalty_methond/" class="md-nav__link">
+        ペナルティ法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interior_method/" class="md-nav__link">
+        内点法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sqp/" class="md-nav__link">
+        SQP(逐次二次計画法)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tolerances_and_stopping/" class="md-nav__link">
+        最適化の収束判定
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          アルゴリズム
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="アルゴリズム" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          アルゴリズム
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/icp/" class="md-nav__link">
+        ICP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/ndt/" class="md-nav__link">
+        NDT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/kdtree/" class="md-nav__link">
+        KDTree
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/poly/" class="md-nav__link">
+        多項式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/poly_regression/" class="md-nav__link">
+        回帰曲線
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/jerk_minimum_model/" class="md-nav__link">
+        躍度最小化モデル
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          運動学
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="運動学" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          運動学
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kinematics/diff_robot/" class="md-nav__link">
+        差動二輪機構
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kinematics/mecanum/" class="md-nav__link">
+        メカナム移動機構
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kinematics/omni/" class="md-nav__link">
+        オムニ移動機構
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kinematics/swerve/" class="md-nav__link">
+        独立4輪ステア移動機構
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kinematics/delta_robot/" class="md-nav__link">
+        デルタロボット
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          フィルタ
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="フィルタ" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          フィルタ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filter/tf_filter/" class="md-nav__link">
+        伝達関数で表現されるフィルタ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filter/limitted_filter/" class="md-nav__link">
+        速度制限フィルタ・加速度制限フィルタ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filter/kalman_filter/" class="md-nav__link">
+        カルマンフィルタ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filter/extend_kalman_filter/" class="md-nav__link">
+        拡張カルマンフィルタ
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_6">
+          制御
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="制御" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          制御
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control/pole_and_zero/" class="md-nav__link">
+        システムの極・零点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control/minphase/" class="md-nav__link">
+        非最小位相系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control/stability/" class="md-nav__link">
+        システムの安定性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control/pid/" class="md-nav__link">
+        PID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control/pid2/" class="md-nav__link">
+        2自由度PID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control/lqr/" class="md-nav__link">
+        LQR
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control/nctf/" class="md-nav__link">
+        NCTF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control/place/" class="md-nav__link">
+        極配置による状態フィードバック
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control/pure_pursuit/" class="md-nav__link">
+        Pure pursuit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../control/pfc/" class="md-nav__link">
+        PFC
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_7" type="checkbox" id="__nav_4_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_7">
+          図形
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="図形" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_7">
+          <span class="md-nav__icon md-icon"></span>
+          図形
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../geometry/geometry/" class="md-nav__link">
+        図形の衝突判定
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_8" type="checkbox" id="__nav_4_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_8">
+          モーター
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="モーター" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_8">
+          <span class="md-nav__icon md-icon"></span>
+          モーター
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../motor/motor_model/" class="md-nav__link">
+        モーターの状態空間表現
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../motor/mabuchi/" class="md-nav__link">
+        マブチモータのスペック読み取り
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../motor/maxon/" class="md-nav__link">
+        maxonモータのスペック読み取り
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_9" type="checkbox" id="__nav_4_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_9">
+          パスプランニング・パストラッキング
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="パスプランニング・パストラッキング" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_9">
+          <span class="md-nav__icon md-icon"></span>
+          パスプランニング・パストラッキング
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../path_planning/a_star/" class="md-nav__link">
+        A*
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../path_planning/wave_propagation/" class="md-nav__link">
+        wave propagation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../path_planning/dubins_path/" class="md-nav__link">
+        Dubins曲線
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../path_planning/dwa/" class="md-nav__link">
+        DWA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../path_planning/frenet_path/" class="md-nav__link">
+        フレネ座標系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../path_planning/spline/" class="md-nav__link">
+        スプライン曲線
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../path_planning/rvo/" class="md-nav__link">
+        RVO
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_10" type="checkbox" id="__nav_4_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_10">
+          数学補助
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="数学補助" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_10">
+          <span class="md-nav__icon md-icon"></span>
+          数学補助
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/poly_lerp/" class="md-nav__link">
+        多項式補間
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/mahalanobis/" class="md-nav__link">
+        マハラノビス距離
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_11" type="checkbox" id="__nav_4_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11">
+          ソフトウェア設計
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ソフトウェア設計" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_11">
+          <span class="md-nav__icon md-icon"></span>
+          ソフトウェア設計
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_design/design_pattern/" class="md-nav__link">
+        デザインパターン
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_design/solid/" class="md-nav__link">
+        SOLID原則
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../impl_memo/" class="md-nav__link">
+        実装したもの・したいもの
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">数理計画問題とアルゴリズム一覧</h1>
+<h2 id="_2">数理計画問題</h2>
+<h3 id="lp-linear-programming">LP (Linear Programming : 線形計画問題)</h3>
+<p>目的関数と制約式がすべて線形である問題で、整数変数を含まないもの  </p>
+<h3 id="milp-mixed-integer-linear-programming">MILP (Mixed Integer Linear Programming : 混合整数計画問題)</h3>
+<p>目的関数と制約式がすべて線形で、整数変数を含むもの  <br />
+MIP(Mixed Integer Programming)と呼ばれることも多い</p>
+<h3 id="miqp-mixed-integer-quadratic-programming">MIQP (Mixed Integer Quadratic Programming : 混合整数二次計画問題)</h3>
+<p>制約式がすべて線形、目的関数が二次関数で、整数変数を含むもの</p>
+<h3 id="minlp-mixed-integer-nonlinear-programming">MINLP (Mixed Integer Nonlinear Programming : 混合整数非線形計画問題)</h3>
+<p>制約式および目的関数が非線形で整数変数を含むもの  </p>
+<h3 id="cqp-convex-quadratic-programming">CQP (Convex Quadratic Programming : 凸二次計画問題)</h3>
+<p>目的関数が凸な二次関数、制約式がすべて線形であるもの<br />
+(ただし、目的関数の符号の変更で下に凸な目的関数の最小化に帰着できるもの)  </p>
+<h3 id="cp-convex-programming">CP (Convex Programming : 凸計画問題)</h3>
+<p>目的関数、制約式に非線形なものが含まれているが、実行可能領域が凸で、目的関数の符号の変更で下に凸な目的関数の最小化に帰着できる問題ここでは整数変数は含まないものを指す <br />
+半正定値計画問題も凸計画問題の一部ですが、ここには含めない</p>
+<h3 id="nlp-nonlinear-programming">NLP (Nonlinear Programming : 非線形計画問題)</h3>
+<p>上記以外で、整数変数を含まない一般の非線形計画問題  </p>
+<h3 id="sdp-semidefinite-programing">SDP (SemiDefinite Programing : 半正定値計画問題)</h3>
+<p>行列の半正定値制約を含む線形計画問題  </p>
+<h3 id="nlsdp-nonlinear-semidefinite-programing">NLSDP (NonLinear SemiDefinite Programing : 非線形半正定値計画問題)</h3>
+<p>行列の半正定値制約を含み、なおかつ目的関数・制約式に非線形項が含まれる問題  </p>
+<h3 id="wcsp-weighted-constraint-satisfaction-problem">WCSP (Weighted Constraint Satisfaction Problem : 重み付き制約充足問題)</h3>
+<p>各々重みの付いた制約条件をなるべく満足するためには値をどのように割り当てると良いかを決定する問題<br />
+制約充足問題ソルバwcspにより高速に解を得ることができる</p>
+<h3 id="rcpsp-resource-constrained-project-scheduling-problem">RCPSP (Resource Constrained Project Scheduling Problem : 資源制約付きスケジューリング問題)</h3>
+<p>一定の資源制約の下で、決められた作業の開始・終了時刻を決定する問題　　
+一般の整数計画問題(MILP)として記述することも可能だが、特殊な記法を行うと資源制約付きスケジューリング問題ソルバrcpspにより高速に実行可能解を得ることができる</p>
+<h2 id="_3">アルゴリズム一覧</h2>
+<h3 id="simplex">simplex : 単体法()</h3>
+<p>線形計画法の解法として古くから知られている方法です．大規模問題では内点法に速度的に劣りますが，可能基底解が求まり原理的に内点法/外点法よりも高精度です．<br />
+整数変数を含む問題に対して指定すると，単体法を分枝限定法(Branch and bound method)という枠組のなかで繰り返し行って，最適性の保証のある整数解を求めます．大規模問題において基底解が必要な場合には，"cross:on"と指定して内点法からのクロスオーバーを用いるのが有利です．  </p>
+<h3 id="dual_simplex-dual_simplex">dual_simplex : 双対単体法(DUAL_SIMPLEX)</h3>
+<p>(主)単体法が主実行可能な基底解をたどりながら最適解にたどり着くのに対し，双対単体法は双対実行可能な基底解をたどりながら最適解にたどり着きます．<br />
+大規模な線形計画問題に対して，(主)単体法と比較して有利であることがあります．  </p>
+<h3 id="asqp-active_set_qp">asqp : 有効制約法(ACTIVE_SET_QP)</h3>
+<p>単体法と同様，古典的な凸二次計画問題の厳密解法です．1万変数以上の大規模問題では，一般に内点法(直線探索法(Line Search Method))に劣りますが，<br />
+変数に比べて制約式の数が非常に少ない(1/10以下)場合<br />
+目的関数のヘッセ行列が密行列である場合<br />
+には内点法よりも高速かつ高精度です．また，整数計画法に対応しているので，整数変数が含まれている凸二次計画問題を解くことができます．"cross:on"と指定することで内点法からのクロスオーバーを用いることができるので，大規模問題に対して高精度な解を求めることができます．  </p>
+<h3 id="higher-higher_order">higher : 線形計画問題専用内点法(HIGHER_ORDER)</h3>
+<p>線形計画法に特化した内点法で，大規模な線形計画問題の解法としては最も高速です．単体法と違い，可能基底解は求まりません．  </p>
+<h3 id="lipm-line_search_ipm">lipm : (新版)直線探索法(LINE_SEARCH_IPM)</h3>
+<h3 id="lepm-line_search_epm">lepm : 直線探索外点法(LINE_SEARCH_EPM)</h3>
+<h3 id="line-line_search">line : (旧版)直線探索内点法(LINE_SEARCH)</h3>
+<p>一般の凸計画問題に適用可能な内点法・外点法です．問題が凸であることがわかっている場合には信頼領域法よりも高速です．幅広い範囲の問題に対して有効なのが内点法(lipm)，外点法(lepm)は問題に対して比較的良い初期値が得られている場合に有効であることが示されています．旧版の内点法(line)は，以前のバージョンとの整合を取る場合にご利用ください(Ver.7以前の内点法lineとVer.8以降の内点法lipmでは，メリット関数の定義が若干異なっておりますので，新版と旧版では異なる結果を与える場合があります)．  </p>
+<h3 id="bfgs-bfgs_line_search">bfgs : 準ニュートン法(BFGS_LINE_SEARCH)</h3>
+<p>準ニュートン法によって二階微係数を求める内点法です．“bfgs”はヘッセ行列の近似行列を密行列として保持しますので，小規模(50～500変数以下)な非線形計画問題に適しています．  </p>
+<h3 id="tipm-trust_region_ipm">tipm : (新版)信頼領域内点法(TRUST_REGION_IPM)</h3>
+<h3 id="tepm-trust_region_epm">tepm : 信頼領域外点法(TRUST_REGION_EPM)</h3>
+<h3 id="trust-trust_region">trust : (旧版)信頼領域法内点法(TRUST_REGION)</h3>
+<p>大規模なものを含む一般の非線形計画問題に適用可能な内点法・外点法です．幅広い範囲の問題に対して有効なのが内点法(tipm)，外点法(tepm)は問題に対して比較的良い初期値が得られている場合に有効であることが示されています．旧版の内点法(trust)は，以前のバージョンとの整合を取る場合にご利用ください(Ver.7以前の内点法trustとVer.8以降の内点法tipmでは，メリット関数の定義が若干異なっておりますので，新版と旧版では異なる結果を与える場合がございます)．  </p>
+<h3 id="lsqp-line_search_sqp">lsqp : 直線探索法に基づく逐次二次計画法(LINE_SEARCH_SQP)</h3>
+<p>準ニュートン法によって二階微係数を求める逐次二次計画法です．小規模(50～100変数以下)な非線形計画問題に適しています．<br />
+問題によっては直線探索内点法/外点法(lipm/lepm/line)よりも安定的により精度の良い解を導くことができます．  </p>
+<h3 id="tsqp-trust_region_sqp">tsqp : 信頼領域法に基づく逐次二次計画法(TRUST_REGION_SQP)</h3>
+<p>二階微係数をそのまま用いる逐次二次計画法です．大規模なものを含む一般の非線形計画問題に適用可能な方法です．一般に内点法よりも低速ですが，問題によっては内点法よりも安定的に，より精度の良い解を導くことができます．<br />
+変数の数よりも制約式数が多い場合には内点法/外点法(tipm/tepm/trust)よりも高速な場合があります．  </p>
+<h3 id="slpsqp-slp-sqp">slpsqp : 逐次線形二次計画法(SLP-SQP)</h3>
+<p>ペナルティ関数を用いない逐次線形二次計画法です．ある程度大規模なものを含む一般の非線形計画問題に適用可能です．大域的収束性を保証する原理が内点法/外点法(tipm/tepm/trust)や従来の逐次二次計画法(lsqp/tsqp)のものとは異なるため，他の方法で収束しない問題に対して有効な場合があります．また，制約式の勾配が小さい反復点にいる時，実行可能領域に接近するという仕組みが組み込まれていますので複雑な制約においても安定的な動作が期待できます．  </p>
+<h3 id="lsdp">lsdp : 線形半正定値計画問題に対する主双対内点法</h3>
+<p>線形の半正定値計画問題に対する主双対内点法です．目的関数・制約式に出現する項は線形である必要があります．内部でメリット関数の計算を行いません．  </p>
+<h3 id="csdp">csdp : 凸半正定値計画問題に対する主双対内点法</h3>
+<p>目的関数が凸非線形関数で，制約が線形な半正定値計画問題に対する主双対内点法です．この類の問題は，線形半正定値計画問題で記述することができますが，そのまま扱った方が高速に求解できます．内部でメリット関数の計算を行う点がlsdpと異なります．  </p>
+<h3 id="qnsdp">qnsdp : 準ニュートン法を用いた非線形半正定値計画問題に対する主双対内点法</h3>
+<p>目的関数・制約式に非線形項が出現する半正定値計画問題に対する主双対内点法です．メリット関数の降下を保証するために，準ニュートン法を利用しています．  </p>
+<h3 id="lmsdp-levenberg-marquardt">lmsdp : Levenberg-Marquardt法を用いた非線形半正定値計画問題に対する主双対内点法</h3>
+<p>目的関数・制約式に非線形項が出現する半正定値計画問題に対する主双対内点法です．メリット関数の降下を保証する為に，Levenberg-Marquardt法を利用しています．準ニュートン法に基づく方法(qnsdp)に比べて，規模の大きな問題を取り扱う事ができます．変数が少なく，行列次元が大きい問題の場合，信頼領域法に基づく方法(trsdp)より高速な場合があります．<br />
+trsdp : 信頼領域法を用いた非線形半正定値計画問題に対する主双対内点法<br />
+目的関数・制約式に非線形項が出現する半正定値計画問題に対する主双対内点法です．メリット関数の降下を保証するために，信頼領域法を利用しています．準ニュートン法に基づく方法(qnsdp)より規模の大きな問題を取り扱う事ができます．  </p>
+<h3 id="wcsp-wcsp">wcsp : 制約充足問題ソルバ(WCSP)</h3>
+<p>京都大学「問題解決エンジン」グループの開発による制約充足問題に対するアルゴリズムです．必ずしも厳密解が求まるわけではありませんが，大規模な整数計画問題に対し，非常に高速に実行可能解(近似解)を求めることができます．<br />
+整数変数のみを含み，かつすべての変数に上限と下限がある問題に対してのみ有効です．目的関数，制約式に重みを設定することができます．制約の重みには，ハード制約，セミハード制約，ソフト制約の三種類があります．  </p>
+<h3 id="wcsplp">wcsplp : 混合整数計画問題専用の制約充足問題ソルバ</h3>
+<p>線形な混合整数計画問題を制約充足問題の枠組みで解くアルゴリズムです．このアルゴリズムでは，連続変数は適当な刻み幅をもつDiscreteVariableと解釈されます．wcsplpでは全ての制約式をハード制約として扱い，目的関数をソフト制約として扱います．  </p>
+<h3 id="rcpsp-rcpsp">rcpsp : 資源制約付きスケジューリング問題ソルバ(RCPSP)</h3>
+<p>京都大学「問題解決エンジン」グループの開発による資源制約付きスケジューリング問題に対するアルゴリズムです．資源制約の下，決められた作業の開始・終了時刻を決定する問題の実行可能解を高速に求めることができます．rcpspの記述にあたっては問題をSIMPLEの特殊なクラスを用いて記述する必要があります．完了時刻の最小化問題と，納期遅れ最小化問題を扱うことができます．前者を扱う際にはソフト制約，後者を扱う際にはハード制約のみが使用できます．  </p>
+<h2 id="_4">数理計画問題とアルゴリズムの対応</h2>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">LP</th>
+<th align="left">MILP</th>
+<th align="left">MIQP</th>
+<th align="left">MINLP</th>
+<th align="left">CQP</th>
+<th align="left">CP</th>
+<th align="left">NLP</th>
+<th align="left">SDP</th>
+<th align="left">NLSDP</th>
+<th align="left">RCPSP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">simplex</td>
+<td align="left">○</td>
+<td align="left">○</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">△</td>
+</tr>
+<tr>
+<td align="left">dual_simplex</td>
+<td align="left">○</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">asqp</td>
+<td align="left">○</td>
+<td align="left">--</td>
+<td align="left">○</td>
+<td align="left">--</td>
+<td align="left">○</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">higher</td>
+<td align="left">○</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">lipm/lepm/line</td>
+<td align="left">△</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">○</td>
+<td align="left">○</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">bfgs</td>
+<td align="left">△</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">△</td>
+<td align="left">○</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">tipm/tepm/trust</td>
+<td align="left">△</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">△</td>
+<td align="left">○</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">lsqp</td>
+<td align="left">△</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">△</td>
+<td align="left">○</td>
+<td align="left">○</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">tsqp</td>
+<td align="left">△</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">△</td>
+<td align="left">○</td>
+<td align="left">○</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">slpsqp</td>
+<td align="left">△</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">△</td>
+<td align="left">○</td>
+<td align="left">○</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">lsdp</td>
+<td align="left">△</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">--</td>
+<td align="left">○</td>
+<td align="left">--</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">csdp</td>
+<td align="left">△</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">--</td>
+<td align="left">○</td>
+<td align="left">--</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">qnsdp</td>
+<td align="left">△</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">○</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">trsdp</td>
+<td align="left">△</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">○</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">lmsdp</td>
+<td align="left">△</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">○</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">wcsp</td>
+<td align="left">--</td>
+<td align="left">○※1</td>
+<td align="left">○※1</td>
+<td align="left">○※1</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">wcsplp</td>
+<td align="left">△</td>
+<td align="left">○※2</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">global</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">○</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">○</td>
+<td align="left">○</td>
+<td align="left">○</td>
+<td align="left">△</td>
+</tr>
+<tr>
+<td align="left">DFO</td>
+<td align="left">△</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">○</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+</tr>
+<tr>
+<td align="left">rcpsp</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">--</td>
+<td align="left">○</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>※1: 0-1整数変数と離散変数のみを含む問題に対して適用できることを意味する<br />
+　　連続変数を含む問題あるいは上限と下限を持たない整数変数を含む問題には適用できない<br />
+※2: 連続変数を含む場合も適用ができるが効率が落ちる可能性がある</p>
+</div>
+<h2 id="_5">参考文献</h2>
+<ul>
+<li><a href="https://www.msi.co.jp/nuopt/docs/v18/manual/html/14-01-00.html">14.1 数理計画問題一覧</a></li>
+<li><a href="https://www.msi.co.jp/nuopt/docs/v18/manual/html/14-02-00.html">14.2 アルゴリズム一覧</a></li>
+<li><a href="https://www.msi.co.jp/nuopt/docs/v18/manual/html/14-03-00.html">14.3 数理計画問題とアルゴリズムの対応</a></li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="フッター" >
+      
+        
+        <a href="../algo_abst/" class="md-footer__link md-footer__link--prev" aria-label="前: アルゴリズムの概要" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                前
+              </span>
+              アルゴリズムの概要
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../derivative/" class="md-footer__link md-footer__link--next" aria-label="次: 数値微分" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                次
+              </span>
+              数値微分
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 - Takumi Odashima
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+      
+    
+  </body>
+</html>
