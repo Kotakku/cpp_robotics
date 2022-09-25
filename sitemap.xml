@@ -511,11 +511,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/active__set__method__example_8cpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/algorithm_8hpp/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
@@ -546,27 +541,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/bfgs__test_8cpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/bode_8hpp/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/bode__nyquist_8cpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/bracketing__serach_8hpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/canonicalize_8cpp/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -646,11 +626,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/dir_40660fdf2170216459b92a10e30f14fc/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/dir_4247061a1141e797ef60959306008361/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
@@ -681,16 +656,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/dir_7296b3804f4a6a0570d4157b76ab1ed1/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/dir_7d09008d01e50646aeedf116b0b98c34/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/dir_7e879dbdc5c9edf53cad9d774885e9a7/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
@@ -707,11 +672,6 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/dir_a64767b7a8f5bac6dff05874b8e7c36e/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/dir_a6e41fc6dac9a818d1a56659625fc480/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -736,22 +696,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/dir_cfafba98a580ce4b62f8a6fa96d7cbb0/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/dir_d44c64559bbebec7f509842c48db8b23/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/dir_d46e09745d41c5a7827c5b81f13e5fde/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/dir_d7e8b4cf66066dab4c432fb44beae8d4/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -766,27 +716,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/dir_e6a394dcf163ef8584d4b9d5b172c539/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/disc__tf_8cpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/discret_8hpp/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/discrete__transfer__function_8hpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/dubins__path_8cpp/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -846,22 +781,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/hello__world_8cpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/high__pass__filter_8hpp/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/icp_8hpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/icp__sample_8cpp/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -886,11 +811,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/kdtree__sample_8cpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/linprog_8hpp/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
@@ -901,17 +821,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/lqr_8cpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/lqr_8hpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/mahalanobis_8cpp/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -976,27 +886,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/optimize_8cpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/optimize_8hpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/optimize__rosenbrock_8cpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/optimize__scalar_8cpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/optimize__with__constraint_8cpp/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1036,27 +926,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/pid__vs__nctf_8cpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/place_8cpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/poly__regression_8hpp/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/polynomial_8hpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/pure__pursuit_8cpp/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1072,11 +947,6 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/quadcopter_8hpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/quadprog_8cpp/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1141,17 +1011,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/sqp__example_8cpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/state__machine_8hpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/state__space__system_8cpp/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1162,11 +1022,6 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/steepest__descent__method_8hpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/step__responce_8cpp/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1197,11 +1052,6 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/unit__core_8hpp/</loc>
-         <lastmod>2022-09-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/unit__test_8cpp/</loc>
          <lastmod>2022-09-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
