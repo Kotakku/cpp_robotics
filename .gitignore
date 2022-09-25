@@ -2,3 +2,9 @@
 build/
 
 .vscode/
+
+doxygen/
+
+site/
+
+# docs/doxybook/

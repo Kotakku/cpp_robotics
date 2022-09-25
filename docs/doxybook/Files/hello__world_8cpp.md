@@ -1,0 +1,94 @@
+---
+title: example/hello_world.cpp
+
+---
+
+# example/hello_world.cpp
+
+
+
+## Functions
+
+|                | Name           |
+| -------------- | -------------- |
+| int | **[main](/cpp_robotics_core/doxybook/Files/hello__world_8cpp/#function-main)**(int argc, char * argv[]) |
+
+
+## Functions Documentation
+
+### function main
+
+```cpp
+int main(
+    int argc,
+    char * argv[]
+)
+```
+
+
+
+
+## Source code
+
+```cpp
+#include <iostream>
+#include <Eigen/Dense>
+#include <cpp_robotics/cpp_robotics.hpp>
+
+int main(int argc, char *argv[])
+{
+    (void) argc;
+    (void) argv;
+    namespace cr = cpp_robotics;
+
+    std::cout << "test" << std::endl;
+
+    constexpr cr::Vector2d vec(3.0, 4.0);
+    printf("constexpr 2D vector: %f, %f\n", vec.x, vec.y);
+
+    Eigen::MatrixXd A(2,2), B(2,1), Q(2,2), R(1,1), P(2,2);
+    A << 0, 1, -10, -1;
+    B << 0, 1;
+    Q << 300, 0, 0, 60;
+    R << 1;
+
+    Eigen::MatrixXd K = cr::lqr(A, B, Q, R);
+    std::cout << "LQR feedback vector" << std::endl;
+    std::cout << K << std::endl;
+
+    std::cout << "polynomial" << std::endl;
+    cr::Polynomial p0({1, 0, 3});
+    std::cout << p0 << std::endl;
+    cr::Polynomial p1 = cr::Polynomial({1, -2}) * cr::Polynomial({1, 2});
+    std::cout << p1 << std::endl;
+
+    cr::TransferFunction tf({1.0}, {1, 1.0}, 0.01);
+
+    namespace plt = matplotlibcpp;
+    std::cout << "transfer function step responce" << std::endl;
+    {
+        auto [t, y] = cr::step(tf, 30);
+        plt::plot(t, y);
+        plt::show();
+    }
+
+    std::cout << "transfer function sin cruve input responce" << std::endl;
+    {
+        auto input = cr::sinspace(1, 0.1, 1000);
+        auto [t, y] = cr::lsim(tf, input);
+        plt::plot(t, y);
+        plt::show();
+    }
+    
+    std::cout << "transfer function bode fig plot" << std::endl;
+    cr::bode_plot(tf);
+
+    std::cout << "transfer function nyquist fig plot" << std::endl;
+    cr::nyquist_plot(tf);
+}
+```
+
+
+-------------------------------
+
+Updated on 2022-09-25 at 23:11:52 +0900

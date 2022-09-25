@@ -1,0 +1,11 @@
+{
+    "baseUrl": "/cpp_robotics_core/doxybook/",
+    "indexInFolders": false,
+    "linkSuffix": "/",
+    "indexClassesName": "classes",
+    "indexFilesName": "files",
+    "indexGroupsName": "groups",
+    "indexNamespacesName": "namespaces",
+    "indexRelatedPagesName": "related_pages",
+    "indexExamplesName": "examples"
+}

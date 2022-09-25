@@ -1,0 +1,29 @@
+name: deploy_docs
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install
+        run: pip3 install mkdocs mkdocs-material fontawesome_markdown markdown-katex
+
+      - name: mkdocs build
+        run: |
+          mkdocs build
+
+      - name: mkdocs deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.PERSONAL_TOKEN }}
+          publish_dir: ./site
