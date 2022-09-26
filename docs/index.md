@@ -88,4 +88,4 @@ int main()
 実装してあるパッケージについての技術資料も用意してあるためプログラムと理論を対応させながら使うことができる
 
 ## API
-使用できる関数・クラスについては[こちら](api/api.md)
+使用できる関数・クラスについては[こちら](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)

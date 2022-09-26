@@ -13,6 +13,10 @@
 namespace cpp_robotics
 {
 
+/**
+ * @brief スプライン曲線用関数郡
+ * 
+ */
 namespace spline
 {
     struct spline_c

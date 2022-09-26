@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::unit::Prefix
+summary: 単位系接頭辞クラス 
 
 ---
 
@@ -7,12 +8,12 @@ title: cpp_robotics::unit::Prefix
 
 
 
- [More...](#detailed-description)
+単位系接頭辞クラス  [More...](#detailed-description)
 
 
 `#include <unit_core.hpp>`
 
-Inherits from [cpp_robotics::unit::PrefixBase](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1PrefixBase/)
+Inherits from PrefixBase
 
 ## Public Types
 
@@ -27,15 +28,6 @@ Inherits from [cpp_robotics::unit::PrefixBase](/cpp_robotics/doxybook/Classes/st
 | constexpr uint32_t | **[num](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/#variable-num)**  |
 | constexpr uint32_t | **[den](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/#variable-den)**  |
 
-## Additional inherited members
-
-**Public Functions inherited from [cpp_robotics::unit::PrefixBase](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1PrefixBase/)**
-
-|                | Name           |
-| -------------- | -------------- |
-| | **[PrefixBase](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1PrefixBase/#function-prefixbase)**() =delete |
-
-
 ## Detailed Description
 
 ```cpp
@@ -43,6 +35,13 @@ template <uint32_t N,
 uint32_t D>
 struct cpp_robotics::unit::Prefix;
 ```
+
+単位系接頭辞クラス 
+
+**Template Parameters**: 
+
+  * **N** 
+  * **D** 
 
 ## Public Types Documentation
 
@@ -71,4 +70,4 @@ static constexpr uint32_t den = D / std::gcd(N, D);
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:50:01 +0900
+Updated on 2022-09-26 at 11:58:18 +0900

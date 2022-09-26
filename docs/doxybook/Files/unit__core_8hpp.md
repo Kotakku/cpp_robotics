@@ -12,23 +12,16 @@ title: include/cpp_robotics/units/unit_core.hpp
 | Name           |
 | -------------- |
 | **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
-| **[cpp_robotics::unit](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/)**  |
-| **[cpp_robotics::unit::unit_dim_assem](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__dim__assem/)**  |
+| **[cpp_robotics::unit](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/)** <br>単位系  |
 | **[cpp_robotics::unit::prefix](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/)**  |
 | **[cpp_robotics::unit::tag](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1tag/)**  |
-| **[cpp_robotics::unit::unit_assem](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__assem/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cpp_robotics::unit::UnitType](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/)**  |
-| struct | **[cpp_robotics::unit::unit_dim_assem::udim_mul](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__mul/)**  |
-| struct | **[cpp_robotics::unit::unit_dim_assem::udim_div](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__div/)**  |
-| struct | **[cpp_robotics::unit::unit_dim_assem::udim_pow](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__pow/)**  |
-| struct | **[cpp_robotics::unit::unit_dim_assem::udim_inv](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__inv/)**  |
-| struct | **[cpp_robotics::unit::PrefixBase](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1PrefixBase/)**  |
-| struct | **[cpp_robotics::unit::Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)**  |
+| struct | **[cpp_robotics::unit::UnitType](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/)** <br>SI単位系次元定義クラス  |
+| struct | **[cpp_robotics::unit::Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)** <br>単位系接頭辞クラス  |
 | struct | **[cpp_robotics::unit::prefix::pfx_mul](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__mul/)**  |
 | struct | **[cpp_robotics::unit::prefix::pfx_div](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__div/)**  |
 | struct | **[cpp_robotics::unit::prefix::pfx_inv](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__inv/)**  |
@@ -36,11 +29,7 @@ title: include/cpp_robotics/units/unit_core.hpp
 | struct | **[cpp_robotics::unit::tag::is_normal_tag](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1tag_1_1is__normal__tag/)**  |
 | struct | **[cpp_robotics::unit::tag::is_normal_tag<-1 >](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1tag_1_1is__normal__tag_3-1_01_4/)**  |
 | struct | **[cpp_robotics::unit::tag::is_normal_tag< 0 >](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1tag_1_1is__normal__tag_3_010_01_4/)**  |
-| class | **[cpp_robotics::unit::Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)**  |
-| struct | **[cpp_robotics::unit::unit_assem::unit_mul](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__mul/)**  |
-| struct | **[cpp_robotics::unit::unit_assem::unit_div](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__div/)**  |
-| struct | **[cpp_robotics::unit::unit_assem::unit_inv](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__inv/)**  |
-| struct | **[cpp_robotics::unit::unit_assem::unit_pfx_scaled](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__pfx__scaled/)**  |
+| class | **[cpp_robotics::unit::Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)** <br>単位クラス  |
 
 ## Defines
 
@@ -124,6 +113,7 @@ constexpr auto operator"" _## suffix(long double val)\
 
 namespace cpp_robotics
 {
+
 inline namespace unit
 {
 enum UnitIndex
@@ -140,11 +130,17 @@ enum UnitIndex
 template<int DIM1, int DIM2, int DIM3, int DIM4, int DIM5, int DIM6, int DIM7>
 struct UnitType{
     static constexpr int dim1 = DIM1;
+
     static constexpr int dim2 = DIM2;
+
     static constexpr int dim3 = DIM3;
+
     static constexpr int dim4 = DIM4;
+
     static constexpr int dim5 = DIM5;
+
     static constexpr int dim6 = DIM6;
+
     static constexpr int dim7 = DIM7;
 };
 
@@ -569,4 +565,4 @@ constexpr auto operator"" _## suffix(long double val)\
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:50:01 +0900
+Updated on 2022-09-26 at 11:58:18 +0900

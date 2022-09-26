@@ -2,7 +2,7 @@
 
 #include <Eigen/Dense>
 
-namespace abu2022
+namespace cpp_robotics
 {
 
 /*

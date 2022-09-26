@@ -12,14 +12,11 @@ title: cpp_robotics
 | Name           |
 | -------------- |
 | **[cpp_robotics::constants](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/)** <br>数学・物理定数  |
-| **[cpp_robotics::grid_path_planning_utils](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/)**  |
-| **[cpp_robotics::internal](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1internal/)**  |
-| **[cpp_robotics::spline](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/)**  |
-| **[cpp_robotics::unit](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/)**  |
+| **[cpp_robotics::grid_path_planning_utils](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/)** <br>グリッドパスプランニング用関数・クラス郡  |
+| **[cpp_robotics::spline](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/)** <br>スプライン曲線用関数郡  |
+| **[cpp_robotics::unit](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/)** <br>単位系  |
 | **[cpp_robotics::unit::prefix](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/)**  |
 | **[cpp_robotics::unit::tag](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1tag/)**  |
-| **[cpp_robotics::unit::unit_assem](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__assem/)**  |
-| **[cpp_robotics::unit::unit_dim_assem](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__dim__assem/)**  |
 | **[cpp_robotics::unit::unit_dimention](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__dimention/)**  |
 
 ## Classes
@@ -59,8 +56,7 @@ title: cpp_robotics
 | class | **[cpp_robotics::PID2Controller](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PID2Controller/)**  |
 | class | **[cpp_robotics::PIDController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PIDController/)**  |
 | struct | **[cpp_robotics::Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)**  |
-| struct | **[cpp_robotics::unit::Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)**  |
-| struct | **[cpp_robotics::unit::PrefixBase](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1PrefixBase/)**  |
+| struct | **[cpp_robotics::unit::Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)** <br>単位系接頭辞クラス  |
 | class | **[cpp_robotics::PurePursuit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PurePursuit/)**  |
 | struct | **[cpp_robotics::Quad](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quad/)** <br>四角形  |
 | class | **[cpp_robotics::QuadCopterController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadCopterController/)**  |
@@ -76,8 +72,8 @@ title: cpp_robotics
 | class | **[cpp_robotics::TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/)**  |
 | struct | **[cpp_robotics::Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)** <br>2次元のロボットの座標を扱うクラス  |
 | struct | **[cpp_robotics::Triangle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Triangle/)** <br>三角形  |
-| class | **[cpp_robotics::unit::Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)**  |
-| struct | **[cpp_robotics::unit::UnitType](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/)**  |
+| class | **[cpp_robotics::unit::Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)** <br>単位クラス  |
+| struct | **[cpp_robotics::unit::UnitType](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/)** <br>SI単位系次元定義クラス  |
 | struct | **[cpp_robotics::Vector2](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector2/)** <br>2次元のベクトル  |
 | struct | **[cpp_robotics::Vector3](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector3/)** <br>3次元のベクトル  |
 | struct | **[cpp_robotics::Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)** <br>4次元のベクトル  |
@@ -2221,4 +2217,4 @@ constexpr float gfcm2mNm = (gfm2Nm / 100);
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:50:00 +0900
+Updated on 2022-09-26 at 11:58:17 +0900

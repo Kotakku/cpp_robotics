@@ -8,7 +8,6 @@ title: Classes
 
 
 
-* **namespace [abu2022](/cpp_robotics/doxybook/Namespaces/namespaceabu2022/)** 
 * **namespace [cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)** 
     * **class [AccelerationLimitFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AccelerationLimitFilter/)** 
     * **class [ActiveSetMethod](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ActiveSetMethod/)** 
@@ -77,19 +76,15 @@ title: Classes
     * **struct [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)** <br>4次元のベクトル 
     * **class [VelocityLimitFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/)** 
     * **namespace [constants](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/)** <br>数学・物理定数 
-    * **namespace [grid_path_planning_utils](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/)** 
+    * **namespace [grid_path_planning_utils](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/)** <br>グリッドパスプランニング用関数・クラス郡 
         * **struct [GridNode](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/)** 
-    * **namespace [internal](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1internal/)** 
-        * **class [DiffPair](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1internal_1_1DiffPair/)** 
-        * **class [DiffTri](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1internal_1_1DiffTri/)** 
     * **struct [is_base_of_robot_if](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1is__base__of__robot__if/)** 
-    * **namespace [spline](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/)** 
+    * **namespace [spline](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/)** <br>スプライン曲線用関数郡 
         * **struct [spline_c](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/)** 
-    * **namespace [unit](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/)** 
-        * **struct [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)** 
-        * **struct [PrefixBase](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1PrefixBase/)** 
-        * **class [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)** 
-        * **struct [UnitType](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/)** 
+    * **namespace [unit](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/)** <br>単位系 
+        * **struct [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)** <br>単位系接頭辞クラス 
+        * **class [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)** <br>単位クラス 
+        * **struct [UnitType](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/)** <br>SI単位系次元定義クラス 
         * **namespace [prefix](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/)** 
             * **struct [pfx_div](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__div/)** 
             * **struct [pfx_inv](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__inv/)** 
@@ -99,21 +94,10 @@ title: Classes
             * **struct [is_normal_tag](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1tag_1_1is__normal__tag/)** 
             * **struct [is_normal_tag< 0 >](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1tag_1_1is__normal__tag_3_010_01_4/)** 
             * **struct [is_normal_tag<-1 >](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1tag_1_1is__normal__tag_3-1_01_4/)** 
-        * **namespace [unit_assem](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__assem/)** 
-            * **struct [unit_div](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__div/)** 
-            * **struct [unit_inv](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__inv/)** 
-            * **struct [unit_mul](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__mul/)** 
-            * **struct [unit_pfx_scaled](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__pfx__scaled/)** 
-        * **namespace [unit_dim_assem](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__dim__assem/)** 
-            * **struct [udim_div](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__div/)** 
-            * **struct [udim_inv](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__inv/)** 
-            * **struct [udim_mul](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__mul/)** 
-            * **struct [udim_pow](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__pow/)** 
         * **namespace [unit_dimention](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__dimention/)** 
-    * **struct [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)** 
-    * **struct [PrefixBase](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1PrefixBase/)** 
-    * **class [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)** 
-    * **struct [UnitType](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/)** 
+    * **struct [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)** <br>単位系接頭辞クラス 
+    * **class [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)** <br>単位クラス 
+    * **struct [UnitType](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/)** <br>SI単位系次元定義クラス 
     * **namespace [prefix](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/)** 
         * **struct [pfx_div](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__div/)** 
         * **struct [pfx_inv](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1prefix_1_1pfx__inv/)** 
@@ -123,20 +107,11 @@ title: Classes
         * **struct [is_normal_tag](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1tag_1_1is__normal__tag/)** 
         * **struct [is_normal_tag< 0 >](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1tag_1_1is__normal__tag_3_010_01_4/)** 
         * **struct [is_normal_tag<-1 >](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1tag_1_1is__normal__tag_3-1_01_4/)** 
-    * **namespace [unit_assem](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__assem/)** 
-        * **struct [unit_div](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__div/)** 
-        * **struct [unit_inv](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__inv/)** 
-        * **struct [unit_mul](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__mul/)** 
-        * **struct [unit_pfx_scaled](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__pfx__scaled/)** 
-    * **namespace [unit_dim_assem](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__dim__assem/)** 
-        * **struct [udim_div](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__div/)** 
-        * **struct [udim_inv](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__inv/)** 
-        * **struct [udim_mul](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__mul/)** 
-        * **struct [udim_pow](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__dim__assem_1_1udim__pow/)** 
     * **namespace [unit_dimention](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__dimention/)** 
+* **namespace [unit_dim_assem](/cpp_robotics/doxybook/Namespaces/namespaceunit__dim__assem/)** 
 
 
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:50:01 +0900
+Updated on 2022-09-26 at 11:58:18 +0900

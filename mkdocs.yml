@@ -45,7 +45,7 @@ markdown_extensions:
 
 nav:
   - 概要: index.md
-  - API: api/api.md
+  - API: /cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/
   - プログラム例:
     - HelloWorld: example/hello_world.md
     - アルゴリズム:
@@ -148,4 +148,3 @@ nav:
     - ソフトウェア設計:
       - デザインパターン: tech_note/software_design/design_pattern.md
       - SOLID原則: tech_note/software_design/solid.md
-  - 実装したもの・したいもの: impl_memo.md

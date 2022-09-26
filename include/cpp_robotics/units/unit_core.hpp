@@ -8,6 +8,11 @@
 
 namespace cpp_robotics
 {
+
+/**
+ * @brief 単位系
+ * 
+ */
 inline namespace unit
 {
 enum UnitIndex
@@ -21,17 +26,55 @@ enum UnitIndex
     CandelaIdx
 };
 
+/**
+ * @brief SI単位系次元定義クラス
+ */
 template<int DIM1, int DIM2, int DIM3, int DIM4, int DIM5, int DIM6, int DIM7>
 struct UnitType{
+    /**
+     * @brief メートル(m)
+     * 
+     */
     static constexpr int dim1 = DIM1;
+
+    /**
+     * @brief キログラム(kg)
+     * 
+     */
     static constexpr int dim2 = DIM2;
+
+    /**
+     * @brief 秒(s)
+     * 
+     */
     static constexpr int dim3 = DIM3;
+
+    /**
+     * @brief アンペア(A)
+     * 
+     */
     static constexpr int dim4 = DIM4;
+
+    /**
+     * @brief ケルビン(K)
+     * 
+     */
     static constexpr int dim5 = DIM5;
+
+    /**
+     * @brief モル(mol)
+     * 
+     */
     static constexpr int dim6 = DIM6;
+
+    /**
+     * @brief カンデラ(cd)
+     * 
+     */
     static constexpr int dim7 = DIM7;
 };
 
+/// @cond
 namespace unit_dim_assem
 {
     template<class U1, class U2>
@@ -86,12 +129,21 @@ namespace unit_dim_assem
             -U1::dim7>;
     };
 }
+/// @endcond
 
+/// @cond
 struct PrefixBase 
 {
     PrefixBase() = delete;
 };
+/// @endcond
 
+/**
+ * @brief 単位系接頭辞クラス
+ * 
+ * @tparam N 
+ * @tparam D 
+ */
 template<uint32_t N, uint32_t D>
 struct Prefix : public PrefixBase
 {
@@ -176,6 +228,14 @@ constexpr double conv_factor()
     return 1;
 }
 
+/**
+ * @brief 単位クラス
+ * 
+ * @tparam T 浮動小数点数型
+ * @tparam UnitDimType 次元
+ * @tparam P 接頭辞
+ * @tparam Tag 同次元の単位系を区別するタグ
+ */
 template<class T, class UnitDimType, class P, int Tag = -1>
 class Unit
 {
@@ -281,6 +341,7 @@ private:
     T val_;
 };
 
+/// @cond
 namespace unit_assem
 {
     template<class Unit1, class Unit2>
@@ -320,6 +381,7 @@ namespace unit_assem
             UnitType::tag>;
     };
 }
+/// @endcond
 
 // template <class UnitType, typename T>
 // constexpr auto operator <=>(const UnitType &l_value, const T &r_value)

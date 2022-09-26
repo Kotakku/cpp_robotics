@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::unit::Unit
+summary: 単位クラス 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::unit::Unit
 
 
 
- [More...](#detailed-description)
+単位クラス  [More...](#detailed-description)
 
 
 `#include <unit_core.hpp>`
@@ -57,6 +58,15 @@ class P ,
 int Tag =-1>
 class cpp_robotics::unit::Unit;
 ```
+
+単位クラス 
+
+**Template Parameters**: 
+
+  * **T** 浮動小数点数型 
+  * **UnitDimType** 次元 
+  * **P** 接頭辞 
+  * **Tag** 同次元の単位系を区別するタグ 
 
 ## Public Types Documentation
 
@@ -231,4 +241,4 @@ static constexpr int tag = Tag;
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:50:01 +0900
+Updated on 2022-09-26 at 11:58:18 +0900

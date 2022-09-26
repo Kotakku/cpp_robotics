@@ -11,7 +11,7 @@ title: include/cpp_robotics/filter/extended_kalman_filter.hpp
 
 | Name           |
 | -------------- |
-| **[abu2022](/cpp_robotics/doxybook/Namespaces/namespaceabu2022/)**  |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
 
 
@@ -23,7 +23,7 @@ title: include/cpp_robotics/filter/extended_kalman_filter.hpp
 
 #include <Eigen/Dense>
 
-namespace abu2022
+namespace cpp_robotics
 {
 
 /*
@@ -252,4 +252,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:50:01 +0900
+Updated on 2022-09-26 at 11:58:18 +0900

@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::unit::UnitType
+summary: SI単位系次元定義クラス 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::unit::UnitType
 
 
 
- [More...](#detailed-description)
+SI単位系次元定義クラス  [More...](#detailed-description)
 
 
 `#include <unit_core.hpp>`
@@ -16,13 +17,13 @@ title: cpp_robotics::unit::UnitType
 
 |                | Name           |
 | -------------- | -------------- |
-| constexpr int | **[dim1](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim1)**  |
-| constexpr int | **[dim2](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim2)**  |
-| constexpr int | **[dim3](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim3)**  |
-| constexpr int | **[dim4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim4)**  |
-| constexpr int | **[dim5](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim5)**  |
-| constexpr int | **[dim6](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim6)**  |
-| constexpr int | **[dim7](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim7)**  |
+| constexpr int | **[dim1](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim1)** <br>メートル(m)  |
+| constexpr int | **[dim2](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim2)** <br>キログラム(kg)  |
+| constexpr int | **[dim3](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim3)** <br>秒(s)  |
+| constexpr int | **[dim4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim4)** <br>アンペア(A)  |
+| constexpr int | **[dim5](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim5)** <br>ケルビン(K)  |
+| constexpr int | **[dim6](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim6)** <br>モル(mol)  |
+| constexpr int | **[dim7](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/#variable-dim7)** <br>カンデラ(cd)  |
 
 ## Detailed Description
 
@@ -37,6 +38,7 @@ int DIM7>
 struct cpp_robotics::unit::UnitType;
 ```
 
+SI単位系次元定義クラス 
 ## Public Attributes Documentation
 
 ### variable dim1
@@ -45,6 +47,7 @@ struct cpp_robotics::unit::UnitType;
 static constexpr int dim1 = DIM1;
 ```
 
+メートル(m) 
 
 ### variable dim2
 
@@ -52,6 +55,7 @@ static constexpr int dim1 = DIM1;
 static constexpr int dim2 = DIM2;
 ```
 
+キログラム(kg) 
 
 ### variable dim3
 
@@ -59,6 +63,7 @@ static constexpr int dim2 = DIM2;
 static constexpr int dim3 = DIM3;
 ```
 
+秒(s) 
 
 ### variable dim4
 
@@ -66,6 +71,7 @@ static constexpr int dim3 = DIM3;
 static constexpr int dim4 = DIM4;
 ```
 
+アンペア(A) 
 
 ### variable dim5
 
@@ -73,6 +79,7 @@ static constexpr int dim4 = DIM4;
 static constexpr int dim5 = DIM5;
 ```
 
+ケルビン(K) 
 
 ### variable dim6
 
@@ -80,6 +87,7 @@ static constexpr int dim5 = DIM5;
 static constexpr int dim6 = DIM6;
 ```
 
+モル(mol) 
 
 ### variable dim7
 
@@ -87,7 +95,8 @@ static constexpr int dim6 = DIM6;
 static constexpr int dim7 = DIM7;
 ```
 
+カンデラ(cd) 
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:50:01 +0900
+Updated on 2022-09-26 at 11:58:18 +0900

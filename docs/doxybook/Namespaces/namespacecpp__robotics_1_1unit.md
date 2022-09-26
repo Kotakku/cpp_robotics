@@ -1,11 +1,12 @@
 ---
 title: cpp_robotics::unit
+summary: 単位系 
 
 ---
 
 # cpp_robotics::unit
 
-
+単位系 
 
 ## Namespaces
 
@@ -13,27 +14,24 @@ title: cpp_robotics::unit
 | -------------- |
 | **[cpp_robotics::unit::prefix](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/)**  |
 | **[cpp_robotics::unit::tag](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1tag/)**  |
-| **[cpp_robotics::unit::unit_assem](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__assem/)**  |
-| **[cpp_robotics::unit::unit_dim_assem](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__dim__assem/)**  |
 | **[cpp_robotics::unit::unit_dimention](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__dimention/)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cpp_robotics::unit::Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)**  |
-| struct | **[cpp_robotics::unit::PrefixBase](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1PrefixBase/)**  |
-| class | **[cpp_robotics::unit::Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)**  |
-| struct | **[cpp_robotics::unit::UnitType](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/)**  |
+| struct | **[cpp_robotics::unit::Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)** <br>単位系接頭辞クラス  |
+| class | **[cpp_robotics::unit::Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)** <br>単位クラス  |
+| struct | **[cpp_robotics::unit::UnitType](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1UnitType/)** <br>SI単位系次元定義クラス  |
 
 ## Types
 
 |                | Name           |
 | -------------- | -------------- |
 | enum| **[UnitIndex](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/#enum-unitindex)** { MetereIdx, KiloGramIdx, SecondIdx, AmpereIdx, KelvinIdx, MoleIdx, CandelaIdx} |
-| using [unit_assem::unit_div](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__div/)< [Torque](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-torque), [Ampere](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-ampere) >::unit | **[TorqueConstant](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/#using-torqueconstant)**  |
-| using [unit_assem::unit_div](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__div/)< [Volt](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-volt), [AngularVelocity](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-angularvelocity) >::unit | **[BackEmfConstant](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/#using-backemfconstant)**  |
-| using [unit_assem::unit_mul](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1unit__assem_1_1unit__mul/)< [Torque](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-torque), [Second](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-second) >::unit | **[FrictionConstant](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/#using-frictionconstant)**  |
+| using unit_assem::unit_div< [Torque](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-torque), [Ampere](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-ampere) >::unit | **[TorqueConstant](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/#using-torqueconstant)**  |
+| using unit_assem::unit_div< [Volt](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-volt), [AngularVelocity](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-angularvelocity) >::unit | **[BackEmfConstant](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/#using-backemfconstant)**  |
+| using unit_assem::unit_mul< [Torque](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-torque), [Second](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-second) >::unit | **[FrictionConstant](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/#using-frictionconstant)**  |
 | using [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< double, [unit_dimention::second](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__dimention/#using-second), [prefix::none](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-none) > | **[Second](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/#using-second)**  |
 | using [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< double, [unit_dimention::second](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__dimention/#using-second), [prefix::milli](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-milli) > | **[MilliSecond](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/#using-millisecond)**  |
 | using [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< double, [unit_dimention::second](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1unit__dimention/#using-second), [prefix::micro](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit_1_1prefix/#using-micro) > | **[MicroSecond](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/#using-microsecond)**  |
@@ -561,4 +559,4 @@ constexpr auto operator-(
 
 -------------------------------
 
-Updated on 2022-09-25 at 23:50:01 +0900
+Updated on 2022-09-26 at 11:58:18 +0900
