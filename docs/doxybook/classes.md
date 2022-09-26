@@ -57,6 +57,7 @@ title: Classes
         * **struct [Param](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/)** 
         * **struct [Result](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Result/)** 
     * **class [Quaternion](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/)** 
+    * **class [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)** <br>乱数生成器 stdの標準乱数生成器をラップしてこのクラス一つだけ実体化すれば乱数を生成できるようにした 
     * **struct [Rect](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Rect/)** <br>長方形クラス(回転は考えない) 
     * **class [SQP](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SQP/)** 
         * **struct [Problem](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Problem/)** 
@@ -114,4 +115,4 @@ title: Classes
 
 -------------------------------
 
-Updated on 2022-09-26 at 11:58:18 +0900
+Updated on 2022-09-27 at 01:12:57 +0900

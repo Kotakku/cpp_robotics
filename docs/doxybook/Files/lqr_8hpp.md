@@ -70,4 +70,4 @@ static Eigen::MatrixXd lqr(const Eigen::MatrixXd &A,
 
 -------------------------------
 
-Updated on 2022-09-26 at 11:58:18 +0900
+Updated on 2022-09-27 at 01:12:56 +0900

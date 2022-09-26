@@ -63,6 +63,7 @@ title: cpp_robotics
 | class | **[cpp_robotics::QuadCopterInterface](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadCopterInterface/)**  |
 | class | **[cpp_robotics::QuadProg](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/)**  |
 | class | **[cpp_robotics::Quaternion](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/)**  |
+| class | **[cpp_robotics::RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)** <br>乱数生成器 stdの標準乱数生成器をラップしてこのクラス一つだけ実体化すれば乱数を生成できるようにした  |
 | struct | **[cpp_robotics::Rect](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Rect/)** <br>長方形クラス(回転は考えない)  |
 | class | **[cpp_robotics::Singleton](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Singleton/)**  |
 | class | **[cpp_robotics::SisoFeedbackSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/)**  |
@@ -85,6 +86,26 @@ title: cpp_robotics
 | -------------- | -------------- |
 | enum class| **[CanonicalizeMode](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#enum-canonicalizemode)** { COMPANION, OBSERBAVLE, CONTROLLABLE} |
 | enum| **[UnitIndex](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#enum-unitindex)** { MetereIdx, KiloGramIdx, SecondIdx, AmpereIdx, KelvinIdx, MoleIdx, CandelaIdx} |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::uniform_int_distribution<> > | **[UniformIntRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-uniformintrandomengine)** <br>整数型一様分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::uniform_real_distribution<> > | **[UniformRealRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-uniformrealrandomengine)** <br>実数型一様分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::bernoulli_distribution > | **[BernoulliRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-bernoullirandomengine)** <br>ベルヌーイ分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::binomial_distribution<> > | **[BinomialRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-binomialrandomengine)** <br>二項分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::geometric_distribution<> > | **[GeometricRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-geometricrandomengine)** <br>幾何学分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::negative_binomial_distribution<> > | **[NegativeBinomialRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-negativebinomialrandomengine)** <br>負の二項分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::poisson_distribution<> > | **[PoissonRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-poissonrandomengine)** <br>ポワソン分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::exponential_distribution<> > | **[ExponentialRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-exponentialrandomengine)** <br>指数分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::gamma_distribution<> > | **[GammaRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-gammarandomengine)** <br>ガンマ分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::weibull_distribution<> > | **[WeibullRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-weibullrandomengine)** <br>ワイブル分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::extreme_value_distribution<> > | **[ExtremeValueRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-extremevaluerandomengine)** <br>極値分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::normal_distribution<> > | **[NormalRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-normalrandomengine)** <br>正規分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::lognormal_distribution<> > | **[LognormalRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-lognormalrandomengine)** <br>対数正規分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::chi_squared_distribution<> > | **[ChiSquaredRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-chisquaredrandomengine)** <br>カイ二乗分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::cauchy_distribution<> > | **[CauchyRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-cauchyrandomengine)** <br>コーシー分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::fisher_f_distribution<> > | **[FisherFRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-fisherfrandomengine)** <br>フィッシャーのF分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::student_t_distribution<> > | **[StudentTRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-studenttrandomengine)** <br>ステューデントのt分布乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::discrete_distribution<> > | **[DiscreteRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-discreterandomengine)** <br>整数のインデックスごとに離散した確率分布の乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::piecewise_constant_distribution<> > | **[PiecewiseConstantRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-piecewiseconstantrandomengine)** <br>区間ごとの重み付けを定数値とした分布の乱数生成エンジン  |
+| using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::piecewise_linear_distribution<> > | **[PiecewiseLinearRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-piecewiselinearrandomengine)** <br>区間ごとの重み付けを線形に接続した分布の乱数生成エンジン  |
 | using unit_assem::unit_div< [Torque](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-torque), [Ampere](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-ampere) >::unit | **[TorqueConstant](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-torqueconstant)**  |
 | using unit_assem::unit_div< [Volt](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-volt), [AngularVelocity](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-angularvelocity) >::unit | **[BackEmfConstant](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-backemfconstant)**  |
 | using unit_assem::unit_mul< [Torque](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-torque), [Second](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-second) >::unit | **[FrictionConstant](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-frictionconstant)**  |
@@ -147,6 +168,7 @@ title: cpp_robotics
 | template <size_t DIM\> <br>std::pair< Eigen::Matrix< double, DIM, DIM >, Eigen::Matrix< double, DIM, 1 > > | **[calcu_transformatoin](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-calcu-transformatoin)**(std::vector< Eigen::Matrix< double, DIM, 1 >> dest, std::vector< Eigen::Matrix< double, DIM, 1 >> fixed) |
 | template <size_t DIM\> <br>std::tuple< std::vector< Eigen::Matrix< double, DIM, 1 > >, size_t > | **[icp](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-icp)**(std::vector< Eigen::Matrix< double, DIM, 1 >> dest, std::vector< Eigen::Matrix< double, DIM, 1 >> fixed, size_t max_iter =100) |
 | double | **[mahalanobis](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-mahalanobis)**(const Eigen::VectorXd & a, const Eigen::VectorXd & b, const Eigen::MatrixXd cov_inv) |
+| template <typename Real  =double\> <br>Real | **[gererate_random](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-gererate-random)**()<br>0.0〜1.0までの一様分布の乱数を生成する  |
 | std::optional< Eigen::MatrixXd > | **[solve_riccati_arimoto_potter](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-solve-riccati-arimoto-potter)**(const Eigen::MatrixXd & A, const Eigen::MatrixXd & B, const Eigen::MatrixXd & Q, const Eigen::MatrixXd & R) |
 | Eigen::MatrixXd | **[lqr](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lqr)**(const Eigen::MatrixXd & A, const Eigen::MatrixXd & B, const Eigen::MatrixXd & Q, const Eigen::MatrixXd & R) |
 | Eigen::MatrixXd | **[controllability_matrix](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-controllability-matrix)**(const Eigen::MatrixXd & A, const Eigen::VectorXd & B) |
@@ -309,6 +331,166 @@ title: cpp_robotics
 
 
 
+
+### using UniformIntRandomEngine
+
+```cpp
+using cpp_robotics::UniformIntRandomEngine = typedef RandomGenerator<std::uniform_int_distribution<> >;
+```
+
+整数型一様分布乱数生成エンジン 
+
+### using UniformRealRandomEngine
+
+```cpp
+using cpp_robotics::UniformRealRandomEngine = typedef RandomGenerator<std::uniform_real_distribution<> >;
+```
+
+実数型一様分布乱数生成エンジン 
+
+### using BernoulliRandomEngine
+
+```cpp
+using cpp_robotics::BernoulliRandomEngine = typedef RandomGenerator<std::bernoulli_distribution>;
+```
+
+ベルヌーイ分布乱数生成エンジン 
+
+### using BinomialRandomEngine
+
+```cpp
+using cpp_robotics::BinomialRandomEngine = typedef RandomGenerator<std::binomial_distribution<> >;
+```
+
+二項分布乱数生成エンジン 
+
+### using GeometricRandomEngine
+
+```cpp
+using cpp_robotics::GeometricRandomEngine = typedef RandomGenerator<std::geometric_distribution<> >;
+```
+
+幾何学分布乱数生成エンジン 
+
+### using NegativeBinomialRandomEngine
+
+```cpp
+using cpp_robotics::NegativeBinomialRandomEngine = typedef RandomGenerator<std::negative_binomial_distribution<> >;
+```
+
+負の二項分布乱数生成エンジン 
+
+### using PoissonRandomEngine
+
+```cpp
+using cpp_robotics::PoissonRandomEngine = typedef RandomGenerator<std::poisson_distribution<> >;
+```
+
+ポワソン分布乱数生成エンジン 
+
+### using ExponentialRandomEngine
+
+```cpp
+using cpp_robotics::ExponentialRandomEngine = typedef RandomGenerator<std::exponential_distribution<> >;
+```
+
+指数分布乱数生成エンジン 
+
+### using GammaRandomEngine
+
+```cpp
+using cpp_robotics::GammaRandomEngine = typedef RandomGenerator<std::gamma_distribution<> >;
+```
+
+ガンマ分布乱数生成エンジン 
+
+### using WeibullRandomEngine
+
+```cpp
+using cpp_robotics::WeibullRandomEngine = typedef RandomGenerator<std::weibull_distribution<> >;
+```
+
+ワイブル分布乱数生成エンジン 
+
+### using ExtremeValueRandomEngine
+
+```cpp
+using cpp_robotics::ExtremeValueRandomEngine = typedef RandomGenerator<std::extreme_value_distribution<> >;
+```
+
+極値分布乱数生成エンジン 
+
+### using NormalRandomEngine
+
+```cpp
+using cpp_robotics::NormalRandomEngine = typedef RandomGenerator<std::normal_distribution<> >;
+```
+
+正規分布乱数生成エンジン 
+
+### using LognormalRandomEngine
+
+```cpp
+using cpp_robotics::LognormalRandomEngine = typedef RandomGenerator<std::lognormal_distribution<> >;
+```
+
+対数正規分布乱数生成エンジン 
+
+### using ChiSquaredRandomEngine
+
+```cpp
+using cpp_robotics::ChiSquaredRandomEngine = typedef RandomGenerator<std::chi_squared_distribution<> >;
+```
+
+カイ二乗分布乱数生成エンジン 
+
+### using CauchyRandomEngine
+
+```cpp
+using cpp_robotics::CauchyRandomEngine = typedef RandomGenerator<std::cauchy_distribution<> >;
+```
+
+コーシー分布乱数生成エンジン 
+
+### using FisherFRandomEngine
+
+```cpp
+using cpp_robotics::FisherFRandomEngine = typedef RandomGenerator<std::fisher_f_distribution<> >;
+```
+
+フィッシャーのF分布乱数生成エンジン 
+
+### using StudentTRandomEngine
+
+```cpp
+using cpp_robotics::StudentTRandomEngine = typedef RandomGenerator<std::student_t_distribution<> >;
+```
+
+ステューデントのt分布乱数生成エンジン 
+
+### using DiscreteRandomEngine
+
+```cpp
+using cpp_robotics::DiscreteRandomEngine = typedef RandomGenerator<std::discrete_distribution<> >;
+```
+
+整数のインデックスごとに離散した確率分布の乱数生成エンジン 
+
+### using PiecewiseConstantRandomEngine
+
+```cpp
+using cpp_robotics::PiecewiseConstantRandomEngine = typedef RandomGenerator<std::piecewise_constant_distribution<> >;
+```
+
+区間ごとの重み付けを定数値とした分布の乱数生成エンジン 
+
+### using PiecewiseLinearRandomEngine
+
+```cpp
+using cpp_robotics::PiecewiseLinearRandomEngine = typedef RandomGenerator<std::piecewise_linear_distribution<> >;
+```
+
+区間ごとの重み付けを線形に接続した分布の乱数生成エンジン 
 
 ### using TorqueConstant
 
@@ -724,6 +906,22 @@ double mahalanobis(
 )
 ```
 
+
+### function gererate_random
+
+```cpp
+template <typename Real  =double>
+static Real gererate_random()
+```
+
+0.0〜1.0までの一様分布の乱数を生成する 
+
+**Template Parameters**: 
+
+  * **Real** 浮動小数点型 
+
+
+**Return**: Real 乱数 
 
 ### function solve_riccati_arimoto_potter
 
@@ -2217,4 +2415,4 @@ constexpr float gfcm2mNm = (gfm2Nm / 100);
 
 -------------------------------
 
-Updated on 2022-09-26 at 11:58:17 +0900
+Updated on 2022-09-27 at 01:12:56 +0900

@@ -36,4 +36,4 @@ using cpp_robotics::unit::prefix::pfx_inv< P >::prefix =  Prefix<P::den, P::num>
 
 -------------------------------
 
-Updated on 2022-09-26 at 11:58:18 +0900
+Updated on 2022-09-27 at 01:12:56 +0900

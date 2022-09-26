@@ -54,7 +54,23 @@ get_filename_component(example_name example/${example_file}.cpp NAME_WE)
 # message(${example_name})
 add_executable(${example_name} example/${example_file}.cpp)
 target_include_directories(${example_name} PRIVATE include ${EIGEN3_INCLUDE_DIR} ${Python3_INCLUDE_DIRS} ${Python3_NumPy_INCLUDE_DIRS})
-target_link_libraries(${example_name} Python3::Python Python3::NumPy)
+target_link_libraries(${example_name} PRIVATE Python3::Python Python3::NumPy)
+endforeach()
+
+#################### test ####################
+find_package(GTest REQUIRED)
+enable_testing()
+set(test_files
+  algorithm/poly_regression
+  algorithm/random_test
+)
+include(GoogleTest)
+foreach(test_file ${test_files})
+get_filename_component(test_name test/${test_file}.cpp NAME_WE)
+add_executable(${test_name} test/${test_file}.cpp)
+target_include_directories(${test_name} PRIVATE include ${EIGEN3_INCLUDE_DIR})
+target_link_libraries(${test_name} PRIVATE GTest::GTest GTest::Main)
+gtest_discover_tests(${test_name})
 endforeach()
 
 #################### install ####################
