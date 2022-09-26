@@ -181,6 +181,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/</loc>
+         <lastmod>2022-09-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SQP/</loc>
          <lastmod>2022-09-26</lastmod>
          <changefreq>daily</changefreq>
@@ -897,6 +902,11 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/quaternion_8hpp/</loc>
+         <lastmod>2022-09-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/random_8hpp/</loc>
          <lastmod>2022-09-26</lastmod>
          <changefreq>daily</changefreq>
     </url>

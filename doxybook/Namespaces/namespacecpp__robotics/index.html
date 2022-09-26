@@ -2343,6 +2343,10 @@
 <td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/">cpp_robotics::Quaternion</a></strong></td>
 </tr>
 <tr>
+<td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">cpp_robotics::RandomGenerator</a></strong> <br>乱数生成器 stdの標準乱数生成器をラップしてこのクラス一つだけ実体化すれば乱数を生成できるようにした</td>
+</tr>
+<tr>
 <td>struct</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Rect/">cpp_robotics::Rect</a></strong> <br>長方形クラス(回転は考えない)</td>
 </tr>
@@ -2420,6 +2424,86 @@
 <tr>
 <td>enum</td>
 <td AmpereIdx_="AmpereIdx," CandelaIdx="CandelaIdx" KelvinIdx_="KelvinIdx," KiloGramIdx_="KiloGramIdx," MetereIdx_="MetereIdx," MoleIdx_="MoleIdx," SecondIdx_="SecondIdx,"><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#enum-unitindex">UnitIndex</a></strong></td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::uniform_int_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-uniformintrandomengine">UniformIntRandomEngine</a></strong> <br>整数型一様分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::uniform_real_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-uniformrealrandomengine">UniformRealRandomEngine</a></strong> <br>実数型一様分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::bernoulli_distribution &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-bernoullirandomengine">BernoulliRandomEngine</a></strong> <br>ベルヌーイ分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::binomial_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-binomialrandomengine">BinomialRandomEngine</a></strong> <br>二項分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::geometric_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-geometricrandomengine">GeometricRandomEngine</a></strong> <br>幾何学分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::negative_binomial_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-negativebinomialrandomengine">NegativeBinomialRandomEngine</a></strong> <br>負の二項分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::poisson_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-poissonrandomengine">PoissonRandomEngine</a></strong> <br>ポワソン分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::exponential_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-exponentialrandomengine">ExponentialRandomEngine</a></strong> <br>指数分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::gamma_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-gammarandomengine">GammaRandomEngine</a></strong> <br>ガンマ分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::weibull_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-weibullrandomengine">WeibullRandomEngine</a></strong> <br>ワイブル分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::extreme_value_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-extremevaluerandomengine">ExtremeValueRandomEngine</a></strong> <br>極値分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::normal_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-normalrandomengine">NormalRandomEngine</a></strong> <br>正規分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::lognormal_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-lognormalrandomengine">LognormalRandomEngine</a></strong> <br>対数正規分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::chi_squared_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-chisquaredrandomengine">ChiSquaredRandomEngine</a></strong> <br>カイ二乗分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::cauchy_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-cauchyrandomengine">CauchyRandomEngine</a></strong> <br>コーシー分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::fisher_f_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-fisherfrandomengine">FisherFRandomEngine</a></strong> <br>フィッシャーのF分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::student_t_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-studenttrandomengine">StudentTRandomEngine</a></strong> <br>ステューデントのt分布乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::discrete_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-discreterandomengine">DiscreteRandomEngine</a></strong> <br>整数のインデックスごとに離散した確率分布の乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::piecewise_constant_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-piecewiseconstantrandomengine">PiecewiseConstantRandomEngine</a></strong> <br>区間ごとの重み付けを定数値とした分布の乱数生成エンジン</td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::piecewise_linear_distribution&lt;&gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-piecewiselinearrandomengine">PiecewiseLinearRandomEngine</a></strong> <br>区間ごとの重み付けを線形に接続した分布の乱数生成エンジン</td>
 </tr>
 <tr>
 <td>using unit_assem::unit_div&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-torque">Torque</a>, <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-ampere">Ampere</a> &gt;::unit</td>
@@ -2659,6 +2743,10 @@
 <tr>
 <td>double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-mahalanobis">mahalanobis</a></strong>(const Eigen::VectorXd &amp; a, const Eigen::VectorXd &amp; b, const Eigen::MatrixXd cov_inv)</td>
+</tr>
+<tr>
+<td>template &lt;typename Real  =double> <br>Real</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-gererate-random">gererate_random</a></strong>()<br>0.0〜1.0までの一様分布の乱数を生成する</td>
 </tr>
 <tr>
 <td>std::optional&lt; Eigen::MatrixXd &gt;</td>
@@ -3264,6 +3352,86 @@
 </tr>
 </tbody>
 </table>
+<h3 id="using-uniformintrandomengine">using UniformIntRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">UniformIntRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">uniform_int_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>整数型一様分布乱数生成エンジン </p>
+<h3 id="using-uniformrealrandomengine">using UniformRealRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">UniformRealRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">uniform_real_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>実数型一様分布乱数生成エンジン </p>
+<h3 id="using-bernoullirandomengine">using BernoulliRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">BernoulliRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">bernoulli_distribution</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>ベルヌーイ分布乱数生成エンジン </p>
+<h3 id="using-binomialrandomengine">using BinomialRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">BinomialRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">binomial_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>二項分布乱数生成エンジン </p>
+<h3 id="using-geometricrandomengine">using GeometricRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">GeometricRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">geometric_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>幾何学分布乱数生成エンジン </p>
+<h3 id="using-negativebinomialrandomengine">using NegativeBinomialRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">NegativeBinomialRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">negative_binomial_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>負の二項分布乱数生成エンジン </p>
+<h3 id="using-poissonrandomengine">using PoissonRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">PoissonRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">poisson_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>ポワソン分布乱数生成エンジン </p>
+<h3 id="using-exponentialrandomengine">using ExponentialRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">ExponentialRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">exponential_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>指数分布乱数生成エンジン </p>
+<h3 id="using-gammarandomengine">using GammaRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">GammaRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">gamma_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>ガンマ分布乱数生成エンジン </p>
+<h3 id="using-weibullrandomengine">using WeibullRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">WeibullRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">weibull_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>ワイブル分布乱数生成エンジン </p>
+<h3 id="using-extremevaluerandomengine">using ExtremeValueRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">ExtremeValueRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">extreme_value_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>極値分布乱数生成エンジン </p>
+<h3 id="using-normalrandomengine">using NormalRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">NormalRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">normal_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>正規分布乱数生成エンジン </p>
+<h3 id="using-lognormalrandomengine">using LognormalRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">LognormalRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">lognormal_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>対数正規分布乱数生成エンジン </p>
+<h3 id="using-chisquaredrandomengine">using ChiSquaredRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">ChiSquaredRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">chi_squared_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>カイ二乗分布乱数生成エンジン </p>
+<h3 id="using-cauchyrandomengine">using CauchyRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">CauchyRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">cauchy_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>コーシー分布乱数生成エンジン </p>
+<h3 id="using-fisherfrandomengine">using FisherFRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">FisherFRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">fisher_f_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>フィッシャーのF分布乱数生成エンジン </p>
+<h3 id="using-studenttrandomengine">using StudentTRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">StudentTRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">student_t_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>ステューデントのt分布乱数生成エンジン </p>
+<h3 id="using-discreterandomengine">using DiscreteRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">DiscreteRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">discrete_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>整数のインデックスごとに離散した確率分布の乱数生成エンジン </p>
+<h3 id="using-piecewiseconstantrandomengine">using PiecewiseConstantRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">PiecewiseConstantRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">piecewise_constant_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>区間ごとの重み付けを定数値とした分布の乱数生成エンジン </p>
+<h3 id="using-piecewiselinearrandomengine">using PiecewiseLinearRandomEngine</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">PiecewiseLinearRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">piecewise_linear_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>区間ごとの重み付けを線形に接続した分布の乱数生成エンジン </p>
 <h3 id="using-torqueconstant">using TorqueConstant</h3>
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">unit</span><span class="o">::</span><span class="n">TorqueConstant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">unit_assem</span><span class="o">::</span><span class="n">unit_div</span><span class="o">&lt;</span><span class="n">Torque</span><span class="p">,</span><span class="w"> </span><span class="n">Ampere</span><span class="o">&gt;::</span><span class="n">unit</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
@@ -3449,6 +3617,16 @@
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">cov_inv</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<h3 id="function-gererate_random">function gererate_random</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Real</span><span class="w">  </span><span class="o">=</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="n">Real</span><span class="w"> </span><span class="n">gererate_random</span><span class="p">()</span><span class="w"></span>
+</code></pre></div>
+<p>0.0〜1.0までの一様分布の乱数を生成する </p>
+<p><strong>Template Parameters</strong>: </p>
+<ul>
+<li><strong>Real</strong> 浮動小数点型 </li>
+</ul>
+<p><strong>Return</strong>: Real 乱数 </p>
 <h3 id="function-solve_riccati_arimoto_potter">function solve_riccati_arimoto_potter</h3>
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">solve_riccati_arimoto_potter</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"></span>
@@ -4398,7 +4576,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">gfcm2mNm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">gfm2Nm</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-09-26 at 11:58:17 +0900</p>
+<p>Updated on 2022-09-27 at 01:12:56 +0900</p>
 
 
 
