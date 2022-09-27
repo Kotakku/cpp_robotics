@@ -1,0 +1,23 @@
+name: build
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependiences
+        run: sudo apt install googletest
+      - name: Build & Test
+        working-directory: ${{github.workspace}}
+        run: |
+          cmake -S . -B build
+          cmake --build build
+          ctest
+      
