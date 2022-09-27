@@ -17,7 +17,7 @@ public:
     using engine_method_t = Method;
 
     RandomEngineWrapper():
-        engine_((*Singleton<std::random_device>::get_instance())()){}
+        engine_((*Singleton<std::random_device>::get_shared_instance())()){}
 
     engine_method_t& get_engine()
     {
@@ -51,7 +51,10 @@ public:
      */
     template<typename ...Arg>
     RandomGenerator(Arg ...arg):
-        distribution_t(arg...) {}
+        distribution_t(arg...)
+    {
+        engine_wrapper_ = Singleton<engine_t>::get_shared_instance();
+    }
 
     /**
      * @brief 乱数を取得する, 戻り値の型はDistributionに従う
@@ -60,12 +63,13 @@ public:
      */
     typename distribution_t::result_type value()
     {
-        using engine_t = internal::RandomEngineWrapper<engine_method_t>;
-        auto &engine_wrapper = *Singleton<engine_t>::get_instance();
-        auto &engine = engine_wrapper.get_engine();
         auto &dist = *(distribution_t*)(this);
-        return dist(engine);
+        return dist(engine_wrapper_->get_engine());
     }
+
+private:
+    using engine_t = internal::RandomEngineWrapper<engine_method_t>;
+    typename Singleton<engine_t>::shared_t engine_wrapper_;
 };
 
 /**
@@ -187,10 +191,9 @@ template<typename Real = double>
 static Real gererate_random()
 {
     using engine_t = internal::RandomEngineWrapper<std::mt19937>;
-    auto &engine_wrapper = *Singleton<engine_t>::get_instance();
-    auto &engine = engine_wrapper.get_engine();
+    auto engine_wrapper = Singleton<engine_t>::get_shared_instance();
     constexpr std::size_t bits = std::numeric_limits<Real>::digits;
-    return std::generate_canonical<Real, bits>(engine);
+    return std::generate_canonical<Real, bits>(engine_wrapper->get_engine());
 }
 
 }

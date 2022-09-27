@@ -30,7 +30,7 @@ mkdocs build
 mkdir build && cd build
 cmake ..
 cmake --build .
-sudo make install
+sudo cmake --install .
 ```
 
 # 実装したい機能

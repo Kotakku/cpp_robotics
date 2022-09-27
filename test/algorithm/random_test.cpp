@@ -76,6 +76,7 @@ TEST(random, uniform_real) {
     for(int i = 0; i < test_num; i++)
     {
         double val = engine.value();
+        EXPECT_TRUE((-1.0 < val && val < 1.0));
         avg += val / static_cast<double>(test_num);
     }
     printf("avg: %f\n", avg);
