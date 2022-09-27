@@ -25,7 +25,7 @@ jobs:
         run: |
           cmake -S . -B build
           cmake --build build
-          sudp cmake --install build
+          sudo cmake --install build
           cd build
           ctest
       
