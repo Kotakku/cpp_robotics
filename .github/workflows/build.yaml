@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install dependiences
-        run: sudo apt install libeigen3-dev googletest
+        run: sudo apt install libeigen3-dev libgtest-dev
       - name: Build & Test
         working-directory: ${{github.workspace}}
         run: |
