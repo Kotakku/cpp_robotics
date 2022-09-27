@@ -7,159 +7,80 @@ title: include/cpp_robotics/chassis/swerve_ik.hpp
 
 
 
+## Namespaces
+
+| Name           |
+| -------------- |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
+
+## Classes
+
+|                | Name           |
+| -------------- | -------------- |
+| class | **[cpp_robotics::SwerveIk](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SwerveIk/)** <br>メカナムの逆運動学モデル  |
+
 
 
 
 ## Source code
 
 ```cpp
-// #pragma once
+#pragma once
 
-// #include "../_Interface/IDriveIK.hpp"
-// #include "../../Common/SCLMath.hpp"
-// #include <array>
+#include <array>
+#include <Eigen/Dense>
+#include "cpp_robotics/vector/transform.hpp"
+#include "cpp_robotics/vector/vector2.hpp"
 
-// namespace STB
-// {
-//     /**
-//      * @brief 独立4輪ステアリングの逆運動学モデル
-//      * 
-//      */
-//     class SwerveIK : public IDriveIK<Vec2F>
-//     {
-//     public:
-//         /**
-//          * @brief Construct a new Swerve I K object
-//          * 
-//          * @param config 
-//          * @param specification 
-//          */
-//         SwerveIK(DriveIKContents::swerveConfig_t config, DriveIKContents::specification_t& specification):
-//             _config(config), _specification(specification)
-//         {
-//             float x = _config.width / 2;
-//             float y = _config.length / 2;
-        
-//             _length = sqrt(x*x + y*y);
-            
-//             _theta = atan2(y, x);
-//         }
+namespace cpp_robotics
+{
 
-//         /**
-//          * @brief 
-//          * 
-//          * @return size_t 
-//          */
-//         virtual size_t wheel_num() { return 4; }
-        
-//         /**
-//          * @brief 
-//          * 
-//          * @param velocityVector 
-//          * @param angle 
-//          * @return true 
-//          * @return false 
-//          */
-//         virtual bool calculate(FieldVec2F velocityVector, const float angle)
-//         {
-//             for(size_t element = 0; element < 2; element++)
-//             {
-//                 velocityVector[element] = clamp<float>(velocityVector[element], -_specification.maxLinearInput, _specification.maxLinearInput);
-                    
-//                 if(abs(velocityVector[element]) < _specification.minLinearInput)
-//                     velocityVector[element] = 0;
-//             }
-//             velocityVector[2] = clamp<float>(velocityVector[2], -_specification.maxAngularInput, _specification.maxAngularInput);
-//             if(abs(velocityVector[2]) < _specification.minAngularInput)
-//                 velocityVector[2] = 0;
-            
-//             velocityVector.rotate(-angle);
+class SwerveIk
+{
+public:
+    using VecArray = std::array<Vector2d, 4>;
+    
+    SwerveIk(const double width, const double length)
+    {
+        const double hw = width/2;
+        const double hl = length/2;
+        wheel_place_ =
+        {
+            Vector2d{ hw,  hl},
+            Vector2d{-hw,  hl},
+            Vector2d{-hw, -hl},
+            Vector2d{ hw, -hl}
+        };
+    }
 
-//             float maxValue = 0;
+    SwerveIk(VecArray wheel_place):
+        wheel_place_(wheel_place)
+    {
 
-//             v[0].x = velocityVector[0] - _length * velocityVector[2] * sin(_theta);
-//             v[0].y = velocityVector[1] + _length * velocityVector[2] * cos(_theta);
-                
-//             v[1].x = velocityVector[0] - _length * velocityVector[2] * cos(_theta);
-//             v[1].y = velocityVector[1] - _length * velocityVector[2] * sin(_theta);
-                
-//             v[2].x = velocityVector[0] + _length * velocityVector[2] * sin(_theta);
-//             v[2].y = velocityVector[1] - _length * velocityVector[2] * cos(_theta);
-                
-//             v[3].x = velocityVector[0] + _length * velocityVector[2] * cos(_theta);
-//             v[3].y = velocityVector[1] + _length * velocityVector[2] * sin(_theta);
+    }
 
-//             for(size_t wheel = 0; wheel < 4; wheel++)
-//             {
-//                 if(v[wheel].norm() > maxValue)
-//                     maxValue = v[wheel].norm();
-//             }
-            
-//             for(size_t wheel = 0; wheel < 4; wheel++)
-//             {
-//                 if(maxValue > _specification.maxOutput)
-//                     v[wheel] *= _specification.maxOutput / maxValue;
-                    
-//                 if(v[wheel].norm() < _specification.minOutput)
-//                     v[wheel] = Vec2F::zero();
-//             }
-            
-//             return (velocityVector == FieldVec2F::origin());
-//         }
-        
-//         /**
-//          * @brief 
-//          * 
-//          * @param num 
-//          * @return Vec2F 
-//          */
-//         virtual Vec2F wheel_vel(const size_t num) { return v[num]; }
+    VecArray calculate(Transformd velocity)
+    {
+        VecArray wv;
+        for(size_t i = 0; i < 4; i++)
+        {
+            const double wangle = wheel_place_[i].angle();
+            const double wpnorm = wheel_place_[i].norm();
+            wv[i].x = velocity.x - wpnorm * velocity.theta * std::sin(wangle);
+            wv[i].y = velocity.y + wpnorm * velocity.theta * std::cos(wangle);
+        }
+        return wv;
+    }
 
-//         /**
-//          * @brief 
-//          * 
-//          * @return std::array<Vec2F, 4> 
-//          */
-//         std::array<Vec2F, 4> wheel_vel() { return v; }
+    VecArray wheel_place() const { return wheel_place_; }
 
-//         /**
-//          * @brief 
-//          * 
-//          * @return DriveIKContents::swerveConfig_t& 
-//          */
-//         DriveIKContents::swerveConfig_t  &config()         { return _config; }
-
-//         /**
-//          * @brief 
-//          * 
-//          * @return DriveIKContents::specification_t& 
-//          */
-//         DriveIKContents::specification_t &specification() { return _specification; }
-
-//         /**
-//          * @brief 
-//          * 
-//          * @param num 
-//          * @return Vec2F 
-//          */
-//         Vec2F operator [](const size_t num)
-//         {
-//             return wheel_vel(num);
-//         }
-        
-//     protected:
-//         DriveIKContents::swerveConfig_t _config;
-//         DriveIKContents::specification_t _specification;
-        
-//         float _length;
-//         float _theta;
-//         std::array<Vec2F, 4> v;
-//         //float rotationCorrection;
-//     };
-// }
+private:
+    VecArray wheel_place_;
+};
+}
 ```
 
 
 -------------------------------
 
-Updated on 2022-09-27 at 16:29:02 +0900
+Updated on 2022-09-28 at 01:12:56 +0900

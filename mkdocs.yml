@@ -85,6 +85,7 @@ nav:
       - 数値微分: tech_note/optimize/derivative.md
       - スカラー最適化: tech_note/optimize/scalar_opt.md
       - 最小二乗法: tech_note/optimize/least_squares_method.md
+      - 直線探索: tech_note/optimize/line_search.md
       - 無制約最適化:
         - 最急降下法: tech_note/optimize/conj_grad.md
         - ニュートン法: tech_note/optimize/newton.md

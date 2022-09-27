@@ -7,167 +7,121 @@ title: include/cpp_robotics/chassis/omni_ik.hpp
 
 
 
+## Namespaces
+
+| Name           |
+| -------------- |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
+
+## Classes
+
+|                | Name           |
+| -------------- | -------------- |
+| class | **[cpp_robotics::Omni3Ik](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Omni3Ik/)** <br>3輪オムニの逆運動学モデル  |
+| struct | **[cpp_robotics::Omni3Ik::Config](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Omni3Ik_1_1Config/)**  |
+| class | **[cpp_robotics::Omni4Ik](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Omni4Ik/)** <br>4輪オムニの逆運動学モデル  |
+| struct | **[cpp_robotics::Omni4Ik::Config](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Omni4Ik_1_1Config/)**  |
+
 
 
 
 ## Source code
 
 ```cpp
-// #pragma once
+#pragma once
 
-// #include "../_Interface/IDriveIK.hpp"
-// #include "../../Common/SCLMath.hpp"
-// #include <array>
+#include <array>
+#include <Eigen/Dense>
+#include "cpp_robotics/vector/transform.hpp"
 
-// namespace STB
-// {
-//     template<size_t WHEEL_NUM>
-//     class OmniIK;
+namespace cpp_robotics
+{
 
-//     using Omni3IK = OmniIK<3>;
-//     using Omni4IK = OmniIK<4>;
-
-//     /**
-//      * @brief オムニの逆運動学モデル
-//      * 
-//      * @tparam WHEEL_NUM 
-//      */
-//     template<size_t WHEEL_NUM>
-//     class OmniIK : public IDriveIK<float>
-//     {
-//     public:
-//         /**
-//          * @brief Construct a new Omni I K object
-//          * 
-//          * @param config 
-//          * @param specification 
-//          */
-//         OmniIK(DriveIKContents::omniConfig_t config, DriveIKContents::specification_t specification) :
-//             _config(config), _specification(specification)
-//         {
-//             setDefaultRateMatrix();
-//         }
-        
-//         /**
-//          * @brief 
-//          * 
-//          * @return size_t 
-//          */
-//         virtual size_t wheel_num() { return WHEEL_NUM; }
-        
-//         /**
-//          * @brief 
-//          * 
-//          * @param velocityVector 
-//          * @param angle 
-//          * @return true 
-//          * @return false 
-//          */
-//         virtual bool calculate(FieldVec2F velocityVector, const float angle)
-//         {
-//             for(size_t element = 0; element < 2; element++)
-//             {
-//                 velocityVector[element] = clamp<float>(velocityVector[element], -_specification.maxLinearInput, _specification.maxLinearInput);
-                    
-//                 if(abs(velocityVector[element]) < _specification.minLinearInput)
-//                     velocityVector[element] = 0;
-//             }
-//             velocityVector[2] = clamp<float>(velocityVector[2], -_specification.maxAngularInput, _specification.maxAngularInput);
-//             if(abs(velocityVector[2]) < _specification.minAngularInput)
-//                 velocityVector[2] = 0;
-
-//             velocityVector.rotate(-angle);
-
-//             float maxValue = 0;
-//             int wheel;
-
-//             for(wheel = 0; wheel < WHEEL_NUM; wheel++)
-//             {
-//                 v[wheel] = 0;
-//                 for(size_t element = 0; element < 3; element++) {
-//                     v[wheel] += _rateMatrix[wheel][element] * velocityVector[element];
-//                 }
-
-//                 if(abs(v[wheel]) > maxValue)
-//                     maxValue = abs(v[wheel]);
-//             }
-
-//             for(size_t wheel = 0; wheel < WHEEL_NUM; wheel++)
-//             {
-//                 if(maxValue > _specification.maxOutput)
-//                     v[wheel] = map<float>(v[wheel], -maxValue, maxValue, -_specification.maxOutput, _specification.maxOutput);
-                    
-//                 if(abs(v[wheel]) < _specification.minOutput)
-//                     v[wheel] = 0;
-//             }
+class Omni3Ik
+{
+public:
+    struct Config
+    {
+        double radius;
+        double first_wheel_angle = M_PI/6;
+    };
+    
+    Omni3Ik(double radius, double first_wheel_angle = M_PI/6):
+        Omni3Ik(Config{radius, first_wheel_angle}) {}
+    
+    Omni3Ik(Config config):
+        config_(config)
+    {
+        for(size_t i = 0; i < 3; i++)
+        {
+            const double wheel_angle = config_.first_wheel_angle + (i* 2*M_PI/3);
+            conv_mat_(i, 0) = -std::sin(wheel_angle);
+            conv_mat_(i, 1) =  std::cos(wheel_angle);
+            conv_mat_(i, 2) = config_.radius;
             
-//             return (velocityVector == FieldVec2F::origin());
-//         }
-        
-//         /**
-//          * @brief 
-//          * 
-//          * @param num 
-//          * @return float 
-//          */
-//         virtual float wheel_vel(const size_t num) { return v[num]; }
+        }
+    }
 
-//         /**
-//          * @brief 
-//          * 
-//          * @return std::array<float, WHEEL_NUM> 
-//          */
-//         std::array<float, WHEEL_NUM> wheel_vel() { return v; }
+    std::array<double, 3> calculate(Transformd velocity)
+    {
+        std::array<double, 3> wv;
+        Eigen::Map<Eigen::Vector3d> wv_vec(wv.data());
+        Eigen::Vector3d v(velocity.x, velocity.y, velocity.theta);
+        wv_vec = conv_mat_ * v;
+        return wv;
+    }
 
-//         /**
-//          * @brief 
-//          * 
-//          * @return DriveIKContents::omniConfig_t& 
-//          */
-//         DriveIKContents::omniConfig_t    &config()        { return _config; }
+    Config config() const { return config_; }
 
-//         /**
-//          * @brief 
-//          * 
-//          * @return DriveIKContents::specification_t& 
-//          */
-//         DriveIKContents::specification_t &specification() { return _specification; }
+private:
+    Config config_;
+    Eigen::Matrix<double, 3, 3> conv_mat_;
+};
 
-//         /**
-//          * @brief 
-//          * 
-//          * @param num 
-//          * @return float 
-//          */
-//         float operator [](const int num)
-//         {
-//             return wheel_vel(num);
-//         }
-        
-//     protected:
-//         void setDefaultRateMatrix() 
-//         {
-//             float fwa = _config.theta;
-//             float angleStep = 2*PI / WHEEL_NUM;
+class Omni4Ik
+{
+public:
+    struct Config
+    {
+        double radius;
+        double first_wheel_angle = M_PI/4;
+    };
+    
+    Omni4Ik(double radius, double first_wheel_angle = M_PI/4):
+        Omni4Ik(Config{radius, first_wheel_angle}) {}
+    
+    Omni4Ik(Config config):
+        config_(config)
+    {
+        for(size_t i = 0; i < 4; i++)
+        {
+            const double wheel_angle = config_.first_wheel_angle + (i* M_PI/2);
+            conv_mat_(i, 0) = -std::sin(wheel_angle);
+            conv_mat_(i, 1) =  std::cos(wheel_angle);
+            conv_mat_(i, 2) = config_.radius;
             
-//             for(size_t wheel = 0; wheel < WHEEL_NUM; wheel++)
-//             {
-//                 _rateMatrix[wheel][0] = -sin(fwa + (angleStep * wheel));
-//                 _rateMatrix[wheel][1] =  cos(fwa + (angleStep * wheel));
-//                 _rateMatrix[wheel][2] = _config.radius;
-//             }
-//         }
-        
-//     protected:
-//         DriveIKContents::omniConfig_t _config;
-//         DriveIKContents::specification_t _specification;
-//         std::array<std::array<float, 3>, WHEEL_NUM> _rateMatrix;
-//         std::array<float, WHEEL_NUM> v;
-//     };
-// }
+        }
+    }
+
+    std::array<double, 4> calculate(Transformd velocity)
+    {
+        std::array<double, 4> wv;
+        Eigen::Map<Eigen::Vector4d> wv_vec(wv.data());
+        Eigen::Vector3d v(velocity.x, velocity.y, velocity.theta);
+        wv_vec = conv_mat_ * v;
+        return wv;
+    }
+
+    Config config() const { return config_; }
+
+private:
+    Config config_;
+    Eigen::Matrix<double, 4, 3> conv_mat_;
+};
+}
 ```
 
 
 -------------------------------
 
-Updated on 2022-09-27 at 16:29:02 +0900
+Updated on 2022-09-28 at 01:12:56 +0900

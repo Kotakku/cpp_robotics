@@ -61,10 +61,15 @@ endforeach()
 find_package(GTest REQUIRED)
 enable_testing()
 set(test_files
+  utility/singleton_test
+
   algorithm/poly_regression
   algorithm/random_test
 
-  utility/singleton_test
+  chassis/mecanum_test
+  chassis/omni_test
+  chassis/swerve_test
+
 )
 include(GoogleTest)
 foreach(test_file ${test_files})

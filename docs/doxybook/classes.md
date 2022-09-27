@@ -38,8 +38,14 @@ title: Classes
     * **class [KalmanFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KalmanFilter/)** <br>カルマンフィルタ 
     * **struct [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/)** <br>直線クラス 
     * **class [LowPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/)** <br>ローパスフィルター 
+    * **class [MecanumIk](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1MecanumIk/)** <br>メカナムの逆運動学モデル 
+        * **struct [Config](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1MecanumIk_1_1Config/)** 
     * **class [NDT2d](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NDT2d/)** <br>2次元のNDTマッチングクラス 
     * **class [NctfController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NctfController/)** <br>NCTF制御器 
+    * **class [Omni3Ik](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Omni3Ik/)** <br>3輪オムニの逆運動学モデル 
+        * **struct [Config](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Omni3Ik_1_1Config/)** 
+    * **class [Omni4Ik](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Omni4Ik/)** <br>4輪オムニの逆運動学モデル 
+        * **struct [Config](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Omni4Ik_1_1Config/)** 
     * **class [PID2Controller](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PID2Controller/)** <br>2自由度PID制御器 
         * **struct [pid_param_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PID2Controller_1_1pid__param__t/)** 
     * **class [PIDController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PIDController/)** <br>PID制御器 
@@ -63,6 +69,7 @@ title: Classes
         * **struct [segment_info_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__info__t/)** 
         * **struct [segment_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__t/)** 
     * **class [StateSpaceSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/)** <br>状態空間モデル 
+    * **class [SwerveIk](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SwerveIk/)** <br>メカナムの逆運動学モデル 
     * **class [TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/)** <br>伝達関数モデル 
     * **struct [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)** <br>2次元のロボットの座標を扱うクラス 
     * **struct [Triangle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Triangle/)** <br>三角形クラス 
@@ -108,4 +115,4 @@ title: Classes
 
 -------------------------------
 
-Updated on 2022-09-27 at 16:29:02 +0900
+Updated on 2022-09-28 at 01:12:56 +0900
