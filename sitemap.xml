@@ -151,27 +151,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PendulumController/</loc>
-         <lastmod>2022-09-27</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PendulumInterface/</loc>
-         <lastmod>2022-09-27</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PurePursuit/</loc>
-         <lastmod>2022-09-27</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadCopterController/</loc>
-         <lastmod>2022-09-27</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadCopterInterface/</loc>
          <lastmod>2022-09-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -286,16 +266,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1Input/</loc>
-         <lastmod>2022-09-27</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/</loc>
-         <lastmod>2022-09-27</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/</loc>
          <lastmod>2022-09-27</lastmod>
          <changefreq>daily</changefreq>
@@ -377,11 +347,6 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/</loc>
-         <lastmod>2022-09-27</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1is__base__of__robot__if/</loc>
          <lastmod>2022-09-27</lastmod>
          <changefreq>daily</changefreq>
     </url>

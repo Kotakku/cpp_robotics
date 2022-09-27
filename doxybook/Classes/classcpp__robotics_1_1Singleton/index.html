@@ -2142,8 +2142,27 @@
 
 
 <h1 id="cpp_roboticssingleton">cpp_robotics::Singleton</h1>
-<p><a href="#detailed-description">More...</a></p>
+<p>シングルトンなオブジェクトを生成する  <a href="#detailed-description">More...</a></p>
 <p><code>#include &lt;singleton.hpp&gt;</code></p>
+<h2 id="public-types">Public Types</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>using T</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Singleton/#using-class-t">class_t</a></strong></td>
+</tr>
+<tr>
+<td>using std::shared_ptr&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Singleton/#using-class-t">class_t</a> &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Singleton/#using-shared-t">shared_t</a></strong></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-functions">Public Functions</h2>
 <table>
 <thead>
@@ -2154,8 +2173,8 @@
 </thead>
 <tbody>
 <tr>
-<td>std::shared_ptr&lt; T &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Singleton/#function-get-instance">get_instance</a></strong>()</td>
+<td><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Singleton/#using-shared-t">shared_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Singleton/#function-get-shared-instance">get_shared_instance</a></strong>()<br>シングルトンなオブジェクトをstd::shared_ptrで返す</td>
 </tr>
 </tbody>
 </table>
@@ -2163,12 +2182,26 @@
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
 <span class="k">class</span><span class="w"> </span><span class="nc">cpp_robotics</span><span class="o">::</span><span class="n">Singleton</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
-<h2 id="public-functions-documentation">Public Functions Documentation</h2>
-<h3 id="function-get_instance">function get_instance</h3>
-<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">get_instance</span><span class="p">()</span><span class="w"></span>
+<p>シングルトンなオブジェクトを生成する </p>
+<p><strong>Template Parameters</strong>: </p>
+<ul>
+<li><strong>T</strong> シングルトンで生成したいオブジェクトの型 </li>
+</ul>
+<h2 id="public-types-documentation">Public Types Documentation</h2>
+<h3 id="using-class_t">using class_t</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">Singleton</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">class_t</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">T</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
+<h3 id="using-shared_t">using shared_t</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">Singleton</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">shared_t</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">class_t</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+<h3 id="function-get_shared_instance">function get_shared_instance</h3>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">shared_t</span><span class="w"> </span><span class="n">get_shared_instance</span><span class="p">()</span><span class="w"></span>
+</code></pre></div>
+<p>シングルトンなオブジェクトをstd::shared_ptrで返す </p>
+<p><strong>Return</strong>: shared_t オブジェクトのshared_ptr </p>
 <hr />
-<p>Updated on 2022-09-27 at 01:12:56 +0900</p>
+<p>Updated on 2022-09-27 at 16:29:02 +0900</p>
 
 
 
