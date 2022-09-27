@@ -16,7 +16,7 @@ TEST(singoleton, int_test) {
 
     EXPECT_TRUE(a == b);
     *a = 44;
-    EXPECT_EQ(*b, 45);
+    EXPECT_EQ(*b, 44);
 }
 
 TEST(singoleton, class_test) {
