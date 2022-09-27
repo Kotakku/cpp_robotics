@@ -17,7 +17,7 @@ title: include/cpp_robotics/algorithm/ndt.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::NDT2d](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NDT2d/)**  |
+| class | **[cpp_robotics::NDT2d](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NDT2d/)** <br>2次元のNDTマッチングクラス  |
 
 
 
@@ -44,4 +44,4 @@ public:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

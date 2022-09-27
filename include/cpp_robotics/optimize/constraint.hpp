@@ -11,6 +11,10 @@
 namespace cpp_robotics
 {
 
+/**
+ * @brief 数理最適問題に使用する制約クラス
+ * 
+ */
 struct Constraint
 {
     using func_type = std::function<double(Eigen::VectorXd)>;
@@ -70,6 +74,10 @@ struct Constraint
     }
 };
 
+/**
+ * @brief 数理最適化問題の制約の集合
+ * 
+ */
 class ConstraintArray : public std::vector<Constraint>
 {
 public:

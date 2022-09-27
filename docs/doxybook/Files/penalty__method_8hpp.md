@@ -31,7 +31,6 @@ title: include/cpp_robotics/optimize/penalty_method.hpp
 namespace cpp_robotics
 {
 
-// ペナルティ法
 static std::tuple<bool, Eigen::VectorXd, size_t> penalty_method(std::function<double(const Eigen::VectorXd &)> f, ConstraintArray constraint, Eigen::VectorXd x_init, const double r_init = 1.0, const double tol = 1e-3, const size_t max_iter = 1000)
 {
     Eigen::VectorXd x = x_init;
@@ -80,4 +79,4 @@ static std::tuple<bool, Eigen::VectorXd, size_t> penalty_method(std::function<do
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

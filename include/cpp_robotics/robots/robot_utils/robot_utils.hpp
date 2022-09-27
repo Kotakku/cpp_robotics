@@ -6,6 +6,7 @@
 namespace cpp_robotics
 {
 
+/// @cond
 template<class Interface, class UserInterface>
 struct is_base_of_robot_if
 {
@@ -14,5 +15,6 @@ struct is_base_of_robot_if
 
 template<class Interface, class UserInterface>
 static constexpr bool is_base_of_robot_if_v = is_base_of_robot_if<Interface, UserInterface>::value;
+/// @endcond
 
 }

@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::ConstraintArray
+summary: 数理最適化問題の制約の集合 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::ConstraintArray
 
 
 
-
+数理最適化問題の制約の集合 
 
 
 `#include <constraint.hpp>`
@@ -86,4 +87,4 @@ inline std::vector< Constraint > gen_ineq_constraint_list() const
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

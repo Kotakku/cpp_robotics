@@ -19,8 +19,8 @@ title: include/cpp_robotics/geometry/shape.hpp
 | -------------- | -------------- |
 | struct | **[cpp_robotics::Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/)** <br>直線クラス  |
 | struct | **[cpp_robotics::Rect](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Rect/)** <br>長方形クラス(回転は考えない)  |
-| struct | **[cpp_robotics::Quad](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quad/)** <br>四角形  |
-| struct | **[cpp_robotics::Triangle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Triangle/)** <br>三角形  |
+| struct | **[cpp_robotics::Quad](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quad/)** <br>四角形クラス  |
+| struct | **[cpp_robotics::Triangle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Triangle/)** <br>三角形クラス  |
 | struct | **[cpp_robotics::Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/)** <br>円クラス  |
 
 
@@ -235,4 +235,4 @@ namespace cpp_robotics
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

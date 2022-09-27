@@ -5,9 +5,12 @@
 namespace cpp_robotics
 {
 
-// 疑似微分器
-// G(s) = s / (Ts + 1)
-// 双一次変換で離散化したもの
+/**
+ * @brief 疑似微分器
+ * 
+ */
+/// G(s) = s / (Ts + 1)
+/// 双一次変換で離散化したもの
 class Differentiator
 {
 public:

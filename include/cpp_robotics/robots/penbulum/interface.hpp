@@ -5,6 +5,7 @@
 namespace cpp_robotics
 {
 
+///@cond
 // StateとInputはここで定義するんじゃなくてユーザー側で定義できるべき?
 class PendulumInterface
 {
@@ -35,5 +36,6 @@ public:
     virtual State get_state() = 0;
     virtual void control(const Input &input) = 0;
 };
+/// @endcond
 
 }

@@ -7,7 +7,18 @@
 namespace cpp_robotics
 {
 
-// (直線探索) アルミホ条件を満たす囲い込み法
+/**
+ * @brief アルミホ条件を満たすステップ幅を求める囲い込み法
+ * 
+ * @param func 
+ * @param grad 
+ * @param x 
+ * @param d 
+ * @param gamma 
+ * @param tau 
+ * @param max_iter 
+ * @return double 
+ */
 static double bracketing_serach(std::function<double(Eigen::VectorXd)> func, std::function<Eigen::VectorXd(Eigen::VectorXd)> grad, const Eigen::VectorXd &x, const Eigen::VectorXd &d, double gamma = 0.3, double tau = 0.9, const size_t max_iter = 1000)
 {
     auto line_func = [&](double v){ return func(x + v*d); };
@@ -24,6 +35,15 @@ static double bracketing_serach(std::function<double(Eigen::VectorXd)> func, std
     return a;
 }
 
+/**
+ * @brief 囲い込み法
+ * 
+ * @param func 
+ * @param init 
+ * @param beta 
+ * @param max_iter 
+ * @return double 
+ */
 static double bracketing_serach(std::function<double(double)> func, const double init = 1.0, const double beta = 0.9, const size_t max_iter = 1000)
 {
     double a = init;

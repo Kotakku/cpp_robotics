@@ -7,6 +7,10 @@
 namespace cpp_robotics
 {
 
+/**
+ * @brief Dubinsパス
+ * 
+ */
 class DubinsPath
 {
 public:

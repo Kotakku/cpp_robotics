@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::ActiveSetMethod
+summary: 線形不等式制約を持つ2次計画法を解く有効制約法 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::ActiveSetMethod
 
 
 
-
+線形不等式制約を持つ2次計画法を解く有効制約法 
 
 
 `#include <active_set_method.hpp>`
@@ -39,4 +40,4 @@ inline Result solve(
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

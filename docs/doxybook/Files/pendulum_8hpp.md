@@ -13,12 +13,6 @@ title: include/cpp_robotics/robots/penbulum/pendulum.hpp
 | -------------- |
 | **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
-## Classes
-
-|                | Name           |
-| -------------- | -------------- |
-| class | **[cpp_robotics::PendulumController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PendulumController/)**  |
-
 
 
 
@@ -51,4 +45,4 @@ public:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::Differentiator
+summary: 疑似微分器 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::Differentiator
 
 
 
-
+疑似微分器  [More...](#detailed-description)
 
 
 `#include <differentiator.hpp>`
@@ -19,6 +20,16 @@ title: cpp_robotics::Differentiator
 | | **[Differentiator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Differentiator/#function-differentiator)**(double bandwidth, double sample_time) |
 | void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Differentiator/#function-reset)**() |
 | double | **[filtering](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Differentiator/#function-filtering)**(double u) |
+
+## Detailed Description
+
+```cpp
+class cpp_robotics::Differentiator;
+```
+
+疑似微分器 
+
+G(s) = s / (Ts + 1) 双一次変換で離散化したもの 
 
 ## Public Functions Documentation
 
@@ -50,4 +61,4 @@ inline double filtering(
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

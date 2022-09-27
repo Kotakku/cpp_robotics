@@ -10,6 +10,10 @@ namespace cpp_robotics
 
 // _coeff.front()が最高次数
 // _coeff.back()が次数0
+/**
+ * @brief 多項式
+ * 
+ */
 struct Polynomial
 {
     Polynomial(std::initializer_list<double> coeff):

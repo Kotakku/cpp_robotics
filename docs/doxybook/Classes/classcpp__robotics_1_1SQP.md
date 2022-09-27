@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::SQP
+summary: SQP(逐次二次計画法) 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::SQP
 
 
 
-
+[SQP]()(逐次二次計画法) 
 
 
 `#include <sqp.hpp>`
@@ -55,4 +56,4 @@ inline Result solve(
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

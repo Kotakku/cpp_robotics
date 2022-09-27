@@ -8,6 +8,10 @@
 namespace cpp_robotics
 {
 
+/**
+ * @brief 伝達関数モデル
+ * 
+ */
 class TransferFunction : public StateSpaceSystem
 {
 public:

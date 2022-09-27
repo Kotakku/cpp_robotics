@@ -17,7 +17,7 @@ title: include/cpp_robotics/system/discrete_transfer_function.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/)**  |
+| class | **[cpp_robotics::DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/)** <br>z空間の伝達関数  |
 
 
 
@@ -106,4 +106,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

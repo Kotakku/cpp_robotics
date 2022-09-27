@@ -7,8 +7,16 @@
 namespace cpp_robotics
 {
 
-// 準ニュートン法
-// Todo: B行列の更新見直す
+/**
+ * @brief 準ニュートン法
+ * 
+ * @param f 
+ * @param grad 
+ * @param x_init 
+ * @param tol 
+ * @param max_iter 
+ * @return std::tuple<bool, Eigen::VectorXd, size_t> 
+ */
 static std::tuple<bool, Eigen::VectorXd, size_t> quasi_newton_method(std::function<double(const Eigen::VectorXd &)> f, std::function<Eigen::VectorXd(const Eigen::VectorXd &)> grad, Eigen::VectorXd x_init, const double tol = 1e-6, const size_t max_iter = 1000)
 {
     size_t n = x_init.rows();

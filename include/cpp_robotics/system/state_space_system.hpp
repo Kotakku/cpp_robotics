@@ -7,6 +7,10 @@
 namespace cpp_robotics
 {
 
+/**
+ * @brief 状態空間モデル
+ * 
+ */
 class StateSpaceSystem
 {
 public:

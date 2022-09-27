@@ -31,7 +31,6 @@ title: include/cpp_robotics/optimize/barrier_method.hpp
 namespace cpp_robotics
 {
 
-// バリア法
 // 制約の境界で目的関数が発散するため等式制約は使用することが出来ない
 // また不等式制約でもg(x)=0の境界をまたぐことは出来ないのでx_initが実行可能領域内である必要がある
 static std::tuple<bool, Eigen::VectorXd, size_t> barrier_method(std::function<double(const Eigen::VectorXd &)> f, ConstraintArray constraint, Eigen::VectorXd x_init, const double r_init = 10.0, const double tol = 1e-3, const size_t max_iter = 1000)
@@ -82,4 +81,4 @@ static std::tuple<bool, Eigen::VectorXd, size_t> barrier_method(std::function<do
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

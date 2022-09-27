@@ -7,7 +7,12 @@
 namespace cpp_robotics
 {
 
-// フィルタの入力と計算を非同期にして最後の入力と出力を保持しておけるようにするクラス
+/**
+ * @brief フィルタの入力と計算を非同期にして最後の入力と出力を保持しておけるようにするクラス
+
+ * 
+ * @tparam BASE_FILTER_TYPE 
+ */
 template<class BASE_FILTER_TYPE>
 class FilterStateHolder : public BASE_FILTER_TYPE
 {

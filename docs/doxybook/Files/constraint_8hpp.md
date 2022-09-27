@@ -17,8 +17,8 @@ title: include/cpp_robotics/optimize/constraint.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cpp_robotics::Constraint](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Constraint/)**  |
-| class | **[cpp_robotics::ConstraintArray](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ConstraintArray/)**  |
+| struct | **[cpp_robotics::Constraint](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Constraint/)** <br>数理最適問題に使用する制約クラス  |
+| class | **[cpp_robotics::ConstraintArray](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ConstraintArray/)** <br>数理最適化問題の制約の集合  |
 
 
 
@@ -194,4 +194,4 @@ public:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

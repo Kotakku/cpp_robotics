@@ -29,7 +29,6 @@ title: include/cpp_robotics/optimize/steepest_descent_method.hpp
 namespace cpp_robotics
 {
 
-// 最急降下法
 static std::tuple<bool, Eigen::VectorXd, size_t> steepest_descent_method(std::function<double(const Eigen::VectorXd &)> f, std::function<Eigen::VectorXd(const Eigen::VectorXd &)> grad, Eigen::VectorXd x_init, const double tol = 1e-6, const size_t max_iter = 1000)
 {
     Eigen::VectorXd x = x_init;
@@ -58,4 +57,4 @@ static std::tuple<bool, Eigen::VectorXd, size_t> steepest_descent_method(std::fu
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

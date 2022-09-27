@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::Constraint
+summary: 数理最適問題に使用する制約クラス 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::Constraint
 
 
 
-
+数理最適問題に使用する制約クラス 
 
 
 `#include <constraint.hpp>`
@@ -154,4 +155,4 @@ std::optional< hessian_func_type > con_hessian_f;
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

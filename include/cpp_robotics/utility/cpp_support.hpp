@@ -45,6 +45,15 @@
 namespace cpp_robotics
 {
 
+/**
+ * @brief C++17のstd::shift_leftの自前実装 C++14で動作する
+ * 
+ * @tparam ForwardIterator 
+ * @param first 
+ * @param last 
+ * @param n 
+ * @return constexpr ForwardIterator 
+ */
 template <class ForwardIterator>
 constexpr ForwardIterator shift_left(ForwardIterator first,
                                         ForwardIterator last,
@@ -66,6 +75,15 @@ constexpr ForwardIterator shift_left(ForwardIterator first,
     return first + (last - first - n);
 }
 
+/**
+ * @brief C++17のstd::shift_rightの自前実装 C++14で動作する
+ * 
+ * @tparam ForwardIterator 
+ * @param first 
+ * @param last 
+ * @param n 
+ * @return constexpr ForwardIterator 
+ */
 template <class ForwardIterator>
 constexpr ForwardIterator shift_right(ForwardIterator first,
                                         ForwardIterator last,
@@ -88,6 +106,14 @@ constexpr ForwardIterator shift_right(ForwardIterator first,
     return first + n;
 }
 
+/**
+ * @brief printfと同様の操作でstd::stringを得る
+ * 
+ * @tparam Args 
+ * @param format 
+ * @param args 
+ * @return std::string 
+ */
 template <typename... Args>
 std::string c_format(const std::string &format, Args const&... args)
 {

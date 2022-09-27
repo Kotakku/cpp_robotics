@@ -17,7 +17,7 @@ title: include/cpp_robotics/filter/integrator.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::Integrator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/)**  |
+| class | **[cpp_robotics::Integrator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/)** <br>積分器  |
 
 
 
@@ -32,7 +32,6 @@ title: include/cpp_robotics/filter/integrator.hpp
 namespace cpp_robotics
 {
 
-// 積分器
 // G(s) = 1 / s
 // 双一次変換で離散化したもの
 class Integrator
@@ -68,4 +67,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

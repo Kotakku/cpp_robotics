@@ -5,6 +5,7 @@
 namespace cpp_robotics
 {
 
+/// @cond
 template<class Interface>
 class PendulumController
 {
@@ -17,5 +18,6 @@ public:
 
     }
 };
+/// @endcond
 
 }

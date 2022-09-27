@@ -18,9 +18,9 @@ title: include/cpp_robotics/motor/dc_motor_param.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cpp_robotics::DCMotorParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCMotorParam/)**  |
-| struct | **[cpp_robotics::GearHeadParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/)**  |
-| struct | **[cpp_robotics::DCGearedMotorParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/)**  |
+| struct | **[cpp_robotics::DCMotorParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCMotorParam/)** <br>DCモーターモデル  |
+| struct | **[cpp_robotics::GearHeadParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/)** <br>ギアヘッドモデル  |
+| struct | **[cpp_robotics::DCGearedMotorParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/)** <br>ギアヘッド付きDCモーターモデル  |
 
 
 
@@ -47,7 +47,7 @@ GENERATE_UNIT_SUFFIX(cpp_robotics::TorqueConstant, Nm_per_A)
 GENERATE_UNIT_SUFFIX(cpp_robotics::BackEmfConstant, Vs_per_rad)
 GENERATE_UNIT_SUFFIX(cpp_robotics::FrictionConstant, Nms)
 
-// DCモータークラス
+
 struct DCMotorParam
 {
     const Volt nominal_voltage;               // 公称電圧[V]
@@ -209,4 +209,4 @@ inline constexpr DCMotorParam generate_maxon_brush_motor_param(
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

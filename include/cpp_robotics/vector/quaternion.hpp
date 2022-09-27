@@ -21,6 +21,11 @@ struct Quaternion;
 using Quaternionf = Quaternion<float>;
 using Quaterniond = Quaternion<double>;
 
+/**
+ * @brief クォータニオンクラス
+ * 
+ * @tparam FLOATING_TYPE 
+ */
 template<typename FLOATING_TYPE>
 class Quaternion
 {

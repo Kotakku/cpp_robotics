@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::PID2Controller
+summary: 2自由度PID制御器 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::PID2Controller
 
 
 
-
+2自由度PID制御器 
 
 
 `#include <pid2.hpp>`
@@ -88,4 +89,4 @@ inline double calculate(
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

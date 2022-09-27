@@ -27,7 +27,6 @@ title: include/cpp_robotics/controller/lqr.hpp
 namespace cpp_robotics
 {
 
-// 有本-ポッターの方法
 static std::optional<Eigen::MatrixXd> solve_riccati_arimoto_potter(const Eigen::MatrixXd &A,
                                                                     const Eigen::MatrixXd &B,
                                                                     const Eigen::MatrixXd &Q,
@@ -70,4 +69,4 @@ static Eigen::MatrixXd lqr(const Eigen::MatrixXd &A,
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

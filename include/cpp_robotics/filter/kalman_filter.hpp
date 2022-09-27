@@ -44,7 +44,14 @@ v: 観測ノイズ (p*1)
 
 */
 
-// カルマンフィルタ
+/**
+ * @brief カルマンフィルタ
+ * 
+ * @tparam FLOATING_TYPE 浮動小数点型
+ * @tparam STATE_SIZE 状態量のサイズ
+ * @tparam INPUT_SIZE 入力量のサイズ
+ * @tparam OBSERVE_SIZE 観測量のサイズ
+ */
 template<typename FLOATING_TYPE, size_t STATE_SIZE, size_t INPUT_SIZE, size_t OBSERVE_SIZE>
 class KalmanFilter
 {

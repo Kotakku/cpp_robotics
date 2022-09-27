@@ -17,7 +17,7 @@ title: include/cpp_robotics/system/siso_system.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::SisoFeedbackSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/)**  |
+| class | **[cpp_robotics::SisoFeedbackSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/)** <br>コントローラとシステムからなるSISOのフィードバックシステム  |
 | struct | **[cpp_robotics::SisoFeedbackSystem::func_list_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SisoFeedbackSystem_1_1func__list__t/)**  |
 
 
@@ -143,4 +143,4 @@ static void set_system(SisoFeedbackSystem::func_list_t &fn, TransferFunction &sy
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

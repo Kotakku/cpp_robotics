@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::QuadProg
+summary: 線形等式制約と線形不等式制約を持つ2次計画法 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::QuadProg
 
 
 
-
+線形等式制約と線形不等式制約を持つ2次計画法 
 
 
 `#include <quadprog.hpp>`
@@ -156,4 +157,4 @@ Param param;
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

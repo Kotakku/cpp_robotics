@@ -27,7 +27,6 @@ title: include/cpp_robotics/optimize/golden_serach.hpp
 namespace cpp_robotics 
 {
 
-// 黄金探索
 static double golden_search(std::function<double(double)> f, double low, double high, const double tol = 1e-6, const size_t max_iter = 100)
 {
     constexpr double r = (-1.0 + std::sqrt(5)) / 2.0;
@@ -67,4 +66,4 @@ static double golden_search(std::function<double(double)> f, double low, double 
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

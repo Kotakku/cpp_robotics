@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::DubinsPath
+summary: Dubinsパス 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::DubinsPath
 
 
 
-
+Dubinsパス 
 
 
 `#include <dubins_path.hpp>`
@@ -92,4 +93,4 @@ inline std::string path_type() const
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

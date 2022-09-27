@@ -12,9 +12,13 @@
 namespace cpp_robotics
 {
 
-// 2次計画法
 // min 1/2 x^T Q x + c^T x
 // s.t. Aeq x = b, Ax <= b
+
+/**
+ * @brief 線形等式制約と線形不等式制約を持つ2次計画法
+ * 
+ */
 class QuadProg
 {
 public:

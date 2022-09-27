@@ -17,7 +17,7 @@ title: include/cpp_robotics/optimize/quadprog.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::QuadProg](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/)**  |
+| class | **[cpp_robotics::QuadProg](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/)** <br>線形等式制約と線形不等式制約を持つ2次計画法  |
 | struct | **[cpp_robotics::QuadProg::Param](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/)**  |
 | struct | **[cpp_robotics::QuadProg::Result](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Result/)**  |
 
@@ -41,9 +41,9 @@ title: include/cpp_robotics/optimize/quadprog.hpp
 namespace cpp_robotics
 {
 
-// 2次計画法
 // min 1/2 x^T Q x + c^T x
 // s.t. Aeq x = b, Ax <= b
+
 class QuadProg
 {
 public:
@@ -280,4 +280,4 @@ public:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

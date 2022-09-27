@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::CatumullRom2D
+summary: Catumull曲線 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::CatumullRom2D
 
 
 
-
+Catumull曲線 
 
 
 `#include <spline.hpp>`
@@ -73,4 +74,4 @@ inline CatumullRom2D(
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

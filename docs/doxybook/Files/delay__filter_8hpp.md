@@ -17,7 +17,7 @@ title: include/cpp_robotics/filter/delay_filter.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::DelayFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DelayFilter/)**  |
+| class | **[cpp_robotics::DelayFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DelayFilter/)** <br>遅延フィルタ  |
 
 
 
@@ -33,9 +33,6 @@ title: include/cpp_robotics/filter/delay_filter.hpp
 namespace cpp_robotics
 {
 
-// ローパスフィルター
-// G(s) = e^(-T*s)
-// 遅延時間はサンプリング時間の整数倍のみ
 class DelayFilter
 {
 public:
@@ -77,4 +74,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

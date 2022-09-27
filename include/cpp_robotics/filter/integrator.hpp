@@ -5,7 +5,7 @@
 namespace cpp_robotics
 {
 
-// 積分器
+/// 積分器
 // G(s) = 1 / s
 // 双一次変換で離散化したもの
 class Integrator

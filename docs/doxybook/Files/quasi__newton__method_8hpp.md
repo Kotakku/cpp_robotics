@@ -28,8 +28,6 @@ title: include/cpp_robotics/optimize/quasi_newton_method.hpp
 namespace cpp_robotics
 {
 
-// 準ニュートン法
-// Todo: B行列の更新見直す
 static std::tuple<bool, Eigen::VectorXd, size_t> quasi_newton_method(std::function<double(const Eigen::VectorXd &)> f, std::function<Eigen::VectorXd(const Eigen::VectorXd &)> grad, Eigen::VectorXd x_init, const double tol = 1e-6, const size_t max_iter = 1000)
 {
     size_t n = x_init.rows();
@@ -66,4 +64,4 @@ static std::tuple<bool, Eigen::VectorXd, size_t> quasi_newton_method(std::functi
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

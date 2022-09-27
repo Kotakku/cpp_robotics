@@ -12,6 +12,15 @@
 namespace cpp_robotics
 {
 
+/**
+ * @brief ボード線図の応答を計算する
+ * 
+ * @param tf 
+ * @param omegas 
+ * @param gain_db_mode 
+ * @param phase_deg_mode 
+ * @return std::tuple<std::vector<double>, std::vector<double>> 
+ */
 static std::tuple<std::vector<double>, std::vector<double>> bode(TransferFunction &tf, const std::vector<double> &omegas = logspace(-2, 2, 500), bool gain_db_mode = true, bool phase_deg_mode = true)
 {
     size_t n = omegas.size();
@@ -146,6 +155,12 @@ static std::tuple<std::vector<double>, std::vector<double>> bode(TransferFunctio
     return {gain_db, phase_deg};
 }
 
+/**
+ * @brief ボード線図を表示する(matplotlibが必要)
+ * 
+ * @param tf 
+ * @param omegas 
+ */
 static void bode_plot(TransferFunction &tf, const std::vector<double> &omegas = logspace(-2, 2, 500))
 {
     namespace plt = matplotlibcpp;

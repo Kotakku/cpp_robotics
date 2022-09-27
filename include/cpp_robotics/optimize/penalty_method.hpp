@@ -10,7 +10,17 @@
 namespace cpp_robotics
 {
 
-// ペナルティ法
+/**
+ * @brief ペナルティ法
+ * 
+ * @param f 
+ * @param constraint 
+ * @param x_init 
+ * @param r_init 
+ * @param tol 
+ * @param max_iter 
+ * @return std::tuple<bool, Eigen::VectorXd, size_t> 
+ */
 static std::tuple<bool, Eigen::VectorXd, size_t> penalty_method(std::function<double(const Eigen::VectorXd &)> f, ConstraintArray constraint, Eigen::VectorXd x_init, const double r_init = 1.0, const double tol = 1e-3, const size_t max_iter = 1000)
 {
     Eigen::VectorXd x = x_init;

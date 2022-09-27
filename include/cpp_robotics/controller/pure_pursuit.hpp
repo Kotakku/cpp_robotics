@@ -12,6 +12,10 @@ namespace cpp_robotics
 // https://www.coursera.org/lecture/intro-self-driving-cars/lesson-2-geometric-lateral-control-pure-pursuit-44N7x
 // https://www.youtube.com/watch?v=34CSRIlHMNk
 
+/**
+ * @brief Pure pursuit制御器
+ * 
+ */
 class PurePursuit
 {
 public:

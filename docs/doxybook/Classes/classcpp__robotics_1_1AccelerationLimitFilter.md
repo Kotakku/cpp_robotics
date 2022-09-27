@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::AccelerationLimitFilter
+summary: 加速度制限フィルタ(速度制限込み) 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::AccelerationLimitFilter
 
 
 
-
+加速度制限フィルタ(速度制限込み)  [More...](#detailed-description)
 
 
 `#include <acceleration_limit_filter.hpp>`
@@ -20,6 +21,16 @@ title: cpp_robotics::AccelerationLimitFilter
 | | **[AccelerationLimitFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AccelerationLimitFilter/#function-accelerationlimitfilter)**(double acc_max, double Ts, std::optional< std::pair< double, double >> limit =std::nullopt) |
 | virtual void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AccelerationLimitFilter/#function-reset)**() |
 | virtual double | **[filtering](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AccelerationLimitFilter/#function-filtering)**(double u) |
+
+## Detailed Description
+
+```cpp
+class cpp_robotics::AccelerationLimitFilter;
+```
+
+加速度制限フィルタ(速度制限込み) 
+
+熊本大学の岡島研究室の文献を参考にした 
 
 ## Public Functions Documentation
 
@@ -66,4 +77,4 @@ inline virtual double filtering(
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

@@ -17,7 +17,7 @@ title: include/cpp_robotics/arm_ik/delta_robot.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::DeltaRobotIk](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DeltaRobotIk/)**  |
+| class | **[cpp_robotics::DeltaRobotIk](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DeltaRobotIk/)** <br>デルタロボットの逆運動学  |
 
 
 
@@ -41,4 +41,4 @@ class DeltaRobotIk
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

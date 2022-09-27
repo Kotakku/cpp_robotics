@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::DelayFilter
+summary: 遅延フィルタ 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::DelayFilter
 
 
 
-
+遅延フィルタ  [More...](#detailed-description)
 
 
 `#include <delay_filter.hpp>`
@@ -19,6 +20,16 @@ title: cpp_robotics::DelayFilter
 | | **[DelayFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DelayFilter/#function-delayfilter)**(double delay_time, double Ts) |
 | virtual void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DelayFilter/#function-reset)**() |
 | virtual double | **[filtering](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DelayFilter/#function-filtering)**(double u) |
+
+## Detailed Description
+
+```cpp
+class cpp_robotics::DelayFilter;
+```
+
+遅延フィルタ 
+
+G(s) = e^(-T*s) 遅延時間はサンプリング時間の整数倍のみ 
 
 ## Public Functions Documentation
 
@@ -50,4 +61,4 @@ inline virtual double filtering(
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

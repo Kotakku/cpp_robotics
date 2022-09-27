@@ -17,7 +17,7 @@ title: include/cpp_robotics/system/transfer_function.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/)**  |
+| class | **[cpp_robotics::TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/)** <br>伝達関数モデル  |
 
 
 
@@ -107,4 +107,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

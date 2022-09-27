@@ -28,7 +28,6 @@ title: include/cpp_robotics/controller/modern_control.hpp
 
 namespace cpp_robotics
 {
-    // 可制御性行列
     static Eigen::MatrixXd controllability_matrix(const Eigen::MatrixXd& A, const Eigen::VectorXd& B)
     {
         assert(A.rows() == A.cols());
@@ -47,7 +46,6 @@ namespace cpp_robotics
         return Uc;
     }
 
-    // 可制御性の判別
     static bool is_controllable(const Eigen::MatrixXd& A, const Eigen::VectorXd& B)
     {
         const int dim = A.rows();
@@ -60,8 +58,6 @@ namespace cpp_robotics
         return is_controllable(sys.A().value(), sys.B().value());
     }
 
-
-    // 可観測性行列
     static Eigen::MatrixXd observability_matrix(const Eigen::MatrixXd& A, const Eigen::RowVectorXd& C)
     {
         assert(A.rows() == A.cols());
@@ -80,7 +76,6 @@ namespace cpp_robotics
         return Uo;
     }
 
-    // 可観測性の判別
     static bool is_observable(const Eigen::MatrixXd& A, const Eigen::RowVectorXd& C)
     {
         const int dim = A.rows();
@@ -101,7 +96,6 @@ namespace cpp_robotics
         CONTROLLABLE
     };
 
-    // 同値変換による可制御正準形への変換
     // https://www.mathworks.com/help/control/ug/canonical-state-space-realizations.html
     static std::tuple<Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd> canonicalize_system(const Eigen::MatrixXd& A, const Eigen::MatrixXd& B, const Eigen::MatrixXd& C, const Eigen::MatrixXd& D, CanonicalizeMode mode = CanonicalizeMode::COMPANION)
     {
@@ -150,7 +144,6 @@ namespace cpp_robotics
         return canonicalize_system(sys.A().value(), sys.B().value(), sys.C(), sys.D(), mode);
     }
 
-    // SISOモデルに対してのアッカーマン法
     // https://ossyaritoori.hatenablog.com/entry/2018/05/16/%E6%A5%B5%E9%85%8D%E7%BD%AE%E3%81%AE%E5%AE%9F%E8%A3%85%EF%BC%9A%E3%82%A2%E3%83%83%E3%82%AB%E3%83%BC%E3%83%9E%E3%83%B3%E6%B3%95%E3%81%AEMATLAB%E5%AE%9F%E8%A3%85#Outline
     static Eigen::VectorXd place(const StateSpaceSystem& sys, std::vector<double> poles)
     {
@@ -186,4 +179,4 @@ namespace cpp_robotics
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

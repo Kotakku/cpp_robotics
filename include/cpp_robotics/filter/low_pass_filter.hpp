@@ -5,7 +5,7 @@
 namespace cpp_robotics
 {
 
-// ローパスフィルター
+/// ローパスフィルター
 // G(s) = Ts / (Ts + 1)
 // 双一次変換で離散化したもの
 class LowPassFilter

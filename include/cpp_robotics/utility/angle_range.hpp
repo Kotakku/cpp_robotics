@@ -9,8 +9,10 @@
 namespace cpp_robotics
 {
 
-// 角度[rad]に対して範囲を指定する
-// 複数の角度の範囲の合成をしたり逆を取ったりできる
+/**
+ * @brief 角度[rad]に対して範囲を指定する 複数の角度の範囲の合成をしたり逆を取ったりできる
+ * 
+ */
 class AngleRange
 {
 public:

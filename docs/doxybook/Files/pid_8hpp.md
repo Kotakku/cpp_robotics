@@ -17,7 +17,7 @@ title: include/cpp_robotics/controller/pid.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::PIDController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PIDController/)**  |
+| class | **[cpp_robotics::PIDController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PIDController/)** <br>PID制御器  |
 | struct | **[cpp_robotics::PIDController::pid_param_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PIDController_1_1pid__param__t/)**  |
 
 
@@ -35,7 +35,6 @@ title: include/cpp_robotics/controller/pid.hpp
 namespace cpp_robotics
 {
 
-// PIDコントローラ
 class PIDController
 {
 public:
@@ -100,4 +99,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

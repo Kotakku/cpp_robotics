@@ -12,7 +12,10 @@
 namespace cpp_robotics
 {
 
-// SQP(逐次二次計画法)
+/**
+ * @brief SQP(逐次二次計画法)
+ * 
+ */
 class SQP
 {
 public:

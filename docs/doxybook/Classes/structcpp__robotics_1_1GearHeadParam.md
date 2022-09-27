@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::GearHeadParam
+summary: ギアヘッドモデル 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::GearHeadParam
 
 
 
-
+ギアヘッドモデル 
 
 
 `#include <dc_motor_param.hpp>`
@@ -55,4 +56,4 @@ const double efficiency;
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

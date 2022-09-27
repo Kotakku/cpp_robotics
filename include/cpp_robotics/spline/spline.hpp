@@ -239,6 +239,10 @@ namespace spline
     }
 } // namespace spline
 
+/**
+ * @brief 2次元のスプライン曲線のインターフェイスクラス
+ * 
+ */
 class Spline2D
 {
 public:
@@ -331,6 +335,10 @@ protected:
     double _all_length;
 };
 
+/**
+ * @brief Catumull曲線
+ * 
+ */
 class CatumullRom2D : public Spline2D
 {
 public:
@@ -389,6 +397,10 @@ private:
     }
 };
 
+/**
+ * @brief 3次スプライン曲線
+ * 
+ */
 class CubicSpline : public Spline2D
 {
 public:

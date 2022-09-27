@@ -17,7 +17,7 @@ title: include/cpp_robotics/filter/filter_state_holder.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::FilterStateHolder](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1FilterStateHolder/)**  |
+| class | **[cpp_robotics::FilterStateHolder](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1FilterStateHolder/)** <br>フィルタの入力と計算を非同期にして最後の入力と出力を保持しておけるようにするクラス  |
 
 
 
@@ -34,7 +34,6 @@ title: include/cpp_robotics/filter/filter_state_holder.hpp
 namespace cpp_robotics
 {
 
-// フィルタの入力と計算を非同期にして最後の入力と出力を保持しておけるようにするクラス
 template<class BASE_FILTER_TYPE>
 class FilterStateHolder : public BASE_FILTER_TYPE
 {
@@ -63,4 +62,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

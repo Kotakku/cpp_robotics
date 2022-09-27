@@ -17,7 +17,7 @@ title: include/cpp_robotics/controller/pid2.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::PID2Controller](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PID2Controller/)**  |
+| class | **[cpp_robotics::PID2Controller](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PID2Controller/)** <br>2自由度PID制御器  |
 | struct | **[cpp_robotics::PID2Controller::pid_param_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PID2Controller_1_1pid__param__t/)**  |
 
 
@@ -31,7 +31,6 @@ title: include/cpp_robotics/controller/pid2.hpp
 namespace cpp_robotics
 {
 
-// 2自由度PIDコントローラ
 class PID2Controller
 {
 public:
@@ -110,4 +109,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

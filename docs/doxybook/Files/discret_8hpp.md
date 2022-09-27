@@ -17,7 +17,7 @@ title: include/cpp_robotics/system/discret.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::Discret](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/)**  |
+| class | **[cpp_robotics::Discret](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/)** <br>状態空間モデルを双一次変換で離散化する  |
 
 
 
@@ -114,4 +114,4 @@ public:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

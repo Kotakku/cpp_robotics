@@ -17,7 +17,7 @@ title: include/cpp_robotics/filter/low_pass_filter.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::LowPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/)**  |
+| class | **[cpp_robotics::LowPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/)** <br>ローパスフィルター  |
 
 
 
@@ -32,7 +32,6 @@ title: include/cpp_robotics/filter/low_pass_filter.hpp
 namespace cpp_robotics
 {
 
-// ローパスフィルター
 // G(s) = Ts / (Ts + 1)
 // 双一次変換で離散化したもの
 class LowPassFilter
@@ -71,4 +70,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

@@ -8,15 +8,28 @@
 namespace cpp_robotics
 {
 
-// 数値微分
-// R -> R
+/**
+ * @brief R -> Rの数値微分
+ * 
+ * @param f 
+ * @param x 
+ * @param eps 
+ * @return double 
+ */
 static double derivative(std::function<double(double)> f, double x, double eps = std::pow(std::numeric_limits<double>::epsilon(), 0.5))
 {
     // 中央差分
     return ( f(x + eps) - f(x - eps) ) / (2.0*eps);
 }
 
-// R^n -> R
+/**
+ * @brief R^n -> Rの数値微分
+ * 
+ * @param f 
+ * @param x 
+ * @param eps 
+ * @return Eigen::VectorXd 
+ */
 static Eigen::VectorXd derivative(std::function<double(Eigen::VectorXd)> f, Eigen::VectorXd x, double eps = std::pow(std::numeric_limits<double>::epsilon(), 0.5))
 {
     Eigen::VectorXd der(x.rows());
@@ -30,14 +43,28 @@ static Eigen::VectorXd derivative(std::function<double(Eigen::VectorXd)> f, Eige
     return der;
 }
 
-// 2回数値微分
-// R -> R
+/**
+ * @brief R -> Rの2回数値微分
+ * 
+ * @param f 
+ * @param x 
+ * @param eps 
+ * @return double 
+ */
 static double second_derivative(std::function<double(double)> f, double x, double eps = std::pow(std::numeric_limits<double>::epsilon(), 0.5))
 {
     // 中央2階差分
     return ( f(x + eps) - 2*f(x) + f(x - eps) ) / std::pow(eps,2);
 }
 
+/**
+ * @brief 
+ * 
+ * @param f 
+ * @param x 
+ * @param eps 
+ * @return Eigen::MatrixXd 
+ */
 static Eigen::MatrixXd approx_hessian(std::function<double(Eigen::VectorXd)> f, Eigen::VectorXd x, double eps = std::pow(std::numeric_limits<double>::epsilon(), 0.5))
 {
     auto j = derivative(f, x, eps);

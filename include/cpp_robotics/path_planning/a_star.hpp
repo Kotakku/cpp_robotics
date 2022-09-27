@@ -8,6 +8,14 @@
 namespace cpp_robotics
 {
 
+/**
+ * @brief A*法
+ * 
+ * @param start 
+ * @param end 
+ * @param map 
+ * @return std::vector<Eigen::Vector2i> 
+ */
 static std::vector<Eigen::Vector2i> a_star(const Eigen::Vector2i& start, const Eigen::Vector2i& end, const Eigen::MatrixXi& map)
 {
     using namespace grid_path_planning_utils;

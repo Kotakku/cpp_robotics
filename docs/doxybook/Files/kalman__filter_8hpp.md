@@ -17,7 +17,7 @@ title: include/cpp_robotics/filter/kalman_filter.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::KalmanFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KalmanFilter/)**  |
+| class | **[cpp_robotics::KalmanFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KalmanFilter/)** <br>カルマンフィルタ  |
 
 
 
@@ -71,7 +71,6 @@ v: 観測ノイズ (p*1)
 
 */
 
-// カルマンフィルタ
 template<typename FLOATING_TYPE, size_t STATE_SIZE, size_t INPUT_SIZE, size_t OBSERVE_SIZE>
 class KalmanFilter
 {
@@ -146,4 +145,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

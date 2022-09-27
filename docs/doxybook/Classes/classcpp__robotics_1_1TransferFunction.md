@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::TransferFunction
+summary: 伝達関数モデル 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::TransferFunction
 
 
 
-
+伝達関数モデル 
 
 
 `#include <transfer_function.hpp>`
@@ -137,4 +138,4 @@ inline std::vector< double > den_array() const
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

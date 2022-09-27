@@ -17,7 +17,7 @@ title: include/cpp_robotics/optimize/active_set_method.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::ActiveSetMethod](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ActiveSetMethod/)**  |
+| class | **[cpp_robotics::ActiveSetMethod](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ActiveSetMethod/)** <br>線形不等式制約を持つ2次計画法を解く有効制約法  |
 | struct | **[cpp_robotics::ActiveSetMethod::Problem](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/)**  |
 | struct | **[cpp_robotics::ActiveSetMethod::Result](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/)**  |
 
@@ -453,4 +453,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

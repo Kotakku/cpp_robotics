@@ -17,7 +17,7 @@ title: include/cpp_robotics/utility/angle_range.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::AngleRange](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/)**  |
+| class | **[cpp_robotics::AngleRange](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/)** <br>角度[rad]に対して範囲を指定する 複数の角度の範囲の合成をしたり逆を取ったりできる  |
 
 
 
@@ -36,8 +36,6 @@ title: include/cpp_robotics/utility/angle_range.hpp
 namespace cpp_robotics
 {
 
-// 角度[rad]に対して範囲を指定する
-// 複数の角度の範囲の合成をしたり逆を取ったりできる
 class AngleRange
 {
 public:
@@ -233,4 +231,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

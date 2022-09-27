@@ -31,7 +31,7 @@ private:
 /// @endcond
 
 /**
- * @brief 乱数生成器 stdの標準乱数生成器をラップしてこのクラス一つだけ実体化すれば乱数を生成できるようにした
+ * @brief stdの乱数生成をラップしてこのクラス一つだけ実体化すればいいようにした乱数生成器
  * 
  * @tparam Distribution 乱数の分布, std::normal_distribution<double>等
  * @tparam EngineMethod 疑似乱数生成法, std::mt19937等

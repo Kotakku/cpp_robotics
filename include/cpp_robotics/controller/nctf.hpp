@@ -7,6 +7,10 @@
 namespace cpp_robotics
 {
 
+/**
+ * @brief NCTF制御器
+ * 
+ */
 class NctfController
 {
 public:

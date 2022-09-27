@@ -6,9 +6,12 @@
 namespace cpp_robotics
 {
 
-// ローパスフィルター
-// G(s) = e^(-T*s)
-// 遅延時間はサンプリング時間の整数倍のみ
+/**
+ * @brief 遅延フィルタ
+ * 
+ */
+/// G(s) = e^(-T*s)
+/// 遅延時間はサンプリング時間の整数倍のみ
 class DelayFilter
 {
 public:

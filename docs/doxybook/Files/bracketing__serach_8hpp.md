@@ -28,7 +28,6 @@ title: include/cpp_robotics/optimize/bracketing_serach.hpp
 namespace cpp_robotics
 {
 
-// (直線探索) アルミホ条件を満たす囲い込み法
 static double bracketing_serach(std::function<double(Eigen::VectorXd)> func, std::function<Eigen::VectorXd(Eigen::VectorXd)> grad, const Eigen::VectorXd &x, const Eigen::VectorXd &d, double gamma = 0.3, double tau = 0.9, const size_t max_iter = 1000)
 {
     auto line_func = [&](double v){ return func(x + v*d); };
@@ -70,4 +69,4 @@ static double bracketing_serach(std::function<double(double)> func, const double
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

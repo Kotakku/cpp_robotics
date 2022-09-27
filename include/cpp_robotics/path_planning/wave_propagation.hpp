@@ -8,6 +8,14 @@
 namespace cpp_robotics
 {
 
+/**
+ * @brief Wave propagation法
+ * 
+ * @param start 
+ * @param end 
+ * @param map 
+ * @return std::vector<Eigen::Vector2i> 
+ */
 std::vector<Eigen::Vector2i> wave_propagation(const Eigen::Vector2i& start, const Eigen::Vector2i& end, const Eigen::MatrixXi& map)
 {
     using namespace grid_path_planning_utils;

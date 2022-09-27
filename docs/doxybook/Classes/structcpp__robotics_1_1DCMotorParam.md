@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::DCMotorParam
+summary: DCモーターモデル 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::DCMotorParam
 
 
 
-
+DCモーターモデル 
 
 
 `#include <dc_motor_param.hpp>`
@@ -222,4 +223,4 @@ const Second time_constant;
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

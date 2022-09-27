@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::PurePursuit
+summary: Pure pursuit制御器 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::PurePursuit
 
 
 
-
+Pure pursuit制御器 
 
 
 `#include <pure_pursuit.hpp>`
@@ -67,4 +68,4 @@ inline std::tuple< bool, double > control(
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

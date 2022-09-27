@@ -91,7 +91,7 @@ namespace cpp_robotics
     };
 
     /**
-     * @brief 四角形
+     * @brief 四角形クラス
      */
     struct Quad
     {
@@ -143,7 +143,7 @@ namespace cpp_robotics
     };
 
     /**
-     * @brief 三角形
+     * @brief 三角形クラス
      */
     struct Triangle
     {

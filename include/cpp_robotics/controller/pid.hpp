@@ -7,7 +7,10 @@
 namespace cpp_robotics
 {
 
-// PIDコントローラ
+/**
+ * @brief PID制御器
+ * 
+ */
 class PIDController
 {
 public:

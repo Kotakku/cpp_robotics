@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::AngleRange
+summary: 角度[rad]に対して範囲を指定する 複数の角度の範囲の合成をしたり逆を取ったりできる 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::AngleRange
 
 
 
-
+角度[rad]に対して範囲を指定する 複数の角度の範囲の合成をしたり逆を取ったりできる 
 
 
 `#include <angle_range.hpp>`
@@ -135,4 +136,4 @@ static constexpr static double PI = M_PI;
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

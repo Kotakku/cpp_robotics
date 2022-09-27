@@ -12,6 +12,13 @@
 namespace cpp_robotics
 {
 
+/**
+ * @brief ナイキスト線図の応答を計算する
+ * 
+ * @param tf 
+ * @param omegas 
+ * @return std::tuple<std::vector<double>, std::vector<double>> 
+ */
 static std::tuple<std::vector<double>, std::vector<double>> nyquist(TransferFunction &tf, const std::vector<double> &omegas = logspace(-2, 2, 500))
 {
     size_t n = omegas.size();
@@ -31,6 +38,12 @@ static std::tuple<std::vector<double>, std::vector<double>> nyquist(TransferFunc
     return {Re, Im};
 }
 
+/**
+ * @brief ナイキスト線図を表示する(matplotlibが必要)
+ * 
+ * @param tf 
+ * @param omegas 
+ */
 static void nyquist_plot(TransferFunction &tf, const std::vector<double> &omegas = logspace(-2, 2, 500))
 {
     namespace plt = matplotlibcpp;

@@ -6,7 +6,16 @@
 namespace cpp_robotics 
 {
 
-// 黄金探索
+/**
+ * @brief 黄金探索
+ * 
+ * @param f 
+ * @param low 
+ * @param high 
+ * @param tol 
+ * @param max_iter 
+ * @return double 
+ */
 static double golden_search(std::function<double(double)> f, double low, double high, const double tol = 1e-6, const size_t max_iter = 100)
 {
 	constexpr double r = (-1.0 + std::sqrt(5)) / 2.0;

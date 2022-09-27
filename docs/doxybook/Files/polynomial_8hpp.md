@@ -17,7 +17,7 @@ title: include/cpp_robotics/system/polynomial.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[cpp_robotics::Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)**  |
+| struct | **[cpp_robotics::Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)** <br>多項式  |
 
 
 
@@ -354,4 +354,4 @@ std::ostream& operator << (std::ostream& os, const Polynomial& v)
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

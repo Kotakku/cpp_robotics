@@ -5,6 +5,10 @@
 namespace cpp_robotics
 {
 
+/**
+ * @brief z空間の伝達関数
+ * 
+ */
 class DiscreteTransferFunction
 {
 public:

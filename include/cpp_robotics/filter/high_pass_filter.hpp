@@ -5,7 +5,10 @@
 namespace cpp_robotics
 {
 
-// ローパスフィルター
+/**
+ * @brief ハイパスフィルタ
+ * 
+ */
 // G(s) = 1 / (Ts + 1)
 // 双一次変換で離散化したもの
 class HighPassFilter

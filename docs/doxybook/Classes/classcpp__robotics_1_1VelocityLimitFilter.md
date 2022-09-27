@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::VelocityLimitFilter
+summary: 速度制限フィルタ 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::VelocityLimitFilter
 
 
 
-
+速度制限フィルタ 
 
 
 `#include <velocity_limit_filter.hpp>`
@@ -101,4 +102,4 @@ double prev_v_;
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

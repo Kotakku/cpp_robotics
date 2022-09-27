@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::Quaternion
+summary: クォータニオンクラス 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::Quaternion
 
 
 
- [More...](#detailed-description)
+クォータニオンクラス  [More...](#detailed-description)
 
 
 `#include <quaternion.hpp>`
@@ -48,6 +49,12 @@ title: cpp_robotics::Quaternion
 template <typename FLOATING_TYPE >
 class cpp_robotics::Quaternion;
 ```
+
+クォータニオンクラス 
+
+**Template Parameters**: 
+
+  * **FLOATING_TYPE** 
 
 ## Public Types Documentation
 
@@ -182,4 +189,4 @@ value_type w;
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

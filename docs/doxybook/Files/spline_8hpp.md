@@ -19,9 +19,9 @@ title: include/cpp_robotics/spline/spline.hpp
 |                | Name           |
 | -------------- | -------------- |
 | struct | **[cpp_robotics::spline::spline_c](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/)**  |
-| class | **[cpp_robotics::Spline2D](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/)**  |
-| class | **[cpp_robotics::CatumullRom2D](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRom2D/)**  |
-| class | **[cpp_robotics::CubicSpline](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CubicSpline/)**  |
+| class | **[cpp_robotics::Spline2D](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/)** <br>2次元のスプライン曲線のインターフェイスクラス  |
+| class | **[cpp_robotics::CatumullRom2D](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRom2D/)** <br>Catumull曲線  |
+| class | **[cpp_robotics::CubicSpline](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CubicSpline/)** <br>3次スプライン曲線  |
 
 
 
@@ -507,4 +507,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

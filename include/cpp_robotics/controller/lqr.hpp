@@ -6,7 +6,15 @@
 namespace cpp_robotics
 {
 
-// 有本-ポッターの方法
+/**
+ * @brief 有本-ポッターの方法によるリカッチ方程式の解法
+ * 
+ * @param A 
+ * @param B 
+ * @param Q 
+ * @param R 
+ * @return std::optional<Eigen::MatrixXd> 
+ */
 static std::optional<Eigen::MatrixXd> solve_riccati_arimoto_potter(const Eigen::MatrixXd &A,
                                                                     const Eigen::MatrixXd &B,
                                                                     const Eigen::MatrixXd &Q,

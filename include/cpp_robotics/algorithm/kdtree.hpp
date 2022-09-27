@@ -9,6 +9,12 @@
 namespace cpp_robotics
 {
 
+/**
+ * @brief k-d木
+ * 
+ * @tparam POINT_T データ型
+ * @tparam DIM 次元サイズ
+ */
 template<class POINT_T, int DIM>
 class KDTree
 {

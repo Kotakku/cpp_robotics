@@ -3,7 +3,10 @@
 namespace cpp_robotics
 {
 
-// 2自由度PIDコントローラ
+/**
+ * @brief 2自由度PID制御器
+ * 
+ */
 class PID2Controller
 {
 public:

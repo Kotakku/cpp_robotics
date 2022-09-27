@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::KDTree
+summary: k-d木 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::KDTree
 
 
 
- [More...](#detailed-description)
+k-d木  [More...](#detailed-description)
 
 
 `#include <kdtree.hpp>`
@@ -48,6 +49,13 @@ template <class POINT_T ,
 int DIM>
 class cpp_robotics::KDTree;
 ```
+
+k-d木 
+
+**Template Parameters**: 
+
+  * **POINT_T** データ型 
+  * **DIM** 次元サイズ 
 
 ## Public Types Documentation
 
@@ -177,4 +185,4 @@ static constexpr size_t dimention = DIM;
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

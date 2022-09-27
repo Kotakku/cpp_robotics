@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::FilterStateHolder
+summary: フィルタの入力と計算を非同期にして最後の入力と出力を保持しておけるようにするクラス 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::FilterStateHolder
 
 
 
- [More...](#detailed-description)
+フィルタの入力と計算を非同期にして最後の入力と出力を保持しておけるようにするクラス  [More...](#detailed-description)
 
 
 `#include <filter_state_holder.hpp>`
@@ -29,6 +30,12 @@ Inherits from BASE_FILTER_TYPE
 template <class BASE_FILTER_TYPE >
 class cpp_robotics::FilterStateHolder;
 ```
+
+フィルタの入力と計算を非同期にして最後の入力と出力を保持しておけるようにするクラス 
+
+**Template Parameters**: 
+
+  * **BASE_FILTER_TYPE** 
 
 ## Public Functions Documentation
 
@@ -64,4 +71,4 @@ inline double y() const
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

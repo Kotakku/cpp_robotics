@@ -17,7 +17,7 @@ title: include/cpp_robotics/filter/differentiator.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::Differentiator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Differentiator/)**  |
+| class | **[cpp_robotics::Differentiator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Differentiator/)** <br>疑似微分器  |
 
 
 
@@ -32,9 +32,6 @@ title: include/cpp_robotics/filter/differentiator.hpp
 namespace cpp_robotics
 {
 
-// 疑似微分器
-// G(s) = s / (Ts + 1)
-// 双一次変換で離散化したもの
 class Differentiator
 {
 public:
@@ -74,4 +71,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

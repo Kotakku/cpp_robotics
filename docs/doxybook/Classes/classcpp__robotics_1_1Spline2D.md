@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::Spline2D
+summary: 2次元のスプライン曲線のインターフェイスクラス 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::Spline2D
 
 
 
-
+2次元のスプライン曲線のインターフェイスクラス 
 
 
 `#include <spline.hpp>`
@@ -166,4 +167,4 @@ double _all_length;
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

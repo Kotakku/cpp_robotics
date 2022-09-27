@@ -17,7 +17,7 @@ title: include/cpp_robotics/algorithm/kdtree.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::KDTree](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/)**  |
+| class | **[cpp_robotics::KDTree](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/)** <br>k-d木  |
 
 
 
@@ -268,4 +268,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

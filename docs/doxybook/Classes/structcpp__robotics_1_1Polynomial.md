@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::Polynomial
+summary: 多項式 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::Polynomial
 
 
 
-
+多項式 
 
 
 `#include <polynomial.hpp>`
@@ -324,4 +325,4 @@ friend bool operator!=(
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

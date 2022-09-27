@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::KalmanFilter
+summary: カルマンフィルタ 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::KalmanFilter
 
 
 
- [More...](#detailed-description)
+カルマンフィルタ  [More...](#detailed-description)
 
 
 `#include <kalman_filter.hpp>`
@@ -59,6 +60,15 @@ size_t INPUT_SIZE,
 size_t OBSERVE_SIZE>
 class cpp_robotics::KalmanFilter;
 ```
+
+カルマンフィルタ 
+
+**Template Parameters**: 
+
+  * **FLOATING_TYPE** 浮動小数点型 
+  * **STATE_SIZE** 状態量のサイズ 
+  * **INPUT_SIZE** 入力量のサイズ 
+  * **OBSERVE_SIZE** 観測量のサイズ 
 
 ## Public Types Documentation
 
@@ -235,4 +245,4 @@ r_mat_t R;
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

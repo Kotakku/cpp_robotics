@@ -69,8 +69,11 @@ private:
 }
 /// @endcond
 
-// 加速度制限フィルタ(速度制限込み)
-// 熊本大学の岡島研究室の文献を参考にした
+/**
+ * @brief 加速度制限フィルタ(速度制限込み)
+ * 
+ */
+/// 熊本大学の岡島研究室の文献を参考にした
 class AccelerationLimitFilter
 {
 public:

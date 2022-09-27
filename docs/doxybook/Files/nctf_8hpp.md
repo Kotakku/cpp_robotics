@@ -17,7 +17,7 @@ title: include/cpp_robotics/controller/nctf.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::NctfController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NctfController/)**  |
+| class | **[cpp_robotics::NctfController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NctfController/)** <br>NCTF制御器  |
 
 
 
@@ -87,4 +87,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

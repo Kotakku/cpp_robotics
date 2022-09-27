@@ -23,6 +23,10 @@ G: プラント
 namespace cpp_robotics
 {
 
+/**
+ * @brief コントローラとシステムからなるSISOのフィードバックシステム
+ * 
+ */
 class SisoFeedbackSystem
 {
 public:

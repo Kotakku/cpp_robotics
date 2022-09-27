@@ -52,7 +52,7 @@ private:
 }
 /// @endcond
 
-// 速度制限フィルタ
+/// 速度制限フィルタ
 // 熊本大学の岡島研究室の文献を参考にした
 class VelocityLimitFilter
 {

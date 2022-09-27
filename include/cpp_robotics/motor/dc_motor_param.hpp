@@ -17,7 +17,10 @@ GENERATE_UNIT_SUFFIX(cpp_robotics::TorqueConstant, Nm_per_A)
 GENERATE_UNIT_SUFFIX(cpp_robotics::BackEmfConstant, Vs_per_rad)
 GENERATE_UNIT_SUFFIX(cpp_robotics::FrictionConstant, Nms)
 
-// DCモータークラス
+/**
+ * @brief DCモーターモデル
+ * 
+ */
 struct DCMotorParam
 {
     const Volt nominal_voltage;               // 公称電圧[V]
@@ -88,6 +91,10 @@ private:
     double current_i_gain_base_ = 0;
 };
 
+/**
+ * @brief ギアヘッドモデル
+ * 
+ */
 struct GearHeadParam
 {
     const double ratio;
@@ -96,6 +103,10 @@ struct GearHeadParam
         ratio(ratio_), efficiency(efficiency_) {}
 };
 
+/**
+ * @brief ギアヘッド付きDCモーターモデル
+ * 
+ */
 struct DCGearedMotorParam
 {
     constexpr DCGearedMotorParam(Volt voltage_, DCMotorParam motor_, GearHeadParam gear_head_, const double optional_gear_ratio_ = 1):

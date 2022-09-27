@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::DiscreteTransferFunction
+summary: z空間の伝達関数 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::DiscreteTransferFunction
 
 
 
-
+z空間の伝達関数 
 
 
 `#include <discrete_transfer_function.hpp>`
@@ -81,4 +82,4 @@ inline double responce(
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

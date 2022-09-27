@@ -17,7 +17,7 @@ title: include/cpp_robotics/filter/velocity_limit_filter.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::VelocityLimitFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/)**  |
+| class | **[cpp_robotics::VelocityLimitFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/)** <br>速度制限フィルタ  |
 
 
 
@@ -77,7 +77,6 @@ private:
 
 }
 
-// 速度制限フィルタ
 // 熊本大学の岡島研究室の文献を参考にした
 class VelocityLimitFilter
 {
@@ -144,4 +143,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

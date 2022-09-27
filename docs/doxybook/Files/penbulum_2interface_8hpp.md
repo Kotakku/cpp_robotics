@@ -13,14 +13,6 @@ title: include/cpp_robotics/robots/penbulum/interface.hpp
 | -------------- |
 | **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
 
-## Classes
-
-|                | Name           |
-| -------------- | -------------- |
-| class | **[cpp_robotics::PendulumInterface](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PendulumInterface/)**  |
-| struct | **[cpp_robotics::PendulumInterface::State](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1State/)**  |
-| struct | **[cpp_robotics::PendulumInterface::Input](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PendulumInterface_1_1Input/)**  |
-
 
 
 
@@ -71,4 +63,4 @@ public:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

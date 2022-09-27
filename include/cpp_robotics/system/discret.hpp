@@ -6,6 +6,10 @@
 namespace cpp_robotics
 {
 
+/**
+ * @brief 状態空間モデルを双一次変換で離散化する
+ * 
+ */
 class Discret
 {
 private:
@@ -71,6 +75,17 @@ public:
         return static_cast<Derived2>(integral_expm(A, Ts, hdiv)*B);
     }
 
+    /**
+     * @brief システムを離散化する
+     * 
+     * @tparam Derived1 
+     * @tparam Derived2 
+     * @param A 
+     * @param B 
+     * @param Ts 
+     * @param hdiv 
+     * @return auto 
+     */
     template<typename Derived1, typename Derived2>
     static auto discritize(const Eigen::MatrixBase<Derived1> &A, const Eigen::MatrixBase<Derived2> &B, const float &Ts, size_t hdiv = 1000)
     {

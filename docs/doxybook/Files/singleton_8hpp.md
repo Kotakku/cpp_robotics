@@ -17,7 +17,7 @@ title: include/cpp_robotics/utility/singleton.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::Singleton](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Singleton/)**  |
+| class | **[cpp_robotics::Singleton](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Singleton/)** <br>シングルトンなオブジェクトを生成する  |
 
 
 
@@ -39,9 +39,12 @@ private:
     Singleton() = default;
 
 public:
-    static std::shared_ptr<T> get_instance()
+    using class_t = T;
+    using shared_t = std::shared_ptr<class_t>;
+
+    static shared_t get_shared_instance()
     {
-        static std::shared_ptr<T> instance = std::make_shared<T>();
+        static shared_t instance = std::make_shared<class_t>();
         return instance;
     }
 };
@@ -52,4 +55,4 @@ public:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

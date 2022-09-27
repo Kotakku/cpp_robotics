@@ -26,10 +26,6 @@ title: include/cpp_robotics/optimize/bfgs.hpp
 namespace cpp_robotics
 {
 
-// BFGS公式
-// hess: B行列
-// s   : x_k+1 - x_k
-// y   : \grad_x L(x_k+1, u_k+1) - \grad_x L(x_k, u_k)
 static void bfgs_step(Eigen::MatrixXd &hess, Eigen::VectorXd s, Eigen::VectorXd y)
 {
     double sy, sBs;
@@ -42,11 +38,6 @@ static void bfgs_step(Eigen::MatrixXd &hess, Eigen::VectorXd s, Eigen::VectorXd 
     hess += -( Bs * Bs.transpose() )/sBs + ( y*y.transpose() )/( sy );
 }
 
-// パウエルの修正BFGS公式
-// hess  : B行列
-// s     : x_k+1 - x_k
-// y     : \grad_x L(x_k+1, u_k+1) - \grad_x L(x_k, u_k)
-// gamma : 
 static void powells_modified_bfgs_step(Eigen::MatrixXd &hess, Eigen::VectorXd s, Eigen::VectorXd y, double gamma = 0.2)
 {
     // y_tilde
@@ -72,4 +63,4 @@ static void powells_modified_bfgs_step(Eigen::MatrixXd &hess, Eigen::VectorXd s,
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

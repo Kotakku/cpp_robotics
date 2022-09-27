@@ -17,7 +17,7 @@ title: include/cpp_robotics/optimize/sqp.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::SQP](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SQP/)**  |
+| class | **[cpp_robotics::SQP](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SQP/)** <br>[SQP]()(逐次二次計画法)  |
 | struct | **[cpp_robotics::SQP::Problem](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Problem/)**  |
 | struct | **[cpp_robotics::SQP::Result](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Result/)**  |
 
@@ -41,7 +41,6 @@ title: include/cpp_robotics/optimize/sqp.hpp
 namespace cpp_robotics
 {
 
-// SQP(逐次二次計画法)
 class SQP
 {
 public:
@@ -250,4 +249,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900

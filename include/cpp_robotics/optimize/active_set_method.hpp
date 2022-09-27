@@ -10,6 +10,10 @@ namespace cpp_robotics
 // s.t. Ax <= b
 // x 等式制約は2つの不等式制約に変換する
 // o 等式制約は常にアクティブであるとする
+/**
+ * @brief 線形不等式制約を持つ2次計画法を解く有効制約法
+ * 
+ */
 class ActiveSetMethod
 {
 public:

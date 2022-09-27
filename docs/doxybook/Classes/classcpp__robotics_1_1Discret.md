@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::Discret
+summary: 状態空間モデルを双一次変換で離散化する 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::Discret
 
 
 
-
+状態空間モデルを双一次変換で離散化する 
 
 
 `#include <discret.hpp>`
@@ -18,7 +19,7 @@ title: cpp_robotics::Discret
 | -------------- | -------------- |
 | template <typename Derived \> <br>auto | **[discretize_a](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/#function-discretize-a)**(const Eigen::MatrixBase< Derived > & A, const float Ts) |
 | template <typename Derived1 ,typename Derived2 \> <br>auto | **[discretize_b](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/#function-discretize-b)**(const Eigen::MatrixBase< Derived1 > & A, const Eigen::MatrixBase< Derived2 > & B, const float & Ts, size_t hdiv =1000) |
-| template <typename Derived1 ,typename Derived2 \> <br>auto | **[discritize](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/#function-discritize)**(const Eigen::MatrixBase< Derived1 > & A, const Eigen::MatrixBase< Derived2 > & B, const float & Ts, size_t hdiv =1000) |
+| template <typename Derived1 ,typename Derived2 \> <br>auto | **[discritize](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/#function-discritize)**(const Eigen::MatrixBase< Derived1 > & A, const Eigen::MatrixBase< Derived2 > & B, const float & Ts, size_t hdiv =1000)<br>システムを離散化する  |
 
 ## Public Functions Documentation
 
@@ -60,7 +61,24 @@ static inline auto discritize(
 )
 ```
 
+システムを離散化する 
+
+**Parameters**: 
+
+  * **A** 
+  * **B** 
+  * **Ts** 
+  * **hdiv** 
+
+
+**Template Parameters**: 
+
+  * **Derived1** 
+  * **Derived2** 
+
+
+**Return**: auto 
 
 -------------------------------
 
-Updated on 2022-09-27 at 01:12:56 +0900
+Updated on 2022-09-27 at 16:29:02 +0900
