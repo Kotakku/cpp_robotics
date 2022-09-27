@@ -1027,22 +1027,36 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../tech_note/optimize/line_search/" class="md-nav__link">
+        直線探索
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_6" type="checkbox" id="__nav_4_2_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_7" type="checkbox" id="__nav_4_2_7" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_4_2_6">
+        <label class="md-nav__link" for="__nav_4_2_7">
           無制約最適化
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="無制約最適化" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_6">
+        <label class="md-nav__title" for="__nav_4_2_7">
           <span class="md-nav__icon md-icon"></span>
           無制約最適化
         </label>
@@ -1120,18 +1134,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_7" type="checkbox" id="__nav_4_2_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_8" type="checkbox" id="__nav_4_2_8" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_4_2_7">
+        <label class="md-nav__link" for="__nav_4_2_8">
           制約付き最適化
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="制約付き最適化" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_7">
+        <label class="md-nav__title" for="__nav_4_2_8">
           <span class="md-nav__icon md-icon"></span>
           制約付き最適化
         </label>
@@ -2142,176 +2156,90 @@
 
 
 <h1 id="includecpp_roboticschassismecanum_ikhpp">include/cpp_robotics/chassis/mecanum_ik.hpp</h1>
+<h2 id="namespaces">Namespaces</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/">cpp_robotics</a></strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="classes">Classes</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1MecanumIk/">cpp_robotics::MecanumIk</a></strong> <br>メカナムの逆運動学モデル</td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1MecanumIk_1_1Config/">cpp_robotics::MecanumIk::Config</a></strong></td>
+</tr>
+</tbody>
+</table>
 <h2 id="source-code">Source code</h2>
-<div class="highlight"><pre><span></span><code><span class="c1">// #pragma once</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
 
-<span class="c1">// #include &quot;../_Interface/IDriveIK.hpp&quot;</span>
-<span class="c1">// #include &quot;../../Common/SCLMath.hpp&quot;</span>
-<span class="c1">// #include &lt;array&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;array&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Eigen/Dense&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cpp_robotics/vector/transform.hpp&quot;</span><span class="cp"></span>
 
-<span class="c1">// namespace STB</span>
-<span class="c1">// {</span>
-<span class="c1">//     /**</span>
-<span class="c1">//      * @brief メカナムの逆運動学モデル</span>
-<span class="c1">//      * </span>
-<span class="c1">//      */</span>
-<span class="c1">//     class MecanumIK : public IDriveIK&lt;float&gt;</span>
-<span class="c1">//     {</span>
-<span class="c1">//     public:</span>
-<span class="c1">//         /**</span>
-<span class="c1">//          * @brief Construct a new Mecanum I K object</span>
-<span class="c1">//          * </span>
-<span class="c1">//          * @param config </span>
-<span class="c1">//          * @param specification </span>
-<span class="c1">//          */</span>
-<span class="c1">//         MecanumIK(DriveIKContents::mecanumConfig_t config, DriveIKContents::specification_t specification):</span>
-<span class="c1">//             _config(config), _specification(specification)</span>
-<span class="c1">//         {</span>
-<span class="c1">//             setDefaultRateMatrix();</span>
-<span class="c1">//         }</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">cpp_robotics</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 
-<span class="c1">//         /**</span>
-<span class="c1">//          * @brief </span>
-<span class="c1">//          * </span>
-<span class="c1">//          * @return size_t </span>
-<span class="c1">//          */</span>
-<span class="c1">//         virtual size_t wheel_num() { return 4; }</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MecanumIk</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Config</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">width</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">length</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
 
-<span class="c1">//         /**</span>
-<span class="c1">//          * @brief </span>
-<span class="c1">//          * </span>
-<span class="c1">//          * @param velocityVector </span>
-<span class="c1">//          * @param angle </span>
-<span class="c1">//          * @return true </span>
-<span class="c1">//          * @return false </span>
-<span class="c1">//          */</span>
-<span class="c1">//         virtual bool calculate(FieldVec2F velocityVector, const float angle)</span>
-<span class="c1">//         {</span>
-<span class="c1">//             for(size_t element = 0; element &lt; 2; element++)</span>
-<span class="c1">//             {</span>
-<span class="c1">//                 velocityVector[element] = clamp&lt;float&gt;(velocityVector[element], -_specification.maxLinearInput, _specification.maxLinearInput);</span>
+<span class="w">    </span><span class="n">MecanumIk</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">length</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">MecanumIk</span><span class="p">(</span><span class="n">Config</span><span class="p">{</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="p">})</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 
-<span class="c1">//                 if (abs(velocityVector[element]) &lt; _specification.minLinearInput)</span>
-<span class="c1">//                     velocityVector[element] = 0.0;</span>
-<span class="c1">//             }</span>
+<span class="w">    </span><span class="n">MecanumIk</span><span class="p">(</span><span class="n">Config</span><span class="w"> </span><span class="n">config</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">config_</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">norm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">config_</span><span class="p">.</span><span class="n">width</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">config_</span><span class="p">.</span><span class="n">length</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">conv_mat_</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span>
+<span class="w">            </span><span class="mi">-1</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">norm</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">norm</span><span class="p">,</span><span class="w"></span>
+<span class="w">             </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">norm</span><span class="p">,</span><span class="w"></span>
+<span class="w">             </span><span class="mi">1</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">norm</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="c1">//             velocityVector[2] = clamp&lt;float&gt;(velocityVector[2], -_specification.maxAngularInput, _specification.maxAngularInput);</span>
-<span class="c1">//             if(abs(velocityVector[2]) &lt; _specification.minAngularInput)</span>
-<span class="c1">//                 velocityVector[2] = 0;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">calculate</span><span class="p">(</span><span class="n">Transformd</span><span class="w"> </span><span class="n">velocity</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wv</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector4d</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wv_vec</span><span class="p">(</span><span class="n">wv</span><span class="p">.</span><span class="n">data</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="w"> </span><span class="nf">v</span><span class="p">(</span><span class="n">velocity</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">velocity</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">velocity</span><span class="p">.</span><span class="n">theta</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">wv_vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conv_mat_</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">wv</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="c1">//             velocityVector.rotate(-angle);</span>
+<span class="w">    </span><span class="n">Config</span><span class="w"> </span><span class="n">config</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">config_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
-<span class="c1">//             float maxValue = 0;</span>
-<span class="c1">//             for(size_t wheel = 0; wheel &lt; 4; wheel++)</span>
-<span class="c1">//             {</span>
-<span class="c1">//                 v[wheel] = 0;</span>
-<span class="c1">//                 for(size_t element = 0; element &lt; 3; element++) {</span>
-<span class="c1">//                     v[wheel] += _rateMatrix[wheel][element] * velocityVector[element];</span>
-<span class="c1">//                 }</span>
-
-<span class="c1">//                 if(abs(v[wheel]) &gt; maxValue)</span>
-<span class="c1">//                     maxValue = abs(v[wheel]);</span>
-<span class="c1">//             }</span>
-
-<span class="c1">//             for(size_t wheel = 0; wheel &lt; 4; wheel++)</span>
-<span class="c1">//             {</span>
-<span class="c1">//                 if(maxValue &gt; _specification.maxOutput)</span>
-<span class="c1">//                     v[wheel] = map&lt;float&gt;(v[wheel], -maxValue, maxValue, -_specification.maxOutput, _specification.maxOutput);</span>
-
-<span class="c1">//                 if(abs(v[wheel]) &lt; _specification.minOutput)</span>
-<span class="c1">//                     v[wheel] = 0;</span>
-<span class="c1">//             }</span>
-
-<span class="c1">//             return (velocityVector == FieldVec2F::origin());</span>
-<span class="c1">//         }</span>
-
-<span class="c1">//         /**</span>
-<span class="c1">//          * @brief </span>
-<span class="c1">//          * </span>
-<span class="c1">//          * @param num </span>
-<span class="c1">//          * @return float </span>
-<span class="c1">//          */</span>
-<span class="c1">//         virtual float wheel_vel(const size_t num) { return v[num]; }</span>
-
-<span class="c1">//         /**</span>
-<span class="c1">//          * @brief </span>
-<span class="c1">//          * </span>
-<span class="c1">//          * @return std::array&lt;float, 4&gt; </span>
-<span class="c1">//          */</span>
-<span class="c1">//         std::array&lt;float, 4&gt; wheel_vel() { return v; }</span>
-
-<span class="c1">//         /**</span>
-<span class="c1">//          * @brief </span>
-<span class="c1">//          * </span>
-<span class="c1">//          * @return DriveIKContents::mecanumConfig_t&amp; </span>
-<span class="c1">//          */</span>
-<span class="c1">//         DriveIKContents::mecanumConfig_t &amp;config()        { return _config; }</span>
-
-<span class="c1">//         /**</span>
-<span class="c1">//          * @brief </span>
-<span class="c1">//          * </span>
-<span class="c1">//          * @return DriveIKContents::specification_t&amp; </span>
-<span class="c1">//          */</span>
-<span class="c1">//         DriveIKContents::specification_t &amp;specification() { return _specification; }</span>
-
-<span class="c1">//         /**</span>
-<span class="c1">//          * @brief </span>
-<span class="c1">//          * </span>
-<span class="c1">//          * @param num </span>
-<span class="c1">//          * @return float </span>
-<span class="c1">//          */</span>
-<span class="c1">//         float operator [](const size_t num)</span>
-<span class="c1">//         {</span>
-<span class="c1">//             return wheel_vel(num);</span>
-<span class="c1">//         }</span>
-
-<span class="c1">//     protected:</span>
-<span class="c1">//         void setDefaultRateMatrix()</span>
-<span class="c1">//         {</span>
-<span class="c1">//             float x = _config.width / 2;</span>
-<span class="c1">//             float y = _config.length / 2;</span>
-<span class="c1">//             float length = sqrt(x*x + y*y);</span>
-
-<span class="c1">//             _rateMatrix[0][0] = -1; </span>
-<span class="c1">//             _rateMatrix[0][1] = 1; </span>
-
-<span class="c1">//             _rateMatrix[1][0] = -1; </span>
-<span class="c1">//             _rateMatrix[1][1] = -1; </span>
-
-<span class="c1">//             _rateMatrix[2][0] = 1; </span>
-<span class="c1">//             _rateMatrix[2][1] = -1; </span>
-
-<span class="c1">//             _rateMatrix[3][0] = 1; </span>
-<span class="c1">//             _rateMatrix[3][1] = 1; </span>
-
-<span class="c1">//             for(size_t i = 0; i &lt; 4; i++)</span>
-<span class="c1">//                 _rateMatrix[i][2] = length;</span>
-
-<span class="c1">//             // Todo</span>
-<span class="c1">//             /*</span>
-<span class="c1">//             // 理想的なメカナムホイールの配置（45deg）からのズレの度合い</span>
-<span class="c1">//             float rotationCorrection = cos(atan2(y, x) - PI / 4); </span>
-
-<span class="c1">//             float buf_rateMatrix[4][3] = </span>
-<span class="c1">//             {</span>
-<span class="c1">//                 {-1 * x_option,  1, length * rotationCorrection},</span>
-<span class="c1">//                 {-1 * x_option, -1, length * rotationCorrection},</span>
-<span class="c1">//                 { 1 * x_option, -1, length * rotationCorrection},</span>
-<span class="c1">//                 { 1 * x_option,  1, length * rotationCorrection}</span>
-<span class="c1">//             };</span>
-<span class="c1">//             */</span>
-<span class="c1">//         }</span>
-
-<span class="c1">//     protected:</span>
-<span class="c1">//         DriveIKContents::mecanumConfig_t _config;</span>
-<span class="c1">//         DriveIKContents::specification_t _specification;</span>
-<span class="c1">//         std::array&lt;std::array&lt;float, 3&gt;, 4&gt; _rateMatrix;</span>
-<span class="c1">//         std::array&lt;float, 4&gt; v;</span>
-<span class="c1">//     };</span>
-<span class="c1">// }</span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">Config</span><span class="w"> </span><span class="n">config_</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">conv_mat_</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-09-27 at 16:29:02 +0900</p>
+<p>Updated on 2022-09-28 at 01:12:56 +0900</p>
 
 
 
