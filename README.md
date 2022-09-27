@@ -1,5 +1,4 @@
 [![build](https://github.com/Kotakku/cpp_robotics/actions/workflows/build.yaml/badge.svg)](https://github.com/Kotakku/cpp_robotics/actions/workflows/build.yaml)
-
 [![documentation](https://github.com/Kotakku/cpp_robotics/actions/workflows/documentation.yaml/badge.svg)](https://github.com/Kotakku/cpp_robotics/actions/workflows/documentation.yaml)
 
 # cpp_robotics
