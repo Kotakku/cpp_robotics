@@ -42,7 +42,6 @@
     - 制約なし最適化
         - ベンチマーク
 - 整数最適化問題
-- 拡張カルマンフィルタ
 - ICP, NDT(2D, 3D)
     - [NDT勉強会](https://docs.google.com/presentation/d/1rWhCQtZv4YSWdedoJWPAF3Q4umwaA8yuDADyWIhrM20/edit?usp=sharing)
     - [Scan Matching 自己位置推定手法](chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/https://web.wakayama-u.ac.jp/~nakajima/SelfDrivingSystem/assets/pdf/method_pmv_03.pdf)
