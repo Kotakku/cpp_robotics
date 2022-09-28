@@ -3,3 +3,4 @@
 #include "./wave_propagation.hpp"
 #include "./dubins_path.hpp"
 #include "./frenet_frame.hpp"
+#include "./dwa.hpp"
