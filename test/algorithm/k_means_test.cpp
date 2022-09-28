@@ -7,7 +7,7 @@
 TEST(k_means_method, cr_vector_test) {
     namespace cr = cpp_robotics;
 
-    cr::KMeansModel<cr::Vector2d> model;
+    cr::KMeansMethod<cr::Vector2d> model;
 
     std::vector<cr::Vector2d> data_set = 
     {
@@ -40,7 +40,7 @@ TEST(k_means_method, cr_vector_test) {
 TEST(k_means_method, static_size_eigen_vector_test) {
     namespace cr = cpp_robotics;
 
-    cr::KMeansModel<Eigen::Vector2d> model;
+    cr::KMeansMethod<Eigen::Vector2d> model;
 
     std::vector<Eigen::Vector2d> data_set = 
     {
@@ -73,7 +73,7 @@ TEST(k_means_method, static_size_eigen_vector_test) {
 TEST(k_means_method, dynamic_size_eigen_vector_test) {
     namespace cr = cpp_robotics;
 
-    cr::KMeansModel<Eigen::VectorXd> model;
+    cr::KMeansMethod<Eigen::VectorXd> model;
 
     std::vector<Eigen::VectorXd> data_set = 
     {

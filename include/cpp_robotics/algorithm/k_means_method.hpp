@@ -13,16 +13,16 @@ namespace cpp_robotics
  * @tparam PointType データ型
  */
 template<class PointType>
-class KMeansModel
+class KMeansMethod
 {
 public:
     using point_t = PointType;
-    KMeansModel() = default;
+    KMeansMethod() = default;
 
     /**
-     * @brief データセットを与えてクラスタを生成する
+     * @brief 点群データを与えてクラスタを生成する
      * 
-     * @param data_set 点群
+     * @param data_set 点群データ
      * @param cluster_size 生成するクラスタのサイズ
      * @param max_iter 最大反復回数
      * @return std::vector<size_t> data_setのクラスタリング結果
@@ -77,7 +77,7 @@ public:
     /**
      * @brief 点をクラスタリングする
      * 
-     * @param x 点
+     * @param x 点データ
      * @return size_t クラスタリング結果
      */
     size_t predict(const point_t &x)
@@ -103,7 +103,7 @@ private:
 
 // 動的なEigenのベクトルは初期化時にデータの実態を持たないので特殊化
 template<>
-Eigen::VectorXd KMeansModel<Eigen::VectorXd>::get_zero_point(const Eigen::VectorXd &tmp)
+Eigen::VectorXd KMeansMethod<Eigen::VectorXd>::get_zero_point(const Eigen::VectorXd &tmp)
 {
     return Eigen::VectorXd::Zero(tmp.size());
 }
