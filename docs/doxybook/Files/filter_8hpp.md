@@ -18,7 +18,8 @@ title: include/cpp_robotics/filter/filter.hpp
 #include "./integrator.hpp"
 #include "./low_pass_filter.hpp"
 #include "./high_pass_filter.hpp"
-// #include "./notch_filter.hpp"
+#include "./notch_filter.hpp"
+#include "./band_pass_filter.hpp"
 #include "./delay_filter.hpp"
 #include "./velocity_limit_filter.hpp"
 #include "./acceleration_limit_filter.hpp"
@@ -31,4 +32,4 @@ title: include/cpp_robotics/filter/filter.hpp
 
 -------------------------------
 
-Updated on 2022-09-28 at 01:12:56 +0900
+Updated on 2022-09-28 at 19:28:33 +0900

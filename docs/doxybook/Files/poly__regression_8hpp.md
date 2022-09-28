@@ -7,59 +7,61 @@ title: include/cpp_robotics/algorithm/poly_regression.hpp
 
 
 
+## Namespaces
+
+| Name           |
+| -------------- |
+| **[cpp_robotics](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/)**  |
+
 
 
 
 ## Source code
 
 ```cpp
-// #pragma once
+#pragma once
 
-// #include <array>
-// #include <Eigen/Dense>
+#include <array>
+#include <vector>
+#include <Eigen/Dense>
+#include "cpp_robotics/system/polynomial.hpp"
 
-// namespace cpp_robotics
-// {
-// // 回帰曲線
-// Eigen::VectorXd poly_regression(Container x, Container y, const size_t degree)
-// {
-//     MyMatrix<typename Container::value_type, Dynamic, Dynamic> XT, Y;
+namespace cpp_robotics
+{
 
-//     assert(x.size() == y.size());
-//     const size_t data_num = x.size();
-//     XT.resize(degree + 1, data_num);
-//     Y.resize(data_num, 1);
+Polynomial poly_regression(const std::vector<double> &x, const std::vector<double> &y, const size_t degree)
+{
+    Eigen::MatrixXd XT, Y;
 
-//     for (size_t j = 0; j < x.size(); j++)
-//     {
-//         XT(0, j) = 1;
-//         for (size_t i = 0; i < degree; i++)
-//         {
-//             XT(i + 1, j) = XT(i, j) * x[j];
-//         }
-//     }
+    assert(x.size() == y.size());
+    const size_t data_num = x.size();
+    XT.resize(degree + 1, data_num);
+    Y.resize(data_num, 1);
 
-//     for (size_t i = 0; i < y.size(); i++)
-//     {
-//         Y(i) = y[i];
-//     }
+    for (size_t j = 0; j < x.size(); j++)
+    {
+        XT(0, j) = 1;
+        for (size_t i = 0; i < degree; i++)
+        {
+            XT(i + 1, j) = XT(i, j) * x[j];
+        }
+    }
 
-//     auto coeff_mat_1d = inverse(XT * transpose(XT)) * (XT * Y);
+    for (size_t i = 0; i < y.size(); i++)
+    {
+        Y(i) = y[i];
+    }
 
-//     std::vector<typename Container::value_type> coeff(degree + 1);
-//     for (size_t i = 0; i < degree + 1; i++)
-//     {
-//         //coeff[i] = coeff_mat_1d(degree - i);
-//         coeff[i] = coeff_mat_1d(i);
-//     }
+    std::vector<double> coeff(degree + 1);
+    Eigen::Map<Eigen::VectorXd> coeff_vec(coeff.data(), degree + 1);
+    coeff_vec = (XT * XT.transpose()).inverse() * (XT * Y);
+    return Polynomial(coeff);
+}
 
-//     return Polynomial(coeff);
-// }
-
-// }
+}
 ```
 
 
 -------------------------------
 
-Updated on 2022-09-28 at 01:12:56 +0900
+Updated on 2022-09-28 at 19:28:33 +0900

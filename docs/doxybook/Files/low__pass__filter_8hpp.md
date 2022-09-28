@@ -37,8 +37,8 @@ namespace cpp_robotics
 class LowPassFilter
 {
 public:
-    LowPassFilter(double T, double dt):
-        T_(T), dt_(dt)
+    LowPassFilter(double w, double dt):
+        w_(w), T_(1/w), dt_(dt)
     {
 
     }
@@ -58,9 +58,12 @@ public:
         return y;
     }
 
+    double w() const { return w_; }
+    double dt() const {return dt_; }
 private:
-    double T_;
-    double dt_;
+    const double w_;
+    const double T_;
+    const double dt_;
     double y1_, u1_ = 0;
 };
 
@@ -70,4 +73,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-09-28 at 01:12:56 +0900
+Updated on 2022-09-28 at 19:28:33 +0900

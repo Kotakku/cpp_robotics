@@ -17,9 +17,11 @@ summary: ハイパスフィルタ
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[HighPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1HighPassFilter/#function-highpassfilter)**(double T, double dt) |
+| | **[HighPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1HighPassFilter/#function-highpassfilter)**(double w, double dt)<br>Construct a new High Pass Filter object.  |
 | void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1HighPassFilter/#function-reset)**(double val =0) |
 | double | **[filtering](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1HighPassFilter/#function-filtering)**(double u) |
+| double | **[w](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1HighPassFilter/#function-w)**() const |
+| double | **[dt](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1HighPassFilter/#function-dt)**() const |
 
 ## Public Functions Documentation
 
@@ -27,10 +29,17 @@ summary: ハイパスフィルタ
 
 ```cpp
 inline HighPassFilter(
-    double T,
+    double w,
     double dt
 )
 ```
+
+Construct a new High Pass Filter object. 
+
+**Parameters**: 
+
+  * **w** 折れ点周波数[rad/s] 
+  * **dt** 
 
 
 ### function reset
@@ -51,6 +60,20 @@ inline double filtering(
 ```
 
 
+### function w
+
+```cpp
+inline double w() const
+```
+
+
+### function dt
+
+```cpp
+inline double dt() const
+```
+
+
 -------------------------------
 
-Updated on 2022-09-28 at 01:12:56 +0900
+Updated on 2022-09-28 at 19:28:33 +0900

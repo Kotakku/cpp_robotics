@@ -26,6 +26,7 @@ title: cpp_robotics
 | class | **[cpp_robotics::AccelerationLimitFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AccelerationLimitFilter/)** <br>加速度制限フィルタ(速度制限込み)  |
 | class | **[cpp_robotics::ActiveSetMethod](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ActiveSetMethod/)** <br>線形不等式制約を持つ2次計画法を解く有効制約法  |
 | class | **[cpp_robotics::AngleRange](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/)** <br>角度[rad]に対して範囲を指定する 複数の角度の範囲の合成をしたり逆を取ったりできる  |
+| class | **[cpp_robotics::BandPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1BandPassFilter/)** <br>バンドパスフィルタ  |
 | class | **[cpp_robotics::CatumullRom2D](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRom2D/)** <br>Catumull曲線  |
 | struct | **[cpp_robotics::Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/)** <br>円クラス  |
 | struct | **[cpp_robotics::Constraint](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Constraint/)** <br>数理最適問題に使用する制約クラス  |
@@ -39,6 +40,7 @@ title: cpp_robotics
 | class | **[cpp_robotics::Discret](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/)** <br>状態空間モデルを双一次変換で離散化する  |
 | class | **[cpp_robotics::DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/)** <br>z空間の伝達関数  |
 | class | **[cpp_robotics::DubinsPath](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DubinsPath/)** <br>Dubinsパス  |
+| class | **[cpp_robotics::ExtendedKalmanFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ExtendedKalmanFilter/)**  |
 | class | **[cpp_robotics::FilterConnector](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1FilterConnector/)**  |
 | class | **[cpp_robotics::FilterStateHolder](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1FilterStateHolder/)** <br>フィルタの入力と計算を非同期にして最後の入力と出力を保持しておけるようにするクラス  |
 | struct | **[cpp_robotics::GearHeadParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/)** <br>ギアヘッドモデル  |
@@ -51,6 +53,7 @@ title: cpp_robotics
 | class | **[cpp_robotics::MecanumIk](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1MecanumIk/)** <br>メカナムの逆運動学モデル  |
 | class | **[cpp_robotics::NctfController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NctfController/)** <br>NCTF制御器  |
 | class | **[cpp_robotics::NDT2d](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NDT2d/)** <br>2次元のNDTマッチングクラス  |
+| class | **[cpp_robotics::NotchFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NotchFilter/)** <br>ノッチフィルタ  |
 | class | **[cpp_robotics::Omni3Ik](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Omni3Ik/)** <br>3輪オムニの逆運動学モデル  |
 | class | **[cpp_robotics::Omni4Ik](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Omni4Ik/)** <br>4輪オムニの逆運動学モデル  |
 | class | **[cpp_robotics::PID2Controller](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PID2Controller/)** <br>2自由度PID制御器  |
@@ -167,6 +170,7 @@ title: cpp_robotics
 | template <size_t DIM\> <br>std::pair< Eigen::Matrix< double, DIM, DIM >, Eigen::Matrix< double, DIM, 1 > > | **[calcu_transformatoin](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-calcu-transformatoin)**(std::vector< Eigen::Matrix< double, DIM, 1 >> dest, std::vector< Eigen::Matrix< double, DIM, 1 >> fixed) |
 | template <size_t DIM\> <br>std::tuple< std::vector< Eigen::Matrix< double, DIM, 1 > >, size_t > | **[icp](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-icp)**(std::vector< Eigen::Matrix< double, DIM, 1 >> dest, std::vector< Eigen::Matrix< double, DIM, 1 >> fixed, size_t max_iter =100) |
 | double | **[mahalanobis](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-mahalanobis)**(const Eigen::VectorXd & a, const Eigen::VectorXd & b, const Eigen::MatrixXd cov_inv)<br>マハラノビス距離の計算  |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[poly_regression](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-poly-regression)**(const std::vector< double > & x, const std::vector< double > & y, const size_t degree)<br>回帰曲線  |
 | template <typename Real  =double\> <br>Real | **[gererate_random](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-gererate-random)**()<br>0.0〜1.0までの一様分布の乱数を生成する  |
 | std::optional< Eigen::MatrixXd > | **[solve_riccati_arimoto_potter](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-solve-riccati-arimoto-potter)**(const Eigen::MatrixXd & A, const Eigen::MatrixXd & B, const Eigen::MatrixXd & Q, const Eigen::MatrixXd & R)<br>有本-ポッターの方法によるリカッチ方程式の解法  |
 | Eigen::MatrixXd | **[lqr](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lqr)**(const Eigen::MatrixXd & A, const Eigen::MatrixXd & B, const Eigen::MatrixXd & Q, const Eigen::MatrixXd & R) |
@@ -219,6 +223,7 @@ title: cpp_robotics
 | double | **[bracketing_serach](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-bracketing-serach)**(std::function< double(double)> func, const double init =1.0, const double beta =0.9, const size_t max_iter =1000)<br>囲い込み法  |
 | double | **[derivative](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-derivative)**(std::function< double(double)> f, double x, double eps =std::pow(std::numeric_limits< double >::epsilon(), 0.5))<br>R -> Rの数値微分  |
 | Eigen::VectorXd | **[derivative](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-derivative)**(std::function< double(Eigen::VectorXd)> f, Eigen::VectorXd x, double eps =std::pow(std::numeric_limits< double >::epsilon(), 0.5))<br>R^n -> Rの数値微分  |
+| Eigen::MatrixXd | **[derivative](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-derivative)**(std::function< Eigen::VectorXd(Eigen::VectorXd)> f, Eigen::VectorXd x, double eps =std::pow(std::numeric_limits< double >::epsilon(), 0.5)) |
 | double | **[second_derivative](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-second-derivative)**(std::function< double(double)> f, double x, double eps =std::pow(std::numeric_limits< double >::epsilon(), 0.5))<br>R -> Rの2回数値微分  |
 | Eigen::MatrixXd | **[approx_hessian](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-approx-hessian)**(std::function< double(Eigen::VectorXd)> f, Eigen::VectorXd x, double eps =std::pow(std::numeric_limits< double >::epsilon(), 0.5)) |
 | double | **[golden_search](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-golden-search)**(std::function< double(double)> f, double low, double high, const double tol =1e-6, const size_t max_iter =100)<br>黄金探索  |
@@ -914,6 +919,27 @@ double mahalanobis(
 
 
 **Return**: double マハラノビス距離 
+
+### function poly_regression
+
+```cpp
+Polynomial poly_regression(
+    const std::vector< double > & x,
+    const std::vector< double > & y,
+    const size_t degree
+)
+```
+
+回帰曲線 
+
+**Parameters**: 
+
+  * **x** 
+  * **y** 
+  * **degree** 回帰曲線の次元 
+
+
+**Return**: [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)
 
 ### function gererate_random
 
@@ -1679,6 +1705,17 @@ R^n -> Rの数値微分
 
 
 **Return**: Eigen::VectorXd 
+
+### function derivative
+
+```cpp
+static Eigen::MatrixXd derivative(
+    std::function< Eigen::VectorXd(Eigen::VectorXd)> f,
+    Eigen::VectorXd x,
+    double eps =std::pow(std::numeric_limits< double >::epsilon(), 0.5)
+)
+```
+
 
 ### function second_derivative
 
@@ -2849,4 +2886,4 @@ constexpr float gfcm2mNm = (gfm2Nm / 100);
 
 -------------------------------
 
-Updated on 2022-09-28 at 01:12:56 +0900
+Updated on 2022-09-28 at 19:28:33 +0900

@@ -14,6 +14,7 @@ title: Classes
         * **struct [Problem](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/)** 
         * **struct [Result](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/)** 
     * **class [AngleRange](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/)** <br>角度[rad]に対して範囲を指定する 複数の角度の範囲の合成をしたり逆を取ったりできる 
+    * **class [BandPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1BandPassFilter/)** <br>バンドパスフィルタ 
     * **class [CatumullRom2D](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRom2D/)** <br>Catumull曲線 
     * **struct [Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/)** <br>円クラス 
     * **struct [Constraint](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Constraint/)** <br>数理最適問題に使用する制約クラス 
@@ -28,6 +29,7 @@ title: Classes
     * **class [DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/)** <br>z空間の伝達関数 
     * **class [DubinsPath](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DubinsPath/)** <br>Dubinsパス 
         * **struct [PlanningResult](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DubinsPath_1_1PlanningResult/)** 
+    * **class [ExtendedKalmanFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ExtendedKalmanFilter/)** 
     * **class [FilterConnector](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1FilterConnector/)** 
     * **class [FilterStateHolder](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1FilterStateHolder/)** <br>フィルタの入力と計算を非同期にして最後の入力と出力を保持しておけるようにするクラス 
     * **struct [GearHeadParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/)** <br>ギアヘッドモデル 
@@ -42,6 +44,7 @@ title: Classes
         * **struct [Config](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1MecanumIk_1_1Config/)** 
     * **class [NDT2d](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NDT2d/)** <br>2次元のNDTマッチングクラス 
     * **class [NctfController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NctfController/)** <br>NCTF制御器 
+    * **class [NotchFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NotchFilter/)** <br>ノッチフィルタ 
     * **class [Omni3Ik](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Omni3Ik/)** <br>3輪オムニの逆運動学モデル 
         * **struct [Config](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Omni3Ik_1_1Config/)** 
     * **class [Omni4Ik](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Omni4Ik/)** <br>4輪オムニの逆運動学モデル 
@@ -115,4 +118,4 @@ title: Classes
 
 -------------------------------
 
-Updated on 2022-09-28 at 01:12:56 +0900
+Updated on 2022-09-28 at 19:28:33 +0900
