@@ -65,6 +65,7 @@ set(test_files
 
   algorithm/poly_regression
   algorithm/random_test
+  algorithm/k_means_test
 
   filter/tf_filter_test
   filter/extended_kalman_filter_test
