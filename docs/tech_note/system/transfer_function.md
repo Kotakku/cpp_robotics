@@ -40,3 +40,14 @@ G(s) = \frac{\omega^2}{s^2 + 2\zeta\omega + \omega^2}
 ```math
 G(s) = e^{-sT}
 ```
+
+## 周波数と時定数
+伝達関数やボード線図で議論するときは周波数の単位が\[rad/s\]であることが多い。\[Hz\]との関係は
+```math
+\omega = 2\pi f
+```
+
+時定数と周波数の関係は
+```math
+\tau = \frac{1}{\omega}
+```

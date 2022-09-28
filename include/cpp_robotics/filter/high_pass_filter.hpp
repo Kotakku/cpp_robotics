@@ -14,8 +14,14 @@ namespace cpp_robotics
 class HighPassFilter
 {
 public:
-    HighPassFilter(double T, double dt):
-        T_(T), dt_(dt)
+    /**
+     * @brief Construct a new High Pass Filter object
+     * 
+     * @param w 折れ点周波数[rad/s]
+     * @param dt 
+     */
+    HighPassFilter(double w, double dt):
+        w_(w), T_(1/w), dt_(dt)
     {
 
     }
@@ -35,9 +41,12 @@ public:
         return y;
     }
 
+    double w() const { return w_; }
+    double dt() const {return dt_; }
 private:
-    double T_;
-    double dt_;
+    const double w_;
+    const double T_;
+    const double dt_;
     double y1_, u1_ = 0;
 };
 
