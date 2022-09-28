@@ -107,6 +107,7 @@ nav:
       - 多項式: tech_note/algorithm/poly.md
       - 回帰曲線: tech_note/algorithm/poly_regression.md
       - 躍度最小化モデル: tech_note/algorithm/jerk_minimum_model.md
+      - K-means法: tech_note/algorithm/k_means_method.md
     - 運動学:
       - 差動二輪機構: tech_note/kinematics/diff_robot.md
       - メカナム移動機構: tech_note/kinematics/mecanum.md

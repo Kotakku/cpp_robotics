@@ -17,7 +17,7 @@ title: include/cpp_robotics/algorithm/k_means_method.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::KMeansModel](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KMeansModel/)** <br>K-means法  |
+| class | **[cpp_robotics::KMeansMethod](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KMeansMethod/)** <br>K-means法  |
 
 
 
@@ -35,11 +35,11 @@ namespace cpp_robotics
 {
 
 template<class PointType>
-class KMeansModel
+class KMeansMethod
 {
 public:
     using point_t = PointType;
-    KMeansModel() = default;
+    KMeansMethod() = default;
 
     std::vector<size_t> fit(std::vector<point_t> &data_set, size_t cluster_size, size_t max_iter = 1000)
     {
@@ -111,7 +111,7 @@ private:
 
 // 動的なEigenのベクトルは初期化時にデータの実態を持たないので特殊化
 template<>
-Eigen::VectorXd KMeansModel<Eigen::VectorXd>::get_zero_point(const Eigen::VectorXd &tmp)
+Eigen::VectorXd KMeansMethod<Eigen::VectorXd>::get_zero_point(const Eigen::VectorXd &tmp)
 {
     return Eigen::VectorXd::Zero(tmp.size());
 }
@@ -122,4 +122,4 @@ Eigen::VectorXd KMeansModel<Eigen::VectorXd>::get_zero_point(const Eigen::Vector
 
 -------------------------------
 
-Updated on 2022-09-28 at 23:12:44 +0900
+Updated on 2022-09-28 at 23:34:45 +0900

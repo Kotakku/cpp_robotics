@@ -18,9 +18,10 @@ title: include/cpp_robotics/path_planning/path_planning.hpp
 #include "./wave_propagation.hpp"
 #include "./dubins_path.hpp"
 #include "./frenet_frame.hpp"
+#include "./dwa.hpp"
 ```
 
 
 -------------------------------
 
-Updated on 2022-09-28 at 23:12:44 +0900
+Updated on 2022-09-28 at 23:34:45 +0900
