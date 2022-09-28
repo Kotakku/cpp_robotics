@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Eigen/Dense>
+#include "cpp_robotics/optimize/derivative.hpp"
 
 namespace cpp_robotics
 {
@@ -66,165 +67,105 @@ v: 観測ノイズ (p*1)
 
 */
 
-#if 0
-template<typename FLOATING_TYPE, size_t INPUT_SIZE, size_t STATE_SIZE, size_t OBSERVE_SIZE>
 class ExtendedKalmanFilter
 {
 public:
-    using value_type = FLOATING_TYPE;
-    static constexpr size_t input_size = INPUT_SIZE;
-    static constexpr size_t state_size = STATE_SIZE;
-    static constexpr size_t observe_size = OBSERVE_SIZE;
+    /// @brief 状態量
+    Eigen::VectorXd x;
+    /// @brief 遷移行列
+    Eigen::MatrixXd F;
+    /// @brief 制御行列
+    Eigen::MatrixXd B;
+    /// @brief 観測行列
+    Eigen::MatrixXd H;
+    /// @brief 状態量ノイズ分散行列
+    Eigen::MatrixXd Q;
+    /// @brief 観測量ノイズ分散行列
+    Eigen::MatrixXd R;
+    /// @brief 誤差共分散行列
+    Eigen::MatrixXd P;
 
-    static constexpr auto x_vec_t = Eigen::Vector<value_type, state_size>;
-    static constexpr auto u_vec_t = Eigen::Vector<value_type, input_size>;
-    static constexpr auto z_vec_t = Eigen::Vector<value_type, observe_size>;
-
-    static constexpr auto f_mat_t = Eigen::Matrix<value_type, state_size, state_size>;
-    static constexpr auto b_mat_t = Eigen::Matrix<value_type, state_size, input_size>;
-    static constexpr auto h_mat_t = Eigen::Matrix<value_type, observe_size, state_size>;
-
-    static constexpr auto q_mat_t = Eigen::Matrix<value_type, state_size, state_size>;
-    static constexpr auto r_mat_t = Eigen::Matrix<value_type, observe_size, observe_size>;
-
-    static constexpr auto p_mat_t = Eigen::Matrix<value_type, state_size, state_size>;
-
-    // static constexpr auto p_mat_t = Eigen::Matrix<value_type, state_size, state_size>;
-
-    ExtendedKalmanFilter(const value_type dt):
-        dt_(dt)
+    ExtendedKalmanFilter(const double dt, size_t input_size, size_t state_size, size_t observe_size):
+        dt_(dt), input_size_(input_size), state_size_(state_size), observe_size_(observe_size)
     {
-        
+        x = Eigen::VectorXd::Zero(state_size_);
+        F = Eigen::MatrixXd::Zero(state_size, state_size);
+        B = Eigen::MatrixXd::Zero(state_size, input_size);
+        H = Eigen::MatrixXd::Zero(observe_size, state_size);
+        Q = Eigen::MatrixXd::Zero(state_size, state_size);
+        R = Eigen::MatrixXd::Zero(observe_size, observe_size);
+        P = Eigen::MatrixXd::Zero(state_size, state_size);
     };
 
-    void reset(x_vec_t x, p_mat_t P)
+    void reset(Eigen::VectorXd new_x, Eigen::MatrixXd new_P)
     {
-        x_ = x;
-        P_ = P;
+        x = new_x;
+        P = new_P;
     }
 
-    x_vec_t update(u_vec_t u)
+    Eigen::VectorXd filtering(Eigen::VectorXd u, Eigen::VectorXd z)
     {
+        ////////////////////////////// 線形化モデルの更新 //////////////////////////////
+        system_noise_conv(Q, x, u);
+        observe_noise_conv(R, x, u);
+        linearized_system_matrix(F, x, u);
+        linearized_observe_matrix(H, x);
+
         ////////////////////////////// 予測 //////////////////////////////
         // 状態予測
-        x_ = f(x_, u);
-
-        const auto F_ = matF(x_, u);
-        const auto Q_ = matQ(x_, u);
+        x = system(x, u);
 
         // 事前共分散行列
-        P_ = F_*P_*transpose(F_) + Q_;
+        P = F*P*F.transpose() + Q;
 
         ////////////////////////////// フィルタリング //////////////////////////////
-        auto zs = get_z();
-        auto estimated_z = h(x_);
-        if(estimated_z.has_value())
-        {
-            for(auto & z : zs)
-            {
-                const auto H_ = matH(x_);
-                const auto R_ = matR(x_, u);
+        // カルマンゲイン計算
+        Eigen::MatrixXd K = P*H.transpose()*(R + H*P*H.transpose()).inverse();
 
-                // カルマンゲイン計算((S*S) * (S*O) * (O*O) = (S*O))
-                auto K_ = P_*transpose(H_)*inverse(R_ + H_*P_*transpose(H_) );
+        // 状態更新
+        x += K*(z - observe(x));
 
-                // 状態更新
-                x_ += K_*(z - estimated_z.value());
+        // 事後誤差共分散行列
+        P = (Eigen::MatrixXd::Identity(state_size_, state_size_) - K*H)*P;
 
-                // 事後誤差共分散行列
-                constexpr auto I = eye<value_type, state_size>();
-                P_ = (I - K_*H_)*P_;
-            }
-        }
-
-        return x_;
+        return x;
     }
 
-    x_vec_t get_x() { return x_; }
-    p_mat_t get_P() { return P_; }
+    double dt() const { return dt_; }
+    Eigen::VectorXd get_x() const { return x; }
+    Eigen::MatrixXd get_P() const { return P; }
 
-protected:
-    // ここらへんをオーバーライドして使う
+    /// @brief システム
+    virtual Eigen::VectorXd system(Eigen::VectorXd x, Eigen::VectorXd u) = 0;
 
-    // システム
-    virtual x_vec_t f(x_vec_t x, u_vec_t u) = 0;
+    /// @brief 観測
+    virtual Eigen::VectorXd observe(Eigen::VectorXd x) = 0;
 
-    // 観測
-    virtual std::optional<z_vec_t> h(x_vec_t x) = 0;
+    /// @brief システムノイズ共分散行列
+    virtual void system_noise_conv(Eigen::MatrixXd &Q, Eigen::VectorXd x, Eigen::VectorXd u) = 0;
 
-    // 観測データ
-    virtual std::vector<z_vec_t> get_z() = 0;
+    /// @brief 観測ノイズの共分散行列
+    virtual void observe_noise_conv(Eigen::MatrixXd &R, Eigen::VectorXd x, Eigen::VectorXd u) = 0;
 
-    // システムノイズ共分散行列
-    virtual q_mat_t Q(x_vec_t x, u_vec_t u) = 0;
-
-    // 観測ノイズの共分散行列
-    virtual r_mat_t R(x_vec_t x, u_vec_t u) = 0;
-
-    // システム線形化行列
-    virtual f_mat_t F(x_vec_t x, u_vec_t u)
+    /// @brief システム線形化行列
+    virtual void linearized_system_matrix(Eigen::MatrixXd &F, Eigen::VectorXd x, Eigen::VectorXd u)
     {
-        // 近似解
-        f_mat_t matF;
-
-        x_vec_t new_x; 
-        for(size_t r = 0; r < state_size; r++)
-        {
-            for(size_t c = 0; c < state_size; c++)
-            {
-                const value_type dx = 1e-3;
-                new_x = x;
-                new_x(c) += dx;
-                matF(r, c) = ( f(new_x, u)(r) - f(x, u)(r) ) / dx;
-            }
-        }
-
-        return matF;
+        F = derivative([&](const Eigen::VectorXd &x_dash){ return system(x_dash, u); }, x);
     };
 
-    // 観測線形化行列
-    virtual h_mat_t H(x_vec_t x)
+    /// @brief 観測線形化行列
+    virtual void linearized_observe_matrix(Eigen::MatrixXd &H, Eigen::VectorXd x)
     {
-        // 近似解
-        h_mat_t matH;
-
-        x_vec_t new_x;
-        for(size_t r = 0; r < observe_size; r++)
-        {
-            for(size_t c = 0; c < state_size; c++)
-            {
-                const value_type dx = 1e-3;
-                new_x = x;
-                new_x(c) += dx;
-                auto h1 = h(x);
-                auto h2 = h(new_x);
-                if(h1 && h2)
-                {
-                    auto &h1_mat = h1.value();
-                    auto &h2_mat = h2.value();
-
-                    matH(r, c) = (h2_mat(r) - h1_mat(r)) / dx;
-                }
-                else
-                {
-                    matH(r, c) = 0.0f;
-                }
-            }
-        }
-
-        return matH;
+        H = derivative(std::bind(&ExtendedKalmanFilter::observe, this, std::placeholders::_1), x);
     }
 
 protected:
     // サンプリング時間[s]
-    const value_type dt_;
+    const double dt_;
 
-private:
-    // 状態量
-    x_vec_t x_;
-    // 誤差共分散行列
-    p_mat_t P_;
+    const size_t input_size_;
+    const size_t state_size_;
+    const size_t observe_size_;
 };
-#endif
 
 }

@@ -66,6 +66,8 @@ set(test_files
   algorithm/poly_regression
   algorithm/random_test
 
+  filter/extended_kalman_filter_test
+
   chassis/mecanum_test
   chassis/omni_test
   chassis/swerve_test
