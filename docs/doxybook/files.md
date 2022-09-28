@@ -15,6 +15,7 @@ title: Files
         * **dir [include/cpp_robotics/algorithm](/cpp_robotics/doxybook/Files/dir_c2aadae018d07499e272ef7425a31e4f/#dir-include/cpp-robotics/algorithm)** 
             * **file [include/cpp_robotics/algorithm/algorithm.hpp](/cpp_robotics/doxybook/Files/algorithm_8hpp/#file-algorithm.hpp)** 
             * **file [include/cpp_robotics/algorithm/icp.hpp](/cpp_robotics/doxybook/Files/icp_8hpp/#file-icp.hpp)** 
+            * **file [include/cpp_robotics/algorithm/k_means_method.hpp](/cpp_robotics/doxybook/Files/k__means__method_8hpp/#file-k-means-method.hpp)** 
             * **file [include/cpp_robotics/algorithm/kdtree.hpp](/cpp_robotics/doxybook/Files/kdtree_8hpp/#file-kdtree.hpp)** 
             * **file [include/cpp_robotics/algorithm/mahalanobis.hpp](/cpp_robotics/doxybook/Files/mahalanobis_8hpp/#file-mahalanobis.hpp)** 
             * **file [include/cpp_robotics/algorithm/misc.hpp](/cpp_robotics/doxybook/Files/misc_8hpp/#file-misc.hpp)** 
@@ -135,4 +136,4 @@ title: Files
 
 -------------------------------
 
-Updated on 2022-09-28 at 19:28:33 +0900
+Updated on 2022-09-28 at 23:12:44 +0900

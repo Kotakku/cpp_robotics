@@ -48,6 +48,7 @@ title: cpp_robotics
 | class | **[cpp_robotics::Integrator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/)** <br>積分器  |
 | class | **[cpp_robotics::KalmanFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KalmanFilter/)** <br>カルマンフィルタ  |
 | class | **[cpp_robotics::KDTree](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/)** <br>k-d木  |
+| class | **[cpp_robotics::KMeansModel](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KMeansModel/)** <br>K-means法  |
 | struct | **[cpp_robotics::Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/)** <br>直線クラス  |
 | class | **[cpp_robotics::LowPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/)** <br>ローパスフィルター  |
 | class | **[cpp_robotics::MecanumIk](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1MecanumIk/)** <br>メカナムの逆運動学モデル  |
@@ -2886,4 +2887,4 @@ constexpr float gfcm2mNm = (gfm2Nm / 100);
 
 -------------------------------
 
-Updated on 2022-09-28 at 19:28:33 +0900
+Updated on 2022-09-28 at 23:12:43 +0900

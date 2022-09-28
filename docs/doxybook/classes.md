@@ -37,6 +37,7 @@ title: Classes
     * **class [Integrator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/)** <br>積分器 
     * **class [KDTree](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/)** <br>k-d木 
         * **struct [Node](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1KDTree_1_1Node/)** 
+    * **class [KMeansModel](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KMeansModel/)** <br>K-means法 
     * **class [KalmanFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KalmanFilter/)** <br>カルマンフィルタ 
     * **struct [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/)** <br>直線クラス 
     * **class [LowPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/)** <br>ローパスフィルター 
@@ -118,4 +119,4 @@ title: Classes
 
 -------------------------------
 
-Updated on 2022-09-28 at 19:28:33 +0900
+Updated on 2022-09-28 at 23:12:44 +0900

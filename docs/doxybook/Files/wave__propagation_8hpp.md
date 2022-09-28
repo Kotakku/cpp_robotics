@@ -141,4 +141,4 @@ std::vector<Eigen::Vector2i> wave_propagation(const Eigen::Vector2i& start, cons
 
 -------------------------------
 
-Updated on 2022-09-28 at 19:28:33 +0900
+Updated on 2022-09-28 at 23:12:44 +0900
