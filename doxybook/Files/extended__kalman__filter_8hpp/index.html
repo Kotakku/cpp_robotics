@@ -2169,10 +2169,26 @@
 </tr>
 </tbody>
 </table>
+<h2 id="classes">Classes</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ExtendedKalmanFilter/">cpp_robotics::ExtendedKalmanFilter</a></strong></td>
+</tr>
+</tbody>
+</table>
 <h2 id="source-code">Source code</h2>
 <div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Eigen/Dense&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cpp_robotics/optimize/derivative.hpp&quot;</span><span class="cp"></span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">cpp_robotics</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
@@ -2238,169 +2254,95 @@
 
 <span class="cm">*/</span><span class="w"></span>
 
-<span class="cp">#if 0</span><span class="c"></span>
-<span class="c">template&lt;typename FLOATING_TYPE, size_t INPUT_SIZE, size_t STATE_SIZE, size_t OBSERVE_SIZE&gt;</span>
-<span class="c">class ExtendedKalmanFilter</span>
-<span class="c">{</span>
-<span class="c">public:</span>
-<span class="c">    using value_type = FLOATING_TYPE;</span>
-<span class="c">    static constexpr size_t input_size = INPUT_SIZE;</span>
-<span class="c">    static constexpr size_t state_size = STATE_SIZE;</span>
-<span class="c">    static constexpr size_t observe_size = OBSERVE_SIZE;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ExtendedKalmanFilter</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">F</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">H</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">Q</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">R</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">P</span><span class="p">;</span><span class="w"></span>
 
-<span class="c">    static constexpr auto x_vec_t = Eigen::Vector&lt;value_type, state_size&gt;;</span>
-<span class="c">    static constexpr auto u_vec_t = Eigen::Vector&lt;value_type, input_size&gt;;</span>
-<span class="c">    static constexpr auto z_vec_t = Eigen::Vector&lt;value_type, observe_size&gt;;</span>
+<span class="w">    </span><span class="n">ExtendedKalmanFilter</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">input_size</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">state_size</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">observe_size</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">dt_</span><span class="p">(</span><span class="n">dt</span><span class="p">),</span><span class="w"> </span><span class="n">input_size_</span><span class="p">(</span><span class="n">input_size</span><span class="p">),</span><span class="w"> </span><span class="n">state_size_</span><span class="p">(</span><span class="n">state_size</span><span class="p">),</span><span class="w"> </span><span class="n">observe_size_</span><span class="p">(</span><span class="n">observe_size</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="o">::</span><span class="n">Zero</span><span class="p">(</span><span class="n">state_size_</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="o">::</span><span class="n">Zero</span><span class="p">(</span><span class="n">state_size</span><span class="p">,</span><span class="w"> </span><span class="n">state_size</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="o">::</span><span class="n">Zero</span><span class="p">(</span><span class="n">state_size</span><span class="p">,</span><span class="w"> </span><span class="n">input_size</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">H</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="o">::</span><span class="n">Zero</span><span class="p">(</span><span class="n">observe_size</span><span class="p">,</span><span class="w"> </span><span class="n">state_size</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">Q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="o">::</span><span class="n">Zero</span><span class="p">(</span><span class="n">state_size</span><span class="p">,</span><span class="w"> </span><span class="n">state_size</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="o">::</span><span class="n">Zero</span><span class="p">(</span><span class="n">observe_size</span><span class="p">,</span><span class="w"> </span><span class="n">observe_size</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">P</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="o">::</span><span class="n">Zero</span><span class="p">(</span><span class="n">state_size</span><span class="p">,</span><span class="w"> </span><span class="n">state_size</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
 
-<span class="c">    static constexpr auto f_mat_t = Eigen::Matrix&lt;value_type, state_size, state_size&gt;;</span>
-<span class="c">    static constexpr auto b_mat_t = Eigen::Matrix&lt;value_type, state_size, input_size&gt;;</span>
-<span class="c">    static constexpr auto h_mat_t = Eigen::Matrix&lt;value_type, observe_size, state_size&gt;;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">new_x</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">new_P</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_x</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">P</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_P</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="c">    static constexpr auto q_mat_t = Eigen::Matrix&lt;value_type, state_size, state_size&gt;;</span>
-<span class="c">    static constexpr auto r_mat_t = Eigen::Matrix&lt;value_type, observe_size, observe_size&gt;;</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="nf">filtering</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">system_noise_conv</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">observe_noise_conv</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">linearized_system_matrix</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">linearized_observe_matrix</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"></span>
 
-<span class="c">    static constexpr auto p_mat_t = Eigen::Matrix&lt;value_type, state_size, state_size&gt;;</span>
+<span class="w">        </span><span class="c1">// 状態予測</span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">system</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">);</span><span class="w"></span>
 
-<span class="c">    // static constexpr auto p_mat_t = Eigen::Matrix&lt;value_type, state_size, state_size&gt;;</span>
+<span class="w">        </span><span class="c1">// 事前共分散行列</span>
+<span class="w">        </span><span class="n">P</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">F</span><span class="o">*</span><span class="n">P</span><span class="o">*</span><span class="n">F</span><span class="p">.</span><span class="n">transpose</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Q</span><span class="p">;</span><span class="w"></span>
 
-<span class="c">    ExtendedKalmanFilter(const value_type dt):</span>
-<span class="c">        dt_(dt)</span>
-<span class="c">    {</span>
+<span class="w">        </span><span class="c1">// カルマンゲイン計算</span>
+<span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P</span><span class="o">*</span><span class="n">H</span><span class="p">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">*</span><span class="p">(</span><span class="n">R</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">H</span><span class="o">*</span><span class="n">P</span><span class="o">*</span><span class="n">H</span><span class="p">.</span><span class="n">transpose</span><span class="p">()).</span><span class="n">inverse</span><span class="p">();</span><span class="w"></span>
 
-<span class="c">    };</span>
+<span class="w">        </span><span class="c1">// 状態更新</span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">observe</span><span class="p">(</span><span class="n">x</span><span class="p">));</span><span class="w"></span>
 
-<span class="c">    void reset(x_vec_t x, p_mat_t P)</span>
-<span class="c">    {</span>
-<span class="c">        x_ = x;</span>
-<span class="c">        P_ = P;</span>
-<span class="c">    }</span>
+<span class="w">        </span><span class="c1">// 事後誤差共分散行列</span>
+<span class="w">        </span><span class="n">P</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="o">::</span><span class="n">Identity</span><span class="p">(</span><span class="n">state_size_</span><span class="p">,</span><span class="w"> </span><span class="n">state_size_</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">K</span><span class="o">*</span><span class="n">H</span><span class="p">)</span><span class="o">*</span><span class="n">P</span><span class="p">;</span><span class="w"></span>
 
-<span class="c">    x_vec_t update(u_vec_t u)</span>
-<span class="c">    {</span>
-<span class="c">        // 状態予測</span>
-<span class="c">        x_ = f(x_, u);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="c">        const auto F_ = matF(x_, u);</span>
-<span class="c">        const auto Q_ = matQ(x_, u);</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">dt</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">dt_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="nf">get_x</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="nf">get_P</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">P</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
-<span class="c">        // 事前共分散行列</span>
-<span class="c">        P_ = F_*P_*transpose(F_) + Q_;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="nf">system</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
-<span class="c">        auto zs = get_z();</span>
-<span class="c">        auto estimated_z = h(x_);</span>
-<span class="c">        if(estimated_z.has_value())</span>
-<span class="c">        {</span>
-<span class="c">            for(auto &amp; z : zs)</span>
-<span class="c">            {</span>
-<span class="c">                const auto H_ = matH(x_);</span>
-<span class="c">                const auto R_ = matR(x_, u);</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="nf">observe</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
-<span class="c">                // カルマンゲイン計算((S*S) * (S*O) * (O*O) = (S*O))</span>
-<span class="c">                auto K_ = P_*transpose(H_)*inverse(R_ + H_*P_*transpose(H_) );</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">system_noise_conv</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
-<span class="c">                // 状態更新</span>
-<span class="c">                x_ += K_*(z - estimated_z.value());</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">observe_noise_conv</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
-<span class="c">                // 事後誤差共分散行列</span>
-<span class="c">                constexpr auto I = eye&lt;value_type, state_size&gt;();</span>
-<span class="c">                P_ = (I - K_*H_)*P_;</span>
-<span class="c">            }</span>
-<span class="c">        }</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">linearized_system_matrix</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="n">F</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">u</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">derivative</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x_dash</span><span class="p">){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">system</span><span class="p">(</span><span class="n">x_dash</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
 
-<span class="c">        return x_;</span>
-<span class="c">    }</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">linearized_observe_matrix</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="n">H</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">H</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">derivative</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ExtendedKalmanFilter</span><span class="o">::</span><span class="n">observe</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">),</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="c">    x_vec_t get_x() { return x_; }</span>
-<span class="c">    p_mat_t get_P() { return P_; }</span>
+<span class="k">protected</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// サンプリング時間[s]</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dt_</span><span class="p">;</span><span class="w"></span>
 
-<span class="c">protected:</span>
-<span class="c">    // ここらへんをオーバーライドして使う</span>
-
-<span class="c">    // システム</span>
-<span class="c">    virtual x_vec_t f(x_vec_t x, u_vec_t u) = 0;</span>
-
-<span class="c">    // 観測</span>
-<span class="c">    virtual std::optional&lt;z_vec_t&gt; h(x_vec_t x) = 0;</span>
-
-<span class="c">    // 観測データ</span>
-<span class="c">    virtual std::vector&lt;z_vec_t&gt; get_z() = 0;</span>
-
-<span class="c">    // システムノイズ共分散行列</span>
-<span class="c">    virtual q_mat_t Q(x_vec_t x, u_vec_t u) = 0;</span>
-
-<span class="c">    // 観測ノイズの共分散行列</span>
-<span class="c">    virtual r_mat_t R(x_vec_t x, u_vec_t u) = 0;</span>
-
-<span class="c">    // システム線形化行列</span>
-<span class="c">    virtual f_mat_t F(x_vec_t x, u_vec_t u)</span>
-<span class="c">    {</span>
-<span class="c">        // 近似解</span>
-<span class="c">        f_mat_t matF;</span>
-
-<span class="c">        x_vec_t new_x; </span>
-<span class="c">        for(size_t r = 0; r &lt; state_size; r++)</span>
-<span class="c">        {</span>
-<span class="c">            for(size_t c = 0; c &lt; state_size; c++)</span>
-<span class="c">            {</span>
-<span class="c">                const value_type dx = 1e-3;</span>
-<span class="c">                new_x = x;</span>
-<span class="c">                new_x(c) += dx;</span>
-<span class="c">                matF(r, c) = ( f(new_x, u)(r) - f(x, u)(r) ) / dx;</span>
-<span class="c">            }</span>
-<span class="c">        }</span>
-
-<span class="c">        return matF;</span>
-<span class="c">    };</span>
-
-<span class="c">    // 観測線形化行列</span>
-<span class="c">    virtual h_mat_t H(x_vec_t x)</span>
-<span class="c">    {</span>
-<span class="c">        // 近似解</span>
-<span class="c">        h_mat_t matH;</span>
-
-<span class="c">        x_vec_t new_x;</span>
-<span class="c">        for(size_t r = 0; r &lt; observe_size; r++)</span>
-<span class="c">        {</span>
-<span class="c">            for(size_t c = 0; c &lt; state_size; c++)</span>
-<span class="c">            {</span>
-<span class="c">                const value_type dx = 1e-3;</span>
-<span class="c">                new_x = x;</span>
-<span class="c">                new_x(c) += dx;</span>
-<span class="c">                auto h1 = h(x);</span>
-<span class="c">                auto h2 = h(new_x);</span>
-<span class="c">                if(h1 &amp;&amp; h2)</span>
-<span class="c">                {</span>
-<span class="c">                    auto &amp;h1_mat = h1.value();</span>
-<span class="c">                    auto &amp;h2_mat = h2.value();</span>
-
-<span class="c">                    matH(r, c) = (h2_mat(r) - h1_mat(r)) / dx;</span>
-<span class="c">                }</span>
-<span class="c">                else</span>
-<span class="c">                {</span>
-<span class="c">                    matH(r, c) = 0.0f;</span>
-<span class="c">                }</span>
-<span class="c">            }</span>
-<span class="c">        }</span>
-
-<span class="c">        return matH;</span>
-<span class="c">    }</span>
-
-<span class="c">protected:</span>
-<span class="c">    // サンプリング時間[s]</span>
-<span class="c">    const value_type dt_;</span>
-
-<span class="c">private:</span>
-<span class="c">    // 状態量</span>
-<span class="c">    x_vec_t x_;</span>
-<span class="c">    // 誤差共分散行列</span>
-<span class="c">    p_mat_t P_;</span>
-<span class="c">};</span>
-<span class="cp">#endif</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">input_size_</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">state_size_</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">observe_size_</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-09-28 at 01:12:56 +0900</p>
+<p>Updated on 2022-09-28 at 19:28:33 +0900</p>
 
 
 

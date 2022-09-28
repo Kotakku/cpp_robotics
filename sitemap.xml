@@ -51,6 +51,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1BandPassFilter/</loc>
+         <lastmod>2022-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRom2D/</loc>
          <lastmod>2022-09-28</lastmod>
          <changefreq>daily</changefreq>
@@ -92,6 +97,11 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DubinsPath/</loc>
+         <lastmod>2022-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ExtendedKalmanFilter/</loc>
          <lastmod>2022-09-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -142,6 +152,11 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NctfController/</loc>
+         <lastmod>2022-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NotchFilter/</loc>
          <lastmod>2022-09-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -462,6 +477,11 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/argmented__lagragian__method_8hpp/</loc>
+         <lastmod>2022-09-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/band__pass__filter_8hpp/</loc>
          <lastmod>2022-09-28</lastmod>
          <changefreq>daily</changefreq>
     </url>

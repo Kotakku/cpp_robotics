@@ -2197,8 +2197,8 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">LowPassFilter</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">LowPassFilter</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
-<span class="w">        </span><span class="n">T_</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="w"> </span><span class="n">dt_</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">LowPassFilter</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">w_</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="w"> </span><span class="n">T_</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">w</span><span class="p">),</span><span class="w"> </span><span class="n">dt_</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
@@ -2218,16 +2218,19 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">w</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">w_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="n">dt_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 <span class="k">private</span><span class="o">:</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">T_</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt_</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">w_</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">T_</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dt_</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y1_</span><span class="p">,</span><span class="w"> </span><span class="n">u1_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-09-28 at 01:12:56 +0900</p>
+<p>Updated on 2022-09-28 at 19:28:33 +0900</p>
 
 
 

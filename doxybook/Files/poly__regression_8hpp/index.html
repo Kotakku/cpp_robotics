@@ -2156,54 +2156,63 @@
 
 
 <h1 id="includecpp_roboticsalgorithmpoly_regressionhpp">include/cpp_robotics/algorithm/poly_regression.hpp</h1>
+<h2 id="namespaces">Namespaces</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/">cpp_robotics</a></strong></td>
+</tr>
+</tbody>
+</table>
 <h2 id="source-code">Source code</h2>
-<div class="highlight"><pre><span></span><code><span class="c1">// #pragma once</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
 
-<span class="c1">// #include &lt;array&gt;</span>
-<span class="c1">// #include &lt;Eigen/Dense&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;array&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Eigen/Dense&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cpp_robotics/system/polynomial.hpp&quot;</span><span class="cp"></span>
 
-<span class="c1">// namespace cpp_robotics</span>
-<span class="c1">// {</span>
-<span class="c1">// // 回帰曲線</span>
-<span class="c1">// Eigen::VectorXd poly_regression(Container x, Container y, const size_t degree)</span>
-<span class="c1">// {</span>
-<span class="c1">//     MyMatrix&lt;typename Container::value_type, Dynamic, Dynamic&gt; XT, Y;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">cpp_robotics</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 
-<span class="c1">//     assert(x.size() == y.size());</span>
-<span class="c1">//     const size_t data_num = x.size();</span>
-<span class="c1">//     XT.resize(degree + 1, data_num);</span>
-<span class="c1">//     Y.resize(data_num, 1);</span>
+<span class="n">Polynomial</span><span class="w"> </span><span class="nf">poly_regression</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">degree</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">XT</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">;</span><span class="w"></span>
 
-<span class="c1">//     for (size_t j = 0; j &lt; x.size(); j++)</span>
-<span class="c1">//     {</span>
-<span class="c1">//         XT(0, j) = 1;</span>
-<span class="c1">//         for (size_t i = 0; i &lt; degree; i++)</span>
-<span class="c1">//         {</span>
-<span class="c1">//             XT(i + 1, j) = XT(i, j) * x[j];</span>
-<span class="c1">//         }</span>
-<span class="c1">//     }</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y</span><span class="p">.</span><span class="n">size</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">data_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">XT</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">degree</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">data_num</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Y</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">data_num</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
 
-<span class="c1">//     for (size_t i = 0; i &lt; y.size(); i++)</span>
-<span class="c1">//     {</span>
-<span class="c1">//         Y(i) = y[i];</span>
-<span class="c1">//     }</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">XT</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">degree</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">XT</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XT</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="c1">//     auto coeff_mat_1d = inverse(XT * transpose(XT)) * (XT * Y);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">y</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">Y</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="c1">//     std::vector&lt;typename Container::value_type&gt; coeff(degree + 1);</span>
-<span class="c1">//     for (size_t i = 0; i &lt; degree + 1; i++)</span>
-<span class="c1">//     {</span>
-<span class="c1">//         //coeff[i] = coeff_mat_1d(degree - i);</span>
-<span class="c1">//         coeff[i] = coeff_mat_1d(i);</span>
-<span class="c1">//     }</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">coeff</span><span class="p">(</span><span class="n">degree</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="o">&gt;</span><span class="w"> </span><span class="n">coeff_vec</span><span class="p">(</span><span class="n">coeff</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">degree</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">coeff_vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">XT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">XT</span><span class="p">.</span><span class="n">transpose</span><span class="p">()).</span><span class="n">inverse</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">XT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Y</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Polynomial</span><span class="p">(</span><span class="n">coeff</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="c1">//     return Polynomial(coeff);</span>
-<span class="c1">// }</span>
-
-<span class="c1">// }</span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-09-28 at 01:12:56 +0900</p>
+<p>Updated on 2022-09-28 at 19:28:33 +0900</p>
 
 
 

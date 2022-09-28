@@ -2210,6 +2210,10 @@
 </tr>
 <tr>
 <td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1BandPassFilter/">cpp_robotics::BandPassFilter</a></strong> <br>バンドパスフィルタ</td>
+</tr>
+<tr>
+<td>class</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRom2D/">cpp_robotics::CatumullRom2D</a></strong> <br>Catumull曲線</td>
 </tr>
 <tr>
@@ -2262,6 +2266,10 @@
 </tr>
 <tr>
 <td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ExtendedKalmanFilter/">cpp_robotics::ExtendedKalmanFilter</a></strong></td>
+</tr>
+<tr>
+<td>class</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1FilterConnector/">cpp_robotics::FilterConnector</a></strong></td>
 </tr>
 <tr>
@@ -2307,6 +2315,10 @@
 <tr>
 <td>class</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NDT2d/">cpp_robotics::NDT2d</a></strong> <br>2次元のNDTマッチングクラス</td>
+</tr>
+<tr>
+<td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NotchFilter/">cpp_robotics::NotchFilter</a></strong> <br>ノッチフィルタ</td>
 </tr>
 <tr>
 <td>class</td>
@@ -2755,6 +2767,10 @@
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-mahalanobis">mahalanobis</a></strong>(const Eigen::VectorXd &amp; a, const Eigen::VectorXd &amp; b, const Eigen::MatrixXd cov_inv)<br>マハラノビス距離の計算</td>
 </tr>
 <tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-poly-regression">poly_regression</a></strong>(const std::vector&lt; double &gt; &amp; x, const std::vector&lt; double &gt; &amp; y, const size_t degree)<br>回帰曲線</td>
+</tr>
+<tr>
 <td>template &lt;typename Real  =double> <br>Real</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-gererate-random">gererate_random</a></strong>()<br>0.0〜1.0までの一様分布の乱数を生成する</td>
 </tr>
@@ -2961,6 +2977,10 @@
 <tr>
 <td>Eigen::VectorXd</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-derivative">derivative</a></strong>(std::function&lt; double(Eigen::VectorXd)&gt; f, Eigen::VectorXd x, double eps =std::pow(std::numeric_limits&lt; double &gt;::epsilon(), 0.5))<br>R^n -&gt; Rの数値微分</td>
+</tr>
+<tr>
+<td>Eigen::MatrixXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-derivative">derivative</a></strong>(std::function&lt; Eigen::VectorXd(Eigen::VectorXd)&gt; f, Eigen::VectorXd x, double eps =std::pow(std::numeric_limits&lt; double &gt;::epsilon(), 0.5))</td>
 </tr>
 <tr>
 <td>double</td>
@@ -3631,6 +3651,21 @@
 <li><strong>cov_inv</strong> 分散の逆行列 </li>
 </ul>
 <p><strong>Return</strong>: double マハラノビス距離 </p>
+<h3 id="function-poly_regression">function poly_regression</h3>
+<div class="highlight"><pre><span></span><code><span class="n">Polynomial</span><span class="w"> </span><span class="n">poly_regression</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">degree</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>回帰曲線 </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>x</strong> </li>
+<li><strong>y</strong> </li>
+<li><strong>degree</strong> 回帰曲線の次元 </li>
+</ul>
+<p><strong>Return</strong>: <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></p>
 <h3 id="function-gererate_random">function gererate_random</h3>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Real</span><span class="w">  </span><span class="o">=</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"></span>
 <span class="k">static</span><span class="w"> </span><span class="n">Real</span><span class="w"> </span><span class="n">gererate_random</span><span class="p">()</span><span class="w"></span>
@@ -4148,6 +4183,13 @@
 <li><strong>eps</strong> </li>
 </ul>
 <p><strong>Return</strong>: Eigen::VectorXd </p>
+<h3 id="function-derivative_2">function derivative</h3>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">derivative</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">eps</span><span class="w"> </span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">pow</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">epsilon</span><span class="p">(),</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
 <h3 id="function-second_derivative">function second_derivative</h3>
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">second_derivative</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"></span>
@@ -4939,7 +4981,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">gfcm2mNm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">gfm2Nm</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-09-28 at 01:12:56 +0900</p>
+<p>Updated on 2022-09-28 at 19:28:33 +0900</p>
 
 
 
