@@ -43,7 +43,14 @@ static Eigen::VectorXd derivative(std::function<double(Eigen::VectorXd)> f, Eige
     return der;
 }
 
-// R^n -> R^mの数値微分
+/**
+ * @brief R^n -> R^mの数値微分
+ * 
+ * @param f 
+ * @param x 
+ * @param eps 
+ * @return Eigen::MatrixXd 
+ */
 static Eigen::MatrixXd derivative(std::function<Eigen::VectorXd(Eigen::VectorXd)> f, Eigen::VectorXd x, double eps = std::pow(std::numeric_limits<double>::epsilon(), 0.5))
 {
     Eigen::MatrixXd der;

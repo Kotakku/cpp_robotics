@@ -12,5 +12,4 @@
 #include "./sqp.hpp"
 
 #include "./interior_point_method.hpp"
-#include "./argmented_lagragian_method.hpp"
 #include "./active_set_method.hpp"

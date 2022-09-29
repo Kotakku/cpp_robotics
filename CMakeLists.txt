@@ -63,7 +63,7 @@ enable_testing()
 set(test_files
   utility/singleton_test
 
-  algorithm/poly_regression
+  algorithm/poly_regression_test
   algorithm/random_test
   algorithm/k_means_test
 
@@ -73,6 +73,8 @@ set(test_files
   chassis/mecanum_test
   chassis/omni_test
   chassis/swerve_test
+
+  optimize/fmin_search_test
 
 )
 include(GoogleTest)
