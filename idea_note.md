@@ -12,7 +12,10 @@
     - 零位相誤差追従制御
     - スミス補償器
     - LMI制御
-    - モデル化誤差抑制補償器
+    - モデル化誤差抑制補償器(MEC)
+    - システム同定
+        - 伝達関数同定
+            - 同定対象のボード線図的なデータが取れてて、近似する伝達関数の分母分子の次数を手動で与えればゴリ押し最適化でそれっぽくなるのでは？
 - 安定性とロバスト性
     - ゲイン余裕
     - 位相余裕
@@ -49,6 +52,11 @@
 - シミュレーション環境
     - アニメーション, ビジュアライズ
 
+# 実装途中・バグありで動作が保証できないやつ
+- algorithm/ICP
+- optimize/ActiveSetMethod
+- optimize/SQP
+
 # 参考プロジェクト
 - [python control](https://github.com/python-control/python-control)
 - [PythonRobotics](https://github.com/AtsushiSakai/PythonRobotics)
@@ -62,3 +70,4 @@
 - [OpenRCF](https://booth.pm/ja/items/2754488) C#で開発するロボットコントロールプラットフォーム
 - [gym-pybullet-drones](https://github.com/utiasDSL/gym-pybullet-drones) pybulletでベースのドローンコントローラ
 - [webot](https://github.com/cyberbotics/webots_ros2) シミュレータ
+- [legged_control](https://github.com/qiayuanliao/legged_control) ROS1対応の4足歩行ロボットのコントローラ・シミュレータ

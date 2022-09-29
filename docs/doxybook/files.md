@@ -65,12 +65,9 @@ title: Files
             * **file [include/cpp_robotics/motor/motor_tf.hpp](/cpp_robotics/doxybook/Files/motor__tf_8hpp/#file-motor-tf.hpp)** 
         * **dir [include/cpp_robotics/optimize](/cpp_robotics/doxybook/Files/dir_dbe6a3823a6e2aee897d3ebf7d75d548/#dir-include/cpp-robotics/optimize)** 
             * **file [include/cpp_robotics/optimize/active_set_method.hpp](/cpp_robotics/doxybook/Files/active__set__method_8hpp/#file-active-set-method.hpp)** 
-            * **file [include/cpp_robotics/optimize/argmented_lagragian_method.hpp](/cpp_robotics/doxybook/Files/argmented__lagragian__method_8hpp/#file-argmented-lagragian-method.hpp)** 
             * **file [include/cpp_robotics/optimize/barrier_method.hpp](/cpp_robotics/doxybook/Files/barrier__method_8hpp/#file-barrier-method.hpp)** 
-            * **file [include/cpp_robotics/optimize/bernet_serach.hpp](/cpp_robotics/doxybook/Files/bernet__serach_8hpp/#file-bernet-serach.hpp)** 
             * **file [include/cpp_robotics/optimize/bfgs.hpp](/cpp_robotics/doxybook/Files/bfgs_8hpp/#file-bfgs.hpp)** 
             * **file [include/cpp_robotics/optimize/bracketing_serach.hpp](/cpp_robotics/doxybook/Files/bracketing__serach_8hpp/#file-bracketing-serach.hpp)** 
-            * **file [include/cpp_robotics/optimize/conjugate_gradient_method.hpp](/cpp_robotics/doxybook/Files/conjugate__gradient__method_8hpp/#file-conjugate-gradient-method.hpp)** 
             * **file [include/cpp_robotics/optimize/constraint.hpp](/cpp_robotics/doxybook/Files/constraint_8hpp/#file-constraint.hpp)** 
             * **file [include/cpp_robotics/optimize/derivative.hpp](/cpp_robotics/doxybook/Files/derivative_8hpp/#file-derivative.hpp)** 
             * **file [include/cpp_robotics/optimize/golden_serach.hpp](/cpp_robotics/doxybook/Files/golden__serach_8hpp/#file-golden-serach.hpp)** 
@@ -136,4 +133,4 @@ title: Files
 
 -------------------------------
 
-Updated on 2022-09-28 at 23:34:45 +0900
+Updated on 2022-09-30 at 00:12:50 +0900

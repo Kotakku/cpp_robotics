@@ -10,6 +10,8 @@
 !!! Note
     Todo
 
+## HPIPM(High Performance Interior Point Method)
+
 ## 参考文献
 - [凸最適化の概要と主双対内点法のアルゴリズムの解説](https://qiita.com/taka_horibe/items/0c9b0993e0bd1c0135fa)
 - [主双対内点法](https://orsj.org/wp-content/corsj/or64-4/or64_4_218.pdf)

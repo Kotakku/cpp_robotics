@@ -75,10 +75,52 @@ nav:
       - constexpr単位系: example/units/units.md
 
   - 技術資料:
-    - モデル表現:
+    - システムモデル:
       - 伝達関数: tech_note/system/transfer_function.md
       - 状態空間表現: tech_note/system/state_space_system.md
       - 離散化: tech_note/system/discrete.md
+    - 制御:
+      - システムの極・零点: tech_note/control/pole_and_zero.md
+      - 非最小位相系: tech_note/control/minphase.md
+      - システムの安定性: tech_note/control/stability.md
+      - PID: tech_note/control/pid.md
+      - 2自由度PID: tech_note/control/pid2.md
+      - LQR: tech_note/control/lqr.md
+      - NCTF: tech_note/control/nctf.md
+      - 極配置による状態フィードバック: tech_note/control/place.md
+      - Pure pursuit: tech_note/control/pure_pursuit.md
+      - PFC: tech_note/control/pfc.md
+    - 最適制御:
+      - 最適制御概論: tech_note/optimal_control/optimal_control.md
+    - 運動学:
+      - 差動二輪機構: tech_note/kinematics/diff_robot.md
+      - メカナム移動機構: tech_note/kinematics/mecanum.md
+      - オムニ移動機構: tech_note/kinematics/omni.md
+      - 独立4輪ステア移動機構: tech_note/kinematics/swerve.md
+      - デルタロボット: tech_note/kinematics/delta_robot.md
+    - フィルタ:
+      - 伝達関数で表現されるフィルタ: tech_note/filter/tf_filter.md
+      - 速度制限フィルタ・加速度制限フィルタ: tech_note/filter/limitted_filter.md
+      - カルマンフィルタ: tech_note/filter/kalman_filter.md
+      - 拡張カルマンフィルタ: tech_note/filter/extend_kalman_filter.md
+    - パスプランニング・パストラッキング:
+      - A*: tech_note/path_planning/a_star.md
+      - wave propagation: tech_note/path_planning/wave_propagation.md
+      - Dubins曲線: tech_note/path_planning/dubins_path.md
+      - DWA: tech_note/path_planning/dwa.md
+      - フレネ座標系: tech_note/path_planning/frenet_path.md
+      - スプライン曲線: tech_note/path_planning/spline.md
+      - RVO: tech_note/path_planning/rvo.md
+    - アルゴリズム:
+      - ICP: tech_note/algorithm/icp.md
+      - NDT: tech_note/algorithm/ndt.md
+      - KDTree: tech_note/algorithm/kdtree.md
+      - 多項式: tech_note/algorithm/poly.md
+      - 回帰曲線: tech_note/algorithm/poly_regression.md
+      - 躍度最小化モデル: tech_note/algorithm/jerk_minimum_model.md
+      - K-means法: tech_note/algorithm/k_means_method.md
+      - 多項式補間: tech_note/algorithm/poly_lerp.md
+      - マハラノビス距離: tech_note/algorithm/mahalanobis.md
     - 最適化: 
       - アルゴリズムの概要: tech_note/optimize/algo_abst.md
       - 数理計画問題とアルゴリズム一覧: tech_note/optimize/prob_and_algo.md
@@ -100,53 +142,12 @@ nav:
         - 内点法: tech_note/optimize/interior_method.md
         - SQP(逐次二次計画法): tech_note/optimize/sqp.md
       - 最適化の収束判定: tech_note/optimize/tolerances_and_stopping.md
-    - アルゴリズム:
-      - ICP: tech_note/algorithm/icp.md
-      - NDT: tech_note/algorithm/ndt.md
-      - KDTree: tech_note/algorithm/kdtree.md
-      - 多項式: tech_note/algorithm/poly.md
-      - 回帰曲線: tech_note/algorithm/poly_regression.md
-      - 躍度最小化モデル: tech_note/algorithm/jerk_minimum_model.md
-      - K-means法: tech_note/algorithm/k_means_method.md
-    - 運動学:
-      - 差動二輪機構: tech_note/kinematics/diff_robot.md
-      - メカナム移動機構: tech_note/kinematics/mecanum.md
-      - オムニ移動機構: tech_note/kinematics/omni.md
-      - 独立4輪ステア移動機構: tech_note/kinematics/swerve.md
-      - デルタロボット: tech_note/kinematics/delta_robot.md
-    - フィルタ:
-      - 伝達関数で表現されるフィルタ: tech_note/filter/tf_filter.md
-      - 速度制限フィルタ・加速度制限フィルタ: tech_note/filter/limitted_filter.md
-      - カルマンフィルタ: tech_note/filter/kalman_filter.md
-      - 拡張カルマンフィルタ: tech_note/filter/extend_kalman_filter.md
-    - 制御:
-      - システムの極・零点: tech_note/control/pole_and_zero.md
-      - 非最小位相系: tech_note/control/minphase.md
-      - システムの安定性: tech_note/control/stability.md
-      - PID: tech_note/control/pid.md
-      - 2自由度PID: tech_note/control/pid2.md
-      - LQR: tech_note/control/lqr.md
-      - NCTF: tech_note/control/nctf.md
-      - 極配置による状態フィードバック: tech_note/control/place.md
-      - Pure pursuit: tech_note/control/pure_pursuit.md
-      - PFC: tech_note/control/pfc.md
     - 図形:
       - 図形の衝突判定: tech_note/geometry/geometry.md
     - モーター:
       - モーターの状態空間表現: tech_note/motor/motor_model.md
       - マブチモータのスペック読み取り: tech_note/motor/mabuchi.md
       - maxonモータのスペック読み取り: tech_note/motor/maxon.md
-    - パスプランニング・パストラッキング:
-      - A*: tech_note/path_planning/a_star.md
-      - wave propagation: tech_note/path_planning/wave_propagation.md
-      - Dubins曲線: tech_note/path_planning/dubins_path.md
-      - DWA: tech_note/path_planning/dwa.md
-      - フレネ座標系: tech_note/path_planning/frenet_path.md
-      - スプライン曲線: tech_note/path_planning/spline.md
-      - RVO: tech_note/path_planning/rvo.md
-    - 数学補助:
-      - 多項式補間: tech_note/math/poly_lerp.md
-      - マハラノビス距離: tech_note/math/mahalanobis.md
     - ソフトウェア設計:
       - デザインパターン: tech_note/software_design/design_pattern.md
       - SOLID原則: tech_note/software_design/solid.md

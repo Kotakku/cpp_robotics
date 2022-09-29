@@ -224,7 +224,7 @@ title: cpp_robotics
 | double | **[bracketing_serach](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-bracketing-serach)**(std::function< double(double)> func, const double init =1.0, const double beta =0.9, const size_t max_iter =1000)<br>囲い込み法  |
 | double | **[derivative](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-derivative)**(std::function< double(double)> f, double x, double eps =std::pow(std::numeric_limits< double >::epsilon(), 0.5))<br>R -> Rの数値微分  |
 | Eigen::VectorXd | **[derivative](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-derivative)**(std::function< double(Eigen::VectorXd)> f, Eigen::VectorXd x, double eps =std::pow(std::numeric_limits< double >::epsilon(), 0.5))<br>R^n -> Rの数値微分  |
-| Eigen::MatrixXd | **[derivative](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-derivative)**(std::function< Eigen::VectorXd(Eigen::VectorXd)> f, Eigen::VectorXd x, double eps =std::pow(std::numeric_limits< double >::epsilon(), 0.5)) |
+| Eigen::MatrixXd | **[derivative](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-derivative)**(std::function< Eigen::VectorXd(Eigen::VectorXd)> f, Eigen::VectorXd x, double eps =std::pow(std::numeric_limits< double >::epsilon(), 0.5))<br>R^n -> R^mの数値微分  |
 | double | **[second_derivative](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-second-derivative)**(std::function< double(double)> f, double x, double eps =std::pow(std::numeric_limits< double >::epsilon(), 0.5))<br>R -> Rの2回数値微分  |
 | Eigen::MatrixXd | **[approx_hessian](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-approx-hessian)**(std::function< double(Eigen::VectorXd)> f, Eigen::VectorXd x, double eps =std::pow(std::numeric_limits< double >::epsilon(), 0.5)) |
 | double | **[golden_search](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-golden-search)**(std::function< double(double)> f, double low, double high, const double tol =1e-6, const size_t max_iter =100)<br>黄金探索  |
@@ -1717,6 +1717,16 @@ static Eigen::MatrixXd derivative(
 )
 ```
 
+R^n -> R^mの数値微分 
+
+**Parameters**: 
+
+  * **f** 
+  * **x** 
+  * **eps** 
+
+
+**Return**: Eigen::MatrixXd 
 
 ### function second_derivative
 
@@ -2887,4 +2897,4 @@ constexpr float gfcm2mNm = (gfm2Nm / 100);
 
 -------------------------------
 
-Updated on 2022-09-28 at 23:34:44 +0900
+Updated on 2022-09-30 at 00:12:50 +0900

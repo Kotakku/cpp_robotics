@@ -48,7 +48,6 @@ static Eigen::VectorXd derivative(std::function<double(Eigen::VectorXd)> f, Eige
     return der;
 }
 
-// R^n -> R^mの数値微分
 static Eigen::MatrixXd derivative(std::function<Eigen::VectorXd(Eigen::VectorXd)> f, Eigen::VectorXd x, double eps = std::pow(std::numeric_limits<double>::epsilon(), 0.5))
 {
     Eigen::MatrixXd der;
@@ -85,4 +84,4 @@ static Eigen::MatrixXd approx_hessian(std::function<double(Eigen::VectorXd)> f, 
 
 -------------------------------
 
-Updated on 2022-09-28 at 23:34:45 +0900
+Updated on 2022-09-30 at 00:12:50 +0900

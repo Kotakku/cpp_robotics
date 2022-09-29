@@ -61,4 +61,4 @@ static TransferFunction make_geared_motor_pos_tf(const DCGearedMotorParam &geare
 
 -------------------------------
 
-Updated on 2022-09-28 at 23:34:45 +0900
+Updated on 2022-09-30 at 00:12:50 +0900
