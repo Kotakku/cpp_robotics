@@ -12,14 +12,14 @@
         <meta name="author" content="Takumi Odashima">
       
       
-        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Files/argmented__lagragian__method_8hpp/">
+        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/tech_note/algorithm/mahalanobis/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.3">
     
     
       
-        <title>include/cpp_robotics/optimize/argmented_lagragian_method.hpp - cpp_robotics</title>
+        <title>マハラノビス距離 - cpp_robotics</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#includecpp_roboticsoptimizeargmented_lagragian_methodhpp" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              include/cpp_robotics/optimize/argmented_lagragian_method.hpp
+              マハラノビス距離
             
           </span>
         </div>
@@ -209,6 +209,8 @@
         
   
   
+    
+  
 
 
   
@@ -220,7 +222,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../tech_note/system/transfer_function/" class="md-tabs__link">
+      <a href="../../system/transfer_function/" class="md-tabs__link md-tabs__link--active">
         技術資料
       </a>
     </li>
@@ -829,12 +831,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -866,14 +870,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_1">
-          モデル表現
+          システムモデル
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="モデル表現" data-md-level="2">
+      <nav class="md-nav" aria-label="システムモデル" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_1">
           <span class="md-nav__icon md-icon"></span>
-          モデル表現
+          システムモデル
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -883,7 +887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/system/transfer_function/" class="md-nav__link">
+      <a href="../../system/transfer_function/" class="md-nav__link">
         伝達関数
       </a>
     </li>
@@ -897,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/system/state_space_system/" class="md-nav__link">
+      <a href="../../system/state_space_system/" class="md-nav__link">
         状態空間表現
       </a>
     </li>
@@ -911,7 +915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/system/discrete/" class="md-nav__link">
+      <a href="../../system/discrete/" class="md-nav__link">
         離散化
       </a>
     </li>
@@ -941,14 +945,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_2">
-          最適化
+          制御
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="最適化" data-md-level="2">
+      <nav class="md-nav" aria-label="制御" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_2">
           <span class="md-nav__icon md-icon"></span>
-          最適化
+          制御
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -958,8 +962,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/algo_abst/" class="md-nav__link">
-        アルゴリズムの概要
+      <a href="../../control/pole_and_zero/" class="md-nav__link">
+        システムの極・零点
       </a>
     </li>
   
@@ -972,8 +976,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/prob_and_algo/" class="md-nav__link">
-        数理計画問題とアルゴリズム一覧
+      <a href="../../control/minphase/" class="md-nav__link">
+        非最小位相系
       </a>
     </li>
   
@@ -986,8 +990,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/derivative/" class="md-nav__link">
-        数値微分
+      <a href="../../control/stability/" class="md-nav__link">
+        システムの安定性
       </a>
     </li>
   
@@ -1000,8 +1004,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/scalar_opt/" class="md-nav__link">
-        スカラー最適化
+      <a href="../../control/pid/" class="md-nav__link">
+        PID
       </a>
     </li>
   
@@ -1014,8 +1018,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/least_squares_method/" class="md-nav__link">
-        最小二乗法
+      <a href="../../control/pid2/" class="md-nav__link">
+        2自由度PID
       </a>
     </li>
   
@@ -1028,48 +1032,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/line_search/" class="md-nav__link">
-        直線探索
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_7" type="checkbox" id="__nav_4_2_7" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_2_7">
-          無制約最適化
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="無制約最適化" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_7">
-          <span class="md-nav__icon md-icon"></span>
-          無制約最適化
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/conj_grad/" class="md-nav__link">
-        最急降下法
+      <a href="../../control/lqr/" class="md-nav__link">
+        LQR
       </a>
     </li>
   
@@ -1082,8 +1046,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/newton/" class="md-nav__link">
-        ニュートン法
+      <a href="../../control/nctf/" class="md-nav__link">
+        NCTF
       </a>
     </li>
   
@@ -1096,8 +1060,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/quasi_newton/" class="md-nav__link">
-        準ニュートン法
+      <a href="../../control/place/" class="md-nav__link">
+        極配置による状態フィードバック
       </a>
     </li>
   
@@ -1110,55 +1074,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/benchmark_cont/" class="md-nav__link">
-        ベンチマーク
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_8" type="checkbox" id="__nav_4_2_8" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_2_8">
-          制約付き最適化
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="制約付き最適化" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_8">
-          <span class="md-nav__icon md-icon"></span>
-          制約付き最適化
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/kkt_condition/" class="md-nav__link">
-        KKT条件
+      <a href="../../control/pure_pursuit/" class="md-nav__link">
+        Pure pursuit
       </a>
     </li>
   
@@ -1171,99 +1088,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/quadprog/" class="md-nav__link">
-        二次計画法
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/active_set_method/" class="md-nav__link">
-        有効制約法
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/barrier_method/" class="md-nav__link">
-        バリア法
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/penalty_methond/" class="md-nav__link">
-        ペナルティ法
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/interior_method/" class="md-nav__link">
-        内点法
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/sqp/" class="md-nav__link">
-        SQP(逐次二次計画法)
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/optimize/tolerances_and_stopping/" class="md-nav__link">
-        最適化の収束判定
+      <a href="../../control/pfc/" class="md-nav__link">
+        PFC
       </a>
     </li>
   
@@ -1292,14 +1118,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_3">
-          アルゴリズム
+          最適制御
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="アルゴリズム" data-md-level="2">
+      <nav class="md-nav" aria-label="最適制御" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_3">
           <span class="md-nav__icon md-icon"></span>
-          アルゴリズム
+          最適制御
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1309,92 +1135,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/algorithm/icp/" class="md-nav__link">
-        ICP
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/algorithm/ndt/" class="md-nav__link">
-        NDT
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/algorithm/kdtree/" class="md-nav__link">
-        KDTree
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/algorithm/poly/" class="md-nav__link">
-        多項式
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/algorithm/poly_regression/" class="md-nav__link">
-        回帰曲線
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/algorithm/jerk_minimum_model/" class="md-nav__link">
-        躍度最小化モデル
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/algorithm/k_means_method/" class="md-nav__link">
-        K-means法
+      <a href="../../optimal_control/optimal_control/" class="md-nav__link">
+        最適制御概論
       </a>
     </li>
   
@@ -1440,7 +1182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/kinematics/diff_robot/" class="md-nav__link">
+      <a href="../../kinematics/diff_robot/" class="md-nav__link">
         差動二輪機構
       </a>
     </li>
@@ -1454,7 +1196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/kinematics/mecanum/" class="md-nav__link">
+      <a href="../../kinematics/mecanum/" class="md-nav__link">
         メカナム移動機構
       </a>
     </li>
@@ -1468,7 +1210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/kinematics/omni/" class="md-nav__link">
+      <a href="../../kinematics/omni/" class="md-nav__link">
         オムニ移動機構
       </a>
     </li>
@@ -1482,7 +1224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/kinematics/swerve/" class="md-nav__link">
+      <a href="../../kinematics/swerve/" class="md-nav__link">
         独立4輪ステア移動機構
       </a>
     </li>
@@ -1496,7 +1238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/kinematics/delta_robot/" class="md-nav__link">
+      <a href="../../kinematics/delta_robot/" class="md-nav__link">
         デルタロボット
       </a>
     </li>
@@ -1543,7 +1285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/filter/tf_filter/" class="md-nav__link">
+      <a href="../../filter/tf_filter/" class="md-nav__link">
         伝達関数で表現されるフィルタ
       </a>
     </li>
@@ -1557,7 +1299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/filter/limitted_filter/" class="md-nav__link">
+      <a href="../../filter/limitted_filter/" class="md-nav__link">
         速度制限フィルタ・加速度制限フィルタ
       </a>
     </li>
@@ -1571,7 +1313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/filter/kalman_filter/" class="md-nav__link">
+      <a href="../../filter/kalman_filter/" class="md-nav__link">
         カルマンフィルタ
       </a>
     </li>
@@ -1585,7 +1327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/filter/extend_kalman_filter/" class="md-nav__link">
+      <a href="../../filter/extend_kalman_filter/" class="md-nav__link">
         拡張カルマンフィルタ
       </a>
     </li>
@@ -1615,14 +1357,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_6">
-          制御
+          パスプランニング・パストラッキング
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="制御" data-md-level="2">
+      <nav class="md-nav" aria-label="パスプランニング・パストラッキング" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_6">
           <span class="md-nav__icon md-icon"></span>
-          制御
+          パスプランニング・パストラッキング
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1632,8 +1374,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/control/pole_and_zero/" class="md-nav__link">
-        システムの極・零点
+      <a href="../../path_planning/a_star/" class="md-nav__link">
+        A*
       </a>
     </li>
   
@@ -1646,8 +1388,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/control/minphase/" class="md-nav__link">
-        非最小位相系
+      <a href="../../path_planning/wave_propagation/" class="md-nav__link">
+        wave propagation
       </a>
     </li>
   
@@ -1660,8 +1402,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/control/stability/" class="md-nav__link">
-        システムの安定性
+      <a href="../../path_planning/dubins_path/" class="md-nav__link">
+        Dubins曲線
       </a>
     </li>
   
@@ -1674,8 +1416,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/control/pid/" class="md-nav__link">
-        PID
+      <a href="../../path_planning/dwa/" class="md-nav__link">
+        DWA
       </a>
     </li>
   
@@ -1688,8 +1430,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/control/pid2/" class="md-nav__link">
-        2自由度PID
+      <a href="../../path_planning/frenet_path/" class="md-nav__link">
+        フレネ座標系
       </a>
     </li>
   
@@ -1702,8 +1444,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/control/lqr/" class="md-nav__link">
-        LQR
+      <a href="../../path_planning/spline/" class="md-nav__link">
+        スプライン曲線
       </a>
     </li>
   
@@ -1716,50 +1458,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/control/nctf/" class="md-nav__link">
-        NCTF
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/control/place/" class="md-nav__link">
-        極配置による状態フィードバック
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/control/pure_pursuit/" class="md-nav__link">
-        Pure pursuit
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/control/pfc/" class="md-nav__link">
-        PFC
+      <a href="../../path_planning/rvo/" class="md-nav__link">
+        RVO
       </a>
     </li>
   
@@ -1777,25 +1477,27 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_7" type="checkbox" id="__nav_4_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_7" type="checkbox" id="__nav_4_7" checked>
       
       
       
       
         <label class="md-nav__link" for="__nav_4_7">
-          図形
+          アルゴリズム
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="図形" data-md-level="2">
+      <nav class="md-nav" aria-label="アルゴリズム" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_7">
           <span class="md-nav__icon md-icon"></span>
-          図形
+          アルゴリズム
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1805,9 +1507,162 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/geometry/geometry/" class="md-nav__link">
-        図形の衝突判定
+      <a href="../icp/" class="md-nav__link">
+        ICP
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ndt/" class="md-nav__link">
+        NDT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kdtree/" class="md-nav__link">
+        KDTree
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../poly/" class="md-nav__link">
+        多項式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../poly_regression/" class="md-nav__link">
+        回帰曲線
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jerk_minimum_model/" class="md-nav__link">
+        躍度最小化モデル
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../k_means_method/" class="md-nav__link">
+        K-means法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../poly_lerp/" class="md-nav__link">
+        多項式補間
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          マハラノビス距離
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        マハラノビス距離
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1835,14 +1690,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_8">
-          モーター
+          最適化
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="モーター" data-md-level="2">
+      <nav class="md-nav" aria-label="最適化" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_8">
           <span class="md-nav__icon md-icon"></span>
-          モーター
+          最適化
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1852,8 +1707,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/motor/motor_model/" class="md-nav__link">
-        モーターの状態空間表現
+      <a href="../../optimize/algo_abst/" class="md-nav__link">
+        アルゴリズムの概要
       </a>
     </li>
   
@@ -1866,8 +1721,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/motor/mabuchi/" class="md-nav__link">
-        マブチモータのスペック読み取り
+      <a href="../../optimize/prob_and_algo/" class="md-nav__link">
+        数理計画問題とアルゴリズム一覧
       </a>
     </li>
   
@@ -1880,8 +1735,284 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/motor/maxon/" class="md-nav__link">
-        maxonモータのスペック読み取り
+      <a href="../../optimize/derivative/" class="md-nav__link">
+        数値微分
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimize/scalar_opt/" class="md-nav__link">
+        スカラー最適化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimize/least_squares_method/" class="md-nav__link">
+        最小二乗法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimize/line_search/" class="md-nav__link">
+        直線探索
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_8_7" type="checkbox" id="__nav_4_8_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_8_7">
+          無制約最適化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="無制約最適化" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_8_7">
+          <span class="md-nav__icon md-icon"></span>
+          無制約最適化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimize/conj_grad/" class="md-nav__link">
+        最急降下法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimize/newton/" class="md-nav__link">
+        ニュートン法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimize/quasi_newton/" class="md-nav__link">
+        準ニュートン法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimize/benchmark_cont/" class="md-nav__link">
+        ベンチマーク
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_8_8" type="checkbox" id="__nav_4_8_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_8_8">
+          制約付き最適化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="制約付き最適化" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_8_8">
+          <span class="md-nav__icon md-icon"></span>
+          制約付き最適化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimize/kkt_condition/" class="md-nav__link">
+        KKT条件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimize/quadprog/" class="md-nav__link">
+        二次計画法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimize/active_set_method/" class="md-nav__link">
+        有効制約法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimize/barrier_method/" class="md-nav__link">
+        バリア法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimize/penalty_methond/" class="md-nav__link">
+        ペナルティ法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimize/interior_method/" class="md-nav__link">
+        内点法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimize/sqp/" class="md-nav__link">
+        SQP(逐次二次計画法)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimize/tolerances_and_stopping/" class="md-nav__link">
+        最適化の収束判定
       </a>
     </li>
   
@@ -1910,14 +2041,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_9">
-          パスプランニング・パストラッキング
+          図形
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="パスプランニング・パストラッキング" data-md-level="2">
+      <nav class="md-nav" aria-label="図形" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_9">
           <span class="md-nav__icon md-icon"></span>
-          パスプランニング・パストラッキング
+          図形
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1927,92 +2058,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/path_planning/a_star/" class="md-nav__link">
-        A*
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/path_planning/wave_propagation/" class="md-nav__link">
-        wave propagation
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/path_planning/dubins_path/" class="md-nav__link">
-        Dubins曲線
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/path_planning/dwa/" class="md-nav__link">
-        DWA
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/path_planning/frenet_path/" class="md-nav__link">
-        フレネ座標系
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/path_planning/spline/" class="md-nav__link">
-        スプライン曲線
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tech_note/path_planning/rvo/" class="md-nav__link">
-        RVO
+      <a href="../../geometry/geometry/" class="md-nav__link">
+        図形の衝突判定
       </a>
     </li>
   
@@ -2041,14 +2088,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_10">
-          数学補助
+          モーター
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="数学補助" data-md-level="2">
+      <nav class="md-nav" aria-label="モーター" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_10">
           <span class="md-nav__icon md-icon"></span>
-          数学補助
+          モーター
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -2058,8 +2105,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/math/poly_lerp/" class="md-nav__link">
-        多項式補間
+      <a href="../../motor/motor_model/" class="md-nav__link">
+        モーターの状態空間表現
       </a>
     </li>
   
@@ -2072,8 +2119,22 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/math/mahalanobis/" class="md-nav__link">
-        マハラノビス距離
+      <a href="../../motor/mabuchi/" class="md-nav__link">
+        マブチモータのスペック読み取り
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../motor/maxon/" class="md-nav__link">
+        maxonモータのスペック読み取り
       </a>
     </li>
   
@@ -2119,7 +2180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/software_design/design_pattern/" class="md-nav__link">
+      <a href="../../software_design/design_pattern/" class="md-nav__link">
         デザインパターン
       </a>
     </li>
@@ -2133,7 +2194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech_note/software_design/solid/" class="md-nav__link">
+      <a href="../../software_design/solid/" class="md-nav__link">
         SOLID原則
       </a>
     </li>
@@ -2169,31 +2230,30 @@
                   
 
 
-<h1 id="includecpp_roboticsoptimizeargmented_lagragian_methodhpp">include/cpp_robotics/optimize/argmented_lagragian_method.hpp</h1>
-<h2 id="namespaces">Namespaces</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/">cpp_robotics</a></strong></td>
-</tr>
-</tbody>
-</table>
-<h2 id="source-code">Source code</h2>
-<div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+  integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+  crossorigin="anonymous" />
 
-<span class="k">namespace</span><span class="w"> </span><span class="nn">cpp_robotics</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-
-<span class="c1">// 拡張ラグランジュ法</span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<hr />
-<p>Updated on 2022-09-28 at 23:34:45 +0900</p>
+<style type="text/css">
+    .katex img {
+      object-fit: fill;
+      padding: unset;
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: inherit;
+    }
+</style>
+<h1 id="_1">マハラノビス距離</h1>
+<p>異常検知などによく使われる多変数の空間に対してそれぞれの変数の共分散行列を使って表現される距離</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mo>=</mo><msqrt><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>μ</mi><msup><mo stretchy="false">)</mo><mi>T</mi></msup><msup><mi mathvariant="normal">Σ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>μ</mi><mo stretchy="false">)</mo></mrow></msqrt></mrow><annotation encoding="application/x-tex">
+d = \sqrt{(x-\mu)^T\Sigma^{-1}(x-\mu)}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.84em;vertical-align:-0.5475em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2925em;"><span class="svg-align" style="top:-3.8em;"><span class="pstrut" style="height:3.8em;"></span><span class="mord" style="padding-left:1em;"><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">μ</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7673em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mord"><span class="mord">Σ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">μ</span><span class="mclose">)</span></span></span><span style="top:-3.2525em;"><span class="pstrut" style="height:3.8em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.88em;"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSc0MDBlbScgaGVpZ2h0PScxLjg4ZW0nIHZpZXdCb3g9JzAgMCA0MDAwMDAgMTk0NCcgcHJlc2VydmVBc3BlY3RSYXRpbz0neE1pbllNaW4gc2xpY2UnPjxwYXRoIGQ9J005ODMgOTAKbDAgLTAKYzQsLTYuNywxMCwtMTAsMTgsLTEwIEg0MDAwMDB2NDAKSDEwMTMuMXMtODMuNCwyNjgsLTI2NC4xLDg0MGMtMTgwLjcsNTcyLC0yNzcsODc2LjMsLTI4OSw5MTNjLTQuNyw0LjcsLTEyLjcsNywtMjQsNwpzLTEyLDAsLTEyLDBjLTEuMywtMy4zLC0zLjcsLTExLjcsLTcsLTI1Yy0zNS4zLC0xMjUuMywtMTA2LjcsLTM3My4zLC0yMTQsLTc0NApjLTEwLDEyLC0yMSwyNSwtMzMsMzlzLTMyLDM5LC0zMiwzOWMtNiwtNS4zLC0xNSwtMTQsLTI3LC0yNnMyNSwtMzAsMjUsLTMwCmMyNi43LC0zMi43LDUyLC02Myw3NiwtOTFzNTIsLTYwLDUyLC02MHMyMDgsNzIyLDIwOCw3MjIKYzU2LC0xNzUuMywxMjYuMywtMzk3LjMsMjExLC02NjZjODQuNywtMjY4LjcsMTUzLjgsLTQ4OC4yLDIwNy41LC02NTguNQpjNTMuNywtMTcwLjMsODQuNSwtMjY2LjgsOTIuNSwtMjg5LjV6Ck0xMDAxIDgwaDQwMDAwMHY0MGgtNDAwMDAweicvPjwvc3ZnPg=="/></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5475em;"><span></span></span></span></span></span></span></span></span></span></p>
+<h2 id="_2">参考文献</h2>
+<ul>
+<li><a href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%8F%E3%83%A9%E3%83%8E%E3%83%93%E3%82%B9%E8%B7%9D%E9%9B%A2">マハラノビス距離</a></li>
+</ul>
 
 
 
@@ -2209,6 +2269,42 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="フッター" >
+      
+        
+        <a href="../poly_lerp/" class="md-footer__link md-footer__link--prev" aria-label="前: 多項式補間" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                前
+              </span>
+              多項式補間
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../optimize/algo_abst/" class="md-footer__link md-footer__link--next" aria-label="次: アルゴリズムの概要" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                次
+              </span>
+              アルゴリズムの概要
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
