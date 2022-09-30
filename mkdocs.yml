@@ -91,7 +91,8 @@ nav:
       - Pure pursuit: tech_note/control/pure_pursuit.md
       - PFC: tech_note/control/pfc.md
     - 最適制御:
-      - 最適制御概論: tech_note/optimal_control/optimal_control.md
+      - 最適制御: tech_note/optimal_control/optimal_control.md
+      - モデル予測制御(MPC): tech_note/optimal_control/mpc.md
     - 運動学:
       - 差動二輪機構: tech_note/kinematics/diff_robot.md
       - メカナム移動機構: tech_note/kinematics/mecanum.md
