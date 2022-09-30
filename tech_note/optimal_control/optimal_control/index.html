@@ -19,7 +19,7 @@
     
     
       
-        <title>最適制御概論 - cpp_robotics</title>
+        <title>最適制御 - cpp_robotics</title>
       
     
     
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              最適制御概論
+              最適制御
             
           </span>
         </div>
@@ -1147,12 +1147,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          最適制御概論
+          最適制御
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        最適制御概論
+        最適制御
       </a>
       
         
@@ -1172,33 +1172,75 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    動的計画法
+    オイラー・ラグランジュ方程式
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    ベルマン方程式
+    動的計画法
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    離散時間システムの最適制御の数値解法
+    ベルマン方程式
   </a>
   
-    <nav class="md-nav" aria-label="離散時間システムの最適制御の数値解法">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    最適制御の必要条件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    最適制御の十分条件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    変分法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    最適制御の数値解法
+  </a>
+  
+    <nav class="md-nav" aria-label="最適制御の数値解法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
+    勾配法(最急降下法による実装)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
     シューティング法
   </a>
   
     <nav class="md-nav" aria-label="シューティング法">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    遷移行列による方法
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#ddpdifferential-dynamic-programming" class="md-nav__link">
@@ -1226,50 +1268,16 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    連続時間システムの最適制御の数値解法
-  </a>
-  
-    <nav class="md-nav" aria-label="連続時間システムの最適制御の数値解法">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    勾配法(最急降下法による実装)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    シューティング法(遷移行列による方法)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     入力量のニュートン法
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     動的計画法
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    連続時間システムの最適制御の数値解法まとめ
   </a>
   
 </li>
@@ -1280,7 +1288,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     参考文献
   </a>
   
@@ -1290,6 +1298,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mpc/" class="md-nav__link">
+        モデル予測制御(MPC)
+      </a>
     </li>
   
 
@@ -2355,17 +2377,20 @@
     }
 </style>
 <h1 id="_1">最適制御</h1>
-<h2 id="_2">動的計画法</h2>
+<h2 id="_2">オイラー・ラグランジュ方程式</h2>
+<p>システム・初期状態・評価関数が与えられた時に評価関数を最小化する最適な制御入力が満たすべき条件。数理最適化問題におけるKKT条件と考えることができる。つまり最適制御が満たすべき必要条件</p>
+<h2 id="_3">動的計画法</h2>
 <p>動的計画法ではアルゴリズムの分野では対象となる問題を複数の部分問題に分割し、部分問題の計算結果を記録しながら解いていく手法の総称を指す。
 最適制御における動的計画法とは評価関数の最小値を再帰的に表す手法のことを指す。</p>
-<h2 id="_3">ベルマン方程式</h2>
-<p>動的計画法によって表された値関数の再帰一回分を取り出した時刻kと時刻k+1の値関数の関係式</p>
-<h2 id="_4">離散時間システムの最適制御の数値解法</h2>
-<h3 id="_5">シューティング法</h3>
-<h4 id="ddpdifferential-dynamic-programming">DDP(Differential Dynamic Programming)</h4>
-<h4 id="ilqrinteractive-linear-quadratic-regulator">iLQR(interactive Linear Quadratic Regulator)</h4>
-<h4 id="slqsequential-linear-quadratic-regulator">SLQ(Sequential Linear Quadratic Regulator)</h4>
-<h2 id="_6">連続時間システムの最適制御の数値解法</h2>
+<h2 id="_4">ベルマン方程式</h2>
+<p>動的計画法によって表された値関数の再帰一回分を取り出した時刻kと時刻k+1の値関数の関係式。オイラー・ラグランジュ方程式によって最適制御が満たすべき必要条件が導かれるが、最適制御問題が持つ時間的な構造を使うことで導かれる別の形の最適性条件がこのベルマン方程式で表される。</p>
+<h2 id="_5">最適制御の必要条件</h2>
+<p>ベルマン方程式の終端条件のもとでベルマン方程式が成立する</p>
+<h2 id="_6">最適制御の十分条件</h2>
+<h2 id="_7">変分法</h2>
+<p>連続時間システムの最適制御において基礎となる、関数の微分を汎関数に拡張したもの。</p>
+<h2 id="_8">最適制御の数値解法</h2>
+<p>以下の最適制御の数値解法はシステムが連続時間でも離散時間でも離散的に求める手法である。離散システムの場合は数値的に積分操作を行うなどの操作が発生する。</p>
 <table>
 <thead>
 <tr>
@@ -2402,17 +2427,51 @@
 </tr>
 </tbody>
 </table>
-<h3 id="_7">勾配法(最急降下法による実装)</h3>
-<p>ハミルトン関数の制御入力偏微分<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>H</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi>u</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{\partial H}{\partial u}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2251em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight">u</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>が0になるまで<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>H</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi>u</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">-\frac{\partial H}{\partial u}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2251em;vertical-align:-0.345em;"></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight">u</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>を探索方向とし、直線線探索と組み合わせて<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span>を更新する離散化的手法。随伴変数は随伴方程式から<code>\frac{\partial H}{\partial x}</code>を使って求める。反復によって調整する状態量は制御量<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span>。</p>
-<h3 id="_8">シューティング法(遷移行列による方法)</h3>
+<h3 id="_9">勾配法(最急降下法による実装)</h3>
+<p>ハミルトン関数の制御入力偏微分<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>H</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi>u</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{\partial H}{\partial u}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2251em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight">u</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>が0になるまで<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>H</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi>u</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">-\frac{\partial H}{\partial u}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2251em;vertical-align:-0.345em;"></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight">u</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>を探索方向とし、直線線探索と組み合わせて<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span>を更新する手法。随伴変数は随伴方程式から$<code>\frac{\partial H}{\partial x}</code>を使って求める。反復によって調整する状態量は制御量<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span>。</p>
+<h3 id="_10">シューティング法</h3>
+<p>シューティング法という名前は初期値から状態量を操作し、終端条件を合わせにいく様が射撃に似ていることからこの名がつけられた。</p>
+<h4 id="_11">遷移行列による方法</h4>
 <p>開始時間における随伴変数の初期値を与え、初期状態量と随伴変数を条件として連立微分方程式を終端時間まで解き、状態量と随伴変数を求める。その後方程式から制御量が求まる。終端時刻における随伴変数が<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>ϕ</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{\partial \phi}{\partial x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2772em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9322em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight">x</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4461em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight">ϕ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>に十分に近づくまで随伴変数を更新する。
-反復によって調整する状態量は随伴変数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">λ</span></span></span></span>。
-シューティング方という名前はホライズン長さ分の状態量を操作し、終端条件を合わせにいく様が射撃に似ていることからこの名がつけられた。</p>
-<h3 id="_9">入力量のニュートン法</h3>
+反復によって調整する状態量は随伴変数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">λ</span></span></span></span>。</p>
+<h4 id="ddpdifferential-dynamic-programming">DDP(Differential Dynamic Programming)</h4>
+<h4 id="ilqrinteractive-linear-quadratic-regulator">iLQR(interactive Linear Quadratic Regulator)</h4>
+<h4 id="slqsequential-linear-quadratic-regulator">SLQ(Sequential Linear Quadratic Regulator)</h4>
+<table>
+<thead>
+<tr>
+<th>数値解法</th>
+<th>反復における操作量</th>
+<th>特徴</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>遷移行列による方法</td>
+<td>随伴変数</td>
+<td></td>
+</tr>
+<tr>
+<td>iLQR</td>
+<td>制御入力</td>
+<td>後退パスの最適化方法がガウスニュートン法</td>
+</tr>
+<tr>
+<td>DDP</td>
+<td>制御入力</td>
+<td>後退パスの最適化方法が2次近似のニュートン法</td>
+</tr>
+<tr>
+<td>SLQ</td>
+<td>制御入力</td>
+<td>???</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">入力量のニュートン法</h3>
 <p>勾配法(最急降下法による実装)においてはt探索方向の決定に<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>H</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi>u</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{\partial H}{\partial u}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2251em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight">u</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>を使用したがこれは最適化問題を1次近似し反復によって最適解を求めている。ならば二次近似してニュートン法によって解くことも考えられる。この方法では線形２点境界値問題を解くことで<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\delta x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span><span class="mord mathnormal">x</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mi>λ</mi></mrow><annotation encoding="application/x-tex">\delta \lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span><span class="mord mathnormal">λ</span></span></span></span>が求められそこから<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">\delta u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span><span class="mord mathnormal">u</span></span></span></span>が求められるため<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">\delta u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span><span class="mord mathnormal">u</span></span></span></span>を探索方向としたものである。</p>
-<h3 id="_10">動的計画法</h3>
-<h3 id="_11">連続時間システムの最適制御の数値解法まとめ</h3>
-<h2 id="_12">参考文献</h2>
+<h3 id="_13">動的計画法</h3>
+<h2 id="_14">参考文献</h2>
 <ul>
 <li>非線形最適制御入門</li>
 <li><a href="https://blog.syundo.org/post/20180917-ddp-ilqr-slq/">Differential Dynamic Programming(DDP)/iterative LQR(iLQR)/Sequential LQR(SLQ)</a></li>
@@ -2453,13 +2512,13 @@
       
       
         
-        <a href="../../kinematics/diff_robot/" class="md-footer__link md-footer__link--next" aria-label="次: 差動二輪機構" rel="next">
+        <a href="../mpc/" class="md-footer__link md-footer__link--next" aria-label="次: モデル予測制御(MPC)" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 次
               </span>
-              差動二輪機構
+              モデル予測制御(MPC)
             </div>
           </div>
           <div class="md-footer__button md-icon">
