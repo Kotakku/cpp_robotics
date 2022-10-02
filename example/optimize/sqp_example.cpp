@@ -11,18 +11,33 @@ int main()
     SQP::Problem prob;
 
     //////////////////// 問題設定 ////////////////////
-    prob.func = [](Eigen::VectorXd x)
+    prob.func = [](Eigen::VectorXd x) -> double
     {
-        return std::pow(x(0)+3, 2) + std::pow(x(1),2);
+        Eigen::MatrixXd Q(2,2);
+        Eigen::VectorXd c(2);
+        Q << 1, 0, 
+                0, 1;
+        c << -3, 0;
+        return 0.5*(x.transpose()*Q).dot(x) + c.dot(x);
+        // return (std::pow(x(0),2) + std::pow(x(1),2)) - 3*x(0);
     };
+    // prob.grad = [&](const Eigen::VectorXd &x){ return derivative(prob.func, x); };
 
     prob.con.push_back({
-        Constraint::Ineq,
+        Constraint::Eq,
         [](Eigen::VectorXd x)
         {
-            return (x.squaredNorm() - 3*3);
+            return (x(0) - 1);
         },
     });
+
+    // prob.con.push_back({
+    //     Constraint::Ineq,
+    //     [](Eigen::VectorXd x)
+    //     {
+    //         return (x.squaredNorm() - std::pow(1.0, 2.0));
+    //     },
+    // });
 
     Eigen::Vector2d cx(2.0, 0.0);
     // prob.con.push_back({

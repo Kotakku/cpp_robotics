@@ -25,12 +25,13 @@ summary: SQP(逐次二次計画法)
 |                | Name           |
 | -------------- | -------------- |
 | using std::function< double(Eigen::VectorXd)> | **[func_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SQP/#using-func-type)**  |
+| using std::function< Eigen::VectorXd(Eigen::VectorXd)> | **[grad_func_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SQP/#using-grad-func-type)**  |
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| [Result](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Result/) | **[solve](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SQP/#function-solve)**([Problem](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Problem/) prob, const Eigen::VectorXd & x0, std::optional< std::function< void(Eigen::VectorXd)>> callback) |
+| [Result](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Result/) | **[solve](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SQP/#function-solve)**([Problem](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Problem/) prob, const Eigen::VectorXd & x0, std::optional< std::function< void(Eigen::VectorXd)>> callback =std::nullopt) |
 
 ## Public Types Documentation
 
@@ -38,6 +39,13 @@ summary: SQP(逐次二次計画法)
 
 ```cpp
 using cpp_robotics::SQP::func_type =  std::function<double(Eigen::VectorXd)>;
+```
+
+
+### using grad_func_type
+
+```cpp
+using cpp_robotics::SQP::grad_func_type =  std::function<Eigen::VectorXd(Eigen::VectorXd)>;
 ```
 
 
@@ -49,11 +57,11 @@ using cpp_robotics::SQP::func_type =  std::function<double(Eigen::VectorXd)>;
 inline Result solve(
     Problem prob,
     const Eigen::VectorXd & x0,
-    std::optional< std::function< void(Eigen::VectorXd)>> callback
+    std::optional< std::function< void(Eigen::VectorXd)>> callback =std::nullopt
 )
 ```
 
 
 -------------------------------
 
-Updated on 2022-09-30 at 00:12:50 +0900
+Updated on 2022-10-02 at 13:22:12 +0900

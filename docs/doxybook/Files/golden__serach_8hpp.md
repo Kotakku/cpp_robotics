@@ -66,4 +66,4 @@ static double golden_search(std::function<double(double)> f, double low, double 
 
 -------------------------------
 
-Updated on 2022-09-30 at 00:12:50 +0900
+Updated on 2022-10-02 at 13:22:12 +0900

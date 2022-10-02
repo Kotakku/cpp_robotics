@@ -86,6 +86,10 @@ public:
     //     return this->size();
     // }
 
+    ConstraintArray() = default;
+    ConstraintArray(std::initializer_list<Constraint> con):
+        vector(con.begin(), con.end()) {}
+
     std::vector<double> eval(const Eigen::VectorXd &x) const
     {
         std::vector<double> val(this->size());

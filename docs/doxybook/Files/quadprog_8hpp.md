@@ -143,7 +143,7 @@ public:
 
         double rho = 1; // 不等式制約に使用する
         Eigen::VectorXd s = Eigen::VectorXd::Ones(l); // 不等式制約のスラック変数
-        Eigen::VectorXd u = Eigen::VectorXd::Ones(l); // 不等式制約のラグランジュ乗数
+        Eigen::VectorXd u = Eigen::VectorXd::Zero(l); // 不等式制約のラグランジュ乗数
         Eigen::VectorXd v = Eigen::VectorXd::Zero(m); // 等式制約のラグランジュ乗数
         Eigen::VectorXd foom = grad_lagrange(x, u, v); // KKT条件1次の最適性
 
@@ -280,4 +280,4 @@ public:
 
 -------------------------------
 
-Updated on 2022-09-30 at 00:12:50 +0900
+Updated on 2022-10-02 at 13:22:12 +0900

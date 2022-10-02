@@ -14,22 +14,22 @@ int main()
     // 等式制約のサイズ   : 0
     qp.set_problem_size(2, 2, 0); 
 
-    // min 0.5*(x1^2 + x2^2) 
+    // min 0.5*(x1^2 + x2^2) - 3*x1
     qp.Q << 1, 0, 
             0, 1;
-    qp.c << 0, 0;
+    qp.c << -3, 0;
 
-    // s.t. x1 <= -1
-    //      x2 <= 1
+    // s.t. x1 <= 4
+    //      -x2 <= -1 (x2 >= 1)
     qp.A << 1, 0,
-            0, 1;
-    qp.b << -1, 1;
+            0, -1;
+    qp.b << 4, -1;
 
     // この問題における最適解
-    // x = (-1, 0)
+    // x = (3, 1)
 
     Eigen::VectorXd x0(2);
-    x0 << 1, 1;
+    x0 << 4, 1;
     auto result = qp.solve(x0);
 
     // std::cout << std::fixed << std::setprecision(3);
