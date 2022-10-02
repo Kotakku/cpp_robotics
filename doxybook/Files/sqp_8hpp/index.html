@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Files/sqp_8hpp/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.3">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.5">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.7a952b86.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.80dcb947.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -2239,6 +2239,7 @@
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cmath&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Eigen/Dense&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;./constraint.hpp&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;./bracketing_serach.hpp&quot;</span><span class="cp"></span>
@@ -2253,15 +2254,17 @@
 <span class="p">{</span><span class="w"></span>
 <span class="k">public</span><span class="o">:</span><span class="w"></span>
 <span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">func_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">grad_func_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Problem</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">func_type</span><span class="w"> </span><span class="n">func</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">grad_func_type</span><span class="o">&gt;</span><span class="w"> </span><span class="n">grad</span><span class="p">;</span><span class="w"></span>
 <span class="w">        </span><span class="n">ConstraintArray</span><span class="w"> </span><span class="n">con</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">tol_step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">;</span><span class="w"></span>
 <span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">tol_con</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="kt">size_t</span><span class="w"> </span><span class="n">max_iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">size_t</span><span class="w"> </span><span class="n">max_iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">};</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Result</span><span class="w"></span>
@@ -2272,21 +2275,25 @@
 <span class="w">        </span><span class="kt">size_t</span><span class="w"> </span><span class="n">iter_cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">};</span><span class="w"></span>
 
-<span class="w">    </span><span class="n">Result</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="n">Problem</span><span class="w"> </span><span class="n">prob</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">callback</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">Result</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="n">Problem</span><span class="w"> </span><span class="n">prob</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">Result</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">grad_func_type</span><span class="w"> </span><span class="n">grad_f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prob</span><span class="p">.</span><span class="n">grad</span><span class="p">.</span><span class="n">value_or</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">derivative</span><span class="p">(</span><span class="n">prob</span><span class="p">.</span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
 
 <span class="w">        </span><span class="c1">// 制約がない時, 準ニュートン法で解く</span>
 <span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">prob</span><span class="p">.</span><span class="n">con</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">tie</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">is_solved</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">iter_cnt</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">                </span><span class="n">quasi_newton_method</span><span class="p">(</span><span class="n">prob</span><span class="p">.</span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">derivative</span><span class="p">(</span><span class="n">prob</span><span class="p">.</span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">,</span><span class="w"> </span><span class="n">prob</span><span class="p">.</span><span class="n">max_iter</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="n">quasi_newton_method</span><span class="p">(</span><span class="n">prob</span><span class="p">.</span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">grad_f</span><span class="p">,</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">,</span><span class="w"> </span><span class="n">prob</span><span class="p">.</span><span class="n">max_iter</span><span class="p">);</span><span class="w"></span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x0</span><span class="p">;</span><span class="w"></span>
 <span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="o">::</span><span class="n">Identity</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">rows</span><span class="p">(),</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">rows</span><span class="p">());</span><span class="w"></span>
-<span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">grad_L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="o">::</span><span class="n">Zero</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">rows</span><span class="p">());</span><span class="w"></span>
+
+
+<span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">grad_L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grad_f</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
 
 <span class="w">        </span><span class="c1">// Todo: x0が実行不可能な場合実行可能領域まで移動させる</span>
 
@@ -2299,25 +2306,24 @@
 <span class="w">        </span><span class="n">qp_solver</span><span class="p">.</span><span class="n">set_problem_size</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="n">ineq_con</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="n">eq_con</span><span class="p">.</span><span class="n">size</span><span class="p">());</span><span class="w"></span>
 
 <span class="w">        </span><span class="c1">// 直線探索用メリット関数の制約重み</span>
-<span class="w">        </span><span class="c1">// Todo: 初期値</span>
-<span class="w">        </span><span class="c1">// const double df0_norm = derivative(prob.func, x).norm();</span>
-<span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">eq_mw</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="o">::</span><span class="n">Ones</span><span class="p">(</span><span class="n">eq_con</span><span class="p">.</span><span class="n">size</span><span class="p">());</span><span class="w"></span>
-<span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">ineq_mw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="o">::</span><span class="n">Ones</span><span class="p">(</span><span class="n">ineq_con</span><span class="p">.</span><span class="n">size</span><span class="p">());</span><span class="w"></span>
-<span class="w">        </span><span class="c1">// for(size_t i = 0; i &lt; eq_con.size(); i++)</span>
-<span class="w">        </span><span class="c1">// {</span>
-<span class="w">        </span><span class="c1">//     eq_mw(i) /= eq_con[i].grad(x).norm();</span>
-<span class="w">        </span><span class="c1">// }</span>
-<span class="w">        </span><span class="c1">// for(size_t i = 0; i &lt; ineq_con.size(); i++)</span>
-<span class="w">        </span><span class="c1">// {</span>
-<span class="w">        </span><span class="c1">//     ineq_mw(i) /= std::min(ineq_con[i].grad(x).norm(), 10e3);</span>
-<span class="w">        </span><span class="c1">// }</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">df0_norm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grad_f</span><span class="p">(</span><span class="n">x</span><span class="p">).</span><span class="n">norm</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">eq_mw</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">df0_norm</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="o">::</span><span class="n">Ones</span><span class="p">(</span><span class="n">eq_con</span><span class="p">.</span><span class="n">size</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">ineq_mw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df0_norm</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="o">::</span><span class="n">Ones</span><span class="p">(</span><span class="n">ineq_con</span><span class="p">.</span><span class="n">size</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">eq_con</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">eq_mw</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">eq_con</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">grad</span><span class="p">(</span><span class="n">x</span><span class="p">).</span><span class="n">norm</span><span class="p">(),</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ineq_con</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">ineq_mw</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">ineq_con</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">grad</span><span class="p">(</span><span class="n">x</span><span class="p">).</span><span class="n">norm</span><span class="p">(),</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">prob</span><span class="p">.</span><span class="n">max_iter</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="c1">// 探索方向の決定</span>
 <span class="w">            </span><span class="c1">// サブの問題設定</span>
 <span class="w">            </span><span class="n">qp_solver</span><span class="p">.</span><span class="n">Q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="n">qp_solver</span><span class="p">.</span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">derivative</span><span class="p">(</span><span class="n">prob</span><span class="p">.</span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">).</span><span class="n">transpose</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="n">qp_solver</span><span class="p">.</span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grad_f</span><span class="p">(</span><span class="n">x</span><span class="p">).</span><span class="n">transpose</span><span class="p">();</span><span class="w"></span>
 
 <span class="w">            </span><span class="c1">// 等式制約の一次近似</span>
 <span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">con_i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">con_i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">eq_con</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">con_i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
@@ -2333,12 +2339,6 @@
 <span class="w">                </span><span class="n">qp_solver</span><span class="p">.</span><span class="n">b</span><span class="p">(</span><span class="n">con_i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">ineq_con</span><span class="p">[</span><span class="n">con_i</span><span class="p">].</span><span class="n">eval</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
 <span class="w">            </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;//////////&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="c1">// std::cout &lt;&lt; &quot;x&quot; &lt;&lt; std::endl;</span>
-<span class="w">            </span><span class="c1">// std::cout &lt;&lt; x &lt;&lt; std::endl;</span>
-<span class="w">            </span><span class="c1">// qp_solver.debug_prog();</span>
-
-
 <span class="w">            </span><span class="c1">// サブの2次計画問題を解く</span>
 <span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">sub_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">qp_solver</span><span class="p">.</span><span class="n">solve</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
 <span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">not</span><span class="w"> </span><span class="n">sub_result</span><span class="p">.</span><span class="n">is_solved</span><span class="p">)</span><span class="w"></span>
@@ -2351,9 +2351,6 @@
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
 <span class="w">            </span><span class="p">}</span><span class="w"></span>
 <span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_result</span><span class="p">.</span><span class="n">x</span><span class="p">;</span><span class="w"></span>
-
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;d&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">            </span><span class="c1">// ステップ幅の決定</span>
 <span class="w">            </span><span class="c1">// 直線探索</span>
@@ -2376,13 +2373,10 @@
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w"></span>
 <span class="w">            </span><span class="p">};</span><span class="w"></span>
 <span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bracketing_serach</span><span class="p">(</span><span class="n">merit_func</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">derivative</span><span class="p">(</span><span class="n">merit_func</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="c1">// std::cout &lt;&lt; &quot;alpha&quot; &lt;&lt; std::endl;</span>
-<span class="w">            </span><span class="c1">// std::cout &lt;&lt; alpha &lt;&lt; std::endl;</span>
 
 <span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span><span class="w"></span>
 <span class="w">                </span><span class="n">callback</span><span class="p">.</span><span class="n">value</span><span class="p">()(</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
 <span class="w">            </span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"></span>
-
 
 <span class="w">            </span><span class="c1">// 収束判定</span>
 <span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">norm</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">prob</span><span class="p">.</span><span class="n">tol_step</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">prob</span><span class="p">.</span><span class="n">con</span><span class="p">.</span><span class="n">all_satisfy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">prob</span><span class="p">.</span><span class="n">tol_con</span><span class="p">))</span><span class="w"></span>
@@ -2392,10 +2386,6 @@
 <span class="w">                </span><span class="n">result</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
 <span class="w">            </span><span class="p">}</span><span class="w"></span>
-
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;ineq_mw&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ineq_mw</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-
 
 <span class="w">            </span><span class="c1">// メリット関数の重み更新</span>
 <span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">con_i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">con_i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">eq_con</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">con_i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
@@ -2413,17 +2403,14 @@
 
 <span class="w">            </span><span class="c1">// ラグランジュ関数の勾配の変化量</span>
 <span class="w">            </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">delta_grad_L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">grad_L</span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="n">grad_L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">derivative</span><span class="p">(</span><span class="n">prob</span><span class="p">.</span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">grad_L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grad_f</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
 <span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">ineq_con</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
 <span class="w">                </span><span class="n">grad_L</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">qp_solver</span><span class="p">.</span><span class="n">A</span><span class="p">.</span><span class="n">transpose</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sub_result</span><span class="p">.</span><span class="n">lambda_ineq</span><span class="p">;</span><span class="w"></span>
 <span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">eq_con</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
 <span class="w">                </span><span class="n">grad_L</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">qp_solver</span><span class="p">.</span><span class="n">Aeq</span><span class="p">.</span><span class="n">transpose</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sub_result</span><span class="p">.</span><span class="n">lambda_eq</span><span class="p">;</span><span class="w"></span>
 <span class="w">            </span><span class="n">delta_grad_L</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">grad_L</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">            </span><span class="c1">// std::cout &lt;&lt; &quot;test =&quot; &lt;&lt; std::endl;</span>
-<span class="w">            </span><span class="c1">// std::cout &lt;&lt; grad_L  &lt;&lt; std::endl;</span>
-
-<span class="w">            </span><span class="c1">// Bマトリクスの更新</span>
+<span class="w">            </span><span class="c1">// ラグランジュ関数の疑似ヘッシアンの更新</span>
 <span class="w">            </span><span class="n">powells_modified_bfgs_step</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="o">*</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">delta_grad_L</span><span class="p">);</span><span class="w"></span>
 
 <span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">B</span><span class="p">.</span><span class="n">array</span><span class="p">().</span><span class="n">isNaN</span><span class="p">().</span><span class="n">any</span><span class="p">())</span><span class="w"></span>
@@ -2454,7 +2441,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-09-30 at 00:12:50 +0900</p>
+<p>Updated on 2022-10-02 at 13:22:12 +0900</p>
 
 
 
@@ -2499,7 +2486,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.37e9125f.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
       
     
   </body>
