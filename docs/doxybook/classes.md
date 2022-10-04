@@ -14,6 +14,7 @@ title: Classes
         * **struct [Problem](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Problem/)** 
         * **struct [Result](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ActiveSetMethod_1_1Result/)** 
     * **class [AngleRange](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/)** <br>角度[rad]に対して範囲を指定する 複数の角度の範囲の合成をしたり逆を取ったりできる 
+    * **class [AutoDiffAdaptor](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/)** <br>自動微分でヤコビアンを求めるクラス 
     * **class [BandPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1BandPassFilter/)** <br>バンドパスフィルタ 
     * **class [CatumullRom2D](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRom2D/)** <br>Catumull曲線 
     * **struct [Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/)** <br>円クラス 
@@ -119,4 +120,4 @@ title: Classes
 
 -------------------------------
 
-Updated on 2022-10-02 at 13:22:12 +0900
+Updated on 2022-10-05 at 01:02:07 +0900

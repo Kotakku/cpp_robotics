@@ -116,6 +116,7 @@ title: Files
             * **file [include/cpp_robotics/units/units.hpp](/cpp_robotics/doxybook/Files/units_8hpp/#file-units.hpp)** 
         * **dir [include/cpp_robotics/utility](/cpp_robotics/doxybook/Files/dir_2ea8a390efb1067dce8bd4c72d5b1bee/#dir-include/cpp-robotics/utility)** 
             * **file [include/cpp_robotics/utility/angle_range.hpp](/cpp_robotics/doxybook/Files/angle__range_8hpp/#file-angle-range.hpp)** 
+            * **file [include/cpp_robotics/utility/auto_diff_utils.hpp](/cpp_robotics/doxybook/Files/auto__diff__utils_8hpp/#file-auto-diff-utils.hpp)** 
             * **file [include/cpp_robotics/utility/cpp_support.hpp](/cpp_robotics/doxybook/Files/cpp__support_8hpp/#file-cpp-support.hpp)** 
             * **file [include/cpp_robotics/utility/math_utils.hpp](/cpp_robotics/doxybook/Files/math__utils_8hpp/#file-math-utils.hpp)** 
             * **file [include/cpp_robotics/utility/singleton.hpp](/cpp_robotics/doxybook/Files/singleton_8hpp/#file-singleton.hpp)** 
@@ -133,4 +134,4 @@ title: Files
 
 -------------------------------
 
-Updated on 2022-10-02 at 13:22:12 +0900
+Updated on 2022-10-05 at 01:02:07 +0900

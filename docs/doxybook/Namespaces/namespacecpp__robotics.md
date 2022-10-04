@@ -26,6 +26,7 @@ title: cpp_robotics
 | class | **[cpp_robotics::AccelerationLimitFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AccelerationLimitFilter/)** <br>加速度制限フィルタ(速度制限込み)  |
 | class | **[cpp_robotics::ActiveSetMethod](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ActiveSetMethod/)** <br>線形不等式制約を持つ2次計画法を解く有効制約法  |
 | class | **[cpp_robotics::AngleRange](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/)** <br>角度[rad]に対して範囲を指定する 複数の角度の範囲の合成をしたり逆を取ったりできる  |
+| class | **[cpp_robotics::AutoDiffAdaptor](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/)** <br>自動微分でヤコビアンを求めるクラス  |
 | class | **[cpp_robotics::BandPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1BandPassFilter/)** <br>バンドパスフィルタ  |
 | class | **[cpp_robotics::CatumullRom2D](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRom2D/)** <br>Catumull曲線  |
 | struct | **[cpp_robotics::Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/)** <br>円クラス  |
@@ -153,6 +154,8 @@ title: cpp_robotics
 | using [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< double, unit_dimention::angular_velocity, prefix::none, tag::angular_vel::rps > | **[Rps](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-rps)**  |
 | using [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< double, unit_dimention::angular_velocity, prefix::none, tag::angular_vel::rpm > | **[Rpm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-rpm)**  |
 | using [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< double, unit_dimention::angular_acceleration, prefix::none > | **[AngularAcceleration](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-angularacceleration)**  |
+| template <class DerType \> <br>using Eigen::AutoDiffScalar< DerType > | **[AutoDiffScalar](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-autodiffscalar)**  |
+| template <class DerType ,int NX =Eigen::Dynamic\> <br>using Eigen::Matrix< [AutoDiffScalar](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-autodiffscalar)< DerType >, NX, 1 > | **[AutoDiffVector](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-autodiffvector)**  |
 | using [Quaternion](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/)< float > | **[Quaternionf](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-quaternionf)**  |
 | using [Quaternion](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/)< double > | **[Quaterniond](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-quaterniond)**  |
 | using [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)< float > | **[Transformf](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-transformf)**  |
@@ -257,6 +260,7 @@ title: cpp_robotics
 | template <typename T1 ,class UnitDim1 ,class Prefix1 ,int Tag1,typename T2 ,class UnitDim2 ,class Prefix2 ,int Tag2\> <br>constexpr auto | **[operator/](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator/)**(const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T1, UnitDim1, Prefix1, Tag1 > & lhl, const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T2, UnitDim2, Prefix2, Tag2 > & rhl) |
 | template <typename T ,class UnitDim ,class Prefix1 ,class Prefix2 ,int Tag\> <br>constexpr auto | **[operator+](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator+)**(const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDim, Prefix1, Tag > & lhl, const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDim, Prefix2, Tag > & rhl) |
 | template <typename T ,class UnitDim ,class Prefix1 ,class Prefix2 ,int Tag\> <br>constexpr auto | **[operator-](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator-)**(const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDim, Prefix1, Tag > & lhl, const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDim, Prefix2, Tag > & rhl) |
+| template <class DerType \> <br>auto | **[make_auto_diff_vector](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-make-auto-diff-vector)**(const size_t & dim, const std::optional< DerType > & x =std::nullopt) |
 | template <class ForwardIterator \> <br>constexpr ForwardIterator | **[shift_left](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-shift-left)**(ForwardIterator first, ForwardIterator last, typename std::iterator_traits< ForwardIterator >::difference_type n)<br>C++17のstd::shift_leftの自前実装 C++14で動作する  |
 | template <class ForwardIterator \> <br>constexpr ForwardIterator | **[shift_right](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-shift-right)**(ForwardIterator first, ForwardIterator last, typename std::iterator_traits< ForwardIterator >::difference_type n)<br>C++17のstd::shift_rightの自前実装 C++14で動作する  |
 | template <typename... Args\> <br>std::string | **[c_format](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-c-format)**(const std::string & format, Args const &... args)<br>printfと同様の操作でstd::stringを得る  |
@@ -801,6 +805,23 @@ using cpp_robotics::unit::Rpm = typedef Unit<double, unit_dimention::angular_vel
 
 ```cpp
 using cpp_robotics::unit::AngularAcceleration = typedef Unit<double, unit_dimention::angular_acceleration, prefix::none>;
+```
+
+
+### using AutoDiffScalar
+
+```cpp
+template <class DerType >
+using cpp_robotics::AutoDiffScalar = typedef Eigen::AutoDiffScalar<DerType>;
+```
+
+
+### using AutoDiffVector
+
+```cpp
+template <class DerType ,
+int NX =Eigen::Dynamic>
+using cpp_robotics::AutoDiffVector = typedef Eigen::Matrix<AutoDiffScalar<DerType>, NX, 1>;
 ```
 
 
@@ -2306,6 +2327,17 @@ constexpr auto operator-(
 ```
 
 
+### function make_auto_diff_vector
+
+```cpp
+template <class DerType >
+static auto make_auto_diff_vector(
+    const size_t & dim,
+    const std::optional< DerType > & x =std::nullopt
+)
+```
+
+
 ### function shift_left
 
 ```cpp
@@ -2897,4 +2929,4 @@ constexpr float gfcm2mNm = (gfm2Nm / 100);
 
 -------------------------------
 
-Updated on 2022-10-02 at 13:22:12 +0900
+Updated on 2022-10-05 at 01:02:06 +0900

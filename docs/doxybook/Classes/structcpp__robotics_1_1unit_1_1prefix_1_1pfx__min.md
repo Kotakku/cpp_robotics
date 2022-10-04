@@ -60,4 +60,4 @@ static constexpr uint32_t raw_den = P1::den * P2::den;
 
 -------------------------------
 
-Updated on 2022-10-02 at 13:22:12 +0900
+Updated on 2022-10-05 at 01:02:06 +0900

@@ -122,6 +122,7 @@ nav:
       - K-means法: tech_note/algorithm/k_means_method.md
       - 多項式補間: tech_note/algorithm/poly_lerp.md
       - マハラノビス距離: tech_note/algorithm/mahalanobis.md
+      - 自動微分: tech_note/algorithm/auto_diff.md
     - 最適化: 
       - アルゴリズムの概要: tech_note/optimize/algo_abst.md
       - 数理計画問題とアルゴリズム一覧: tech_note/optimize/prob_and_algo.md

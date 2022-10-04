@@ -33,6 +33,7 @@ title: include/cpp_robotics/optimize/quadprog.hpp
 #include <tuple>
 #include <functional>
 #include <Eigen/Dense>
+// #include <unsupported/Eigen/IterativeSolvers>
 #include <cassert>
 #include "constraint.hpp"
 #include "derivative.hpp"
@@ -179,7 +180,10 @@ public:
             }
 
             // 連立一次方程式を解く
+            // Eigen::GMRES<Eigen::MatrixXd> gmres(P);
             Eigen::VectorXd delta = P.fullPivLu().solve(-r);
+            // Eigen::VectorXd delta = gmres.solve(-r);
+            
             Eigen::VectorXd dx = delta.segment(0,n);
             Eigen::VectorXd ds = delta.segment(n,l);
             Eigen::VectorXd du = delta.segment(n+l,l);
@@ -280,4 +284,4 @@ public:
 
 -------------------------------
 
-Updated on 2022-10-02 at 13:22:12 +0900
+Updated on 2022-10-05 at 01:02:07 +0900

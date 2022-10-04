@@ -12,6 +12,7 @@ title: include/cpp_robotics/utility
 | Name           |
 | -------------- |
 | **[include/cpp_robotics/utility/angle_range.hpp](/cpp_robotics/doxybook/Files/angle__range_8hpp/#file-angle-range.hpp)**  |
+| **[include/cpp_robotics/utility/auto_diff_utils.hpp](/cpp_robotics/doxybook/Files/auto__diff__utils_8hpp/#file-auto-diff-utils.hpp)**  |
 | **[include/cpp_robotics/utility/cpp_support.hpp](/cpp_robotics/doxybook/Files/cpp__support_8hpp/#file-cpp-support.hpp)**  |
 | **[include/cpp_robotics/utility/math_utils.hpp](/cpp_robotics/doxybook/Files/math__utils_8hpp/#file-math-utils.hpp)**  |
 | **[include/cpp_robotics/utility/singleton.hpp](/cpp_robotics/doxybook/Files/singleton_8hpp/#file-singleton.hpp)**  |
@@ -25,4 +26,4 @@ title: include/cpp_robotics/utility
 
 -------------------------------
 
-Updated on 2022-10-02 at 13:22:12 +0900
+Updated on 2022-10-05 at 01:02:07 +0900

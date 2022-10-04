@@ -109,4 +109,4 @@ bool exist(std::list<GridNode> &open, std::list<GridNode> &closed, const Eigen::
 
 -------------------------------
 
-Updated on 2022-10-02 at 13:22:12 +0900
+Updated on 2022-10-05 at 01:02:07 +0900

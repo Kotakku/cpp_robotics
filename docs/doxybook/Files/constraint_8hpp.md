@@ -135,14 +135,14 @@ public:
         {
             if(not con.satisfy(x, tol))
             {
-                std::cout << "not satisfy" << std::endl;
+                // std::cout << "not satisfy" << std::endl;
                 satisfy = false;
             }
-            else
-            {
-                std::cout << "satisfy" << std::endl;
-                
-            }
+            // else
+            // {
+                // std::cout << "satisfy" << std::endl;
+                // 
+            // }
         }
         return satisfy;
     }
@@ -198,4 +198,4 @@ public:
 
 -------------------------------
 
-Updated on 2022-10-02 at 13:22:12 +0900
+Updated on 2022-10-05 at 01:02:07 +0900

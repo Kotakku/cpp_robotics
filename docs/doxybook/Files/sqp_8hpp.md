@@ -82,9 +82,8 @@ public:
         }
 
         Eigen::VectorXd x = x0;
-        Eigen::MatrixXd B = Eigen::MatrixXd::Identity(x.rows(), x.rows());
-
-        
+        Eigen::VectorXd grad_f0 = grad_f(x0);
+        Eigen::MatrixXd B = grad_f0 * grad_f0.transpose(); //Eigen::MatrixXd::Identity(x.rows(), x.rows());
         Eigen::VectorXd grad_L = grad_f(x);
 
         // Todo: x0が実行不可能な場合実行可能領域まで移動させる
@@ -132,6 +131,7 @@ public:
             }
 
             // サブの2次計画問題を解く
+            qp_solver.param.tol_step = 1e-3;
             auto sub_result = qp_solver.solve(x);
             if(not sub_result.is_solved)
             {
@@ -139,7 +139,8 @@ public:
                 result.iter_cnt = i;
                 result.x = x;
                 // result.lambda_opt = sub_result.lambda_opt;
-                std::cout << "cant solve sub qp" << std::endl;
+                std::cout << "cant solve sub qp: " << sub_result.iter_cnt << std::endl;
+                qp_solver.debug_prog();
                 return result;
             }
             auto d = sub_result.x;
@@ -236,4 +237,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-10-02 at 13:22:12 +0900
+Updated on 2022-10-05 at 01:02:07 +0900
