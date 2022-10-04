@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Files/quadprog_8hpp/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.5">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.6">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.80dcb947.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.20d9efc8.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -1635,6 +1635,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tech_note/algorithm/auto_diff/" class="md-nav__link">
+        自動微分
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2241,6 +2255,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tuple&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Eigen/Dense&gt;</span><span class="cp"></span>
+<span class="c1">// #include &lt;unsupported/Eigen/IterativeSolvers&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cassert&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;constraint.hpp&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;derivative.hpp&quot;</span><span class="cp"></span>
@@ -2387,7 +2402,10 @@
 <span class="w">            </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">            </span><span class="c1">// 連立一次方程式を解く</span>
+<span class="w">            </span><span class="c1">// Eigen::GMRES&lt;Eigen::MatrixXd&gt; gmres(P);</span>
 <span class="w">            </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">delta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P</span><span class="p">.</span><span class="n">fullPivLu</span><span class="p">().</span><span class="n">solve</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// Eigen::VectorXd delta = gmres.solve(-r);</span>
+
 <span class="w">            </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">dx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">delta</span><span class="p">.</span><span class="n">segment</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">);</span><span class="w"></span>
 <span class="w">            </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">ds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">delta</span><span class="p">.</span><span class="n">segment</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">l</span><span class="p">);</span><span class="w"></span>
 <span class="w">            </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">delta</span><span class="p">.</span><span class="n">segment</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="n">l</span><span class="p">,</span><span class="n">l</span><span class="p">);</span><span class="w"></span>
@@ -2485,7 +2503,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-10-02 at 13:22:12 +0900</p>
+<p>Updated on 2022-10-05 at 01:02:07 +0900</p>
 
 
 

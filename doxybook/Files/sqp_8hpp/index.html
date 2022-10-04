@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Files/sqp_8hpp/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.5">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.6">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.80dcb947.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.20d9efc8.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -1635,6 +1635,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tech_note/algorithm/auto_diff/" class="md-nav__link">
+        自動微分
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2290,9 +2304,8 @@
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x0</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="o">::</span><span class="n">Identity</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">rows</span><span class="p">(),</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">rows</span><span class="p">());</span><span class="w"></span>
-
-
+<span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">grad_f0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grad_f</span><span class="p">(</span><span class="n">x0</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grad_f0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">grad_f0</span><span class="p">.</span><span class="n">transpose</span><span class="p">();</span><span class="w"> </span><span class="c1">//Eigen::MatrixXd::Identity(x.rows(), x.rows());</span>
 <span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">grad_L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grad_f</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
 
 <span class="w">        </span><span class="c1">// Todo: x0が実行不可能な場合実行可能領域まで移動させる</span>
@@ -2340,6 +2353,7 @@
 <span class="w">            </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">            </span><span class="c1">// サブの2次計画問題を解く</span>
+<span class="w">            </span><span class="n">qp_solver</span><span class="p">.</span><span class="n">param</span><span class="p">.</span><span class="n">tol_step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-3</span><span class="p">;</span><span class="w"></span>
 <span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">sub_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">qp_solver</span><span class="p">.</span><span class="n">solve</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
 <span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">not</span><span class="w"> </span><span class="n">sub_result</span><span class="p">.</span><span class="n">is_solved</span><span class="p">)</span><span class="w"></span>
 <span class="w">            </span><span class="p">{</span><span class="w"></span>
@@ -2347,7 +2361,8 @@
 <span class="w">                </span><span class="n">result</span><span class="p">.</span><span class="n">iter_cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
 <span class="w">                </span><span class="n">result</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
 <span class="w">                </span><span class="c1">// result.lambda_opt = sub_result.lambda_opt;</span>
-<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;cant solve sub qp&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;cant solve sub qp: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sub_result</span><span class="p">.</span><span class="n">iter_cnt</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="n">qp_solver</span><span class="p">.</span><span class="n">debug_prog</span><span class="p">();</span><span class="w"></span>
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
 <span class="w">            </span><span class="p">}</span><span class="w"></span>
 <span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_result</span><span class="p">.</span><span class="n">x</span><span class="p">;</span><span class="w"></span>
@@ -2441,7 +2456,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-10-02 at 13:22:12 +0900</p>
+<p>Updated on 2022-10-05 at 01:02:07 +0900</p>
 
 
 
