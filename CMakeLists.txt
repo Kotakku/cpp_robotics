@@ -63,6 +63,8 @@ enable_testing()
 set(test_files
   utility/singleton_test
 
+  eigen_support/auto_diff_test
+
   algorithm/poly_regression_test
   algorithm/random_test
   algorithm/k_means_test
