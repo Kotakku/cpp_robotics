@@ -115,14 +115,14 @@ public:
         {
             if(not con.satisfy(x, tol))
             {
-                std::cout << "not satisfy" << std::endl;
+                // std::cout << "not satisfy" << std::endl;
                 satisfy = false;
             }
-            else
-            {
-                std::cout << "satisfy" << std::endl;
-                
-            }
+            // else
+            // {
+                // std::cout << "satisfy" << std::endl;
+                // 
+            // }
         }
         return satisfy;
     }
