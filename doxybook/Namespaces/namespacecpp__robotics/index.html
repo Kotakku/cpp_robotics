@@ -2492,6 +2492,10 @@
 <td>class</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/">cpp_robotics::VelocityLimitFilter</a></strong> <br>速度制限フィルタ</td>
 </tr>
+<tr>
+<td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1XY2degRobot/">cpp_robotics::XY2degRobot</a></strong></td>
+</tr>
 </tbody>
 </table>
 <h2 id="types">Types</h2>
@@ -2510,6 +2514,14 @@
 <tr>
 <td>enum</td>
 <td AmpereIdx_="AmpereIdx," CandelaIdx="CandelaIdx" KelvinIdx_="KelvinIdx," KiloGramIdx_="KiloGramIdx," MetereIdx_="MetereIdx," MoleIdx_="MoleIdx," SecondIdx_="SecondIdx,"><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#enum-unitindex">UnitIndex</a></strong></td>
+</tr>
+<tr>
+<td>template &lt;class DerType > <br>using Eigen::AutoDiffScalar&lt; DerType &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-autodiffscalar">AutoDiffScalar</a></strong></td>
+</tr>
+<tr>
+<td>template &lt;class DerType ,int NX =Eigen::Dynamic> <br>using Eigen::Matrix&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-autodiffscalar">AutoDiffScalar</a>&lt; DerType &gt;, NX, 1 &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-autodiffvector">AutoDiffVector</a></strong></td>
 </tr>
 <tr>
 <td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/">RandomGenerator</a>&lt; std::uniform_int_distribution&lt;&gt; &gt;</td>
@@ -2768,14 +2780,6 @@
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-angularacceleration">AngularAcceleration</a></strong></td>
 </tr>
 <tr>
-<td>template &lt;class DerType > <br>using Eigen::AutoDiffScalar&lt; DerType &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-autodiffscalar">AutoDiffScalar</a></strong></td>
-</tr>
-<tr>
-<td>template &lt;class DerType ,int NX =Eigen::Dynamic> <br>using Eigen::Matrix&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-autodiffscalar">AutoDiffScalar</a>&lt; DerType &gt;, NX, 1 &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-autodiffvector">AutoDiffVector</a></strong></td>
-</tr>
-<tr>
 <td>using <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/">Quaternion</a>&lt; float &gt;</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-quaternionf">Quaternionf</a></strong></td>
 </tr>
@@ -2826,6 +2830,10 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>template &lt;class DerType > <br>auto</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-make-auto-diff-vector">make_auto_diff_vector</a></strong>(const size_t &amp; dim, const std::optional&lt; DerType &gt; &amp; x =std::nullopt)</td>
+</tr>
 <tr>
 <td>template &lt;size_t DIM> <br>std::pair&lt; Eigen::Matrix&lt; double, DIM, DIM &gt;, Eigen::Matrix&lt; double, DIM, 1 &gt; &gt;</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-calcu-transformatoin">calcu_transformatoin</a></strong>(std::vector&lt; Eigen::Matrix&lt; double, DIM, 1 &gt;&gt; dest, std::vector&lt; Eigen::Matrix&lt; double, DIM, 1 &gt;&gt; fixed)</td>
@@ -3183,10 +3191,6 @@
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator-">operator-</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/">Unit</a>&lt; T, UnitDim, Prefix1, Tag &gt; &amp; lhl, const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/">Unit</a>&lt; T, UnitDim, Prefix2, Tag &gt; &amp; rhl)</td>
 </tr>
 <tr>
-<td>template &lt;class DerType > <br>auto</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-make-auto-diff-vector">make_auto_diff_vector</a></strong>(const size_t &amp; dim, const std::optional&lt; DerType &gt; &amp; x =std::nullopt)</td>
-</tr>
-<tr>
 <td>template &lt;class ForwardIterator > <br>constexpr ForwardIterator</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-shift-left">shift_left</a></strong>(ForwardIterator first, ForwardIterator last, typename std::iterator_traits&lt; ForwardIterator &gt;::difference_type n)<br>C++17のstd::shift_leftの自前実装 C++14で動作する</td>
 </tr>
@@ -3454,6 +3458,15 @@
 </tr>
 </tbody>
 </table>
+<h3 id="using-autodiffscalar">using AutoDiffScalar</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DerType</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">AutoDiffScalar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">AutoDiffScalar</span><span class="o">&lt;</span><span class="n">DerType</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<h3 id="using-autodiffvector">using AutoDiffVector</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DerType</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">NX</span><span class="w"> </span><span class="o">=</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">AutoDiffVector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">AutoDiffScalar</span><span class="o">&lt;</span><span class="n">DerType</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">NX</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
 <h3 id="using-uniformintrandomengine">using UniformIntRandomEngine</h3>
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">UniformIntRandomEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">RandomGenerator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">uniform_int_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
@@ -3666,15 +3679,6 @@
 <h3 id="using-angularacceleration">using AngularAcceleration</h3>
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">unit</span><span class="o">::</span><span class="n">AngularAcceleration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">Unit</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">unit_dimention</span><span class="o">::</span><span class="n">angular_acceleration</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="o">::</span><span class="n">none</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
-<h3 id="using-autodiffscalar">using AutoDiffScalar</h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DerType</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
-<span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">AutoDiffScalar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">AutoDiffScalar</span><span class="o">&lt;</span><span class="n">DerType</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
-<h3 id="using-autodiffvector">using AutoDiffVector</h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DerType</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="n">NX</span><span class="w"> </span><span class="o">=</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"></span>
-<span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">AutoDiffVector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">AutoDiffScalar</span><span class="o">&lt;</span><span class="n">DerType</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">NX</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
 <h3 id="using-quaternionf">using Quaternionf</h3>
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">Quaternionf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">Quaternion</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
@@ -3706,6 +3710,13 @@
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">Vector4d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">Vector4</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h2 id="functions-documentation">Functions Documentation</h2>
+<h3 id="function-make_auto_diff_vector">function make_auto_diff_vector</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DerType</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">make_auto_diff_vector</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dim</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">DerType</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
 <h3 id="function-calcu_transformatoin">function calcu_transformatoin</h3>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="kt">size_t</span><span class="w"> </span><span class="n">DIM</span><span class="o">&gt;</span><span class="w"></span>
 <span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">calcu_transformatoin</span><span class="p">(</span><span class="w"></span>
@@ -4699,13 +4710,6 @@
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Unit</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">UnitDim</span><span class="p">,</span><span class="w"> </span><span class="n">Prefix2</span><span class="p">,</span><span class="w"> </span><span class="n">Tag</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhl</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-make_auto_diff_vector">function make_auto_diff_vector</h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DerType</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
-<span class="k">static</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">make_auto_diff_vector</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dim</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">DerType</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="w"></span>
-<span class="p">)</span><span class="w"></span>
-</code></pre></div>
 <h3 id="function-shift_left">function shift_left</h3>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">ForwardIterator</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
 <span class="k">constexpr</span><span class="w"> </span><span class="n">ForwardIterator</span><span class="w"> </span><span class="n">shift_left</span><span class="p">(</span><span class="w"></span>
@@ -5081,7 +5085,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">gfcm2mNm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">gfm2Nm</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-10-05 at 01:02:06 +0900</p>
+<p>Updated on 2022-10-05 at 16:05:00 +0900</p>
 
 
 
