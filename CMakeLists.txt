@@ -16,51 +16,48 @@ endif()
 find_package(Eigen3 REQUIRED)
 find_package(Python3 COMPONENTS Development NumPy)
 
-# file(GLOB qpoases_src src/third_party/qpOASES/*.cpp)
-# add_library(cpp_robotics ${qpoases_src})
-# target_include_directories(cpp_robotics PUBLIC include)
-
 #################### example ####################
+if("${CR_BUILD_EXAMPLE}" STREQUAL "ON")
 set(example_files
-  # hello_world
-  # controller/pid_vs_nctf
-  # controller/lqr
-  # controller/canonicalize
-  # controller/place
+  hello_world
+  controller/pid_vs_nctf
+  controller/lqr
+  controller/canonicalize
+  controller/place
   system/step_responce
-  # system/bode_nyquist
-  # system/disc_tf
-  # system/state_space_system
-  # algorithm/kdtree_sample
-  # algorithm/icp_sample
-  # algorithm/mahalanobis
+  system/bode_nyquist
+  system/disc_tf
+  system/state_space_system
+  algorithm/kdtree_sample
+  algorithm/icp_sample
+  algorithm/mahalanobis
 
-  # optimize/optimize_scalar
-  # optimize/optimize
-  # optimize/optimize_rosenbrock
-  # optimize/optimize_with_constraint
-  # optimize/active_set_method_example
+  optimize/optimize_scalar
+  optimize/optimize
+  optimize/optimize_rosenbrock
+  optimize/optimize_with_constraint
+  optimize/active_set_method_example
   optimize/sqp_example
-  # optimize/bfgs_test
   optimize/quadprog
 
-  # path_planning/dubins_path
+  path_planning/dubins_path
 
-  # units/unit_test
+  units/unit_test
 )
 
 foreach(example_file ${example_files})
 get_filename_component(example_name example/${example_file}.cpp NAME_WE)
-# message(${example_name})
 add_executable(${example_name} example/${example_file}.cpp)
 target_include_directories(${example_name} PRIVATE include ${EIGEN3_INCLUDE_DIR} ${Python3_INCLUDE_DIRS} ${Python3_NumPy_INCLUDE_DIRS})
 target_link_libraries(${example_name} PRIVATE Python3::Python Python3::NumPy)
 endforeach()
+endif()
 
 #################### test ####################
 find_package(GTest REQUIRED)
 enable_testing()
 set(test_files
+  common/lib_test
   utility/singleton_test
 
   algorithm/poly_regression_test

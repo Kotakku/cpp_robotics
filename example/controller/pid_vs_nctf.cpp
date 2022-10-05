@@ -1,3 +1,4 @@
+#define CR_USE_MATPLOTLIB
 #include <iostream>
 #include <cpp_robotics/core.hpp>
 #include <cpp_robotics/motor/dc_motor_list.hpp>

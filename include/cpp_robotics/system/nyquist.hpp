@@ -3,7 +3,9 @@
 #include <vector>
 #include <tuple>
 #include "./transfer_function.hpp"
+#ifdef CR_USE_MATPLOTLIB
 #include "../third_party/matplotlib-cpp/matplotlibcpp.h"
+#endif
 #include "../utility/space.hpp"
 #include "../vector/vector2.hpp"
 #include "../utility/math_utils.hpp"
@@ -38,6 +40,7 @@ static std::tuple<std::vector<double>, std::vector<double>> nyquist(TransferFunc
     return {Re, Im};
 }
 
+#ifdef CR_USE_MATPLOTLIB
 /**
  * @brief ナイキスト線図を表示する(matplotlibが必要)
  * 
@@ -59,5 +62,6 @@ static void nyquist_plot(TransferFunction &tf, const std::vector<double> &omegas
 
     plt::show();
 }
+#endif
 
 }

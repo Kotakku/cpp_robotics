@@ -4,7 +4,6 @@
 int main()
 {
     namespace cr = cpp_robotics;
-    namespace plt = matplotlibcpp;
     
     Eigen::Matrix2d A;
     Eigen::Matrix<double, 2, 1> B;

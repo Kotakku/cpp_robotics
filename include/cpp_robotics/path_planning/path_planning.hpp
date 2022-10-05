@@ -4,3 +4,4 @@
 #include "./dubins_path.hpp"
 #include "./frenet_frame.hpp"
 #include "./dwa.hpp"
+#include "./spline.hpp"

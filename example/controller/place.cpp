@@ -1,3 +1,4 @@
+#define CR_USE_MATPLOTLIB
 #include <iostream>
 #include <iomanip>
 #include <cpp_robotics/system/system.hpp>

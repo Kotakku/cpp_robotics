@@ -1,3 +1,4 @@
+#define CR_USE_MATPLOTLIB
 #include <iostream>
 #include <cpp_robotics/algorithm/algorithm.hpp>
 #include <cpp_robotics/vector/vector2.hpp>

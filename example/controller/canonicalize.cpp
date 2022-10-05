@@ -10,7 +10,6 @@
 int main()
 {
     namespace cr = cpp_robotics;
-    namespace plt = matplotlibcpp;
     
     Eigen::MatrixXd A(3,3);
     Eigen::MatrixXd B(3,1);

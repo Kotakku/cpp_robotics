@@ -36,5 +36,12 @@ cmake --build .
 sudo cmake --install .
 ```
 
+exampleをビルドするときは以下
+```
+mkdir build && cd build
+cmake -DCR_BUILD_EXAMPLE=ON ..
+cmake --build .
+```
+
 # 実装したい機能
 [実装したい機能リスト](idea_note.md)
