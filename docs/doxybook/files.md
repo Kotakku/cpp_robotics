@@ -89,18 +89,8 @@ title: Files
             * **file [include/cpp_robotics/path_planning/frenet_frame.hpp](/cpp_robotics/doxybook/Files/frenet__frame_8hpp/#file-frenet-frame.hpp)** 
             * **file [include/cpp_robotics/path_planning/grid_path_planning_utils.hpp](/cpp_robotics/doxybook/Files/grid__path__planning__utils_8hpp/#file-grid-path-planning-utils.hpp)** 
             * **file [include/cpp_robotics/path_planning/path_planning.hpp](/cpp_robotics/doxybook/Files/path__planning_8hpp/#file-path-planning.hpp)** 
+            * **file [include/cpp_robotics/path_planning/spline.hpp](/cpp_robotics/doxybook/Files/spline_8hpp/#file-spline.hpp)** 
             * **file [include/cpp_robotics/path_planning/wave_propagation.hpp](/cpp_robotics/doxybook/Files/wave__propagation_8hpp/#file-wave-propagation.hpp)** 
-        * **dir [include/cpp_robotics/robots](/cpp_robotics/doxybook/Files/dir_e2fc7d9ed626f8548eab23bbcbb5e5ec/#dir-include/cpp-robotics/robots)** 
-            * **dir [include/cpp_robotics/robots/penbulum](/cpp_robotics/doxybook/Files/dir_b1a2e432ddc1679e5624fb0baa5764e5/#dir-include/cpp-robotics/robots/penbulum)** 
-                * **file [include/cpp_robotics/robots/penbulum/interface.hpp](/cpp_robotics/doxybook/Files/penbulum_2interface_8hpp/#file-interface.hpp)** 
-                * **file [include/cpp_robotics/robots/penbulum/pendulum.hpp](/cpp_robotics/doxybook/Files/pendulum_8hpp/#file-pendulum.hpp)** 
-            * **dir [include/cpp_robotics/robots/quadcopter](/cpp_robotics/doxybook/Files/dir_4c1366b205e6333d17163ca64846ea5d/#dir-include/cpp-robotics/robots/quadcopter)** 
-                * **file [include/cpp_robotics/robots/quadcopter/interface.hpp](/cpp_robotics/doxybook/Files/quadcopter_2interface_8hpp/#file-interface.hpp)** 
-                * **file [include/cpp_robotics/robots/quadcopter/quadcopter.hpp](/cpp_robotics/doxybook/Files/quadcopter_8hpp/#file-quadcopter.hpp)** 
-            * **dir [include/cpp_robotics/robots/robot_utils](/cpp_robotics/doxybook/Files/dir_9457539b8ca8d9274a6ff8e48b503091/#dir-include/cpp-robotics/robots/robot-utils)** 
-                * **file [include/cpp_robotics/robots/robot_utils/robot_utils.hpp](/cpp_robotics/doxybook/Files/robot__utils_8hpp/#file-robot-utils.hpp)** 
-        * **dir [include/cpp_robotics/spline](/cpp_robotics/doxybook/Files/dir_a64767b7a8f5bac6dff05874b8e7c36e/#dir-include/cpp-robotics/spline)** 
-            * **file [include/cpp_robotics/spline/spline.hpp](/cpp_robotics/doxybook/Files/spline_8hpp/#file-spline.hpp)** 
         * **dir [include/cpp_robotics/system](/cpp_robotics/doxybook/Files/dir_638b28e3ebdf4d55edeb748f267e8fbb/#dir-include/cpp-robotics/system)** 
             * **file [include/cpp_robotics/system/bode.hpp](/cpp_robotics/doxybook/Files/bode_8hpp/#file-bode.hpp)** 
             * **file [include/cpp_robotics/system/discret.hpp](/cpp_robotics/doxybook/Files/discret_8hpp/#file-discret.hpp)** 
@@ -135,4 +125,4 @@ title: Files
 
 -------------------------------
 
-Updated on 2022-10-05 at 16:05:00 +0900
+Updated on 2022-10-06 at 00:27:03 +0900

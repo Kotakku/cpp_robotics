@@ -49,7 +49,8 @@ public:
         std::vector<size_t> prev_label(data_set.size(), 0);
 
         // ラベルの初期値生成
-        for(size_t cnt = 0; auto &label : label_)
+        size_t cnt = 0;
+        for(auto &label : label_)
         {
             label = cnt++;
             cnt %= cluster_size_;
@@ -122,4 +123,4 @@ Eigen::VectorXd KMeansMethod<Eigen::VectorXd>::get_zero_point(const Eigen::Vecto
 
 -------------------------------
 
-Updated on 2022-10-05 at 16:05:00 +0900
+Updated on 2022-10-06 at 00:27:03 +0900

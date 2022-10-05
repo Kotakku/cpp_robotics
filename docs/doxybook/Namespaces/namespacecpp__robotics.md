@@ -240,9 +240,7 @@ title: cpp_robotics
 | std::vector< Eigen::Vector2i > | **[a_star](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-a-star)**(const Eigen::Vector2i & start, const Eigen::Vector2i & end, const Eigen::MatrixXi & map)<br>A*法  |
 | std::vector< Eigen::Vector2i > | **[wave_propagation](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-wave-propagation)**(const Eigen::Vector2i & start, const Eigen::Vector2i & end, const Eigen::MatrixXi & map)<br>Wave propagation法  |
 | std::tuple< std::vector< double >, std::vector< double > > | **[bode](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-bode)**([TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/) & tf, const std::vector< double > & omegas =[logspace](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-logspace)(-2, 2, 500), bool gain_db_mode =true, bool phase_deg_mode =true)<br>ボード線図の応答を計算する  |
-| void | **[bode_plot](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-bode-plot)**([TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/) & tf, const std::vector< double > & omegas =[logspace](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-logspace)(-2, 2, 500))<br>ボード線図を表示する(matplotlibが必要)  |
 | std::tuple< std::vector< double >, std::vector< double > > | **[nyquist](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-nyquist)**([TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/) & tf, const std::vector< double > & omegas =[logspace](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-logspace)(-2, 2, 500))<br>ナイキスト線図の応答を計算する  |
-| void | **[nyquist_plot](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-nyquist-plot)**([TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/) & tf, const std::vector< double > & omegas =[logspace](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-logspace)(-2, 2, 500))<br>ナイキスト線図を表示する(matplotlibが必要)  |
 | std::ostream & | **[operator<<](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator<<)**(std::ostream & os, const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & v) |
 | template <class CONTROLLER_T ,class SYSTEM_T \> <br>[SisoFeedbackSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/) | **[make_feedback_system](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-make-feedback-system)**(CONTROLLER_T & controller, SYSTEM_T & system) |
 | void | **[set_controller](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-set-controller)**([SisoFeedbackSystem::func_list_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SisoFeedbackSystem_1_1func__list__t/) & fn, [PIDController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PIDController/) & controller) |
@@ -1994,23 +1992,6 @@ static std::tuple< std::vector< double >, std::vector< double > > bode(
 
 **Return**: std::tuple<std::vector<double>, std::vector<double>> 
 
-### function bode_plot
-
-```cpp
-static void bode_plot(
-    TransferFunction & tf,
-    const std::vector< double > & omegas =logspace(-2, 2, 500)
-)
-```
-
-ボード線図を表示する(matplotlibが必要) 
-
-**Parameters**: 
-
-  * **tf** 
-  * **omegas** 
-
-
 ### function nyquist
 
 ```cpp
@@ -2029,23 +2010,6 @@ static std::tuple< std::vector< double >, std::vector< double > > nyquist(
 
 
 **Return**: std::tuple<std::vector<double>, std::vector<double>> 
-
-### function nyquist_plot
-
-```cpp
-static void nyquist_plot(
-    TransferFunction & tf,
-    const std::vector< double > & omegas =logspace(-2, 2, 500)
-)
-```
-
-ナイキスト線図を表示する(matplotlibが必要) 
-
-**Parameters**: 
-
-  * **tf** 
-  * **omegas** 
-
 
 ### function operator<<
 
@@ -2930,4 +2894,4 @@ constexpr float gfcm2mNm = (gfm2Nm / 100);
 
 -------------------------------
 
-Updated on 2022-10-05 at 16:05:00 +0900
+Updated on 2022-10-06 at 00:27:03 +0900

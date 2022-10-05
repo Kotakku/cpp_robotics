@@ -24,7 +24,9 @@ title: include/cpp_robotics/system/bode.hpp
 #include <vector>
 #include <tuple>
 #include "./transfer_function.hpp"
+#ifdef CR_USE_MATPLOTLIB
 #include "../third_party/matplotlib-cpp/matplotlibcpp.h"
+#endif
 #include "../utility/space.hpp"
 #include "../vector/vector2.hpp"
 #include "../utility/math_utils.hpp"
@@ -167,6 +169,8 @@ static std::tuple<std::vector<double>, std::vector<double>> bode(TransferFunctio
     return {gain_db, phase_deg};
 }
 
+#ifdef CR_USE_MATPLOTLIB
+
 static void bode_plot(TransferFunction &tf, const std::vector<double> &omegas = logspace(-2, 2, 500))
 {
     namespace plt = matplotlibcpp;
@@ -190,6 +194,7 @@ static void bode_plot(TransferFunction &tf, const std::vector<double> &omegas = 
 
     plt::show();
 }
+#endif
 
 }
 ```
@@ -197,4 +202,4 @@ static void bode_plot(TransferFunction &tf, const std::vector<double> &omegas = 
 
 -------------------------------
 
-Updated on 2022-10-05 at 16:05:00 +0900
+Updated on 2022-10-06 at 00:27:03 +0900

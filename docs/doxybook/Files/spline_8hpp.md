@@ -1,9 +1,9 @@
 ---
-title: include/cpp_robotics/spline/spline.hpp
+title: include/cpp_robotics/path_planning/spline.hpp
 
 ---
 
-# include/cpp_robotics/spline/spline.hpp
+# include/cpp_robotics/path_planning/spline.hpp
 
 
 
@@ -507,4 +507,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-10-05 at 16:05:00 +0900
+Updated on 2022-10-06 at 00:27:03 +0900

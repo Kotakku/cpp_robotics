@@ -18,7 +18,6 @@ title: include/cpp_robotics/cpp_robotics.hpp
 #include "core.hpp"
 
 #include "path_planning/path_planning.hpp"
-#include "spline/spline.hpp"
 #include "geometry/geometry.hpp"
 #include "chassis/chassis.hpp"
 #include "algorithm/algorithm.hpp"
@@ -26,7 +25,9 @@ title: include/cpp_robotics/cpp_robotics.hpp
 #include "optimize/optimize.hpp"
 #include "motor/motor_tf.hpp"
 
+#ifdef CR_USE_MATPLOTLIB
 #include "third_party/matplotlib-cpp/matplotlibcpp.h"
+#endif
 
 // #include "robot"
 ```
@@ -34,4 +35,4 @@ title: include/cpp_robotics/cpp_robotics.hpp
 
 -------------------------------
 
-Updated on 2022-10-05 at 16:05:00 +0900
+Updated on 2022-10-06 at 00:27:03 +0900

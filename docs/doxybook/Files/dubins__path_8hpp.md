@@ -292,7 +292,7 @@ private:
             {
                 case SegmentType::L:
                     {
-                        pos_func_list_[i] = [=, this](double len)
+                        pos_func_list_[i] = [=](double len)
                         {
                             const double r = 1/cavature_;
                             const double theta = len/r;
@@ -309,7 +309,7 @@ private:
 
                 case SegmentType::R:
                     {
-                        pos_func_list_[i] = [=, this](double len)
+                        pos_func_list_[i] = [=](double len)
                         {
                             const double r = 1/cavature_;
                             const double theta = len/r;
@@ -325,7 +325,7 @@ private:
 
                 case SegmentType::S:
                     {
-                        pos_func_list_[i] = [=, this](double len)
+                        pos_func_list_[i] = [=](double len)
                         {
                             Transformd diff(Vector2d(len,0).get_rotated(start.theta), 0);
                             return start + diff;
@@ -334,7 +334,7 @@ private:
                     break;
 
                 default:
-                    pos_func_list_[i] = [=, this](double len)
+                    pos_func_list_[i] = [=](double len)
                     {
                         (void) len;
                         return start_;
@@ -424,4 +424,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-10-05 at 16:05:00 +0900
+Updated on 2022-10-06 at 00:27:03 +0900
