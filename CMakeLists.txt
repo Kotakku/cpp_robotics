@@ -31,6 +31,7 @@ set(example_files
   algorithm/kdtree_sample
   algorithm/icp_sample
   algorithm/mahalanobis
+  algorithm/random_example
 
   optimize/optimize_scalar
   optimize/optimize
