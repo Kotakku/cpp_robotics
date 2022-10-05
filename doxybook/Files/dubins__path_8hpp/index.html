@@ -2508,7 +2508,7 @@
 <span class="w">            </span><span class="p">{</span><span class="w"></span>
 <span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">SegmentType</span><span class="o">::</span><span class="no">L</span><span class="p">:</span><span class="w"></span>
 <span class="w">                    </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="n">pos_func_list_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">=</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">](</span><span class="kt">double</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"></span>
+<span class="w">                        </span><span class="n">pos_func_list_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">=</span><span class="p">](</span><span class="kt">double</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"></span>
 <span class="w">                        </span><span class="p">{</span><span class="w"></span>
 <span class="w">                            </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">cavature_</span><span class="p">;</span><span class="w"></span>
 <span class="w">                            </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">theta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">len</span><span class="o">/</span><span class="n">r</span><span class="p">;</span><span class="w"></span>
@@ -2525,7 +2525,7 @@
 
 <span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">SegmentType</span><span class="o">::</span><span class="no">R</span><span class="p">:</span><span class="w"></span>
 <span class="w">                    </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="n">pos_func_list_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">=</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">](</span><span class="kt">double</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"></span>
+<span class="w">                        </span><span class="n">pos_func_list_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">=</span><span class="p">](</span><span class="kt">double</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"></span>
 <span class="w">                        </span><span class="p">{</span><span class="w"></span>
 <span class="w">                            </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="n">cavature_</span><span class="p">;</span><span class="w"></span>
 <span class="w">                            </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">theta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">len</span><span class="o">/</span><span class="n">r</span><span class="p">;</span><span class="w"></span>
@@ -2541,7 +2541,7 @@
 
 <span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">SegmentType</span><span class="o">::</span><span class="no">S</span><span class="p">:</span><span class="w"></span>
 <span class="w">                    </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="n">pos_func_list_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">=</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">](</span><span class="kt">double</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"></span>
+<span class="w">                        </span><span class="n">pos_func_list_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">=</span><span class="p">](</span><span class="kt">double</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"></span>
 <span class="w">                        </span><span class="p">{</span><span class="w"></span>
 <span class="w">                            </span><span class="n">Transformd</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="n">Vector2d</span><span class="p">(</span><span class="n">len</span><span class="p">,</span><span class="mi">0</span><span class="p">).</span><span class="n">get_rotated</span><span class="p">(</span><span class="n">start</span><span class="p">.</span><span class="n">theta</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
 <span class="w">                            </span><span class="k">return</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">diff</span><span class="p">;</span><span class="w"></span>
@@ -2550,7 +2550,7 @@
 <span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">                </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
-<span class="w">                    </span><span class="n">pos_func_list_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">=</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">](</span><span class="kt">double</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"></span>
+<span class="w">                    </span><span class="n">pos_func_list_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">=</span><span class="p">](</span><span class="kt">double</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"></span>
 <span class="w">                    </span><span class="p">{</span><span class="w"></span>
 <span class="w">                        </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="n">len</span><span class="p">;</span><span class="w"></span>
 <span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="n">start_</span><span class="p">;</span><span class="w"></span>
@@ -2637,7 +2637,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-10-05 at 16:05:00 +0900</p>
+<p>Updated on 2022-10-06 at 00:27:03 +0900</p>
 
 
 
