@@ -1,30 +1,49 @@
 #include <gtest/gtest.h>
 
 #include <cpp_robotics/optimize/optimize.hpp>
+#include <cpp_robotics/algorithm/auto_diff.hpp>
 
-TEST(fmin_seqrch, test) {
+#define EXPECT_NEAR_VEC(v1, v2, eps)\
+    EXPECT_NEAR((v1-v2).norm(), 0.0, eps)
 
-    // 以下の全てのテストについて{EXPECT|ASSERT}_XXX
+TEST(fmin_search, rosenbrock_2d) {
 
-    // // true/falseのアサーション
-    // EXPECT_TRUE(condition);  // condition が true か
-    // EXPECT_FALSE(condition);  // condition が false か
+    namespace cr = cpp_robotics;
 
-    // // 2つの値を比較するアサーション
-    // EXPECT_EQ(expected, actual);  // expected == actual か
-    // EXPECT_NE(expected, actual);  // expected != actual か
-    // EXPECT_LT(expected, actual);  // expected < actual か
-    // EXPECT_LE(expected, actual);  // expected <= actual か
-    // EXPECT_GT(expected, actual);  // expected > actual か
-    // EXPECT_GE(expected, actual);  // expected >= actual か
+    // 2変数 Rosenbrock関数
+    // 最適解は x = (1, 1)
+    auto f = [](Eigen::VectorXd x) -> double
+    {
+        return 100*( std::pow( (x(0) - std::pow(x(1),2)), 2) ) + std::pow(1 - x(1), 2);
+    };
 
-    // // 文字列比較
-    // EXPECT_STREQ(s1, s2);     // s1 == s2
-    // EXPECT_STRNE(s1, s2);     // s1 != s2
-    // EXPECT_STRCASEEQ(s1, s2); // s1 == s2(ケースの違いは無視)
-    // EXPECT_STRCASENE(s1, s2); // s1 != s2(ケースの違いは無視)
+    auto g = [&](const Eigen::VectorXd &x)
+    {
+        return cr::derivative(f, x);
+    };
 
-    // EXPECT_FLOAT_EQ(val1, val2);
-    // EXPECT_DOUBLE_EQ(val1, val2);
-    // EXPECT_NEAR(val1, val2, abs_error);
+    Eigen::VectorXd x_init = Eigen::VectorXd::Zero(2);
+    auto [ret, rx, rcnt] = cr::quasi_newton_method(f, g, x_init);
+
+    EXPECT_NEAR_VEC(rx, Eigen::Vector2d(1,1), 1e-5);
+}
+
+struct Rosenbrock2d
+{
+    template<typename T>
+    void eval_func(const Eigen::Matrix<T,Eigen::Dynamic,1>& x, Eigen::Matrix<T,Eigen::Dynamic,1>& y)
+    {
+        y(0) = 100*( pow( (x(0) - pow(x(1),2)), 2) ) + pow(1 - x(1), 2);;
+    } 
+};
+
+TEST(fmin_search, rosenbrock_2d_ad) {
+    namespace cr = cpp_robotics;
+
+    Eigen::VectorXd x_init = Eigen::VectorXd::Zero(2);
+    Rosenbrock2d functor;
+    cr::AutoDiffAdaptor<Rosenbrock2d> ad(functor, 2, 1);
+    auto [ret, rx, rcnt] = cr::quasi_newton_method(ad.evalute_func_scalar(), ad.jacobian_func_row_vector(), x_init);
+
+    EXPECT_NEAR_VEC(rx, Eigen::Vector2d(1,1), 1e-5);
 }

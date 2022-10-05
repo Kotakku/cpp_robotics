@@ -63,11 +63,10 @@ enable_testing()
 set(test_files
   utility/singleton_test
 
-  eigen_support/auto_diff_test
-
   algorithm/poly_regression_test
   algorithm/random_test
   algorithm/k_means_test
+  algorithm/auto_diff_test
 
   filter/tf_filter_test
   filter/extended_kalman_filter_test
@@ -75,6 +74,8 @@ set(test_files
   chassis/mecanum_test
   chassis/omni_test
   chassis/swerve_test
+
+  arm_ik/xy_2deg_robot_test
 
   optimize/fmin_search_test
 

@@ -56,7 +56,7 @@ public:
      * 
      * @param functor 
      */
-    AutoDiffAdaptor(Functor functor): 
+    AutoDiffAdaptor(Functor &functor): 
         functor_(functor), input_size_(NX), value_size_(NY) {}
 
     /**
@@ -66,7 +66,7 @@ public:
      * @param input_size 関数の引数の次元
      * @param value_size 関数の戻り値の次元
      */
-    AutoDiffAdaptor(Functor functor, const size_t input_size, const size_t value_size):
+    AutoDiffAdaptor(Functor &functor, const size_t input_size, const size_t value_size):
         functor_(functor), input_size_(input_size), value_size_(value_size) {}
 
     /**
@@ -93,6 +93,17 @@ public:
             y.resize(value_size_);
         evalute(x, y);
         return y;
+    }
+
+    std::function<ValueVector(InputVector)> evalute_func()
+    {
+        return [this](InputVector x) { return evalute(x); };
+    }
+
+    std::function<double(InputVector)> evalute_func_scalar()
+    {
+        assert(value_size_ == 1);
+        return [this](InputVector x) { return evalute(x)(0); };
     }
 
     /**
@@ -136,8 +147,20 @@ public:
         JacobianMatrix jac;
         if constexpr(JacobianMatrix::SizeAtCompileTime == Eigen::Dynamic)
             jac.resize(value_size_, input_size_);
+        
         jacobian(x, jac);
         return jac;
+    }
+
+    std::function<JacobianMatrix(InputVector)> jacobian_func()
+    {
+        return [this](InputVector x) { return jacobian(x); };
+    }
+
+    std::function<Eigen::Matrix<Scalar, NX, 1>(InputVector)> jacobian_func_row_vector()
+    {
+        assert(value_size_ == 1);
+        return [this](InputVector x) { return jacobian(x).transpose().col(0).eval(); };
     }
 
     // void hessian(const EigenVectorType &x, HessianMatrix &hess)
@@ -155,7 +178,7 @@ public:
     // }
 
 private:
-    Functor functor_;
+    Functor &functor_;
     const size_t input_size_;
     const size_t value_size_;
 };
