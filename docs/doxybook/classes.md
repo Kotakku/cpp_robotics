@@ -82,6 +82,8 @@ title: Classes
     * **struct [Vector3](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector3/)** <br>3次元のベクトル 
     * **struct [Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)** <br>4次元のベクトル 
     * **class [VelocityLimitFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/)** <br>速度制限フィルタ 
+    * **class [XY2degRobot](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1XY2degRobot/)** 
+        * **struct [Kinematics](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1XY2degRobot_1_1Kinematics/)** 
     * **namespace [constants](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/)** <br>数学・物理定数 
     * **namespace [grid_path_planning_utils](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/)** <br>グリッドパスプランニング用関数・クラス郡 
         * **struct [GridNode](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/)** 
@@ -120,4 +122,4 @@ title: Classes
 
 -------------------------------
 
-Updated on 2022-10-05 at 01:02:07 +0900
+Updated on 2022-10-05 at 16:05:00 +0900

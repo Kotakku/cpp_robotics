@@ -64,4 +64,4 @@ static std::tuple<bool, Eigen::VectorXd, size_t> quasi_newton_method(std::functi
 
 -------------------------------
 
-Updated on 2022-10-05 at 01:02:07 +0900
+Updated on 2022-10-05 at 16:05:00 +0900

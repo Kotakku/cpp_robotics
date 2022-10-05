@@ -1,9 +1,9 @@
 ---
-title: include/cpp_robotics/utility/auto_diff_utils.hpp
+title: include/cpp_robotics/algorithm/auto_diff.hpp
 
 ---
 
-# include/cpp_robotics/utility/auto_diff_utils.hpp
+# include/cpp_robotics/algorithm/auto_diff.hpp
 
 
 
@@ -69,10 +69,10 @@ public:
         ValuesAtCompileTime = NY
     };
 
-    AutoDiffAdaptor(Functor functor): 
+    AutoDiffAdaptor(Functor &functor): 
         functor_(functor), input_size_(NX), value_size_(NY) {}
 
-    AutoDiffAdaptor(Functor functor, const size_t input_size, const size_t value_size):
+    AutoDiffAdaptor(Functor &functor, const size_t input_size, const size_t value_size):
         functor_(functor), input_size_(input_size), value_size_(value_size) {}
 
     void evalute(const InputVector &x, ValueVector &y)
@@ -87,6 +87,17 @@ public:
             y.resize(value_size_);
         evalute(x, y);
         return y;
+    }
+
+    std::function<ValueVector(InputVector)> evalute_func()
+    {
+        return [this](InputVector x) { return evalute(x); };
+    }
+
+    std::function<double(InputVector)> evalute_func_scalar()
+    {
+        assert(value_size_ == 1);
+        return [this](InputVector x) { return evalute(x)(0); };
     }
 
     void jacobian(const InputVector &x, JacobianMatrix &jac)
@@ -118,8 +129,20 @@ public:
         JacobianMatrix jac;
         if constexpr(JacobianMatrix::SizeAtCompileTime == Eigen::Dynamic)
             jac.resize(value_size_, input_size_);
+        
         jacobian(x, jac);
         return jac;
+    }
+
+    std::function<JacobianMatrix(InputVector)> jacobian_func()
+    {
+        return [this](InputVector x) { return jacobian(x); };
+    }
+
+    std::function<Eigen::Matrix<Scalar, NX, 1>(InputVector)> jacobian_func_row_vector()
+    {
+        assert(value_size_ == 1);
+        return [this](InputVector x) { return jacobian(x).transpose().col(0).eval(); };
     }
 
     // void hessian(const EigenVectorType &x, HessianMatrix &hess)
@@ -137,7 +160,7 @@ public:
     // }
 
 private:
-    Functor functor_;
+    Functor &functor_;
     const size_t input_size_;
     const size_t value_size_;
 };
@@ -148,4 +171,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-10-05 at 01:02:07 +0900
+Updated on 2022-10-05 at 16:05:00 +0900

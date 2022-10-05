@@ -11,7 +11,7 @@ summary: 自動微分でヤコビアンを求めるクラス
 自動微分でヤコビアンを求めるクラス  [More...](#detailed-description)
 
 
-`#include <auto_diff_utils.hpp>`
+`#include <auto_diff.hpp>`
 
 ## Public Types
 
@@ -27,12 +27,16 @@ summary: 自動微分でヤコビアンを求めるクラス
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[AutoDiffAdaptor](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-autodiffadaptor)**(Functor functor)<br>引数/戻り値が静的サイズのベクトルである場合のコンストラクタ  |
-| | **[AutoDiffAdaptor](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-autodiffadaptor)**(Functor functor, const size_t input_size, const size_t value_size)<br>引数/戻り値が動的サイズのベクトルである場合のコンストラクタ  |
+| | **[AutoDiffAdaptor](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-autodiffadaptor)**(Functor & functor)<br>引数/戻り値が静的サイズのベクトルである場合のコンストラクタ  |
+| | **[AutoDiffAdaptor](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-autodiffadaptor)**(Functor & functor, const size_t input_size, const size_t value_size)<br>引数/戻り値が動的サイズのベクトルである場合のコンストラクタ  |
 | void | **[evalute](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-evalute)**(const [InputVector](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector) & x, [ValueVector](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-valuevector) & y)<br>関数の評価  |
 | [ValueVector](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-valuevector) | **[evalute](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-evalute)**(const [InputVector](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector) & x)<br>関数の評価  |
+| std::function< [ValueVector](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-valuevector)([InputVector](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector))> | **[evalute_func](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-evalute-func)**() |
+| std::function< double([InputVector](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector))> | **[evalute_func_scalar](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-evalute-func-scalar)**() |
 | void | **[jacobian](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-jacobian)**(const [InputVector](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector) & x, [JacobianMatrix](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-jacobianmatrix) & jac)<br>ヤコビアンの評価  |
 | [JacobianMatrix](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-jacobianmatrix) | **[jacobian](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-jacobian)**(const [InputVector](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector) & x)<br>ヤコビアンの評価  |
+| std::function< [JacobianMatrix](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-jacobianmatrix)([InputVector](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector))> | **[jacobian_func](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-jacobian-func)**() |
+| std::function< Eigen::Matrix< Scalar, NX, 1 >[InputVector](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector))> | **[jacobian_func_row_vector](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-jacobian-func-row-vector)**() |
 
 ## Detailed Description
 
@@ -101,7 +105,7 @@ using cpp_robotics::AutoDiffAdaptor< Functor, DerType, Scalar, NX, NY >::Hessian
 
 ```cpp
 inline AutoDiffAdaptor(
-    Functor functor
+    Functor & functor
 )
 ```
 
@@ -116,7 +120,7 @@ inline AutoDiffAdaptor(
 
 ```cpp
 inline AutoDiffAdaptor(
-    Functor functor,
+    Functor & functor,
     const size_t input_size,
     const size_t value_size
 )
@@ -165,6 +169,20 @@ inline ValueVector evalute(
 
 **Return**: ValueVector 
 
+### function evalute_func
+
+```cpp
+inline std::function< ValueVector(InputVector)> evalute_func()
+```
+
+
+### function evalute_func_scalar
+
+```cpp
+inline std::function< double(InputVector)> evalute_func_scalar()
+```
+
+
 ### function jacobian
 
 ```cpp
@@ -199,6 +217,20 @@ inline JacobianMatrix jacobian(
 
 **Return**: JacobianMatrix 
 
+### function jacobian_func
+
+```cpp
+inline std::function< JacobianMatrix(InputVector)> jacobian_func()
+```
+
+
+### function jacobian_func_row_vector
+
+```cpp
+inline std::function< Eigen::Matrix< Scalar, NX, 1 >InputVector)> jacobian_func_row_vector()
+```
+
+
 -------------------------------
 
-Updated on 2022-10-05 at 01:02:06 +0900
+Updated on 2022-10-05 at 16:05:00 +0900

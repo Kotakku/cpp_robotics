@@ -14,6 +14,7 @@ title: Files
         * **file [include/cpp_robotics/cpp_robotics.hpp](/cpp_robotics/doxybook/Files/cpp__robotics_8hpp/#file-cpp-robotics.hpp)** 
         * **dir [include/cpp_robotics/algorithm](/cpp_robotics/doxybook/Files/dir_c2aadae018d07499e272ef7425a31e4f/#dir-include/cpp-robotics/algorithm)** 
             * **file [include/cpp_robotics/algorithm/algorithm.hpp](/cpp_robotics/doxybook/Files/algorithm_8hpp/#file-algorithm.hpp)** 
+            * **file [include/cpp_robotics/algorithm/auto_diff.hpp](/cpp_robotics/doxybook/Files/auto__diff_8hpp/#file-auto-diff.hpp)** 
             * **file [include/cpp_robotics/algorithm/icp.hpp](/cpp_robotics/doxybook/Files/icp_8hpp/#file-icp.hpp)** 
             * **file [include/cpp_robotics/algorithm/k_means_method.hpp](/cpp_robotics/doxybook/Files/k__means__method_8hpp/#file-k-means-method.hpp)** 
             * **file [include/cpp_robotics/algorithm/kdtree.hpp](/cpp_robotics/doxybook/Files/kdtree_8hpp/#file-kdtree.hpp)** 
@@ -25,6 +26,7 @@ title: Files
             * **file [include/cpp_robotics/algorithm/state_machine.hpp](/cpp_robotics/doxybook/Files/state__machine_8hpp/#file-state-machine.hpp)** 
         * **dir [include/cpp_robotics/arm_ik](/cpp_robotics/doxybook/Files/dir_7e879dbdc5c9edf53cad9d774885e9a7/#dir-include/cpp-robotics/arm-ik)** 
             * **file [include/cpp_robotics/arm_ik/delta_robot.hpp](/cpp_robotics/doxybook/Files/delta__robot_8hpp/#file-delta-robot.hpp)** 
+            * **file [include/cpp_robotics/arm_ik/xy_2deg_robot.hpp](/cpp_robotics/doxybook/Files/xy__2deg__robot_8hpp/#file-xy-2deg-robot.hpp)** 
         * **dir [include/cpp_robotics/chassis](/cpp_robotics/doxybook/Files/dir_bc9ad42d08f7b854efebf7d8aa67e9d1/#dir-include/cpp-robotics/chassis)** 
             * **file [include/cpp_robotics/chassis/chassis.hpp](/cpp_robotics/doxybook/Files/chassis_8hpp/#file-chassis.hpp)** 
             * **file [include/cpp_robotics/chassis/mecanum_ik.hpp](/cpp_robotics/doxybook/Files/mecanum__ik_8hpp/#file-mecanum-ik.hpp)** 
@@ -116,7 +118,6 @@ title: Files
             * **file [include/cpp_robotics/units/units.hpp](/cpp_robotics/doxybook/Files/units_8hpp/#file-units.hpp)** 
         * **dir [include/cpp_robotics/utility](/cpp_robotics/doxybook/Files/dir_2ea8a390efb1067dce8bd4c72d5b1bee/#dir-include/cpp-robotics/utility)** 
             * **file [include/cpp_robotics/utility/angle_range.hpp](/cpp_robotics/doxybook/Files/angle__range_8hpp/#file-angle-range.hpp)** 
-            * **file [include/cpp_robotics/utility/auto_diff_utils.hpp](/cpp_robotics/doxybook/Files/auto__diff__utils_8hpp/#file-auto-diff-utils.hpp)** 
             * **file [include/cpp_robotics/utility/cpp_support.hpp](/cpp_robotics/doxybook/Files/cpp__support_8hpp/#file-cpp-support.hpp)** 
             * **file [include/cpp_robotics/utility/math_utils.hpp](/cpp_robotics/doxybook/Files/math__utils_8hpp/#file-math-utils.hpp)** 
             * **file [include/cpp_robotics/utility/singleton.hpp](/cpp_robotics/doxybook/Files/singleton_8hpp/#file-singleton.hpp)** 
@@ -134,4 +135,4 @@ title: Files
 
 -------------------------------
 
-Updated on 2022-10-05 at 01:02:07 +0900
+Updated on 2022-10-05 at 16:05:00 +0900

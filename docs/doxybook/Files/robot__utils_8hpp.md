@@ -42,4 +42,4 @@ static constexpr bool is_base_of_robot_if_v = is_base_of_robot_if<Interface, Use
 
 -------------------------------
 
-Updated on 2022-10-05 at 01:02:07 +0900
+Updated on 2022-10-05 at 16:05:00 +0900

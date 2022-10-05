@@ -83,6 +83,7 @@ title: cpp_robotics
 | struct | **[cpp_robotics::Vector3](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector3/)** <br>3次元のベクトル  |
 | struct | **[cpp_robotics::Vector4](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Vector4/)** <br>4次元のベクトル  |
 | class | **[cpp_robotics::VelocityLimitFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/)** <br>速度制限フィルタ  |
+| class | **[cpp_robotics::XY2degRobot](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1XY2degRobot/)**  |
 
 ## Types
 
@@ -90,6 +91,8 @@ title: cpp_robotics
 | -------------- | -------------- |
 | enum class| **[CanonicalizeMode](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#enum-canonicalizemode)** { COMPANION, OBSERBAVLE, CONTROLLABLE} |
 | enum| **[UnitIndex](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#enum-unitindex)** { MetereIdx, KiloGramIdx, SecondIdx, AmpereIdx, KelvinIdx, MoleIdx, CandelaIdx} |
+| template <class DerType \> <br>using Eigen::AutoDiffScalar< DerType > | **[AutoDiffScalar](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-autodiffscalar)**  |
+| template <class DerType ,int NX =Eigen::Dynamic\> <br>using Eigen::Matrix< [AutoDiffScalar](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-autodiffscalar)< DerType >, NX, 1 > | **[AutoDiffVector](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-autodiffvector)**  |
 | using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::uniform_int_distribution<> > | **[UniformIntRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-uniformintrandomengine)** <br>整数型一様分布乱数生成エンジン  |
 | using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::uniform_real_distribution<> > | **[UniformRealRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-uniformrealrandomengine)** <br>実数型一様分布乱数生成エンジン  |
 | using [RandomGenerator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1RandomGenerator/)< std::bernoulli_distribution > | **[BernoulliRandomEngine](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-bernoullirandomengine)** <br>ベルヌーイ分布乱数生成エンジン  |
@@ -154,8 +157,6 @@ title: cpp_robotics
 | using [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< double, unit_dimention::angular_velocity, prefix::none, tag::angular_vel::rps > | **[Rps](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-rps)**  |
 | using [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< double, unit_dimention::angular_velocity, prefix::none, tag::angular_vel::rpm > | **[Rpm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-rpm)**  |
 | using [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< double, unit_dimention::angular_acceleration, prefix::none > | **[AngularAcceleration](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-angularacceleration)**  |
-| template <class DerType \> <br>using Eigen::AutoDiffScalar< DerType > | **[AutoDiffScalar](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-autodiffscalar)**  |
-| template <class DerType ,int NX =Eigen::Dynamic\> <br>using Eigen::Matrix< [AutoDiffScalar](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-autodiffscalar)< DerType >, NX, 1 > | **[AutoDiffVector](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-autodiffvector)**  |
 | using [Quaternion](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/)< float > | **[Quaternionf](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-quaternionf)**  |
 | using [Quaternion](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quaternion/)< double > | **[Quaterniond](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-quaterniond)**  |
 | using [Transform](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Transform/)< float > | **[Transformf](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-transformf)**  |
@@ -171,6 +172,7 @@ title: cpp_robotics
 
 |                | Name           |
 | -------------- | -------------- |
+| template <class DerType \> <br>auto | **[make_auto_diff_vector](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-make-auto-diff-vector)**(const size_t & dim, const std::optional< DerType > & x =std::nullopt) |
 | template <size_t DIM\> <br>std::pair< Eigen::Matrix< double, DIM, DIM >, Eigen::Matrix< double, DIM, 1 > > | **[calcu_transformatoin](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-calcu-transformatoin)**(std::vector< Eigen::Matrix< double, DIM, 1 >> dest, std::vector< Eigen::Matrix< double, DIM, 1 >> fixed) |
 | template <size_t DIM\> <br>std::tuple< std::vector< Eigen::Matrix< double, DIM, 1 > >, size_t > | **[icp](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-icp)**(std::vector< Eigen::Matrix< double, DIM, 1 >> dest, std::vector< Eigen::Matrix< double, DIM, 1 >> fixed, size_t max_iter =100) |
 | double | **[mahalanobis](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-mahalanobis)**(const Eigen::VectorXd & a, const Eigen::VectorXd & b, const Eigen::MatrixXd cov_inv)<br>マハラノビス距離の計算  |
@@ -260,7 +262,6 @@ title: cpp_robotics
 | template <typename T1 ,class UnitDim1 ,class Prefix1 ,int Tag1,typename T2 ,class UnitDim2 ,class Prefix2 ,int Tag2\> <br>constexpr auto | **[operator/](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator/)**(const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T1, UnitDim1, Prefix1, Tag1 > & lhl, const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T2, UnitDim2, Prefix2, Tag2 > & rhl) |
 | template <typename T ,class UnitDim ,class Prefix1 ,class Prefix2 ,int Tag\> <br>constexpr auto | **[operator+](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator+)**(const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDim, Prefix1, Tag > & lhl, const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDim, Prefix2, Tag > & rhl) |
 | template <typename T ,class UnitDim ,class Prefix1 ,class Prefix2 ,int Tag\> <br>constexpr auto | **[operator-](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator-)**(const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDim, Prefix1, Tag > & lhl, const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDim, Prefix2, Tag > & rhl) |
-| template <class DerType \> <br>auto | **[make_auto_diff_vector](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-make-auto-diff-vector)**(const size_t & dim, const std::optional< DerType > & x =std::nullopt) |
 | template <class ForwardIterator \> <br>constexpr ForwardIterator | **[shift_left](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-shift-left)**(ForwardIterator first, ForwardIterator last, typename std::iterator_traits< ForwardIterator >::difference_type n)<br>C++17のstd::shift_leftの自前実装 C++14で動作する  |
 | template <class ForwardIterator \> <br>constexpr ForwardIterator | **[shift_right](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-shift-right)**(ForwardIterator first, ForwardIterator last, typename std::iterator_traits< ForwardIterator >::difference_type n)<br>C++17のstd::shift_rightの自前実装 C++14で動作する  |
 | template <typename... Args\> <br>std::string | **[c_format](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-c-format)**(const std::string & format, Args const &... args)<br>printfと同様の操作でstd::stringを得る  |
@@ -338,6 +339,23 @@ title: cpp_robotics
 | CandelaIdx | |   |
 
 
+
+
+### using AutoDiffScalar
+
+```cpp
+template <class DerType >
+using cpp_robotics::AutoDiffScalar = typedef Eigen::AutoDiffScalar<DerType>;
+```
+
+
+### using AutoDiffVector
+
+```cpp
+template <class DerType ,
+int NX =Eigen::Dynamic>
+using cpp_robotics::AutoDiffVector = typedef Eigen::Matrix<AutoDiffScalar<DerType>, NX, 1>;
+```
 
 
 ### using UniformIntRandomEngine
@@ -808,23 +826,6 @@ using cpp_robotics::unit::AngularAcceleration = typedef Unit<double, unit_diment
 ```
 
 
-### using AutoDiffScalar
-
-```cpp
-template <class DerType >
-using cpp_robotics::AutoDiffScalar = typedef Eigen::AutoDiffScalar<DerType>;
-```
-
-
-### using AutoDiffVector
-
-```cpp
-template <class DerType ,
-int NX =Eigen::Dynamic>
-using cpp_robotics::AutoDiffVector = typedef Eigen::Matrix<AutoDiffScalar<DerType>, NX, 1>;
-```
-
-
 ### using Quaternionf
 
 ```cpp
@@ -897,6 +898,17 @@ using cpp_robotics::Vector4d = typedef Vector4<double>;
 
 
 ## Functions Documentation
+
+### function make_auto_diff_vector
+
+```cpp
+template <class DerType >
+static auto make_auto_diff_vector(
+    const size_t & dim,
+    const std::optional< DerType > & x =std::nullopt
+)
+```
+
 
 ### function calcu_transformatoin
 
@@ -2327,17 +2339,6 @@ constexpr auto operator-(
 ```
 
 
-### function make_auto_diff_vector
-
-```cpp
-template <class DerType >
-static auto make_auto_diff_vector(
-    const size_t & dim,
-    const std::optional< DerType > & x =std::nullopt
-)
-```
-
-
 ### function shift_left
 
 ```cpp
@@ -2929,4 +2930,4 @@ constexpr float gfcm2mNm = (gfm2Nm / 100);
 
 -------------------------------
 
-Updated on 2022-10-05 at 01:02:06 +0900
+Updated on 2022-10-05 at 16:05:00 +0900
