@@ -2214,6 +2214,7 @@
 <h1 id="cpp_roboticsdiscretetransferfunction">cpp_robotics::DiscreteTransferFunction</h1>
 <p>z空間の伝達関数 </p>
 <p><code>#include &lt;discrete_transfer_function.hpp&gt;</code></p>
+<p>Inherited by <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/">cpp_robotics::LowPassFilter</a></p>
 <h2 id="public-functions">Public Functions</h2>
 <table>
 <thead>
@@ -2233,11 +2234,15 @@
 </tr>
 <tr>
 <td>void</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-set-continuous">set_continuous</a></strong>(std::vector&lt; double &gt; num, std::vector&lt; double &gt; den, const double dt)</td>
+</tr>
+<tr>
+<td>void</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-set-discrite">set_discrite</a></strong>(std::vector&lt; double &gt; num_disc, std::vector&lt; double &gt; den_disc, const double dt)</td>
 </tr>
 <tr>
 <td>double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-ts">Ts</a></strong>() const</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-ts">Ts</a></strong>() const<br>サンプリング周期</td>
 </tr>
 <tr>
 <td>virtual void</td>
@@ -2260,6 +2265,13 @@
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<h3 id="function-set_continuous">function set_continuous</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">set_continuous</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">den</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
 <h3 id="function-set_discrite">function set_discrite</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">set_discrite</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">num_disc</span><span class="p">,</span><span class="w"></span>
@@ -2270,6 +2282,8 @@
 <h3 id="function-ts">function Ts</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Ts</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
+<p>サンプリング周期 </p>
+<p><strong>Return</strong>: double </p>
 <h3 id="function-reset">function reset</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">reset</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
@@ -2281,7 +2295,7 @@
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-10-06 at 00:27:03 +0900</p>
+<p>Updated on 2022-10-08 at 23:36:07 +0900</p>
 
 
 

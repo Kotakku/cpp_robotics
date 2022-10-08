@@ -2322,6 +2322,10 @@
 </tr>
 <tr>
 <td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscretTransferFunction/">cpp_robotics::DiscretTransferFunction</a></strong></td>
+</tr>
+<tr>
+<td>class</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DubinsPath/">cpp_robotics::DubinsPath</a></strong> <br>Dubinsパス</td>
 </tr>
 <tr>
@@ -2835,12 +2839,12 @@
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-make-auto-diff-vector">make_auto_diff_vector</a></strong>(const size_t &amp; dim, const std::optional&lt; DerType &gt; &amp; x =std::nullopt)</td>
 </tr>
 <tr>
-<td>template &lt;size_t DIM> <br>std::pair&lt; Eigen::Matrix&lt; double, DIM, DIM &gt;, Eigen::Matrix&lt; double, DIM, 1 &gt; &gt;</td>
+<td>template &lt;int DIM> <br>std::pair&lt; Eigen::Matrix&lt; double, DIM, DIM &gt;, Eigen::Matrix&lt; double, DIM, 1 &gt; &gt;</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-calcu-transformatoin">calcu_transformatoin</a></strong>(std::vector&lt; Eigen::Matrix&lt; double, DIM, 1 &gt;&gt; dest, std::vector&lt; Eigen::Matrix&lt; double, DIM, 1 &gt;&gt; fixed)</td>
 </tr>
 <tr>
-<td>template &lt;size_t DIM> <br>std::tuple&lt; std::vector&lt; Eigen::Matrix&lt; double, DIM, 1 &gt; &gt;, size_t &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-icp">icp</a></strong>(std::vector&lt; Eigen::Matrix&lt; double, DIM, 1 &gt;&gt; dest, std::vector&lt; Eigen::Matrix&lt; double, DIM, 1 &gt;&gt; fixed, size_t max_iter =100)</td>
+<td>template &lt;int DIM> <br>std::tuple&lt; std::vector&lt; Eigen::Matrix&lt; double, DIM, 1 &gt; &gt;, Eigen::MatrixXd, size_t &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-icp">icp</a></strong>(std::vector&lt; Eigen::Matrix&lt; double, DIM, 1 &gt;&gt; dest, const std::vector&lt; Eigen::Matrix&lt; double, DIM, 1 &gt;&gt; &amp; fixed, double eps =1e-4, size_t max_iter =100)</td>
 </tr>
 <tr>
 <td>double</td>
@@ -2853,6 +2857,14 @@
 <tr>
 <td>template &lt;typename Real  =double> <br>Real</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-gererate-random">gererate_random</a></strong>()<br>0.0〜1.0までの一様分布の乱数を生成する</td>
+</tr>
+<tr>
+<td>Eigen::MatrixXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-homogeneous">homogeneous</a></strong>(const Eigen::MatrixXd &amp; R, const Eigen::VectorXd &amp; T)</td>
+</tr>
+<tr>
+<td>Eigen::VectorXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-transform-by-homogeneous">transform_by_homogeneous</a></strong>(const Eigen::MatrixXd &amp; H, const Eigen::VectorXd &amp; x)</td>
 </tr>
 <tr>
 <td>std::optional&lt; Eigen::MatrixXd &gt;</td>
@@ -3183,16 +3195,12 @@
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator-">operator-</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/">Unit</a>&lt; T, UnitDim, Prefix1, Tag &gt; &amp; lhl, const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/">Unit</a>&lt; T, UnitDim, Prefix2, Tag &gt; &amp; rhl)</td>
 </tr>
 <tr>
-<td>template &lt;class ForwardIterator > <br>constexpr ForwardIterator</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-shift-left">shift_left</a></strong>(ForwardIterator first, ForwardIterator last, typename std::iterator_traits&lt; ForwardIterator &gt;::difference_type n)<br>C++17のstd::shift_leftの自前実装 C++14で動作する</td>
-</tr>
-<tr>
-<td>template &lt;class ForwardIterator > <br>constexpr ForwardIterator</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-shift-right">shift_right</a></strong>(ForwardIterator first, ForwardIterator last, typename std::iterator_traits&lt; ForwardIterator &gt;::difference_type n)<br>C++17のstd::shift_rightの自前実装 C++14で動作する</td>
-</tr>
-<tr>
 <td>template &lt;typename... Args> <br>std::string</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-c-format">c_format</a></strong>(const std::string &amp; format, Args const &amp;... args)<br>printfと同様の操作でstd::stringを得る</td>
+</tr>
+<tr>
+<td>template &lt;typename... Args> <br>void</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-print">print</a></strong>(const std::string &amp; format, Args const &amp;... args)<br>std::coutにprintfの形式でフォーマットされた文字列を出力する</td>
 </tr>
 <tr>
 <td>template &lt;typename T > <br>constexpr bool</td>
@@ -3252,15 +3260,15 @@
 </tr>
 <tr>
 <td>std::vector&lt; double &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-arrange">arrange</a></strong>(double start, double end, double step =1.0)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-arrange">arrange</a></strong>(double start, double end, double step =1.0)<br>startからendまでstepずつ増える点のベクトルを返す</td>
 </tr>
 <tr>
 <td>std::vector&lt; double &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-linspace">linspace</a></strong>(double start, double end, size_t n =100)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-linspace">linspace</a></strong>(double start, double end, size_t n =100)<br>startからendまでをn分割した点のベクトルを返す</td>
 </tr>
 <tr>
 <td>std::vector&lt; double &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-logspace">logspace</a></strong>(double start, double end, size_t n =100)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-logspace">logspace</a></strong>(double start, double end, size_t n =100)<br>10^startから10^endまで対数的に等間隔なn個の点のベクトルを返す</td>
 </tr>
 <tr>
 <td>std::vector&lt; double &gt;</td>
@@ -3710,17 +3718,18 @@
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-calcu_transformatoin">function calcu_transformatoin</h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="kt">size_t</span><span class="w"> </span><span class="n">DIM</span><span class="o">&gt;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="kt">int</span><span class="w"> </span><span class="n">DIM</span><span class="o">&gt;</span><span class="w"></span>
 <span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">calcu_transformatoin</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">dest</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fixed</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-icp">function icp</h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="kt">size_t</span><span class="w"> </span><span class="n">DIM</span><span class="o">&gt;</span><span class="w"></span>
-<span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">icp</span><span class="p">(</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="kt">int</span><span class="w"> </span><span class="n">DIM</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">icp</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">dest</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fixed</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">fixed</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">eps</span><span class="w"> </span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">max_iter</span><span class="w"> </span><span class="o">=</span><span class="mi">100</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
@@ -3764,6 +3773,18 @@
 <li><strong>Real</strong> 浮動小数点型 </li>
 </ul>
 <p><strong>Return</strong>: Real 乱数 </p>
+<h3 id="function-homogeneous">function homogeneous</h3>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">homogeneous</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">R</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">T</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-transform_by_homogeneous">function transform_by_homogeneous</h3>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">transform_by_homogeneous</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">H</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
 <h3 id="function-solve_riccati_arimoto_potter">function solve_riccati_arimoto_potter</h3>
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">solve_riccati_arimoto_potter</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"></span>
@@ -4678,46 +4699,6 @@
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Unit</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">UnitDim</span><span class="p">,</span><span class="w"> </span><span class="n">Prefix2</span><span class="p">,</span><span class="w"> </span><span class="n">Tag</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhl</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-shift_left">function shift_left</h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">ForwardIterator</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
-<span class="k">constexpr</span><span class="w"> </span><span class="n">ForwardIterator</span><span class="w"> </span><span class="n">shift_left</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">ForwardIterator</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">ForwardIterator</span><span class="w"> </span><span class="n">last</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">typename</span><span class="w"> </span><span class="nc">std</span><span class="o">::</span><span class="n">iterator_traits</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ForwardIterator</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">difference_type</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
-<span class="p">)</span><span class="w"></span>
-</code></pre></div>
-<p>C++17のstd::shift_leftの自前実装 C++14で動作する </p>
-<p><strong>Parameters</strong>: </p>
-<ul>
-<li><strong>first</strong> </li>
-<li><strong>last</strong> </li>
-<li><strong>n</strong> </li>
-</ul>
-<p><strong>Template Parameters</strong>: </p>
-<ul>
-<li><strong>ForwardIterator</strong> </li>
-</ul>
-<p><strong>Return</strong>: constexpr ForwardIterator </p>
-<h3 id="function-shift_right">function shift_right</h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">ForwardIterator</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
-<span class="k">constexpr</span><span class="w"> </span><span class="n">ForwardIterator</span><span class="w"> </span><span class="n">shift_right</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">ForwardIterator</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">ForwardIterator</span><span class="w"> </span><span class="n">last</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">typename</span><span class="w"> </span><span class="nc">std</span><span class="o">::</span><span class="n">iterator_traits</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ForwardIterator</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">difference_type</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
-<span class="p">)</span><span class="w"></span>
-</code></pre></div>
-<p>C++17のstd::shift_rightの自前実装 C++14で動作する </p>
-<p><strong>Parameters</strong>: </p>
-<ul>
-<li><strong>first</strong> </li>
-<li><strong>last</strong> </li>
-<li><strong>n</strong> </li>
-</ul>
-<p><strong>Template Parameters</strong>: </p>
-<ul>
-<li><strong>ForwardIterator</strong> </li>
-</ul>
-<p><strong>Return</strong>: constexpr ForwardIterator </p>
 <h3 id="function-c_format">function c_format</h3>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">c_format</span><span class="p">(</span><span class="w"></span>
@@ -4736,6 +4717,23 @@
 <li><strong>Args</strong> </li>
 </ul>
 <p><strong>Return</strong>: std::string </p>
+<h3 id="function-print">function print</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">format</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Args</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">args</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>std::coutにprintfの形式でフォーマットされた文字列を出力する </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>format</strong> </li>
+<li><strong>args</strong> </li>
+</ul>
+<p><strong>Template Parameters</strong>: </p>
+<ul>
+<li><strong>Args</strong> </li>
+</ul>
 <h3 id="function-in_range_open">function in_range_open</h3>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
 <span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">in_range_open</span><span class="p">(</span><span class="w"></span>
@@ -4900,6 +4898,14 @@
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="mf">1.0</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<p>startからendまでstepずつ増える点のベクトルを返す </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>start</strong> </li>
+<li><strong>end</strong> </li>
+<li><strong>step</strong> </li>
+</ul>
+<p><strong>Return</strong>: std::vector<double> </p>
 <h3 id="function-linspace">function linspace</h3>
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">linspace</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"></span>
@@ -4907,6 +4913,14 @@
 <span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="mi">100</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<p>startからendまでをn分割した点のベクトルを返す </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>start</strong> </li>
+<li><strong>end</strong> </li>
+<li><strong>n</strong> </li>
+</ul>
+<p><strong>Return</strong>: std::vector<double> </p>
 <h3 id="function-logspace">function logspace</h3>
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">logspace</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"></span>
@@ -4914,12 +4928,26 @@
 <span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="mi">100</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<p>10^startから10^endまで対数的に等間隔なn個の点のベクトルを返す </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>start</strong> </li>
+<li><strong>end</strong> </li>
+<li><strong>n</strong> </li>
+</ul>
+<p><strong>Return</strong>: std::vector<double> </p>
 <h3 id="function-funcspace">function funcspace</h3>
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">funcspace</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="kt">size_t</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="mi">100</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>f</strong> </li>
+<li><strong>n</strong> </li>
+</ul>
+<p><strong>Return</strong>: std::vector<double> </p>
 <h3 id="function-sinspace">function sinspace</h3>
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">sinspace</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
@@ -5053,7 +5081,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">gfcm2mNm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">gfm2Nm</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-10-06 at 00:27:03 +0900</p>
+<p>Updated on 2022-10-08 at 23:36:07 +0900</p>
 
 
 

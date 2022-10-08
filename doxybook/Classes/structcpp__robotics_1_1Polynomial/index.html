@@ -2225,6 +2225,10 @@
 <tbody>
 <tr>
 <td></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polynomial">Polynomial</a></strong>() =default</td>
+</tr>
+<tr>
+<td></td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polynomial">Polynomial</a></strong>(std::initializer_list&lt; double &gt; coeff)</td>
 </tr>
 <tr>
@@ -2284,14 +2288,6 @@
 <td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-evalute">evalute</a></strong>(double x) const</td>
 </tr>
 <tr>
-<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polyder">polyder</a></strong>(size_t i) const</td>
-</tr>
-<tr>
-<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polyint">polyint</a></strong>(double C =0) const</td>
-</tr>
-<tr>
 <td>void</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-swap">swap</a></strong>(<a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a> &amp; poly)</td>
 </tr>
@@ -2316,16 +2312,48 @@
 <td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator-">operator-</a></strong>(double s) const</td>
 </tr>
 <tr>
-<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator*">operator*</a></strong>(double s) const</td>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a> &amp;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator+=">operator+=</a></strong>(double s)<br>多項式の0次の項に値を加算する</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a> &amp;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator-=">operator-=</a></strong>(double s)<br>多項式の0次の項に値を減算する</td>
 </tr>
 <tr>
 <td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator/">operator/</a></strong>(double s) const</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator*">operator*</a></strong>(double s) const<br>多項式をs倍した多項式を返す</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a> &amp;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator*=">operator*=</a></strong>(double s)<br>自身をs倍する</td>
 </tr>
 <tr>
 <td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator*">operator*</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a> &amp; p) const</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator/">operator/</a></strong>(double s) const<br>多項式を1/s倍した多項式を返す</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a> &amp;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator/=">operator/=</a></strong>(double s)<br>自身を1/s倍する</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator*">operator*</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a> &amp; p) const<br>多項式同士の積を取る</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator+">operator+</a></strong>(<a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a> poly) const<br>多項式同士の和を取る</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a> &amp;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator+=">operator+=</a></strong>(<a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a> poly)<br>自身に他の多項式を加算する</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator-">operator-</a></strong>(<a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a> poly) const</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a> &amp;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator-=">operator-=</a></strong>(<a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a> poly)<br>自身に他の多項式を減算する</td>
 </tr>
 <tr>
 <td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></td>
@@ -2344,7 +2372,7 @@
 <tbody>
 <tr>
 <td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#friend-operator*">operator*</a></strong>(double s, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a> &amp; poly)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#friend-operator*">operator*</a></strong>(double s, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a> &amp; poly) <br>多項式をs倍した多項式を返す</td>
 </tr>
 <tr>
 <td>bool</td>
@@ -2358,16 +2386,19 @@
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation</h2>
 <h3 id="function-polynomial">function Polynomial</h3>
+<div class="highlight"><pre><span></span><code><span class="n">Polynomial</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="k">default</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-polynomial_1">function Polynomial</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">initializer_list</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">coeff</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-polynomial_1">function Polynomial</h3>
+<h3 id="function-polynomial_2">function Polynomial</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">coeff</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-polynomial_2">function Polynomial</h3>
+<h3 id="function-polynomial_3">function Polynomial</h3>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">IteratorType</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
 <span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">IteratorType</span><span class="w"> </span><span class="n">begin</span><span class="p">,</span><span class="w"></span>
@@ -2426,16 +2457,6 @@
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
 <span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-polyder">function polyder</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="n">polyder</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
-<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-</code></pre></div>
-<h3 id="function-polyint">function polyint</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="n">polyint</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
-<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-</code></pre></div>
 <h3 id="function-swap">function swap</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">swap</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">Polynomial</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">poly</span><span class="w"></span>
@@ -2462,21 +2483,121 @@
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
 <span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-operator_5">function operator*</h3>
+<h3 id="function-operator_5">function operator+=</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">+=</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>多項式の0次の項に値を加算する </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>s</strong> </li>
+</ul>
+<p><strong>Return</strong>: <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a>&amp; </p>
+<h3 id="function-operator-_2">function operator-=</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">-=</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>多項式の0次の項に値を減算する </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>s</strong> </li>
+</ul>
+<p><strong>Return</strong>: <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a>&amp; </p>
+<h3 id="function-operator_6">function operator*</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
 <span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-operator_6">function operator/</h3>
+<p>多項式をs倍した多項式を返す </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>s</strong> </li>
+</ul>
+<p><strong>Return</strong>: <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></p>
+<h3 id="function-operator_7">function operator*=</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">*=</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>自身をs倍する </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>s</strong> </li>
+</ul>
+<p><strong>Return</strong>: <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a>&amp; </p>
+<h3 id="function-operator_8">function operator/</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
 <span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-operator_7">function operator*</h3>
+<p>多項式を1/s倍した多項式を返す </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>s</strong> </li>
+</ul>
+<p><strong>Return</strong>: <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></p>
+<h3 id="function-operator_9">function operator/=</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">/=</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>自身を1/s倍する </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>s</strong> </li>
+</ul>
+<p><strong>Return</strong>: <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a>&amp; </p>
+<h3 id="function-operator_10">function operator*</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="w"></span>
 <span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
+<p>多項式同士の積を取る </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>p</strong> </li>
+</ul>
+<p><strong>Return</strong>: <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></p>
+<h3 id="function-operator_11">function operator+</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Polynomial</span><span class="w"> </span><span class="n">poly</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+</code></pre></div>
+<p>多項式同士の和を取る </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>poly</strong> </li>
+</ul>
+<p><strong>Return</strong>: <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></p>
+<h3 id="function-operator_12">function operator+=</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">+=</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Polynomial</span><span class="w"> </span><span class="n">poly</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>自身に他の多項式を加算する </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>poly</strong> </li>
+</ul>
+<p><strong>Return</strong>: <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a>&amp; </p>
+<h3 id="function-operator-_3">function operator-</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Polynomial</span><span class="w"> </span><span class="n">poly</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-operator-_4">function operator-=</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">-=</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Polynomial</span><span class="w"> </span><span class="n">poly</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>自身に他の多項式を減算する </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>poly</strong> </li>
+</ul>
+<p><strong>Return</strong>: <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a>&amp; </p>
 <h3 id="function-expand">function expand</h3>
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="n">expand</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">roots</span><span class="w"></span>
@@ -2490,6 +2611,13 @@
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">poly</span><span class="w"></span>
 <span class="p">);</span><span class="w"></span>
 </code></pre></div>
+<p>多項式をs倍した多項式を返す </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>s</strong> </li>
+<li><strong>poly</strong> </li>
+</ul>
+<p><strong>Return</strong>: <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">Polynomial</a></p>
 <h3 id="friend-operator_1">friend operator==</h3>
 <div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span><span class="w"></span>
@@ -2505,7 +2633,7 @@
 <span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-10-06 at 00:27:03 +0900</p>
+<p>Updated on 2022-10-08 at 23:36:07 +0900</p>
 
 
 

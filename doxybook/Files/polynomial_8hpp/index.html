@@ -2255,6 +2255,8 @@
 <span class="c1">// _coeff.back()が次数0</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">Polynomial</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Polynomial</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
+
 <span class="w">    </span><span class="n">Polynomial</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">initializer_list</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">coeff</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
 <span class="w">        </span><span class="n">_coeff</span><span class="p">(</span><span class="n">coeff</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">coeff</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 
@@ -2335,63 +2337,69 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">    </span><span class="n">Polynomial</span><span class="w"> </span><span class="n">polyder</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">degree</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// /**</span>
+<span class="w">    </span><span class="c1">//  * @brief 多項式をn階微分した多項式を返す</span>
+<span class="w">    </span><span class="c1">//  * </span>
+<span class="w">    </span><span class="c1">//  * @param i </span>
+<span class="w">    </span><span class="c1">//  * @return Polynomial </span>
+<span class="w">    </span><span class="c1">//  */</span>
+<span class="w">    </span><span class="c1">// Polynomial polyder(size_t i) const</span>
+<span class="w">    </span><span class="c1">// {</span>
+<span class="w">    </span><span class="c1">//     assert(degree() &gt; 0);</span>
 
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">degree</span><span class="p">())</span><span class="w"></span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//     if(i == 0)</span>
+<span class="w">    </span><span class="c1">//         return *this;</span>
+<span class="w">    </span><span class="c1">//     if(i &gt; degree())</span>
+<span class="w">    </span><span class="c1">//         return {0};</span>
 
-<span class="w">        </span><span class="n">Polynomial</span><span class="w"> </span><span class="n">dpol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//     Polynomial dpol = *this;</span>
 
-<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">dpol</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">c</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="w">                </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">r</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="n">nc</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">r</span><span class="p">);</span><span class="w"></span>
-<span class="w">                </span><span class="p">}</span><span class="w"></span>
-<span class="w">                </span><span class="n">dpol</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">nc</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//     for(size_t c = 0; c &lt; dpol.size(); c++)</span>
+<span class="w">    </span><span class="c1">//     {</span>
+<span class="w">    </span><span class="c1">//         if(c &gt;= i)</span>
+<span class="w">    </span><span class="c1">//         {</span>
+<span class="w">    </span><span class="c1">//             size_t nc = 1;</span>
+<span class="w">    </span><span class="c1">//             for(size_t r = 0; r &lt; i; r++)</span>
+<span class="w">    </span><span class="c1">//             {</span>
+<span class="w">    </span><span class="c1">//                 nc *= (c - r);</span>
+<span class="w">    </span><span class="c1">//             }</span>
+<span class="w">    </span><span class="c1">//             dpol[c] *= static_cast&lt;double&gt;(nc);</span>
+<span class="w">    </span><span class="c1">//         }</span>
 
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="n">dpol</span><span class="p">.</span><span class="n">_coeff</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">dpol</span><span class="p">.</span><span class="n">_coeff</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">dpol</span><span class="p">.</span><span class="n">_coeff</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="o">+</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//     }</span>
+<span class="w">    </span><span class="c1">//     dpol._coeff.erase(dpol._coeff.begin(), dpol._coeff.begin()+i);</span>
 
 
-<span class="w">        </span><span class="c1">// size_t deg = dpol.degree();</span>
-<span class="w">        </span><span class="c1">// dpol._coeff.resize(dpol.size() - i);</span>
+<span class="w">    </span><span class="c1">//     // size_t deg = dpol.degree();</span>
+<span class="w">    </span><span class="c1">//     // dpol._coeff.resize(dpol.size() - i);</span>
 
-<span class="w">        </span><span class="c1">// for(size_t c = 0; c &lt; dpol.size(); c++)</span>
-<span class="w">        </span><span class="c1">// {</span>
-<span class="w">        </span><span class="c1">//     size_t nc = 1;</span>
-<span class="w">        </span><span class="c1">//     for(size_t r = 0; r &lt; i; r++)</span>
-<span class="w">        </span><span class="c1">//     {</span>
-<span class="w">        </span><span class="c1">//         nc *= (deg - c - r);</span>
-<span class="w">        </span><span class="c1">//     }</span>
-<span class="w">        </span><span class="c1">//     dpol[c] *= static_cast&lt;double&gt;(nc);</span>
-<span class="w">        </span><span class="c1">// }</span>
+<span class="w">    </span><span class="c1">//     // for(size_t c = 0; c &lt; dpol.size(); c++)</span>
+<span class="w">    </span><span class="c1">//     // {</span>
+<span class="w">    </span><span class="c1">//     //     size_t nc = 1;</span>
+<span class="w">    </span><span class="c1">//     //     for(size_t r = 0; r &lt; i; r++)</span>
+<span class="w">    </span><span class="c1">//     //     {</span>
+<span class="w">    </span><span class="c1">//     //         nc *= (deg - c - r);</span>
+<span class="w">    </span><span class="c1">//     //     }</span>
+<span class="w">    </span><span class="c1">//     //     dpol[c] *= static_cast&lt;double&gt;(nc);</span>
+<span class="w">    </span><span class="c1">//     // }</span>
 
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dpol</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//     return dpol;</span>
+<span class="w">    </span><span class="c1">// }</span>
 
-<span class="w">    </span><span class="n">Polynomial</span><span class="w"> </span><span class="n">polyint</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">Polynomial</span><span class="w"> </span><span class="n">ipol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Polynomial polyint(double C = 0) const</span>
+<span class="w">    </span><span class="c1">// {</span>
+<span class="w">    </span><span class="c1">//     Polynomial ipol = *this;</span>
 
-<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ipol</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">ndeg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="n">ipol</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">ndeg</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//     for(size_t i = 0; i &lt; ipol.size(); i++)</span>
+<span class="w">    </span><span class="c1">//     {</span>
+<span class="w">    </span><span class="c1">//         double ndeg = static_cast&lt;double&gt;(i + 1);</span>
+<span class="w">    </span><span class="c1">//         ipol[i] /= ndeg;</span>
+<span class="w">    </span><span class="c1">//     }</span>
 
-<span class="w">        </span><span class="n">ipol</span><span class="p">.</span><span class="n">_coeff</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">ipol</span><span class="p">.</span><span class="n">_coeff</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">C</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//     ipol._coeff.insert(ipol._coeff.begin(), C);</span>
 
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ipol</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//     return ipol;</span>
+<span class="w">    </span><span class="c1">// }</span>
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">swap</span><span class="p">(</span><span class="n">Polynomial</span><span class="w"> </span><span class="o">&amp;</span><span class="n">poly</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
@@ -2434,6 +2442,20 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
+<span class="w">    </span><span class="n">Polynomial</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">+=</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">at</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">degree</span><span class="p">())</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">check_degree</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Polynomial</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">-=</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">at</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">degree</span><span class="p">())</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">check_degree</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
 <span class="w">    </span><span class="n">Polynomial</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">Polynomial</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
@@ -2448,6 +2470,12 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">poly</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
+<span class="w">    </span><span class="n">Polynomial</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">*=</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="o">*</span><span class="k">this</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
 <span class="w">    </span><span class="n">Polynomial</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">Polynomial</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
@@ -2455,6 +2483,12 @@
 <span class="w">            </span><span class="n">c</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
 <span class="w">        </span><span class="n">ret</span><span class="p">.</span><span class="n">check_degree</span><span class="p">();</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Polynomial</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">/=</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="o">*</span><span class="k">this</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">Polynomial</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Polynomial</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
@@ -2481,43 +2515,55 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">new_p</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">    </span><span class="c1">// Polynomial operator +(Polynomial poly) const</span>
-<span class="w">    </span><span class="c1">// {</span>
-<span class="w">    </span><span class="c1">//     Polynomial ret = *this;</span>
-<span class="w">    </span><span class="c1">//     if(ret.degree() &lt; poly.degree())</span>
-<span class="w">    </span><span class="c1">//     {</span>
-<span class="w">    </span><span class="c1">//         ret.swap(poly);</span>
-<span class="w">    </span><span class="c1">//     }</span>
+<span class="w">    </span><span class="n">Polynomial</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">+</span><span class="p">(</span><span class="n">Polynomial</span><span class="w"> </span><span class="n">poly</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">Polynomial</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">ret</span><span class="p">.</span><span class="n">degree</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">poly</span><span class="p">.</span><span class="n">degree</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">ret</span><span class="p">.</span><span class="n">swap</span><span class="p">(</span><span class="n">poly</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">    </span><span class="c1">//     for (auto [it, rit] =</span>
-<span class="w">    </span><span class="c1">//             std::tuple{poly._coeff.rbegin(), ret._coeff.rbegin()};</span>
-<span class="w">    </span><span class="c1">//             it != poly._coeff.rend(); it++, rit++)</span>
-<span class="w">    </span><span class="c1">//     {</span>
-<span class="w">    </span><span class="c1">//         *rit += *it;</span>
-<span class="w">    </span><span class="c1">//     }</span>
-<span class="w">    </span><span class="c1">//     ret.check_degree();</span>
-<span class="w">    </span><span class="c1">//     return ret;</span>
-<span class="w">    </span><span class="c1">// }</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">it</span><span class="p">,</span><span class="w"> </span><span class="n">rit</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span><span class="n">poly</span><span class="p">.</span><span class="n">_coeff</span><span class="p">.</span><span class="n">rbegin</span><span class="p">(),</span><span class="w"> </span><span class="n">ret</span><span class="p">.</span><span class="n">_coeff</span><span class="p">.</span><span class="n">rbegin</span><span class="p">()};</span><span class="w"></span>
+<span class="w">                </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">poly</span><span class="p">.</span><span class="n">_coeff</span><span class="p">.</span><span class="n">rend</span><span class="p">();</span><span class="w"> </span><span class="n">it</span><span class="o">++</span><span class="p">,</span><span class="w"> </span><span class="n">rit</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="o">*</span><span class="n">rit</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">*</span><span class="n">it</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">ret</span><span class="p">.</span><span class="n">check_degree</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">    </span><span class="c1">// Polynomial operator -(Polynomial poly) const</span>
-<span class="w">    </span><span class="c1">// {</span>
-<span class="w">    </span><span class="c1">//     Polynomial ret = *this;</span>
-<span class="w">    </span><span class="c1">//     int pm = 1;</span>
-<span class="w">    </span><span class="c1">//     if(ret.degree() &lt; poly.degree())</span>
-<span class="w">    </span><span class="c1">//     {</span>
-<span class="w">    </span><span class="c1">//         ret.swap(poly);</span>
-<span class="w">    </span><span class="c1">//         pm = -1;</span>
-<span class="w">    </span><span class="c1">//     }</span>
+<span class="w">    </span><span class="n">Polynomial</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">+=</span><span class="p">(</span><span class="n">Polynomial</span><span class="w"> </span><span class="n">poly</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="o">*</span><span class="k">this</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">poly</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">    </span><span class="c1">//     for (auto [it, rit] =</span>
-<span class="w">    </span><span class="c1">//             std::tuple{poly._coeff.rbegin(), ret._coeff.rbegin()};</span>
-<span class="w">    </span><span class="c1">//             it != poly._coeff.rend(); it++, rit++)</span>
-<span class="w">    </span><span class="c1">//     {</span>
-<span class="w">    </span><span class="c1">//         *rit -= *it;</span>
-<span class="w">    </span><span class="c1">//     }</span>
-<span class="w">    </span><span class="c1">//     ret.check_degree();</span>
-<span class="w">    </span><span class="c1">//     return pm*ret;</span>
-<span class="w">    </span><span class="c1">// }</span>
+<span class="w">    </span><span class="n">Polynomial</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">-</span><span class="p">(</span><span class="n">Polynomial</span><span class="w"> </span><span class="n">poly</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">Polynomial</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">pm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">ret</span><span class="p">.</span><span class="n">degree</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">poly</span><span class="p">.</span><span class="n">degree</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">ret</span><span class="p">.</span><span class="n">swap</span><span class="p">(</span><span class="n">poly</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">pm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">it</span><span class="p">,</span><span class="w"> </span><span class="n">rit</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="p">{</span><span class="n">poly</span><span class="p">.</span><span class="n">_coeff</span><span class="p">.</span><span class="n">rbegin</span><span class="p">(),</span><span class="w"> </span><span class="n">ret</span><span class="p">.</span><span class="n">_coeff</span><span class="p">.</span><span class="n">rbegin</span><span class="p">()};</span><span class="w"></span>
+<span class="w">                </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">poly</span><span class="p">.</span><span class="n">_coeff</span><span class="p">.</span><span class="n">rend</span><span class="p">();</span><span class="w"> </span><span class="n">it</span><span class="o">++</span><span class="p">,</span><span class="w"> </span><span class="n">rit</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="o">*</span><span class="n">rit</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="o">*</span><span class="n">it</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">ret</span><span class="p">.</span><span class="n">check_degree</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pm</span><span class="o">*</span><span class="n">ret</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Polynomial</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">-=</span><span class="p">(</span><span class="n">Polynomial</span><span class="w"> </span><span class="n">poly</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="o">*</span><span class="k">this</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">poly</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Polynomial</span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Polynomial</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
@@ -2567,7 +2613,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-10-06 at 00:27:03 +0900</p>
+<p>Updated on 2022-10-08 at 23:36:07 +0900</p>
 
 
 
