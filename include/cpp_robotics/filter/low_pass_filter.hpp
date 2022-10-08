@@ -32,7 +32,7 @@ public:
     double filtering(double u) { return responce(u); } 
 
     /**
-     * @brief 時定数の取得
+     * @brief 折れ点周波数[rad/s]の取得
      * 
      * @return double 
      */
