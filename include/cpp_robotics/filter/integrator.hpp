@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cmath>
+#include <cpp_robotics/system/discrete_transfer_function.hpp>
 
 namespace cpp_robotics
 {
@@ -8,31 +9,26 @@ namespace cpp_robotics
 /// 積分器
 // G(s) = 1 / s
 // 双一次変換で離散化したもの
-class Integrator
+class Integrator : public DiscreteTransferFunction
 {
 public:
-    Integrator(double Ts):
-        Ts_(Ts)
+    /**
+     * @brief Construct a new Integrator object
+     * 
+     * @param dt サンプリング周期
+     */
+    Integrator(double dt)
     {
-
+        set_continuous({1}, {1, 0}, dt);
     }
 
-    void reset(double val = 0)
-    {
-        val_ = val;
-        u1_ = val;
-    }
-    
-    double filtering(double u)
-    {
-        val_ += (u1_+u)*Ts_*0.5;
-        u1_ = u;
-        return val_;
-    }
-
-private:
-    double Ts_;
-    double val_, u1_ = 0;
+    /**
+     * @brief フィルタリングする
+     * 
+     * @param u 
+     * @return double 
+     */
+    double filtering(double u) { return responce(u); } 
 };
 
 }

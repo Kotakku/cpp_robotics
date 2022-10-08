@@ -4,50 +4,49 @@ namespace cpp_robotics
 {
 
 /// バンドパスフィルタ
-//               2*zeta*omega
+//               2*zeta*omega*s
 // G(s) = ------------------------------ を双一次変換
-//         s^2 + 2*zeta*omega + omega^2
-class BandPassFilter
+//         s^2 + 2*zeta*omega*s + omega^2
+class BandPassFilter : public DiscreteTransferFunction
 {
 public:
     /**
      * @brief Construct a new Notch Filter object
      * 
-     * @param w 中心周波数[rad/s]
+     * @param omega 中心周波数[rad/s]
      * @param zeta 鋭さ
      * @param dt サンプリング周期
      */
-    BandPassFilter(double w, double zeta, double dt):
-        w_(w), zeta_(zeta), dt_(dt)
+    BandPassFilter(double omega, double zeta, double dt):
+        omega_(omega), zeta_(zeta)
     {
-        const double ww = w*w;
-        const double dtdt = dt*dt;
-
-        tf_.set_discrite(
-            {     (4*dt*zeta*w),                0,            (-4*dt*zeta*w)},
-            {(4+  (4*dt*zeta*w)+dtdt*ww), (-8+2*dtdt*ww), (4-  (4*dt*zeta*w)+dtdt*ww)},
-            dt
-        );
+        set_continuous({(2*zeta_*omega_),0}, {1,(2*zeta_*omega_),(omega*omega)}, dt);
     }
 
-    void reset()
-    {
-        tf_.reset();
-    }
-    
-    double filtering(double u)
-    {
-        return tf_.responce(u);
-    }
+    /**
+     * @brief フィルタリングする
+     * 
+     * @param u 
+     * @return double 
+     */
+    double filtering(double u) { return responce(u); } 
 
-    double w() const { return w_; }
+    /**
+     * @brief 中心周波数[rad/s]の取得
+     * 
+     * @return double 
+     */
+    double omega() const { return omega_; }
+
+    /**
+     * @brief 鋭さの取得
+     * 
+     * @return double 
+     */
     double zeta() const { return zeta_; }
-    double dt() const {return dt_; }
 private:
-    const double w_;
+    const double omega_;
     const double zeta_;
-    const double dt_;
-    DiscreteTransferFunction tf_;
 };
 
 }

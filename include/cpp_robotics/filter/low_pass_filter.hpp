@@ -7,20 +7,20 @@ namespace cpp_robotics
 {
 
 /// ローパスフィルター
-// G(s) = 1 / (Ts + 1)
+// G(s) = omega / (s + omega)
 class LowPassFilter : public DiscreteTransferFunction
 {
 public:
     /**
      * @brief Construct a new Low Pass Filter object
      * 
-     * @param tau 時定数
+     * @param omega 折れ点周波数[rad/s]
      * @param dt サンプリング周期
      */
-    LowPassFilter(double tau, double dt):
-        tau_(tau)
+    LowPassFilter(double omega, double dt):
+        omega_(omega)
     {
-        set_continuous({1}, {tau_, 1}, dt);
+        set_continuous({omega}, {1, omega}, dt);
     }
 
     /**
@@ -36,9 +36,9 @@ public:
      * 
      * @return double 
      */
-    double tau() const { return tau_; }
+    double omega() const { return omega_; }
 private:
-    const double tau_;
+    const double omega_;
 };
 
 }

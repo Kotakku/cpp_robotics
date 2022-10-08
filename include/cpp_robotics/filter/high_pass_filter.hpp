@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cmath>
+#include <cpp_robotics/system/discrete_transfer_function.hpp>
 
 namespace cpp_robotics
 {
@@ -9,45 +10,39 @@ namespace cpp_robotics
  * @brief ハイパスフィルタ
  * 
  */
-// G(s) = 1 / (Ts + 1)
+// G(s) = s / (s + omega)
 // 双一次変換で離散化したもの
-class HighPassFilter
+class HighPassFilter: public DiscreteTransferFunction
 {
 public:
     /**
      * @brief Construct a new High Pass Filter object
      * 
-     * @param w 折れ点周波数[rad/s]
-     * @param dt 
+     * @param omega 折れ点周波数[rad/s]
+     * @param dt サンプリング周期
      */
-    HighPassFilter(double w, double dt):
-        w_(w), T_(1/w), dt_(dt)
+    HighPassFilter(double omega, double dt):
+        omega_(omega)
     {
-
+        set_continuous({1, 0}, {1, omega}, dt);
     }
 
-    void reset(double val = 0)
-    {
-        y1_ = val;
-        u1_ = val;
-    }
-    
-    double filtering(double u)
-    {
-        double y = ( (2*T_-dt_)*y1_ + 2*T_*(u-u1_) ) /(2*T_ + dt_);
+    /**
+     * @brief フィルタリングする
+     * 
+     * @param u 
+     * @return double 
+     */
+    double filtering(double u) { return responce(u); } 
 
-        y1_ = y;
-        u1_ = u;
-        return y;
-    }
-
-    double w() const { return w_; }
-    double dt() const {return dt_; }
+    /**
+     * @brief 時定数の取得
+     * 
+     * @return double 
+     */
+    double omega() const { return omega_; }
 private:
-    const double w_;
-    const double T_;
-    const double dt_;
-    double y1_, u1_ = 0;
+    const double omega_;
 };
 
 }

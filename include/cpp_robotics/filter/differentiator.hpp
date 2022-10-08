@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cmath>
+#include <cpp_robotics/system/discrete_transfer_function.hpp>
 
 namespace cpp_robotics
 {
@@ -11,37 +12,37 @@ namespace cpp_robotics
  */
 /// G(s) = s / (Ts + 1)
 /// 双一次変換で離散化したもの
-class Differentiator
+class Differentiator : public DiscreteTransferFunction
 {
 public:
-    // bandwidth[rad/s]
-    // sample_time[s]
-	Differentiator(double bandwidth, double sample_time): 
-        Ts_(sample_time),
-        gpd_(bandwidth)
+    /**
+     * @brief Construct a new Differentiator object
+     * 
+     * @param tau 時定数
+     * @param dt サンプリング周期
+     */
+	Differentiator(double tau, double dt): 
+        tau_(tau)
     {
-        
+        set_continuous({1, 0}, {tau_, 1}, dt);
     }
 
-    void reset()
-    {
-        u1_ = y1_ = 0;
-    }
+    /**
+     * @brief フィルタリングする
+     * 
+     * @param u 
+     * @return double 
+     */
+    double filtering(double u) { return responce(u); } 
 
-	double filtering(double u)
-    {
-        double y;
-        y = ( 2.0*gpd_*(u-u1_) + (2.0-Ts_*gpd_)*y1_ )/(2.0+Ts_*gpd_);
-        u1_=u;
-        y1_=y;        
-        return y;
-    }
-
+    /**
+     * @brief 時定数の取得
+     * 
+     * @return double 
+     */
+    double tau() const { return tau_; }
 private:
-	double Ts_;
-	double gpd_;
-	double u1_;
-	double y1_;
+    const double tau_;
 };
 
 }
