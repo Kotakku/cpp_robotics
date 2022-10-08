@@ -40,6 +40,12 @@ cmake -DCR_BUILD_EXAMPLE=ON ..
 cmake --build .
 ```
 
+# cpp_roboticsを使用する
+ライブラリはEigen3の様にヘッダファイルのみであるためCMakeLists.txtには一行追加するだけで使用できます
+```
+find_package(cpp_robotics REQUIRED)
+```
+
 # ドキュメント
 - [https://kotakku.github.io/cpp_robotics/](https://kotakku.github.io/cpp_robotics/)
 
