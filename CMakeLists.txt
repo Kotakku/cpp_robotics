@@ -10,7 +10,7 @@ if(NOT CMAKE_CXX_STANDARD)
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_compile_options(-Wall -Wextra -Wpedantic -Wno-unused-variable -Wno-unused-function)
+  add_compile_options(-O2 -Wall -Wextra -Wpedantic -Wno-unused-variable -Wno-unused-function)
 endif()
 
 find_package(Eigen3 REQUIRED)
@@ -29,7 +29,7 @@ set(example_files
 
   # system/step_responce
   # system/bode_nyquist
-  # system/disc_tf
+  system/disc_tf
   # system/state_space_system
   # algorithm/kdtree_sample
   # algorithm/icp_sample
