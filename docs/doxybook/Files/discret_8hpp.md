@@ -18,6 +18,7 @@ title: include/cpp_robotics/system/discret.hpp
 |                | Name           |
 | -------------- | -------------- |
 | class | **[cpp_robotics::Discret](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/)** <br>状態空間モデルを双一次変換で離散化する  |
+| class | **[cpp_robotics::DiscretTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscretTransferFunction/)**  |
 
 
 
@@ -29,6 +30,7 @@ title: include/cpp_robotics/system/discret.hpp
 
 #include <Eigen/Dense>
 #include <tuple>
+#include "./polynomial.hpp"
 
 namespace cpp_robotics
 {
@@ -108,10 +110,51 @@ public:
     }
 };
 
+class DiscretTransferFunction
+{
+private:
+
+public:
+    static std::tuple<std::vector<double>, std::vector<double>> discritize(const std::vector<double> &num, const std::vector<double> &den, const double Ts)
+    {
+        assert(num.size() < den.size()); // 厳密にプロパー
+
+        size_t dim = den.size();
+        Polynomial num_poly, den_poly;
+        auto z_poly = [&](size_t num_size, size_t den_size)
+        {
+            std::vector<double> roots(num_size+den_size, -1);
+            for(size_t i = 0; i < num_size; i++)
+            {
+                roots[i] = +1;
+            }
+
+            // std::cout << num_size << ", " << den_size << " -> ";
+            // for(auto &c : roots)
+            //     std::cout << c << ", ";
+            // std::cout << std::endl;
+
+            return std::pow(2.0, num_size)*std::pow(Ts, den_size) * Polynomial::expand(roots);
+        };
+
+        for(size_t i = 0; i < den.size(); i++)
+        {
+            den_poly += den[i] * z_poly(den.size()-1-i, i);
+        }
+
+        for(size_t i = 0; i < num.size(); i++)
+        {
+            num_poly += num[i] * z_poly(num.size()-1-i, i+(den.size()-num.size()));
+        }
+
+        return {num_poly.coeff(), den_poly.coeff()};
+    }
+};
+
 }
 ```
 
 
 -------------------------------
 
-Updated on 2022-10-06 at 00:27:03 +0900
+Updated on 2022-10-08 at 23:36:07 +0900

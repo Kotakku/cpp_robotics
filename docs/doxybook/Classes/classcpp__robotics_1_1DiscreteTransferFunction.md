@@ -13,14 +13,17 @@ z空間の伝達関数
 
 `#include <discrete_transfer_function.hpp>`
 
+Inherited by [cpp_robotics::LowPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/)
+
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
 | | **[DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-discretetransferfunction)**() =default |
 | | **[DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-discretetransferfunction)**(std::vector< double > num_disc, std::vector< double > den_disc, const double dt) |
+| void | **[set_continuous](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-set-continuous)**(std::vector< double > num, std::vector< double > den, const double dt) |
 | void | **[set_discrite](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-set-discrite)**(std::vector< double > num_disc, std::vector< double > den_disc, const double dt) |
-| double | **[Ts](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-ts)**() const |
+| double | **[Ts](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-ts)**() const<br>サンプリング周期  |
 | virtual void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-reset)**(double state =0) |
 | double | **[responce](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-responce)**(double u) |
 
@@ -44,6 +47,17 @@ inline DiscreteTransferFunction(
 ```
 
 
+### function set_continuous
+
+```cpp
+inline void set_continuous(
+    std::vector< double > num,
+    std::vector< double > den,
+    const double dt
+)
+```
+
+
 ### function set_discrite
 
 ```cpp
@@ -61,6 +75,9 @@ inline void set_discrite(
 inline double Ts() const
 ```
 
+サンプリング周期 
+
+**Return**: double 
 
 ### function reset
 
@@ -82,4 +99,4 @@ inline double responce(
 
 -------------------------------
 
-Updated on 2022-10-06 at 00:27:03 +0900
+Updated on 2022-10-08 at 23:36:07 +0900

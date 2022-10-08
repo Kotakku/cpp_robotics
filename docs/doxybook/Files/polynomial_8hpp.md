@@ -39,6 +39,8 @@ namespace cpp_robotics
 // _coeff.back()が次数0
 struct Polynomial
 {
+    Polynomial() = default;
+
     Polynomial(std::initializer_list<double> coeff):
         _coeff(coeff.begin(), coeff.end()) {}
 
@@ -119,63 +121,69 @@ struct Polynomial
         return y;
     }
 
-    Polynomial polyder(size_t i) const
-    {
-        assert(degree() > 0);
+    // /**
+    //  * @brief 多項式をn階微分した多項式を返す
+    //  * 
+    //  * @param i 
+    //  * @return Polynomial 
+    //  */
+    // Polynomial polyder(size_t i) const
+    // {
+    //     assert(degree() > 0);
 
-        if(i == 0)
-            return *this;
-        if(i > degree())
-            return {0};
+    //     if(i == 0)
+    //         return *this;
+    //     if(i > degree())
+    //         return {0};
         
-        Polynomial dpol = *this;
+    //     Polynomial dpol = *this;
 
-        for(size_t c = 0; c < dpol.size(); c++)
-        {
-            if(c >= i)
-            {
-                size_t nc = 1;
-                for(size_t r = 0; r < i; r++)
-                {
-                    nc *= (c - r);
-                }
-                dpol[c] *= static_cast<double>(nc);
-            }
+    //     for(size_t c = 0; c < dpol.size(); c++)
+    //     {
+    //         if(c >= i)
+    //         {
+    //             size_t nc = 1;
+    //             for(size_t r = 0; r < i; r++)
+    //             {
+    //                 nc *= (c - r);
+    //             }
+    //             dpol[c] *= static_cast<double>(nc);
+    //         }
 
-        }
-        dpol._coeff.erase(dpol._coeff.begin(), dpol._coeff.begin()+i);
+    //     }
+    //     dpol._coeff.erase(dpol._coeff.begin(), dpol._coeff.begin()+i);
 
 
-        // size_t deg = dpol.degree();
-        // dpol._coeff.resize(dpol.size() - i);
+    //     // size_t deg = dpol.degree();
+    //     // dpol._coeff.resize(dpol.size() - i);
 
-        // for(size_t c = 0; c < dpol.size(); c++)
-        // {
-        //     size_t nc = 1;
-        //     for(size_t r = 0; r < i; r++)
-        //     {
-        //         nc *= (deg - c - r);
-        //     }
-        //     dpol[c] *= static_cast<double>(nc);
-        // }
+    //     // for(size_t c = 0; c < dpol.size(); c++)
+    //     // {
+    //     //     size_t nc = 1;
+    //     //     for(size_t r = 0; r < i; r++)
+    //     //     {
+    //     //         nc *= (deg - c - r);
+    //     //     }
+    //     //     dpol[c] *= static_cast<double>(nc);
+    //     // }
 
-        return dpol;
-    }
+    //     return dpol;
+    // }
 
-    Polynomial polyint(double C = 0) const
-    {
-        Polynomial ipol = *this;
+    // Polynomial polyint(double C = 0) const
+    // {
+    //     Polynomial ipol = *this;
         
-        for(size_t i = 0; i < ipol.size(); i++)
-        {
-            double ndeg = static_cast<double>(i + 1);
-            ipol[i] /= ndeg;
-        }
+    //     for(size_t i = 0; i < ipol.size(); i++)
+    //     {
+    //         double ndeg = static_cast<double>(i + 1);
+    //         ipol[i] /= ndeg;
+    //     }
 
-        ipol._coeff.insert(ipol._coeff.begin(), C);
+    //     ipol._coeff.insert(ipol._coeff.begin(), C);
 
-        return ipol;
-    }
+    //     return ipol;
+    // }
 
     void swap(Polynomial &poly)
     {
@@ -218,6 +226,20 @@ struct Polynomial
         return ret;
     }
 
+    Polynomial& operator +=(double s)
+    {
+        this->at(this->degree()) += s;
+        this->check_degree();
+        return *this;
+    }
+
+    Polynomial& operator -=(double s)
+    {
+        this->at(this->degree()) -= s;
+        this->check_degree();
+        return *this;
+    }
+
     Polynomial operator *(double s) const
     {
         Polynomial ret = *this;
@@ -232,6 +254,12 @@ struct Polynomial
         return poly * s;
     }
 
+    Polynomial& operator *=(double s)
+    {
+        *this = *this * s;
+        return *this;
+    }
+
     Polynomial operator /(double s) const
     {
         Polynomial ret = *this;
@@ -239,6 +267,12 @@ struct Polynomial
             c /= s;
         ret.check_degree();
         return ret;
+    }
+
+    Polynomial& operator /=(double s)
+    {
+        *this = *this / s;
+        return *this;
     }
 
     Polynomial operator *(const Polynomial &p) const
@@ -265,43 +299,55 @@ struct Polynomial
         return new_p;
     }
 
-    // Polynomial operator +(Polynomial poly) const
-    // {
-    //     Polynomial ret = *this;
-    //     if(ret.degree() < poly.degree())
-    //     {
-    //         ret.swap(poly);
-    //     }
+    Polynomial operator +(Polynomial poly) const
+    {
+        Polynomial ret = *this;
+        if(ret.degree() < poly.degree())
+        {
+            ret.swap(poly);
+        }
         
-    //     for (auto [it, rit] =
-    //             std::tuple{poly._coeff.rbegin(), ret._coeff.rbegin()};
-    //             it != poly._coeff.rend(); it++, rit++)
-    //     {
-    //         *rit += *it;
-    //     }
-    //     ret.check_degree();
-    //     return ret;
-    // }
+        for (auto [it, rit] =
+                std::tuple{poly._coeff.rbegin(), ret._coeff.rbegin()};
+                it != poly._coeff.rend(); it++, rit++)
+        {
+            *rit += *it;
+        }
+        ret.check_degree();
+        return ret;
+    }
 
-    // Polynomial operator -(Polynomial poly) const
-    // {
-    //     Polynomial ret = *this;
-    //     int pm = 1;
-    //     if(ret.degree() < poly.degree())
-    //     {
-    //         ret.swap(poly);
-    //         pm = -1;
-    //     }
+    Polynomial& operator +=(Polynomial poly)
+    {
+        *this = *this + poly;
+        return *this;
+    }
+
+    Polynomial operator -(Polynomial poly) const
+    {
+        Polynomial ret = *this;
+        int pm = 1;
+        if(ret.degree() < poly.degree())
+        {
+            ret.swap(poly);
+            pm = -1;
+        }
         
-    //     for (auto [it, rit] =
-    //             std::tuple{poly._coeff.rbegin(), ret._coeff.rbegin()};
-    //             it != poly._coeff.rend(); it++, rit++)
-    //     {
-    //         *rit -= *it;
-    //     }
-    //     ret.check_degree();
-    //     return pm*ret;
-    // }
+        for (auto [it, rit] =
+                std::tuple{poly._coeff.rbegin(), ret._coeff.rbegin()};
+                it != poly._coeff.rend(); it++, rit++)
+        {
+            *rit -= *it;
+        }
+        ret.check_degree();
+        return pm*ret;
+    }
+
+    Polynomial& operator -=(Polynomial poly)
+    {
+        *this = *this - poly;
+        return *this;
+    }
 
     friend bool operator==(const Polynomial& lhs, const Polynomial& rhs)
     {
@@ -354,4 +400,4 @@ std::ostream& operator << (std::ostream& os, const Polynomial& v)
 
 -------------------------------
 
-Updated on 2022-10-06 at 00:27:03 +0900
+Updated on 2022-10-08 at 23:36:07 +0900

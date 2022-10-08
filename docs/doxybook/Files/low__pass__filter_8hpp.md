@@ -28,43 +28,26 @@ title: include/cpp_robotics/filter/low_pass_filter.hpp
 #pragma once
 
 #include <cmath>
+#include <cpp_robotics/system/discrete_transfer_function.hpp>
 
 namespace cpp_robotics
 {
 
-// G(s) = Ts / (Ts + 1)
-// 双一次変換で離散化したもの
-class LowPassFilter
+// G(s) = 1 / (Ts + 1)
+class LowPassFilter : public DiscreteTransferFunction
 {
 public:
-    LowPassFilter(double w, double dt):
-        w_(w), T_(1/w), dt_(dt)
+    LowPassFilter(double tau, double dt):
+        tau_(tau)
     {
-
+        set_continuous({1}, {tau_, 1}, dt);
     }
 
-    void reset(double val = 0)
-    {
-        y1_ = val;
-        u1_ = val;
-    }
-    
-    double filtering(double u)
-    {
-        double y = ( (2*T_-dt_)*y1_ + dt_*(u+u1_) ) /(2*T_ + dt_);
+    double filtering(double u) { return responce(u); } 
 
-        y1_ = y;
-        u1_ = u;
-        return y;
-    }
-
-    double w() const { return w_; }
-    double dt() const {return dt_; }
+    double tau() const { return tau_; }
 private:
-    const double w_;
-    const double T_;
-    const double dt_;
-    double y1_, u1_ = 0;
+    const double tau_;
 };
 
 }
@@ -73,4 +56,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-10-06 at 00:27:03 +0900
+Updated on 2022-10-08 at 23:36:07 +0900

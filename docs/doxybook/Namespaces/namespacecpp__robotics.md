@@ -40,6 +40,7 @@ title: cpp_robotics
 | class | **[cpp_robotics::Differentiator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Differentiator/)** <br>疑似微分器  |
 | class | **[cpp_robotics::Discret](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/)** <br>状態空間モデルを双一次変換で離散化する  |
 | class | **[cpp_robotics::DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/)** <br>z空間の伝達関数  |
+| class | **[cpp_robotics::DiscretTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscretTransferFunction/)**  |
 | class | **[cpp_robotics::DubinsPath](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DubinsPath/)** <br>Dubinsパス  |
 | class | **[cpp_robotics::ExtendedKalmanFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ExtendedKalmanFilter/)**  |
 | class | **[cpp_robotics::FilterConnector](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1FilterConnector/)**  |
@@ -173,11 +174,13 @@ title: cpp_robotics
 |                | Name           |
 | -------------- | -------------- |
 | template <class DerType \> <br>auto | **[make_auto_diff_vector](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-make-auto-diff-vector)**(const size_t & dim, const std::optional< DerType > & x =std::nullopt) |
-| template <size_t DIM\> <br>std::pair< Eigen::Matrix< double, DIM, DIM >, Eigen::Matrix< double, DIM, 1 > > | **[calcu_transformatoin](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-calcu-transformatoin)**(std::vector< Eigen::Matrix< double, DIM, 1 >> dest, std::vector< Eigen::Matrix< double, DIM, 1 >> fixed) |
-| template <size_t DIM\> <br>std::tuple< std::vector< Eigen::Matrix< double, DIM, 1 > >, size_t > | **[icp](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-icp)**(std::vector< Eigen::Matrix< double, DIM, 1 >> dest, std::vector< Eigen::Matrix< double, DIM, 1 >> fixed, size_t max_iter =100) |
+| template <int DIM\> <br>std::pair< Eigen::Matrix< double, DIM, DIM >, Eigen::Matrix< double, DIM, 1 > > | **[calcu_transformatoin](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-calcu-transformatoin)**(std::vector< Eigen::Matrix< double, DIM, 1 >> dest, std::vector< Eigen::Matrix< double, DIM, 1 >> fixed) |
+| template <int DIM\> <br>std::tuple< std::vector< Eigen::Matrix< double, DIM, 1 > >, Eigen::MatrixXd, size_t > | **[icp](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-icp)**(std::vector< Eigen::Matrix< double, DIM, 1 >> dest, const std::vector< Eigen::Matrix< double, DIM, 1 >> & fixed, double eps =1e-4, size_t max_iter =100) |
 | double | **[mahalanobis](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-mahalanobis)**(const Eigen::VectorXd & a, const Eigen::VectorXd & b, const Eigen::MatrixXd cov_inv)<br>マハラノビス距離の計算  |
 | [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[poly_regression](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-poly-regression)**(const std::vector< double > & x, const std::vector< double > & y, const size_t degree)<br>回帰曲線  |
 | template <typename Real  =double\> <br>Real | **[gererate_random](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-gererate-random)**()<br>0.0〜1.0までの一様分布の乱数を生成する  |
+| Eigen::MatrixXd | **[homogeneous](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-homogeneous)**(const Eigen::MatrixXd & R, const Eigen::VectorXd & T) |
+| Eigen::VectorXd | **[transform_by_homogeneous](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-transform-by-homogeneous)**(const Eigen::MatrixXd & H, const Eigen::VectorXd & x) |
 | std::optional< Eigen::MatrixXd > | **[solve_riccati_arimoto_potter](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-solve-riccati-arimoto-potter)**(const Eigen::MatrixXd & A, const Eigen::MatrixXd & B, const Eigen::MatrixXd & Q, const Eigen::MatrixXd & R)<br>有本-ポッターの方法によるリカッチ方程式の解法  |
 | Eigen::MatrixXd | **[lqr](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lqr)**(const Eigen::MatrixXd & A, const Eigen::MatrixXd & B, const Eigen::MatrixXd & Q, const Eigen::MatrixXd & R) |
 | Eigen::MatrixXd | **[controllability_matrix](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-controllability-matrix)**(const Eigen::MatrixXd & A, const Eigen::VectorXd & B)<br>可制御性行列の計算  |
@@ -260,9 +263,8 @@ title: cpp_robotics
 | template <typename T1 ,class UnitDim1 ,class Prefix1 ,int Tag1,typename T2 ,class UnitDim2 ,class Prefix2 ,int Tag2\> <br>constexpr auto | **[operator/](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator/)**(const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T1, UnitDim1, Prefix1, Tag1 > & lhl, const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T2, UnitDim2, Prefix2, Tag2 > & rhl) |
 | template <typename T ,class UnitDim ,class Prefix1 ,class Prefix2 ,int Tag\> <br>constexpr auto | **[operator+](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator+)**(const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDim, Prefix1, Tag > & lhl, const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDim, Prefix2, Tag > & rhl) |
 | template <typename T ,class UnitDim ,class Prefix1 ,class Prefix2 ,int Tag\> <br>constexpr auto | **[operator-](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator-)**(const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDim, Prefix1, Tag > & lhl, const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDim, Prefix2, Tag > & rhl) |
-| template <class ForwardIterator \> <br>constexpr ForwardIterator | **[shift_left](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-shift-left)**(ForwardIterator first, ForwardIterator last, typename std::iterator_traits< ForwardIterator >::difference_type n)<br>C++17のstd::shift_leftの自前実装 C++14で動作する  |
-| template <class ForwardIterator \> <br>constexpr ForwardIterator | **[shift_right](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-shift-right)**(ForwardIterator first, ForwardIterator last, typename std::iterator_traits< ForwardIterator >::difference_type n)<br>C++17のstd::shift_rightの自前実装 C++14で動作する  |
 | template <typename... Args\> <br>std::string | **[c_format](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-c-format)**(const std::string & format, Args const &... args)<br>printfと同様の操作でstd::stringを得る  |
+| template <typename... Args\> <br>void | **[print](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-print)**(const std::string & format, Args const &... args)<br>std::coutにprintfの形式でフォーマットされた文字列を出力する  |
 | template <typename T \> <br>constexpr bool | **[in_range_open](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-in-range-open)**(T x, T min, T max) |
 | template <typename T \> <br>constexpr bool | **[in_range](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-in-range)**(T x, T min, T max) |
 | template <typename T \> <br>constexpr int | **[sgn](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-sgn)**(T x) |
@@ -277,9 +279,9 @@ title: cpp_robotics
 | constexpr float | **[lerp](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lerp)**(const float a, const float b, const float t) |
 | constexpr float | **[approx_eq](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-approx-eq)**(const float a, const float b) |
 | constexpr float | **[approx_zero](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-approx-zero)**(const float a) |
-| std::vector< double > | **[arrange](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-arrange)**(double start, double end, double step =1.0) |
-| std::vector< double > | **[linspace](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-linspace)**(double start, double end, size_t n =100) |
-| std::vector< double > | **[logspace](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-logspace)**(double start, double end, size_t n =100) |
+| std::vector< double > | **[arrange](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-arrange)**(double start, double end, double step =1.0)<br>startからendまでstepずつ増える点のベクトルを返す  |
+| std::vector< double > | **[linspace](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-linspace)**(double start, double end, size_t n =100)<br>startからendまでをn分割した点のベクトルを返す  |
+| std::vector< double > | **[logspace](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-logspace)**(double start, double end, size_t n =100)<br>10^startから10^endまで対数的に等間隔なn個の点のベクトルを返す  |
 | std::vector< double > | **[funcspace](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-funcspace)**(std::function< double(size_t, size_t)> f, size_t n =100) |
 | std::vector< double > | **[sinspace](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-sinspace)**(double a, double b, size_t n =100) |
 
@@ -911,7 +913,7 @@ static auto make_auto_diff_vector(
 ### function calcu_transformatoin
 
 ```cpp
-template <size_t DIM>
+template <int DIM>
 static std::pair< Eigen::Matrix< double, DIM, DIM >, Eigen::Matrix< double, DIM, 1 > > calcu_transformatoin(
     std::vector< Eigen::Matrix< double, DIM, 1 >> dest,
     std::vector< Eigen::Matrix< double, DIM, 1 >> fixed
@@ -922,10 +924,11 @@ static std::pair< Eigen::Matrix< double, DIM, DIM >, Eigen::Matrix< double, DIM,
 ### function icp
 
 ```cpp
-template <size_t DIM>
-static std::tuple< std::vector< Eigen::Matrix< double, DIM, 1 > >, size_t > icp(
+template <int DIM>
+static std::tuple< std::vector< Eigen::Matrix< double, DIM, 1 > >, Eigen::MatrixXd, size_t > icp(
     std::vector< Eigen::Matrix< double, DIM, 1 >> dest,
-    std::vector< Eigen::Matrix< double, DIM, 1 >> fixed,
+    const std::vector< Eigen::Matrix< double, DIM, 1 >> & fixed,
+    double eps =1e-4,
     size_t max_iter =100
 )
 ```
@@ -988,6 +991,26 @@ static Real gererate_random()
 
 
 **Return**: Real 乱数 
+
+### function homogeneous
+
+```cpp
+static Eigen::MatrixXd homogeneous(
+    const Eigen::MatrixXd & R,
+    const Eigen::VectorXd & T
+)
+```
+
+
+### function transform_by_homogeneous
+
+```cpp
+static Eigen::VectorXd transform_by_homogeneous(
+    const Eigen::MatrixXd & H,
+    const Eigen::VectorXd & x
+)
+```
+
 
 ### function solve_riccati_arimoto_potter
 
@@ -2303,60 +2326,6 @@ constexpr auto operator-(
 ```
 
 
-### function shift_left
-
-```cpp
-template <class ForwardIterator >
-constexpr ForwardIterator shift_left(
-    ForwardIterator first,
-    ForwardIterator last,
-    typename std::iterator_traits< ForwardIterator >::difference_type n
-)
-```
-
-C++17のstd::shift_leftの自前実装 C++14で動作する 
-
-**Parameters**: 
-
-  * **first** 
-  * **last** 
-  * **n** 
-
-
-**Template Parameters**: 
-
-  * **ForwardIterator** 
-
-
-**Return**: constexpr ForwardIterator 
-
-### function shift_right
-
-```cpp
-template <class ForwardIterator >
-constexpr ForwardIterator shift_right(
-    ForwardIterator first,
-    ForwardIterator last,
-    typename std::iterator_traits< ForwardIterator >::difference_type n
-)
-```
-
-C++17のstd::shift_rightの自前実装 C++14で動作する 
-
-**Parameters**: 
-
-  * **first** 
-  * **last** 
-  * **n** 
-
-
-**Template Parameters**: 
-
-  * **ForwardIterator** 
-
-
-**Return**: constexpr ForwardIterator 
-
 ### function c_format
 
 ```cpp
@@ -2381,6 +2350,29 @@ printfと同様の操作でstd::stringを得る
 
 
 **Return**: std::string 
+
+### function print
+
+```cpp
+template <typename... Args>
+void print(
+    const std::string & format,
+    Args const &... args
+)
+```
+
+std::coutにprintfの形式でフォーマットされた文字列を出力する 
+
+**Parameters**: 
+
+  * **format** 
+  * **args** 
+
+
+**Template Parameters**: 
+
+  * **Args** 
+
 
 ### function in_range_open
 
@@ -2626,6 +2618,16 @@ static std::vector< double > arrange(
 )
 ```
 
+startからendまでstepずつ増える点のベクトルを返す 
+
+**Parameters**: 
+
+  * **start** 
+  * **end** 
+  * **step** 
+
+
+**Return**: std::vector<double> 
 
 ### function linspace
 
@@ -2637,6 +2639,16 @@ static std::vector< double > linspace(
 )
 ```
 
+startからendまでをn分割した点のベクトルを返す 
+
+**Parameters**: 
+
+  * **start** 
+  * **end** 
+  * **n** 
+
+
+**Return**: std::vector<double> 
 
 ### function logspace
 
@@ -2648,6 +2660,16 @@ static std::vector< double > logspace(
 )
 ```
 
+10^startから10^endまで対数的に等間隔なn個の点のベクトルを返す 
+
+**Parameters**: 
+
+  * **start** 
+  * **end** 
+  * **n** 
+
+
+**Return**: std::vector<double> 
 
 ### function funcspace
 
@@ -2658,6 +2680,14 @@ static std::vector< double > funcspace(
 )
 ```
 
+
+**Parameters**: 
+
+  * **f** 
+  * **n** 
+
+
+**Return**: std::vector<double> 
 
 ### function sinspace
 
@@ -2894,4 +2924,4 @@ constexpr float gfcm2mNm = (gfm2Nm / 100);
 
 -------------------------------
 
-Updated on 2022-10-06 at 00:27:03 +0900
+Updated on 2022-10-08 at 23:36:07 +0900

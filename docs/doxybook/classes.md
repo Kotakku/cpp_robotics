@@ -27,7 +27,9 @@ title: Classes
     * **class [DeltaRobotIk](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DeltaRobotIk/)** <br>デルタロボットの逆運動学 
     * **class [Differentiator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Differentiator/)** <br>疑似微分器 
     * **class [Discret](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/)** <br>状態空間モデルを双一次変換で離散化する 
+    * **class [DiscretTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscretTransferFunction/)** 
     * **class [DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/)** <br>z空間の伝達関数 
+        * **class [CircularBuffer](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction_1_1CircularBuffer/)** 
     * **class [DubinsPath](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DubinsPath/)** <br>Dubinsパス 
         * **struct [PlanningResult](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DubinsPath_1_1PlanningResult/)** 
     * **class [ExtendedKalmanFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ExtendedKalmanFilter/)** 
@@ -122,4 +124,4 @@ title: Classes
 
 -------------------------------
 
-Updated on 2022-10-06 at 00:27:03 +0900
+Updated on 2022-10-08 at 23:36:07 +0900

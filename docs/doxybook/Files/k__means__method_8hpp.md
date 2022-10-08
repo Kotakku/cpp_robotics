@@ -27,7 +27,6 @@ title: include/cpp_robotics/algorithm/k_means_method.hpp
 ```cpp
 #pragma once
 
-#include <cpp_robotics/algorithm/kdtree.hpp>
 #include <numeric>
 #include <algorithm>
 
@@ -123,4 +122,4 @@ Eigen::VectorXd KMeansMethod<Eigen::VectorXd>::get_zero_point(const Eigen::Vecto
 
 -------------------------------
 
-Updated on 2022-10-06 at 00:27:03 +0900
+Updated on 2022-10-08 at 23:36:07 +0900

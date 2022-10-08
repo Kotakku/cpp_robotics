@@ -22,6 +22,7 @@ title: include/cpp_robotics/system/time_responce.hpp
 #pragma once
 
 #include <tuple>
+#include "../utility/space.hpp"
 #include "./transfer_function.hpp"
 #include "./discrete_transfer_function.hpp"
 
@@ -84,4 +85,4 @@ static std::tuple<std::vector<double>, std::vector<double>> lsim(TransferFunctio
 
 -------------------------------
 
-Updated on 2022-10-06 at 00:27:03 +0900
+Updated on 2022-10-08 at 23:36:07 +0900

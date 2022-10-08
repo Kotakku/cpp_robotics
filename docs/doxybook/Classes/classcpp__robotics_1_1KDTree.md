@@ -24,7 +24,7 @@ k-d木  [More...](#detailed-description)
 |                | Name           |
 | -------------- | -------------- |
 | | **[KDTree](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-kdtree)**() =default |
-| | **[KDTree](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-kdtree)**(std::vector< [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > point) |
+| | **[KDTree](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-kdtree)**(std::vector< [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > point, size_t dimention) |
 | void | **[clear](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-clear)**() |
 | void | **[build](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-build)**(std::vector< [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > point) |
 | size_t | **[nn_search](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-nn-search)**(const [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) & point) const |
@@ -36,17 +36,10 @@ k-d木  [More...](#detailed-description)
 | std::vector< [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > | **[radius_search_points](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-radius-search-points)**(const [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) & point, double radius) const |
 | void | **[debug_node](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-debug-node)**() |
 
-## Public Attributes
-
-|                | Name           |
-| -------------- | -------------- |
-| constexpr size_t | **[dimention](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#variable-dimention)**  |
-
 ## Detailed Description
 
 ```cpp
-template <class POINT_T ,
-int DIM>
+template <class POINT_T >
 class cpp_robotics::KDTree;
 ```
 
@@ -62,7 +55,7 @@ k-d木
 ### using point_type
 
 ```cpp
-using cpp_robotics::KDTree< POINT_T, DIM >::point_type =  POINT_T;
+using cpp_robotics::KDTree< POINT_T >::point_type =  POINT_T;
 ```
 
 
@@ -79,7 +72,8 @@ KDTree() =default
 
 ```cpp
 inline KDTree(
-    std::vector< point_type > point
+    std::vector< point_type > point,
+    size_t dimention
 )
 ```
 
@@ -174,15 +168,6 @@ inline void debug_node()
 ```
 
 
-## Public Attributes Documentation
-
-### variable dimention
-
-```cpp
-static constexpr size_t dimention = DIM;
-```
-
-
 -------------------------------
 
-Updated on 2022-10-06 at 00:27:03 +0900
+Updated on 2022-10-08 at 23:36:07 +0900

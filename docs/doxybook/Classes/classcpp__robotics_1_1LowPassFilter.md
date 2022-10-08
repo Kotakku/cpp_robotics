@@ -13,15 +13,30 @@ summary: ローパスフィルター
 
 `#include <low_pass_filter.hpp>`
 
+Inherits from [cpp_robotics::DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/)
+
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[LowPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-lowpassfilter)**(double w, double dt)<br>Construct a new Low Pass Filter object.  |
-| void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-reset)**(double val =0) |
-| double | **[filtering](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-filtering)**(double u) |
-| double | **[w](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-w)**() const |
-| double | **[dt](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-dt)**() const |
+| | **[LowPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-lowpassfilter)**(double tau, double dt)<br>Construct a new Low Pass Filter object.  |
+| double | **[filtering](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-filtering)**(double u)<br>フィルタリングする  |
+| double | **[tau](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-tau)**() const<br>時定数の取得  |
+
+## Additional inherited members
+
+**Public Functions inherited from [cpp_robotics::DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/)**
+
+|                | Name           |
+| -------------- | -------------- |
+| | **[DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-discretetransferfunction)**() =default |
+| | **[DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-discretetransferfunction)**(std::vector< double > num_disc, std::vector< double > den_disc, const double dt) |
+| void | **[set_continuous](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-set-continuous)**(std::vector< double > num, std::vector< double > den, const double dt) |
+| void | **[set_discrite](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-set-discrite)**(std::vector< double > num_disc, std::vector< double > den_disc, const double dt) |
+| double | **[Ts](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-ts)**() const<br>サンプリング周期  |
+| virtual void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-reset)**(double state =0) |
+| double | **[responce](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-responce)**(double u) |
+
 
 ## Public Functions Documentation
 
@@ -29,7 +44,7 @@ summary: ローパスフィルター
 
 ```cpp
 inline LowPassFilter(
-    double w,
+    double tau,
     double dt
 )
 ```
@@ -38,17 +53,8 @@ Construct a new Low Pass Filter object.
 
 **Parameters**: 
 
-  * **w** 折れ点周波数[rad/s] 
+  * **tau** 時定数 
   * **dt** サンプリング周期 
-
-
-### function reset
-
-```cpp
-inline void reset(
-    double val =0
-)
-```
 
 
 ### function filtering
@@ -59,21 +65,25 @@ inline double filtering(
 )
 ```
 
+フィルタリングする 
 
-### function w
+**Parameters**: 
+
+  * **u** 
+
+
+**Return**: double 
+
+### function tau
 
 ```cpp
-inline double w() const
+inline double tau() const
 ```
 
+時定数の取得 
 
-### function dt
-
-```cpp
-inline double dt() const
-```
-
+**Return**: double 
 
 -------------------------------
 
-Updated on 2022-10-06 at 00:27:03 +0900
+Updated on 2022-10-08 at 23:36:07 +0900

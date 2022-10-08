@@ -28,6 +28,7 @@ title: include/cpp_robotics/system/discrete_transfer_function.hpp
 #pragma once
 
 #include <vector>
+#include <cpp_robotics/system/discret.hpp>
 
 namespace cpp_robotics
 {
@@ -38,6 +39,12 @@ public:
     DiscreteTransferFunction() = default;
     DiscreteTransferFunction(std::vector<double> num_disc, std::vector<double> den_disc, const double dt)
     {
+        set_discrite(num_disc, den_disc, dt);
+    }
+
+    void set_continuous(std::vector<double> num, std::vector<double> den, const double dt)
+    {
+        auto [num_disc, den_disc] = DiscretTransferFunction::discritize(num, den, dt);
         set_discrite(num_disc, den_disc, dt);
     }
 
@@ -54,49 +61,75 @@ public:
         y_.resize(den_.size()-1);
 
         dt_ = dt;
-    }
 
+        reset();
+    }
+    
     double Ts() const { return dt_; }
 
     virtual void reset(double state = 0)
     {
-        (void) state;
-
         for(auto &u : u_)
             u = 0;
         for(auto &y : y_)
-            y = 0;
+            y = state;
+        u_.reset_position();
+        y_.reset_position();
     }
 
     double responce(double u)
     {
         double y = 0;
-        u_.pop_back();
-        u_.insert(u_.begin(), u);
+        u_.insert_front(u);
 
         for(size_t i = 0; i < num_.size(); i++)
         {
-            y += num_[i]*u_[u_.size()-1-i];
+            y += num_[i]*u_.at_circular(i);
         }
 
         for(size_t i = 0; i < den_.size()-1; i++)
         {
-            y -= den_[i]*y_[y_.size()-1-i];
+            y -= den_[i+1]*y_.at_circular(i);
         }
+        y /= den_[0];
 
-        y /= den_.back();
-
-        y_.pop_back();
-        y_.insert(y_.begin(), y);
-
+        y_.insert_front(y);
         return y;
     }
 
 private:
+    template<typename T>
+    class CircularBuffer : public std::vector<T>
+    {
+    public:
+        void reset_position()
+        {
+            i = 0;
+        }
+
+        T& at_circular(size_t idx)
+        {
+            idx += i;
+            if(this->size() <= idx)
+                idx-=this->size();
+            return this->at(idx);
+        }
+
+        void insert_front(T val)
+        {
+            i += this->size()-1;
+            if(this->size() <= i)
+                i-=this->size();
+            this->at(i) = val;
+        }
+
+    private:
+        size_t i = 0;
+    };
     std::vector<double> num_;
     std::vector<double> den_;
-    std::vector<double> u_;
-    std::vector<double> y_;
+    CircularBuffer<double> u_;
+    CircularBuffer<double> y_;
     double dt_;
 };
 
@@ -106,4 +139,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-10-06 at 00:27:03 +0900
+Updated on 2022-10-08 at 23:36:07 +0900

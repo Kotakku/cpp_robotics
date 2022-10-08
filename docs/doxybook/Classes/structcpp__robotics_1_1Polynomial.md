@@ -17,6 +17,7 @@ summary: 多項式
 
 |                | Name           |
 | -------------- | -------------- |
+| | **[Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polynomial)**() =default |
 | | **[Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polynomial)**(std::initializer_list< double > coeff) |
 | | **[Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polynomial)**(const std::vector< double > & coeff) |
 | template <class IteratorType \> <br>| **[Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polynomial)**(IteratorType begin, IteratorType end) |
@@ -32,28 +33,41 @@ summary: 多項式
 | double | **[operator[]](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator[])**(size_t i) const |
 | void | **[check_degree](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-check-degree)**() |
 | double | **[evalute](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-evalute)**(double x) const |
-| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[polyder](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polyder)**(size_t i) const |
-| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[polyint](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-polyint)**(double C =0) const |
 | void | **[swap](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-swap)**([Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & poly) |
 | double | **[operator()](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator())**(double x) const |
 | [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator+](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator+)**() const |
 | [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator-](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator-)**() const |
 | [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator+](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator+)**(double s) const |
 | [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator-](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator-)**(double s) const |
-| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator*](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator*)**(double s) const |
-| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator/](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator/)**(double s) const |
-| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator*](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator*)**(const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & p) const |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & | **[operator+=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator+=)**(double s)<br>多項式の0次の項に値を加算する  |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & | **[operator-=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator-=)**(double s)<br>多項式の0次の項に値を減算する  |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator*](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator*)**(double s) const<br>多項式をs倍した多項式を返す  |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & | **[operator*=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator*=)**(double s)<br>自身をs倍する  |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator/](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator/)**(double s) const<br>多項式を1/s倍した多項式を返す  |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & | **[operator/=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator/=)**(double s)<br>自身を1/s倍する  |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator*](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator*)**(const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & p) const<br>多項式同士の積を取る  |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator+](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator+)**([Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) poly) const<br>多項式同士の和を取る  |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & | **[operator+=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator+=)**([Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) poly)<br>自身に他の多項式を加算する  |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator-](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator-)**([Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) poly) const |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & | **[operator-=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator-=)**([Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) poly)<br>自身に他の多項式を減算する  |
 | [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[expand](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-expand)**(std::vector< double > roots) |
 
 ## Friends
 
 |                | Name           |
 | -------------- | -------------- |
-| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator*](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#friend-operator*)**(double s, const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & poly)  |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator*](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#friend-operator*)**(double s, const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & poly) <br>多項式をs倍した多項式を返す  |
 | bool | **[operator==](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#friend-operator==)**(const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & lhs, const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & rhs)  |
 | bool | **[operator!=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#friend-operator!=)**(const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & lhs, const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & rhs)  |
 
 ## Public Functions Documentation
+
+### function Polynomial
+
+```cpp
+Polynomial() =default
+```
+
 
 ### function Polynomial
 
@@ -184,24 +198,6 @@ inline double evalute(
 ```
 
 
-### function polyder
-
-```cpp
-inline Polynomial polyder(
-    size_t i
-) const
-```
-
-
-### function polyint
-
-```cpp
-inline Polynomial polyint(
-    double C =0
-) const
-```
-
-
 ### function swap
 
 ```cpp
@@ -252,6 +248,40 @@ inline Polynomial operator-(
 ```
 
 
+### function operator+=
+
+```cpp
+inline Polynomial & operator+=(
+    double s
+)
+```
+
+多項式の0次の項に値を加算する 
+
+**Parameters**: 
+
+  * **s** 
+
+
+**Return**: [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)& 
+
+### function operator-=
+
+```cpp
+inline Polynomial & operator-=(
+    double s
+)
+```
+
+多項式の0次の項に値を減算する 
+
+**Parameters**: 
+
+  * **s** 
+
+
+**Return**: [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)& 
+
 ### function operator*
 
 ```cpp
@@ -260,6 +290,31 @@ inline Polynomial operator*(
 ) const
 ```
 
+多項式をs倍した多項式を返す 
+
+**Parameters**: 
+
+  * **s** 
+
+
+**Return**: [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)
+
+### function operator*=
+
+```cpp
+inline Polynomial & operator*=(
+    double s
+)
+```
+
+自身をs倍する 
+
+**Parameters**: 
+
+  * **s** 
+
+
+**Return**: [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)& 
 
 ### function operator/
 
@@ -269,6 +324,31 @@ inline Polynomial operator/(
 ) const
 ```
 
+多項式を1/s倍した多項式を返す 
+
+**Parameters**: 
+
+  * **s** 
+
+
+**Return**: [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)
+
+### function operator/=
+
+```cpp
+inline Polynomial & operator/=(
+    double s
+)
+```
+
+自身を1/s倍する 
+
+**Parameters**: 
+
+  * **s** 
+
+
+**Return**: [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)& 
 
 ### function operator*
 
@@ -278,6 +358,74 @@ inline Polynomial operator*(
 ) const
 ```
 
+多項式同士の積を取る 
+
+**Parameters**: 
+
+  * **p** 
+
+
+**Return**: [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)
+
+### function operator+
+
+```cpp
+inline Polynomial operator+(
+    Polynomial poly
+) const
+```
+
+多項式同士の和を取る 
+
+**Parameters**: 
+
+  * **poly** 
+
+
+**Return**: [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)
+
+### function operator+=
+
+```cpp
+inline Polynomial & operator+=(
+    Polynomial poly
+)
+```
+
+自身に他の多項式を加算する 
+
+**Parameters**: 
+
+  * **poly** 
+
+
+**Return**: [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)& 
+
+### function operator-
+
+```cpp
+inline Polynomial operator-(
+    Polynomial poly
+) const
+```
+
+
+### function operator-=
+
+```cpp
+inline Polynomial & operator-=(
+    Polynomial poly
+)
+```
+
+自身に他の多項式を減算する 
+
+**Parameters**: 
+
+  * **poly** 
+
+
+**Return**: [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)& 
 
 ### function expand
 
@@ -300,6 +448,15 @@ friend Polynomial operator*(
 );
 ```
 
+多項式をs倍した多項式を返す 
+
+**Parameters**: 
+
+  * **s** 
+  * **poly** 
+
+
+**Return**: [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)
 
 ### friend operator==
 
@@ -325,4 +482,4 @@ friend bool operator!=(
 
 -------------------------------
 
-Updated on 2022-10-06 at 00:27:03 +0900
+Updated on 2022-10-08 at 23:36:07 +0900

@@ -24,6 +24,7 @@ title: include/cpp_robotics/utility/cpp_support.hpp
 #include <string>
 #include <cstdio>
 #include <vector>
+#include <iostream>
 
 // platform
 #if defined(linux) || defined(__linux) || defined(__linux__)
@@ -54,10 +55,7 @@ title: include/cpp_robotics/utility/cpp_support.hpp
 
 #endif
 
-
-#ifdef CPP_ROBOTICS_CPP17_OR_GREATER
 #include <string_view>
-#endif // CPP_ROBOTICS_CPP17_OR_GREATER
 
 #ifdef CPP_ROBOTICS_CPP20_OR_GREATER
 #include <format>
@@ -65,49 +63,6 @@ title: include/cpp_robotics/utility/cpp_support.hpp
 
 namespace cpp_robotics
 {
-
-template <class ForwardIterator>
-constexpr ForwardIterator shift_left(ForwardIterator first,
-                                        ForwardIterator last,
-                                        typename std::iterator_traits<ForwardIterator>::difference_type n)
-{
-    if (n <= 0)
-        return last;
-    if (n >= last - first)
-        return first;
-
-    ForwardIterator it = first;
-    ForwardIterator nlast = std::prev(last, n);
-    while (it != nlast)
-    {
-        ForwardIterator nit = std::next(it, n);
-        *it = *nit;
-        it++;
-    }
-    return first + (last - first - n);
-}
-
-template <class ForwardIterator>
-constexpr ForwardIterator shift_right(ForwardIterator first,
-                                        ForwardIterator last,
-                                        typename std::iterator_traits<ForwardIterator>::difference_type n)
-{
-    if (n <= 0)
-        return first;
-    if (n >= last - first)
-        return last;
-
-    ForwardIterator it = std::prev(last, n);
-    ForwardIterator nfirst = std::prev(first, 1);
-    while (it != nfirst)
-    {
-        ForwardIterator nit = std::next(it, n);
-        *nit = *it;
-        it--;
-    }
-
-    return first + n;
-}
 
 template <typename... Args>
 std::string c_format(const std::string &format, Args const&... args)
@@ -120,10 +75,16 @@ std::string c_format(const std::string &format, Args const&... args)
 #pragma GCC diagnostic warning "-Wformat-security"
 }
 
+template <typename... Args>
+void print(const std::string &format, Args const&... args)
+{
+    std::cout << c_format(format, args...);
+}
+
 }
 ```
 
 
 -------------------------------
 
-Updated on 2022-10-06 at 00:27:03 +0900
+Updated on 2022-10-08 at 23:36:07 +0900
