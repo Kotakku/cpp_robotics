@@ -1,6 +1,7 @@
 #pragma once
 
 #include <tuple>
+#include "../utility/space.hpp"
 #include "./transfer_function.hpp"
 #include "./discrete_transfer_function.hpp"
 

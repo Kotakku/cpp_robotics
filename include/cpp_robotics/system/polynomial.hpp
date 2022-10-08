@@ -16,6 +16,8 @@ namespace cpp_robotics
  */
 struct Polynomial
 {
+    Polynomial() = default;
+
     Polynomial(std::initializer_list<double> coeff):
         _coeff(coeff.begin(), coeff.end()) {}
 
@@ -97,63 +99,69 @@ struct Polynomial
         return y;
     }
 
-    Polynomial polyder(size_t i) const
-    {
-        assert(degree() > 0);
+    // /**
+    //  * @brief 多項式をn階微分した多項式を返す
+    //  * 
+    //  * @param i 
+    //  * @return Polynomial 
+    //  */
+    // Polynomial polyder(size_t i) const
+    // {
+    //     assert(degree() > 0);
 
-        if(i == 0)
-            return *this;
-        if(i > degree())
-            return {0};
+    //     if(i == 0)
+    //         return *this;
+    //     if(i > degree())
+    //         return {0};
         
-        Polynomial dpol = *this;
+    //     Polynomial dpol = *this;
 
-        for(size_t c = 0; c < dpol.size(); c++)
-        {
-            if(c >= i)
-            {
-                size_t nc = 1;
-                for(size_t r = 0; r < i; r++)
-                {
-                    nc *= (c - r);
-                }
-                dpol[c] *= static_cast<double>(nc);
-            }
+    //     for(size_t c = 0; c < dpol.size(); c++)
+    //     {
+    //         if(c >= i)
+    //         {
+    //             size_t nc = 1;
+    //             for(size_t r = 0; r < i; r++)
+    //             {
+    //                 nc *= (c - r);
+    //             }
+    //             dpol[c] *= static_cast<double>(nc);
+    //         }
 
-        }
-        dpol._coeff.erase(dpol._coeff.begin(), dpol._coeff.begin()+i);
+    //     }
+    //     dpol._coeff.erase(dpol._coeff.begin(), dpol._coeff.begin()+i);
 
 
-        // size_t deg = dpol.degree();
-        // dpol._coeff.resize(dpol.size() - i);
+    //     // size_t deg = dpol.degree();
+    //     // dpol._coeff.resize(dpol.size() - i);
 
-        // for(size_t c = 0; c < dpol.size(); c++)
-        // {
-        //     size_t nc = 1;
-        //     for(size_t r = 0; r < i; r++)
-        //     {
-        //         nc *= (deg - c - r);
-        //     }
-        //     dpol[c] *= static_cast<double>(nc);
-        // }
+    //     // for(size_t c = 0; c < dpol.size(); c++)
+    //     // {
+    //     //     size_t nc = 1;
+    //     //     for(size_t r = 0; r < i; r++)
+    //     //     {
+    //     //         nc *= (deg - c - r);
+    //     //     }
+    //     //     dpol[c] *= static_cast<double>(nc);
+    //     // }
 
-        return dpol;
-    }
+    //     return dpol;
+    // }
 
-    Polynomial polyint(double C = 0) const
-    {
-        Polynomial ipol = *this;
+    // Polynomial polyint(double C = 0) const
+    // {
+    //     Polynomial ipol = *this;
         
-        for(size_t i = 0; i < ipol.size(); i++)
-        {
-            double ndeg = static_cast<double>(i + 1);
-            ipol[i] /= ndeg;
-        }
+    //     for(size_t i = 0; i < ipol.size(); i++)
+    //     {
+    //         double ndeg = static_cast<double>(i + 1);
+    //         ipol[i] /= ndeg;
+    //     }
 
-        ipol._coeff.insert(ipol._coeff.begin(), C);
+    //     ipol._coeff.insert(ipol._coeff.begin(), C);
 
-        return ipol;
-    }
+    //     return ipol;
+    // }
 
     void swap(Polynomial &poly)
     {
@@ -196,6 +204,38 @@ struct Polynomial
         return ret;
     }
 
+    /**
+     * @brief 多項式の0次の項に値を加算する
+     * 
+     * @param s 
+     * @return Polynomial& 
+     */
+    Polynomial& operator +=(double s)
+    {
+        this->at(this->degree()) += s;
+        this->check_degree();
+        return *this;
+    }
+
+    /**
+     * @brief 多項式の0次の項に値を減算する
+     * 
+     * @param s 
+     * @return Polynomial& 
+     */
+    Polynomial& operator -=(double s)
+    {
+        this->at(this->degree()) -= s;
+        this->check_degree();
+        return *this;
+    }
+
+    /**
+     * @brief 多項式をs倍した多項式を返す
+     * 
+     * @param s 
+     * @return Polynomial 
+     */
     Polynomial operator *(double s) const
     {
         Polynomial ret = *this;
@@ -205,11 +245,36 @@ struct Polynomial
         return ret;
     }
 
+    /**
+     * @brief 多項式をs倍した多項式を返す
+     * 
+     * @param s 
+     * @param poly 
+     * @return Polynomial 
+     */
     friend Polynomial operator *(double s, const Polynomial &poly)
     {
         return poly * s;
     }
 
+    /**
+     * @brief 自身をs倍する
+     * 
+     * @param s 
+     * @return Polynomial& 
+     */
+    Polynomial& operator *=(double s)
+    {
+        *this = *this * s;
+        return *this;
+    }
+
+    /**
+     * @brief 多項式を1/s倍した多項式を返す
+     * 
+     * @param s 
+     * @return Polynomial 
+     */
     Polynomial operator /(double s) const
     {
         Polynomial ret = *this;
@@ -219,6 +284,24 @@ struct Polynomial
         return ret;
     }
 
+    /**
+     * @brief 自身を1/s倍する
+     * 
+     * @param s 
+     * @return Polynomial& 
+     */
+    Polynomial& operator /=(double s)
+    {
+        *this = *this / s;
+        return *this;
+    }
+
+    /**
+     * @brief 多項式同士の積を取る
+     * 
+     * @param p 
+     * @return Polynomial 
+     */
     Polynomial operator *(const Polynomial &p) const
     {
         std::vector<double> new_coeff(this->degree() + p.degree() + 1);
@@ -243,43 +326,73 @@ struct Polynomial
         return new_p;
     }
 
-    // Polynomial operator +(Polynomial poly) const
-    // {
-    //     Polynomial ret = *this;
-    //     if(ret.degree() < poly.degree())
-    //     {
-    //         ret.swap(poly);
-    //     }
+    /**
+     * @brief 多項式同士の和を取る
+     * 
+     * @param poly 
+     * @return Polynomial 
+     */
+    Polynomial operator +(Polynomial poly) const
+    {
+        Polynomial ret = *this;
+        if(ret.degree() < poly.degree())
+        {
+            ret.swap(poly);
+        }
         
-    //     for (auto [it, rit] =
-    //             std::tuple{poly._coeff.rbegin(), ret._coeff.rbegin()};
-    //             it != poly._coeff.rend(); it++, rit++)
-    //     {
-    //         *rit += *it;
-    //     }
-    //     ret.check_degree();
-    //     return ret;
-    // }
+        for (auto [it, rit] =
+                std::tuple{poly._coeff.rbegin(), ret._coeff.rbegin()};
+                it != poly._coeff.rend(); it++, rit++)
+        {
+            *rit += *it;
+        }
+        ret.check_degree();
+        return ret;
+    }
 
-    // Polynomial operator -(Polynomial poly) const
-    // {
-    //     Polynomial ret = *this;
-    //     int pm = 1;
-    //     if(ret.degree() < poly.degree())
-    //     {
-    //         ret.swap(poly);
-    //         pm = -1;
-    //     }
+    /**
+     * @brief 自身に他の多項式を加算する
+     * 
+     * @param poly 
+     * @return Polynomial& 
+     */
+    Polynomial& operator +=(Polynomial poly)
+    {
+        *this = *this + poly;
+        return *this;
+    }
+
+    Polynomial operator -(Polynomial poly) const
+    {
+        Polynomial ret = *this;
+        int pm = 1;
+        if(ret.degree() < poly.degree())
+        {
+            ret.swap(poly);
+            pm = -1;
+        }
         
-    //     for (auto [it, rit] =
-    //             std::tuple{poly._coeff.rbegin(), ret._coeff.rbegin()};
-    //             it != poly._coeff.rend(); it++, rit++)
-    //     {
-    //         *rit -= *it;
-    //     }
-    //     ret.check_degree();
-    //     return pm*ret;
-    // }
+        for (auto [it, rit] =
+                std::tuple{poly._coeff.rbegin(), ret._coeff.rbegin()};
+                it != poly._coeff.rend(); it++, rit++)
+        {
+            *rit -= *it;
+        }
+        ret.check_degree();
+        return pm*ret;
+    }
+
+    /**
+     * @brief 自身に他の多項式を減算する
+     * 
+     * @param poly 
+     * @return Polynomial& 
+     */
+    Polynomial& operator -=(Polynomial poly)
+    {
+        *this = *this - poly;
+        return *this;
+    }
 
     friend bool operator==(const Polynomial& lhs, const Polynomial& rhs)
     {
