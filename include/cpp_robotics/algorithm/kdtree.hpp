@@ -15,15 +15,15 @@ namespace cpp_robotics
  * @tparam POINT_T データ型
  * @tparam DIM 次元サイズ
  */
-template<class POINT_T, int DIM>
+template<class POINT_T>
 class KDTree
 {
 public:
     using point_type = POINT_T;
-    static constexpr size_t dimention = DIM;
 
     KDTree() = default;
-    KDTree(std::vector<point_type> point)
+    KDTree(std::vector<point_type> point, size_t dimention):
+        dimention_(dimention)
     {
         build(point);
     }
@@ -126,7 +126,7 @@ private:
         if(start == end)
             return nullptr;
 
-        const size_t axis = depth % dimention;
+        const size_t axis = depth % dimention_;
         const size_t mid = (std::distance(start, end)-1) / 2;
 
         std::nth_element(start, start + mid, end, [&](size_t a, size_t b){
@@ -228,13 +228,14 @@ private:
     double distance(const point_type &a, const point_type &b) const
     {
         double len_sq = 0;
-        for(size_t i = 0; i < dimention; i++)
+        for(size_t i = 0; i < dimention_; i++)
         {
             len_sq += std::pow(a[i]-b[i], 2);
         }
         return std::sqrt(len_sq);
     }
 
+    const size_t dimention_;
     std::vector<point_type> points_;
     std::vector<size_t> pidx_;
     std::unique_ptr<Node> root_ = nullptr;
