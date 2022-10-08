@@ -19,31 +19,34 @@ find_package(Python3 COMPONENTS Development NumPy)
 #################### example ####################
 if("${CR_BUILD_EXAMPLE}" STREQUAL "ON")
 set(example_files
-  hello_world
-  controller/pid_vs_nctf
-  controller/lqr
-  controller/canonicalize
-  controller/place
-  system/step_responce
-  system/bode_nyquist
-  system/disc_tf
-  system/state_space_system
-  algorithm/kdtree_sample
-  algorithm/icp_sample
-  algorithm/mahalanobis
-  algorithm/random_example
+  # hello_world
+  # controller/pid_vs_nctf
+  # controller/lqr
+  # controller/canonicalize
+  # controller/place
 
-  optimize/optimize_scalar
-  optimize/optimize
-  optimize/optimize_rosenbrock
-  optimize/optimize_with_constraint
-  optimize/active_set_method_example
-  optimize/sqp_example
-  optimize/quadprog
+  filter/lpf
 
-  path_planning/dubins_path
+  # system/step_responce
+  # system/bode_nyquist
+  # system/disc_tf
+  # system/state_space_system
+  # algorithm/kdtree_sample
+  # algorithm/icp_sample
+  # algorithm/mahalanobis
+  # algorithm/random_example
 
-  units/unit_test
+  # optimize/optimize_scalar
+  # optimize/optimize
+  # optimize/optimize_rosenbrock
+  # optimize/optimize_with_constraint
+  # optimize/active_set_method_example
+  # optimize/sqp_example
+  # optimize/quadprog
+
+  # path_planning/dubins_path
+
+  # units/unit_test
 )
 
 foreach(example_file ${example_files})
@@ -58,13 +61,17 @@ endif()
 find_package(GTest REQUIRED)
 enable_testing()
 set(test_files
-  common/lib_test
+  # common/lib_test
   utility/singleton_test
 
   algorithm/poly_regression_test
   algorithm/random_test
   algorithm/k_means_test
   algorithm/auto_diff_test
+  algorithm/icp_test
+
+  system/polynomial_test
+  system/discret_tf_test
 
   filter/tf_filter_test
   filter/extended_kalman_filter_test
@@ -76,6 +83,7 @@ set(test_files
   arm_ik/xy_2deg_robot_test
 
   optimize/fmin_search_test
+  optimize/bfgs_test
 
 )
 include(GoogleTest)
