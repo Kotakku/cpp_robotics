@@ -1,6 +1,5 @@
 #pragma once
 
-#include <cpp_robotics/algorithm/kdtree.hpp>
 #include <numeric>
 #include <algorithm>
 

@@ -5,12 +5,13 @@
 
 #include <Eigen/Dense>
 #include "./kdtree.hpp"
+#include "./transfomation.hpp"
 
 namespace cpp_robotics
 {
 
 // destを回転させてsrcに重ねる時の回転量と移動量を計算する
-template<size_t DIM>
+template<int DIM>
 static std::pair<Eigen::Matrix<double, DIM, DIM>, Eigen::Matrix<double, DIM, 1>> 
     calcu_transformatoin(
         std::vector<Eigen::Matrix<double, DIM, 1>> dest,
@@ -20,6 +21,7 @@ static std::pair<Eigen::Matrix<double, DIM, DIM>, Eigen::Matrix<double, DIM, 1>>
     using vector_type = Eigen::Matrix<double, DIM, 1>;
     using matrix_type = Eigen::Matrix<double, DIM, DIM>;
 
+    const size_t dim = dest[0].size();
     const size_t len = fixed.size();
 
     // detrend
@@ -34,21 +36,6 @@ static std::pair<Eigen::Matrix<double, DIM, DIM>, Eigen::Matrix<double, DIM, 1>>
         mean_dest += v/static_cast<double>(len);
     for(auto & v : dest)
         v -= mean_dest;
-
-    // std::cout << "mean_fixed" << std::endl;
-    // std::cout << mean_fixed.transpose() << std::endl;
-    // std::cout << "mean_dest" << std::endl;
-    // std::cout << mean_dest.transpose() << std::endl;
-    
-    // for(size_t i = 0; i < len; i++)
-    // {
-    //     std::cout << fixed[i].transpose() << std::endl;
-    // }
-
-    // for(size_t i = 0; i < len; i++)
-    // {
-    //     std::cout << dest[i].transpose() << std::endl;
-    // }
 
     // 回転量と移動量を求める
     Eigen::Matrix<double, DIM, DIM> H = Eigen::Matrix<double, DIM, DIM>::Zero();
@@ -67,48 +54,47 @@ static std::pair<Eigen::Matrix<double, DIM, DIM>, Eigen::Matrix<double, DIM, 1>>
 
 // Todo: R, Tを返すようにする
 // Todo: 終了条件つける
-template<size_t DIM>
-static std::tuple<std::vector<Eigen::Matrix<double, DIM, 1>>, size_t> 
+template<int DIM>
+static std::tuple<std::vector<Eigen::Matrix<double, DIM, 1>>, Eigen::MatrixXd, size_t> 
     icp(
         std::vector<Eigen::Matrix<double, DIM, 1>> dest,
-        std::vector<Eigen::Matrix<double, DIM, 1>> fixed,
+        const std::vector<Eigen::Matrix<double, DIM, 1>> &fixed,
+        double eps = 1e-4,
         size_t max_iter = 100) 
 {
-    KDTree<Eigen::Matrix<double, DIM, 1>, DIM> kdtree(fixed);
+    const size_t dim = dest[0].size();
+    KDTree<Eigen::Matrix<double, DIM, 1>> kdtree(fixed, dim);
+    Eigen::MatrixXd H = Eigen::MatrixXd::Identity(dim+1, dim+1);
 
-    auto old_dest = dest;
     size_t i = 0;
     for(; i < max_iter; i++)
     {
+        // 点群現在の状態で点群の対応を取る
         auto nerghbor_idx = kdtree.nn_search(dest);
-
-        decltype(fixed) target(nerghbor_idx.size());
+        std::vector<Eigen::Matrix<double, DIM, 1>> target(nerghbor_idx.size());
         for(size_t j = 0; j < nerghbor_idx.size(); j++)
         {
+            // std::cout << nerghbor_idx[j] << std::endl;
             target[j] = fixed[nerghbor_idx[j]];
-
-            // std::cout << dest[j].transpose() << ",    " << target[j].transpose() << std::endl;
-            // std::cout << j << " -> " << nerghbor_idx[j] << std::endl;
+            // target[j] = fixed[j]; // debug
         }
 
-        auto [R, T] = calcu_transformatoin<DIM>(dest, target);
+        // 点群の対応で移動量を計算する
+        auto [R, T] = calcu_transformatoin(dest, target);
 
-        std::cout << "R = " << std::endl;
-        std::cout << R << std::endl << std::endl;
-        std::cout << "T = " << std::endl;
-        std::cout << T << std::endl << std::endl;
-        
+        // 移動させる
         for(size_t j = 0; j < dest.size(); j++)
         {
             dest[j] = R*dest[j] + T;
         }
 
-        if(0)
-            break;
+        // homogeneous transformation行列の更新
+        Eigen::MatrixXd Ht = homogeneous(R, T);
+        H *= Ht;
 
-        old_dest = dest;
+        // 収束判定
     }
-    return {dest, i};
+    return {dest, H, i};
 }
 
 }
