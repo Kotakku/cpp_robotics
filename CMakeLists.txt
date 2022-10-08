@@ -25,7 +25,7 @@ set(example_files
   # controller/canonicalize
   # controller/place
 
-  filter/lpf
+  filter/lpf_step
 
   # system/step_responce
   # system/bode_nyquist
