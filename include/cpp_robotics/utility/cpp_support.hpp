@@ -3,6 +3,7 @@
 #include <string>
 #include <cstdio>
 #include <vector>
+#include <iostream>
 
 // platform
 #if defined(linux) || defined(__linux) || defined(__linux__)
@@ -33,10 +34,7 @@
 
 #endif
 
-
-#ifdef CPP_ROBOTICS_CPP17_OR_GREATER
 #include <string_view>
-#endif // CPP_ROBOTICS_CPP17_OR_GREATER
 
 #ifdef CPP_ROBOTICS_CPP20_OR_GREATER
 #include <format>
@@ -44,67 +42,6 @@
 
 namespace cpp_robotics
 {
-
-/**
- * @brief C++17のstd::shift_leftの自前実装 C++14で動作する
- * 
- * @tparam ForwardIterator 
- * @param first 
- * @param last 
- * @param n 
- * @return constexpr ForwardIterator 
- */
-template <class ForwardIterator>
-constexpr ForwardIterator shift_left(ForwardIterator first,
-                                        ForwardIterator last,
-                                        typename std::iterator_traits<ForwardIterator>::difference_type n)
-{
-    if (n <= 0)
-        return last;
-    if (n >= last - first)
-        return first;
-
-    ForwardIterator it = first;
-    ForwardIterator nlast = std::prev(last, n);
-    while (it != nlast)
-    {
-        ForwardIterator nit = std::next(it, n);
-        *it = *nit;
-        it++;
-    }
-    return first + (last - first - n);
-}
-
-/**
- * @brief C++17のstd::shift_rightの自前実装 C++14で動作する
- * 
- * @tparam ForwardIterator 
- * @param first 
- * @param last 
- * @param n 
- * @return constexpr ForwardIterator 
- */
-template <class ForwardIterator>
-constexpr ForwardIterator shift_right(ForwardIterator first,
-                                        ForwardIterator last,
-                                        typename std::iterator_traits<ForwardIterator>::difference_type n)
-{
-    if (n <= 0)
-        return first;
-    if (n >= last - first)
-        return last;
-
-    ForwardIterator it = std::prev(last, n);
-    ForwardIterator nfirst = std::prev(first, 1);
-    while (it != nfirst)
-    {
-        ForwardIterator nit = std::next(it, n);
-        *nit = *it;
-        it--;
-    }
-
-    return first + n;
-}
 
 /**
  * @brief printfと同様の操作でstd::stringを得る
@@ -123,6 +60,19 @@ std::string c_format(const std::string &format, Args const&... args)
     std::snprintf(&buf[0], len + 1, format.c_str(), args...);
     return std::string{&buf[0], &buf[0] + len};
 #pragma GCC diagnostic warning "-Wformat-security"
+}
+
+/**
+ * @brief std::coutにprintfの形式でフォーマットされた文字列を出力する
+ * 
+ * @tparam Args 
+ * @param format 
+ * @param args 
+ */
+template <typename... Args>
+void print(const std::string &format, Args const&... args)
+{
+    std::cout << c_format(format, args...);
 }
 
 }

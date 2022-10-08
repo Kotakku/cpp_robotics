@@ -8,6 +8,14 @@
 namespace cpp_robotics
 {
 
+/**
+ * @brief startからendまでstepずつ増える点のベクトルを返す
+ * 
+ * @param start 
+ * @param end 
+ * @param step 
+ * @return std::vector<double> 
+ */
 static std::vector<double> arrange(double start, double end, double step = 1.0)
 {
     std::vector<double> vec(std::floor( (end-start) / step ));
@@ -18,6 +26,14 @@ static std::vector<double> arrange(double start, double end, double step = 1.0)
     return vec;
 }
 
+/**
+ * @brief startからendまでをn分割した点のベクトルを返す
+ * 
+ * @param start 
+ * @param end 
+ * @param n 
+ * @return std::vector<double> 
+ */
 static std::vector<double> linspace(double start, double end, size_t n = 100)
 {
     std::vector<double> vec(n);
@@ -28,6 +44,14 @@ static std::vector<double> linspace(double start, double end, size_t n = 100)
     return vec;
 }
 
+/**
+ * @brief 10^startから10^endまで対数的に等間隔なn個の点のベクトルを返す
+ * 
+ * @param start 
+ * @param end 
+ * @param n 
+ * @return std::vector<double> 
+ */
 static std::vector<double> logspace(double start, double end, size_t n = 100)
 {
     std::vector<double> vec(n);
@@ -38,6 +62,13 @@ static std::vector<double> logspace(double start, double end, size_t n = 100)
     return vec;
 }
 
+/**
+ * @brief 
+ * 
+ * @param f 
+ * @param n 
+ * @return std::vector<double> 
+ */
 static std::vector<double> funcspace(std::function<double(size_t, size_t)> f, size_t n = 100)
 {
     std::vector<double> vec(n);
