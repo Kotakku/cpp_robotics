@@ -24,7 +24,7 @@ title: Files
             * **file [include/cpp_robotics/algorithm/poly_regression.hpp](/cpp_robotics/doxybook/Files/poly__regression_8hpp/#file-poly-regression.hpp)** 
             * **file [include/cpp_robotics/algorithm/random.hpp](/cpp_robotics/doxybook/Files/random_8hpp/#file-random.hpp)** 
             * **file [include/cpp_robotics/algorithm/state_machine.hpp](/cpp_robotics/doxybook/Files/state__machine_8hpp/#file-state-machine.hpp)** 
-            * **file [include/cpp_robotics/algorithm/transfomation.hpp](/cpp_robotics/doxybook/Files/transfomation_8hpp/#file-transfomation.hpp)** 
+            * **file [include/cpp_robotics/algorithm/transformation.hpp](/cpp_robotics/doxybook/Files/transformation_8hpp/#file-transformation.hpp)** 
         * **dir [include/cpp_robotics/arm_ik](/cpp_robotics/doxybook/Files/dir_7e879dbdc5c9edf53cad9d774885e9a7/#dir-include/cpp-robotics/arm-ik)** 
             * **file [include/cpp_robotics/arm_ik/delta_robot.hpp](/cpp_robotics/doxybook/Files/delta__robot_8hpp/#file-delta-robot.hpp)** 
             * **file [include/cpp_robotics/arm_ik/xy_2deg_robot.hpp](/cpp_robotics/doxybook/Files/xy__2deg__robot_8hpp/#file-xy-2deg-robot.hpp)** 
@@ -45,6 +45,7 @@ title: Files
         * **dir [include/cpp_robotics/filter](/cpp_robotics/doxybook/Files/dir_d46e09745d41c5a7827c5b81f13e5fde/#dir-include/cpp-robotics/filter)** 
             * **file [include/cpp_robotics/filter/acceleration_limit_filter.hpp](/cpp_robotics/doxybook/Files/acceleration__limit__filter_8hpp/#file-acceleration-limit-filter.hpp)** 
             * **file [include/cpp_robotics/filter/band_pass_filter.hpp](/cpp_robotics/doxybook/Files/band__pass__filter_8hpp/#file-band-pass-filter.hpp)** 
+            * **file [include/cpp_robotics/filter/butterworth_filter.hpp](/cpp_robotics/doxybook/Files/butterworth__filter_8hpp/#file-butterworth-filter.hpp)** 
             * **file [include/cpp_robotics/filter/delay_filter.hpp](/cpp_robotics/doxybook/Files/delay__filter_8hpp/#file-delay-filter.hpp)** 
             * **file [include/cpp_robotics/filter/differentiator.hpp](/cpp_robotics/doxybook/Files/differentiator_8hpp/#file-differentiator.hpp)** 
             * **file [include/cpp_robotics/filter/extended_kalman_filter.hpp](/cpp_robotics/doxybook/Files/extended__kalman__filter_8hpp/#file-extended-kalman-filter.hpp)** 
@@ -61,7 +62,6 @@ title: Files
             * **file [include/cpp_robotics/geometry/geometry.hpp](/cpp_robotics/doxybook/Files/geometry_8hpp/#file-geometry.hpp)** 
             * **file [include/cpp_robotics/geometry/geometry_stream.hpp](/cpp_robotics/doxybook/Files/geometry__stream_8hpp/#file-geometry-stream.hpp)** 
             * **file [include/cpp_robotics/geometry/shape.hpp](/cpp_robotics/doxybook/Files/shape_8hpp/#file-shape.hpp)** 
-            * **file [include/cpp_robotics/geometry/shape.ipp](/cpp_robotics/doxybook/Files/shape_8ipp/#file-shape.ipp)** 
         * **dir [include/cpp_robotics/motor](/cpp_robotics/doxybook/Files/dir_87a81676224789efbbd31189f8c15377/#dir-include/cpp-robotics/motor)** 
             * **file [include/cpp_robotics/motor/dc_motor_list.hpp](/cpp_robotics/doxybook/Files/dc__motor__list_8hpp/#file-dc-motor-list.hpp)** 
             * **file [include/cpp_robotics/motor/dc_motor_param.hpp](/cpp_robotics/doxybook/Files/dc__motor__param_8hpp/#file-dc-motor-param.hpp)** 
@@ -89,6 +89,7 @@ title: Files
             * **file [include/cpp_robotics/path_planning/dwa.hpp](/cpp_robotics/doxybook/Files/dwa_8hpp/#file-dwa.hpp)** 
             * **file [include/cpp_robotics/path_planning/frenet_frame.hpp](/cpp_robotics/doxybook/Files/frenet__frame_8hpp/#file-frenet-frame.hpp)** 
             * **file [include/cpp_robotics/path_planning/grid_path_planning_utils.hpp](/cpp_robotics/doxybook/Files/grid__path__planning__utils_8hpp/#file-grid-path-planning-utils.hpp)** 
+            * **file [include/cpp_robotics/path_planning/minimum_jerk_model.hpp](/cpp_robotics/doxybook/Files/minimum__jerk__model_8hpp/#file-minimum-jerk-model.hpp)** 
             * **file [include/cpp_robotics/path_planning/path_planning.hpp](/cpp_robotics/doxybook/Files/path__planning_8hpp/#file-path-planning.hpp)** 
             * **file [include/cpp_robotics/path_planning/spline.hpp](/cpp_robotics/doxybook/Files/spline_8hpp/#file-spline.hpp)** 
             * **file [include/cpp_robotics/path_planning/wave_propagation.hpp](/cpp_robotics/doxybook/Files/wave__propagation_8hpp/#file-wave-propagation.hpp)** 
@@ -126,4 +127,4 @@ title: Files
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:40 +0900

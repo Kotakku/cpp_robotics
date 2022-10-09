@@ -28,6 +28,7 @@ title: cpp_robotics
 | class | **[cpp_robotics::AngleRange](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AngleRange/)** <br>角度[rad]に対して範囲を指定する 複数の角度の範囲の合成をしたり逆を取ったりできる  |
 | class | **[cpp_robotics::AutoDiffAdaptor](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/)** <br>自動微分でヤコビアンを求めるクラス  |
 | class | **[cpp_robotics::BandPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1BandPassFilter/)** <br>バンドパスフィルタ  |
+| class | **[cpp_robotics::ButterworthFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ButterworthFilter/)** <br>バターワースフィルタ  |
 | class | **[cpp_robotics::CatumullRom2D](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRom2D/)** <br>Catumull曲線  |
 | struct | **[cpp_robotics::Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/)** <br>円クラス  |
 | struct | **[cpp_robotics::Constraint](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Constraint/)** <br>数理最適問題に使用する制約クラス  |
@@ -71,6 +72,7 @@ title: cpp_robotics
 | struct | **[cpp_robotics::Rect](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Rect/)** <br>長方形クラス(回転は考えない)  |
 | class | **[cpp_robotics::Singleton](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Singleton/)** <br>シングルトンなオブジェクトを生成する  |
 | class | **[cpp_robotics::SisoFeedbackSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/)** <br>コントローラとシステムからなるSISOのフィードバックシステム  |
+| class | **[cpp_robotics::SISOPFC](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SISOPFC/)**  |
 | class | **[cpp_robotics::Spline2D](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/)** <br>2次元のスプライン曲線のインターフェイスクラス  |
 | class | **[cpp_robotics::SQP](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SQP/)** <br>[SQP]()(逐次二次計画法)  |
 | class | **[cpp_robotics::StateSpaceSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/)** <br>状態空間モデル  |
@@ -198,23 +200,17 @@ title: cpp_robotics
 | bool | **[intersect](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & a, const [Rect](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Rect/) & b) |
 | bool | **[intersect](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & a, const [Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/) & b) |
 | bool | **[intersect](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect)**(const [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/) & a, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & b) |
-| bool | **[intersect](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect)**(const [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/) & a, const [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/) & b) |
 | bool | **[intersect](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect)**(const [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/) & a, const [Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/) & b) |
 | bool | **[intersect](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect)**(const [Rect](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Rect/) & a, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & b) |
 | bool | **[intersect](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect)**(const [Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/) & a, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & b) |
-| bool | **[intersect](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect)**(const [Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/) & a, const [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/) & b) |
-| std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & a, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & b) |
-| std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & a, const [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/) & b) |
-| std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & a, const [Rect](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Rect/) & b) |
-| std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & a, const [Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/) & b) |
-| std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/) & a, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & b) |
-| std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/) & a, const [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/) & b) |
-| std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/) & a, const [Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/) & b) |
-| std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Rect](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Rect/) & a, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & b) |
-| std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/) & a, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & b) |
-| std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/) & a, const [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/) & b) |
-| bool | **[contain](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-contain)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & range, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & target) |
-| bool | **[contain](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-contain)**(const [Rect](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Rect/) & range, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & target) |
+| std::optional< std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & a, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & b) |
+| std::optional< std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & a, const [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/) & b) |
+| std::optional< std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & a, const [Rect](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Rect/) & b) |
+| std::optional< std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & a, const [Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/) & b) |
+| std::optional< std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/) & a, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & b) |
+| std::optional< std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/) & a, const [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/) & b) |
+| std::optional< std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Rect](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Rect/) & a, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & b) |
+| std::optional< std::vector< [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) > > | **[intersect_at](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at)**(const [Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/) & a, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & b) |
 | std::ostream & | **[operator<<](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator<<)**(std::ostream & os, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & v) |
 | std::ostream & | **[operator<<](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator<<)**(std::ostream & os, const [Vector3d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector3d) & v) |
 | std::ostream & | **[operator<<](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator<<)**(std::ostream & os, const [Vector4d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector4d) & v) |
@@ -241,6 +237,10 @@ title: cpp_robotics
 | std::tuple< bool, Eigen::VectorXd, size_t > | **[quasi_newton_method](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-quasi-newton-method)**(std::function< double(const Eigen::VectorXd &)> f, std::function< Eigen::VectorXd(const Eigen::VectorXd &)> grad, Eigen::VectorXd x_init, const double tol =1e-6, const size_t max_iter =1000)<br>準ニュートン法  |
 | std::tuple< bool, Eigen::VectorXd, size_t > | **[steepest_descent_method](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-steepest-descent-method)**(std::function< double(const Eigen::VectorXd &)> f, std::function< Eigen::VectorXd(const Eigen::VectorXd &)> grad, Eigen::VectorXd x_init, const double tol =1e-6, const size_t max_iter =1000)<br>最急降下法  |
 | std::vector< Eigen::Vector2i > | **[a_star](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-a-star)**(const Eigen::Vector2i & start, const Eigen::Vector2i & end, const Eigen::MatrixXi & map)<br>A*法  |
+| double | **[normalized_mjm_position](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalized-mjm-position)**(double t) |
+| double | **[normalized_mjm_velocity](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalized-mjm-velocity)**(double t) |
+| double | **[normalized_mjm_acceleration](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalized-mjm-acceleration)**(double t) |
+| double | **[normalized_mjm_jerk](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalized-mjm-jerk)**(double t) |
 | std::vector< Eigen::Vector2i > | **[wave_propagation](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-wave-propagation)**(const Eigen::Vector2i & start, const Eigen::Vector2i & end, const Eigen::MatrixXi & map)<br>Wave propagation法  |
 | std::tuple< std::vector< double >, std::vector< double > > | **[bode](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-bode)**([TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/) & tf, const std::vector< double > & omegas =[logspace](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-logspace)(-2, 2, 500), bool gain_db_mode =true, bool phase_deg_mode =true)<br>ボード線図の応答を計算する  |
 | std::tuple< std::vector< double >, std::vector< double > > | **[nyquist](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-nyquist)**([TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/) & tf, const std::vector< double > & omegas =[logspace](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-logspace)(-2, 2, 500))<br>ナイキスト線図の応答を計算する  |
@@ -249,11 +249,13 @@ title: cpp_robotics
 | void | **[set_controller](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-set-controller)**([SisoFeedbackSystem::func_list_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SisoFeedbackSystem_1_1func__list__t/) & fn, [PIDController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PIDController/) & controller) |
 | void | **[set_controller](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-set-controller)**([SisoFeedbackSystem::func_list_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SisoFeedbackSystem_1_1func__list__t/) & fn, [NctfController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NctfController/) & controller) |
 | void | **[set_system](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-set-system)**([SisoFeedbackSystem::func_list_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SisoFeedbackSystem_1_1func__list__t/) & fn, [TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/) & system) |
-| std::tuple< std::vector< double >, std::vector< double > > | **[impluse](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-impluse)**([TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/) & sys, double time)<br>インパルス応答を求める  |
+| std::tuple< std::vector< double >, std::vector< double > > | **[impulse](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-impulse)**(const std::function< double(double)> & sys, double dt, double time)<br>インパルス応答を求める  |
+| template <class SysType ,typename std::enable_if< internal::is_system_class< SysType >::value >::type *  =nullptr\> <br>std::tuple< std::vector< double >, std::vector< double > > | **[impulse](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-impulse)**(SysType & sys, double time) |
 | std::tuple< std::vector< double >, std::vector< double > > | **[step](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-step)**(const std::function< double(double)> & sys, double dt, double time, const double gain =1.0)<br>ステップ応答を求める  |
-| std::tuple< std::vector< double >, std::vector< double > > | **[step](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-step)**([TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/) & sys, double time, const double gain =1.0)<br>ステップ応答を求める  |
-| std::tuple< std::vector< double >, std::vector< double > > | **[step](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-step)**([DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/) & sys, double time, const double gain =1.0)<br>ステップ応答を求める  |
-| std::tuple< std::vector< double >, std::vector< double > > | **[lsim](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lsim)**([TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/) & sys, std::vector< double > input)<br>任意の入力による応答を求める  |
+| template <class SysType ,typename std::enable_if< internal::is_system_class< SysType >::value >::type *  =nullptr\> <br>std::tuple< std::vector< double >, std::vector< double > > | **[step](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-step)**(SysType & sys, double time, const double gain =1.0) |
+| template <class FilterType ,typename std::enable_if< internal::is_pure_filter_class< FilterType >::value >::type *  =nullptr\> <br>std::tuple< std::vector< double >, std::vector< double > > | **[step](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-step)**(FilterType & filter, double time, const double gain =1.0) |
+| std::tuple< std::vector< double >, std::vector< double > > | **[lsim](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lsim)**(const std::function< double(double)> & sys, double dt, const std::vector< double > & input)<br>任意の入力による応答を求める  |
+| template <class SysType ,typename std::enable_if< internal::is_system_class< SysType >::value >::type *  =nullptr\> <br>std::tuple< std::vector< double >, std::vector< double > > | **[lsim](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lsim)**(SysType & sys, std::vector< double > input) |
 | template <class UnitDimType ,int FromTag,int ToTag,bool IsNormalTag =tag::is_normal_tag<FromTag>::value && tag::is_normal_tag<ToTag>::value\> <br>constexpr double | **[conv_factor](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-conv-factor)**() |
 | template <typename T1 ,typename T2 ,class UnitDim ,class Prefix ,int Tag\> <br>constexpr auto | **[operator*](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator*)**(const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T1, UnitDim, [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/), Tag > & l_value, const T2 & r_value) |
 | template <typename T1 ,typename T2 ,class UnitDim ,class Prefix ,int Tag\> <br>constexpr auto | **[operator*](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator*)**(const T1 & l_value, const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T2, UnitDim, [Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/), Tag > & r_value) |
@@ -268,17 +270,17 @@ title: cpp_robotics
 | template <typename T \> <br>constexpr bool | **[in_range_open](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-in-range-open)**(T x, T min, T max) |
 | template <typename T \> <br>constexpr bool | **[in_range](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-in-range)**(T x, T min, T max) |
 | template <typename T \> <br>constexpr int | **[sgn](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-sgn)**(T x) |
-| template <typename T \> <br>constexpr float | **[radians](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-radians)**(T deg) |
-| template <typename T \> <br>constexpr float | **[degrees](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-degrees)**(T rad) |
-| float | **[normalize_angle_positive](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalize-angle-positive)**(float angle) |
-| float | **[normalize_angle](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalize-angle)**(float angle) |
-| float | **[shortest_angular_distance](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-shortest-angular-distance)**(float from, float to) |
-| float | **[nearest_angle](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-nearest-angle)**(float from, float to) |
-| constexpr float | **[square](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-square)**(const float x) |
-| constexpr float | **[cubic](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-cubic)**(const float x) |
-| constexpr float | **[lerp](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lerp)**(const float a, const float b, const float t) |
-| constexpr float | **[approx_eq](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-approx-eq)**(const float a, const float b) |
-| constexpr float | **[approx_zero](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-approx-zero)**(const float a) |
+| template <typename T \> <br>constexpr double | **[radians](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-radians)**(T deg) |
+| template <typename T \> <br>constexpr double | **[degrees](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-degrees)**(T rad) |
+| double | **[normalize_angle_positive](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalize-angle-positive)**(double angle) |
+| double | **[normalize_angle](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalize-angle)**(double angle) |
+| double | **[shortest_angular_distance](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-shortest-angular-distance)**(double from, double to) |
+| double | **[nearest_angle](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-nearest-angle)**(double from, double to) |
+| constexpr double | **[square](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-square)**(const double x) |
+| constexpr double | **[cubic](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-cubic)**(const double x) |
+| constexpr double | **[lerp](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lerp)**(const double a, const double b, const double t) |
+| constexpr double | **[approx_eq](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-approx-eq)**(const double a, const double b) |
+| constexpr double | **[approx_zero](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-approx-zero)**(const double a) |
 | std::vector< double > | **[arrange](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-arrange)**(double start, double end, double step =1.0)<br>startからendまでstepずつ増える点のベクトルを返す  |
 | std::vector< double > | **[linspace](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-linspace)**(double start, double end, size_t n =100)<br>startからendまでをn分割した点のベクトルを返す  |
 | std::vector< double > | **[logspace](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-logspace)**(double start, double end, size_t n =100)<br>10^startから10^endまで対数的に等間隔なn個の点のベクトルを返す  |
@@ -301,17 +303,17 @@ title: cpp_robotics
 | constexpr [GearHeadParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/) | **[IG32_27](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-ig32-27)**  |
 | constexpr [GearHeadParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/) | **[IG32_71](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-ig32-71)**  |
 | constexpr [GearHeadParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1GearHeadParam/) | **[IG32_100](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-ig32-100)**  |
-| constexpr float | **[PI](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-pi)** <br>円周率  |
-| constexpr float | **[HALF_PI](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-half-pi)** <br>円周率 / 2  |
-| constexpr float | **[TWO_PI](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-two-pi)** <br>円周率 * 2  |
-| constexpr float | **[DEG_TO_RAD](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-deg-to-rad)** <br>degree -> radians  |
-| constexpr float | **[RAD_TO_DEG](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-rad-to-deg)** <br>radian -> degree  |
-| constexpr float | **[EULER](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-euler)** <br>ネイピア数  |
-| constexpr float | **[GRAVITY](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-gravity)** <br>重力  |
-| constexpr float | **[Nm2gfm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-nm2gfm)**  |
-| constexpr float | **[gfm2Nm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-gfm2nm)**  |
-| constexpr float | **[mNm2gfcm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-mnm2gfcm)**  |
-| constexpr float | **[gfcm2mNm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-gfcm2mnm)**  |
+| constexpr double | **[PI](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-pi)** <br>円周率  |
+| constexpr double | **[HALF_PI](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-half-pi)** <br>円周率 / 2  |
+| constexpr double | **[TWO_PI](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-two-pi)** <br>円周率 * 2  |
+| constexpr double | **[DEG_TO_RAD](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-deg-to-rad)** <br>degree -> radians  |
+| constexpr double | **[RAD_TO_DEG](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-rad-to-deg)** <br>radian -> degree  |
+| constexpr double | **[EULER](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-euler)** <br>ネイピア数  |
+| constexpr double | **[GRAVITY](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-gravity)** <br>重力  |
+| constexpr double | **[Nm2gfm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-nm2gfm)**  |
+| constexpr double | **[gfm2Nm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-gfm2nm)**  |
+| constexpr double | **[mNm2gfcm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-mnm2gfcm)**  |
+| constexpr double | **[gfcm2mNm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-gfcm2mnm)**  |
 
 ## Types Documentation
 
@@ -1301,16 +1303,6 @@ bool intersect(
 ```cpp
 bool intersect(
     const Line & a,
-    const Line & b
-)
-```
-
-
-### function intersect
-
-```cpp
-bool intersect(
-    const Line & a,
     const Circle & b
 )
 ```
@@ -1336,20 +1328,10 @@ bool intersect(
 ```
 
 
-### function intersect
-
-```cpp
-bool intersect(
-    const Circle & a,
-    const Line & b
-)
-```
-
-
 ### function intersect_at
 
 ```cpp
-std::vector< Vector2d > intersect_at(
+std::optional< std::vector< Vector2d > > intersect_at(
     const Vector2d & a,
     const Vector2d & b
 )
@@ -1359,7 +1341,7 @@ std::vector< Vector2d > intersect_at(
 ### function intersect_at
 
 ```cpp
-std::vector< Vector2d > intersect_at(
+std::optional< std::vector< Vector2d > > intersect_at(
     const Vector2d & a,
     const Line & b
 )
@@ -1369,7 +1351,7 @@ std::vector< Vector2d > intersect_at(
 ### function intersect_at
 
 ```cpp
-std::vector< Vector2d > intersect_at(
+std::optional< std::vector< Vector2d > > intersect_at(
     const Vector2d & a,
     const Rect & b
 )
@@ -1379,7 +1361,7 @@ std::vector< Vector2d > intersect_at(
 ### function intersect_at
 
 ```cpp
-std::vector< Vector2d > intersect_at(
+std::optional< std::vector< Vector2d > > intersect_at(
     const Vector2d & a,
     const Circle & b
 )
@@ -1389,7 +1371,7 @@ std::vector< Vector2d > intersect_at(
 ### function intersect_at
 
 ```cpp
-std::vector< Vector2d > intersect_at(
+std::optional< std::vector< Vector2d > > intersect_at(
     const Line & a,
     const Vector2d & b
 )
@@ -1399,7 +1381,7 @@ std::vector< Vector2d > intersect_at(
 ### function intersect_at
 
 ```cpp
-std::vector< Vector2d > intersect_at(
+std::optional< std::vector< Vector2d > > intersect_at(
     const Line & a,
     const Line & b
 )
@@ -1409,17 +1391,7 @@ std::vector< Vector2d > intersect_at(
 ### function intersect_at
 
 ```cpp
-std::vector< Vector2d > intersect_at(
-    const Line & a,
-    const Circle & b
-)
-```
-
-
-### function intersect_at
-
-```cpp
-std::vector< Vector2d > intersect_at(
+std::optional< std::vector< Vector2d > > intersect_at(
     const Rect & a,
     const Vector2d & b
 )
@@ -1429,39 +1401,9 @@ std::vector< Vector2d > intersect_at(
 ### function intersect_at
 
 ```cpp
-std::vector< Vector2d > intersect_at(
+std::optional< std::vector< Vector2d > > intersect_at(
     const Circle & a,
     const Vector2d & b
-)
-```
-
-
-### function intersect_at
-
-```cpp
-std::vector< Vector2d > intersect_at(
-    const Circle & a,
-    const Line & b
-)
-```
-
-
-### function contain
-
-```cpp
-bool contain(
-    const Vector2d & range,
-    const Vector2d & target
-)
-```
-
-
-### function contain
-
-```cpp
-bool contain(
-    const Rect & range,
-    const Vector2d & target
 )
 ```
 
@@ -1971,6 +1913,42 @@ A*法
 
 **Return**: std::vector<Eigen::Vector2i> 
 
+### function normalized_mjm_position
+
+```cpp
+static double normalized_mjm_position(
+    double t
+)
+```
+
+
+### function normalized_mjm_velocity
+
+```cpp
+static double normalized_mjm_velocity(
+    double t
+)
+```
+
+
+### function normalized_mjm_acceleration
+
+```cpp
+static double normalized_mjm_acceleration(
+    double t
+)
+```
+
+
+### function normalized_mjm_jerk
+
+```cpp
+static double normalized_mjm_jerk(
+    double t
+)
+```
+
+
 ### function wave_propagation
 
 ```cpp
@@ -2086,11 +2064,12 @@ static void set_system(
 ```
 
 
-### function impluse
+### function impulse
 
 ```cpp
-static std::tuple< std::vector< double >, std::vector< double > > impluse(
-    TransferFunction & sys,
+static std::tuple< std::vector< double >, std::vector< double > > impulse(
+    const std::function< double(double)> & sys,
+    double dt,
     double time
 )
 ```
@@ -2100,10 +2079,23 @@ static std::tuple< std::vector< double >, std::vector< double > > impluse(
 **Parameters**: 
 
   * **sys** 
+  * **dt** 
   * **time** 
 
 
 **Return**: std::tuple<std::vector<double>, std::vector<double>> 
+
+### function impulse
+
+```cpp
+template <class SysType ,
+typename std::enable_if< internal::is_system_class< SysType >::value >::type *  =nullptr>
+static std::tuple< std::vector< double >, std::vector< double > > impulse(
+    SysType & sys,
+    double time
+)
+```
+
 
 ### function step
 
@@ -2131,51 +2123,36 @@ static std::tuple< std::vector< double >, std::vector< double > > step(
 ### function step
 
 ```cpp
+template <class SysType ,
+typename std::enable_if< internal::is_system_class< SysType >::value >::type *  =nullptr>
 static std::tuple< std::vector< double >, std::vector< double > > step(
-    TransferFunction & sys,
+    SysType & sys,
     double time,
     const double gain =1.0
 )
 ```
 
-ステップ応答を求める 
-
-**Parameters**: 
-
-  * **sys** 
-  * **time** 
-  * **gain** 
-
-
-**Return**: std::tuple<std::vector<double>, std::vector<double>> 
 
 ### function step
 
 ```cpp
+template <class FilterType ,
+typename std::enable_if< internal::is_pure_filter_class< FilterType >::value >::type *  =nullptr>
 static std::tuple< std::vector< double >, std::vector< double > > step(
-    DiscreteTransferFunction & sys,
+    FilterType & filter,
     double time,
     const double gain =1.0
 )
 ```
 
-ステップ応答を求める 
-
-**Parameters**: 
-
-  * **sys** 
-  * **time** 
-  * **gain** 
-
-
-**Return**: std::tuple<std::vector<double>, std::vector<double>> 
 
 ### function lsim
 
 ```cpp
 static std::tuple< std::vector< double >, std::vector< double > > lsim(
-    TransferFunction & sys,
-    std::vector< double > input
+    const std::function< double(double)> & sys,
+    double dt,
+    const std::vector< double > & input
 )
 ```
 
@@ -2184,10 +2161,23 @@ static std::tuple< std::vector< double >, std::vector< double > > lsim(
 **Parameters**: 
 
   * **sys** 
+  * **dt** 
   * **input** 
 
 
 **Return**: std::tuple<std::vector<double>, std::vector<double>> 
+
+### function lsim
+
+```cpp
+template <class SysType ,
+typename std::enable_if< internal::is_system_class< SysType >::value >::type *  =nullptr>
+static std::tuple< std::vector< double >, std::vector< double > > lsim(
+    SysType & sys,
+    std::vector< double > input
+)
+```
+
 
 ### function conv_factor
 
@@ -2460,7 +2450,7 @@ static constexpr int sgn(
 
 ```cpp
 template <typename T >
-static constexpr float radians(
+static constexpr double radians(
     T deg
 )
 ```
@@ -2476,13 +2466,13 @@ static constexpr float radians(
   * **T** 
 
 
-**Return**: constexpr float 
+**Return**: constexpr double 
 
 ### function degrees
 
 ```cpp
 template <typename T >
-static constexpr float degrees(
+static constexpr double degrees(
     T rad
 )
 ```
@@ -2498,13 +2488,13 @@ static constexpr float degrees(
   * **T** 
 
 
-**Return**: constexpr float 
+**Return**: constexpr double 
 
 ### function normalize_angle_positive
 
 ```cpp
-static inline float normalize_angle_positive(
-    float angle
+static inline double normalize_angle_positive(
+    double angle
 )
 ```
 
@@ -2514,13 +2504,13 @@ static inline float normalize_angle_positive(
   * **angle** 
 
 
-**Return**: float 
+**Return**: double 
 
 ### function normalize_angle
 
 ```cpp
-static inline float normalize_angle(
-    float angle
+static inline double normalize_angle(
+    double angle
 )
 ```
 
@@ -2530,14 +2520,14 @@ static inline float normalize_angle(
   * **angle** 
 
 
-**Return**: float 
+**Return**: double 
 
 ### function shortest_angular_distance
 
 ```cpp
-static inline float shortest_angular_distance(
-    float from,
-    float to
+static inline double shortest_angular_distance(
+    double from,
+    double to
 )
 ```
 
@@ -2548,14 +2538,14 @@ static inline float shortest_angular_distance(
   * **to** 
 
 
-**Return**: float 
+**Return**: double 
 
 ### function nearest_angle
 
 ```cpp
-static inline float nearest_angle(
-    float from,
-    float to
+static inline double nearest_angle(
+    double from,
+    double to
 )
 ```
 
@@ -2563,8 +2553,8 @@ static inline float nearest_angle(
 ### function square
 
 ```cpp
-inline constexpr float square(
-    const float x
+inline constexpr double square(
+    const double x
 )
 ```
 
@@ -2572,8 +2562,8 @@ inline constexpr float square(
 ### function cubic
 
 ```cpp
-inline constexpr float cubic(
-    const float x
+inline constexpr double cubic(
+    const double x
 )
 ```
 
@@ -2581,10 +2571,10 @@ inline constexpr float cubic(
 ### function lerp
 
 ```cpp
-inline constexpr float lerp(
-    const float a,
-    const float b,
-    const float t
+inline constexpr double lerp(
+    const double a,
+    const double b,
+    const double t
 )
 ```
 
@@ -2592,9 +2582,9 @@ inline constexpr float lerp(
 ### function approx_eq
 
 ```cpp
-inline constexpr float approx_eq(
-    const float a,
-    const float b
+inline constexpr double approx_eq(
+    const double a,
+    const double b
 )
 ```
 
@@ -2602,8 +2592,8 @@ inline constexpr float approx_eq(
 ### function approx_zero
 
 ```cpp
-inline constexpr float approx_zero(
-    const float a
+inline constexpr double approx_zero(
+    const double a
 )
 ```
 
@@ -2838,7 +2828,7 @@ constexpr GearHeadParam IG32_100 = { 1/100.0f, 0.6f };
 ### variable PI
 
 ```cpp
-constexpr float PI = 3.1415926535897932384626433832795;
+constexpr double PI = 3.1415926535897932384626433832795;
 ```
 
 円周率 
@@ -2846,7 +2836,7 @@ constexpr float PI = 3.1415926535897932384626433832795;
 ### variable HALF_PI
 
 ```cpp
-constexpr float HALF_PI = PI / 2.0;
+constexpr double HALF_PI = PI / 2.0;
 ```
 
 円周率 / 2 
@@ -2854,7 +2844,7 @@ constexpr float HALF_PI = PI / 2.0;
 ### variable TWO_PI
 
 ```cpp
-constexpr float TWO_PI = PI * 2.0;
+constexpr double TWO_PI = PI * 2.0;
 ```
 
 円周率 * 2 
@@ -2862,7 +2852,7 @@ constexpr float TWO_PI = PI * 2.0;
 ### variable DEG_TO_RAD
 
 ```cpp
-constexpr float DEG_TO_RAD = PI / 180.0;
+constexpr double DEG_TO_RAD = PI / 180.0;
 ```
 
 degree -> radians 
@@ -2870,7 +2860,7 @@ degree -> radians
 ### variable RAD_TO_DEG
 
 ```cpp
-constexpr float RAD_TO_DEG = 180.0 / PI;
+constexpr double RAD_TO_DEG = 180.0 / PI;
 ```
 
 radian -> degree 
@@ -2878,7 +2868,7 @@ radian -> degree
 ### variable EULER
 
 ```cpp
-constexpr float EULER = 2.718281828459045235360287471352;
+constexpr double EULER = 2.718281828459045235360287471352;
 ```
 
 ネイピア数 
@@ -2886,7 +2876,7 @@ constexpr float EULER = 2.718281828459045235360287471352;
 ### variable GRAVITY
 
 ```cpp
-constexpr float GRAVITY = 9.807;
+constexpr double GRAVITY = 9.807;
 ```
 
 重力 
@@ -2894,28 +2884,28 @@ constexpr float GRAVITY = 9.807;
 ### variable Nm2gfm
 
 ```cpp
-constexpr float Nm2gfm = (1/GRAVITY);
+constexpr double Nm2gfm = (1/GRAVITY);
 ```
 
 
 ### variable gfm2Nm
 
 ```cpp
-constexpr float gfm2Nm = GRAVITY;
+constexpr double gfm2Nm = GRAVITY;
 ```
 
 
 ### variable mNm2gfcm
 
 ```cpp
-constexpr float mNm2gfcm = (Nm2gfm * 100);
+constexpr double mNm2gfcm = (Nm2gfm * 100);
 ```
 
 
 ### variable gfcm2mNm
 
 ```cpp
-constexpr float gfcm2mNm = (gfm2Nm / 100);
+constexpr double gfcm2mNm = (gfm2Nm / 100);
 ```
 
 
@@ -2924,4 +2914,4 @@ constexpr float gfcm2mNm = (gfm2Nm / 100);
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:39 +0900

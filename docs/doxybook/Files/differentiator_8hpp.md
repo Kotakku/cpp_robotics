@@ -28,41 +28,25 @@ title: include/cpp_robotics/filter/differentiator.hpp
 #pragma once
 
 #include <cmath>
+#include <cpp_robotics/system/discrete_transfer_function.hpp>
 
 namespace cpp_robotics
 {
 
-class Differentiator
+class Differentiator : public DiscreteTransferFunction
 {
 public:
-    // bandwidth[rad/s]
-    // sample_time[s]
-    Differentiator(double bandwidth, double sample_time): 
-        Ts_(sample_time),
-        gpd_(bandwidth)
+    Differentiator(double omega, double dt): 
+        omega_(omega)
     {
-        
+        set_continuous({omega, 0}, {1, omega}, dt);
     }
 
-    void reset()
-    {
-        u1_ = y1_ = 0;
-    }
+    double filtering(double u) { return responce(u); } 
 
-    double filtering(double u)
-    {
-        double y;
-        y = ( 2.0*gpd_*(u-u1_) + (2.0-Ts_*gpd_)*y1_ )/(2.0+Ts_*gpd_);
-        u1_=u;
-        y1_=y;        
-        return y;
-    }
-
+    double omega() const { return omega_; }
 private:
-    double Ts_;
-    double gpd_;
-    double u1_;
-    double y1_;
+    const double omega_;
 };
 
 }
@@ -71,4 +55,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:40 +0900

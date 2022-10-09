@@ -19,9 +19,9 @@ Inherits from [cpp_robotics::DiscreteTransferFunction](/cpp_robotics/doxybook/Cl
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[LowPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-lowpassfilter)**(double tau, double dt)<br>Construct a new Low Pass Filter object.  |
+| | **[LowPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-lowpassfilter)**(double omega, double dt)<br>Construct a new Low Pass Filter object.  |
 | double | **[filtering](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-filtering)**(double u)<br>フィルタリングする  |
-| double | **[tau](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-tau)**() const<br>時定数の取得  |
+| double | **[omega](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-omega)**() const<br>折れ点周波数[rad/s]の取得  |
 
 ## Additional inherited members
 
@@ -44,7 +44,7 @@ Inherits from [cpp_robotics::DiscreteTransferFunction](/cpp_robotics/doxybook/Cl
 
 ```cpp
 inline LowPassFilter(
-    double tau,
+    double omega,
     double dt
 )
 ```
@@ -53,7 +53,7 @@ Construct a new Low Pass Filter object.
 
 **Parameters**: 
 
-  * **tau** 時定数 
+  * **omega** 折れ点周波数[rad/s] 
   * **dt** サンプリング周期 
 
 
@@ -74,16 +74,16 @@ inline double filtering(
 
 **Return**: double 
 
-### function tau
+### function omega
 
 ```cpp
-inline double tau() const
+inline double omega() const
 ```
 
-時定数の取得 
+折れ点周波数[rad/s]の取得 
 
 **Return**: double 
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:39 +0900

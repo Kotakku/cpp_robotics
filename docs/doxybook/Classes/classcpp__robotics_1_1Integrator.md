@@ -13,13 +13,29 @@ summary: 積分器
 
 `#include <integrator.hpp>`
 
+Inherits from [cpp_robotics::DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/)
+
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[Integrator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/#function-integrator)**(double Ts) |
-| void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/#function-reset)**(double val =0) |
-| double | **[filtering](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/#function-filtering)**(double u) |
+| | **[Integrator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/#function-integrator)**(double dt)<br>Construct a new [Integrator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/) object.  |
+| double | **[filtering](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/#function-filtering)**(double u)<br>フィルタリングする  |
+
+## Additional inherited members
+
+**Public Functions inherited from [cpp_robotics::DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/)**
+
+|                | Name           |
+| -------------- | -------------- |
+| | **[DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-discretetransferfunction)**() =default |
+| | **[DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-discretetransferfunction)**(std::vector< double > num_disc, std::vector< double > den_disc, const double dt) |
+| void | **[set_continuous](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-set-continuous)**(std::vector< double > num, std::vector< double > den, const double dt) |
+| void | **[set_discrite](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-set-discrite)**(std::vector< double > num_disc, std::vector< double > den_disc, const double dt) |
+| double | **[Ts](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-ts)**() const<br>サンプリング周期  |
+| virtual void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-reset)**(double state =0) |
+| double | **[responce](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-responce)**(double u) |
+
 
 ## Public Functions Documentation
 
@@ -27,18 +43,15 @@ summary: 積分器
 
 ```cpp
 inline Integrator(
-    double Ts
+    double dt
 )
 ```
 
+Construct a new [Integrator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/) object. 
 
-### function reset
+**Parameters**: 
 
-```cpp
-inline void reset(
-    double val =0
-)
-```
+  * **dt** サンプリング周期 
 
 
 ### function filtering
@@ -49,7 +62,15 @@ inline double filtering(
 )
 ```
 
+フィルタリングする 
+
+**Parameters**: 
+
+  * **u** 
+
+
+**Return**: double 
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:39 +0900

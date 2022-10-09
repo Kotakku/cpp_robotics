@@ -47,27 +47,27 @@ namespace cpp_robotics
 {
     inline namespace constants
     {
-        constexpr float PI         = 3.1415926535897932384626433832795;
+        constexpr double PI         = 3.1415926535897932384626433832795;
         
-        constexpr float HALF_PI    = PI / 2.0;
+        constexpr double HALF_PI    = PI / 2.0;
         
-        constexpr float TWO_PI     = PI * 2.0;
+        constexpr double TWO_PI     = PI * 2.0;
         
-        constexpr float DEG_TO_RAD = PI / 180.0;
+        constexpr double DEG_TO_RAD = PI / 180.0;
         
-        constexpr float RAD_TO_DEG = 180.0 / PI;
+        constexpr double RAD_TO_DEG = 180.0 / PI;
         
-        constexpr float EULER      = 2.718281828459045235360287471352;
+        constexpr double EULER      = 2.718281828459045235360287471352;
 
-        constexpr float GRAVITY    = 9.807;
+        constexpr double GRAVITY    = 9.807;
         
-        constexpr float Nm2gfm     = (1/GRAVITY);
+        constexpr double Nm2gfm     = (1/GRAVITY);
         
-        constexpr float gfm2Nm     = GRAVITY;
+        constexpr double gfm2Nm     = GRAVITY;
 
-        constexpr float mNm2gfcm   = (Nm2gfm * 100);
+        constexpr double mNm2gfcm   = (Nm2gfm * 100);
         
-        constexpr float gfcm2mNm   = (gfm2Nm / 100);
+        constexpr double gfcm2mNm   = (gfm2Nm / 100);
     }
 
     template<typename T>
@@ -89,46 +89,46 @@ namespace cpp_robotics
     }
 
     template<typename T>
-    static constexpr float radians(T deg) 
+    static constexpr double radians(T deg) 
     {
         return (deg*DEG_TO_RAD);
     }
 
     template<typename T>
-    static constexpr float degrees(T rad)
+    static constexpr double degrees(T rad)
     {
         return (rad*RAD_TO_DEG);
     }
 
-    static inline float normalize_angle_positive(float angle)
+    static inline double normalize_angle_positive(double angle)
     {
         return std::fmod(std::fmod(angle, TWO_PI) + TWO_PI, TWO_PI);
     }
 
-    static inline float normalize_angle(float angle)
+    static inline double normalize_angle(double angle)
     {
-        float a = normalize_angle_positive(angle);
+        double a = normalize_angle_positive(angle);
         if (a > PI)
             a -= TWO_PI;
         return a;
     }
 
-    static inline float shortest_angular_distance(float from, float to)
+    static inline double shortest_angular_distance(double from, double to)
     {
         return normalize_angle(to-from);
     }
 
-    static inline float nearest_angle(float from, float to)
+    static inline double nearest_angle(double from, double to)
     {
         return from + normalize_angle(to-from);
     }
 
 
-constexpr inline float square(const float x) { return x*x; }
-constexpr inline float cubic(const float x) { return x*x*x; }
-constexpr inline float lerp(const float a, const float b, const float t) { return a + (b-a)*t; }
-constexpr inline float approx_eq(const float a, const float b) { return (std::abs(a-b) < 1e-12); }
-constexpr inline float approx_zero(const float a) { return (std::abs(a) < 1e-12); }
+constexpr inline double square(const double x) { return x*x; }
+constexpr inline double cubic(const double x) { return x*x*x; }
+constexpr inline double lerp(const double a, const double b, const double t) { return a + (b-a)*t; }
+constexpr inline double approx_eq(const double a, const double b) { return (std::abs(a-b) < 1e-12); }
+constexpr inline double approx_zero(const double a) { return (std::abs(a) < 1e-12); }
 
 }
 ```
@@ -136,4 +136,4 @@ constexpr inline float approx_zero(const float a) { return (std::abs(a) < 1e-12)
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:40 +0900

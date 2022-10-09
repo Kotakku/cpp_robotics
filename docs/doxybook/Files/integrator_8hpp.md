@@ -28,37 +28,22 @@ title: include/cpp_robotics/filter/integrator.hpp
 #pragma once
 
 #include <cmath>
+#include <cpp_robotics/system/discrete_transfer_function.hpp>
 
 namespace cpp_robotics
 {
 
 // G(s) = 1 / s
 // 双一次変換で離散化したもの
-class Integrator
+class Integrator : public DiscreteTransferFunction
 {
 public:
-    Integrator(double Ts):
-        Ts_(Ts)
+    Integrator(double dt)
     {
-
+        set_continuous({1}, {1, 0}, dt);
     }
 
-    void reset(double val = 0)
-    {
-        val_ = val;
-        u1_ = val;
-    }
-    
-    double filtering(double u)
-    {
-        val_ += (u1_+u)*Ts_*0.5;
-        u1_ = u;
-        return val_;
-    }
-
-private:
-    double Ts_;
-    double val_, u1_ = 0;
+    double filtering(double u) { return responce(u); } 
 };
 
 }
@@ -67,4 +52,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:40 +0900

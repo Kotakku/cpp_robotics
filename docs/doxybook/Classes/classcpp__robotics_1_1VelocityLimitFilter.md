@@ -17,18 +17,13 @@ summary: 速度制限フィルタ
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[VelocityLimitFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-velocitylimitfilter)**(double v_max_, double Ts_) |
-| | **[VelocityLimitFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-velocitylimitfilter)**(double v_max_, double Ts_, std::pair< double, double > limit) |
-| | **[VelocityLimitFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-velocitylimitfilter)**(double v_max_, double Ts_, double gpd_, double fb_gain, std::optional< std::pair< double, double >> limit =std::nullopt) |
+| | **[VelocityLimitFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-velocitylimitfilter)**(double v_max, double dt) |
+| | **[VelocityLimitFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-velocitylimitfilter)**(double v_max, double dt, std::pair< double, double > limit) |
+| | **[VelocityLimitFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-velocitylimitfilter)**(double v_max, double dt, double gpd, double fb_gain, std::optional< std::pair< double, double >> limit =std::nullopt) |
 | virtual void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-reset)**() |
 | void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-reset)**(double u) |
 | virtual double | **[filtering](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-filtering)**(double u) |
-
-## Public Attributes
-
-|                | Name           |
-| -------------- | -------------- |
-| double | **[prev_v_](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#variable-prev-v-)**  |
+| double | **[Ts](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-ts)**() const |
 
 ## Public Functions Documentation
 
@@ -36,8 +31,8 @@ summary: 速度制限フィルタ
 
 ```cpp
 inline VelocityLimitFilter(
-    double v_max_,
-    double Ts_
+    double v_max,
+    double dt
 )
 ```
 
@@ -46,8 +41,8 @@ inline VelocityLimitFilter(
 
 ```cpp
 inline VelocityLimitFilter(
-    double v_max_,
-    double Ts_,
+    double v_max,
+    double dt,
     std::pair< double, double > limit
 )
 ```
@@ -57,9 +52,9 @@ inline VelocityLimitFilter(
 
 ```cpp
 inline VelocityLimitFilter(
-    double v_max_,
-    double Ts_,
-    double gpd_,
+    double v_max,
+    double dt,
+    double gpd,
     double fb_gain,
     std::optional< std::pair< double, double >> limit =std::nullopt
 )
@@ -91,15 +86,13 @@ inline virtual double filtering(
 ```
 
 
-## Public Attributes Documentation
-
-### variable prev_v_
+### function Ts
 
 ```cpp
-double prev_v_;
+inline double Ts() const
 ```
 
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:39 +0900

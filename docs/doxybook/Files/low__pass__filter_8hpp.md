@@ -33,21 +33,21 @@ title: include/cpp_robotics/filter/low_pass_filter.hpp
 namespace cpp_robotics
 {
 
-// G(s) = 1 / (Ts + 1)
+// G(s) = omega / (s + omega)
 class LowPassFilter : public DiscreteTransferFunction
 {
 public:
-    LowPassFilter(double tau, double dt):
-        tau_(tau)
+    LowPassFilter(double omega, double dt):
+        omega_(omega)
     {
-        set_continuous({1}, {tau_, 1}, dt);
+        set_continuous({omega}, {1, omega}, dt);
     }
 
     double filtering(double u) { return responce(u); } 
 
-    double tau() const { return tau_; }
+    double omega() const { return omega_; }
 private:
-    const double tau_;
+    const double omega_;
 };
 
 }
@@ -56,4 +56,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:40 +0900

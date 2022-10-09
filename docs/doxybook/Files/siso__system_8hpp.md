@@ -68,7 +68,7 @@ public:
     };
 
     SisoFeedbackSystem() = default;
-    SisoFeedbackSystem(func_list_t fn): func_list_(fn) {}
+    SisoFeedbackSystem(func_list_t fn, double dt): func_list_(fn), dt_(dt) {}
 
     void reset()
     {
@@ -78,19 +78,21 @@ public:
         func_list_.system_reset();
     }
 
-    double control(double target)
+    double responce(double target)
     {
         u_ = func_list_.controller(target - y_);
         y_ = func_list_.system(u_);
         return y_;
     }
 
+    double Ts() const { return dt_; }
+
     double u() const { return u_; }
     double y() const { return y_; }
 
     std::function<double(double)> make_control_function()
     {
-        return [this](double target){ return control(target); };
+        return [this](double target){ return responce(target); };
     }
 
     operator std::function<double(double)>()
@@ -103,6 +105,7 @@ private:
     double y_ = 0;
 
     func_list_t func_list_;
+    const double dt_;
 };
 
 template<class CONTROLLER_T, class SYSTEM_T>
@@ -112,7 +115,7 @@ static SisoFeedbackSystem make_feedback_system(CONTROLLER_T &controller, SYSTEM_
     set_controller(fn, controller);
     set_system(fn, system);
 
-    return SisoFeedbackSystem(fn);
+    return SisoFeedbackSystem(fn, system.Ts());
 }
 
 static void set_controller(SisoFeedbackSystem::func_list_t &fn, PIDController &controller)
@@ -143,4 +146,4 @@ static void set_system(SisoFeedbackSystem::func_list_t &fn, TransferFunction &sy
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:40 +0900

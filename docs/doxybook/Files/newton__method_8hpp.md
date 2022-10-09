@@ -55,4 +55,4 @@ static std::tuple<bool, Eigen::VectorXd, size_t> newton_method(std::function<Eig
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:40 +0900

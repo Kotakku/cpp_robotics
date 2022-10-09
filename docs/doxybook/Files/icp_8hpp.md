@@ -26,7 +26,7 @@ title: include/cpp_robotics/algorithm/icp.hpp
 
 #include <Eigen/Dense>
 #include "./kdtree.hpp"
-#include "./transfomation.hpp"
+#include "./transformation.hpp"
 
 namespace cpp_robotics
 {
@@ -124,4 +124,4 @@ static std::tuple<std::vector<Eigen::Matrix<double, DIM, 1>>, Eigen::MatrixXd, s
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:40 +0900

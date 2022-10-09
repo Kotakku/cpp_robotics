@@ -21,6 +21,7 @@ summary: 加速度制限フィルタ(速度制限込み)
 | | **[AccelerationLimitFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AccelerationLimitFilter/#function-accelerationlimitfilter)**(double acc_max, double Ts, std::optional< std::pair< double, double >> limit =std::nullopt) |
 | virtual void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AccelerationLimitFilter/#function-reset)**() |
 | virtual double | **[filtering](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AccelerationLimitFilter/#function-filtering)**(double u) |
+| double | **[Ts](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AccelerationLimitFilter/#function-ts)**() const |
 
 ## Detailed Description
 
@@ -75,6 +76,13 @@ inline virtual double filtering(
 ```
 
 
+### function Ts
+
+```cpp
+inline double Ts() const
+```
+
+
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:39 +0900

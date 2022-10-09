@@ -46,6 +46,7 @@ summary: 多項式
 | [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator/](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator/)**(double s) const<br>多項式を1/s倍した多項式を返す  |
 | [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & | **[operator/=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator/=)**(double s)<br>自身を1/s倍する  |
 | [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator*](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator*)**(const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & p) const<br>多項式同士の積を取る  |
+| [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & | **[operator*=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator*=)**(const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & p) |
 | [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator+](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator+)**([Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) poly) const<br>多項式同士の和を取る  |
 | [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & | **[operator+=](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator+=)**([Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) poly)<br>自身に他の多項式を加算する  |
 | [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) | **[operator-](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/#function-operator-)**([Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) poly) const |
@@ -367,6 +368,15 @@ inline Polynomial operator*(
 
 **Return**: [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)
 
+### function operator*=
+
+```cpp
+inline Polynomial & operator*=(
+    const Polynomial & p
+)
+```
+
+
 ### function operator+
 
 ```cpp
@@ -482,4 +492,4 @@ friend bool operator!=(
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:39 +0900

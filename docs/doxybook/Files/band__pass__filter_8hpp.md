@@ -30,43 +30,26 @@ title: include/cpp_robotics/filter/band_pass_filter.hpp
 namespace cpp_robotics
 {
 
-//               2*zeta*omega
+//               2*zeta*omega*s
 // G(s) = ------------------------------ を双一次変換
-//         s^2 + 2*zeta*omega + omega^2
-class BandPassFilter
+//         s^2 + 2*zeta*omega*s + omega^2
+class BandPassFilter : public DiscreteTransferFunction
 {
 public:
-    BandPassFilter(double w, double zeta, double dt):
-        w_(w), zeta_(zeta), dt_(dt)
+    BandPassFilter(double omega, double zeta, double dt):
+        omega_(omega), zeta_(zeta)
     {
-        const double ww = w*w;
-        const double dtdt = dt*dt;
-
-        tf_.set_discrite(
-            {     (4*dt*zeta*w),                0,            (-4*dt*zeta*w)},
-            {(4+  (4*dt*zeta*w)+dtdt*ww), (-8+2*dtdt*ww), (4-  (4*dt*zeta*w)+dtdt*ww)},
-            dt
-        );
+        set_continuous({(2*zeta_*omega_),0}, {1,(2*zeta_*omega_),(omega*omega)}, dt);
     }
 
-    void reset()
-    {
-        tf_.reset();
-    }
-    
-    double filtering(double u)
-    {
-        return tf_.responce(u);
-    }
+    double filtering(double u) { return responce(u); } 
 
-    double w() const { return w_; }
+    double omega() const { return omega_; }
+
     double zeta() const { return zeta_; }
-    double dt() const {return dt_; }
 private:
-    const double w_;
+    const double omega_;
     const double zeta_;
-    const double dt_;
-    DiscreteTransferFunction tf_;
 };
 
 }
@@ -75,4 +58,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:40 +0900

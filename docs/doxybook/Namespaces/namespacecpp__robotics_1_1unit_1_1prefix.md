@@ -118,4 +118,4 @@ using cpp_robotics::unit::prefix::giga = typedef Prefix<1000000000, 1>;
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:40 +0900

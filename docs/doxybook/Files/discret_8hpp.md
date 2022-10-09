@@ -46,7 +46,7 @@ private:
     }
 
     template<typename Derived>
-    static auto integral_expm(const Eigen::MatrixBase<Derived> &A, const float &Ts, size_t hdiv = 1000)
+    static auto integral_expm(const Eigen::MatrixBase<Derived> &A, const double &Ts, size_t hdiv = 1000)
     {
         assert(A.cols() == A.rows());
 
@@ -69,14 +69,14 @@ private:
 
 public:
     template<typename Derived>
-    static auto discretize_a(const Eigen::MatrixBase<Derived> &A, const float Ts)
+    static auto discretize_a(const Eigen::MatrixBase<Derived> &A, const double Ts)
     {
         assert(A.cols() == A.rows());
         return static_cast<Derived>((A*Ts).exp());
     }
 
     template<typename Derived1, typename Derived2>
-    static auto discretize_b(const Eigen::MatrixBase<Derived1> &A, const Eigen::MatrixBase<Derived2> &B, const float &Ts, size_t hdiv = 1000)
+    static auto discretize_b(const Eigen::MatrixBase<Derived1> &A, const Eigen::MatrixBase<Derived2> &B, const double &Ts, size_t hdiv = 1000)
     {
         assert(A.rows() == A.cols());
         assert(A.rows() == B.rows());
@@ -101,7 +101,7 @@ public:
     }
 
     template<typename Derived1, typename Derived2>
-    static auto discritize(const Eigen::MatrixBase<Derived1> &A, const Eigen::MatrixBase<Derived2> &B, const float &Ts, size_t hdiv = 1000)
+    static auto discritize(const Eigen::MatrixBase<Derived1> &A, const Eigen::MatrixBase<Derived2> &B, const double &Ts, size_t hdiv = 1000)
     {
         return std::tuple{
             discretize_a(A, Ts),
@@ -117,10 +117,12 @@ private:
 public:
     static std::tuple<std::vector<double>, std::vector<double>> discritize(const std::vector<double> &num, const std::vector<double> &den, const double Ts)
     {
-        assert(num.size() < den.size()); // 厳密にプロパー
+        assert(num.size() <= den.size()); // プロパー
 
         size_t dim = den.size();
         Polynomial num_poly, den_poly;
+
+        // (2(z-1))^{num_size}*(T(z+1))^{den_size}を展開した多項式オブジェクトを返す
         auto z_poly = [&](size_t num_size, size_t den_size)
         {
             std::vector<double> roots(num_size+den_size, -1);
@@ -128,11 +130,6 @@ public:
             {
                 roots[i] = +1;
             }
-
-            // std::cout << num_size << ", " << den_size << " -> ";
-            // for(auto &c : roots)
-            //     std::cout << c << ", ";
-            // std::cout << std::endl;
 
             return std::pow(2.0, num_size)*std::pow(Ts, den_size) * Polynomial::expand(roots);
         };
@@ -157,4 +154,4 @@ public:
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:40 +0900

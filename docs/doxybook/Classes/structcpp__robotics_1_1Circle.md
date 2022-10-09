@@ -18,17 +18,17 @@ summary: 円クラス
 |                | Name           |
 | -------------- | -------------- |
 | | **[Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/#function-circle)**() =default |
-| constexpr | **[Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/#function-circle)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & center, const float r) |
+| constexpr | **[Circle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/#function-circle)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & center, const double r) |
 | constexpr bool | **[has_area](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/#function-has-area)**() const |
-| constexpr float | **[area](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/#function-area)**() const |
-| constexpr [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) | **[angle_pos](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/#function-angle-pos)**(const float theta) const |
+| constexpr double | **[area](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/#function-area)**() const |
+| constexpr [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) | **[angle_pos](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/#function-angle-pos)**(const double theta) const |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
 | [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) | **[center](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/#variable-center)**  |
-| float | **[r](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/#variable-r)**  |
+| double | **[r](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/#variable-r)**  |
 
 ## Public Functions Documentation
 
@@ -44,7 +44,7 @@ Circle() =default
 ```cpp
 inline constexpr Circle(
     const Vector2d & center,
-    const float r
+    const double r
 )
 ```
 
@@ -59,7 +59,7 @@ inline constexpr bool has_area() const
 ### function area
 
 ```cpp
-inline constexpr float area() const
+inline constexpr double area() const
 ```
 
 
@@ -67,7 +67,7 @@ inline constexpr float area() const
 
 ```cpp
 inline constexpr Vector2d angle_pos(
-    const float theta
+    const double theta
 ) const
 ```
 
@@ -84,10 +84,10 @@ Vector2d center;
 ### variable r
 
 ```cpp
-float r;
+double r;
 ```
 
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:39 +0900

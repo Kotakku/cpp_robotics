@@ -20,9 +20,9 @@ summary: 直線クラス
 | | **[Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/#function-line)**() =default |
 | constexpr | **[Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/#function-line)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p0, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p1) |
 | void | **[set](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/#function-set)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p0_, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & p1_) |
-| constexpr float | **[length](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/#function-length)**() const |
-| constexpr float | **[angle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/#function-angle)**() const |
-| constexpr [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) | **[lerp](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/#function-lerp)**(const float t) const |
+| constexpr double | **[length](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/#function-length)**() const |
+| constexpr double | **[angle](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/#function-angle)**() const |
+| constexpr [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) | **[lerp](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/#function-lerp)**(const double t) const |
 
 ## Public Attributes
 
@@ -63,14 +63,14 @@ inline void set(
 ### function length
 
 ```cpp
-inline constexpr float length() const
+inline constexpr double length() const
 ```
 
 
 ### function angle
 
 ```cpp
-inline constexpr float angle() const
+inline constexpr double angle() const
 ```
 
 
@@ -78,7 +78,7 @@ inline constexpr float angle() const
 
 ```cpp
 inline constexpr Vector2d lerp(
-    const float t
+    const double t
 ) const
 ```
 
@@ -101,4 +101,4 @@ Vector2d p1;
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:39 +0900

@@ -12,17 +12,17 @@ summary: 数学・物理定数
 
 |                | Name           |
 | -------------- | -------------- |
-| constexpr float | **[PI](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-pi)** <br>円周率  |
-| constexpr float | **[HALF_PI](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-half-pi)** <br>円周率 / 2  |
-| constexpr float | **[TWO_PI](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-two-pi)** <br>円周率 * 2  |
-| constexpr float | **[DEG_TO_RAD](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-deg-to-rad)** <br>degree -> radians  |
-| constexpr float | **[RAD_TO_DEG](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-rad-to-deg)** <br>radian -> degree  |
-| constexpr float | **[EULER](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-euler)** <br>ネイピア数  |
-| constexpr float | **[GRAVITY](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-gravity)** <br>重力  |
-| constexpr float | **[Nm2gfm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-nm2gfm)**  |
-| constexpr float | **[gfm2Nm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-gfm2nm)**  |
-| constexpr float | **[mNm2gfcm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-mnm2gfcm)**  |
-| constexpr float | **[gfcm2mNm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-gfcm2mnm)**  |
+| constexpr double | **[PI](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-pi)** <br>円周率  |
+| constexpr double | **[HALF_PI](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-half-pi)** <br>円周率 / 2  |
+| constexpr double | **[TWO_PI](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-two-pi)** <br>円周率 * 2  |
+| constexpr double | **[DEG_TO_RAD](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-deg-to-rad)** <br>degree -> radians  |
+| constexpr double | **[RAD_TO_DEG](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-rad-to-deg)** <br>radian -> degree  |
+| constexpr double | **[EULER](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-euler)** <br>ネイピア数  |
+| constexpr double | **[GRAVITY](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-gravity)** <br>重力  |
+| constexpr double | **[Nm2gfm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-nm2gfm)**  |
+| constexpr double | **[gfm2Nm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-gfm2nm)**  |
+| constexpr double | **[mNm2gfcm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-mnm2gfcm)**  |
+| constexpr double | **[gfcm2mNm](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/#variable-gfcm2mnm)**  |
 
 
 
@@ -31,7 +31,7 @@ summary: 数学・物理定数
 ### variable PI
 
 ```cpp
-constexpr float PI = 3.1415926535897932384626433832795;
+constexpr double PI = 3.1415926535897932384626433832795;
 ```
 
 円周率 
@@ -39,7 +39,7 @@ constexpr float PI = 3.1415926535897932384626433832795;
 ### variable HALF_PI
 
 ```cpp
-constexpr float HALF_PI = PI / 2.0;
+constexpr double HALF_PI = PI / 2.0;
 ```
 
 円周率 / 2 
@@ -47,7 +47,7 @@ constexpr float HALF_PI = PI / 2.0;
 ### variable TWO_PI
 
 ```cpp
-constexpr float TWO_PI = PI * 2.0;
+constexpr double TWO_PI = PI * 2.0;
 ```
 
 円周率 * 2 
@@ -55,7 +55,7 @@ constexpr float TWO_PI = PI * 2.0;
 ### variable DEG_TO_RAD
 
 ```cpp
-constexpr float DEG_TO_RAD = PI / 180.0;
+constexpr double DEG_TO_RAD = PI / 180.0;
 ```
 
 degree -> radians 
@@ -63,7 +63,7 @@ degree -> radians
 ### variable RAD_TO_DEG
 
 ```cpp
-constexpr float RAD_TO_DEG = 180.0 / PI;
+constexpr double RAD_TO_DEG = 180.0 / PI;
 ```
 
 radian -> degree 
@@ -71,7 +71,7 @@ radian -> degree
 ### variable EULER
 
 ```cpp
-constexpr float EULER = 2.718281828459045235360287471352;
+constexpr double EULER = 2.718281828459045235360287471352;
 ```
 
 ネイピア数 
@@ -79,7 +79,7 @@ constexpr float EULER = 2.718281828459045235360287471352;
 ### variable GRAVITY
 
 ```cpp
-constexpr float GRAVITY = 9.807;
+constexpr double GRAVITY = 9.807;
 ```
 
 重力 
@@ -87,28 +87,28 @@ constexpr float GRAVITY = 9.807;
 ### variable Nm2gfm
 
 ```cpp
-constexpr float Nm2gfm = (1/GRAVITY);
+constexpr double Nm2gfm = (1/GRAVITY);
 ```
 
 
 ### variable gfm2Nm
 
 ```cpp
-constexpr float gfm2Nm = GRAVITY;
+constexpr double gfm2Nm = GRAVITY;
 ```
 
 
 ### variable mNm2gfcm
 
 ```cpp
-constexpr float mNm2gfcm = (Nm2gfm * 100);
+constexpr double mNm2gfcm = (Nm2gfm * 100);
 ```
 
 
 ### variable gfcm2mNm
 
 ```cpp
-constexpr float gfcm2mNm = (gfm2Nm / 100);
+constexpr double gfcm2mNm = (gfm2Nm / 100);
 ```
 
 
@@ -117,4 +117,4 @@ constexpr float gfcm2mNm = (gfm2Nm / 100);
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:40 +0900

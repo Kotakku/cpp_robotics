@@ -24,9 +24,10 @@ summary: コントローラとシステムからなるSISOのフィードバッ�
 |                | Name           |
 | -------------- | -------------- |
 | | **[SisoFeedbackSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-sisofeedbacksystem)**() =default |
-| | **[SisoFeedbackSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-sisofeedbacksystem)**([func_list_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SisoFeedbackSystem_1_1func__list__t/) fn) |
+| | **[SisoFeedbackSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-sisofeedbacksystem)**([func_list_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SisoFeedbackSystem_1_1func__list__t/) fn, double dt) |
 | void | **[reset](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-reset)**() |
-| double | **[control](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-control)**(double target) |
+| double | **[responce](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-responce)**(double target) |
+| double | **[Ts](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-ts)**() const |
 | double | **[u](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-u)**() const |
 | double | **[y](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-y)**() const |
 | std::function< double(double)> | **[make_control_function](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/#function-make-control-function)**() |
@@ -45,7 +46,8 @@ SisoFeedbackSystem() =default
 
 ```cpp
 inline SisoFeedbackSystem(
-    func_list_t fn
+    func_list_t fn,
+    double dt
 )
 ```
 
@@ -57,12 +59,19 @@ inline void reset()
 ```
 
 
-### function control
+### function responce
 
 ```cpp
-inline double control(
+inline double responce(
     double target
 )
+```
+
+
+### function Ts
+
+```cpp
+inline double Ts() const
 ```
 
 
@@ -98,4 +107,4 @@ inline operator std::function< double(
 
 -------------------------------
 
-Updated on 2022-10-08 at 23:36:07 +0900
+Updated on 2022-10-10 at 00:51:39 +0900
