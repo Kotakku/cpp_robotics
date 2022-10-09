@@ -10,7 +10,7 @@ namespace cpp_robotics
  * @brief 疑似微分器
  * 
  */
-/// G(s) = s / (Ts + 1)
+/// G(s) = omega*s / (s + omega)
 /// 双一次変換で離散化したもの
 class Differentiator : public DiscreteTransferFunction
 {
@@ -18,13 +18,13 @@ public:
     /**
      * @brief Construct a new Differentiator object
      * 
-     * @param tau 時定数
+     * @param omega 折れ点周波数[rad/s]
      * @param dt サンプリング周期
      */
-	Differentiator(double tau, double dt): 
-        tau_(tau)
+	Differentiator(double omega, double dt): 
+        omega_(omega)
     {
-        set_continuous({1, 0}, {tau_, 1}, dt);
+        set_continuous({omega, 0}, {1, omega}, dt);
     }
 
     /**
@@ -40,9 +40,9 @@ public:
      * 
      * @return double 
      */
-    double tau() const { return tau_; }
+    double omega() const { return omega_; }
 private:
-    const double tau_;
+    const double omega_;
 };
 
 }
