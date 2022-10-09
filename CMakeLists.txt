@@ -73,6 +73,7 @@ set(test_files
 
   system/polynomial_test
   system/discret_tf_test
+  system/time_responce_test
 
   filter/tf_filter_test
   filter/extended_kalman_filter_test
