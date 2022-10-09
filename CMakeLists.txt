@@ -26,10 +26,11 @@ set(example_files
   # controller/place
 
   filter/lpf_step
+  filter/hpf_step
 
   # system/step_responce
   # system/bode_nyquist
-  system/disc_tf
+  # system/disc_tf
   # system/state_space_system
   # algorithm/kdtree_sample
   # algorithm/icp_sample
