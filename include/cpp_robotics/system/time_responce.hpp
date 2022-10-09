@@ -55,7 +55,7 @@ struct is_pure_filter_class
  * @param time 
  * @return std::tuple<std::vector<double>, std::vector<double>> 
  */
-static std::tuple<std::vector<double>, std::vector<double>> impluse(const std::function<double(double)> &sys, double dt, double time)
+static std::tuple<std::vector<double>, std::vector<double>> impulse(const std::function<double(double)> &sys, double dt, double time)
 {
     std::vector<double> t = arrange(0, time, dt);
     std::vector<double> res(t.size());
@@ -67,15 +67,15 @@ static std::tuple<std::vector<double>, std::vector<double>> impluse(const std::f
 }
 
 template<class SysType, typename std::enable_if<internal::is_system_class<SysType>::value>::type* = nullptr>
-static std::tuple<std::vector<double>, std::vector<double>> impluse(SysType &sys, double time)
+static std::tuple<std::vector<double>, std::vector<double>> impulse(SysType &sys, double time)
 {
-    return impluse([&](double u){ return sys.responce(u); }, sys.Ts(), time);
+    return impulse([&](double u){ return sys.responce(u); }, sys.Ts(), time);
 }
 
 template<class SysType, typename std::enable_if<internal::is_pure_filter_class<SysType>::value>::type* = nullptr>
-static std::tuple<std::vector<double>, std::vector<double>> impluse(SysType &sys, double time)
+static std::tuple<std::vector<double>, std::vector<double>> impulse(SysType &sys, double time)
 {
-    return impluse([&](double u){ return sys.filtering(u); }, sys.Ts(), time);
+    return impulse([&](double u){ return sys.filtering(u); }, sys.Ts(), time);
 }
 
 /**

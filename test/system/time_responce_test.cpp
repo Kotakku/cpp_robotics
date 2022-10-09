@@ -30,17 +30,17 @@ TEST(time_responce, impluce) {
 
     {
         MyAllPassSystem system;
-        auto [t, res] = cr::impluse(system, 1.0);
+        auto [t, res] = cr::impulse(system, 1.0);
     }
 
     {
         MyAllPassFilter filter;
-        auto [t, res] = cr::impluse(filter, 1.0);
+        auto [t, res] = cr::impulse(filter, 1.0);
     }
 
     {
         cr::LowPassFilter filter(10*2*M_PI, 1e-3);
-        auto [t, res] = cr::impluse(filter, 1.0);
+        auto [t, res] = cr::impulse(filter, 1.0);
     }
 }
 
