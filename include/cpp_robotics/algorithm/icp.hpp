@@ -5,7 +5,7 @@
 
 #include <Eigen/Dense>
 #include "./kdtree.hpp"
-#include "./transfomation.hpp"
+#include "./transformation.hpp"
 
 namespace cpp_robotics
 {
