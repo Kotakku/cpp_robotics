@@ -326,6 +326,12 @@ struct Polynomial
         return new_p;
     }
 
+    Polynomial& operator *=(const Polynomial &p)
+    {
+        *this = *this * p;
+        return *this;
+    }
+
     /**
      * @brief 多項式同士の和を取る
      * 
