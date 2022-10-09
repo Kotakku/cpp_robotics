@@ -27,6 +27,7 @@ set(example_files
 
   filter/lpf_step
   filter/hpf_step
+  filter/vel_limit_filter
 
   # system/step_responce
   # system/bode_nyquist
@@ -77,6 +78,9 @@ set(test_files
 
   filter/tf_filter_test
   filter/extended_kalman_filter_test
+
+  geometry/shape_test
+  geometry/geometry_test
 
   chassis/mecanum_test
   chassis/omni_test
