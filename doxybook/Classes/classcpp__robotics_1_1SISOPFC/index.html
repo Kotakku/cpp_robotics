@@ -12,14 +12,14 @@
         <meta name="author" content="Takumi Odashima">
       
       
-        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Files/shape_8ipp/">
+        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SISOPFC/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.6">
     
     
       
-        <title>include/cpp_robotics/geometry/shape.ipp - cpp_robotics</title>
+        <title>cpp_robotics::SISOPFC - cpp_robotics</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#includecpp_roboticsgeometryshapeipp" class="md-skip">
+        <a href="#cpp_roboticssisopfc" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              include/cpp_robotics/geometry/shape.ipp
+              cpp_robotics::SISOPFC
             
           </span>
         </div>
@@ -2211,43 +2211,74 @@
                   
 
 
-<h1 id="includecpp_roboticsgeometryshapeipp">include/cpp_robotics/geometry/shape.ipp</h1>
-<h2 id="namespaces">Namespaces</h2>
+<h1 id="cpp_roboticssisopfc">cpp_robotics::SISOPFC</h1>
+<p><code>#include &lt;pfc.hpp&gt;</code></p>
+<h2 id="public-functions">Public Functions</h2>
 <table>
 <thead>
 <tr>
+<th></th>
 <th>Name</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/">cpp_robotics</a></strong></td>
+<td></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SISOPFC/#function-sisopfc">SISOPFC</a></strong>(const Eigen::MatrixXd &amp; Ad, const Eigen::VectorXd &amp; Bd, const Eigen::VectorXd &amp; Cd, const double delay, const double target_responce_time, const double dt)<br>Construct a new <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SISOPFC/">SISOPFC</a> object.</td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SISOPFC/#function-calculate">calculate</a></strong>(std::function&lt; double(double)&gt; ref_target, double now_state)</td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SISOPFC/#function-calculate">calculate</a></strong>(std::function&lt; double(double)&gt; ref_target, double now_state, double prev_input)</td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SISOPFC/#function-prev-input">prev_input</a></strong>() const</td>
 </tr>
 </tbody>
 </table>
-<h2 id="source-code">Source code</h2>
-<div class="highlight"><pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">cpp_robotics</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="n">Quad</span><span class="w"> </span><span class="nf">Rect::as_quad</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Quad</span><span class="p">{</span><span class="n">vertex</span><span class="p">()};</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="k">constexpr</span><span class="w"> </span><span class="n">Quad</span><span class="w"> </span><span class="nf">Rect::get_rotated</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">angle</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="n">tv</span><span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Quad</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">center</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tv</span><span class="p">.</span><span class="n">get_rotated</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span><span class="w">  </span><span class="n">center</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tv</span><span class="p">.</span><span class="n">nxy</span><span class="p">().</span><span class="n">get_rotated</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span><span class="w"></span>
-<span class="w">        </span><span class="n">center</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">-</span><span class="n">tv</span><span class="p">.</span><span class="n">get_rotated</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span><span class="w"> </span><span class="n">center</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tv</span><span class="p">.</span><span class="n">xny</span><span class="p">().</span><span class="n">get_rotated</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">};</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="p">}</span><span class="w"></span>
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+<h3 id="function-sisopfc">function SISOPFC</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">SISOPFC</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Ad</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Bd</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Cd</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">delay</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">target_responce_time</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>Construct a new <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SISOPFC/">SISOPFC</a> object. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>Ad</strong> </li>
+<li><strong>Bd</strong> </li>
+<li><strong>Cd</strong> </li>
+<li><strong>delay</strong> </li>
+<li><strong>target_responce_time</strong> </li>
+<li><strong>dt</strong> </li>
+</ul>
+<h3 id="function-calculate">function calculate</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">calculate</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ref_target</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">now_state</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-calculate_1">function calculate</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">calculate</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ref_target</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">now_state</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">prev_input</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-prev_input">function prev_input</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">prev_input</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-10-08 at 23:36:07 +0900</p>
+<p>Updated on 2022-10-10 at 00:51:39 +0900</p>
 
 
 

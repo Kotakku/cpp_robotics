@@ -2214,6 +2214,7 @@
 <h1 id="cpp_roboticsintegrator">cpp_robotics::Integrator</h1>
 <p>積分器 </p>
 <p><code>#include &lt;integrator.hpp&gt;</code></p>
+<p>Inherits from <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/">cpp_robotics::DiscreteTransferFunction</a></p>
 <h2 id="public-functions">Public Functions</h2>
 <table>
 <thead>
@@ -2225,36 +2226,78 @@
 <tbody>
 <tr>
 <td></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/#function-integrator">Integrator</a></strong>(double Ts)</td>
-</tr>
-<tr>
-<td>void</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/#function-reset">reset</a></strong>(double val =0)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/#function-integrator">Integrator</a></strong>(double dt)<br>Construct a new <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/">Integrator</a> object.</td>
 </tr>
 <tr>
 <td>double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/#function-filtering">filtering</a></strong>(double u)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/#function-filtering">filtering</a></strong>(double u)<br>フィルタリングする</td>
+</tr>
+</tbody>
+</table>
+<h2 id="additional-inherited-members">Additional inherited members</h2>
+<p><strong>Public Functions inherited from <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/">cpp_robotics::DiscreteTransferFunction</a></strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-discretetransferfunction">DiscreteTransferFunction</a></strong>() =default</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-discretetransferfunction">DiscreteTransferFunction</a></strong>(std::vector&lt; double &gt; num_disc, std::vector&lt; double &gt; den_disc, const double dt)</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-set-continuous">set_continuous</a></strong>(std::vector&lt; double &gt; num, std::vector&lt; double &gt; den, const double dt)</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-set-discrite">set_discrite</a></strong>(std::vector&lt; double &gt; num_disc, std::vector&lt; double &gt; den_disc, const double dt)</td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-ts">Ts</a></strong>() const<br>サンプリング周期</td>
+</tr>
+<tr>
+<td>virtual void</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-reset">reset</a></strong>(double state =0)</td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/#function-responce">responce</a></strong>(double u)</td>
 </tr>
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation</h2>
 <h3 id="function-integrator">function Integrator</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Integrator</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">Ts</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-reset">function reset</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">reset</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
-<span class="p">)</span><span class="w"></span>
-</code></pre></div>
+<p>Construct a new <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/">Integrator</a> object. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>dt</strong> サンプリング周期 </li>
+</ul>
 <h3 id="function-filtering">function filtering</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">filtering</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">u</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<p>フィルタリングする </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>u</strong> </li>
+</ul>
+<p><strong>Return</strong>: double </p>
 <hr />
-<p>Updated on 2022-10-08 at 23:36:07 +0900</p>
+<p>Updated on 2022-10-10 at 00:51:39 +0900</p>
 
 
 

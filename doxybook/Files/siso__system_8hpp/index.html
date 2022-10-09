@@ -2287,7 +2287,7 @@
 <span class="w">    </span><span class="p">};</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">SisoFeedbackSystem</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">SisoFeedbackSystem</span><span class="p">(</span><span class="n">func_list_t</span><span class="w"> </span><span class="n">fn</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">func_list_</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">    </span><span class="n">SisoFeedbackSystem</span><span class="p">(</span><span class="n">func_list_t</span><span class="w"> </span><span class="n">fn</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">func_list_</span><span class="p">(</span><span class="n">fn</span><span class="p">),</span><span class="w"> </span><span class="n">dt_</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">reset</span><span class="p">()</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
@@ -2297,19 +2297,21 @@
 <span class="w">        </span><span class="n">func_list_</span><span class="p">.</span><span class="n">system_reset</span><span class="p">();</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">control</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">responce</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">u_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">func_list_</span><span class="p">.</span><span class="n">controller</span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y_</span><span class="p">);</span><span class="w"></span>
 <span class="w">        </span><span class="n">y_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">func_list_</span><span class="p">.</span><span class="n">system</span><span class="p">(</span><span class="n">u_</span><span class="p">);</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">y_</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">Ts</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">dt_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">u</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">u_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">y_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">make_control_function</span><span class="p">()</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">](</span><span class="kt">double</span><span class="w"> </span><span class="n">target</span><span class="p">){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">control</span><span class="p">(</span><span class="n">target</span><span class="p">);</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">](</span><span class="kt">double</span><span class="w"> </span><span class="n">target</span><span class="p">){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">responce</span><span class="p">(</span><span class="n">target</span><span class="p">);</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">operator</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="o">&gt;</span><span class="p">()</span><span class="w"></span>
@@ -2322,6 +2324,7 @@
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">func_list_t</span><span class="w"> </span><span class="n">func_list_</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dt_</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">CONTROLLER_T</span><span class="p">,</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SYSTEM_T</span><span class="o">&gt;</span><span class="w"></span>
@@ -2331,7 +2334,7 @@
 <span class="w">    </span><span class="n">set_controller</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span><span class="w"> </span><span class="n">controller</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="n">set_system</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span><span class="w"> </span><span class="n">system</span><span class="p">);</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">SisoFeedbackSystem</span><span class="p">(</span><span class="n">fn</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">SisoFeedbackSystem</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span><span class="w"> </span><span class="n">system</span><span class="p">.</span><span class="n">Ts</span><span class="p">());</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">set_controller</span><span class="p">(</span><span class="n">SisoFeedbackSystem</span><span class="o">::</span><span class="n">func_list_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">fn</span><span class="p">,</span><span class="w"> </span><span class="n">PIDController</span><span class="w"> </span><span class="o">&amp;</span><span class="n">controller</span><span class="p">)</span><span class="w"></span>
@@ -2359,7 +2362,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-10-08 at 23:36:07 +0900</p>
+<p>Updated on 2022-10-10 at 00:51:40 +0900</p>
 
 
 

@@ -2212,150 +2212,162 @@
 
 
 <h1 id="includecpp_roboticscontrollerpfchpp">include/cpp_robotics/controller/pfc.hpp</h1>
+<h2 id="namespaces">Namespaces</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/">cpp_robotics</a></strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="classes">Classes</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SISOPFC/">cpp_robotics::SISOPFC</a></strong></td>
+</tr>
+</tbody>
+</table>
 <h2 id="source-code">Source code</h2>
-<div class="highlight"><pre><span></span><code><span class="c1">// #pragma once</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
 
-<span class="c1">// // https://hamachannel.hatenablog.com/entry/2018/01/13/233521</span>
+<span class="c1">// https://hamachannel.hatenablog.com/entry/2018/01/13/233521</span>
 
-<span class="c1">// #include &quot;../../Matrix/Matrix.hpp&quot;</span>
-<span class="c1">// #include &lt;functional&gt;</span>
-<span class="c1">// //#include &lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Eigen/Dense&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cmath&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
 
-<span class="c1">// namespace STB</span>
-<span class="c1">// {</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">cpp_robotics</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 
-<span class="c1">// template&lt;typename Scalar, size_t Dim&gt;</span>
-<span class="c1">// class SISOPFC;</span>
-<span class="c1">// using SISOPFC2f = SISOPFC&lt;float, 2&gt;;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SISOPFC</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
 
-<span class="c1">// template&lt;typename Scalar, size_t Dim&gt;</span>
-<span class="c1">// class SISOPFC</span>
-<span class="c1">// {</span>
-<span class="c1">// public:</span>
-<span class="c1">//     using value_type = Scalar;</span>
-<span class="c1">//     using A_type = Matrix&lt;value_type, Dim, Dim&gt;;</span>
-<span class="c1">//     using b_type = Matrix&lt;value_type, Dim, 1&gt;;</span>
-<span class="c1">//     using c_type = Matrix&lt;value_type, 1, Dim&gt;;</span>
-<span class="c1">//     using vec_type = Matrix&lt;value_type, Dim, 1&gt;;</span>
-<span class="c1">//     using svec_type = Matrix&lt;value_type, 3, 1&gt;;</span>
+<span class="w">    </span><span class="n">SISOPFC</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Ad</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Bd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Cd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">delay</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">target_responce_time</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">A</span><span class="p">(</span><span class="n">Ad</span><span class="p">),</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">Bd</span><span class="p">),</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="n">Cd</span><span class="p">),</span><span class="w"> </span><span class="n">delay_</span><span class="p">(</span><span class="n">delay</span><span class="p">),</span><span class="w"> </span><span class="n">target_responce_time_</span><span class="p">(</span><span class="n">target_responce_time</span><span class="p">),</span><span class="w"> </span><span class="n">dt_</span><span class="p">(</span><span class="n">dt</span><span class="p">),</span><span class="w"> </span><span class="n">prev_input_</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">h1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ceil</span><span class="p">(</span><span class="n">target_responce_time_</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">dt_</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">h2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ceil</span><span class="p">(</span><span class="n">target_responce_time_</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">dt_</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">h3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ceil</span><span class="p">(</span><span class="n">target_responce_time_</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">dt_</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"></span>
 
-<span class="c1">//     SISOPFC(const A_type&amp; Am, const b_type&amp; Bm, const c_type&amp; Cm, const value_type delay, const value_type TCLRT, const value_type Ts):</span>
-<span class="c1">//         A(Am), B(Bm), C(Cm), _TCLRT(TCLRT), _Ts(Ts), _prev_input(0)</span>
-<span class="c1">//     {</span>
-<span class="c1">//         //using namespace Eigen;</span>
+<span class="w">        </span><span class="n">lh</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"></span>
+<span class="w">            </span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="mf">-3.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)(</span><span class="n">h1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dt_</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">target_responce_time_</span><span class="p">)),</span><span class="w"></span>
+<span class="w">            </span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="mf">-3.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)(</span><span class="n">h2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dt_</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">target_responce_time_</span><span class="p">)),</span><span class="w"></span>
+<span class="w">            </span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exp</span><span class="p">(</span><span class="mf">-3.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)(</span><span class="n">h3</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dt_</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">target_responce_time_</span><span class="p">));</span><span class="w"></span>
 
-<span class="c1">//         // setup</span>
-<span class="c1">//         h1 = ceil(_TCLRT / (_Ts * 3));</span>
-<span class="c1">//         h2 = ceil(_TCLRT / (_Ts * 2));</span>
-<span class="c1">//         h3 = ceil(_TCLRT / (_Ts * 1));</span>
-<span class="c1">//         hl = ceil(delay / _Ts);</span>
+<span class="w">        </span><span class="n">CAh1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CAh2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CAh3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C</span><span class="p">.</span><span class="n">transpose</span><span class="p">().</span><span class="n">eval</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">h1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">CAh1</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">h2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">CAh2</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">h3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">CAh3</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
 
-<span class="c1">//         lh = {</span>
-<span class="c1">//             (1 - exp(-3 * h1 * _Ts / _TCLRT)),</span>
-<span class="c1">//             (1 - exp(-3 * h2 * _Ts / _TCLRT)),</span>
-<span class="c1">//             (1 - exp(-3 * h3 * _Ts / _TCLRT))};</span>
+<span class="w">        </span><span class="n">G_inv</span><span class="p">.</span><span class="n">setZero</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">RowVectorXd</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C</span><span class="p">.</span><span class="n">transpose</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">h1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="n">tmp</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">ele</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dt_</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">h1</span><span class="mi">-1</span><span class="o">-</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t1</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">G_inv</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">ele</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">G_inv</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">ele</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t1</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">G_inv</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">ele</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t2</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
 
-<span class="c1">//         CAh1 = CAh2 = CAh3 = C;</span>
-<span class="c1">//         for(int i = 0; i &lt; h1; i++)</span>
-<span class="c1">//             CAh1 *= A;</span>
+<span class="w">        </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C</span><span class="p">.</span><span class="n">transpose</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">h2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="n">tmp</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">ele</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dt_</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">h2</span><span class="mi">-1</span><span class="o">-</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t1</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">G_inv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">ele</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">G_inv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">ele</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t1</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">G_inv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">ele</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t2</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C</span><span class="p">.</span><span class="n">transpose</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">h3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="n">tmp</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">ele</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dt_</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">h3</span><span class="mi">-1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t1</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">G_inv</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">ele</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">G_inv</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">ele</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t1</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">G_inv</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">ele</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t2</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
 
-<span class="c1">//         for (int i = 0; i &lt; h2; i++)</span>
-<span class="c1">//             CAh2 *= A;</span>
+<span class="w">        </span><span class="n">G_inv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">G_inv</span><span class="p">.</span><span class="n">inverse</span><span class="p">().</span><span class="n">eval</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">xm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="o">::</span><span class="n">Zero</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">cols</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="c1">//         for (int i = 0; i &lt; h3; i++)</span>
-<span class="c1">//             CAh3 *= A;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">calculate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ref_target</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">now_state</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">calculate</span><span class="p">(</span><span class="n">ref_target</span><span class="p">,</span><span class="w"> </span><span class="n">now_state</span><span class="p">,</span><span class="w"> </span><span class="n">prev_input_</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="c1">//         G_inv = Matrix&lt;value_type, 3, 3&gt;::Zero();</span>
-<span class="c1">//         c_type tmp = C;</span>
-<span class="c1">//         for (int i = 0; i &lt; h1; i++)</span>
-<span class="c1">//         {</span>
-<span class="c1">//             if(i &gt; 0)</span>
-<span class="c1">//                 tmp *= A;</span>
-<span class="c1">//             value_type ele = (tmp * B);</span>
-<span class="c1">//             value_type t1 = _Ts * (h1-1-i);</span>
-<span class="c1">//             value_type t2 = t1 * t1;</span>
-<span class="c1">//             G_inv(0, 0) += ele;</span>
-<span class="c1">//             G_inv(0, 1) += ele * t1;</span>
-<span class="c1">//             G_inv(0, 2) += ele * t2;</span>
-<span class="c1">//         }</span>
-<span class="c1">//         tmp = C;</span>
-<span class="c1">//         for (int i = 0; i &lt; h2; i++)</span>
-<span class="c1">//         {</span>
-<span class="c1">//             if (i &gt; 0)</span>
-<span class="c1">//                 tmp *= A;</span>
-<span class="c1">//             value_type ele = (tmp * B);</span>
-<span class="c1">//             value_type t1 = _Ts * (h2-1-i);</span>
-<span class="c1">//             value_type t2 = t1 * t1;</span>
-<span class="c1">//             G_inv(1, 0) += ele;</span>
-<span class="c1">//             G_inv(1, 1) += ele * t1;</span>
-<span class="c1">//             G_inv(1, 2) += ele * t2;</span>
-<span class="c1">//         }</span>
-<span class="c1">//         tmp = C;</span>
-<span class="c1">//         for (int i = 0; i &lt; h3; i++)</span>
-<span class="c1">//         {</span>
-<span class="c1">//             if (i &gt; 0)</span>
-<span class="c1">//                 tmp *= A;</span>
-<span class="c1">//             value_type ele = (tmp * B);</span>
-<span class="c1">//             value_type t1 = _Ts * (h3-1 - i);</span>
-<span class="c1">//             value_type t2 = t1 * t1;</span>
-<span class="c1">//             G_inv(2, 0) += ele;</span>
-<span class="c1">//             G_inv(2, 1) += ele * t1;</span>
-<span class="c1">//             G_inv(2, 2) += ele * t2;</span>
-<span class="c1">//         }</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">calculate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ref_target</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">now_state</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">prev_input</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="w"> </span><span class="n">SV_future</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="w"> </span><span class="n">SF</span><span class="p">;</span><span class="w"></span>
 
-<span class="c1">//         G_inv = G_inv.inverse();</span>
+<span class="w">        </span><span class="n">xm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">xm</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">prev_input</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">xm</span><span class="p">);</span><span class="w"></span>
 
-<span class="c1">//         xm = vec_type::Zero();</span>
-<span class="c1">//     }</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">now_tsarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ref_target</span><span class="p">(</span><span class="n">delay_</span><span class="p">);</span><span class="w"></span>
 
-<span class="c1">//     value_type calculate(std::function&lt;value_type(value_type)&gt; refTarget, value_type nowState)</span>
-<span class="c1">//     {</span>
-<span class="c1">//         return calculate(refTarget, nowState, prev_input());</span>
-<span class="c1">//     }</span>
+<span class="w">        </span><span class="n">SV_future</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"></span>
+<span class="w">            </span><span class="n">ref_target</span><span class="p">(</span><span class="n">delay_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dt_</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">now_tsarget</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">ref_target</span><span class="p">(</span><span class="n">delay_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dt_</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">now_tsarget</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">ref_target</span><span class="p">(</span><span class="n">delay_</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dt_</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">now_tsarget</span><span class="p">;</span><span class="w"></span>
 
-<span class="c1">//     value_type calculate(std::function&lt;value_type(value_type)&gt; refTarget, value_type nowState, value_type prev_input)</span>
-<span class="c1">//     {</span>
-<span class="c1">//         // using namespace Eigen;</span>
-<span class="c1">//         svec_type SV_future;</span>
-<span class="c1">//         svec_type SF;</span>
+<span class="w">        </span><span class="n">SF</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"></span>
+<span class="w">            </span><span class="n">CAh1</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">xm</span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="n">CAh2</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">xm</span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="n">CAh3</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">xm</span><span class="p">);</span><span class="w"></span>
 
-<span class="c1">//         xm = A * xm + B * prev_input;</span>
-<span class="c1">//         value_type y = C * xm;</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">G_inv</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">SV_future</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">now_tsarget</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">now_state</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lh</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">SF</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="o">::</span><span class="n">Constant</span><span class="p">(</span><span class="n">y</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">prev_input_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">clamp</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">buf</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="mi">-12</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span><span class="w"></span>
 
-<span class="c1">//         value_type nowTarget = refTarget(hl);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">prev_input_</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="c1">//         SV_future = {</span>
-<span class="c1">//             refTarget(hl + h1 * _Ts) - nowTarget,</span>
-<span class="c1">//             refTarget(hl + h2 * _Ts) - nowTarget,</span>
-<span class="c1">//             refTarget(hl + h3 * _Ts) - nowTarget};</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">prev_input</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">prev_input_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix3d</span><span class="w"> </span><span class="n">G_inv</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">xm</span><span class="p">,</span><span class="w"> </span><span class="n">MV_pre</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">C</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">RowVectorXd</span><span class="w"> </span><span class="n">CAh1</span><span class="p">,</span><span class="w"> </span><span class="n">CAh2</span><span class="p">,</span><span class="w"> </span><span class="n">CAh3</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="w"> </span><span class="n">lh</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">h1</span><span class="p">,</span><span class="w"> </span><span class="n">h2</span><span class="p">,</span><span class="w"> </span><span class="n">h3</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">delay_</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">target_responce_time_</span><span class="p">,</span><span class="w"> </span><span class="n">dt_</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">prev_input_</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-<span class="c1">//         SF = {</span>
-<span class="c1">//             CAh1 * xm,</span>
-<span class="c1">//             CAh2 * xm,</span>
-<span class="c1">//             CAh3 * xm};</span>
-
-<span class="c1">//         auto buf = G_inv * (SV_future + (nowTarget - nowState) * lh - SF + svec_type::Constant(y));</span>
-<span class="c1">//         _prev_input = clamp&lt;value_type&gt;(buf(0), -12, 12);</span>
-
-<span class="c1">//         return _prev_input;</span>
-<span class="c1">//     }</span>
-
-<span class="c1">//     value_type prev_input() { return _prev_input; }</span>
-<span class="c1">// private:</span>
-<span class="c1">//     Matrix&lt;value_type, 3, 3&gt; G_inv;</span>
-<span class="c1">//     A_type A;</span>
-<span class="c1">//     b_type B, xm, /*ym, */MV_pre;</span>
-<span class="c1">//     c_type CAh1, CAh2, CAh3, C;</span>
-<span class="c1">//     svec_type lh;</span>
-<span class="c1">//     size_t h1, h2, h3, hl;</span>
-<span class="c1">//     value_type _TCLRT, _Ts;</span>
-<span class="c1">//     value_type _prev_input;</span>
-<span class="c1">// };</span>
-
-<span class="c1">// }</span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-10-08 at 23:36:07 +0900</p>
+<p>Updated on 2022-10-10 at 00:51:40 +0900</p>
 
 
 

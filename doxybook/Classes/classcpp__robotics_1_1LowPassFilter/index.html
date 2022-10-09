@@ -2226,7 +2226,7 @@
 <tbody>
 <tr>
 <td></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-lowpassfilter">LowPassFilter</a></strong>(double tau, double dt)<br>Construct a new Low Pass Filter object.</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-lowpassfilter">LowPassFilter</a></strong>(double omega, double dt)<br>Construct a new Low Pass Filter object.</td>
 </tr>
 <tr>
 <td>double</td>
@@ -2234,7 +2234,7 @@
 </tr>
 <tr>
 <td>double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-tau">tau</a></strong>() const<br>時定数の取得</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/#function-omega">omega</a></strong>() const<br>折れ点周波数[rad/s]の取得</td>
 </tr>
 </tbody>
 </table>
@@ -2281,14 +2281,14 @@
 <h2 id="public-functions-documentation">Public Functions Documentation</h2>
 <h3 id="function-lowpassfilter">function LowPassFilter</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">LowPassFilter</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">tau</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">omega</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>Construct a new Low Pass Filter object. </p>
 <p><strong>Parameters</strong>: </p>
 <ul>
-<li><strong>tau</strong> 時定数 </li>
+<li><strong>omega</strong> 折れ点周波数[rad/s] </li>
 <li><strong>dt</strong> サンプリング周期 </li>
 </ul>
 <h3 id="function-filtering">function filtering</h3>
@@ -2302,13 +2302,13 @@
 <li><strong>u</strong> </li>
 </ul>
 <p><strong>Return</strong>: double </p>
-<h3 id="function-tau">function tau</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tau</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<h3 id="function-omega">function omega</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">omega</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
-<p>時定数の取得 </p>
+<p>折れ点周波数[rad/s]の取得 </p>
 <p><strong>Return</strong>: double </p>
 <hr />
-<p>Updated on 2022-10-08 at 23:36:07 +0900</p>
+<p>Updated on 2022-10-10 at 00:51:39 +0900</p>
 
 
 

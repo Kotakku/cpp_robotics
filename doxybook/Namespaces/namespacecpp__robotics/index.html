@@ -2274,6 +2274,10 @@
 </tr>
 <tr>
 <td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ButterworthFilter/">cpp_robotics::ButterworthFilter</a></strong> <br>バターワースフィルタ</td>
+</tr>
+<tr>
+<td>class</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRom2D/">cpp_robotics::CatumullRom2D</a></strong> <br>Catumull曲線</td>
 </tr>
 <tr>
@@ -2443,6 +2447,10 @@
 <tr>
 <td>class</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/">cpp_robotics::SisoFeedbackSystem</a></strong> <br>コントローラとシステムからなるSISOのフィードバックシステム</td>
+</tr>
+<tr>
+<td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SISOPFC/">cpp_robotics::SISOPFC</a></strong></td>
 </tr>
 <tr>
 <td>class</td>
@@ -2936,10 +2944,6 @@
 </tr>
 <tr>
 <td>bool</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect">intersect</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/">Line</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/">Line</a> &amp; b)</td>
-</tr>
-<tr>
-<td>bool</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect">intersect</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/">Line</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/">Circle</a> &amp; b)</td>
 </tr>
 <tr>
@@ -2951,56 +2955,36 @@
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect">intersect</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/">Circle</a> &amp; a, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; b)</td>
 </tr>
 <tr>
-<td>bool</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect">intersect</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/">Circle</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/">Line</a> &amp; b)</td>
-</tr>
-<tr>
-<td>std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt;</td>
+<td>std::optional&lt; std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt; &gt;</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at">intersect_at</a></strong>(const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; a, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; b)</td>
 </tr>
 <tr>
-<td>std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt;</td>
+<td>std::optional&lt; std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt; &gt;</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at">intersect_at</a></strong>(const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/">Line</a> &amp; b)</td>
 </tr>
 <tr>
-<td>std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt;</td>
+<td>std::optional&lt; std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt; &gt;</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at">intersect_at</a></strong>(const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Rect/">Rect</a> &amp; b)</td>
 </tr>
 <tr>
-<td>std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt;</td>
+<td>std::optional&lt; std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt; &gt;</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at">intersect_at</a></strong>(const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/">Circle</a> &amp; b)</td>
 </tr>
 <tr>
-<td>std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt;</td>
+<td>std::optional&lt; std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt; &gt;</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at">intersect_at</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/">Line</a> &amp; a, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; b)</td>
 </tr>
 <tr>
-<td>std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt;</td>
+<td>std::optional&lt; std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt; &gt;</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at">intersect_at</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/">Line</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/">Line</a> &amp; b)</td>
 </tr>
 <tr>
-<td>std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at">intersect_at</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/">Line</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/">Circle</a> &amp; b)</td>
-</tr>
-<tr>
-<td>std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt;</td>
+<td>std::optional&lt; std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt; &gt;</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at">intersect_at</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Rect/">Rect</a> &amp; a, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; b)</td>
 </tr>
 <tr>
-<td>std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt;</td>
+<td>std::optional&lt; std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt; &gt;</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at">intersect_at</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/">Circle</a> &amp; a, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; b)</td>
-</tr>
-<tr>
-<td>std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect-at">intersect_at</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/">Circle</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/">Line</a> &amp; b)</td>
-</tr>
-<tr>
-<td>bool</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-contain">contain</a></strong>(const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; range, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; target)</td>
-</tr>
-<tr>
-<td>bool</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-contain">contain</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Rect/">Rect</a> &amp; range, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; target)</td>
 </tr>
 <tr>
 <td>std::ostream &amp;</td>
@@ -3107,6 +3091,22 @@
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-a-star">a_star</a></strong>(const Eigen::Vector2i &amp; start, const Eigen::Vector2i &amp; end, const Eigen::MatrixXi &amp; map)<br>A*法</td>
 </tr>
 <tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalized-mjm-position">normalized_mjm_position</a></strong>(double t)</td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalized-mjm-velocity">normalized_mjm_velocity</a></strong>(double t)</td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalized-mjm-acceleration">normalized_mjm_acceleration</a></strong>(double t)</td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalized-mjm-jerk">normalized_mjm_jerk</a></strong>(double t)</td>
+</tr>
+<tr>
 <td>std::vector&lt; Eigen::Vector2i &gt;</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-wave-propagation">wave_propagation</a></strong>(const Eigen::Vector2i &amp; start, const Eigen::Vector2i &amp; end, const Eigen::MatrixXi &amp; map)<br>Wave propagation法</td>
 </tr>
@@ -3140,23 +3140,31 @@
 </tr>
 <tr>
 <td>std::tuple&lt; std::vector&lt; double &gt;, std::vector&lt; double &gt; &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-impluse">impluse</a></strong>(<a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &amp; sys, double time)<br>インパルス応答を求める</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-impulse">impulse</a></strong>(const std::function&lt; double(double)&gt; &amp; sys, double dt, double time)<br>インパルス応答を求める</td>
+</tr>
+<tr>
+<td>template &lt;class SysType ,typename std::enable_if&lt; internal::is_system_class&lt; SysType &gt;::value &gt;::type *  =nullptr> <br>std::tuple&lt; std::vector&lt; double &gt;, std::vector&lt; double &gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-impulse">impulse</a></strong>(SysType &amp; sys, double time)</td>
 </tr>
 <tr>
 <td>std::tuple&lt; std::vector&lt; double &gt;, std::vector&lt; double &gt; &gt;</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-step">step</a></strong>(const std::function&lt; double(double)&gt; &amp; sys, double dt, double time, const double gain =1.0)<br>ステップ応答を求める</td>
 </tr>
 <tr>
-<td>std::tuple&lt; std::vector&lt; double &gt;, std::vector&lt; double &gt; &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-step">step</a></strong>(<a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &amp; sys, double time, const double gain =1.0)<br>ステップ応答を求める</td>
+<td>template &lt;class SysType ,typename std::enable_if&lt; internal::is_system_class&lt; SysType &gt;::value &gt;::type *  =nullptr> <br>std::tuple&lt; std::vector&lt; double &gt;, std::vector&lt; double &gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-step">step</a></strong>(SysType &amp; sys, double time, const double gain =1.0)</td>
+</tr>
+<tr>
+<td>template &lt;class FilterType ,typename std::enable_if&lt; internal::is_pure_filter_class&lt; FilterType &gt;::value &gt;::type *  =nullptr> <br>std::tuple&lt; std::vector&lt; double &gt;, std::vector&lt; double &gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-step">step</a></strong>(FilterType &amp; filter, double time, const double gain =1.0)</td>
 </tr>
 <tr>
 <td>std::tuple&lt; std::vector&lt; double &gt;, std::vector&lt; double &gt; &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-step">step</a></strong>(<a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/">DiscreteTransferFunction</a> &amp; sys, double time, const double gain =1.0)<br>ステップ応答を求める</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lsim">lsim</a></strong>(const std::function&lt; double(double)&gt; &amp; sys, double dt, const std::vector&lt; double &gt; &amp; input)<br>任意の入力による応答を求める</td>
 </tr>
 <tr>
-<td>std::tuple&lt; std::vector&lt; double &gt;, std::vector&lt; double &gt; &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lsim">lsim</a></strong>(<a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &amp; sys, std::vector&lt; double &gt; input)<br>任意の入力による応答を求める</td>
+<td>template &lt;class SysType ,typename std::enable_if&lt; internal::is_system_class&lt; SysType &gt;::value &gt;::type *  =nullptr> <br>std::tuple&lt; std::vector&lt; double &gt;, std::vector&lt; double &gt; &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lsim">lsim</a></strong>(SysType &amp; sys, std::vector&lt; double &gt; input)</td>
 </tr>
 <tr>
 <td>template &lt;class UnitDimType ,int FromTag,int ToTag,bool IsNormalTag =tag::is_normal_tag<FromTag>::value &amp;&amp; tag::is_normal_tag<ToTag>::value> <br>constexpr double</td>
@@ -3215,48 +3223,48 @@
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-sgn">sgn</a></strong>(T x)</td>
 </tr>
 <tr>
-<td>template &lt;typename T > <br>constexpr float</td>
+<td>template &lt;typename T > <br>constexpr double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-radians">radians</a></strong>(T deg)</td>
 </tr>
 <tr>
-<td>template &lt;typename T > <br>constexpr float</td>
+<td>template &lt;typename T > <br>constexpr double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-degrees">degrees</a></strong>(T rad)</td>
 </tr>
 <tr>
-<td>float</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalize-angle-positive">normalize_angle_positive</a></strong>(float angle)</td>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalize-angle-positive">normalize_angle_positive</a></strong>(double angle)</td>
 </tr>
 <tr>
-<td>float</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalize-angle">normalize_angle</a></strong>(float angle)</td>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalize-angle">normalize_angle</a></strong>(double angle)</td>
 </tr>
 <tr>
-<td>float</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-shortest-angular-distance">shortest_angular_distance</a></strong>(float from, float to)</td>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-shortest-angular-distance">shortest_angular_distance</a></strong>(double from, double to)</td>
 </tr>
 <tr>
-<td>float</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-nearest-angle">nearest_angle</a></strong>(float from, float to)</td>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-nearest-angle">nearest_angle</a></strong>(double from, double to)</td>
 </tr>
 <tr>
-<td>constexpr float</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-square">square</a></strong>(const float x)</td>
+<td>constexpr double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-square">square</a></strong>(const double x)</td>
 </tr>
 <tr>
-<td>constexpr float</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-cubic">cubic</a></strong>(const float x)</td>
+<td>constexpr double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-cubic">cubic</a></strong>(const double x)</td>
 </tr>
 <tr>
-<td>constexpr float</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lerp">lerp</a></strong>(const float a, const float b, const float t)</td>
+<td>constexpr double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lerp">lerp</a></strong>(const double a, const double b, const double t)</td>
 </tr>
 <tr>
-<td>constexpr float</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-approx-eq">approx_eq</a></strong>(const float a, const float b)</td>
+<td>constexpr double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-approx-eq">approx_eq</a></strong>(const double a, const double b)</td>
 </tr>
 <tr>
-<td>constexpr float</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-approx-zero">approx_zero</a></strong>(const float a)</td>
+<td>constexpr double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-approx-zero">approx_zero</a></strong>(const double a)</td>
 </tr>
 <tr>
 <td>std::vector&lt; double &gt;</td>
@@ -3338,47 +3346,47 @@
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-ig32-100">IG32_100</a></strong></td>
 </tr>
 <tr>
-<td>constexpr float</td>
+<td>constexpr double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-pi">PI</a></strong> <br>円周率</td>
 </tr>
 <tr>
-<td>constexpr float</td>
+<td>constexpr double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-half-pi">HALF_PI</a></strong> <br>円周率 / 2</td>
 </tr>
 <tr>
-<td>constexpr float</td>
+<td>constexpr double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-two-pi">TWO_PI</a></strong> <br>円周率 * 2</td>
 </tr>
 <tr>
-<td>constexpr float</td>
+<td>constexpr double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-deg-to-rad">DEG_TO_RAD</a></strong> <br>degree -&gt; radians</td>
 </tr>
 <tr>
-<td>constexpr float</td>
+<td>constexpr double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-rad-to-deg">RAD_TO_DEG</a></strong> <br>radian -&gt; degree</td>
 </tr>
 <tr>
-<td>constexpr float</td>
+<td>constexpr double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-euler">EULER</a></strong> <br>ネイピア数</td>
 </tr>
 <tr>
-<td>constexpr float</td>
+<td>constexpr double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-gravity">GRAVITY</a></strong> <br>重力</td>
 </tr>
 <tr>
-<td>constexpr float</td>
+<td>constexpr double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-nm2gfm">Nm2gfm</a></strong></td>
 </tr>
 <tr>
-<td>constexpr float</td>
+<td>constexpr double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-gfm2nm">gfm2Nm</a></strong></td>
 </tr>
 <tr>
-<td>constexpr float</td>
+<td>constexpr double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-mnm2gfcm">mNm2gfcm</a></strong></td>
 </tr>
 <tr>
-<td>constexpr float</td>
+<td>constexpr double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#variable-gfcm2mnm">gfcm2mNm</a></strong></td>
 </tr>
 </tbody>
@@ -3984,103 +3992,67 @@
 <h3 id="function-intersect_5">function intersect</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">intersect</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Line</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Line</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
-<span class="p">)</span><span class="w"></span>
-</code></pre></div>
-<h3 id="function-intersect_6">function intersect</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">intersect</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Line</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Circle</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-intersect_7">function intersect</h3>
+<h3 id="function-intersect_6">function intersect</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">intersect</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Rect</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-intersect_8">function intersect</h3>
+<h3 id="function-intersect_7">function intersect</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">intersect</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Circle</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-intersect_9">function intersect</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">intersect</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Circle</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Line</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
-<span class="p">)</span><span class="w"></span>
-</code></pre></div>
 <h3 id="function-intersect_at">function intersect_at</h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-intersect_at_1">function intersect_at</h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Line</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-intersect_at_2">function intersect_at</h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Rect</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-intersect_at_3">function intersect_at</h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Circle</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-intersect_at_4">function intersect_at</h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Line</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-intersect_at_5">function intersect_at</h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Line</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Line</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-intersect_at_6">function intersect_at</h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Line</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Circle</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
-<span class="p">)</span><span class="w"></span>
-</code></pre></div>
-<h3 id="function-intersect_at_7">function intersect_at</h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Rect</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-intersect_at_8">function intersect_at</h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
+<h3 id="function-intersect_at_7">function intersect_at</h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Circle</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
-<span class="p">)</span><span class="w"></span>
-</code></pre></div>
-<h3 id="function-intersect_at_9">function intersect_at</h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersect_at</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Circle</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Line</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
-<span class="p">)</span><span class="w"></span>
-</code></pre></div>
-<h3 id="function-contain">function contain</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">contain</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">range</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">target</span><span class="w"></span>
-<span class="p">)</span><span class="w"></span>
-</code></pre></div>
-<h3 id="function-contain_1">function contain</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">contain</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Rect</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">range</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">target</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator">function operator&lt;&lt;</h3>
@@ -4448,6 +4420,26 @@
 <li><strong>map</strong> </li>
 </ul>
 <p><strong>Return</strong>: std::vector<Eigen::Vector2i> </p>
+<h3 id="function-normalized_mjm_position">function normalized_mjm_position</h3>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">normalized_mjm_position</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-normalized_mjm_velocity">function normalized_mjm_velocity</h3>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">normalized_mjm_velocity</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-normalized_mjm_acceleration">function normalized_mjm_acceleration</h3>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">normalized_mjm_acceleration</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-normalized_mjm_jerk">function normalized_mjm_jerk</h3>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">normalized_mjm_jerk</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
 <h3 id="function-wave_propagation">function wave_propagation</h3>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">wave_propagation</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2i</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"></span>
@@ -4525,9 +4517,10 @@
 <span class="w">    </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">system</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-impluse">function impluse</h3>
-<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">impluse</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sys</span><span class="p">,</span><span class="w"></span>
+<h3 id="function-impulse">function impulse</h3>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">impulse</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sys</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">time</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
@@ -4535,9 +4528,18 @@
 <p><strong>Parameters</strong>: </p>
 <ul>
 <li><strong>sys</strong> </li>
+<li><strong>dt</strong> </li>
 <li><strong>time</strong> </li>
 </ul>
 <p><strong>Return</strong>: std::tuple<std::vector\<double>, std::vector\<double>> </p>
+<h3 id="function-impulse_1">function impulse</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">SysType</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="w"> </span><span class="nc">std</span><span class="o">::</span><span class="n">enable_if</span><span class="o">&lt;</span><span class="w"> </span><span class="n">internal</span><span class="o">::</span><span class="n">is_system_class</span><span class="o">&lt;</span><span class="w"> </span><span class="n">SysType</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">type</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="o">=</span><span class="k">nullptr</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">impulse</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">SysType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sys</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">time</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
 <h3 id="function-step">function step</h3>
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">step</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sys</span><span class="p">,</span><span class="w"></span>
@@ -4556,48 +4558,46 @@
 </ul>
 <p><strong>Return</strong>: std::tuple<std::vector\<double>, std::vector\<double>> </p>
 <h3 id="function-step_1">function step</h3>
-<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">step</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sys</span><span class="p">,</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">SysType</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="w"> </span><span class="nc">std</span><span class="o">::</span><span class="n">enable_if</span><span class="o">&lt;</span><span class="w"> </span><span class="n">internal</span><span class="o">::</span><span class="n">is_system_class</span><span class="o">&lt;</span><span class="w"> </span><span class="n">SysType</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">type</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="o">=</span><span class="k">nullptr</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">step</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">SysType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sys</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">time</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">gain</span><span class="w"> </span><span class="o">=</span><span class="mf">1.0</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<p>ステップ応答を求める </p>
-<p><strong>Parameters</strong>: </p>
-<ul>
-<li><strong>sys</strong> </li>
-<li><strong>time</strong> </li>
-<li><strong>gain</strong> </li>
-</ul>
-<p><strong>Return</strong>: std::tuple<std::vector\<double>, std::vector\<double>> </p>
 <h3 id="function-step_2">function step</h3>
-<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">step</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">DiscreteTransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sys</span><span class="p">,</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">FilterType</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="w"> </span><span class="nc">std</span><span class="o">::</span><span class="n">enable_if</span><span class="o">&lt;</span><span class="w"> </span><span class="n">internal</span><span class="o">::</span><span class="n">is_pure_filter_class</span><span class="o">&lt;</span><span class="w"> </span><span class="n">FilterType</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">type</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="o">=</span><span class="k">nullptr</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">step</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">FilterType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">filter</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">time</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">gain</span><span class="w"> </span><span class="o">=</span><span class="mf">1.0</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<p>ステップ応答を求める </p>
-<p><strong>Parameters</strong>: </p>
-<ul>
-<li><strong>sys</strong> </li>
-<li><strong>time</strong> </li>
-<li><strong>gain</strong> </li>
-</ul>
-<p><strong>Return</strong>: std::tuple<std::vector\<double>, std::vector\<double>> </p>
 <h3 id="function-lsim">function lsim</h3>
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">lsim</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sys</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">input</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sys</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>任意の入力による応答を求める </p>
 <p><strong>Parameters</strong>: </p>
 <ul>
 <li><strong>sys</strong> </li>
+<li><strong>dt</strong> </li>
 <li><strong>input</strong> </li>
 </ul>
 <p><strong>Return</strong>: std::tuple<std::vector\<double>, std::vector\<double>> </p>
+<h3 id="function-lsim_1">function lsim</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">SysType</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="w"> </span><span class="nc">std</span><span class="o">::</span><span class="n">enable_if</span><span class="o">&lt;</span><span class="w"> </span><span class="n">internal</span><span class="o">::</span><span class="n">is_system_class</span><span class="o">&lt;</span><span class="w"> </span><span class="n">SysType</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">type</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="o">=</span><span class="k">nullptr</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">lsim</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">SysType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sys</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">input</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
 <h3 id="function-conv_factor">function conv_factor</h3>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">UnitDimType</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="n">FromTag</span><span class="p">,</span><span class="w"></span>
@@ -4797,7 +4797,7 @@
 <p><strong>Return</strong>: constexpr int </p>
 <h3 id="function-radians">function radians</h3>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
-<span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">radians</span><span class="p">(</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">radians</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">deg</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
@@ -4809,10 +4809,10 @@
 <ul>
 <li><strong>T</strong> </li>
 </ul>
-<p><strong>Return</strong>: constexpr float </p>
+<p><strong>Return</strong>: constexpr double </p>
 <h3 id="function-degrees">function degrees</h3>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
-<span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">degrees</span><span class="p">(</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">degrees</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">rad</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
@@ -4824,31 +4824,31 @@
 <ul>
 <li><strong>T</strong> </li>
 </ul>
-<p><strong>Return</strong>: constexpr float </p>
+<p><strong>Return</strong>: constexpr double </p>
 <h3 id="function-normalize_angle_positive">function normalize_angle_positive</h3>
-<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">normalize_angle_positive</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">angle</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">normalize_angle_positive</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">angle</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p><strong>Parameters</strong>: </p>
 <ul>
 <li><strong>angle</strong> </li>
 </ul>
-<p><strong>Return</strong>: float </p>
+<p><strong>Return</strong>: double </p>
 <h3 id="function-normalize_angle">function normalize_angle</h3>
-<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">normalize_angle</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">angle</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">normalize_angle</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">angle</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p><strong>Parameters</strong>: </p>
 <ul>
 <li><strong>angle</strong> </li>
 </ul>
-<p><strong>Return</strong>: float </p>
+<p><strong>Return</strong>: double </p>
 <h3 id="function-shortest_angular_distance">function shortest_angular_distance</h3>
-<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">shortest_angular_distance</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">to</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">shortest_angular_distance</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">to</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p><strong>Parameters</strong>: </p>
@@ -4856,39 +4856,39 @@
 <li><strong>from</strong> </li>
 <li><strong>to</strong> </li>
 </ul>
-<p><strong>Return</strong>: float </p>
+<p><strong>Return</strong>: double </p>
 <h3 id="function-nearest_angle">function nearest_angle</h3>
-<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">nearest_angle</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">to</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">nearest_angle</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">to</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-square">function square</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">square</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">square</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-cubic">function cubic</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">cubic</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">cubic</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-lerp">function lerp</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">lerp</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">t</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">lerp</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-approx_eq">function approx_eq</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">approx_eq</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">approx_eq</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-approx_zero">function approx_zero</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">approx_zero</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">approx_zero</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">a</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-arrange">function arrange</h3>
@@ -5041,47 +5041,47 @@
 <div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="n">GearHeadParam</span><span class="w"> </span><span class="n">IG32_100</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mf">100.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.6f</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-pi">variable PI</h3>
-<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.1415926535897932384626433832795</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.1415926535897932384626433832795</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>円周率 </p>
 <h3 id="variable-half_pi">variable HALF_PI</h3>
-<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">HALF_PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">HALF_PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>円周率 / 2 </p>
 <h3 id="variable-two_pi">variable TWO_PI</h3>
-<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">TWO_PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">TWO_PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>円周率 * 2 </p>
 <h3 id="variable-deg_to_rad">variable DEG_TO_RAD</h3>
-<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">DEG_TO_RAD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">180.0</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">DEG_TO_RAD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">180.0</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>degree -&gt; radians </p>
 <h3 id="variable-rad_to_deg">variable RAD_TO_DEG</h3>
-<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">RAD_TO_DEG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">180.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">PI</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">RAD_TO_DEG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">180.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">PI</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>radian -&gt; degree </p>
 <h3 id="variable-euler">variable EULER</h3>
-<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">EULER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.718281828459045235360287471352</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">EULER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.718281828459045235360287471352</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>ネイピア数 </p>
 <h3 id="variable-gravity">variable GRAVITY</h3>
-<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">GRAVITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">9.807</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">GRAVITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">9.807</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>重力 </p>
 <h3 id="variable-nm2gfm">variable Nm2gfm</h3>
-<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">Nm2gfm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">GRAVITY</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Nm2gfm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">GRAVITY</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-gfm2nm">variable gfm2Nm</h3>
-<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">gfm2Nm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GRAVITY</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">gfm2Nm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GRAVITY</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-mnm2gfcm">variable mNm2gfcm</h3>
-<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">mNm2gfcm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Nm2gfm</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">mNm2gfcm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Nm2gfm</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-gfcm2mnm">variable gfcm2mNm</h3>
-<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">gfcm2mNm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">gfm2Nm</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">gfcm2mNm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">gfm2Nm</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-10-08 at 23:36:07 +0900</p>
+<p>Updated on 2022-10-10 at 00:51:39 +0900</p>
 
 
 

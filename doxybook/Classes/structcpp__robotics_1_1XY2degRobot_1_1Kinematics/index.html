@@ -2226,8 +2226,12 @@
 <td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1XY2degRobot_1_1Kinematics/#function-kinematics">Kinematics</a></strong>(double l1, double l2)</td>
 </tr>
 <tr>
-<td>template &lt;typename T > <br>void</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1XY2degRobot_1_1Kinematics/#function-solve-fk">solve_fk</a></strong>(const Eigen::Matrix&lt; T, 2, 1 &gt; &amp; x, Eigen::Matrix&lt; T, 2, 1 &gt; &amp; y)</td>
+<td>template &lt;typename T > <br>Eigen::Matrix&lt; T, 2, 1 &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1XY2degRobot_1_1Kinematics/#function-solve-fk">solve_fk</a></strong>(const Eigen::Matrix&lt; T, 2, 1 &gt; &amp; x)</td>
+</tr>
+<tr>
+<td>Eigen::Vector2d</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1XY2degRobot_1_1Kinematics/#function-solve-ik-analytical">solve_ik_analytical</a></strong>(Eigen::Vector2d pos)</td>
 </tr>
 <tr>
 <td>template &lt;typename T > <br>void</td>
@@ -2249,11 +2253,11 @@
 <td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1XY2degRobot_1_1Kinematics/#variable-target-pos">target_pos</a></strong></td>
 </tr>
 <tr>
-<td>double</td>
+<td>const double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1XY2degRobot_1_1Kinematics/#variable-l1">l1</a></strong></td>
 </tr>
 <tr>
-<td>double</td>
+<td>const double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1XY2degRobot_1_1Kinematics/#variable-l2">l2</a></strong></td>
 </tr>
 </tbody>
@@ -2267,9 +2271,13 @@
 </code></pre></div>
 <h3 id="function-solve_fk">function solve_fk</h3>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
-<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">solve_fk</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">solve_fk</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-solve_ik_analytical">function solve_ik_analytical</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span><span class="w"> </span><span class="n">solve_ik_analytical</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span><span class="w"> </span><span class="n">pos</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-eval_func">function eval_func</h3>
@@ -2284,13 +2292,13 @@
 <div class="highlight"><pre><span></span><code><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span><span class="w"> </span><span class="n">target_pos</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-l1">variable l1</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">l1</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">l1</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-l2">variable l2</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">l2</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">l2</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-10-08 at 23:36:07 +0900</p>
+<p>Updated on 2022-10-10 at 00:51:39 +0900</p>
 
 
 

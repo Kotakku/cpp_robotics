@@ -2266,7 +2266,7 @@
 
 <span class="w">    </span><span class="n">NctfController</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">nct</span><span class="p">,</span><span class="w"> </span><span class="n">PIDController</span><span class="o">::</span><span class="n">pid_param_t</span><span class="w"> </span><span class="n">pid_param</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
 <span class="w">        </span><span class="n">nct_</span><span class="p">(</span><span class="n">nct</span><span class="p">),</span><span class="w"></span>
-<span class="w">        </span><span class="n">diff_</span><span class="p">(</span><span class="mf">0.5</span><span class="o">/</span><span class="n">dt</span><span class="p">,</span><span class="w"> </span><span class="n">dt</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="n">diff_</span><span class="p">(</span><span class="n">pid_param</span><span class="p">.</span><span class="n">gpd</span><span class="p">,</span><span class="w"> </span><span class="n">dt</span><span class="p">),</span><span class="w"></span>
 <span class="w">        </span><span class="n">pid_</span><span class="p">(</span><span class="n">pid_param</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 
@@ -2300,7 +2300,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-10-08 at 23:36:07 +0900</p>
+<p>Updated on 2022-10-10 at 00:51:40 +0900</p>
 
 
 

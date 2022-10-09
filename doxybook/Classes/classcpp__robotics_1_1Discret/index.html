@@ -2225,15 +2225,15 @@
 <tbody>
 <tr>
 <td>template &lt;typename Derived > <br>auto</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/#function-discretize-a">discretize_a</a></strong>(const Eigen::MatrixBase&lt; Derived &gt; &amp; A, const float Ts)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/#function-discretize-a">discretize_a</a></strong>(const Eigen::MatrixBase&lt; Derived &gt; &amp; A, const double Ts)</td>
 </tr>
 <tr>
 <td>template &lt;typename Derived1 ,typename Derived2 > <br>auto</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/#function-discretize-b">discretize_b</a></strong>(const Eigen::MatrixBase&lt; Derived1 &gt; &amp; A, const Eigen::MatrixBase&lt; Derived2 &gt; &amp; B, const float &amp; Ts, size_t hdiv =1000)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/#function-discretize-b">discretize_b</a></strong>(const Eigen::MatrixBase&lt; Derived1 &gt; &amp; A, const Eigen::MatrixBase&lt; Derived2 &gt; &amp; B, const double &amp; Ts, size_t hdiv =1000)</td>
 </tr>
 <tr>
 <td>template &lt;typename Derived1 ,typename Derived2 > <br>auto</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/#function-discritize">discritize</a></strong>(const Eigen::MatrixBase&lt; Derived1 &gt; &amp; A, const Eigen::MatrixBase&lt; Derived2 &gt; &amp; B, const float &amp; Ts, size_t hdiv =1000)<br>システムを離散化する</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/#function-discritize">discritize</a></strong>(const Eigen::MatrixBase&lt; Derived1 &gt; &amp; A, const Eigen::MatrixBase&lt; Derived2 &gt; &amp; B, const double &amp; Ts, size_t hdiv =1000)<br>システムを離散化する</td>
 </tr>
 </tbody>
 </table>
@@ -2242,7 +2242,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Derived</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
 <span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">discretize_a</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixBase</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Derived</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">Ts</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Ts</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-discretize_b">function discretize_b</h3>
@@ -2251,7 +2251,7 @@
 <span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">discretize_b</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixBase</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Derived1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixBase</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Derived2</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Ts</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Ts</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">hdiv</span><span class="w"> </span><span class="o">=</span><span class="mi">1000</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
@@ -2261,7 +2261,7 @@
 <span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">discritize</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixBase</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Derived1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixBase</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Derived2</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Ts</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Ts</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">hdiv</span><span class="w"> </span><span class="o">=</span><span class="mi">1000</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
@@ -2280,7 +2280,7 @@
 </ul>
 <p><strong>Return</strong>: auto </p>
 <hr />
-<p>Updated on 2022-10-08 at 23:36:07 +0900</p>
+<p>Updated on 2022-10-10 at 00:51:39 +0900</p>
 
 
 

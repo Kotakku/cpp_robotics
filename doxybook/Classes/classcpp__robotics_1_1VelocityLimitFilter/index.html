@@ -2225,15 +2225,15 @@
 <tbody>
 <tr>
 <td></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-velocitylimitfilter">VelocityLimitFilter</a></strong>(double v_max_, double Ts_)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-velocitylimitfilter">VelocityLimitFilter</a></strong>(double v_max, double dt)</td>
 </tr>
 <tr>
 <td></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-velocitylimitfilter">VelocityLimitFilter</a></strong>(double v_max_, double Ts_, std::pair&lt; double, double &gt; limit)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-velocitylimitfilter">VelocityLimitFilter</a></strong>(double v_max, double dt, std::pair&lt; double, double &gt; limit)</td>
 </tr>
 <tr>
 <td></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-velocitylimitfilter">VelocityLimitFilter</a></strong>(double v_max_, double Ts_, double gpd_, double fb_gain, std::optional&lt; std::pair&lt; double, double &gt;&gt; limit =std::nullopt)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-velocitylimitfilter">VelocityLimitFilter</a></strong>(double v_max, double dt, double gpd, double fb_gain, std::optional&lt; std::pair&lt; double, double &gt;&gt; limit =std::nullopt)</td>
 </tr>
 <tr>
 <td>virtual void</td>
@@ -2247,42 +2247,31 @@
 <td>virtual double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-filtering">filtering</a></strong>(double u)</td>
 </tr>
-</tbody>
-</table>
-<h2 id="public-attributes">Public Attributes</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Name</th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td>double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#variable-prev-v-">prev_v_</a></strong></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1VelocityLimitFilter/#function-ts">Ts</a></strong>() const</td>
 </tr>
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation</h2>
 <h3 id="function-velocitylimitfilter">function VelocityLimitFilter</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">VelocityLimitFilter</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">v_max_</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">Ts_</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">v_max</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-velocitylimitfilter_1">function VelocityLimitFilter</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">VelocityLimitFilter</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">v_max_</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">Ts_</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">v_max</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">limit</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-velocitylimitfilter_2">function VelocityLimitFilter</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">VelocityLimitFilter</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">v_max_</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">Ts_</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">gpd_</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">v_max</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">gpd</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">fb_gain</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">limit</span><span class="w"> </span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
@@ -2300,12 +2289,11 @@
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">u</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h2 id="public-attributes-documentation">Public Attributes Documentation</h2>
-<h3 id="variable-prev_v_">variable prev_v_</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">prev_v_</span><span class="p">;</span><span class="w"></span>
+<h3 id="function-ts">function Ts</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Ts</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-10-08 at 23:36:07 +0900</p>
+<p>Updated on 2022-10-10 at 00:51:39 +0900</p>
 
 
 
