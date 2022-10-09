@@ -104,10 +104,12 @@ private:
 public:
     static std::tuple<std::vector<double>, std::vector<double>> discritize(const std::vector<double> &num, const std::vector<double> &den, const double Ts)
     {
-        assert(num.size() < den.size()); // 厳密にプロパー
+        assert(num.size() <= den.size()); // プロパー
 
         size_t dim = den.size();
         Polynomial num_poly, den_poly;
+
+        // (2(z-1))^{num_size}*(T(z+1))^{den_size}を展開した多項式オブジェクトを返す
         auto z_poly = [&](size_t num_size, size_t den_size)
         {
             std::vector<double> roots(num_size+den_size, -1);
@@ -115,11 +117,6 @@ public:
             {
                 roots[i] = +1;
             }
-
-            // std::cout << num_size << ", " << den_size << " -> ";
-            // for(auto &c : roots)
-            //     std::cout << c << ", ";
-            // std::cout << std::endl;
 
             return std::pow(2.0, num_size)*std::pow(Ts, den_size) * Polynomial::expand(roots);
         };
