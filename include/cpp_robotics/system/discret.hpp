@@ -22,7 +22,7 @@ private:
     }
 
     template<typename Derived>
-    static auto integral_expm(const Eigen::MatrixBase<Derived> &A, const float &Ts, size_t hdiv = 1000)
+    static auto integral_expm(const Eigen::MatrixBase<Derived> &A, const double &Ts, size_t hdiv = 1000)
     {
         assert(A.cols() == A.rows());
 
@@ -45,14 +45,14 @@ private:
 
 public:
     template<typename Derived>
-    static auto discretize_a(const Eigen::MatrixBase<Derived> &A, const float Ts)
+    static auto discretize_a(const Eigen::MatrixBase<Derived> &A, const double Ts)
     {
         assert(A.cols() == A.rows());
         return static_cast<Derived>((A*Ts).exp());
     }
 
     template<typename Derived1, typename Derived2>
-    static auto discretize_b(const Eigen::MatrixBase<Derived1> &A, const Eigen::MatrixBase<Derived2> &B, const float &Ts, size_t hdiv = 1000)
+    static auto discretize_b(const Eigen::MatrixBase<Derived1> &A, const Eigen::MatrixBase<Derived2> &B, const double &Ts, size_t hdiv = 1000)
     {
         assert(A.rows() == A.cols());
         assert(A.rows() == B.rows());
@@ -88,7 +88,7 @@ public:
      * @return auto 
      */
     template<typename Derived1, typename Derived2>
-    static auto discritize(const Eigen::MatrixBase<Derived1> &A, const Eigen::MatrixBase<Derived2> &B, const float &Ts, size_t hdiv = 1000)
+    static auto discritize(const Eigen::MatrixBase<Derived1> &A, const Eigen::MatrixBase<Derived2> &B, const double &Ts, size_t hdiv = 1000)
     {
         return std::tuple{
             discretize_a(A, Ts),
