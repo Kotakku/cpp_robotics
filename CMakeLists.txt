@@ -20,7 +20,7 @@ find_package(Python3 COMPONENTS Development NumPy)
 if("${CR_BUILD_EXAMPLE}" STREQUAL "ON")
 set(example_files
   # hello_world
-  # controller/pid_vs_nctf
+  controller/pid_vs_nctf
   # controller/lqr
   # controller/canonicalize
   # controller/place
@@ -90,7 +90,8 @@ set(test_files
 
   optimize/fmin_search_test
   optimize/bfgs_test
-
+  
+  controller/pfc_test
 )
 include(GoogleTest)
 foreach(test_file ${test_files})
