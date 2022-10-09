@@ -27,7 +27,7 @@ public:
 
     NctfController(std::function<double(double)> nct, PIDController::pid_param_t pid_param, double dt):
         nct_(nct),
-        diff_(0.5/dt, dt),
+        diff_(pid_param.gpd, dt),
         pid_(pid_param)
     {
 
