@@ -52,15 +52,15 @@ bool intersect(const Vector2d& a, const Circle& b)
     return (b.center-a).norm_sq() <= square(b.r);
 }
 
-bool intersect(const Vector2d& a, const Triangle& b)
-{
-    return false; // Todo
-}
+// bool intersect(const Vector2d& a, const Triangle& b)
+// {
+//     return false; // Todo
+// }
 
-bool intersect(const Vector2d& a, const Quad& b)
-{
-    return false; // Todo
-}
+// bool intersect(const Vector2d& a, const Quad& b)
+// {
+//     return false; // Todo
+// }
 
 
 ////////// Line vs //////////
@@ -69,10 +69,10 @@ bool intersect(const Line& a, const Vector2d& b)
     return intersect(b, a);
 }
 
-bool intersect(const Line &a, const Line &b)
-{
-    return false; // Todo
-}
+// bool intersect(const Line &a, const Line &b)
+// {
+//     return false; // Todo
+// }
 
 bool intersect(const Line& a, const Circle& b)
 {
@@ -97,20 +97,20 @@ bool intersect(const Line& a, const Circle& b)
     return (ac.dot(ac) - e * e / f) <= rr;
 }
 
-bool intersect(const Line& a, const Rect& b)
-{
-    return false; // Todo
-}
+// bool intersect(const Line& a, const Rect& b)
+// {
+//     return false; // Todo
+// }
 
-bool intersect(const Line& a, const Quad& b)
-{
-    return false; // Todo
-}
+// bool intersect(const Line& a, const Quad& b)
+// {
+//     return false; // Todo
+// }
 
-bool intersect(const Line& a, const Triangle& b)
-{
-    return false; // Todo
-}
+// bool intersect(const Line& a, const Triangle& b)
+// {
+//     return false; // Todo
+// }
 
 ////////// Rect vs //////////
 bool intersect(const Rect& a, const Vector2d& b)
@@ -118,30 +118,30 @@ bool intersect(const Rect& a, const Vector2d& b)
     return intersect(b, a); 
 }
 
-bool intersect(const Rect& a, const Line& b)
-{
-    return false; // Todo
-}
+// bool intersect(const Rect& a, const Line& b)
+// {
+//     return false; // Todo
+// }
 
-bool intersect(const Rect& a, const Rect& b)
-{
-    return false; // Todo
-}
+// bool intersect(const Rect& a, const Rect& b)
+// {
+//     return false; // Todo
+// }
 
-bool intersect(const Rect& a, const Quad& b)
-{
-    return false; // Todo
-}
+// bool intersect(const Rect& a, const Quad& b)
+// {
+//     return false; // Todo
+// }
 
-bool intersect(const Rect& a, const Triangle& b)
-{
-    return false; // Todo
-}
+// bool intersect(const Rect& a, const Triangle& b)
+// {
+//     return false; // Todo
+// }
 
-bool intersect(const Rect& a, const Circle& b)
-{
-    return false; // Todo
-}
+// bool intersect(const Rect& a, const Circle& b)
+// {
+//     return false; // Todo
+// }
 
 ////////// Ciecle vs //////////
 bool intersect(const Circle& a, const Vector2d& b)
@@ -149,30 +149,30 @@ bool intersect(const Circle& a, const Vector2d& b)
     return intersect(b, a);
 }
 
-bool intersect(const Circle& a, const Line& b)
-{
-    return false; // Todo
-}
+// bool intersect(const Circle& a, const Line& b)
+// {
+//     return false; // Todo
+// }
 
-bool intersect(const Circle& a, const Rect& b)
-{
-    return false; // Todo
-}
+// bool intersect(const Circle& a, const Rect& b)
+// {
+//     return false; // Todo
+// }
 
-bool intersect(const Circle& a, const Quad& b)
-{
-    return false; // Todo
-}
+// bool intersect(const Circle& a, const Quad& b)
+// {
+//     return false; // Todo
+// }
 
-bool intersect(const Circle& a, const Triangle& b)
-{
-    return false; // Todo
-}
+// bool intersect(const Circle& a, const Triangle& b)
+// {
+//     return false; // Todo
+// }
 
-bool intersect(const Circle& a, const Circle& b)
-{
-    return false; // Todo
-}
+// bool intersect(const Circle& a, const Circle& b)
+// {
+//     return false; // Todo
+// }
 
 ////////////////////////////// intersect_at //////////////////////////////
 std::optional<std::vector<Vector2d>> intersect_at(const Vector2d& a, const Vector2d& b)
@@ -254,10 +254,10 @@ std::optional<std::vector<Vector2d>> intersect_at(const Line& a, const Line& b)
     return std::nullopt;
 }
 
-std::optional<std::vector<Vector2d>> intersect_at(const Line& a, const Circle& b)
-{
-    return std::nullopt; // Todo
-}
+// std::optional<std::vector<Vector2d>> intersect_at(const Line& a, const Circle& b)
+// {
+//     return std::nullopt; // Todo
+// }
 
 std::optional<std::vector<Vector2d>> intersect_at(const Rect& a, const Vector2d& b)
 {
@@ -269,10 +269,10 @@ std::optional<std::vector<Vector2d>> intersect_at(const Circle& a, const Vector2
     return intersect_at(b, a);
 }
 
-std::optional<std::vector<Vector2d>> intersect_at(const Circle& a, const Line& b)
-{
-    return intersect_at(b, a);
-}
+// std::optional<std::vector<Vector2d>> intersect_at(const Circle& a, const Line& b)
+// {
+//     return intersect_at(b, a);
+// }
 
 }
 
