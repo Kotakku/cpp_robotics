@@ -25,7 +25,7 @@ public:
     double Ts() const { return 1e-3; }
 };
 
-TEST(time_responce, impluce) {
+TEST(time_responce, impulse) {
     namespace cr = cpp_robotics;
 
     {
@@ -73,11 +73,11 @@ TEST(time_responce, lsim) {
 
     {
         MyAllPassFilter filter;
-        auto [t, res] = cr::lsim(filter, cr::linspace(0, 3.0, filter.Ts()));
+        auto [t, res] = cr::lsim(filter, cr::arrange(0, 3.0, filter.Ts()));
     }
 
     {
         cr::LowPassFilter filter(10*2*M_PI, 1e-3);
-        auto [t, res] = cr::lsim(filter, cr::linspace(0, 3.0, filter.Ts()));
+        auto [t, res] = cr::lsim(filter, cr::arrange(0, 3.0, filter.Ts()));
     }
 }
