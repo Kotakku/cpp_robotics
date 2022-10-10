@@ -39,7 +39,7 @@ public:
         double tol_con = 1e-6;
 
         // メリット関数の制約にかかる重み
-        double eta = 0.1;
+        double eta = 1.1;
 
         // 直線探索の囲い込み法におけるステップごとの更新倍率
         double beta = 0.9;
@@ -119,7 +119,7 @@ public:
 
         double rho = 1; // 不等式制約に使用する
         Eigen::VectorXd s = Eigen::VectorXd::Ones(l); // 不等式制約のスラック変数
-        Eigen::VectorXd u = Eigen::VectorXd::Zero(l); // 不等式制約のラグランジュ乗数
+        Eigen::VectorXd u = Eigen::VectorXd::Ones(l); // 不等式制約のラグランジュ乗数
         Eigen::VectorXd v = Eigen::VectorXd::Zero(m); // 等式制約のラグランジュ乗数
         Eigen::VectorXd foom = grad_lagrange(x, u, v); // KKT条件1次の最適性
 
@@ -131,7 +131,6 @@ public:
             P.block(0,0,n,n) = Q;
             r.segment(0,n) = Q*x + c;
 
-
             // 不等式制約
             if(l>0)
             {
@@ -141,6 +140,7 @@ public:
                 P.block(n+l, n, l,l) = u.asDiagonal();
                 P.block(n+l, n+l, l,l) = s.asDiagonal();
 
+                r.segment(0,n) += A.transpose() * u;
                 r.segment(n,l) = A*x - b + s;
                 r.segment(n+l,l) = -rho*Eigen::VectorXd::Ones(l) + Eigen::VectorXd(u.array()*s.array());
             }
@@ -151,13 +151,18 @@ public:
                 P.block(n + 2*l, 0, m, n) = Aeq;
                 P.block(0, n + 2*l, n, m) = Aeq.transpose();
 
+                r.segment(0,n) += Aeq.transpose() * v;
                 r.segment(n+2*l,m) = Aeq*x - beq;
             }
 
+            if(i == 0)
+            {
+                std::cout << P << std::endl;
+                std::cout << r << std::endl;
+            }
+
             // 連立一次方程式を解く
-            // Eigen::GMRES<Eigen::MatrixXd> gmres(P);
             Eigen::VectorXd delta = P.fullPivLu().solve(-r);
-            // Eigen::VectorXd delta = gmres.solve(-r);
             
             Eigen::VectorXd dx = delta.segment(0,n);
             Eigen::VectorXd ds = delta.segment(n,l);
@@ -183,6 +188,8 @@ public:
                 v += dv;
             }
 
+            std::cout << "s" << std::endl;
+            std::cout << A*x-b-s << std::endl;
             // メリット関数のパラメータ更新
             if(l>0)
             {
@@ -191,7 +198,7 @@ public:
 
             // Todo 最適性と制約をチェックする
             Eigen::VectorXd new_foom = grad_lagrange(x, u, v);
-            if(dx.norm() <= tol_step*(1.0+x.norm())) // && (new_foom - foom).norm() <= tol_con*(1.0+foom.norm()))
+            if(dx.norm() <= tol_step*(1.0+x.norm()) && (new_foom - foom).norm() <= tol_con*(1.0+foom.norm()))
             {
                 result.is_solved = true;
                 result.x = x;
@@ -222,20 +229,29 @@ public:
         
         for(int i = 0; i < s.rows(); i++)
         {
-            val += rho*std::log(s(i));
+            val -= rho*std::log(s(i));
         }
 
-        Eigen::VectorXd v = A*x-b+s;
-        for(int i = 0; i < v.rows(); i++)
+        if(0 < A.rows())
         {
-            val += eta*std::log(std::abs(v(i)));
+            Eigen::VectorXd v = A*x-b+s;
+            for(int i = 0; i < v.rows(); i++)
+            {
+                val += eta*std::abs(v(i));
+                
+            }
         }
 
-        Eigen::VectorXd veq = Aeq*x-beq;
-        for(int i = 0; i < veq.rows(); i++)
+        if(0 < Aeq.size())
         {
-            val += eta*std::log(std::abs(veq(i)));
+            Eigen::VectorXd veq = Aeq*x-beq;
+            for(int i = 0; i < veq.rows(); i++)
+            {
+                val += eta*std::abs(veq(i));
+                
+            }
         }
+
         return val;
     }
 
