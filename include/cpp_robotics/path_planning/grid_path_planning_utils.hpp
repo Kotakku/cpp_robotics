@@ -13,6 +13,12 @@ namespace cpp_robotics::grid_path_planning_utils
 
 struct GridNode
 {
+    GridNode():
+        cost(0), hcost(0)
+    {
+        pos.setZero();
+        parent.setZero();
+    }
     bool operator == (const GridNode& o ) { return pos == o.pos; }
     bool operator == (const Eigen::Vector2i& o ) { return pos == o; }
     bool operator < (const GridNode& o ) { return hcost + cost < o.hcost + o.cost; }

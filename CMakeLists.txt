@@ -20,6 +20,7 @@ find_package(Python3 COMPONENTS Development NumPy)
 if("${CR_BUILD_EXAMPLE}" STREQUAL "ON")
 set(example_files
   # hello_world
+  controller/motor_pid_control
   controller/pid_vs_nctf
   controller/lqr
   controller/canonicalize
