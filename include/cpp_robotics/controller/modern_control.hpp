@@ -128,10 +128,6 @@ namespace cpp_robotics
         // else
         if(mode == CanonicalizeMode::CONTROLLABLE || mode == CanonicalizeMode::COMPANION || mode == CanonicalizeMode::OBSERBAVLE)
         {
-            
-            Eigen::MatrixXd Uc = controllability_matrix(A, B);
-            Eigen::MatrixXd Ucinv = Uc.inverse();
-
             if(mode == CanonicalizeMode::CONTROLLABLE)
             {
                 auto [A_tilda, B_tilda, C_tilda] = canonicalize_system(A, B, C, CanonicalizeMode::COMPANION);
@@ -143,6 +139,8 @@ namespace cpp_robotics
             }
             else
             {
+                Eigen::MatrixXd Uc = controllability_matrix(A, B);
+                Eigen::MatrixXd Ucinv = Uc.inverse();
                 return {
                     Ucinv*A*Uc,
                     Ucinv*B,
