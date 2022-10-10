@@ -91,6 +91,9 @@ set(test_files
   optimize/fmin_search_test
   optimize/bfgs_test
   
+  controller/pid_test
+  controller/pid2_test
+  controller/psmc_test
   controller/pfc_test
 )
 include(GoogleTest)

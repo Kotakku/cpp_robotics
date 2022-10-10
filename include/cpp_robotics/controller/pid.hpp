@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cmath>
 #include <optional>
 #include <utility>
 #include <algorithm>
@@ -11,7 +12,7 @@ namespace cpp_robotics
  * @brief PID制御器
  * 
  */
-class PIDController
+class PID
 {
 public:
     struct pid_param_t
@@ -22,7 +23,7 @@ public:
         std::optional<std::pair<double, double>> output_limit;
     };
 
-    PIDController(pid_param_t param)
+    PID(pid_param_t param)
     {
         set_param(param);
         reset();
@@ -43,7 +44,7 @@ public:
 
     double calculate(double error)
     {
-        auto [Ts, gpd, Kp, Ki, Kd, output_limit] = param_;
+        auto &[Ts, gpd, Kp, Ki, Kd, output_limit] = param_;
         
         double u = ( 2.0*Ts*(Ki+Kp*gpd)*(error-e2_) + Ki*gpd*Ts*Ts*(error+2.0*e1_+e2_) +
                     4.0*(Kd*gpd+Kp)*(error-2.0*e1_+e2_) - (4.0-2.0*gpd*Ts)*u2_ + 8.0*u1_) / (4.0+2.0*gpd*Ts);

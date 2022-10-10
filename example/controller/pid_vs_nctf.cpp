@@ -50,7 +50,7 @@ int main()
     const double max_output = 24;
 
     //////////////////// PID ////////////////////
-    cr::PIDController::pid_param_t pid_param = 
+    cr::PID::pid_param_t pid_param = 
     {
         .Ts = dt,
         .gpd = 100*2*M_PI,
@@ -59,10 +59,10 @@ int main()
         .Kd = 0.2,
         .output_limit = std::pair(-max_output, max_output)
     };
-    cr::PIDController pid(pid_param);
+    cr::PID pid(pid_param);
 
     //////////////////// NCTF ////////////////////
-    cr::PIDController::pid_param_t nctf_pid_param = 
+    cr::PID::pid_param_t nctf_pid_param = 
     {
         .Ts = dt,
         .gpd = 100*2*M_PI,
@@ -91,7 +91,7 @@ int main()
         cr::SisoFeedbackSystem siso_sys = cr::make_feedback_system(pid, plant);
         siso_sys.reset();
         auto [t, responce] = cr::lsim(siso_sys, ref_trajecoty);
-        plt::named_plot("PID responce", t, responce);
+        plt::named_plot("PID responce(dt = 0.001)", t, responce);
     }
 
     // NCTF constoller system simulation
@@ -99,7 +99,19 @@ int main()
         cr::SisoFeedbackSystem siso_sys = cr::make_feedback_system(nctf, plant);
         siso_sys.reset();
         auto [t, responce] = cr::lsim(siso_sys, ref_trajecoty);
-        plt::named_plot("NCTF responce", t, responce);
+        plt::named_plot("NCTF responce(dt = 0.001)", t, responce);
+    }
+
+    // NCTF constoller system simulation(long time period)
+    {
+        const double ldt = dt * 10;
+        auto plant2 = make_geared_motor_pos_tf(motor, ldt); // [V] -> [rad]
+        cr::NctfController nctf2(nct_max_velocity, nct_slope, nctf_pid_param, ldt);
+        cr::SisoFeedbackSystem siso_sys = cr::make_feedback_system(nctf2, plant2);
+        siso_sys.reset();
+        auto [tref, ref_trajecoty] = ref_trajectory(5.0, ldt);
+        auto [t, responce] = cr::lsim(siso_sys, ref_trajecoty);
+        plt::named_plot("NCTF responce(dt = 0.01)", t, responce);
     }
 
     // show

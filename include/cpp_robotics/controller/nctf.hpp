@@ -19,13 +19,13 @@ public:
         return [=](double e){ return -max_velocity*std::tanh(e*slope/max_velocity); };
     }
 
-    NctfController(double max_velocity, double nct_slope, PIDController::pid_param_t pid_param, double dt):
+    NctfController(double max_velocity, double nct_slope, PID::pid_param_t pid_param, double dt):
         NctfController(make_simple_nct(max_velocity, nct_slope), pid_param, dt)
     {
 
     }
 
-    NctfController(std::function<double(double)> nct, PIDController::pid_param_t pid_param, double dt):
+    NctfController(std::function<double(double)> nct, PID::pid_param_t pid_param, double dt):
         nct_(nct),
         diff_(pid_param.gpd, dt),
         pid_(pid_param)
@@ -55,7 +55,7 @@ public:
 private:
     std::function<double(double)> nct_;
     Differentiator diff_;
-    PIDController pid_;
+    PID pid_;
 };
 
 }

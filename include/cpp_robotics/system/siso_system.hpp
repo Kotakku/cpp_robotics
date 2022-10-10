@@ -94,7 +94,7 @@ static SisoFeedbackSystem make_feedback_system(CONTROLLER_T &controller, SYSTEM_
     return SisoFeedbackSystem(fn, system.Ts());
 }
 
-static void set_controller(SisoFeedbackSystem::func_list_t &fn, PIDController &controller)
+static void set_controller(SisoFeedbackSystem::func_list_t &fn, PID &controller)
 {
     // fn.controller_obj = controller;
     fn.controller_reset = [&](){ controller.reset(); };

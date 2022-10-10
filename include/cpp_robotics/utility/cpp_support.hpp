@@ -44,6 +44,67 @@ namespace cpp_robotics
 {
 
 /**
+ * @brief Substitute shift_left function in C++20 alogorithm
+ * 
+ * @tparam ForwardIterator 
+ * @param first 
+ * @param last 
+ * @param n 
+ * @return constexpr ForwardIterator 
+ */
+template <class ForwardIterator>
+constexpr ForwardIterator shift_left(ForwardIterator first,
+                                        ForwardIterator last,
+                                        typename std::iterator_traits<ForwardIterator>::difference_type n)
+{
+    if (n <= 0)
+        return last;
+    if (n >= last - first)
+        return first;
+
+    ForwardIterator it = first;
+    ForwardIterator nlast = std::prev(last, n);
+    while (it != nlast)
+    {
+        ForwardIterator nit = std::next(it, n);
+        *it = *nit;
+        it++;
+    }
+    return first + (last - first - n);
+}
+
+/**
+ * @brief Substitute shift_right function in C++20 alogorithm
+ * 
+ * @tparam ForwardIterator 
+ * @param first 
+ * @param last 
+ * @param n 
+ * @return constexpr ForwardIterator 
+ */
+template <class ForwardIterator>
+constexpr ForwardIterator shift_right(ForwardIterator first,
+                                        ForwardIterator last,
+                                        typename std::iterator_traits<ForwardIterator>::difference_type n)
+{
+    if (n <= 0)
+        return first;
+    if (n >= last - first)
+        return last;
+
+    ForwardIterator it = std::prev(last, n);
+    ForwardIterator nfirst = std::prev(first, 1);
+    while (it != nfirst)
+    {
+        ForwardIterator nit = std::next(it, n);
+        *nit = *it;
+        it--;
+    }
+
+    return first + n;
+}
+
+/**
  * @brief printfと同様の操作でstd::stringを得る
  * 
  * @tparam Args 
