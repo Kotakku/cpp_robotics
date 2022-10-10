@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cmath>
-#include <cpp_robotics/system/discrete_transfer_function.hpp>
+#include <cpp_robotics/system/transfer_function.hpp>
 
 namespace cpp_robotics
 {
@@ -9,7 +9,7 @@ namespace cpp_robotics
 /// 積分器
 // G(s) = 1 / s
 // 双一次変換で離散化したもの
-class Integrator : public DiscreteTransferFunction
+class Integrator : public TransferFunction
 {
 public:
     /**
@@ -19,7 +19,7 @@ public:
      */
     Integrator(double dt)
     {
-        set_continuous({1}, {1, 0}, dt);
+        TransferFunction::set_continuous({1}, {1, 0}, dt);
     }
 
     /**

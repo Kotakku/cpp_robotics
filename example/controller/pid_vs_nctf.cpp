@@ -52,24 +52,24 @@ int main()
     //////////////////// PID ////////////////////
     cr::PID::pid_param_t pid_param = 
     {
-        .Ts = dt,
-        .gpd = 100*2*M_PI,
-        .Kp = 6.0,
-        .Ki = 0.0,
-        .Kd = 0.2,
-        .output_limit = std::pair(-max_output, max_output)
+        /*.Ts =           */ dt,
+        /*.gpd =          */ 100*2*M_PI,
+        /*.Kp =           */ 6.0,
+        /*.Ki =           */ 0.0,
+        /*.Kd =           */ 0.2,
+        /*.output_limit = */ std::pair(-max_output, max_output)
     };
     cr::PID pid(pid_param);
 
     //////////////////// NCTF ////////////////////
     cr::PID::pid_param_t nctf_pid_param = 
     {
-        .Ts = dt,
-        .gpd = 100*2*M_PI,
-        .Kp = 0.5,
-        .Ki = 0,
-        .Kd = 0,
-        .output_limit = std::pair(-max_output, max_output)
+        /*.Ts =           */ dt,
+        /*.gpd =          */ 100*2*M_PI,
+        /*.Kp =           */ 0.5,
+        /*.Ki =           */ 0,
+        /*.Kd =           */ 0,
+        /*.output_limit = */ std::pair(-max_output, max_output)
     };
     
     const double nct_max_velocity = 300.0;

@@ -111,7 +111,7 @@ static void set_controller(SisoFeedbackSystem::func_list_t &fn, NctfController &
 static void set_system(SisoFeedbackSystem::func_list_t &fn, TransferFunction &system)
 {
     // fn.system_obj = system;
-    fn.system_reset = [&](){ return system.set_state_zero(); };
+    fn.system_reset = [&](){ return system.reset(); };
     fn.system = [&](double u){ return system.responce(u); };
 }
 

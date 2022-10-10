@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cmath>
-#include <cpp_robotics/system/discrete_transfer_function.hpp>
+#include <cpp_robotics/system/transfer_function.hpp>
 
 namespace cpp_robotics
 {
@@ -12,7 +12,7 @@ namespace cpp_robotics
  */
 /// G(s) = omega*s / (s + omega)
 /// 双一次変換で離散化したもの
-class Differentiator : public DiscreteTransferFunction
+class Differentiator : public TransferFunction
 {
 public:
     /**
@@ -24,7 +24,7 @@ public:
 	Differentiator(double omega, double dt): 
         omega_(omega)
     {
-        set_continuous({omega, 0}, {1, omega}, dt);
+        TransferFunction::set_continuous({omega_, 0}, {1, omega_}, dt);
     }
 
     /**

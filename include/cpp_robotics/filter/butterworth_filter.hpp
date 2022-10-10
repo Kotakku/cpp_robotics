@@ -1,13 +1,13 @@
 #pragma once
 
-#include "cpp_robotics/system/discrete_transfer_function.hpp"
+#include <cpp_robotics/system/transfer_function.hpp>
 #include "cpp_robotics/system/polynomial.hpp"
 
 namespace cpp_robotics
 {
 
 /// バターワースフィルタ
-class ButterworthFilter : public DiscreteTransferFunction
+class ButterworthFilter : public TransferFunction
 {
 public:
     /**
@@ -46,7 +46,7 @@ public:
         }
 
         std::cout << den_poly << std::endl;
-        set_continuous({1}, den_poly.coeff(), dt);
+        TransferFunction::set_continuous({1}, den_poly.coeff(), dt);
     }
 
     /**

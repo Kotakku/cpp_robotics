@@ -4,7 +4,6 @@
 #include <type_traits>
 #include "../utility/space.hpp"
 #include "./transfer_function.hpp"
-#include "./discrete_transfer_function.hpp"
 
 namespace cpp_robotics
 {

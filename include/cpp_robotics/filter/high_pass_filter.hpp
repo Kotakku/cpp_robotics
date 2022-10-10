@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cmath>
-#include <cpp_robotics/system/discrete_transfer_function.hpp>
+#include <cpp_robotics/system/transfer_function.hpp>
 
 namespace cpp_robotics
 {
@@ -12,7 +12,7 @@ namespace cpp_robotics
  */
 // G(s) = s / (s + omega)
 // 双一次変換で離散化したもの
-class HighPassFilter: public DiscreteTransferFunction
+class HighPassFilter: public TransferFunction
 {
 public:
     /**
@@ -24,7 +24,7 @@ public:
     HighPassFilter(double omega, double dt):
         omega_(omega)
     {
-        set_continuous({1, 0}, {1, omega}, dt);
+        TransferFunction::set_continuous({1, 0}, {1, omega_}, dt);
     }
 
     /**

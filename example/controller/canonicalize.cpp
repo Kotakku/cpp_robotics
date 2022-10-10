@@ -14,7 +14,6 @@ int main()
     Eigen::MatrixXd A(3,3);
     Eigen::MatrixXd B(3,1);
     Eigen::MatrixXd C(1,3);
-    Eigen::MatrixXd D(1,1);
 
     A << 
         -0.313, 56.7, 0,
@@ -22,10 +21,9 @@ int main()
         0, 56.7, 0;
     B << 0.232, 0.0203, 0;
     C << 0, 0, 1;
-    D << 0;
 
     const double dt = 0.01;
-    cr::StateSpaceSystem sys(A, B, C, D, dt);
+    cr::StateSpaceSystem sys(A, B, C, dt);
 
     std::cout << "//////////////////////////////" << std::endl;
     std::cout << "controllability: " << (cr::is_controllable(sys) ? "true" : "false") << std::endl;
@@ -33,11 +31,10 @@ int main()
     
     std::cout << "\n//////////////////////////////" << std::endl;
     std::cout << "canonicalize" << std::endl;
-    auto [A_tilde, B_tilde, C_tilde, D_tilde] = cr::canonicalize_system(sys, cr::CanonicalizeMode::CONTROLLABLE );
+    auto [A_tilde, B_tilde, C_tilde] = cr::canonicalize_system(sys, cr::CanonicalizeMode::CONTROLLABLE);
     
     std::cout << std::fixed << std::setprecision(2);
     PRINT_MAT(A_tilde);
     PRINT_MAT(B_tilde);
     PRINT_MAT(C_tilde);
-    PRINT_MAT(D_tilde);
 }

@@ -17,17 +17,15 @@ int main()
     Eigen::MatrixXd A(2,2);
     Eigen::MatrixXd B(2,1);
     Eigen::MatrixXd C(1,2);
-    Eigen::MatrixXd D(1,1);
 
     A << 
         -10, -10,
         5, 0;
     B << 10, 0;
     C << 0, 1;
-    D << 0;
 
     const double dt = 0.01;
-    cr::StateSpaceSystem sys(A, B, C, D, dt);
+    cr::StateSpaceSystem sys(A, B, C, dt);
 
     std::cout << std::fixed << std::setprecision(2);
     std::cout << "pole place" << std::endl;

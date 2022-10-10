@@ -1,6 +1,6 @@
 #pragma once
 
-#include "cpp_robotics/system/discrete_transfer_function.hpp"
+#include <cpp_robotics/system/transfer_function.hpp>
 
 namespace cpp_robotics
 {
@@ -9,7 +9,7 @@ namespace cpp_robotics
 //         s^2 + d*2*zeta*omega*s + omega^2
 // G(s) = -------------------------------- を双一次変換
 //          s^2 + 2*zeta*omega*s + omega^2
-class NotchFilter : public DiscreteTransferFunction
+class NotchFilter : public TransferFunction
 {
 public:
     /**
@@ -23,7 +23,7 @@ public:
     NotchFilter(double omega, double zeta, double d, double dt):
         omega_(omega), zeta_(zeta), d_(d)
     {
-        set_continuous({1, (d_*2*zeta_*omega_), (omega_*omega_)}, {1, (2*zeta*omega), (omega*omega)}, dt);
+        TransferFunction::set_continuous({1, (d_*2*zeta_*omega_), (omega_*omega_)}, {1, (2*zeta_*omega_), (omega_*omega_)}, dt);
     }
 
     /**

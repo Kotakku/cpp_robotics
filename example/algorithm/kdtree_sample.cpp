@@ -10,7 +10,7 @@ int main()
     // for cpp_rototics::VectorXx
     std::cout << "for cpp_rototics::VectorXx" << std::endl;
     {
-        cr::KDTree<cr::Vector2d, 2> kdtree;
+        cr::KDTree<cr::Vector2d> kdtree;
 
         std::vector<cr::Vector2d> points = {
             {0,1},
@@ -20,7 +20,7 @@ int main()
             {5,6},
         };
 
-        kdtree.build(points);
+        kdtree.build(points, 2);
         // kdtree.debug_node();
 
         auto ret = kdtree.knn_search_points(cr::Vector2d(0,1), 1);
@@ -35,7 +35,7 @@ int main()
     // for Eigen::VectorXx
     std::cout << "for Eigen::VectorXx" << std::endl;
     {
-        cr::KDTree<Eigen::Vector2d, 2> kdtree;
+        cr::KDTree<Eigen::Vector2d> kdtree;
 
         std::vector<Eigen::Vector2d> points = {
             {0,1},
@@ -45,7 +45,7 @@ int main()
             {5,6},
         };
 
-        kdtree.build(points);
+        kdtree.build(points, 2);
         // kdtree.debug_node();
 
         auto ret = kdtree.knn_search_points(Eigen::Vector2d(0,1), 1);

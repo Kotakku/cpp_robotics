@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cpp_robotics/system/transfer_function.hpp>
+
 namespace cpp_robotics
 {
 
@@ -7,7 +9,7 @@ namespace cpp_robotics
 //               2*zeta*omega*s
 // G(s) = ------------------------------ を双一次変換
 //         s^2 + 2*zeta*omega*s + omega^2
-class BandPassFilter : public DiscreteTransferFunction
+class BandPassFilter : public TransferFunction
 {
 public:
     /**
@@ -20,7 +22,7 @@ public:
     BandPassFilter(double omega, double zeta, double dt):
         omega_(omega), zeta_(zeta)
     {
-        set_continuous({(2*zeta_*omega_),0}, {1,(2*zeta_*omega_),(omega*omega)}, dt);
+        TransferFunction::set_continuous({(2*zeta_*omega_),0}, {1,(2*zeta_*omega_),(omega*omega)}, dt);
     }
 
     /**

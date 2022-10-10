@@ -1,14 +1,14 @@
 #pragma once
 
 #include <cmath>
-#include <cpp_robotics/system/discrete_transfer_function.hpp>
+#include <cpp_robotics/system/transfer_function.hpp>
 
 namespace cpp_robotics
 {
 
 /// ローパスフィルター
 // G(s) = omega / (s + omega)
-class LowPassFilter : public DiscreteTransferFunction
+class LowPassFilter : public TransferFunction
 {
 public:
     /**
@@ -20,7 +20,7 @@ public:
     LowPassFilter(double omega, double dt):
         omega_(omega)
     {
-        set_continuous({omega}, {1, omega}, dt);
+        TransferFunction::set_continuous({omega_}, {1, omega_}, dt);
     }
 
     /**
