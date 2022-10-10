@@ -22,10 +22,9 @@ public:
     using point_type = POINT_T;
 
     KDTree() = default;
-    KDTree(std::vector<point_type> point, size_t dimention):
-        dimention_(dimention)
+    KDTree(std::vector<point_type> point, size_t dimention)
     {
-        build(point);
+        build(point, dimention);
     }
 
     void clear()
@@ -33,8 +32,9 @@ public:
         root_.reset();
     }
 
-    void build(std::vector<point_type> point)
+    void build(std::vector<point_type> point, size_t dimention)
     {
+        dimention_ = dimention;
         points_ = point;
         pidx_.resize(points_.size());
         std::iota(pidx_.begin(), pidx_.end(), 0);
@@ -235,7 +235,7 @@ private:
         return std::sqrt(len_sq);
     }
 
-    const size_t dimention_;
+    size_t dimention_;
     std::vector<point_type> points_;
     std::vector<size_t> pidx_;
     std::unique_ptr<Node> root_ = nullptr;
