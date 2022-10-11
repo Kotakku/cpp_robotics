@@ -20,33 +20,34 @@ find_package(Python3 COMPONENTS Development NumPy)
 if("${CR_BUILD_EXAMPLE}" STREQUAL "ON")
 set(example_files
   # hello_world
-  controller/motor_pid_control
-  controller/pid_vs_nctf
-  controller/lqr
-  controller/canonicalize
-  controller/place
+  # controller/motor_pid_control
+  # controller/pid_vs_nctf
+  # controller/lqr
+  # controller/canonicalize
+  # controller/place
+  controller/linear_mpc
 
-  filter/lpf_step
-  filter/hpf_step
-  filter/vel_limit_filter
+  # filter/lpf_step
+  # filter/hpf_step
+  # filter/vel_limit_filter
 
-  system/step_responce
-  system/bode_nyquist
-  system/state_space_system
-  algorithm/kdtree_sample
-  algorithm/icp_sample
-  algorithm/mahalanobis
-  algorithm/random_example
+  # system/step_responce
+  # system/bode_nyquist
+  # system/state_space_system
+  # algorithm/kdtree_sample
+  # algorithm/icp_sample
+  # algorithm/mahalanobis
+  # algorithm/random_example
 
-  optimize/optimize_scalar
-  optimize/optimize
-  optimize/optimize_rosenbrock
-  optimize/optimize_with_constraint
-  optimize/active_set_method_example
-  optimize/sqp_example
+  # optimize/optimize_scalar
+  # optimize/optimize
+  # optimize/optimize_rosenbrock
+  # optimize/optimize_with_constraint
+  # optimize/active_set_method_example
+  # optimize/sqp_example
   optimize/quadprog
 
-  path_planning/dubins_path
+  # path_planning/dubins_path
 
   units/unit_test
 )
@@ -90,6 +91,8 @@ set(test_files
 
   optimize/fmin_search_test
   optimize/bfgs_test
+  optimize/quadprog_benchmark_test
+  optimize/breacketing_search_test
   
   controller/pid_test
   controller/pid2_test

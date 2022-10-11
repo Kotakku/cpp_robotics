@@ -155,12 +155,6 @@ public:
                 r.segment(n+2*l,m) = Aeq*x - beq;
             }
 
-            if(i == 0)
-            {
-                std::cout << P << std::endl;
-                std::cout << r << std::endl;
-            }
-
             // 連立一次方程式を解く
             Eigen::VectorXd delta = P.fullPivLu().solve(-r);
             
@@ -170,26 +164,32 @@ public:
             Eigen::VectorXd dv = delta.segment(n+2*l,m);
             // ステップ幅の決定
             // Todo: ステップ幅の初期値を絞る
-            const double max_alpha = std::min({1.0, 1.0});
-            double alpha = bracketing_serach([&](double alpha)
+            double alpha = 1.0;
+            for(int i = 0; i < s.size(); i++)
             {
-                return evaluate_merit(x + alpha*dx, s + alpha*ds, rho, eta);
-            }, max_alpha, beta);
+                if(ds(i) < 0)
+                    alpha = std::min(alpha, -s(i)/ds(i));
+                if(du(i) < 0)
+                    alpha = std::min(alpha, -u(i)/du(i));
+                
+            }
+            // double alpha = bracketing_serach([&](double alpha)
+            // {
+            //     return evaluate_merit(x + alpha*dx, s + alpha*ds, rho, eta);
+            // }, max_alpha, beta);
 
             // 更新
-            x += dx;
+            x += alpha*dx;
             if(l>0)
             {
-                s += ds;
-                u += du;
+                s += alpha*ds;
+                u += alpha*du;
             }
             if(m>0)
             {
-                v += dv;
+                v += alpha*dv;
             }
 
-            std::cout << "s" << std::endl;
-            std::cout << A*x-b-s << std::endl;
             // メリット関数のパラメータ更新
             if(l>0)
             {
@@ -223,37 +223,37 @@ public:
         return 0.5*(x.transpose()*Q).dot(x) + c.dot(x);
     }
 
-    double evaluate_merit(const Eigen::VectorXd &x, const Eigen::VectorXd &s, const double rho, const double eta)
-    {
-        double val = evaluate(x);
-        
-        for(int i = 0; i < s.rows(); i++)
-        {
-            val -= rho*std::log(s(i));
-        }
+    // double evaluate_merit(const Eigen::VectorXd &x, const Eigen::VectorXd &s, const double rho, const double eta)
+    // {
+    //     double val = evaluate(x);
 
-        if(0 < A.rows())
-        {
-            Eigen::VectorXd v = A*x-b+s;
-            for(int i = 0; i < v.rows(); i++)
-            {
-                val += eta*std::abs(v(i));
+    //     for(int i = 0; i < s.rows(); i++)
+    //     {
+    //         val -= rho*std::log(s(i));
+    //     }
+
+    //     if(0 < A.rows())
+    //     {
+    //         Eigen::VectorXd v = A*x-b+s;
+    //         for(int i = 0; i < v.rows(); i++)
+    //         {
+    //             val += eta*std::abs(v(i));
                 
-            }
-        }
+    //         }
+    //     }
 
-        if(0 < Aeq.size())
-        {
-            Eigen::VectorXd veq = Aeq*x-beq;
-            for(int i = 0; i < veq.rows(); i++)
-            {
-                val += eta*std::abs(veq(i));
+    //     if(0 < Aeq.size())
+    //     {
+    //         Eigen::VectorXd veq = Aeq*x-beq;
+    //         for(int i = 0; i < veq.rows(); i++)
+    //         {
+    //             val += eta*std::abs(veq(i));
                 
-            }
-        }
+    //         }
+    //     }
 
-        return val;
-    }
+    //     return val;
+    // }
 
     Eigen::VectorXd grad_lagrange(const Eigen::VectorXd &x, const Eigen::VectorXd &u, const Eigen::VectorXd &v)
     {

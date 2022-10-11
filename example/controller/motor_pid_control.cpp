@@ -51,7 +51,7 @@ int main()
 
     cr::SisoFeedbackSystem siso_sys = cr::make_feedback_system(pid, plant);
     auto [t2, responce] = cr::lsim(siso_sys, ref_trajecoty);
-    plt::named_plot("PID responce", t2, responce);
+    plt::named_plot("PID feedback system responce", t2, responce);
 
     // show
     plt::ylim(-30.0, 30.0);
