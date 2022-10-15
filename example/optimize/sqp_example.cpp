@@ -12,58 +12,52 @@ int main()
     SQP::Problem prob;
 
     //////////////////// 問題設定 ////////////////////
+    // 極小値の時x = (3, -1)
     prob.func = [](Eigen::VectorXd x) -> double
     {
         Eigen::MatrixXd Q(2,2);
         Eigen::VectorXd c(2);
         Q << 1, 0, 
                 0, 1;
-        c << -3, 0;
+        c << -3, 1;
         return 0.5*(x.transpose()*Q).dot(x) + c.dot(x);
-        // return (std::pow(x(0),2) + std::pow(x(1),2)) - 3*x(0);
     };
-    // prob.grad = [&](const Eigen::VectorXd &x){ return derivative(prob.func, x); };
+
+    // prob.con.push_back({
+    //     Constraint::Ineq,
+    //     [](Eigen::VectorXd x)
+    //     {
+    //         const double radius = 2.0;
+    //         return (x.squaredNorm() - std::pow(radius, 2.0));
+    //     },
+    // });
+
+    // 解けない NAN
+    // prob.con.push_back({
+    //     Constraint::Ineq,
+    //     [](Eigen::VectorXd x)
+    //     {
+    //         const double radius = 1.0;
+    //         return (x.squaredNorm() - std::pow(radius, 2.0));
+    //     },
+    // });
+
+    // prob.con.push_back({
+    //     Constraint::Ineq,
+    //     [](Eigen::VectorXd x)
+    //     {
+    //         // -sin(x(1)*pi/2) < 2
+    //         return -std::sin(x(1)*M_PI/2) - 2;
+    //     },
+    // });
 
     prob.con.push_back({
-        Constraint::Eq,
+        Constraint::Ineq,
         [](Eigen::VectorXd x)
         {
-            return (x(0) - 1);
+            return -x(0)*x(1) - 1;
         },
     });
-
-    // prob.con.push_back({
-    //     Constraint::Ineq,
-    //     [](Eigen::VectorXd x)
-    //     {
-    //         return (x.squaredNorm() - std::pow(1.0, 2.0));
-    //     },
-    // });
-
-    Eigen::Vector2d cx(2.0, 0.0);
-    // prob.con.push_back({
-    //     Constraint::Ineq,
-    //     [=](Eigen::VectorXd x)
-    //     {
-    //         x -= cx;
-    //         return (x.squaredNorm() - 3*3);
-    //     },
-    // });
-    // prob.con.push_back({
-    //     Constraint::Eq,
-    //     [](Eigen::VectorXd x)
-    //     {
-    //         return (x(0) - 1);
-    //     },
-    // });
-    // prob.con.push_back({
-    //     Constraint::Ineq,
-    //     [](Eigen::VectorXd x)
-    //     {
-    //         x(0) -= 1.5;
-    //         return x.squaredNorm() - 1;
-    //     },
-    // });
 
     Eigen::VectorXd x0(2);
     x0 << 0, 0.5;
@@ -71,6 +65,7 @@ int main()
     std::vector<double> x_, y_;
 
     //////////////////// 解く ////////////////////
+    prob.use_slsqp = false; // Todo
     auto result = solver.solve(prob, x0, [&](auto x){ x_.push_back(x(0)); y_.push_back(x(1)); });
 
     std::cout << "min (x(0))^2 + x(1)^2" << std::endl;
@@ -85,20 +80,10 @@ int main()
         std::cout << "解けなかった" << std::endl;
     }
 
+    std::cout << "iter: " << result.iter_cnt << std::endl;
+    std::cout << "constraint satisfy: " << ((prob.con.all_satisfy(result.x, prob.tol_con)) ? "true" : "false") << std::endl;
     std::cout << "optimal x =" << std::endl;
     std::cout << result.x << std::endl;
-    std::cout << "x norm = " << result.x.norm() << std::endl;
-    
-    std::cout << "x norm = " << (result.x-cx).norm() << std::endl;
-
-    std::cout << "iter: " << result.iter_cnt << std::endl;
-    std::cout << "size: " << x_.size() << ", " << y_.size() << std::endl;
-
-    for(size_t i = 0; i < x_.size(); i++)
-    {
-        std::cout << x_[i] << ",  " << y_[i] << std::endl;
-    }
-    
 
     namespace plt = matplotlibcpp;
     plt::plot(x_, y_, "o--");

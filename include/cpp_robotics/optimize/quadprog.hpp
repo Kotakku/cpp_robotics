@@ -38,13 +38,7 @@ public:
         // 制約に対する収束条件
         double tol_con = 1e-6;
 
-        // メリット関数の制約にかかる重み
-        double eta = 1.1;
-
-        // 直線探索の囲い込み法におけるステップごとの更新倍率
-        double beta = 0.9;
-
-        // rhoゲイン
+        // ゲイン
         double t = 0.5;
 
         // 最大反復回数
@@ -91,7 +85,7 @@ public:
 
     Result solve(Eigen::VectorXd x_init)
     {
-        const auto [tol_step, tol_con, eta, beta, t, max_iter] = param;
+        const auto [tol_step, tol_con, t, max_iter] = param;
         Result result;
         // Size check
         assert(Q.rows() == Q.cols());
@@ -117,7 +111,7 @@ public:
 
         Eigen::VectorXd x(n);
 
-        double rho = 1; // 不等式制約に使用する
+        double rho = 1; // 不等式制約の相補性条件に対するソフト制約
         Eigen::VectorXd s = Eigen::VectorXd::Ones(l); // 不等式制約のスラック変数
         Eigen::VectorXd u = Eigen::VectorXd::Ones(l); // 不等式制約のラグランジュ乗数
         Eigen::VectorXd v = Eigen::VectorXd::Zero(m); // 等式制約のラグランジュ乗数
@@ -162,38 +156,18 @@ public:
             Eigen::VectorXd ds = delta.segment(n,l);
             Eigen::VectorXd du = delta.segment(n+l,l);
             Eigen::VectorXd dv = delta.segment(n+2*l,m);
-            // ステップ幅の決定
-            // Todo: ステップ幅の初期値を絞る
-            double alpha = 1.0;
-            for(int i = 0; i < s.size(); i++)
-            {
-                if(ds(i) < 0)
-                    alpha = std::min(alpha, -s(i)/ds(i));
-                if(du(i) < 0)
-                    alpha = std::min(alpha, -u(i)/du(i));
-                
-            }
-            // double alpha = bracketing_serach([&](double alpha)
-            // {
-            //     return evaluate_merit(x + alpha*dx, s + alpha*ds, rho, eta);
-            // }, max_alpha, beta);
-
+            
             // 更新
-            x += alpha*dx;
+            x += dx;
             if(l>0)
             {
-                s += alpha*ds;
-                u += alpha*du;
+                s += ds;
+                u += du;
+                rho = t * (u.dot(s)) / l;
             }
             if(m>0)
             {
-                v += alpha*dv;
-            }
-
-            // メリット関数のパラメータ更新
-            if(l>0)
-            {
-                rho = t * (u.dot(s)) / l;
+                v += dv;
             }
 
             // Todo 最適性と制約をチェックする
@@ -223,38 +197,6 @@ public:
         return 0.5*(x.transpose()*Q).dot(x) + c.dot(x);
     }
 
-    // double evaluate_merit(const Eigen::VectorXd &x, const Eigen::VectorXd &s, const double rho, const double eta)
-    // {
-    //     double val = evaluate(x);
-
-    //     for(int i = 0; i < s.rows(); i++)
-    //     {
-    //         val -= rho*std::log(s(i));
-    //     }
-
-    //     if(0 < A.rows())
-    //     {
-    //         Eigen::VectorXd v = A*x-b+s;
-    //         for(int i = 0; i < v.rows(); i++)
-    //         {
-    //             val += eta*std::abs(v(i));
-                
-    //         }
-    //     }
-
-    //     if(0 < Aeq.size())
-    //     {
-    //         Eigen::VectorXd veq = Aeq*x-beq;
-    //         for(int i = 0; i < veq.rows(); i++)
-    //         {
-    //             val += eta*std::abs(veq(i));
-                
-    //         }
-    //     }
-
-    //     return val;
-    // }
-
     Eigen::VectorXd grad_lagrange(const Eigen::VectorXd &x, const Eigen::VectorXd &u, const Eigen::VectorXd &v)
     {
         Eigen::VectorXd gl;
@@ -266,6 +208,33 @@ public:
         if(v.size() > 0)
             gl += Aeq.transpose()*v;
         return gl;
+    }
+
+    bool satisfy(const Eigen::MatrixXd &x, double eps = 1e-5)
+    {
+        bool satisfy = true;
+
+        if(Aeq.rows())
+        {
+            Eigen::VectorXd d = Aeq*x - beq;
+            for(Eigen::MatrixXd::Index i = 0; i < d.size(); i++)
+            {
+                if(eps < std::abs(d(i)))
+                    satisfy = false;
+            }
+        }
+
+        if(A.rows())
+        {
+            Eigen::VectorXd d = A*x - b;
+            for(Eigen::MatrixXd::Index i = 0; i < d.size(); i++)
+            {
+                if(eps < d(i))
+                    satisfy = false;
+            }
+        }
+        
+        return satisfy;
     }
 };
 

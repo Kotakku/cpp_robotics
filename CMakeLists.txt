@@ -44,7 +44,7 @@ set(example_files
   # optimize/optimize_rosenbrock
   # optimize/optimize_with_constraint
   # optimize/active_set_method_example
-  # optimize/sqp_example
+  optimize/sqp_example
   optimize/quadprog
 
   # path_planning/dubins_path
@@ -93,6 +93,7 @@ set(test_files
   optimize/bfgs_test
   optimize/quadprog_benchmark_test
   optimize/breacketing_search_test
+  optimize/sqp_test
   
   controller/pid_test
   controller/pid2_test

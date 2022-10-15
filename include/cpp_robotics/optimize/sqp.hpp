@@ -8,7 +8,9 @@
 #include "./bracketing_serach.hpp"
 #include "./bfgs.hpp"
 #include "./quasi_newton_method.hpp"
-#include "./quadprog.hpp"
+// #include "./quadprog.hpp"
+#include <cpp_robotics/optimize/quadprog.hpp>
+#include "./lsei_transition.hpp"
 
 namespace cpp_robotics
 {
@@ -29,6 +31,7 @@ public:
         std::optional<grad_func_type> grad;
         ConstraintArray con;
 
+        bool use_slsqp = false;
         double tol_step = 1e-6;
         double tol_con = 1e-6;
         size_t max_iter = 100;
@@ -58,8 +61,10 @@ public:
 
         Eigen::VectorXd x = x0;
         Eigen::VectorXd grad_f0 = grad_f(x0);
-        Eigen::MatrixXd B = grad_f0 * grad_f0.transpose(); //Eigen::MatrixXd::Identity(x.rows(), x.rows());
-        Eigen::VectorXd grad_L = grad_f(x);
+        Eigen::MatrixXd B = Eigen::MatrixXd::Identity(x.rows(), x.rows());
+        Eigen::VectorXd grad_fx = grad_f0;
+        Eigen::VectorXd step = grad_f0;
+        Eigen::VectorXd dgg = Eigen::VectorXd::Zero(x.size());
 
         // Todo: x0が実行不可能な場合実行可能領域まで移動させる
 
@@ -69,6 +74,8 @@ public:
 
         // サブ問題の2次計画問題のソルバー
         QuadProg qp_solver;
+        qp_solver.param.tol_con = 1e-3;
+        qp_solver.param.tol_step = 1e-3;
         qp_solver.set_problem_size(x.size(), ineq_con.size(), eq_con.size());
 
         // 直線探索用メリット関数の制約重み
@@ -84,30 +91,88 @@ public:
             ineq_mw(i) /= std::max(ineq_con[i].grad(x).norm(), 1.0);
         }
 
+        // 等式制約の一次近似
+        for(size_t con_i = 0; con_i < eq_con.size(); con_i++)
+        {
+            qp_solver.Aeq.row(con_i) = eq_con[con_i].grad(x).transpose();
+            qp_solver.beq(con_i) = -eq_con[con_i].eval(x);
+        }
+
+        // 不等式制約の一次近似
+        for(size_t con_i = 0; con_i < ineq_con.size(); con_i++)
+        {
+            qp_solver.A.row(con_i) = ineq_con[con_i].grad(x).transpose();
+            qp_solver.b(con_i) = -ineq_con[con_i].eval(x);
+        }
+
+        Eigen::MatrixXd new_Aeq(qp_solver.Aeq.rows(), qp_solver.Aeq.cols());
+        Eigen::VectorXd new_beq(qp_solver.beq.size());
+        Eigen::MatrixXd new_A(qp_solver.A.rows(), qp_solver.A.cols());
+        Eigen::VectorXd new_b(qp_solver.b.size());
+
+        // Todo: この前処理が有効になった時にdelta_grad_L？がおかしくなってヘッシアンが発散する？
+        auto preprossesing = [&](Eigen::MatrixXd &Aeq, Eigen::VectorXd &beq, Eigen::MatrixXd &A, Eigen::VectorXd &b)
+        {
+            for(int i = 0; i < Aeq.rows(); i++)
+            {
+                if(not Aeq.row(i).allFinite() || not std::isfinite(beq(i)))
+                {
+                    Aeq.row(i).setZero();
+                    beq(i) = 0;
+                }
+            }
+            for(int i = 0; i < A.rows(); i++)
+            {
+                if(not A.row(i).allFinite() || not std::isfinite(b(i)))
+                {       
+                    A.row(i).setZero();
+                    b(i) = 0;
+                }
+            }
+        };
+        preprossesing(qp_solver.Aeq, qp_solver.beq, qp_solver.A, qp_solver.b);
+
         for(size_t i = 1; i < prob.max_iter+1; i++)
         {
             // 探索方向の決定
             // サブの問題設定
-            qp_solver.Q = B;
-            qp_solver.c = grad_f(x).transpose();
-
-            // 等式制約の一次近似
-            for(size_t con_i = 0; con_i < eq_con.size(); con_i++)
+            if (prob.use_slsqp)
             {
-                qp_solver.Aeq.row(con_i) = eq_con[con_i].grad(x).transpose();
-                qp_solver.beq(con_i) = -eq_con[con_i].eval(x);
+                auto ldlt_obj = B.ldlt();
+                Eigen::MatrixXd L = ldlt_obj.transpositionsP().transpose()*(Eigen::MatrixXd)ldlt_obj.matrixL();
+                Eigen::MatrixXd LT = L.transpose();
+                Eigen::MatrixXd Linv = L.inverse();
+                Eigen::VectorXd D = ldlt_obj.vectorD();
+                Eigen::VectorXd Dsq = D.array().sqrt();
+                Eigen::VectorXd Dinvsq = (D.array()).inverse();
+
+                // std::cout << "D" << std::endl;
+                // std::cout << D << std::endl;
+                // std::cout << "Dsq" << std::endl;
+                // std::cout << Dsq << std::endl;
+                // std::cout << "Dinvsq" << std::endl;
+                // std::cout << Dinvsq << std::endl;
+                
+                
+                Eigen::MatrixXd C = Dsq.asDiagonal()*LT;
+                Eigen::VectorXd d = Dinvsq.asDiagonal()*Linv*grad_f(x);
+                std::tie(qp_solver.Q, qp_solver.c) = lsi2qp(C, d);
+
+                // std::cout << "qp_solver.Q" << std::endl;
+                // std::cout << qp_solver.Q << std::endl;
+                // std::cout << "qp_solver.c" << std::endl;
+                // std::cout << qp_solver.c << std::endl;
+            }
+            else
+            {
+                qp_solver.Q = B;
+                qp_solver.c = grad_f(x).transpose();
             }
 
-            // 不等式制約の一次近似
-            for(size_t con_i = 0; con_i < ineq_con.size(); con_i++)
-            {
-                qp_solver.A.row(con_i) = ineq_con[con_i].grad(x).transpose();
-                qp_solver.b(con_i) = -ineq_con[con_i].eval(x);
-            }
+            // Todo QPの制約で矛盾したもの、満たせないものを取り除く
 
             // サブの2次計画問題を解く
-            qp_solver.param.tol_step = 1e-3;
-            auto sub_result = qp_solver.solve(x);
+            auto sub_result = qp_solver.solve(Eigen::VectorXd::Zero(x.size()));
             if(not sub_result.is_solved)
             {
                 result.is_solved = false;
@@ -144,7 +209,8 @@ public:
 
             if(callback)
                 callback.value()(x);
-            x += alpha * d;
+            step = alpha * d;
+            x += step;
 
             // 収束判定
             if(d.norm() < prob.tol_step && prob.con.all_satisfy(x, prob.tol_con))
@@ -170,16 +236,44 @@ public:
             result.iter_cnt = i;
 
             // ラグランジュ関数の勾配の変化量
-            Eigen::VectorXd delta_grad_L = -grad_L;
-            grad_L = grad_f(x);
-            if(ineq_con.size() > 0)
-                grad_L += qp_solver.A.transpose() * sub_result.lambda_ineq;
-            if(eq_con.size() > 0)
-                grad_L += qp_solver.Aeq.transpose() * sub_result.lambda_eq;
-            delta_grad_L += grad_L;
+            /*
+            Bの値がe10以上のオーダーで大きくなる
+            制約に掛かるgrad_Lの値が正しいのか確認する
+            */
+            // https://jp.mathworks.com/help/optim/ug/constrained-nonlinear-optimization-algorithms.html#bsgppl4
+            Eigen::VectorXd delta_grad_L = -grad_fx;
+            grad_fx = grad_f(x);
+            delta_grad_L += grad_fx;
+            // 等式制約の一次近似
+            for(size_t con_i = 0; con_i < eq_con.size(); con_i++)
+            {
+                new_Aeq.row(con_i) = eq_con[con_i].grad(x).transpose();
+                new_beq(con_i) = -eq_con[con_i].eval(x);
+            }
+
+            // 不等式制約の一次近似
+            for(size_t con_i = 0; con_i < ineq_con.size(); con_i++)
+            {
+                new_A.row(con_i) = ineq_con[con_i].grad(x).transpose();
+                new_b(con_i) = -ineq_con[con_i].eval(x);
+            }
+
+            preprossesing(new_Aeq, new_beq, new_A, new_b);
+
+            delta_grad_L += (new_Aeq - qp_solver.Aeq).transpose() * sub_result.lambda_eq;
+            delta_grad_L += (new_A   - qp_solver.A  ).transpose() * sub_result.lambda_ineq;
+
+            qp_solver.Aeq = new_Aeq;
+            qp_solver.beq = new_beq;
+            qp_solver.A = new_A;
+            qp_solver.b = new_b;
+
+            // \grad_g(x) * g(x) = [n]*[1]
+            Eigen::VectorXd new_dgg = -new_Aeq.transpose()*new_beq -new_A.transpose()*new_b - x;
 
             // ラグランジュ関数の疑似ヘッシアンの更新
-            powells_modified_bfgs_step(B, alpha*d, delta_grad_L);
+            powells_modified_bfgs_step(B, step, delta_grad_L, new_dgg - dgg);
+            dgg = new_dgg;
 
             if(B.array().isNaN().any())
             {

@@ -46,7 +46,6 @@ struct Constraint
     bool satisfy(const Eigen::VectorXd &x, const double tol) const
     {
         const double val = eval(x);
-        std::cout << "eval: " << val << std::endl;
         if(type == Type::Eq)
         {
             return std::abs(val) < tol;

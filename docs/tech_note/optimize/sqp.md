@@ -51,6 +51,8 @@ B = LDL^T
 \text{min} ||  ||
 ```
 
+### 最小二乗法問題からQP問題への変換
+
 
 > Kraft, D. A software package for sequential quadratic
    programming. 1988. Tech. Rep. DFVLR-FB 88-28, DLR German Aerospace
