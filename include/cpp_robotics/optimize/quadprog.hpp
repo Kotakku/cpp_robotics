@@ -109,6 +109,27 @@ public:
         }
         const size_t l = A.rows();
 
+        auto preprossesing = [&]()
+        {
+            for(int i = 0; i < Aeq.rows(); i++)
+            {
+                if(not Aeq.row(i).allFinite() || not std::isfinite(beq(i)))
+                {
+                    Aeq.row(i).setZero();
+                    beq(i) = 0;
+                }
+            }
+            for(int i = 0; i < A.rows(); i++)
+            {
+                if(not A.row(i).allFinite() || not std::isfinite(b(i)))
+                {       
+                    A.row(i).setZero();
+                    b(i) = 0;
+                }
+            }
+        };
+        preprossesing();
+
         Eigen::VectorXd x(n);
 
         double rho = 1; // 不等式制約の相補性条件に対するソフト制約
