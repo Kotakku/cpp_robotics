@@ -8,47 +8,47 @@ QPへの近似とその解法によっていくつかの種類に分かれる
 まずは純粋なSQPについて考えてみる。与えられる問題は以下の形式である
 
 ```math
-\text{Todo}
+\underset{x}{\text{min}} \space f(x)\\
+\text{s.t.} \space  g_i(x) = 0, \space i = 0, \dots , m_e\\
+\text{　　　} \space  g_i(x) \leq 0, \space i = m_e+1, \dots , l\\
+
+x \in \R^n
 ```
 
 サブ問題としてQPに近似すると以下の形を取る
 
 ```math
-\text{Todo}
+f(x) \approx \dfrac{1}{2}x^TQx + c^Tx\\
 ```
 
-ここで任意の目的関数のヘッシアン$`H`$について半正定値性が保証されないためパウエルの修正BFGS法により近似した行列に置き換える。
+ここで任意の目的関数のヘッシアン$`Q`$について半正定値性が保証されないためパウエルの修正BFGS法により近似した行列を使用する。
+
+探索方向の決定のために目的変数を探索方向に取りQP問題を定式化する。
 
 ```math
-\text{Todo}
+\underset{d}{\text{min}} \dfrac{1}{2}d^TQd + c^Td\\
+\text{s.t.} \space \nabla g_i(x)^Td + g_i(x) = 0, \space i = 0, \dots , m_e\\
+\text{　　　} \space \nabla g_i(x)^Td + g_i(x) \leq 0, \space i = m_e+1, \dots , l\\
 ```
 
-!!! note
-    ここで任意の目的関数に対してBFGS法を適用すると正定値性が保証されないためパウエルの修正BFGS法を使用する
+探索方向が決定したらメリット関数の直線探索によりステップ幅を決定し、変数を更新する。
+その後BFGSによるヘッシアンの更新を行う。
 
-
-この問題について変数を見ると$`\Delta x`$, $`\Delta s`$, $`\Delta \lambda`$,である。この変数についてまとめると以下の連立方程式ができる。
-
-
-!!! note
-    ここで$`f(x)`$は定数として扱うことができるので省略している
-
-これで探索方向とラグランジュ定数とスラック変数が求まるので探索方向に直線探索、BFGSによるB行列の更新を行う操作を$`\Delta x`$が十分に小さくなるまで行う。
+以上の操作を収束するまで行う。
 
 ## SLSQP
 
-SLSQPではサブ問題である以下のQPを制約付きの最小二乗法によって解いている。
-```math
-```
-
-B行列を以下の用に分解する
+SLSQPでは準ニュートン法で説明したサブ問題であるQPを制約付きの最小二乗法に変形して解いている。これにあたってB行列を修正コレスキー分解する
 ```math
 B = LDL^T
 ```
 
 分解した行列を使って以下の最小二乗法を解く
 ```math
-\text{min} ||  ||
+\underset{d}{\text{min}} || D^\frac{1}{2}L^Td + D^{-\frac{1}{2}}L^{-1}\nabla f(x) ||\\
+\text{s.t.} \space \nabla g_i(x)^Td + g_i(x) = 0, \space i = 0, \dots , m_e\\
+\text{　　　} \space \nabla g_i(x)^Td + g_i(x) \leq 0, \space i = m_e+1, \dots , l\\
+
 ```
 
 ### 最小二乗法問題からQP問題への変換

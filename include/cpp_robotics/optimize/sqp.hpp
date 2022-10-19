@@ -213,6 +213,7 @@ public:
             x += step;
 
             // 収束判定
+            // Todo: KKT条件の1次の最適性チェック入れる
             if(d.norm() < prob.tol_step && prob.con.all_satisfy(x, prob.tol_con))
             {
                 result.is_solved = true;

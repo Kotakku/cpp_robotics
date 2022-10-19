@@ -28,8 +28,8 @@ summary: 線形等式制約と線形不等式制約を持つ2次計画法
 | void | **[debug_prog](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-debug-prog)**() |
 | [Result](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Result/) | **[solve](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-solve)**(Eigen::VectorXd x_init) |
 | double | **[evaluate](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-evaluate)**(const Eigen::VectorXd & x) |
-| double | **[evaluate_merit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-evaluate-merit)**(const Eigen::VectorXd & x, const Eigen::VectorXd & s, const double rho, const double eta) |
 | Eigen::VectorXd | **[grad_lagrange](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-grad-lagrange)**(const Eigen::VectorXd & x, const Eigen::VectorXd & u, const Eigen::VectorXd & v) |
+| bool | **[satisfy](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-satisfy)**(const Eigen::MatrixXd & x, double eps =1e-5) |
 
 ## Public Attributes
 
@@ -81,18 +81,6 @@ inline double evaluate(
 ```
 
 
-### function evaluate_merit
-
-```cpp
-inline double evaluate_merit(
-    const Eigen::VectorXd & x,
-    const Eigen::VectorXd & s,
-    const double rho,
-    const double eta
-)
-```
-
-
 ### function grad_lagrange
 
 ```cpp
@@ -100,6 +88,16 @@ inline Eigen::VectorXd grad_lagrange(
     const Eigen::VectorXd & x,
     const Eigen::VectorXd & u,
     const Eigen::VectorXd & v
+)
+```
+
+
+### function satisfy
+
+```cpp
+inline bool satisfy(
+    const Eigen::MatrixXd & x,
+    double eps =1e-5
 )
 ```
 
@@ -157,4 +155,4 @@ Param param;
 
 -------------------------------
 
-Updated on 2022-10-10 at 00:51:39 +0900
+Updated on 2022-10-19 at 13:20:53 +0900

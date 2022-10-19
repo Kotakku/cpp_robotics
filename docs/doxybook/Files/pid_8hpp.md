@@ -17,8 +17,8 @@ title: include/cpp_robotics/controller/pid.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::PIDController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PIDController/)** <br>PID制御器  |
-| struct | **[cpp_robotics::PIDController::pid_param_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PIDController_1_1pid__param__t/)**  |
+| class | **[cpp_robotics::PID](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PID/)** <br>PID制御器  |
+| struct | **[cpp_robotics::PID::pid_param_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1PID_1_1pid__param__t/)**  |
 
 
 
@@ -28,6 +28,7 @@ title: include/cpp_robotics/controller/pid.hpp
 ```cpp
 #pragma once
 
+#include <cmath>
 #include <optional>
 #include <utility>
 #include <algorithm>
@@ -35,7 +36,7 @@ title: include/cpp_robotics/controller/pid.hpp
 namespace cpp_robotics
 {
 
-class PIDController
+class PID
 {
 public:
     struct pid_param_t
@@ -46,7 +47,7 @@ public:
         std::optional<std::pair<double, double>> output_limit;
     };
 
-    PIDController(pid_param_t param)
+    PID(pid_param_t param)
     {
         set_param(param);
         reset();
@@ -67,7 +68,7 @@ public:
 
     double calculate(double error)
     {
-        auto [Ts, gpd, Kp, Ki, Kd, output_limit] = param_;
+        auto &[Ts, gpd, Kp, Ki, Kd, output_limit] = param_;
         
         double u = ( 2.0*Ts*(Ki+Kp*gpd)*(error-e2_) + Ki*gpd*Ts*Ts*(error+2.0*e1_+e2_) +
                     4.0*(Kd*gpd+Kp)*(error-2.0*e1_+e2_) - (4.0-2.0*gpd*Ts)*u2_ + 8.0*u1_) / (4.0+2.0*gpd*Ts);
@@ -99,4 +100,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-10-10 at 00:51:40 +0900
+Updated on 2022-10-19 at 13:20:53 +0900

@@ -27,13 +27,13 @@ title: include/cpp_robotics/filter/butterworth_filter.hpp
 ```cpp
 #pragma once
 
-#include "cpp_robotics/system/discrete_transfer_function.hpp"
+#include <cpp_robotics/system/transfer_function.hpp>
 #include "cpp_robotics/system/polynomial.hpp"
 
 namespace cpp_robotics
 {
 
-class ButterworthFilter : public DiscreteTransferFunction
+class ButterworthFilter : public TransferFunction
 {
 public:
     ButterworthFilter(double omega, size_t n, double dt):
@@ -65,7 +65,7 @@ public:
         }
 
         std::cout << den_poly << std::endl;
-        set_continuous({1}, den_poly.coeff(), dt);
+        TransferFunction::set_continuous({1}, den_poly.coeff(), dt);
     }
 
     double filtering(double u) { return responce(u); } 
@@ -85,4 +85,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-10-10 at 00:51:40 +0900
+Updated on 2022-10-19 at 13:20:53 +0900

@@ -40,7 +40,6 @@ title: cpp_robotics
 | class | **[cpp_robotics::DeltaRobotIk](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DeltaRobotIk/)** <br>デルタロボットの逆運動学  |
 | class | **[cpp_robotics::Differentiator](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Differentiator/)** <br>疑似微分器  |
 | class | **[cpp_robotics::Discret](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Discret/)** <br>状態空間モデルを双一次変換で離散化する  |
-| class | **[cpp_robotics::DiscreteTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscreteTransferFunction/)** <br>z空間の伝達関数  |
 | class | **[cpp_robotics::DiscretTransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DiscretTransferFunction/)**  |
 | class | **[cpp_robotics::DubinsPath](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DubinsPath/)** <br>Dubinsパス  |
 | class | **[cpp_robotics::ExtendedKalmanFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ExtendedKalmanFilter/)**  |
@@ -53,6 +52,7 @@ title: cpp_robotics
 | class | **[cpp_robotics::KDTree](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/)** <br>k-d木  |
 | class | **[cpp_robotics::KMeansMethod](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KMeansMethod/)** <br>K-means法  |
 | struct | **[cpp_robotics::Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/)** <br>直線クラス  |
+| class | **[cpp_robotics::LinearMPC](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/)**  |
 | class | **[cpp_robotics::LowPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/)** <br>ローパスフィルター  |
 | class | **[cpp_robotics::MecanumIk](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1MecanumIk/)** <br>メカナムの逆運動学モデル  |
 | class | **[cpp_robotics::NctfController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NctfController/)** <br>NCTF制御器  |
@@ -60,10 +60,11 @@ title: cpp_robotics
 | class | **[cpp_robotics::NotchFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NotchFilter/)** <br>ノッチフィルタ  |
 | class | **[cpp_robotics::Omni3Ik](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Omni3Ik/)** <br>3輪オムニの逆運動学モデル  |
 | class | **[cpp_robotics::Omni4Ik](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Omni4Ik/)** <br>4輪オムニの逆運動学モデル  |
-| class | **[cpp_robotics::PID2Controller](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PID2Controller/)** <br>2自由度PID制御器  |
-| class | **[cpp_robotics::PIDController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PIDController/)** <br>PID制御器  |
+| class | **[cpp_robotics::PID](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PID/)** <br>PID制御器  |
+| class | **[cpp_robotics::PID2](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PID2/)** <br>2自由度PID制御器  |
 | struct | **[cpp_robotics::Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/)** <br>多項式  |
 | struct | **[cpp_robotics::unit::Prefix](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1unit_1_1Prefix/)** <br>単位系接頭辞クラス  |
+| class | **[cpp_robotics::PSMC](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PSMC/)**  |
 | class | **[cpp_robotics::PurePursuit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PurePursuit/)** <br>Pure pursuit制御器  |
 | struct | **[cpp_robotics::Quad](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Quad/)** <br>四角形クラス  |
 | class | **[cpp_robotics::QuadProg](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/)** <br>線形等式制約と線形不等式制約を持つ2次計画法  |
@@ -191,9 +192,8 @@ title: cpp_robotics
 | Eigen::MatrixXd | **[observability_matrix](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-observability-matrix)**(const Eigen::MatrixXd & A, const Eigen::RowVectorXd & C)<br>可観測性行列を計算する  |
 | bool | **[is_observable](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-is-observable)**(const Eigen::MatrixXd & A, const Eigen::RowVectorXd & C)<br>可観測性の判別  |
 | bool | **[is_observable](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-is-observable)**(const [StateSpaceSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/) & sys) |
-| std::tuple< Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd > | **[canonicalize_system](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-canonicalize-system)**(const Eigen::MatrixXd & A, const Eigen::MatrixXd & B, const Eigen::MatrixXd & C, const Eigen::MatrixXd & D, [CanonicalizeMode](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#enum-canonicalizemode) mode =[CanonicalizeMode::COMPANION](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#enumvalue-companion))<br>同値変換による可制御正準形への変換  |
-| std::tuple< Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd > | **[canonicalize_system](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-canonicalize-system)**(const Eigen::MatrixXd & A, const Eigen::MatrixXd & B, const Eigen::MatrixXd & C, [CanonicalizeMode](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#enum-canonicalizemode) mode =[CanonicalizeMode::COMPANION](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#enumvalue-companion))<br>同値変換による可制御正準形への変換  |
-| std::tuple< Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd > | **[canonicalize_system](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-canonicalize-system)**(const [StateSpaceSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/) & sys, [CanonicalizeMode](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#enum-canonicalizemode) mode =[CanonicalizeMode::COMPANION](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#enumvalue-companion))<br>同値変換による可制御正準形への変換  |
+| std::tuple< Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd > | **[canonicalize_system](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-canonicalize-system)**(const Eigen::MatrixXd & A, const Eigen::MatrixXd & B, const Eigen::MatrixXd & C, [CanonicalizeMode](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#enum-canonicalizemode) mode =[CanonicalizeMode::COMPANION](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#enumvalue-companion))<br>同値変換による可制御正準形への変換  |
+| std::tuple< Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd > | **[canonicalize_system](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-canonicalize-system)**(const [StateSpaceSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/) & sys, [CanonicalizeMode](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#enum-canonicalizemode) mode =[CanonicalizeMode::COMPANION](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#enumvalue-companion))<br>同値変換による可制御正準形への変換  |
 | Eigen::VectorXd | **[place](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-place)**(const [StateSpaceSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/) & sys, std::vector< double > poles)<br>アッカーマン法によるSISOモデルの極配置  |
 | bool | **[intersect](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & a, const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & b) |
 | bool | **[intersect](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-intersect)**(const [Vector2d](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d) & a, const [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/) & b) |
@@ -223,7 +223,8 @@ title: cpp_robotics
 | [TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/) | **[make_geared_motor_pos_tf](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-make-geared-motor-pos-tf)**(const [DCGearedMotorParam](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/) & geared_motor, const double dt)<br>ギアヘッド付きDCモーターのモデルから角度の伝達関数を生成する  |
 | std::tuple< bool, Eigen::VectorXd, size_t > | **[barrier_method](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-barrier-method)**(std::function< double(const Eigen::VectorXd &)> f, [ConstraintArray](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ConstraintArray/) constraint, Eigen::VectorXd x_init, const double r_init =10.0, const double tol =1e-3, const size_t max_iter =1000)<br>バリア法  |
 | void | **[bfgs_step](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-bfgs-step)**(Eigen::MatrixXd & hess, Eigen::VectorXd s, Eigen::VectorXd y)<br>BFGS法  |
-| void | **[powells_modified_bfgs_step](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-powells-modified-bfgs-step)**(Eigen::MatrixXd & hess, Eigen::VectorXd s, Eigen::VectorXd y, double gamma =0.2)<br>パウエルの修正BFGS法  |
+| void | **[powells_modified_bfgs_step](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-powells-modified-bfgs-step)**(Eigen::MatrixXd & hess, Eigen::VectorXd s, Eigen::VectorXd y, Eigen::VectorXd dgg, double gamma =0.2)<br>パウエルの修正BFGS法  |
+| void | **[powells_modified_bfgs_step](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-powells-modified-bfgs-step)**(Eigen::MatrixXd & hess, Eigen::VectorXd s, Eigen::VectorXd y, double gamma =0.2) |
 | double | **[bracketing_serach](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-bracketing-serach)**(std::function< double(Eigen::VectorXd)> func, std::function< Eigen::VectorXd(Eigen::VectorXd)> grad, const Eigen::VectorXd & x, const Eigen::VectorXd & d, double gamma =0.3, double tau =0.9, const size_t max_iter =1000)<br>アルミホ条件を満たすステップ幅を求める囲い込み法  |
 | double | **[bracketing_serach](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-bracketing-serach)**(std::function< double(double)> func, const double init =1.0, const double beta =0.9, const size_t max_iter =1000)<br>囲い込み法  |
 | double | **[derivative](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-derivative)**(std::function< double(double)> f, double x, double eps =std::pow(std::numeric_limits< double >::epsilon(), 0.5))<br>R -> Rの数値微分  |
@@ -232,6 +233,7 @@ title: cpp_robotics
 | double | **[second_derivative](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-second-derivative)**(std::function< double(double)> f, double x, double eps =std::pow(std::numeric_limits< double >::epsilon(), 0.5))<br>R -> Rの2回数値微分  |
 | Eigen::MatrixXd | **[approx_hessian](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-approx-hessian)**(std::function< double(Eigen::VectorXd)> f, Eigen::VectorXd x, double eps =std::pow(std::numeric_limits< double >::epsilon(), 0.5)) |
 | double | **[golden_search](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-golden-search)**(std::function< double(double)> f, double low, double high, const double tol =1e-6, const size_t max_iter =100)<br>黄金探索  |
+| std::tuple< Eigen::MatrixXd, Eigen::VectorXd > | **[lsi2qp](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lsi2qp)**(const Eigen::MatrixXd & C, const Eigen::VectorXd & d) |
 | std::tuple< bool, Eigen::VectorXd, size_t > | **[newton_method](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-newton-method)**(std::function< Eigen::VectorXd(const Eigen::VectorXd &)> grad, std::function< Eigen::MatrixXd(const Eigen::VectorXd &)> hesse, Eigen::VectorXd x_init, const double tol =1e-6, const size_t max_iter =1000)<br>ニュートン法  |
 | std::tuple< bool, Eigen::VectorXd, size_t > | **[penalty_method](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-penalty-method)**(std::function< double(const Eigen::VectorXd &)> f, [ConstraintArray](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ConstraintArray/) constraint, Eigen::VectorXd x_init, const double r_init =1.0, const double tol =1e-3, const size_t max_iter =1000)<br>ペナルティ法  |
 | std::tuple< bool, Eigen::VectorXd, size_t > | **[quasi_newton_method](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-quasi-newton-method)**(std::function< double(const Eigen::VectorXd &)> f, std::function< Eigen::VectorXd(const Eigen::VectorXd &)> grad, Eigen::VectorXd x_init, const double tol =1e-6, const size_t max_iter =1000)<br>準ニュートン法  |
@@ -246,9 +248,10 @@ title: cpp_robotics
 | std::tuple< std::vector< double >, std::vector< double > > | **[nyquist](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-nyquist)**([TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/) & tf, const std::vector< double > & omegas =[logspace](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-logspace)(-2, 2, 500))<br>ナイキスト線図の応答を計算する  |
 | std::ostream & | **[operator<<](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator<<)**(std::ostream & os, const [Polynomial](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/) & v) |
 | template <class CONTROLLER_T ,class SYSTEM_T \> <br>[SisoFeedbackSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SisoFeedbackSystem/) | **[make_feedback_system](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-make-feedback-system)**(CONTROLLER_T & controller, SYSTEM_T & system) |
-| void | **[set_controller](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-set-controller)**([SisoFeedbackSystem::func_list_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SisoFeedbackSystem_1_1func__list__t/) & fn, [PIDController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PIDController/) & controller) |
+| void | **[set_controller](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-set-controller)**([SisoFeedbackSystem::func_list_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SisoFeedbackSystem_1_1func__list__t/) & fn, [PID](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PID/) & controller) |
 | void | **[set_controller](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-set-controller)**([SisoFeedbackSystem::func_list_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SisoFeedbackSystem_1_1func__list__t/) & fn, [NctfController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NctfController/) & controller) |
 | void | **[set_system](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-set-system)**([SisoFeedbackSystem::func_list_t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SisoFeedbackSystem_1_1func__list__t/) & fn, [TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/) & system) |
+| [StateSpaceSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/) | **[tf2ss](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-tf2ss)**(const [TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/) & tf) |
 | std::tuple< std::vector< double >, std::vector< double > > | **[impulse](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-impulse)**(const std::function< double(double)> & sys, double dt, double time)<br>インパルス応答を求める  |
 | template <class SysType ,typename std::enable_if< internal::is_system_class< SysType >::value >::type *  =nullptr\> <br>std::tuple< std::vector< double >, std::vector< double > > | **[impulse](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-impulse)**(SysType & sys, double time) |
 | std::tuple< std::vector< double >, std::vector< double > > | **[step](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-step)**(const std::function< double(double)> & sys, double dt, double time, const double gain =1.0)<br>ステップ応答を求める  |
@@ -265,6 +268,8 @@ title: cpp_robotics
 | template <typename T1 ,class UnitDim1 ,class Prefix1 ,int Tag1,typename T2 ,class UnitDim2 ,class Prefix2 ,int Tag2\> <br>constexpr auto | **[operator/](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator/)**(const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T1, UnitDim1, Prefix1, Tag1 > & lhl, const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T2, UnitDim2, Prefix2, Tag2 > & rhl) |
 | template <typename T ,class UnitDim ,class Prefix1 ,class Prefix2 ,int Tag\> <br>constexpr auto | **[operator+](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator+)**(const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDim, Prefix1, Tag > & lhl, const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDim, Prefix2, Tag > & rhl) |
 | template <typename T ,class UnitDim ,class Prefix1 ,class Prefix2 ,int Tag\> <br>constexpr auto | **[operator-](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator-)**(const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDim, Prefix1, Tag > & lhl, const [Unit](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/)< T, UnitDim, Prefix2, Tag > & rhl) |
+| template <class ForwardIterator \> <br>constexpr ForwardIterator | **[shift_left](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-shift-left)**(ForwardIterator first, ForwardIterator last, typename std::iterator_traits< ForwardIterator >::difference_type n)<br>Substitute shift_left function in C++20 alogorithm.  |
+| template <class ForwardIterator \> <br>constexpr ForwardIterator | **[shift_right](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-shift-right)**(ForwardIterator first, ForwardIterator last, typename std::iterator_traits< ForwardIterator >::difference_type n)<br>Substitute shift_right function in C++20 alogorithm.  |
 | template <typename... Args\> <br>std::string | **[c_format](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-c-format)**(const std::string & format, Args const &... args)<br>printfと同様の操作でstd::stringを得る  |
 | template <typename... Args\> <br>void | **[print](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-print)**(const std::string & format, Args const &... args)<br>std::coutにprintfの形式でフォーマットされた文字列を出力する  |
 | template <typename T \> <br>constexpr bool | **[in_range_open](/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-in-range-open)**(T x, T min, T max) |
@@ -1165,32 +1170,7 @@ static bool is_observable(
 ### function canonicalize_system
 
 ```cpp
-static std::tuple< Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd > canonicalize_system(
-    const Eigen::MatrixXd & A,
-    const Eigen::MatrixXd & B,
-    const Eigen::MatrixXd & C,
-    const Eigen::MatrixXd & D,
-    CanonicalizeMode mode =CanonicalizeMode::COMPANION
-)
-```
-
-同値変換による可制御正準形への変換 
-
-**Parameters**: 
-
-  * **A** 
-  * **B** 
-  * **C** 
-  * **D** 
-  * **mode** 
-
-
-**Return**: std::tuple<Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd> 
-
-### function canonicalize_system
-
-```cpp
-static std::tuple< Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd > canonicalize_system(
+static std::tuple< Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd > canonicalize_system(
     const Eigen::MatrixXd & A,
     const Eigen::MatrixXd & B,
     const Eigen::MatrixXd & C,
@@ -1208,12 +1188,12 @@ static std::tuple< Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::Mat
   * **mode** 
 
 
-**Return**: std::tuple<Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd> 
+**Return**: std::tuple<Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd> 
 
 ### function canonicalize_system
 
 ```cpp
-static std::tuple< Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd > canonicalize_system(
+static std::tuple< Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd > canonicalize_system(
     const StateSpaceSystem & sys,
     CanonicalizeMode mode =CanonicalizeMode::COMPANION
 )
@@ -1227,7 +1207,7 @@ static std::tuple< Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::Mat
   * **mode** 
 
 
-**Return**: std::tuple<Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd> 
+**Return**: std::tuple<Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd> 
 
 ### function place
 
@@ -1595,6 +1575,7 @@ static void powells_modified_bfgs_step(
     Eigen::MatrixXd & hess,
     Eigen::VectorXd s,
     Eigen::VectorXd y,
+    Eigen::VectorXd dgg,
     double gamma =0.2
 )
 ```
@@ -1606,7 +1587,20 @@ static void powells_modified_bfgs_step(
   * **hess** 前ステップまでの近似ヘッシアン 
   * **s** x_k+1 - x_k 
   * **y** \grad_x L(x_k+1, u_k+1) - \grad_x L(x_k, u_k) 
+  * **w** \grad g(x+1)*g(x+1) - \grad g(x)*g(x) 
   * **gamma** 
+
+
+### function powells_modified_bfgs_step
+
+```cpp
+static void powells_modified_bfgs_step(
+    Eigen::MatrixXd & hess,
+    Eigen::VectorXd s,
+    Eigen::VectorXd y,
+    double gamma =0.2
+)
+```
 
 
 ### function bracketing_serach
@@ -1789,6 +1783,16 @@ static double golden_search(
 
 
 **Return**: double 
+
+### function lsi2qp
+
+```cpp
+std::tuple< Eigen::MatrixXd, Eigen::VectorXd > lsi2qp(
+    const Eigen::MatrixXd & C,
+    const Eigen::VectorXd & d
+)
+```
+
 
 ### function newton_method
 
@@ -2039,7 +2043,7 @@ static SisoFeedbackSystem make_feedback_system(
 ```cpp
 static void set_controller(
     SisoFeedbackSystem::func_list_t & fn,
-    PIDController & controller
+    PID & controller
 )
 ```
 
@@ -2060,6 +2064,15 @@ static void set_controller(
 static void set_system(
     SisoFeedbackSystem::func_list_t & fn,
     TransferFunction & system
+)
+```
+
+
+### function tf2ss
+
+```cpp
+StateSpaceSystem tf2ss(
+    const TransferFunction & tf
 )
 ```
 
@@ -2315,6 +2328,60 @@ constexpr auto operator-(
 )
 ```
 
+
+### function shift_left
+
+```cpp
+template <class ForwardIterator >
+constexpr ForwardIterator shift_left(
+    ForwardIterator first,
+    ForwardIterator last,
+    typename std::iterator_traits< ForwardIterator >::difference_type n
+)
+```
+
+Substitute shift_left function in C++20 alogorithm. 
+
+**Parameters**: 
+
+  * **first** 
+  * **last** 
+  * **n** 
+
+
+**Template Parameters**: 
+
+  * **ForwardIterator** 
+
+
+**Return**: constexpr ForwardIterator 
+
+### function shift_right
+
+```cpp
+template <class ForwardIterator >
+constexpr ForwardIterator shift_right(
+    ForwardIterator first,
+    ForwardIterator last,
+    typename std::iterator_traits< ForwardIterator >::difference_type n
+)
+```
+
+Substitute shift_right function in C++20 alogorithm. 
+
+**Parameters**: 
+
+  * **first** 
+  * **last** 
+  * **n** 
+
+
+**Template Parameters**: 
+
+  * **ForwardIterator** 
+
+
+**Return**: constexpr ForwardIterator 
 
 ### function c_format
 
@@ -2914,4 +2981,4 @@ constexpr double gfcm2mNm = (gfm2Nm / 100);
 
 -------------------------------
 
-Updated on 2022-10-10 at 00:51:39 +0900
+Updated on 2022-10-19 at 13:20:53 +0900

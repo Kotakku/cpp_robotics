@@ -37,6 +37,12 @@ namespace cpp_robotics::grid_path_planning_utils
 
 struct GridNode
 {
+    GridNode():
+        cost(0), hcost(0)
+    {
+        pos.setZero();
+        parent.setZero();
+    }
     bool operator == (const GridNode& o ) { return pos == o.pos; }
     bool operator == (const Eigen::Vector2i& o ) { return pos == o; }
     bool operator < (const GridNode& o ) { return hcost + cost < o.hcost + o.cost; }
@@ -109,4 +115,4 @@ bool exist(std::list<GridNode> &open, std::list<GridNode> &closed, const Eigen::
 
 -------------------------------
 
-Updated on 2022-10-10 at 00:51:40 +0900
+Updated on 2022-10-19 at 13:20:53 +0900

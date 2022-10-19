@@ -19,6 +19,7 @@ title: cpp_robotics::SQP::Problem
 | [func_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SQP/#using-func-type) | **[func](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Problem/#variable-func)**  |
 | std::optional< [grad_func_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SQP/#using-grad-func-type) > | **[grad](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Problem/#variable-grad)**  |
 | [ConstraintArray](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ConstraintArray/) | **[con](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Problem/#variable-con)**  |
+| bool | **[use_slsqp](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Problem/#variable-use-slsqp)**  |
 | double | **[tol_step](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Problem/#variable-tol-step)**  |
 | double | **[tol_con](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Problem/#variable-tol-con)**  |
 | size_t | **[max_iter](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SQP_1_1Problem/#variable-max-iter)**  |
@@ -46,6 +47,13 @@ ConstraintArray con;
 ```
 
 
+### variable use_slsqp
+
+```cpp
+bool use_slsqp = false;
+```
+
+
 ### variable tol_step
 
 ```cpp
@@ -69,4 +77,4 @@ size_t max_iter = 100;
 
 -------------------------------
 
-Updated on 2022-10-10 at 00:51:39 +0900
+Updated on 2022-10-19 at 13:20:53 +0900

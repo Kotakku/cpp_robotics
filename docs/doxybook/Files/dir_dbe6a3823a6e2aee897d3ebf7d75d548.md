@@ -19,7 +19,9 @@ title: include/cpp_robotics/optimize
 | **[include/cpp_robotics/optimize/derivative.hpp](/cpp_robotics/doxybook/Files/derivative_8hpp/#file-derivative.hpp)**  |
 | **[include/cpp_robotics/optimize/golden_serach.hpp](/cpp_robotics/doxybook/Files/golden__serach_8hpp/#file-golden-serach.hpp)**  |
 | **[include/cpp_robotics/optimize/interior_point_method.hpp](/cpp_robotics/doxybook/Files/interior__point__method_8hpp/#file-interior-point-method.hpp)**  |
+| **[include/cpp_robotics/optimize/lesi_doc.hpp](/cpp_robotics/doxybook/Files/lesi__doc_8hpp/#file-lesi-doc.hpp)**  |
 | **[include/cpp_robotics/optimize/linprog.hpp](/cpp_robotics/doxybook/Files/linprog_8hpp/#file-linprog.hpp)**  |
+| **[include/cpp_robotics/optimize/lsei_transition.hpp](/cpp_robotics/doxybook/Files/lsei__transition_8hpp/#file-lsei-transition.hpp)**  |
 | **[include/cpp_robotics/optimize/newton_method.hpp](/cpp_robotics/doxybook/Files/newton__method_8hpp/#file-newton-method.hpp)**  |
 | **[include/cpp_robotics/optimize/optimize.hpp](/cpp_robotics/doxybook/Files/optimize_8hpp/#file-optimize.hpp)**  |
 | **[include/cpp_robotics/optimize/penalty_method.hpp](/cpp_robotics/doxybook/Files/penalty__method_8hpp/#file-penalty-method.hpp)**  |
@@ -35,4 +37,4 @@ title: include/cpp_robotics/optimize
 
 -------------------------------
 
-Updated on 2022-10-10 at 00:51:40 +0900
+Updated on 2022-10-19 at 13:20:53 +0900

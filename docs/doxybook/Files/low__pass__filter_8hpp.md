@@ -28,19 +28,19 @@ title: include/cpp_robotics/filter/low_pass_filter.hpp
 #pragma once
 
 #include <cmath>
-#include <cpp_robotics/system/discrete_transfer_function.hpp>
+#include <cpp_robotics/system/transfer_function.hpp>
 
 namespace cpp_robotics
 {
 
 // G(s) = omega / (s + omega)
-class LowPassFilter : public DiscreteTransferFunction
+class LowPassFilter : public TransferFunction
 {
 public:
     LowPassFilter(double omega, double dt):
         omega_(omega)
     {
-        set_continuous({omega}, {1, omega}, dt);
+        TransferFunction::set_continuous({omega_}, {1, omega_}, dt);
     }
 
     double filtering(double u) { return responce(u); } 
@@ -56,4 +56,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-10-10 at 00:51:40 +0900
+Updated on 2022-10-19 at 13:20:53 +0900

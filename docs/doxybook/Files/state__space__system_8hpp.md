@@ -45,27 +45,12 @@ public:
         set_continuous(A, B, C, Ts);
     }
 
-    template<typename DerivedA, typename DerivedB, typename DerivedC, typename DerivedD>
-    StateSpaceSystem(const Eigen::MatrixBase<DerivedA> &A, const Eigen::MatrixBase<DerivedB> &B, const Eigen::MatrixBase<DerivedC> &C, const Eigen::MatrixBase<DerivedD> &D, const double Ts)
-    {
-        set_continuous(A, B, C, D, Ts);
-    }
-
     template<typename DerivedA, typename DerivedB, typename DerivedC>
     void set_continuous(const Eigen::MatrixBase<DerivedA> &A, const Eigen::MatrixBase<DerivedB> &B, const Eigen::MatrixBase<DerivedC> &C, const double Ts, const bool skip_state_reset = false)
-    {
-        input_size_ = B.cols();
-        output_size_ = C.rows();
-        set_continuous(A, B, C, Eigen::MatrixXd::Zero(output_size_, input_size_), Ts, skip_state_reset);
-    }
-
-    template<typename DerivedA, typename DerivedB, typename DerivedC, typename DerivedD>
-    void set_continuous(const Eigen::MatrixBase<DerivedA> &A, const Eigen::MatrixBase<DerivedB> &B, const Eigen::MatrixBase<DerivedC> &C, const Eigen::MatrixBase<DerivedD> &D, const double Ts, const bool skip_state_reset = false)
     {
         assert(A.rows() == A.cols());
         assert(A.rows() == B.rows());
         assert(A.cols() == C.cols());
-        assert(C.rows() == D.rows());
         
         state_size_ = A.rows();
         input_size_ = B.cols();
@@ -76,7 +61,6 @@ public:
         Ts_ = Ts;
         std::tie(Ad_, Bd_) = Discret::discritize(A, B, Ts);
         Cd_ = C;
-        Dd_ = D;
 
         if(not skip_state_reset)
             set_state_zero();
@@ -85,18 +69,9 @@ public:
     template<typename DerivedA, typename DerivedB, typename DerivedC>
     void set_discrite(const Eigen::MatrixBase<DerivedA> &Ad, const Eigen::MatrixBase<DerivedB> &Bd, const Eigen::MatrixBase<DerivedC> &Cd, const double Ts, const bool skip_state_reset = false)
     {
-        input_size_ = Bd.cols();
-        output_size_ = Cd.rows();
-        set_discrite(Ad, Bd, Cd, Eigen::MatrixXd::Zero(output_size_, input_size_), Ts, skip_state_reset);
-    }
-
-    template<typename DerivedA, typename DerivedB, typename DerivedC, typename DerivedD>
-    void set_discrite(const Eigen::MatrixBase<DerivedA> &Ad, const Eigen::MatrixBase<DerivedB> &Bd, const Eigen::MatrixBase<DerivedC> &Cd, const Eigen::MatrixBase<DerivedD> &Dd, const double Ts, const bool skip_state_reset = false)
-    {
         assert(Ad.rows() == Ad.cols());
         assert(Ad.rows() == Bd.rows());
         assert(Ad.cols() == Cd.cols());
-        assert(Cd.rows() == Dd.rows());
         
         state_size_ = Ad.rows();
         input_size_ = Bd.cols();
@@ -109,7 +84,6 @@ public:
         Ad_ = Ad;
         Bd_ = Bd;
         Cd_ = Cd;
-        Dd_ = Dd;
 
         if(not skip_state_reset)
             set_state_zero();
@@ -142,7 +116,7 @@ public:
     auto responce(const Eigen::VectorXd &u)
     {
         x_ = Ad_*x_ + Bd_*u;
-        return Cd_*x_ + Dd_*u;
+        return Cd_*x_;
     }
 
     double responce(double u)
@@ -163,9 +137,6 @@ public:
     Eigen::MatrixXd C()  const { return Cd_; }
     Eigen::MatrixXd Cd() const { return Cd_; }
 
-    Eigen::MatrixXd D()  const { return Dd_; }
-    Eigen::MatrixXd Dd() const { return Dd_; }
-
     Eigen::VectorXd x() const { return x_; }
     Eigen::VectorXd y() const { return Cd_*x_; }
 
@@ -173,7 +144,6 @@ private:
     Eigen::MatrixXd Ad_;
     Eigen::MatrixXd Bd_;
     Eigen::MatrixXd Cd_;
-    Eigen::MatrixXd Dd_;
 
     std::optional<Eigen::MatrixXd> A_;
     std::optional<Eigen::MatrixXd> B_;
@@ -192,4 +162,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-10-10 at 00:51:40 +0900
+Updated on 2022-10-19 at 13:20:53 +0900

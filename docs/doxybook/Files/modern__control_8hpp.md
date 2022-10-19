@@ -97,51 +97,39 @@ namespace cpp_robotics
     };
 
     // https://www.mathworks.com/help/control/ug/canonical-state-space-realizations.html
-    static std::tuple<Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd> canonicalize_system(const Eigen::MatrixXd& A, const Eigen::MatrixXd& B, const Eigen::MatrixXd& C, const Eigen::MatrixXd& D, CanonicalizeMode mode = CanonicalizeMode::COMPANION)
+    static std::tuple<Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd> canonicalize_system(const Eigen::MatrixXd& A, const Eigen::MatrixXd& B, const Eigen::MatrixXd& C, CanonicalizeMode mode = CanonicalizeMode::COMPANION)
     {
         // if(mode == MODEL)
         // else
         if(mode == CanonicalizeMode::CONTROLLABLE || mode == CanonicalizeMode::COMPANION || mode == CanonicalizeMode::OBSERBAVLE)
         {
-            
-            Eigen::MatrixXd Uc = controllability_matrix(A, B);
-            Eigen::MatrixXd Ucinv = Uc.inverse();
-
             if(mode == CanonicalizeMode::CONTROLLABLE)
             {
-                auto [A_tilda, B_tilda, C_tilda, D_tilda] = canonicalize_system(A, B, C, D, CanonicalizeMode::COMPANION);
+                auto [A_tilda, B_tilda, C_tilda] = canonicalize_system(A, B, C, CanonicalizeMode::COMPANION);
                 return {
                     A_tilda.transpose(),
                     C_tilda.transpose(),
-                    B_tilda.transpose(),
-                    D_tilda
+                    B_tilda.transpose()
                 };
             }
             else
             {
+                Eigen::MatrixXd Uc = controllability_matrix(A, B);
+                Eigen::MatrixXd Ucinv = Uc.inverse();
                 return {
                     Ucinv*A*Uc,
                     Ucinv*B,
-                    C*Uc,
-                    D
+                    C*Uc
                 };
             }
         }
 
-        return canonicalize_system(A, B, C, D, CanonicalizeMode::COMPANION);
+        return canonicalize_system(A, B, C, CanonicalizeMode::COMPANION);
     }
 
-    static std::tuple<Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd> canonicalize_system(const Eigen::MatrixXd& A, const Eigen::MatrixXd& B, const Eigen::MatrixXd& C, CanonicalizeMode mode = CanonicalizeMode::COMPANION)
+    static std::tuple<Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd> canonicalize_system(const StateSpaceSystem& sys, CanonicalizeMode mode = CanonicalizeMode::COMPANION)
     {
-        const size_t input_size = B.cols();
-        const size_t output_size = C.rows();
-
-        return canonicalize_system(A, B, C, Eigen::MatrixXd::Zero(output_size, input_size), mode);
-    }
-
-    static std::tuple<Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd, Eigen::MatrixXd> canonicalize_system(const StateSpaceSystem& sys, CanonicalizeMode mode = CanonicalizeMode::COMPANION)
-    {
-        return canonicalize_system(sys.A().value(), sys.B().value(), sys.C(), sys.D(), mode);
+        return canonicalize_system(sys.A().value(), sys.B().value(), sys.C(), mode);
     }
 
     // https://ossyaritoori.hatenablog.com/entry/2018/05/16/%E6%A5%B5%E9%85%8D%E7%BD%AE%E3%81%AE%E5%AE%9F%E8%A3%85%EF%BC%9A%E3%82%A2%E3%83%83%E3%82%AB%E3%83%BC%E3%83%9E%E3%83%B3%E6%B3%95%E3%81%AEMATLAB%E5%AE%9F%E8%A3%85#Outline
@@ -179,4 +167,4 @@ namespace cpp_robotics
 
 -------------------------------
 
-Updated on 2022-10-10 at 00:51:40 +0900
+Updated on 2022-10-19 at 13:20:53 +0900

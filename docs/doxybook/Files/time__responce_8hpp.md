@@ -25,7 +25,6 @@ title: include/cpp_robotics/system/time_responce.hpp
 #include <type_traits>
 #include "../utility/space.hpp"
 #include "./transfer_function.hpp"
-#include "./discrete_transfer_function.hpp"
 
 namespace cpp_robotics
 {
@@ -144,4 +143,4 @@ static std::tuple<std::vector<double>, std::vector<double>> lsim(SysType &sys, s
 
 -------------------------------
 
-Updated on 2022-10-10 at 00:51:40 +0900
+Updated on 2022-10-19 at 13:20:53 +0900

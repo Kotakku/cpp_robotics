@@ -35,12 +35,14 @@ title: Files
             * **file [include/cpp_robotics/chassis/swerve_ik.hpp](/cpp_robotics/doxybook/Files/swerve__ik_8hpp/#file-swerve-ik.hpp)** 
         * **dir [include/cpp_robotics/controller](/cpp_robotics/doxybook/Files/dir_5df22cf9cb50dfe3ed59678e8c651195/#dir-include/cpp-robotics/controller)** 
             * **file [include/cpp_robotics/controller/controller.hpp](/cpp_robotics/doxybook/Files/controller_8hpp/#file-controller.hpp)** 
+            * **file [include/cpp_robotics/controller/linear_mpc.hpp](/cpp_robotics/doxybook/Files/linear__mpc_8hpp/#file-linear-mpc.hpp)** 
             * **file [include/cpp_robotics/controller/lqr.hpp](/cpp_robotics/doxybook/Files/lqr_8hpp/#file-lqr.hpp)** 
             * **file [include/cpp_robotics/controller/modern_control.hpp](/cpp_robotics/doxybook/Files/modern__control_8hpp/#file-modern-control.hpp)** 
             * **file [include/cpp_robotics/controller/nctf.hpp](/cpp_robotics/doxybook/Files/nctf_8hpp/#file-nctf.hpp)** 
             * **file [include/cpp_robotics/controller/pfc.hpp](/cpp_robotics/doxybook/Files/pfc_8hpp/#file-pfc.hpp)** 
             * **file [include/cpp_robotics/controller/pid.hpp](/cpp_robotics/doxybook/Files/pid_8hpp/#file-pid.hpp)** 
             * **file [include/cpp_robotics/controller/pid2.hpp](/cpp_robotics/doxybook/Files/pid2_8hpp/#file-pid2.hpp)** 
+            * **file [include/cpp_robotics/controller/psmc.hpp](/cpp_robotics/doxybook/Files/psmc_8hpp/#file-psmc.hpp)** 
             * **file [include/cpp_robotics/controller/pure_pursuit.hpp](/cpp_robotics/doxybook/Files/pure__pursuit_8hpp/#file-pure-pursuit.hpp)** 
         * **dir [include/cpp_robotics/filter](/cpp_robotics/doxybook/Files/dir_d46e09745d41c5a7827c5b81f13e5fde/#dir-include/cpp-robotics/filter)** 
             * **file [include/cpp_robotics/filter/acceleration_limit_filter.hpp](/cpp_robotics/doxybook/Files/acceleration__limit__filter_8hpp/#file-acceleration-limit-filter.hpp)** 
@@ -75,7 +77,9 @@ title: Files
             * **file [include/cpp_robotics/optimize/derivative.hpp](/cpp_robotics/doxybook/Files/derivative_8hpp/#file-derivative.hpp)** 
             * **file [include/cpp_robotics/optimize/golden_serach.hpp](/cpp_robotics/doxybook/Files/golden__serach_8hpp/#file-golden-serach.hpp)** 
             * **file [include/cpp_robotics/optimize/interior_point_method.hpp](/cpp_robotics/doxybook/Files/interior__point__method_8hpp/#file-interior-point-method.hpp)** 
+            * **file [include/cpp_robotics/optimize/lesi_doc.hpp](/cpp_robotics/doxybook/Files/lesi__doc_8hpp/#file-lesi-doc.hpp)** 
             * **file [include/cpp_robotics/optimize/linprog.hpp](/cpp_robotics/doxybook/Files/linprog_8hpp/#file-linprog.hpp)** 
+            * **file [include/cpp_robotics/optimize/lsei_transition.hpp](/cpp_robotics/doxybook/Files/lsei__transition_8hpp/#file-lsei-transition.hpp)** 
             * **file [include/cpp_robotics/optimize/newton_method.hpp](/cpp_robotics/doxybook/Files/newton__method_8hpp/#file-newton-method.hpp)** 
             * **file [include/cpp_robotics/optimize/optimize.hpp](/cpp_robotics/doxybook/Files/optimize_8hpp/#file-optimize.hpp)** 
             * **file [include/cpp_robotics/optimize/penalty_method.hpp](/cpp_robotics/doxybook/Files/penalty__method_8hpp/#file-penalty-method.hpp)** 
@@ -96,12 +100,12 @@ title: Files
         * **dir [include/cpp_robotics/system](/cpp_robotics/doxybook/Files/dir_638b28e3ebdf4d55edeb748f267e8fbb/#dir-include/cpp-robotics/system)** 
             * **file [include/cpp_robotics/system/bode.hpp](/cpp_robotics/doxybook/Files/bode_8hpp/#file-bode.hpp)** 
             * **file [include/cpp_robotics/system/discret.hpp](/cpp_robotics/doxybook/Files/discret_8hpp/#file-discret.hpp)** 
-            * **file [include/cpp_robotics/system/discrete_transfer_function.hpp](/cpp_robotics/doxybook/Files/discrete__transfer__function_8hpp/#file-discrete-transfer-function.hpp)** 
             * **file [include/cpp_robotics/system/nyquist.hpp](/cpp_robotics/doxybook/Files/nyquist_8hpp/#file-nyquist.hpp)** 
             * **file [include/cpp_robotics/system/polynomial.hpp](/cpp_robotics/doxybook/Files/polynomial_8hpp/#file-polynomial.hpp)** 
             * **file [include/cpp_robotics/system/siso_system.hpp](/cpp_robotics/doxybook/Files/siso__system_8hpp/#file-siso-system.hpp)** 
             * **file [include/cpp_robotics/system/state_space_system.hpp](/cpp_robotics/doxybook/Files/state__space__system_8hpp/#file-state-space-system.hpp)** 
             * **file [include/cpp_robotics/system/system.hpp](/cpp_robotics/doxybook/Files/system_8hpp/#file-system.hpp)** 
+            * **file [include/cpp_robotics/system/system_transformation.hpp](/cpp_robotics/doxybook/Files/system__transformation_8hpp/#file-system-transformation.hpp)** 
             * **file [include/cpp_robotics/system/time_responce.hpp](/cpp_robotics/doxybook/Files/time__responce_8hpp/#file-time-responce.hpp)** 
             * **file [include/cpp_robotics/system/transfer_function.hpp](/cpp_robotics/doxybook/Files/transfer__function_8hpp/#file-transfer-function.hpp)** 
         * **dir [include/cpp_robotics/units](/cpp_robotics/doxybook/Files/dir_48ee8a7d844e7fcc20daa8cf77f195e8/#dir-include/cpp-robotics/units)** 
@@ -127,4 +131,4 @@ title: Files
 
 -------------------------------
 
-Updated on 2022-10-10 at 00:51:40 +0900
+Updated on 2022-10-19 at 13:20:53 +0900

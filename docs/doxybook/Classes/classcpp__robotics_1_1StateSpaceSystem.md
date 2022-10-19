@@ -13,19 +13,14 @@ summary: 状態空間モデル
 
 `#include <state_space_system.hpp>`
 
-Inherited by [cpp_robotics::TransferFunction](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/)
-
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
 | | **[StateSpaceSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-statespacesystem)**() =default |
 | template <typename DerivedA ,typename DerivedB ,typename DerivedC \> <br>| **[StateSpaceSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-statespacesystem)**(const Eigen::MatrixBase< DerivedA > & A, const Eigen::MatrixBase< DerivedB > & B, const Eigen::MatrixBase< DerivedC > & C, const double Ts) |
-| template <typename DerivedA ,typename DerivedB ,typename DerivedC ,typename DerivedD \> <br>| **[StateSpaceSystem](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-statespacesystem)**(const Eigen::MatrixBase< DerivedA > & A, const Eigen::MatrixBase< DerivedB > & B, const Eigen::MatrixBase< DerivedC > & C, const Eigen::MatrixBase< DerivedD > & D, const double Ts) |
 | template <typename DerivedA ,typename DerivedB ,typename DerivedC \> <br>void | **[set_continuous](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-continuous)**(const Eigen::MatrixBase< DerivedA > & A, const Eigen::MatrixBase< DerivedB > & B, const Eigen::MatrixBase< DerivedC > & C, const double Ts, const bool skip_state_reset =false) |
-| template <typename DerivedA ,typename DerivedB ,typename DerivedC ,typename DerivedD \> <br>void | **[set_continuous](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-continuous)**(const Eigen::MatrixBase< DerivedA > & A, const Eigen::MatrixBase< DerivedB > & B, const Eigen::MatrixBase< DerivedC > & C, const Eigen::MatrixBase< DerivedD > & D, const double Ts, const bool skip_state_reset =false) |
 | template <typename DerivedA ,typename DerivedB ,typename DerivedC \> <br>void | **[set_discrite](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-discrite)**(const Eigen::MatrixBase< DerivedA > & Ad, const Eigen::MatrixBase< DerivedB > & Bd, const Eigen::MatrixBase< DerivedC > & Cd, const double Ts, const bool skip_state_reset =false) |
-| template <typename DerivedA ,typename DerivedB ,typename DerivedC ,typename DerivedD \> <br>void | **[set_discrite](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-set-discrite)**(const Eigen::MatrixBase< DerivedA > & Ad, const Eigen::MatrixBase< DerivedB > & Bd, const Eigen::MatrixBase< DerivedC > & Cd, const Eigen::MatrixBase< DerivedD > & Dd, const double Ts, const bool skip_state_reset =false) |
 | size_t | **[state_size](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-state-size)**() const |
 | size_t | **[input_size](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-input-size)**() const |
 | size_t | **[output_size](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-output-size)**() const |
@@ -42,8 +37,6 @@ Inherited by [cpp_robotics::TransferFunction](/cpp_robotics/doxybook/Classes/cla
 | Eigen::MatrixXd | **[Bd](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-bd)**() const |
 | Eigen::MatrixXd | **[C](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-c)**() const |
 | Eigen::MatrixXd | **[Cd](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-cd)**() const |
-| Eigen::MatrixXd | **[D](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-d)**() const |
-| Eigen::MatrixXd | **[Dd](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-dd)**() const |
 | Eigen::VectorXd | **[x](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-x)**() const |
 | Eigen::VectorXd | **[y](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/#function-y)**() const |
 
@@ -71,23 +64,6 @@ inline StateSpaceSystem(
 ```
 
 
-### function StateSpaceSystem
-
-```cpp
-template <typename DerivedA ,
-typename DerivedB ,
-typename DerivedC ,
-typename DerivedD >
-inline StateSpaceSystem(
-    const Eigen::MatrixBase< DerivedA > & A,
-    const Eigen::MatrixBase< DerivedB > & B,
-    const Eigen::MatrixBase< DerivedC > & C,
-    const Eigen::MatrixBase< DerivedD > & D,
-    const double Ts
-)
-```
-
-
 ### function set_continuous
 
 ```cpp
@@ -104,24 +80,6 @@ inline void set_continuous(
 ```
 
 
-### function set_continuous
-
-```cpp
-template <typename DerivedA ,
-typename DerivedB ,
-typename DerivedC ,
-typename DerivedD >
-inline void set_continuous(
-    const Eigen::MatrixBase< DerivedA > & A,
-    const Eigen::MatrixBase< DerivedB > & B,
-    const Eigen::MatrixBase< DerivedC > & C,
-    const Eigen::MatrixBase< DerivedD > & D,
-    const double Ts,
-    const bool skip_state_reset =false
-)
-```
-
-
 ### function set_discrite
 
 ```cpp
@@ -132,24 +90,6 @@ inline void set_discrite(
     const Eigen::MatrixBase< DerivedA > & Ad,
     const Eigen::MatrixBase< DerivedB > & Bd,
     const Eigen::MatrixBase< DerivedC > & Cd,
-    const double Ts,
-    const bool skip_state_reset =false
-)
-```
-
-
-### function set_discrite
-
-```cpp
-template <typename DerivedA ,
-typename DerivedB ,
-typename DerivedC ,
-typename DerivedD >
-inline void set_discrite(
-    const Eigen::MatrixBase< DerivedA > & Ad,
-    const Eigen::MatrixBase< DerivedB > & Bd,
-    const Eigen::MatrixBase< DerivedC > & Cd,
-    const Eigen::MatrixBase< DerivedD > & Dd,
     const double Ts,
     const bool skip_state_reset =false
 )
@@ -276,20 +216,6 @@ inline Eigen::MatrixXd Cd() const
 ```
 
 
-### function D
-
-```cpp
-inline Eigen::MatrixXd D() const
-```
-
-
-### function Dd
-
-```cpp
-inline Eigen::MatrixXd Dd() const
-```
-
-
 ### function x
 
 ```cpp
@@ -306,4 +232,4 @@ inline Eigen::VectorXd y() const
 
 -------------------------------
 
-Updated on 2022-10-10 at 00:51:39 +0900
+Updated on 2022-10-19 at 13:20:53 +0900

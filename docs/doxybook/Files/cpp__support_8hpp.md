@@ -64,6 +64,49 @@ title: include/cpp_robotics/utility/cpp_support.hpp
 namespace cpp_robotics
 {
 
+template <class ForwardIterator>
+constexpr ForwardIterator shift_left(ForwardIterator first,
+                                        ForwardIterator last,
+                                        typename std::iterator_traits<ForwardIterator>::difference_type n)
+{
+    if (n <= 0)
+        return last;
+    if (n >= last - first)
+        return first;
+
+    ForwardIterator it = first;
+    ForwardIterator nlast = std::prev(last, n);
+    while (it != nlast)
+    {
+        ForwardIterator nit = std::next(it, n);
+        *it = *nit;
+        it++;
+    }
+    return first + (last - first - n);
+}
+
+template <class ForwardIterator>
+constexpr ForwardIterator shift_right(ForwardIterator first,
+                                        ForwardIterator last,
+                                        typename std::iterator_traits<ForwardIterator>::difference_type n)
+{
+    if (n <= 0)
+        return first;
+    if (n >= last - first)
+        return last;
+
+    ForwardIterator it = std::prev(last, n);
+    ForwardIterator nfirst = std::prev(first, 1);
+    while (it != nfirst)
+    {
+        ForwardIterator nit = std::next(it, n);
+        *nit = *it;
+        it--;
+    }
+
+    return first + n;
+}
+
 template <typename... Args>
 std::string c_format(const std::string &format, Args const&... args)
 {
@@ -87,4 +130,4 @@ void print(const std::string &format, Args const&... args)
 
 -------------------------------
 
-Updated on 2022-10-10 at 00:51:40 +0900
+Updated on 2022-10-19 at 13:20:53 +0900

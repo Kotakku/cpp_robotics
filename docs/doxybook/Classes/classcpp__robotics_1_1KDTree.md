@@ -26,7 +26,7 @@ k-d木  [More...](#detailed-description)
 | | **[KDTree](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-kdtree)**() =default |
 | | **[KDTree](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-kdtree)**(std::vector< [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > point, size_t dimention) |
 | void | **[clear](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-clear)**() |
-| void | **[build](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-build)**(std::vector< [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > point) |
+| void | **[build](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-build)**(std::vector< [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > point, size_t dimention) |
 | size_t | **[nn_search](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-nn-search)**(const [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) & point) const |
 | std::vector< size_t > | **[nn_search](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-nn-search)**(const std::vector< [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) > & point) const |
 | std::vector< size_t > | **[knn_search](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#function-knn-search)**(const [point_type](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KDTree/#using-point-type) & point, size_t k) const |
@@ -89,7 +89,8 @@ inline void clear()
 
 ```cpp
 inline void build(
-    std::vector< point_type > point
+    std::vector< point_type > point,
+    size_t dimention
 )
 ```
 
@@ -170,4 +171,4 @@ inline void debug_node()
 
 -------------------------------
 
-Updated on 2022-10-10 at 00:51:39 +0900
+Updated on 2022-10-19 at 13:20:53 +0900

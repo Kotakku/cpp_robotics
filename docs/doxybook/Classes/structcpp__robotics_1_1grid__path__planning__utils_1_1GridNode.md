@@ -16,6 +16,7 @@ title: cpp_robotics::grid_path_planning_utils::GridNode
 
 |                | Name           |
 | -------------- | -------------- |
+| | **[GridNode](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#function-gridnode)**() |
 | bool | **[operator==](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#function-operator==)**(const [GridNode](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/) & o) |
 | bool | **[operator==](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#function-operator==)**(const Eigen::Vector2i & o) |
 | bool | **[operator<](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#function-operator<)**(const [GridNode](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/) & o) |
@@ -31,6 +32,13 @@ title: cpp_robotics::grid_path_planning_utils::GridNode
 | int | **[hcost](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/#variable-hcost)**  |
 
 ## Public Functions Documentation
+
+### function GridNode
+
+```cpp
+inline GridNode()
+```
+
 
 ### function operator==
 
@@ -98,4 +106,4 @@ int hcost;
 
 -------------------------------
 
-Updated on 2022-10-10 at 00:51:40 +0900
+Updated on 2022-10-19 at 13:20:53 +0900
