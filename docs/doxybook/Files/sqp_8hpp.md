@@ -60,6 +60,7 @@ public:
         double tol_step = 1e-6;
         double tol_con = 1e-6;
         size_t max_iter = 100;
+        bool print_variable = false;
     };
 
     struct Result
@@ -159,6 +160,11 @@ public:
 
         for(size_t i = 1; i < prob.max_iter+1; i++)
         {
+            if(prob.print_variable)
+            {
+                std::cout << "\n////////////////////////////////" << std::endl;
+            }
+
             // 探索方向の決定
             // サブの問題設定
             if (prob.use_slsqp)
@@ -219,18 +225,30 @@ public:
                 // 等式制約
                 for(size_t con_i = 0; con_i < eq_con.size(); con_i++)
                 {
-                    val += eq_mw(con_i) * std::abs(eq_con[con_i].eval(x));
+                    const double eval = eq_con[con_i].eval(x);
+                    if(std::isfinite(eval))
+                        val += eq_mw(con_i) * std::abs(eval);
                 }
 
                 // 不等式制約
                 for(size_t con_i = 0; con_i < ineq_con.size(); con_i++)
                 {
-                    val += ineq_mw(con_i) * std::max(ineq_con[con_i].eval(x), 0.0);
+                    const double eval = ineq_con[con_i].eval(x);
+                    if(std::isfinite(eval))
+                    val += ineq_mw(con_i) * std::max(eval, 0.0);
                 }
 
                 return val;
             };
             double alpha = bracketing_serach(merit_func, [&](const Eigen::VectorXd &x){ return derivative(merit_func, x); }, x, d);
+
+            if(prob.print_variable)
+            {
+                std::cout << "d" << std::endl;
+                std::cout << d << std::endl;
+                std::cout << "alpha" << std::endl;
+                std::cout << alpha << std::endl;
+            }
 
             if(callback)
                 callback.value()(x);
@@ -239,7 +257,7 @@ public:
 
             // 収束判定
             // Todo: KKT条件の1次の最適性チェック入れる
-            if(d.norm() < prob.tol_step && prob.con.all_satisfy(x, prob.tol_con))
+            if(step.norm() < prob.tol_step*(1.0+x.norm())) // && prob.con.all_satisfy(x, prob.tol_con))
             {
                 result.is_solved = true;
                 result.iter_cnt = i;
@@ -301,6 +319,14 @@ public:
             powells_modified_bfgs_step(B, step, delta_grad_L, new_dgg - dgg);
             dgg = new_dgg;
 
+            if(prob.print_variable)
+            {
+                std::cout << "B=" << std::endl;
+                std::cout << B << std::endl;
+                std::cout << "x=" << std::endl;
+                std::cout << x << std::endl;
+            }
+
             if(B.array().isNaN().any())
             {
                 std::cout << "NaNが存在します" << std::endl;
@@ -332,4 +358,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-10-19 at 13:20:53 +0900
+Updated on 2022-10-21 at 10:30:14 +0900

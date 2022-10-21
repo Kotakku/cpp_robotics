@@ -53,6 +53,7 @@ title: cpp_robotics
 | class | **[cpp_robotics::KMeansMethod](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KMeansMethod/)** <br>K-means法  |
 | struct | **[cpp_robotics::Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/)** <br>直線クラス  |
 | class | **[cpp_robotics::LinearMPC](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/)**  |
+| class | **[cpp_robotics::LinearRegulatorMPC](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearRegulatorMPC/)**  |
 | class | **[cpp_robotics::LowPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/)** <br>ローパスフィルター  |
 | class | **[cpp_robotics::MecanumIk](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1MecanumIk/)** <br>メカナムの逆運動学モデル  |
 | class | **[cpp_robotics::NctfController](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NctfController/)** <br>NCTF制御器  |
@@ -2981,4 +2982,4 @@ constexpr double gfcm2mNm = (gfm2Nm / 100);
 
 -------------------------------
 
-Updated on 2022-10-19 at 13:20:53 +0900
+Updated on 2022-10-21 at 10:30:14 +0900

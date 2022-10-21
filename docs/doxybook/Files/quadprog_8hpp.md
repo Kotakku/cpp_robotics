@@ -68,6 +68,8 @@ public:
 
         // 最大反復回数
         size_t max_iter = 100;
+
+        bool print_variable = false;
     };
     Param param;
 
@@ -110,7 +112,7 @@ public:
 
     Result solve(Eigen::VectorXd x_init)
     {
-        const auto [tol_step, tol_con, t, max_iter] = param;
+        const auto [tol_step, tol_con, t, max_iter, print_variable] = param;
         Result result;
         // Size check
         assert(Q.rows() == Q.cols());
@@ -134,9 +136,30 @@ public:
         }
         const size_t l = A.rows();
 
+        auto preprossesing = [&]()
+        {
+            for(int i = 0; i < Aeq.rows(); i++)
+            {
+                if(not Aeq.row(i).allFinite() || not std::isfinite(beq(i)))
+                {
+                    Aeq.row(i).setZero();
+                    beq(i) = 0;
+                }
+            }
+            for(int i = 0; i < A.rows(); i++)
+            {
+                if(not A.row(i).allFinite() || not std::isfinite(b(i)))
+                {
+                    A.row(i).setZero();
+                    b(i) = 0;
+                }
+            }
+        };
+        preprossesing();
+
         Eigen::VectorXd x(n);
 
-        double rho = 1; // 不等式制約の相補性条件に対するソフト制約
+        double rho = l; // 不等式制約の平均相補性残差
         Eigen::VectorXd s = Eigen::VectorXd::Ones(l); // 不等式制約のスラック変数
         Eigen::VectorXd u = Eigen::VectorXd::Ones(l); // 不等式制約のラグランジュ乗数
         Eigen::VectorXd v = Eigen::VectorXd::Zero(m); // 等式制約のラグランジュ乗数
@@ -181,6 +204,27 @@ public:
             Eigen::VectorXd ds = delta.segment(n,l);
             Eigen::VectorXd du = delta.segment(n+l,l);
             Eigen::VectorXd dv = delta.segment(n+2*l,m);
+            
+            if(print_variable)
+            {
+                std::cout << "//////////////// " << i << std::endl;
+                std::cout << "x" << std::endl;
+                std::cout << x << std::endl;
+                std::cout << "dx" << std::endl;
+                std::cout << dx << std::endl;
+                std::cout << "s" << std::endl;
+                std::cout << s << std::endl;
+                std::cout << "ds" << std::endl;
+                std::cout << ds << std::endl;
+                std::cout << "u" << std::endl;
+                std::cout << u << std::endl;
+                std::cout << "du" << std::endl;
+                std::cout << du << std::endl;
+                std::cout << "v" << std::endl;
+                std::cout << v << std::endl;
+                std::cout << "dv" << std::endl;
+                std::cout << dv << std::endl;
+            }
             
             // 更新
             x += dx;
@@ -269,4 +313,4 @@ public:
 
 -------------------------------
 
-Updated on 2022-10-19 at 13:20:53 +0900
+Updated on 2022-10-21 at 10:30:14 +0900

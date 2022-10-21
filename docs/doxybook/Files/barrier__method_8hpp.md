@@ -81,4 +81,4 @@ static std::tuple<bool, Eigen::VectorXd, size_t> barrier_method(std::function<do
 
 -------------------------------
 
-Updated on 2022-10-19 at 13:20:53 +0900
+Updated on 2022-10-21 at 10:30:14 +0900

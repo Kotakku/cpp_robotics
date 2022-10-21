@@ -36,6 +36,7 @@ title: Files
         * **dir [include/cpp_robotics/controller](/cpp_robotics/doxybook/Files/dir_5df22cf9cb50dfe3ed59678e8c651195/#dir-include/cpp-robotics/controller)** 
             * **file [include/cpp_robotics/controller/controller.hpp](/cpp_robotics/doxybook/Files/controller_8hpp/#file-controller.hpp)** 
             * **file [include/cpp_robotics/controller/linear_mpc.hpp](/cpp_robotics/doxybook/Files/linear__mpc_8hpp/#file-linear-mpc.hpp)** 
+            * **file [include/cpp_robotics/controller/linear_regulator_mpc.hpp](/cpp_robotics/doxybook/Files/linear__regulator__mpc_8hpp/#file-linear-regulator-mpc.hpp)** 
             * **file [include/cpp_robotics/controller/lqr.hpp](/cpp_robotics/doxybook/Files/lqr_8hpp/#file-lqr.hpp)** 
             * **file [include/cpp_robotics/controller/modern_control.hpp](/cpp_robotics/doxybook/Files/modern__control_8hpp/#file-modern-control.hpp)** 
             * **file [include/cpp_robotics/controller/nctf.hpp](/cpp_robotics/doxybook/Files/nctf_8hpp/#file-nctf.hpp)** 
@@ -131,4 +132,4 @@ title: Files
 
 -------------------------------
 
-Updated on 2022-10-19 at 13:20:53 +0900
+Updated on 2022-10-21 at 10:30:14 +0900

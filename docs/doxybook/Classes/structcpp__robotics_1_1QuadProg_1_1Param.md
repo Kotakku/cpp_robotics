@@ -20,6 +20,7 @@ title: cpp_robotics::QuadProg::Param
 | double | **[tol_con](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-tol-con)**  |
 | double | **[t](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-t)**  |
 | size_t | **[max_iter](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-max-iter)**  |
+| bool | **[print_variable](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-print-variable)**  |
 
 ## Public Attributes Documentation
 
@@ -51,6 +52,13 @@ size_t max_iter = 100;
 ```
 
 
+### variable print_variable
+
+```cpp
+bool print_variable = false;
+```
+
+
 -------------------------------
 
-Updated on 2022-10-19 at 13:20:53 +0900
+Updated on 2022-10-21 at 10:30:14 +0900

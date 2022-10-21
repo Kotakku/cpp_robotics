@@ -209,4 +209,4 @@ inline constexpr DCMotorParam generate_maxon_brush_motor_param(
 
 -------------------------------
 
-Updated on 2022-10-19 at 13:20:53 +0900
+Updated on 2022-10-21 at 10:30:14 +0900

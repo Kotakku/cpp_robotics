@@ -18,7 +18,8 @@ title: cpp_robotics::LinearMPC
 | -------------- | -------------- |
 | | **[LinearMPC](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-linearmpc)**(const Eigen::MatrixXd & Ad, const Eigen::MatrixXd & Bd, const Eigen::MatrixXd & Q, const Eigen::MatrixXd & R, const Eigen::MatrixXd & Qf, const size_t N, std::optional< std::pair< Eigen::VectorXd, Eigen::VectorXd >> u_limit =std::nullopt) |
 | void | **[set_initial_input](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-set-initial-input)**(const std::vector< Eigen::VectorXd > & u0) |
-| std::tuple< bool, Eigen::VectorXd > | **[control](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-control)**(const Eigen::VectorXd & x0, bool warm_start =true) |
+| std::tuple< bool, Eigen::VectorXd > | **[control](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-control)**(const Eigen::VectorXd & x0, const std::vector< Eigen::VectorXd > & x_ref, bool warm_start =true) |
+| std::tuple< bool, Eigen::VectorXd > | **[control](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-control)**(const Eigen::VectorXd & x0, const Eigen::VectorXd & x_ref, bool warm_start =true) |
 | [QuadProg::Result](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Result/) | **[latest_qp_result](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-latest-qp-result)**() const |
 | Eigen::MatrixXd | **[Ad](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-ad)**() const |
 | Eigen::MatrixXd | **[Bd](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-bd)**() const |
@@ -58,6 +59,18 @@ inline void set_initial_input(
 ```cpp
 inline std::tuple< bool, Eigen::VectorXd > control(
     const Eigen::VectorXd & x0,
+    const std::vector< Eigen::VectorXd > & x_ref,
+    bool warm_start =true
+)
+```
+
+
+### function control
+
+```cpp
+inline std::tuple< bool, Eigen::VectorXd > control(
+    const Eigen::VectorXd & x0,
+    const Eigen::VectorXd & x_ref,
     bool warm_start =true
 )
 ```
@@ -114,4 +127,4 @@ inline size_t N() const
 
 -------------------------------
 
-Updated on 2022-10-19 at 13:20:53 +0900
+Updated on 2022-10-21 at 10:30:14 +0900
