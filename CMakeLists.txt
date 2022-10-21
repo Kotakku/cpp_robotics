@@ -91,7 +91,7 @@ set(test_files
 
   optimize/fmin_search_test
   optimize/bfgs_test
-  optimize/quadprog_benchmark_test
+  optimize/quadprog_test
   optimize/breacketing_search_test
   optimize/sqp_test
   

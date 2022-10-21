@@ -8,10 +8,10 @@
 namespace cpp_robotics
 {
 
-class LinearMPC
+class LinearRegulatorMPC
 {
 public:
-    LinearMPC(const Eigen::MatrixXd &Ad, const Eigen::MatrixXd &Bd, const Eigen::MatrixXd &Q, const Eigen::MatrixXd &R, const Eigen::MatrixXd &Qf, const size_t N, std::optional<std::pair<Eigen::VectorXd, Eigen::VectorXd>> u_limit = std::nullopt):
+    LinearRegulatorMPC(const Eigen::MatrixXd &Ad, const Eigen::MatrixXd &Bd, const Eigen::MatrixXd &Q, const Eigen::MatrixXd &R, const Eigen::MatrixXd &Qf, const size_t N, std::optional<std::pair<Eigen::VectorXd, Eigen::VectorXd>> u_limit = std::nullopt):
         Ad_(Ad), Bd_(Bd), Q_(Q), R_(R), Qf_(Qf), N_(N), u_limit_(u_limit)
     {
         // 正方行列
@@ -30,7 +30,7 @@ public:
         state_size_ = Ad_.rows();
 
         // Nステップ分の行列表現
-        Ad_mat_ = Eigen::MatrixXd::Zero(state_size_*N_, state_size_);
+        Eigen::MatrixXd Ad_mat_ = Eigen::MatrixXd::Zero(state_size_*N_, state_size_);
         Eigen::MatrixXd Bd_mat_ = Eigen::MatrixXd::Zero(state_size_*N_, input_size_*N_);
         Eigen::MatrixXd Q_mat_ = Eigen::MatrixXd::Zero(state_size_*N_, state_size_*N_);
         Eigen::MatrixXd R_mat_ = Eigen::MatrixXd::Zero(input_size_*N_, input_size_*N_);
@@ -65,7 +65,7 @@ public:
         }
 
         H_ = Bd_mat_.transpose()*Q_mat_*Bd_mat_ + R_mat_;
-        g_ = -Bd_mat_.transpose()*Q_mat_;
+        g_ = Bd_mat_.transpose()*Q_mat_*Ad_mat_;
         qp_solver_.Q = H_;
 
         if(u_limit_)
@@ -96,17 +96,11 @@ public:
         assert(u0.size() == N_);
     }
 
-    std::tuple<bool, Eigen::VectorXd> control(const Eigen::VectorXd &x0, const std::vector<Eigen::VectorXd> &x_ref, bool warm_start = true)
+    std::tuple<bool, Eigen::VectorXd> control(const Eigen::VectorXd &x0, bool warm_start = true)
     {
         assert(x0.size() == (Eigen::VectorXd::Index)(state_size_));
 
-        Eigen::VectorXd eps_mat = -Ad_mat_*x0;
-        for(size_t i = 0; i < N_; i++)
-        {
-            eps_mat.block(i*state_size_, 0, state_size_, 1) += x_ref[i];
-        }
-
-        qp_solver_.c = (g_*eps_mat).transpose();
+        qp_solver_.c = (g_*x0).transpose();
         latest_qp_result_ = qp_solver_.solve(U_);
 
         if(latest_qp_result_.is_solved)
@@ -124,11 +118,6 @@ public:
         }
         
         return {false, Eigen::VectorXd::Zero(input_size_)};
-    }
-
-    std::tuple<bool, Eigen::VectorXd> control(const Eigen::VectorXd &x0, const Eigen::VectorXd &x_ref, bool warm_start = true)
-    {
-        return control(x0, std::vector(N_, x_ref), warm_start);
     }
 
     QuadProg::Result latest_qp_result() const { return latest_qp_result_; }
@@ -151,8 +140,6 @@ private:
     const std::optional<std::pair<Eigen::VectorXd, Eigen::VectorXd>> u_limit_;
     size_t input_size_;
     size_t state_size_;
-    
-    Eigen::MatrixXd Ad_mat_;
 
     // QPソルバ用の評価関数の２次形表現
     Eigen::MatrixXd H_;

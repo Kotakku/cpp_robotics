@@ -3,7 +3,59 @@
 #include <Eigen/Dense>
 #include <cpp_robotics/optimize/quadprog.hpp>
 
-int main()
+void example1()
+{
+    using namespace cpp_robotics;
+
+    QuadProg qp;
+
+    // 変数のサイズ      : 2
+    // 不等式制約のサイズ : 2
+    // 等式制約のサイズ   : 0
+    qp.param.tol_con = 1e-3;
+    qp.param.tol_step = 1e-3;
+    
+    qp.set_problem_size(2, 4, 0); 
+
+    // この問題における制約なしの時の大域的最適解
+    // x = (3, 1)
+    qp.Q << 
+        1,0,
+        0,1;
+
+    qp.c << 
+        -3,-1;
+
+    // s.t.
+    qp.A << 
+        1, 0,
+        0, 1,
+        -1, 0,
+        0, -1;
+    qp.b << 
+        10, 10, 0, 0;
+
+    Eigen::VectorXd x0(2);
+    x0 << 1, 0;
+
+    auto result = qp.solve(x0);
+
+    std::cout << std::fixed << std::setprecision(3);
+
+    // std::cout << "is_solved: " << result.is_solved<< std::endl;
+    std::cout << "is_solved: " << (result.is_solved ? "true" : "false") << std::endl;
+    std::cout << "optx     : " << result.x.transpose() << std::endl;
+    std::cout << "itr      : " << result.iter_cnt << std::endl;
+    std::cout << "satisfy  : " << qp.satisfy(result.x) << std::endl;
+
+    std::cout << "(Ax-b < 0)? :" << std::endl;
+    std::cout << qp.A*result.x - qp.b << std::endl;
+
+    std::cout << "(Aeqx-beq = 0)? :" << std::endl;
+    std::cout << qp.Aeq*result.x - qp.beq << std::endl;
+}
+
+void example2()
 {
     using namespace cpp_robotics;
 
@@ -74,4 +126,10 @@ int main()
 
     std::cout << "(Aeqx-beq = 0)? :" << std::endl;
     std::cout << qp.Aeq*result.x - qp.beq << std::endl;
+}
+
+int main()
+{
+    example1();
+    // example2();
 }
