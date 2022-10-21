@@ -12,14 +12,14 @@
         <meta name="author" content="Takumi Odashima">
       
       
-        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/">
+        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearRegulatorMPC/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.6">
     
     
       
-        <title>cpp_robotics::QuadProg::Param - cpp_robotics</title>
+        <title>cpp_robotics::LinearRegulatorMPC - cpp_robotics</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cpp_roboticsquadprogparam" class="md-skip">
+        <a href="#cpp_roboticslinearregulatormpc" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              cpp_robotics::QuadProg::Param
+              cpp_robotics::LinearRegulatorMPC
             
           </span>
         </div>
@@ -1244,9 +1244,9 @@
                   
 
 
-<h1 id="cpp_roboticsquadprogparam">cpp_robotics::QuadProg::Param</h1>
-<p><code>#include &lt;quadprog.hpp&gt;</code></p>
-<h2 id="public-attributes">Public Attributes</h2>
+<h1 id="cpp_roboticslinearregulatormpc">cpp_robotics::LinearRegulatorMPC</h1>
+<p><code>#include &lt;linear_regulator_mpc.hpp&gt;</code></p>
+<h2 id="public-functions">Public Functions</h2>
 <table>
 <thead>
 <tr>
@@ -1256,42 +1256,90 @@
 </thead>
 <tbody>
 <tr>
-<td>double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-tol-step">tol_step</a></strong></td>
+<td></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearRegulatorMPC/#function-linearregulatormpc">LinearRegulatorMPC</a></strong>(const Eigen::MatrixXd &amp; Ad, const Eigen::MatrixXd &amp; Bd, const Eigen::MatrixXd &amp; Q, const Eigen::MatrixXd &amp; R, const Eigen::MatrixXd &amp; Qf, const size_t N, std::optional&lt; std::pair&lt; Eigen::VectorXd, Eigen::VectorXd &gt;&gt; u_limit =std::nullopt)</td>
 </tr>
 <tr>
-<td>double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-tol-con">tol_con</a></strong></td>
+<td>void</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearRegulatorMPC/#function-set-initial-input">set_initial_input</a></strong>(const std::vector&lt; Eigen::VectorXd &gt; &amp; u0)</td>
 </tr>
 <tr>
-<td>double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-t">t</a></strong></td>
+<td>std::tuple&lt; bool, Eigen::VectorXd &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearRegulatorMPC/#function-control">control</a></strong>(const Eigen::VectorXd &amp; x0, bool warm_start =true)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Result/">QuadProg::Result</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearRegulatorMPC/#function-latest-qp-result">latest_qp_result</a></strong>() const</td>
+</tr>
+<tr>
+<td>Eigen::MatrixXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearRegulatorMPC/#function-ad">Ad</a></strong>() const</td>
+</tr>
+<tr>
+<td>Eigen::MatrixXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearRegulatorMPC/#function-bd">Bd</a></strong>() const</td>
+</tr>
+<tr>
+<td>Eigen::MatrixXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearRegulatorMPC/#function-q">Q</a></strong>() const</td>
+</tr>
+<tr>
+<td>Eigen::MatrixXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearRegulatorMPC/#function-r">R</a></strong>() const</td>
+</tr>
+<tr>
+<td>Eigen::MatrixXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearRegulatorMPC/#function-qf">Qf</a></strong>() const</td>
 </tr>
 <tr>
 <td>size_t</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-max-iter">max_iter</a></strong></td>
-</tr>
-<tr>
-<td>bool</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-print-variable">print_variable</a></strong></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearRegulatorMPC/#function-n">N</a></strong>() const</td>
 </tr>
 </tbody>
 </table>
-<h2 id="public-attributes-documentation">Public Attributes Documentation</h2>
-<h3 id="variable-tol_step">variable tol_step</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">tol_step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">;</span><span class="w"></span>
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+<h3 id="function-linearregulatormpc">function LinearRegulatorMPC</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">LinearRegulatorMPC</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Ad</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Bd</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Q</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">R</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Qf</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">u_limit</span><span class="w"> </span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="variable-tol_con">variable tol_con</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">tol_con</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">;</span><span class="w"></span>
+<h3 id="function-set_initial_input">function set_initial_input</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">set_initial_input</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u0</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="variable-t">variable t</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span><span class="w"></span>
+<h3 id="function-control">function control</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">control</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">warm_start</span><span class="w"> </span><span class="o">=</span><span class="nb">true</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="variable-max_iter">variable max_iter</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">size_t</span><span class="w"> </span><span class="n">max_iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
+<h3 id="function-latest_qp_result">function latest_qp_result</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">QuadProg</span><span class="o">::</span><span class="n">Result</span><span class="w"> </span><span class="n">latest_qp_result</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
-<h3 id="variable-print_variable">variable print_variable</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">print_variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<h3 id="function-ad">function Ad</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">Ad</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-bd">function Bd</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">Bd</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-q">function Q</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">Q</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-r">function R</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">R</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-qf">function Qf</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">Qf</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-n">function N</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">N</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <hr />
 <p>Updated on 2022-10-21 at 10:30:14 +0900</p>

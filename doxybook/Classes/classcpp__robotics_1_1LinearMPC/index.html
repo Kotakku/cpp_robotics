@@ -1265,7 +1265,11 @@
 </tr>
 <tr>
 <td>std::tuple&lt; bool, Eigen::VectorXd &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-control">control</a></strong>(const Eigen::VectorXd &amp; x0, bool warm_start =true)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-control">control</a></strong>(const Eigen::VectorXd &amp; x0, const std::vector&lt; Eigen::VectorXd &gt; &amp; x_ref, bool warm_start =true)</td>
+</tr>
+<tr>
+<td>std::tuple&lt; bool, Eigen::VectorXd &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-control">control</a></strong>(const Eigen::VectorXd &amp; x0, const Eigen::VectorXd &amp; x_ref, bool warm_start =true)</td>
 </tr>
 <tr>
 <td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Result/">QuadProg::Result</a></td>
@@ -1317,6 +1321,14 @@
 <h3 id="function-control">function control</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">control</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x_ref</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">warm_start</span><span class="w"> </span><span class="o">=</span><span class="nb">true</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-control_1">function control</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">control</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x_ref</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">warm_start</span><span class="w"> </span><span class="o">=</span><span class="nb">true</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
@@ -1342,7 +1354,7 @@
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">N</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-10-19 at 13:20:53 +0900</p>
+<p>Updated on 2022-10-21 at 10:30:14 +0900</p>
 
 
 
