@@ -79,4 +79,4 @@ static std::tuple<bool, Eigen::VectorXd, size_t> penalty_method(std::function<do
 
 -------------------------------
 
-Updated on 2022-10-21 at 10:30:14 +0900
+Updated on 2022-10-22 at 22:05:50 +0900

@@ -117,4 +117,4 @@ constexpr double gfcm2mNm = (gfm2Nm / 100);
 
 -------------------------------
 
-Updated on 2022-10-21 at 10:30:14 +0900
+Updated on 2022-10-22 at 22:05:50 +0900

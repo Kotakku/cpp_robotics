@@ -44,7 +44,7 @@ title: Classes
     * **class [KMeansMethod](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KMeansMethod/)** <br>K-means法 
     * **class [KalmanFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KalmanFilter/)** <br>カルマンフィルタ 
     * **struct [Line](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/)** <br>直線クラス 
-    * **class [LinearMPC](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/)** 
+    * **class [LinearMPC](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/)** <br>線形時不変モデルのモデル予測制御クラス 
     * **class [LinearRegulatorMPC](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearRegulatorMPC/)** 
     * **class [LowPassFilter](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/)** <br>ローパスフィルター 
     * **class [MecanumIk](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1MecanumIk/)** <br>メカナムの逆運動学モデル 
@@ -132,4 +132,4 @@ title: Classes
 
 -------------------------------
 
-Updated on 2022-10-21 at 10:30:14 +0900
+Updated on 2022-10-22 at 22:05:50 +0900

@@ -8,9 +8,24 @@
 namespace cpp_robotics
 {
 
+/**
+ * @brief 線形時不変モデルのモデル予測制御クラス
+ * 
+ */
 class LinearMPC
 {
 public:
+    /**
+     * @brief Construct a new Linear MPC object
+     * 
+     * @param Ad 状態行列
+     * @param Bd 入力行列
+     * @param Q 状態重み行列
+     * @param R 入力重み行列
+     * @param Qf 最終状態重み行列
+     * @param N ホライゾン長さ
+     * @param u_limit 制御入力範囲
+     */
     LinearMPC(const Eigen::MatrixXd &Ad, const Eigen::MatrixXd &Bd, const Eigen::MatrixXd &Q, const Eigen::MatrixXd &R, const Eigen::MatrixXd &Qf, const size_t N, std::optional<std::pair<Eigen::VectorXd, Eigen::VectorXd>> u_limit = std::nullopt):
         Ad_(Ad), Bd_(Bd), Q_(Q), R_(R), Qf_(Qf), N_(N), u_limit_(u_limit)
     {
@@ -91,11 +106,19 @@ public:
         U_ = Eigen::VectorXd::Zero(input_size_*N_);
     }
 
-    void set_initial_input(const std::vector<Eigen::VectorXd> &u0)
-    {
-        assert(u0.size() == N_);
-    }
+    // void set_initial_input(const std::vector<Eigen::VectorXd> &u0)
+    // {
+    //     assert(u0.size() == N_);
+    // }
 
+    /**
+     * @brief 最適入力の計算
+     * 
+     * @param x0 状態
+     * @param x_ref 目標値
+     * @param warm_start 
+     * @return std::tuple<bool, Eigen::VectorXd> 最適化の成功/失敗、最適入力
+     */
     std::tuple<bool, Eigen::VectorXd> control(const Eigen::VectorXd &x0, const std::vector<Eigen::VectorXd> &x_ref, bool warm_start = true)
     {
         assert(x0.size() == (Eigen::VectorXd::Index)(state_size_));
@@ -126,6 +149,14 @@ public:
         return {false, Eigen::VectorXd::Zero(input_size_)};
     }
 
+    /**
+     * @brief 最適入力の計算
+     * 
+     * @param x0 状態
+     * @param x_ref 目標値
+     * @param warm_start 
+     * @return std::tuple<bool, Eigen::VectorXd> 最適化の成功/失敗、最適入力
+     */
     std::tuple<bool, Eigen::VectorXd> control(const Eigen::VectorXd &x0, const Eigen::VectorXd &x_ref, bool warm_start = true)
     {
         return control(x0, std::vector(N_, x_ref), warm_start);

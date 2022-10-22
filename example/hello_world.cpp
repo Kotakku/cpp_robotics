@@ -3,13 +3,9 @@
 #include <Eigen/Dense>
 #include <cpp_robotics/cpp_robotics.hpp>
 
-int main(int argc, char *argv[])
+int main()
 {
-    (void) argc;
-    (void) argv;
     namespace cr = cpp_robotics;
-
-    std::cout << "test" << std::endl;
 
     constexpr cr::Vector2d vec(3.0, 4.0);
     printf("constexpr 2D vector: %f, %f\n", vec.x, vec.y);
@@ -28,9 +24,10 @@ int main(int argc, char *argv[])
     cr::Polynomial p0({1, 0, 3});
     std::cout << p0 << std::endl;
     cr::Polynomial p1 = cr::Polynomial({1, -2}) * cr::Polynomial({1, 2});
-    std::cout << p1 << std::endl;
+    std::cout << "(x-2)*(x+2) = " << p1 << std::endl;
 
-    cr::TransferFunction tf({1.0}, {1, 1.0}, 0.01);
+    std::cout << "G(s) = 1/(s+1)" << std::endl;
+    cr::TransferFunction tf({1.0}, {1.0, 1.0}, 0.01);
 
     namespace plt = matplotlibcpp;
     std::cout << "transfer function step responce" << std::endl;
@@ -42,6 +39,7 @@ int main(int argc, char *argv[])
 
     std::cout << "transfer function sin cruve input responce" << std::endl;
     {
+        tf.reset();
         auto input = cr::sinspace(1, 0.1, 1000);
         auto [t, y] = cr::lsim(tf, input);
         plt::plot(t, y);

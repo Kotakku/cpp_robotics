@@ -52,4 +52,4 @@ static double normalized_mjm_jerk(double t)
 
 -------------------------------
 
-Updated on 2022-10-21 at 10:30:14 +0900
+Updated on 2022-10-22 at 22:05:50 +0900

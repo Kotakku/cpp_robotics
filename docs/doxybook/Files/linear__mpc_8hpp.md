@@ -17,7 +17,7 @@ title: include/cpp_robotics/controller/linear_mpc.hpp
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[cpp_robotics::LinearMPC](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/)**  |
+| class | **[cpp_robotics::LinearMPC](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/)** <br>線形時不変モデルのモデル予測制御クラス  |
 
 
 
@@ -118,10 +118,10 @@ public:
         U_ = Eigen::VectorXd::Zero(input_size_*N_);
     }
 
-    void set_initial_input(const std::vector<Eigen::VectorXd> &u0)
-    {
-        assert(u0.size() == N_);
-    }
+    // void set_initial_input(const std::vector<Eigen::VectorXd> &u0)
+    // {
+    //     assert(u0.size() == N_);
+    // }
 
     std::tuple<bool, Eigen::VectorXd> control(const Eigen::VectorXd &x0, const std::vector<Eigen::VectorXd> &x_ref, bool warm_start = true)
     {
@@ -197,4 +197,4 @@ private:
 
 -------------------------------
 
-Updated on 2022-10-21 at 10:30:14 +0900
+Updated on 2022-10-22 at 22:05:50 +0900

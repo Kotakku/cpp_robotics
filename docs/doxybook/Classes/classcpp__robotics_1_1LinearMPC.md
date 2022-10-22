@@ -1,5 +1,6 @@
 ---
 title: cpp_robotics::LinearMPC
+summary: 線形時不変モデルのモデル予測制御クラス 
 
 ---
 
@@ -7,7 +8,7 @@ title: cpp_robotics::LinearMPC
 
 
 
-
+線形時不変モデルのモデル予測制御クラス 
 
 
 `#include <linear_mpc.hpp>`
@@ -16,10 +17,9 @@ title: cpp_robotics::LinearMPC
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[LinearMPC](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-linearmpc)**(const Eigen::MatrixXd & Ad, const Eigen::MatrixXd & Bd, const Eigen::MatrixXd & Q, const Eigen::MatrixXd & R, const Eigen::MatrixXd & Qf, const size_t N, std::optional< std::pair< Eigen::VectorXd, Eigen::VectorXd >> u_limit =std::nullopt) |
-| void | **[set_initial_input](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-set-initial-input)**(const std::vector< Eigen::VectorXd > & u0) |
-| std::tuple< bool, Eigen::VectorXd > | **[control](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-control)**(const Eigen::VectorXd & x0, const std::vector< Eigen::VectorXd > & x_ref, bool warm_start =true) |
-| std::tuple< bool, Eigen::VectorXd > | **[control](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-control)**(const Eigen::VectorXd & x0, const Eigen::VectorXd & x_ref, bool warm_start =true) |
+| | **[LinearMPC](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-linearmpc)**(const Eigen::MatrixXd & Ad, const Eigen::MatrixXd & Bd, const Eigen::MatrixXd & Q, const Eigen::MatrixXd & R, const Eigen::MatrixXd & Qf, const size_t N, std::optional< std::pair< Eigen::VectorXd, Eigen::VectorXd >> u_limit =std::nullopt)<br>Construct a new Linear MPC object.  |
+| std::tuple< bool, Eigen::VectorXd > | **[control](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-control)**(const Eigen::VectorXd & x0, const std::vector< Eigen::VectorXd > & x_ref, bool warm_start =true)<br>最適入力の計算  |
+| std::tuple< bool, Eigen::VectorXd > | **[control](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-control)**(const Eigen::VectorXd & x0, const Eigen::VectorXd & x_ref, bool warm_start =true)<br>最適入力の計算  |
 | [QuadProg::Result](/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Result/) | **[latest_qp_result](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-latest-qp-result)**() const |
 | Eigen::MatrixXd | **[Ad](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-ad)**() const |
 | Eigen::MatrixXd | **[Bd](/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/#function-bd)**() const |
@@ -44,14 +44,17 @@ inline LinearMPC(
 )
 ```
 
+Construct a new Linear MPC object. 
 
-### function set_initial_input
+**Parameters**: 
 
-```cpp
-inline void set_initial_input(
-    const std::vector< Eigen::VectorXd > & u0
-)
-```
+  * **Ad** 状態行列 
+  * **Bd** 入力行列 
+  * **Q** 状態重み行列 
+  * **R** 入力重み行列 
+  * **Qf** 最終状態重み行列 
+  * **N** ホライゾン長さ 
+  * **u_limit** 制御入力範囲 
 
 
 ### function control
@@ -64,6 +67,16 @@ inline std::tuple< bool, Eigen::VectorXd > control(
 )
 ```
 
+最適入力の計算 
+
+**Parameters**: 
+
+  * **x0** 状態 
+  * **x_ref** 目標値 
+  * **warm_start** 
+
+
+**Return**: std::tuple<bool, Eigen::VectorXd> 最適化の成功/失敗、最適入力 
 
 ### function control
 
@@ -75,6 +88,16 @@ inline std::tuple< bool, Eigen::VectorXd > control(
 )
 ```
 
+最適入力の計算 
+
+**Parameters**: 
+
+  * **x0** 状態 
+  * **x_ref** 目標値 
+  * **warm_start** 
+
+
+**Return**: std::tuple<bool, Eigen::VectorXd> 最適化の成功/失敗、最適入力 
 
 ### function latest_qp_result
 
@@ -127,4 +150,4 @@ inline size_t N() const
 
 -------------------------------
 
-Updated on 2022-10-21 at 10:30:14 +0900
+Updated on 2022-10-22 at 22:05:50 +0900
