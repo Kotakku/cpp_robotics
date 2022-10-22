@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/classes/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.6">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
     
     
       
@@ -1292,7 +1292,7 @@
 <li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KMeansMethod/">KMeansMethod</a></strong> <br>K-means法 </li>
 <li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KalmanFilter/">KalmanFilter</a></strong> <br>カルマンフィルタ </li>
 <li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Line/">Line</a></strong> <br>直線クラス </li>
-<li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/">LinearMPC</a></strong> </li>
+<li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearMPC/">LinearMPC</a></strong> <br>線形時不変モデルのモデル予測制御クラス </li>
 <li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinearRegulatorMPC/">LinearRegulatorMPC</a></strong> </li>
 <li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/">LowPassFilter</a></strong> <br>ローパスフィルター </li>
 <li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1MecanumIk/">MecanumIk</a></strong> <br>メカナムの逆運動学モデル <ul>
@@ -1419,7 +1419,7 @@
 <li><strong>namespace <a href="/cpp_robotics/doxybook/Namespaces/namespaceunit__dim__assem/">unit_dim_assem</a></strong> </li>
 </ul>
 <hr />
-<p>Updated on 2022-10-21 at 10:30:14 +0900</p>
+<p>Updated on 2022-10-22 at 22:05:50 +0900</p>
 
 
 
@@ -1461,10 +1461,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8492ddcf.min.js"></script>
       
     
   </body>
