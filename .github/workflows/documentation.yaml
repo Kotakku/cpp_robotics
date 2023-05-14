@@ -26,6 +26,7 @@ jobs:
 
       - name: mkdocs build
         run: |
+          sh gen_doc.sh
           mkdocs build
 
       - name: mkdocs deploy
