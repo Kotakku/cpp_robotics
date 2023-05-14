@@ -15,8 +15,14 @@ jobs:
         with:
           python-version: '3.8'
 
-      - name: Install
-        run: pip3 install mkdocs mkdocs-material fontawesome_markdown markdown-katex
+      - name: Install python library
+        run: pip3 install mkdocs mkdocs-exclude mkdocs-material fontawesome_markdown markdown-katex
+
+      - name: Install Doxygen 
+        run: |
+          apt install -y doxygen
+          wget https://github.com/matusnovak/doxybook2/releases/download/v1.5.0/doxybook2-linux-amd64-v1.5.0.zip
+          unzip doxybook2-linux-amd64-v1.5.0.zip -d /usr
 
       - name: mkdocs build
         run: |

@@ -21,6 +21,13 @@ theme:
   - search:
       lang: 
         - ja
+  - exclude:
+      glob:
+        - '**/.github/*'
+        - '**/build/*'
+        - '**/example/*'
+        - '**/include/*'
+        - '**/test/*'
   palette:
     scheme: default
   font:
