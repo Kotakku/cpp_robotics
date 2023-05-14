@@ -40,7 +40,11 @@ cmake -DCR_BUILD_EXAMPLE=ON ..
 cmake --build .
 ```
 
-# cpp_roboticsを使用する
+# cpp_roboticsを使用する(ROS2)
+vendorパッケージをワークスペースにcloneしてcolcon buildすることで使用できます  
+https://github.com/Kotakku/cpp_robotics_vendor
+
+# cpp_roboticsを使用する(Pure C++ project)
 ライブラリはEigen3の様にヘッダファイルのみであるためCMakeLists.txtには一行追加するだけで使用できます
 ```
 find_package(cpp_robotics REQUIRED)
