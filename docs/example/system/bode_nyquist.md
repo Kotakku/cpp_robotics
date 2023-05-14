@@ -3,7 +3,7 @@
 ```cpp
 #include <iostream>
 #include <Eigen/Dense>
-#include <cpp_robotics/system/system.hpp>
+#include <cpp_robotics/system.hpp>
 
 int main()
 {

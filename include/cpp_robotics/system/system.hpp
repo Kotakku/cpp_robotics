@@ -1,8 +1,0 @@
-#include "./discret.hpp"
-#include "./state_space_system.hpp"
-#include "./transfer_function.hpp"
-#include "./polynomial.hpp"
-#include "./bode.hpp"
-#include "./nyquist.hpp"
-#include "./time_responce.hpp"
-#include "./siso_system.hpp"

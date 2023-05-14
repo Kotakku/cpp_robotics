@@ -2,7 +2,7 @@
 
 ```cpp
 #include <iostream>
-#include <cpp_robotics/algorithm/algorithm.hpp>
+#include <cpp_robotics/algorithm.hpp>
 #include <cpp_robotics/optimize/active_set_method.hpp>
 
 int main()

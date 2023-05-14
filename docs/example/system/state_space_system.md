@@ -1,8 +1,8 @@
 # 状態空間表現
 
 ```cpp
-#include <cpp_robotics/system/system.hpp>
-#include <cpp_robotics/controller/controller.hpp>
+#include <cpp_robotics/system.hpp>
+#include <cpp_robotics/controller.hpp>
 
 int main()
 {

@@ -2,16 +2,13 @@
 
 #include "core.hpp"
 
-#include "path_planning/path_planning.hpp"
-#include "geometry/geometry.hpp"
-#include "chassis/chassis.hpp"
-#include "algorithm/algorithm.hpp"
-#include "motor/dc_motor_list.hpp"
-#include "optimize/optimize.hpp"
-#include "motor/motor_tf.hpp"
+#include "path_planning.hpp"
+#include "filter.hpp"
+#include "chassis.hpp"
+#include "algorithm.hpp"
+#include "motor.hpp"
+#include "optimize.hpp"
 
 #ifdef CR_USE_MATPLOTLIB
 #include "third_party/matplotlib-cpp/matplotlibcpp.h"
 #endif
-
-// #include "robot"

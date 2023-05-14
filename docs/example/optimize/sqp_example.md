@@ -2,7 +2,7 @@
 
 ```cpp
 #include <iostream>
-#include <cpp_robotics/algorithm/algorithm.hpp>
+#include <cpp_robotics/algorithm.hpp>
 #include <cpp_robotics/optimize/sqp.hpp>
 
 using namespace cpp_robotics;

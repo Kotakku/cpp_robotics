@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <cpp_robotics/optimize/optimize.hpp>
+#include <cpp_robotics/optimize.hpp>
 #include <cpp_robotics/algorithm/auto_diff.hpp>
 
 #define EXPECT_NEAR_VEC(v1, v2, eps)\

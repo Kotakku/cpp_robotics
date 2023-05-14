@@ -1,7 +1,0 @@
-#include "./pid.hpp"
-#include "./pid2.hpp"
-#include "./lqr.hpp"
-#include "./pure_pursuit.hpp"
-#include "./nctf.hpp"
-#include "./modern_control.hpp"
-#include "./pfc.hpp"

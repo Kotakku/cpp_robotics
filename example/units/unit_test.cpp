@@ -1,9 +1,9 @@
 #include <iostream>
 // #include <cpp_robotics/core.hpp>
 
-#include "cpp_robotics/utility/utility.hpp"
-#include "cpp_robotics/vector/vector.hpp"
-#include "cpp_robotics/units/units.hpp"
+#include "cpp_robotics/utility.hpp"
+#include "cpp_robotics/vector.hpp"
+#include "cpp_robotics/unit.hpp"
 
 int main()
 {

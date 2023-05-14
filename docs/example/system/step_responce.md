@@ -1,7 +1,7 @@
 # 伝達関数のステップ応答
 
 ```cpp
-#include <cpp_robotics/system/system.hpp>
+#include <cpp_robotics/system.hpp>
 
 int main()
 {

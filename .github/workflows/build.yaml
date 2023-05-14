@@ -23,8 +23,9 @@ jobs:
       - name: Build & Test
         working-directory: ${{github.workspace}}
         run: |
+          JOBS=$(($(grep cpu.cores /proc/cpuinfo | sort -u | sed 's/[^0-9]//g') + 1))
           cmake -S . -B build -DCR_BUILD_EXAMPLE=ON
-          cmake --build build
+          cmake --build build -j${JOBS}
           cd build
           ctest
       

@@ -1,6 +1,6 @@
 #define CR_USE_MATPLOTLIB
 #include <iostream>
-#include <cpp_robotics/algorithm/algorithm.hpp>
+#include <cpp_robotics/algorithm.hpp>
 #include <cpp_robotics/optimize/sqp.hpp>
 #include "cpp_robotics/third_party/matplotlib-cpp/matplotlibcpp.h"
 

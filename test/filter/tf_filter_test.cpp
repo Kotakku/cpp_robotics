@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <cpp_robotics/filter/filter.hpp>
+#include <cpp_robotics/filter.hpp>
 
 TEST(tf_filter, constructor) {
     namespace cr = cpp_robotics;

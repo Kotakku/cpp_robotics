@@ -2,6 +2,7 @@
 
 #include <Eigen/Dense>
 #include <Eigen/../unsupported/Eigen/MatrixFunctions>
+#include <optional>
 #include "discret.hpp"
 
 namespace cpp_robotics

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../units/units.hpp"
+#include "cpp_robotics/unit.hpp"
 #include <cmath>
 
 namespace cpp_robotics

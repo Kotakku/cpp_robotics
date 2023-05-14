@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip>
-#include <cpp_robotics/system/system.hpp>
-#include <cpp_robotics/controller/controller.hpp>
+#include <cpp_robotics/system.hpp>
+#include <cpp_robotics/controller.hpp>
 
 #define PRINT_MAT(MAT) \
     std::cout << #MAT << std::endl;\

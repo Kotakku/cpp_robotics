@@ -1,5 +1,5 @@
 #define CR_USE_MATPLOTLIB
-#include <cpp_robotics/system/system.hpp>
+#include <cpp_robotics/system.hpp>
 
 int main()
 {

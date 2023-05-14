@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <cpp_robotics/geometry/geometry.hpp>
+#include <cpp_robotics/geometry.hpp>
 
 TEST(geometry, intersect) {
     namespace cr = cpp_robotics;
