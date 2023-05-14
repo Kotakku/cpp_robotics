@@ -7,29 +7,32 @@ QPへの近似とその解法によっていくつかの種類に分かれる
 ## 準ニュートン法
 まずは純粋なSQPについて考えてみる。与えられる問題は以下の形式である
 
-```math
+$$
+\begin{array}{}
 \underset{x}{\text{min}} \space f(x)\\
 \text{s.t.} \space  g_i(x) = 0, \space i = 0, \dots , m_e\\
 \text{　　　} \space  g_i(x) \leq 0, \space i = m_e+1, \dots , l\\
-
-x \in \R^n
-```
+x \in \mathbb{R}^n
+\end{array}
+$$
 
 サブ問題としてQPに近似すると以下の形を取る
 
-```math
+$$
 f(x) \approx \dfrac{1}{2}x^TQx + c^Tx\\
-```
+$$
 
-ここで任意の目的関数のヘッシアン$`Q`$について半正定値性が保証されないためパウエルの修正BFGS法により近似した行列を使用する。
+ここで任意の目的関数のヘッシアン$Q$について半正定値性が保証されないためパウエルの修正BFGS法により近似した行列を使用する。
 
 探索方向の決定のために目的変数を探索方向に取りQP問題を定式化する。
 
-```math
+$$
+\begin{array}{}
 \underset{d}{\text{min}} \dfrac{1}{2}d^TQd + c^Td\\
 \text{s.t.} \space \nabla g_i(x)^Td + g_i(x) = 0, \space i = 0, \dots , m_e\\
 \text{　　　} \space \nabla g_i(x)^Td + g_i(x) \leq 0, \space i = m_e+1, \dots , l\\
-```
+\end{array}
+$$
 
 探索方向が決定したらメリット関数の直線探索によりステップ幅を決定し、変数を更新する。
 その後BFGSによるヘッシアンの更新を行う。
@@ -39,25 +42,26 @@ f(x) \approx \dfrac{1}{2}x^TQx + c^Tx\\
 ## SLSQP
 
 SLSQPでは準ニュートン法で説明したサブ問題であるQPを制約付きの最小二乗法に変形して解いている。これにあたってB行列を修正コレスキー分解する
-```math
+
+$$
 B = LDL^T
-```
+$$
 
 分解した行列を使って以下の最小二乗法を解く
-```math
+
+$$
+\begin{array}{}
 \underset{d}{\text{min}} || D^\frac{1}{2}L^Td + D^{-\frac{1}{2}}L^{-1}\nabla f(x) ||\\
 \text{s.t.} \space \nabla g_i(x)^Td + g_i(x) = 0, \space i = 0, \dots , m_e\\
 \text{　　　} \space \nabla g_i(x)^Td + g_i(x) \leq 0, \space i = m_e+1, \dots , l\\
-
-```
+\end{array}
+$$
 
 ### 最小二乗法問題からQP問題への変換
-
 
 > Kraft, D. A software package for sequential quadratic
    programming. 1988. Tech. Rep. DFVLR-FB 88-28, DLR German Aerospace
    Center -- Institute for Flight Mechanics, Koln, Germany.
-
 
 
 ## 参考文献

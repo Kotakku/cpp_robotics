@@ -45,10 +45,13 @@ markdown_extensions:
     - footnotes
     - meta
     - pymdownx.superfences:
-    - markdown_katex:
-        no_inline_svg: true
-        insert_fonts_css: true
-        macro-file: macros.tex
+    - pymdownx.arithmatex:
+        generic: true
+
+extra_javascript: 
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
   - 概要: index.md

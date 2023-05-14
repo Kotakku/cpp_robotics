@@ -8,19 +8,22 @@
 > 単体法という名前は、Dantzigが提案した特殊な図解法においては、アルゴリズムの進行に従って単体が下に落ちていくように見えることに由来する。
 
 
-```math
-\text{max} \space z = Cx \\
+$$
+\begin{array}
+\text{max } \space z = Cx \\
 \text{s.t.} \space Ax < b
-
-```
+\end{array}
+$$
 
 ## 有効制約法
 有効制約法は凸二次計画問題に対して用いられる。
 
-```math
-\text{min} \space f(x) = \frac{1}{2}x^TQx + cx \\
+$$
+\begin{array}
+\text{min } \space f(x) = \frac{1}{2}x^TQx + cx \\
 \text{s.t.} \space a_i^T x \geq b_i
-```
+\end{array}
+$$
 
 ## 内点法
 バリア法のような実行可能領域の内部を進むように解を更新する手法の総称  

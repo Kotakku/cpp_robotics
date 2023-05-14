@@ -1,6 +1,6 @@
 # モーターの状態空間表現
 
-```math
+$$
 \begin{array}{l}
 \frac{\rm{d}}{\rm{dt}}
 \begin{bmatrix}
@@ -16,15 +16,12 @@ i(t)\\
 i(t)\\
 \omega(t)
 \end{bmatrix}
-
 + 
-
 \begin{bmatrix}
 \frac{1}{L}\\
 0
 \end{bmatrix}
 V(t) \\
-
 y(t)
 =
 \begin{bmatrix}
@@ -35,7 +32,7 @@ i(t)\\
 \omega(t)
 \end{bmatrix}
 \end{array}
-```
+$$
 
 
 ## 参考文献

@@ -16,7 +16,7 @@ jobs:
           python-version: '3.8'
 
       - name: Install python library
-        run: pip3 install mkdocs mkdocs-exclude mkdocs-material fontawesome_markdown markdown-katex
+        run: pip3 install mkdocs mkdocs-exclude mkdocs-material fontawesome_markdown
 
       - name: Install Doxygen 
         run: |
