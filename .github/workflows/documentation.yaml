@@ -20,9 +20,9 @@ jobs:
 
       - name: Install Doxygen 
         run: |
-          apt install -y doxygen
+          sudo　apt install doxygen
           wget https://github.com/matusnovak/doxybook2/releases/download/v1.5.0/doxybook2-linux-amd64-v1.5.0.zip
-          unzip doxybook2-linux-amd64-v1.5.0.zip -d /usr
+          sudo　unzip doxybook2-linux-amd64-v1.5.0.zip -d /usr
 
       - name: mkdocs build
         run: |
