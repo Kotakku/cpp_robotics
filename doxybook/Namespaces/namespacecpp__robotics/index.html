@@ -1511,6 +1511,14 @@
 </tr>
 <tr>
 <td>struct</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1LinkConfig/">cpp_robotics::LinkConfig</a></strong></td>
+</tr>
+<tr>
+<td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinkRobot/">cpp_robotics::LinkRobot</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Polynomial/">cpp_robotics::Polynomial</a></strong> <br>多項式</td>
 </tr>
 <tr>
@@ -1532,6 +1540,10 @@
 <tr>
 <td>class</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Singleton/">cpp_robotics::Singleton</a></strong> <br>シングルトンなオブジェクトを生成する</td>
+</tr>
+<tr>
+<td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Timer/">cpp_robotics::Timer</a></strong></td>
 </tr>
 <tr>
 <td>class</td>
@@ -2282,6 +2294,30 @@
 <tr>
 <td>template &lt;typename... Args> <br>void</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-print">print</a></strong>(const std::string &amp; format, Args const &amp;... args)<br>std::coutにprintfの形式でフォーマットされた文字列を出力する</td>
+</tr>
+<tr>
+<td>template &lt;typename MatrixType > <br>MatrixType</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-pseudo-inverse">pseudo_inverse</a></strong>(const MatrixType &amp; a, double epsilon =std::numeric_limits&lt; double &gt;::epsilon())</td>
+</tr>
+<tr>
+<td>template &lt;typename MatrixType > <br>MatrixType</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-sr-inverse">sr_inverse</a></strong>(const MatrixType &amp; a, double w0 =1e-2, Eigen::MatrixXd W =Eigen::MatrixXd())</td>
+</tr>
+<tr>
+<td>template &lt;int ROWS,int COLS> <br>void</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-cout-exmat">cout_exmat</a></strong>(const Eigen::Matrix&lt; GiNaC::ex, ROWS, COLS &gt; &amp; mat, std::string name ="")</td>
+</tr>
+<tr>
+<td>template &lt;int ROWS,int COLS> <br>void</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-simplify-indexed">simplify_indexed</a></strong>(Eigen::Matrix&lt; GiNaC::ex, ROWS, COLS &gt; &amp; mat)</td>
+</tr>
+<tr>
+<td>template &lt;int ROWS,int COLS> <br>void</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-subs">subs</a></strong>(Eigen::Matrix&lt; GiNaC::ex, ROWS, COLS &gt; &amp; mat, const GiNaC::lst exlst)</td>
+</tr>
+<tr>
+<td>template &lt;int IN_ROWS,int IN_COLS,int OUT_ROWS,int OUT_COLS> <br>void</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-to-double-matrix">to_double_matrix</a></strong>(Eigen::Matrix&lt; GiNaC::ex, IN_ROWS, IN_COLS &gt; &amp; in_mat, Eigen::Matrix&lt; double, OUT_ROWS, OUT_COLS &gt; &amp; out_mat)</td>
 </tr>
 <tr>
 <td>template &lt;typename T > <br>constexpr bool</td>
@@ -3849,6 +3885,54 @@
 <ul>
 <li><strong>Args</strong> </li>
 </ul>
+<h3 id="function-pseudo_inverse">function pseudo_inverse</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">MatrixType</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="n">MatrixType</span><span class="w"> </span><span class="n">pseudo_inverse</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">MatrixType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">epsilon</span><span class="w"> </span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">epsilon</span><span class="p">()</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-sr_inverse">function sr_inverse</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">MatrixType</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="n">MatrixType</span><span class="w"> </span><span class="n">sr_inverse</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">MatrixType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">w0</span><span class="w"> </span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">W</span><span class="w"> </span><span class="o">=</span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="p">()</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-cout_exmat">function cout_exmat</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="kt">int</span><span class="w"> </span><span class="n">ROWS</span><span class="p">,</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">COLS</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">cout_exmat</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="n">GiNaC</span><span class="o">::</span><span class="n">ex</span><span class="p">,</span><span class="w"> </span><span class="n">ROWS</span><span class="p">,</span><span class="w"> </span><span class="n">COLS</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">mat</span><span class="p">,</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="s">&quot;&quot;</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-simplify_indexed">function simplify_indexed</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="kt">int</span><span class="w"> </span><span class="n">ROWS</span><span class="p">,</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">COLS</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">simplify_indexed</span><span class="p">(</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="n">GiNaC</span><span class="o">::</span><span class="n">ex</span><span class="p">,</span><span class="w"> </span><span class="n">ROWS</span><span class="p">,</span><span class="w"> </span><span class="n">COLS</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">mat</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-subs">function subs</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="kt">int</span><span class="w"> </span><span class="n">ROWS</span><span class="p">,</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">COLS</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">subs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="n">GiNaC</span><span class="o">::</span><span class="n">ex</span><span class="p">,</span><span class="w"> </span><span class="n">ROWS</span><span class="p">,</span><span class="w"> </span><span class="n">COLS</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">mat</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">GiNaC</span><span class="o">::</span><span class="n">lst</span><span class="w"> </span><span class="n">exlst</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-to_double_matrix">function to_double_matrix</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="kt">int</span><span class="w"> </span><span class="n">IN_ROWS</span><span class="p">,</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">IN_COLS</span><span class="p">,</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">OUT_ROWS</span><span class="p">,</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">OUT_COLS</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">to_double_matrix</span><span class="p">(</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="n">GiNaC</span><span class="o">::</span><span class="n">ex</span><span class="p">,</span><span class="w"> </span><span class="n">IN_ROWS</span><span class="p">,</span><span class="w"> </span><span class="n">IN_COLS</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">in_mat</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">OUT_ROWS</span><span class="p">,</span><span class="w"> </span><span class="n">OUT_COLS</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">out_mat</span>
+<span class="p">)</span>
+</code></pre></div>
 <h3 id="function-in_range_open">function in_range_open</h3>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">&gt;</span>
 <span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">in_range_open</span><span class="p">(</span>
@@ -4196,7 +4280,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">gfcm2mNm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">gfm2Nm</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2023-05-14 at 16:30:57 +0000</p>
+<p>Updated on 2023-05-15 at 01:19:04 +0000</p>
 
 
 
