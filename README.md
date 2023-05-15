@@ -21,7 +21,7 @@
 
 # 依存関係の環境構築
 ```
-sudo apt install libeigen3-dev libgtest-dev
+sudo apt install libeigen3-dev libgtest-dev libginac-dev
 pip install numpy matplotlib
 ```
 

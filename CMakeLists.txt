@@ -13,7 +13,10 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-O2 -Wall -Wextra -Wpedantic -Wno-unused-variable -Wno-unused-function)
 endif()
 
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
+
 find_package(Eigen3 REQUIRED)
+find_package(ginac REQUIRED)
 find_package(Python3 COMPONENTS Development NumPy)
 
 #################### example ####################
@@ -56,7 +59,7 @@ foreach(example_file ${example_files})
 get_filename_component(example_name example/${example_file}.cpp NAME_WE)
 add_executable(${example_name} example/${example_file}.cpp)
 target_include_directories(${example_name} PRIVATE include ${EIGEN3_INCLUDE_DIR} ${Python3_INCLUDE_DIRS} ${Python3_NumPy_INCLUDE_DIRS})
-target_link_libraries(${example_name} PRIVATE Python3::Python Python3::NumPy)
+target_link_libraries(${example_name} PRIVATE Python3::Python Python3::NumPy ginac)
 endforeach()
 endif()
 
@@ -105,7 +108,7 @@ foreach(test_file ${test_files})
 get_filename_component(test_name test/${test_file}.cpp NAME_WE)
 add_executable(${test_name} test/${test_file}.cpp)
 target_include_directories(${test_name} PRIVATE include ${EIGEN3_INCLUDE_DIR})
-target_link_libraries(${test_name} PRIVATE GTest::GTest GTest::Main)
+target_link_libraries(${test_name} PRIVATE GTest::GTest GTest::Main ginac)
 gtest_discover_tests(${test_name})
 endforeach()
 
