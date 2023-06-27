@@ -268,6 +268,7 @@ public:
             auto p = config_[i].position.vector().cast<ex>().eval();
             auto s = config_[i].link_com.vector().cast<ex>().eval();
             auto I = config_[i].I.cast<ex>().eval();
+            auto axisq = axis(config_[i]); 
             Matrix3ex R;
             if(ri == 0)
             {
@@ -296,7 +297,7 @@ public:
             // cout_exmat(nvec[i], "nvec[i]");
 
             // Todo: 回転と並進で分岐させる
-            tau_[i] = Vector3ex(0,0,1).dot(nvec[i]);
+            tau_[i] = axisq.dot(nvec[i]);
         }
 
         // 次数ごとに分解
