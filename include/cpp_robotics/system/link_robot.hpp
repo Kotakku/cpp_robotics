@@ -100,10 +100,10 @@ public:
 
         auto trans_matrix = [](const LinkConfig &config, ex val) -> Affine3ex 
         {
+            using LinkType = LinkConfig::LinkType;
             Affine3ex affine;
-
             auto position_ex = config.position.cast<ex>();
-            switch(link_type)
+            switch(config.link_type)
             {
                 case LinkType::RotationX:
                     affine = AngleAxisex(val, Vector3ex::UnitX()) * position_ex;
@@ -133,6 +133,7 @@ public:
 
         auto rot = [](const LinkConfig &config, ex val) -> Matrix3ex
         {
+            using LinkType = LinkConfig::LinkType;
             Affine3ex affine;
             switch(config.link_type)
             {
@@ -198,83 +199,107 @@ public:
         std::vector<Vector3ex> dw(n+1); // 角加速度
         std::vector<Vector3ex> dv(n+1); // 加速度
 
-        std::vector<Vector3ex> fvec(n+1); // 
-        std::vector<Vector3ex> nvec(n+1); // 
-
         w[0].setZero();
         dw[0].setZero();
 
         symbol g("g");
         dv[0] << 0, g, 0; // Todo
 
-        fvec.back().setZero();
-        nvec.back().setZero();
-
-        // Todo: configから生成する
-        std::vector<Vector3ex> p_hat;//
+        std::vector<Vector3ex> p_hat; // iからi+1の位置ベクトル
         p_hat.reserve(n+1);
         p_hat.push_back(Vector3ex::Zero());
         for(size_t i = 0; i < n ; i++)
         {
-            config_[i].position.vector().cast<ex>();
+            p_hat.push_back(config_[i].position.vector().cast<ex>());
         }
 
+        ////////// 順方向計算 //////////
         for(size_t i = 0; i < n; i++)
         {
-            // printf("////////////////////////\n");
+            printf("////////////////////////\n");
 
             auto &q = symbols_[i];
             auto &dq = dsymbols_[i];
             auto &ddq = ddsymbols_[i];
-            Matrix3ex RT = config_[i].rot(q).transpose();
+            Matrix3ex RT = rot(config_[i],q).transpose();
             auto axisq = axis(config_[i]); 
             
-            w[i+1]  = RT*w[i] + axisq * dq; // Todo
-            dw[i+1] = RT*dw[i] + axisq * ddq; // Todo
-            dv[i+1] = RT*( dv[i] + dw[i].cross(p_hat[i]) + w[i].cross(w[i].cross(p_hat[i])) );
+            // Todo: 回転と並進で分ける
+            w[i+1]  = RT*w[i] + axisq * dq;
+            dw[i+1] = RT*dw[i] + axisq*ddq + (RT*w[i]).cross(axisq*dq);
+            dv[i+1] = RT*( dv[i] + dw[i].cross(p_hat[i]) + w[i].cross(w[i].cross(p_hat[i])) ); 
             simplify_indexed(dv[i+1]);
 
-            // cout_exmat(w[i+1].transpose().eval(), std::string("w"));
-            // cout_exmat(dw[i+1].transpose().eval(), "dw");
-            // cout_exmat(dv[i+1].eval(), "dv");
+            cout_exmat(w[i+1].transpose().eval(), std::string("w"));
+            cout_exmat(dw[i+1].transpose().eval(), "dw");
+            cout_exmat(dv[i+1].eval(), "dv");
+
+            auto &w_ = w[i+1];
+            auto &dw_ = dw[i+1];
+            auto &dv_ = dv[i+1];
+            auto m = config_[i].mass;
+            auto I = config_[i].I.cast<ex>().eval();
+            auto s = config_[i].link_com.vector().cast<ex>().eval();
+            Vector3ex fc = m*(dv_ + dw_.cross(s) + w_.cross(w_.cross(s)));
+            Vector3ex nc = I*dw_ + w_.cross(I*w_);
+
+            cout_exmat(fc, "fc");
+            cout_exmat(nc, "nc");
         }
 
-        // Todo: configから生成する
-        std::vector<Vector3ex> p_hat_ii;
-        p_hat_ii.reserve(n+1);
-        p_hat_ii.push_back(Vector3ex::Zero());
-        for(size_t i = 0; i < n; i++)
-        {
-
-        }
-
-        p_hat_ii = 
-        {
-            {0,0,0},
-            {cos(symbols_[1]),-sin(symbols_[1]),0}, // {symbol("L1")*cos(symbols_[1]),-symbol("L1")*sin(symbols_[1]),0},
-            {0,0,0},
-        };
-        
+        ////////// 逆方向計算 //////////
+        std::vector<Vector3ex> fvec(n+1); // forの記述簡略化のために最後に0を入れておく
+        std::vector<Vector3ex> nvec(n+1); // forの記述簡略化のために最後に0を入れておく 
+        fvec.back().setZero();
+        nvec.back().setZero();
+        // 先端から土台方向に関節の力・トルクを求める
         tau_.resize(n);
         for(size_t ri = 0; ri < n; ri++)
         {
+            printf("rev////////////////////////\n");
             size_t i = n-1-ri;
             auto &q = symbols_[i];
             auto &dq = dsymbols_[i];
             auto &ddq = ddsymbols_[i];
-            auto m = config_[i].mass;
-            auto s = config_[i].link_com.vector().cast<ex>().eval();
-            auto I = config_[i].I.cast<ex>().eval();
-            auto R = rot(config_[i], q);
             auto &w_ = w[i+1];
             auto &dw_ = dw[i+1];
             auto &dv_ = dv[i+1];
+            auto m = config_[i].mass;
+            auto p = config_[i].position.vector().cast<ex>().eval();
+            auto s = config_[i].link_com.vector().cast<ex>().eval();
+            auto I = config_[i].I.cast<ex>().eval();
+            Matrix3ex R;
+            if(ri == 0)
+            {
+                R = Matrix3ex::Identity();
+            }
+            else
+            {
+                R = rot(config_[i+1], symbols_[i+1]);
+            }
 
-            fvec[i] = m*dv_ + dw_.cross(m*s) + w_.cross(w_.cross(m*s)) + R*fvec[i+1];
-            nvec[i] = I*dw_ + w_.cross(I*w_) + (m*s).cross(dv_) + R*(p_hat_ii[i+1].cross(fvec[i+1]) + nvec[i+1]);
+            Vector3ex fc = m*(dv_ + dw_.cross(s) + w_.cross(w_.cross(s)));
+            Vector3ex nc = I*dw_ + w_.cross(I*w_);
+            auto Rfvec = (R*fvec[i+1]).eval();
+            expand(Rfvec);
+            simplify_indexed(Rfvec);
+
+            fvec[i] = fc + Rfvec;
+            nvec[i] = nc + R*nvec[i+1] + s.cross(fc) + p.cross(Rfvec);
+
+            expand(fvec[i]);
+            simplify_indexed(fvec[i]);
+            expand(nvec[i]);
+            simplify_indexed(nvec[i]);
+
+            // cout_exmat(fvec[i], "fvec[i]");
+            // cout_exmat(nvec[i], "nvec[i]");
+
+            // Todo: 回転と並進で分岐させる
             tau_[i] = Vector3ex(0,0,1).dot(nvec[i]);
         }
 
+        // 次数ごとに分解
         Hq_.resize(n,n);
         gq_.resize(n);
         cq_ = tau_;
@@ -298,6 +323,12 @@ public:
         // cout_exmat(cq_, "c");
         // cout_exmat(gq_, "g");
 
+    }
+
+    void show_kinematics()
+    {
+        std::cout << "////////// kinematics //////////" << std::endl; 
+        cout_exmat(forward_kinematics_ex_, "forward kinematics");
     }
 
     void show_dynamics()

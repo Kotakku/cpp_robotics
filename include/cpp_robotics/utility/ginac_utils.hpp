@@ -34,6 +34,17 @@ void simplify_indexed(Eigen::Matrix<GiNaC::ex, ROWS, COLS> &mat) {
 }
 
 template<int ROWS, int COLS>
+void expand(Eigen::Matrix<GiNaC::ex, ROWS, COLS> &mat) {
+    for(int r = 0; r < mat.rows(); r++)
+    {
+        for(int c = 0; c < mat.cols(); c++)
+        {
+            mat(r,c) = mat(r,c).expand();
+        }
+    }
+}
+
+template<int ROWS, int COLS>
 void subs(Eigen::Matrix<GiNaC::ex, ROWS, COLS> &mat, const GiNaC::lst exlst) {
     for(int r = 0; r < mat.rows(); r++)
     {

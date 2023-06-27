@@ -36,6 +36,7 @@ set(example_files
 
   system/step_responce
   system/bode_nyquist
+  system/link_robot
   system/state_space_system
   algorithm/kdtree_sample
   algorithm/icp_sample
@@ -79,6 +80,7 @@ set(test_files
   system/polynomial_test
   system/discret_tf_test
   system/time_responce_test
+  system/link_robot_test
 
   filter/tf_filter_test
   filter/extended_kalman_filter_test
