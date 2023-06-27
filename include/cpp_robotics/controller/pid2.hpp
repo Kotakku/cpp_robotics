@@ -24,6 +24,57 @@ public:
         std::optional<std::pair<double, double>> output_limit;
     };
 
+    static PID2 create_PI_D(double Ts, double gpd, double Kp, double Ki, double Kd, std::optional<std::pair<double, double>> output_limit = std::nullopt)
+    {
+        pid_param_t param = 
+        {
+            .Ts = Ts,
+            .gpd = gpd,
+            .Kp = Kp,
+            .Ki = Ki,
+            .Kd = Kd,
+            .b = 1,
+            .c = 0,
+            .output_limit = output_limit
+        };
+
+        return PID2(param);
+    }
+
+    static PID2 create_I_PD(double Ts, double gpd, double Kp, double Ki, double Kd, std::optional<std::pair<double, double>> output_limit = std::nullopt)
+    {
+        pid_param_t param = 
+        {
+            .Ts = Ts,
+            .gpd = gpd,
+            .Kp = Kp,
+            .Ki = Ki,
+            .Kd = Kd,
+            .b = 0,
+            .c = 0,
+            .output_limit = output_limit
+        };
+
+        return PID2(param);
+    }
+
+    static PID2 create_feed_foward_pid2(double Ts, double gpd, double Kpff, double Kdff, double Kpfb, double Kifb, double Kdfb, std::optional<std::pair<double, double>> output_limit = std::nullopt)
+    {
+        pid_param_t param = 
+        {
+            .Ts = Ts,
+            .gpd = gpd,
+            .Kp = Kpfb,
+            .Ki = Kifb,
+            .Kd = Kdfb,
+            .b = (Kpff+Kpfb)/Kpfb,
+            .c = (Kdff+Kdfb)/Kdfb,
+            .output_limit = output_limit
+        };
+
+        return PID2(param);
+    }
+
     PID2(pid_param_t param)
     {
         set_param(param);
