@@ -1558,6 +1558,7 @@
 <span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config_</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">position</span><span class="p">.</span><span class="n">vector</span><span class="p">().</span><span class="n">cast</span><span class="o">&lt;</span><span class="n">ex</span><span class="o">&gt;</span><span class="p">().</span><span class="n">eval</span><span class="p">();</span>
 <span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config_</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">link_com</span><span class="p">.</span><span class="n">vector</span><span class="p">().</span><span class="n">cast</span><span class="o">&lt;</span><span class="n">ex</span><span class="o">&gt;</span><span class="p">().</span><span class="n">eval</span><span class="p">();</span>
 <span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config_</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">I</span><span class="p">.</span><span class="n">cast</span><span class="o">&lt;</span><span class="n">ex</span><span class="o">&gt;</span><span class="p">().</span><span class="n">eval</span><span class="p">();</span>
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">axisq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">axis</span><span class="p">(</span><span class="n">config_</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w"> </span>
 <span class="w">            </span><span class="n">Matrix3ex</span><span class="w"> </span><span class="n">R</span><span class="p">;</span>
 <span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">ri</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="w">            </span><span class="p">{</span>
@@ -1586,7 +1587,7 @@
 <span class="w">            </span><span class="c1">// cout_exmat(nvec[i], &quot;nvec[i]&quot;);</span>
 
 <span class="w">            </span><span class="c1">// Todo: 回転と並進で分岐させる</span>
-<span class="w">            </span><span class="n">tau_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector3ex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">).</span><span class="n">dot</span><span class="p">(</span><span class="n">nvec</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">            </span><span class="n">tau_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">axisq</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">nvec</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="c1">// 次数ごとに分解</span>
@@ -1730,7 +1731,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2023-06-27 at 09:07:57 +0000</p>
+<p>Updated on 2023-06-27 at 12:43:10 +0000</p>
 
 
 
