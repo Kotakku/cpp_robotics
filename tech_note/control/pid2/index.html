@@ -21,7 +21,7 @@
         <link rel="next" href="../lqr/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.12">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.26e3688c.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a6bdf11c.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
       
       
 
@@ -503,14 +503,21 @@
         
           <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    直列型
+    フィードフォワード型
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    並列型
+    フィードバック型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    フィルター型
   </a>
   
 </li>
@@ -521,7 +528,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
+    パラメータの共通化
+  </a>
+  
+    <nav class="md-nav" aria-label="パラメータの共通化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2pid_1" class="md-nav__link">
+    フィードフォワード型2自由度PIDのパラメータ共通化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2pid_2" class="md-nav__link">
+    フィードバック型2自由度PIDのパラメータ共通化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2pid_3" class="md-nav__link">
+    フィルター2自由度PIDのパラメータ共通化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pidpi-d" class="md-nav__link">
+    微分先行型PID(PI-D)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pidi-pd" class="md-nav__link">
+    比例微分先行型PID(I-PD)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     参考文献
   </a>
   
@@ -1344,12 +1399,51 @@
 単純なPID制御系にも目標値の入力と状態量の出力は存在するがPID制御器への入力はそれらの差分である偏差のみであるため自由度は1である。</p>
 <h2 id="2">2自由度制御系のブロック図</h2>
 <p>2自由度制御系はブロック図で考えた時にいくつかの型を取ることができる。</p>
-<h3 id="_1">直列型</h3>
-<p>MathWorksではフィルター型と呼ばれる</p>
-<h3 id="_2">並列型</h3>
-<h2 id="_3">参考文献</h2>
+<h3 id="_1">フィードフォワード型</h3>
+<p>入力に目標値と偏差を取る
+2つのPIDの出力を足し合わせてシステムへの入力とする</p>
+<div class="arithmatex">\[
+u_{ff} = K_{pff}r + K_{dff} s r \\
+u_{fb} = K_{pfb}(r-y) + \frac{K_i}{s}(r-y) + K_{dfb}s(r-y) \\
+u = u_{ff} + u_{fb}
+\]</div>
+<h3 id="_2">フィードバック型</h3>
+<p>入力に偏差と状態量を取る
+2つのPIDの出力を足し合わせてシステムへの入力とする</p>
+<h3 id="_3">フィルター型</h3>
+<p>入力に目標値と偏差を取る
+フィードフォワード型と違って目標値を入力に取るフィードフォワードコントローラの出力と状態量の差を偏差とする
+偏差をフィードバックコントローラの入力としてその出力をシステムへの入力とする</p>
+<h2 id="_4">パラメータの共通化</h2>
+<p>上記のように2自由度制御系にはいくつかのコントローラ構造がある<br />
+(まとめて扱えるようにかどうかはわからないが)以下のような形のものがよく使われている</p>
+<div class="arithmatex">\[
+u = K_p(br-y) + \frac{K_i}{s}(r-y) + K_d s (cr-y)
+\]</div>
+<h3 id="2pid_1">フィードフォワード型2自由度PIDのパラメータ共通化</h3>
+<div class="arithmatex">\[
+b = \frac{K_{pff} + K_{pfb}}{K_{pfb}} \\
+c = \frac{K_{dff} + K_{dfb}}{K_{dfb}}
+\]</div>
+<h3 id="2pid_2">フィードバック型2自由度PIDのパラメータ共通化</h3>
+<h3 id="2pid_3">フィルター2自由度PIDのパラメータ共通化</h3>
+<h3 id="pidpi-d">微分先行型PID(PI-D)</h3>
+<p>微分項を偏差の微分ではなく状態量の微分にすることで目標値の急激な変化によるキックの発生を抑える効果がある
+$$
+b = 1 \
+c = 0
+$$</p>
+<h3 id="pidi-pd">比例微分先行型PID(I-PD)</h3>
+<p>比例項と微分項を状態量から求めることでキックの発生を抑える効果がある。目標値の変化に追従する成分が積分項のみになるため保守的なコントローラとなる</p>
+<div class="arithmatex">\[
+b = 0 \\
+c = 0
+\]</div>
+<h2 id="_5">参考文献</h2>
 <ul>
 <li><a href="https://jp.mathworks.com/help/control/ug/two-degree-of-freedom-2-dof-pid-controllers.html">2 自由度 PID コントローラー</a></li>
+<li><a href="https://jp.mathworks.com/help/control/ug/decompose-a-2-dof-pid-controller.html">2-DOF PID コントローラーの SISO コンポーネントへの分解</a></li>
+<li><a href="https://jp.mathworks.com/help/control/ref/zpk.html">zpk</a></li>
 </ul>
 
 
@@ -1395,13 +1489,19 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c2be25ad.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.b425cdc4.min.js"></script>
       
-        <script src="../../../javascripts/mathjax.js"></script>
+        
+          <script src="../../../javascripts/mathjax.js"></script>
+        
       
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+          <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
       
     
   </body>
