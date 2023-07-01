@@ -1273,7 +1273,7 @@
 <tbody>
 <tr>
 <td></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ExtendedKalmanFilter/#function-extendedkalmanfilter">ExtendedKalmanFilter</a></strong>(const double dt, size_t input_size, size_t state_size, size_t observe_size)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ExtendedKalmanFilter/#function-extendedkalmanfilter">ExtendedKalmanFilter</a></strong>(const double dt, size_t input_size, size_t state_size, size_t observe_size, std::optional&lt; double &gt; correction_threshold =std::nullopt)</td>
 </tr>
 <tr>
 <td>void</td>
@@ -1309,7 +1309,7 @@
 </tr>
 <tr>
 <td>virtual void</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ExtendedKalmanFilter/#function-observe-noise-conv">observe_noise_conv</a></strong>(Eigen::MatrixXd &amp; R, Eigen::VectorXd x, Eigen::VectorXd u) =0<br>観測ノイズの共分散行列</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ExtendedKalmanFilter/#function-observe-noise-conv">observe_noise_conv</a></strong>(Eigen::MatrixXd &amp; R, Eigen::VectorXd x, Eigen::VectorXd z) =0<br>観測ノイズの共分散行列</td>
 </tr>
 <tr>
 <td>virtual void</td>
@@ -1317,7 +1317,7 @@
 </tr>
 <tr>
 <td>virtual void</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ExtendedKalmanFilter/#function-linearized-observe-matrix">linearized_observe_matrix</a></strong>(Eigen::MatrixXd &amp; H, Eigen::VectorXd x)<br>観測線形化行列</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ExtendedKalmanFilter/#function-linearized-observe-matrix">linearized_observe_matrix</a></strong>(Eigen::MatrixXd &amp; H, Eigen::VectorXd x, Eigen::VectorXd z)<br>観測線形化行列</td>
 </tr>
 </tbody>
 </table>
@@ -1385,6 +1385,10 @@
 <td>const size_t</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ExtendedKalmanFilter/#variable-observe-size-">observe_size_</a></strong></td>
 </tr>
+<tr>
+<td>std::optional&lt; double &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ExtendedKalmanFilter/#variable-mn-threshold-">mn_threshold_</a></strong></td>
+</tr>
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation</h2>
@@ -1393,7 +1397,8 @@
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">input_size</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">state_size</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">observe_size</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">observe_size</span><span class="p">,</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">correction_threshold</span><span class="w"> </span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-reset">function reset</h3>
@@ -1442,7 +1447,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">observe_noise_conv</span><span class="p">(</span>
 <span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">R</span><span class="p">,</span>
 <span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
-<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">u</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">z</span>
 <span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span>
 </code></pre></div>
 <p>観測ノイズの共分散行列 </p>
@@ -1457,7 +1462,8 @@
 <h3 id="function-linearized_observe_matrix">function linearized_observe_matrix</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">linearized_observe_matrix</span><span class="p">(</span>
 <span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">H</span><span class="p">,</span>
-<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">x</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">z</span>
 <span class="p">)</span>
 </code></pre></div>
 <p>観測線形化行列 </p>
@@ -1503,8 +1509,11 @@
 <h3 id="variable-observe_size_">variable observe_size_</h3>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">observe_size_</span><span class="p">;</span>
 </code></pre></div>
+<h3 id="variable-mn_threshold_">variable mn_threshold_</h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">mn_threshold_</span><span class="p">;</span>
+</code></pre></div>
 <hr />
-<p>Updated on 2023-06-27 at 12:43:09 +0000</p>
+<p>Updated on 2023-07-01 at 09:03:12 +0000</p>
 
 
 

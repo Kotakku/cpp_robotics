@@ -1318,15 +1318,19 @@
 </tr>
 <tr>
 <td><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-position">position</a></strong>(double t)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-position">position</a></strong>(double length)</td>
 </tr>
 <tr>
 <td><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-velocity">velocity</a></strong>(double t)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-spline-position">spline_position</a></strong>(double t)</td>
 </tr>
 <tr>
 <td><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-acceleration">acceleration</a></strong>(double t)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-spline-velocity">spline_velocity</a></strong>(double t)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-spline-acceleration">spline_acceleration</a></strong>(double t)</td>
 </tr>
 </tbody>
 </table>
@@ -1342,6 +1346,10 @@
 <tr>
 <td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__info__t/">segment_info_t</a></td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-get-segmet-idx">get_segmet_idx</a></strong>(const double t)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__info__t/">segment_info_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-get-segmet-idx-length">get_segmet_idx_length</a></strong>(double length)</td>
 </tr>
 </tbody>
 </table>
@@ -1395,16 +1403,21 @@
 </code></pre></div>
 <h3 id="function-position">function position</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="n">position</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">length</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-spline_position">function spline_position</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="n">spline_position</span><span class="p">(</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span>
 <span class="p">)</span>
 </code></pre></div>
-<h3 id="function-velocity">function velocity</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="n">velocity</span><span class="p">(</span>
+<h3 id="function-spline_velocity">function spline_velocity</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="n">spline_velocity</span><span class="p">(</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span>
 <span class="p">)</span>
 </code></pre></div>
-<h3 id="function-acceleration">function acceleration</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="n">acceleration</span><span class="p">(</span>
+<h3 id="function-spline_acceleration">function spline_acceleration</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="n">spline_acceleration</span><span class="p">(</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -1412,6 +1425,11 @@
 <h3 id="function-get_segmet_idx">function get_segmet_idx</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">segment_info_t</span><span class="w"> </span><span class="n">get_segmet_idx</span><span class="p">(</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-get_segmet_idx_length">function get_segmet_idx_length</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">segment_info_t</span><span class="w"> </span><span class="n">get_segmet_idx_length</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">length</span>
 <span class="p">)</span>
 </code></pre></div>
 <h2 id="protected-attributes-documentation">Protected Attributes Documentation</h2>
@@ -1428,7 +1446,7 @@
 <div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">_all_length</span><span class="p">;</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2023-06-27 at 12:43:10 +0000</p>
+<p>Updated on 2023-07-01 at 09:03:12 +0000</p>
 
 
 

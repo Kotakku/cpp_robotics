@@ -1275,7 +1275,7 @@
 <tbody>
 <tr>
 <td></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CubicSpline/#function-cubicspline">CubicSpline</a></strong>(std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt; &amp; points, const double error =0.1)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CubicSpline/#function-cubicspline">CubicSpline</a></strong>(std::vector&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &gt; &amp; points, const double error =0.01)</td>
 </tr>
 </tbody>
 </table>
@@ -1334,15 +1334,19 @@
 </tr>
 <tr>
 <td><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-position">position</a></strong>(double t)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-position">position</a></strong>(double length)</td>
 </tr>
 <tr>
 <td><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-velocity">velocity</a></strong>(double t)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-spline-position">spline_position</a></strong>(double t)</td>
 </tr>
 <tr>
 <td><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-acceleration">acceleration</a></strong>(double t)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-spline-velocity">spline_velocity</a></strong>(double t)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-spline-acceleration">spline_acceleration</a></strong>(double t)</td>
 </tr>
 </tbody>
 </table>
@@ -1358,6 +1362,10 @@
 <tr>
 <td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__info__t/">segment_info_t</a></td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-get-segmet-idx">get_segmet_idx</a></strong>(const double t)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__info__t/">segment_info_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/#function-get-segmet-idx-length">get_segmet_idx_length</a></strong>(double length)</td>
 </tr>
 </tbody>
 </table>
@@ -1392,11 +1400,11 @@
 <h3 id="function-cubicspline">function CubicSpline</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">CubicSpline</span><span class="p">(</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">points</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="mf">0.1</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="mf">0.01</span>
 <span class="p">)</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2023-06-27 at 12:43:10 +0000</p>
+<p>Updated on 2023-07-01 at 09:03:12 +0000</p>
 
 
 
