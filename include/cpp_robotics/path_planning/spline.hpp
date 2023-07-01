@@ -342,7 +342,7 @@ protected:
 class CatumullRom2D : public Spline2D
 {
 public:
-    CatumullRom2D(std::vector<Vector2d>& points, const double error = 0.1)
+    CatumullRom2D(std::vector<Vector2d>& points, bool trajectory_loop = false, const double error = 0.1)
     {
         const size_t p_size = points.size();
         
@@ -369,13 +369,18 @@ public:
         _size = p_size - 1;
         _spline.resize(_size);
         
-        calcu_segment(_spline[0], points, error, 0, 0, 0, 1, 2);
+        if(trajectory_loop)
+            calcu_segment(_spline[0], points, error, 0, p_size-2, 0, 1, 2);
+        else
+            calcu_segment(_spline[0], points, error, 0, 0, 0, 1, 2);
         for (size_t i = 0; i < p_size - 3; i++)
         {
             calcu_segment(_spline[i+1], points, error, i, 0, 1, 2, 3);
         }
-
-        calcu_segment(_spline[_size-1], points, error, p_size-3, 0, 1, 2, 2);
+        if(trajectory_loop)
+            calcu_segment(_spline[_size-1], points, error, 0, p_size-3, p_size-2, p_size-1, 1);
+        else
+            calcu_segment(_spline[_size-1], points, error, p_size-3, 0, 1, 2, 2);
 
         _all_length = 0;
         for(auto& seg : _spline)
