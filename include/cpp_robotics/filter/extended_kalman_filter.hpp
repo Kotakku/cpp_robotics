@@ -1,5 +1,6 @@
 #pragma once
 
+#include <optional>
 #include <Eigen/Dense>
 #include "cpp_robotics/optimize/derivative.hpp"
 
@@ -7,42 +8,6 @@ namespace cpp_robotics
 {
 
 /*
-[モデル]
-x(t) = F*x(t-1) + B*u(t) + w(t)
-z(t) = H*x(t) + v(t)
-
-x: 状態量 (n*1)
-u: 制御量 (r*1)
-z: 観測量 (p*1)
-F: 状態遷移行列 (n*n)
-B: 制御行列 (n*r)
-H: 観測行列 (p*n)
-
-Q: システムノイズの共分散行列 (n*n)
-w: システムノイズ (n*1) 
-    N[0, Q]に従う
-R: 観測ノイズの共分散行列 (p*p)
-v: 観測ノイズ (p*1)
-    N[0, R]に従う
-
-[カルマンフィルタ]
-- 予測
-    事前状態推定
-    x = Fx + Bu
-
-    事前誤差共分散行列
-    P = FPF^T + Q
-
-- フィルタリング
-    カルマンゲイン
-    K = PH^T(HPH^T + R)^-1
-
-    状態推定
-    x = x + K(z - Hx)
-
-    事後誤差共分散行列
-    P = (I -KH)P
-
 [拡張カルマンフィルタ]
 - 予測
     事前状態推定
@@ -57,14 +22,14 @@ v: 観測ノイズ (p*1)
 
 - フィルタリング
     カルマンゲイン
-    K = PH^T(HPH^T + R)^-1
+    S = HPH^T + R
+    K = PH^T(S)^-1
 
     状態推定
     x = x + K(z - h(x))
 
     事後誤差共分散行列
-    P = (I -KH)P
-
+    P = P - KST^T
 */
 
 class ExtendedKalmanFilter
@@ -85,8 +50,8 @@ public:
     /// @brief 誤差共分散行列
     Eigen::MatrixXd P;
 
-    ExtendedKalmanFilter(const double dt, size_t input_size, size_t state_size, size_t observe_size):
-        dt_(dt), input_size_(input_size), state_size_(state_size), observe_size_(observe_size)
+    ExtendedKalmanFilter(const double dt, size_t input_size, size_t state_size, size_t observe_size, std::optional<double> correction_threshold = std::nullopt):
+        dt_(dt), input_size_(input_size), state_size_(state_size), observe_size_(observe_size), mn_threshold_(correction_threshold)
     {
         x = Eigen::VectorXd::Zero(state_size_);
         F = Eigen::MatrixXd::Zero(state_size, state_size);
@@ -107,9 +72,9 @@ public:
     {
         ////////////////////////////// 線形化モデルの更新 //////////////////////////////
         system_noise_conv(Q, x, u);
-        observe_noise_conv(R, x, u);
+        observe_noise_conv(R, x, z);
         linearized_system_matrix(F, x, u);
-        linearized_observe_matrix(H, x);
+        linearized_observe_matrix(H, x, z);
 
         ////////////////////////////// 予測 //////////////////////////////
         // 状態予測
@@ -120,13 +85,18 @@ public:
 
         ////////////////////////////// フィルタリング //////////////////////////////
         // カルマンゲイン計算
-        Eigen::MatrixXd K = P*H.transpose()*(R + H*P*H.transpose()).inverse();
+        Eigen::MatrixXd S = H*P*H.transpose() + R;
+        Eigen::MatrixXd K = P*H.transpose()*S.inverse();
 
         // 状態更新
-        x += K*(z - observe(x));
-
-        // 事後誤差共分散行列
-        P = (Eigen::MatrixXd::Identity(state_size_, state_size_) - K*H)*P;
+        Eigen::VectorXd xdiff = K*(z - observe(x));
+        double mahalanobis_distance = std::sqrt( xdiff.dot( P.inverse()*xdiff ) );
+        if(not mn_threshold_ || (mn_threshold_ && mahalanobis_distance < mn_threshold_.value()))
+        {
+            x += xdiff;
+            // 事後誤差共分散行列
+            P -= K*S*K.transpose();
+        }
 
         return x;
     }
@@ -145,7 +115,7 @@ public:
     virtual void system_noise_conv(Eigen::MatrixXd &Q, Eigen::VectorXd x, Eigen::VectorXd u) = 0;
 
     /// @brief 観測ノイズの共分散行列
-    virtual void observe_noise_conv(Eigen::MatrixXd &R, Eigen::VectorXd x, Eigen::VectorXd u) = 0;
+    virtual void observe_noise_conv(Eigen::MatrixXd &R, Eigen::VectorXd x, Eigen::VectorXd z) = 0;
 
     /// @brief システム線形化行列
     virtual void linearized_system_matrix(Eigen::MatrixXd &F, Eigen::VectorXd x, Eigen::VectorXd u)
@@ -154,7 +124,7 @@ public:
     };
 
     /// @brief 観測線形化行列
-    virtual void linearized_observe_matrix(Eigen::MatrixXd &H, Eigen::VectorXd x)
+    virtual void linearized_observe_matrix(Eigen::MatrixXd &H, Eigen::VectorXd x, Eigen::VectorXd z)
     {
         H = derivative(std::bind(&ExtendedKalmanFilter::observe, this, std::placeholders::_1), x);
     }
@@ -166,6 +136,7 @@ protected:
     const size_t input_size_;
     const size_t state_size_;
     const size_t observe_size_;
+    std::optional<double> mn_threshold_;
 };
 
 }
