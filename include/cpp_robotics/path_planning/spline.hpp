@@ -276,7 +276,17 @@ public:
         return _spline[i].length;
     }
 
-    Vector2d position(double t)
+    Vector2d position(double length)
+    {
+        assert(_is_empty == false);
+        assert(length >= 0);
+        assert(length <= _all_length);
+
+        segment_info_t segment = get_segmet_idx_length(length);
+        return spline::position(_spline[segment.i].coeff, segment.t);
+    }
+
+    Vector2d spline_position(double t)
     {
         assert(_is_empty == false);
         assert(t >= 0);
@@ -286,7 +296,7 @@ public:
         return spline::position(_spline[segment.i].coeff, segment.t);
     }
 
-    Vector2d velocity(double t)
+    Vector2d spline_velocity(double t)
     {
         assert(_is_empty == false);
         assert(t >= 0);
@@ -297,7 +307,7 @@ public:
         return spline::velocity(_spline[i].coeff, t);
     }
 
-    Vector2d acceleration(double t)
+    Vector2d spline_acceleration(double t)
     {
         assert(_is_empty == false);
         assert(t >= 0);
@@ -313,6 +323,7 @@ protected:
     {
         spline::spline_c coeff;
         double length;
+        std::vector<double> split_lengths;
     };
     
     struct segment_info_t
@@ -329,6 +340,32 @@ protected:
         return result;
     }
 
+    segment_info_t get_segmet_idx_length(double length)
+    {
+        segment_info_t result;
+        result.i = 0;
+        result.t = 1.0;
+        while (length > _spline[result.i].length)
+        {
+            length -= _spline[result.i].length;
+            result.i++;
+        }
+
+        double dt = 1.0 / _spline[result.i].split_lengths.size();
+        for(size_t i = 1; i < _spline[result.i].split_lengths.size(); i++)
+        {
+            if(length < _spline[result.i].split_lengths[i])
+            {
+                double diff = length - _spline[result.i].split_lengths[i-1];
+                double seg_diff = _spline[result.i].split_lengths[i] - _spline[result.i].split_lengths[i-1];
+                result.t = static_cast<double>(i) * dt + (diff/seg_diff) * dt;
+                return result;
+            }
+        }
+
+        return result;
+    }
+
     std::vector<segment_t> _spline;
     bool _is_empty;
     size_t _size;
@@ -342,7 +379,7 @@ protected:
 class CatumullRom2D : public Spline2D
 {
 public:
-    CatumullRom2D(std::vector<Vector2d>& points, bool trajectory_loop = false, const double error = 0.1)
+    CatumullRom2D(std::vector<Vector2d>& points, bool trajectory_loop = false, const double error = 0.01)
     {
         const size_t p_size = points.size();
         
@@ -399,6 +436,11 @@ private:
         
         seg.coeff = spline::catumull_spline(p0, p1, p2, p3);
         seg.length = spline::length(seg.coeff, error);
+        seg.split_lengths.resize(100);
+        for(size_t i = 0; i < 100; i++)
+        {
+            seg.split_lengths[i] = spline::length(seg.coeff, 0.0, static_cast<double>(i) / 100.0, error);
+        }
     }
 };
 
@@ -409,7 +451,7 @@ private:
 class CubicSpline : public Spline2D
 {
 public:
-    CubicSpline(std::vector<Vector2d>& points, const double error = 0.1)
+    CubicSpline(std::vector<Vector2d>& points, const double error = 0.01)
     {
         const size_t p_size = points.size();
         std::vector<double> w;
@@ -475,6 +517,11 @@ public:
                 Vector2d(c.xb.x, c.yb.x)
             );
             seg.length = spline::length(seg.coeff, error);
+            seg.split_lengths.resize(100);
+            for(size_t i = 0; i < 100; i++)
+            {
+                seg.split_lengths[i] = spline::length(seg.coeff, 0.0, static_cast<double>(i) / 100.0, error);
+            }
             _all_length += seg.length;
         }
     }
