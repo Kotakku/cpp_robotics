@@ -20,7 +20,7 @@ public:
         std::vector<double> den;
         double Ts;
 
-        tf_t inv()
+        tf_t inv() const
         {
             return {
                 den,
@@ -64,6 +64,43 @@ public:
                 Ts
             };
         }
+
+        tf_t operator+(const tf_t &tf) const
+        {
+            return {
+                (Polynomial(num)*Polynomial(tf.den) + Polynomial(tf.num)*Polynomial(den)).coeff(),
+                (Polynomial(den)*Polynomial(tf.den)).coeff(),
+                Ts
+            };
+        }
+
+        tf_t operator-(const tf_t &tf) const
+        {
+            return {
+                (Polynomial(num)*Polynomial(tf.den) - Polynomial(tf.num)*Polynomial(den)).coeff(),
+                (Polynomial(den)*Polynomial(tf.den)).coeff(),
+                Ts
+            };
+        }
+
+        tf_t operator*(const tf_t &tf) const
+        {
+            return {
+                (Polynomial(num)*Polynomial(tf.num)).coeff(),
+                (Polynomial(den)*Polynomial(tf.den)).coeff(),
+                Ts
+            };
+        }
+
+        tf_t operator/(const tf_t &tf) const
+        {
+            return {
+                (Polynomial(num)*Polynomial(tf.den)).coeff(),
+                (Polynomial(den)*Polynomial(tf.num)).coeff(),
+                Ts
+            };
+        }
+
         friend tf_t operator+(double val, const tf_t &tf)
         {
             return tf + val;
@@ -73,6 +110,34 @@ public:
         {
             return tf - val;
         }
+
+        friend tf_t operator*(double val, const tf_t &tf)
+        {
+            return val*tf;
+        }
+
+        friend tf_t operator/(double val, const tf_t &tf)
+        {
+            return val*tf.inv();
+        }
+
+        // friend tf_t operator*(const tf_t &a, const tf_t &b)
+        // {
+        //     return {
+        //         (Polynomial(a.num)*Polynomial(b.num)).coeff(),
+        //         (Polynomial(a.den)*Polynomial(b.den)).coeff(),
+        //         a.Ts
+        //     };
+        // }
+
+        // friend tf_t operator/(const tf_t &a, const tf_t &b)
+        // {
+        //     return {
+        //         (Polynomial(a.num)*Polynomial(b.den)).coeff(),
+        //         (Polynomial(a.den)*Polynomial(b.num)).coeff(),
+        //         a.Ts
+        //     };
+        // }
 
         TransferFunction simulatable()
         {
@@ -195,7 +260,7 @@ public:
     std::vector<double> num_array() const { return num_array_; }
     std::vector<double> den_array() const { return den_array_; }
 
-    operator tf_t()
+    operator tf_t() const
     {
         return{
             num_array_,
@@ -204,7 +269,7 @@ public:
         };
     } 
 
-    tf_t inv()
+    tf_t inv() const
     {
         return {
             den_array_,
@@ -259,22 +324,54 @@ public:
         return tf - val;
     }
 
-    friend tf_t operator*(const tf_t &a, const tf_t &b)
+    friend tf_t operator*(double val, const TransferFunction &tf)
     {
-        return {
-            (Polynomial(a.num)*Polynomial(b.num)).coeff(),
-            (Polynomial(a.den)*Polynomial(b.den)).coeff(),
-            a.Ts
-        };
+        return tf*val;
     }
 
-    friend tf_t operator/(const tf_t &a, const tf_t &b)
+    friend tf_t operator/(double val, const TransferFunction &tf)
     {
-        return {
-            (Polynomial(a.num)*Polynomial(b.den)).coeff(),
-            (Polynomial(a.den)*Polynomial(b.num)).coeff(),
-            a.Ts
-        };
+        return val*tf.inv();
+    }
+
+    friend tf_t operator+(const tf_t &a, const TransferFunction &b)
+    {
+        return a + (tf_t)(b);
+    }
+
+    friend tf_t operator-(const tf_t &a, const TransferFunction &b)
+    {
+        return a - (tf_t)(b);
+    }
+    
+    friend tf_t operator*(const tf_t &a, const TransferFunction &b)
+    {
+        return a * (tf_t)(b);
+    }
+    
+    friend tf_t operator/(const tf_t &a, const TransferFunction &b)
+    {
+        return a / (tf_t)(b);
+    }
+    
+    friend tf_t operator+(const TransferFunction &a, const tf_t &b)
+    {
+        return (tf_t)(a) + b;
+    }
+
+    friend tf_t operator-(const TransferFunction &a, const tf_t &b)
+    {
+        return (tf_t)(a) - b;
+    }
+
+    friend tf_t operator*(const TransferFunction &a, const tf_t &b)
+    {
+        return (tf_t)(a) * b;
+    }
+
+    friend tf_t operator/(const TransferFunction &a, const tf_t &b)
+    {
+        return (tf_t)(a) / b;
     }
 
 private:
