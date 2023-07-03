@@ -6,7 +6,7 @@ if(NOT CMAKE_C_STANDARD)
 endif()
 
 if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 17)
+  set(CMAKE_CXX_STANDARD 20)
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
@@ -29,6 +29,7 @@ set(example_files
   controller/canonicalize
   controller/place
   controller/linear_mpc
+  controller/vrft
 
   filter/lpf_step
   filter/hpf_step
@@ -104,6 +105,7 @@ set(test_files
   controller/pid2_test
   controller/psmc_test
   controller/pfc_test
+  controller/vrft_test
 )
 include(GoogleTest)
 foreach(test_file ${test_files})

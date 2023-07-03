@@ -2,6 +2,7 @@
 
 #include <Eigen/Dense>
 #include <cpp_robotics/system/discret.hpp>
+#include <cpp_robotics/system/polynomial.hpp>
 
 namespace cpp_robotics
 {
@@ -13,6 +14,72 @@ namespace cpp_robotics
 class TransferFunction
 {
 public:
+    struct tf_t
+    {
+        std::vector<double> num;
+        std::vector<double> den;
+        double Ts;
+
+        tf_t inv()
+        {
+            return {
+                den,
+                num,
+                Ts
+            };
+        }
+
+        tf_t operator+(double val) const
+        {
+            return {
+                (Polynomial(num) + Polynomial(den)*val).coeff(),
+                den,
+                Ts
+            };
+        }
+
+        tf_t operator-(double val) const
+        {
+            return {
+                (Polynomial(num) - Polynomial(den)*val).coeff(),
+                den,
+                Ts
+            };
+        }
+
+        tf_t operator*(double val) const
+        {
+            return {
+                (Polynomial(num)*val).coeff(),
+                den,
+                Ts
+            };
+        }
+
+        tf_t operator/(double val) const
+        {
+            return {
+                (Polynomial(num)/val).coeff(),
+                den,
+                Ts
+            };
+        }
+        friend tf_t operator+(double val, const tf_t &tf)
+        {
+            return tf + val;
+        }
+
+        friend tf_t operator-(double val, const tf_t &tf)
+        {
+            return tf - val;
+        }
+
+        TransferFunction simulatable()
+        {
+            return TransferFunction(num, den, Ts);
+        }
+    };
+
     static TransferFunction make_first_order_system(const double T, const double Ts)
     {
         return TransferFunction({1}, {T, 1}, Ts);
@@ -25,14 +92,35 @@ public:
 
     TransferFunction() = default;
     
+    /**
+     * @brief Construct a new Transfer Function object
+     * @param num 分子の係数 配列の先頭が最高次の係数
+     * @param den 分母の係数 配列の先頭が最高次の係数
+     * @param Ts サンプリング周期
+    */
     TransferFunction(std::vector<double> num, std::vector<double> den, const double Ts):
         num_array_(num), den_array_(den)
     {
         set_continuous(num_array_, den_array_, Ts);
     }
 
+    TransferFunction(const tf_t &tf_config):
+        num_array_(tf_config.num), den_array_(tf_config.den)
+    {
+        set_continuous(num_array_, den_array_, tf_config.Ts);
+    }
+
     void set_continuous(std::vector<double> num, std::vector<double> den, const double dt)
     {
+        if(num.size() == 1 && den.size() == 1)
+        {
+            num_ = num;
+            den_ = den;
+            dt_ = dt;
+            u_.resize(1);
+            y_.resize(1);
+            return;
+        }
         auto [num_disc, den_disc] = DiscretTransferFunction::discritize(num, den, dt);
         set_discrite(num_disc, den_disc, dt);
     }
@@ -81,9 +169,12 @@ public:
             y += num_[i]*u_.at_circular(i);
         }
 
-        for(size_t i = 0; i < den_.size()-1; i++)
+        if(den_.size() != 1)
         {
-            y -= den_[i+1]*y_.at_circular(i);
+            for(size_t i = 0; i < den_.size()-1; i++)
+            {
+                y -= den_[i+1]*y_.at_circular(i);
+            }
         }
         y /= den_[0];
 
@@ -103,6 +194,88 @@ public:
 
     std::vector<double> num_array() const { return num_array_; }
     std::vector<double> den_array() const { return den_array_; }
+
+    operator tf_t()
+    {
+        return{
+            num_array_,
+            den_array_,
+            dt_
+        };
+    } 
+
+    tf_t inv()
+    {
+        return {
+            den_array_,
+            num_array_,
+            dt_
+        };
+    }
+
+    tf_t operator+(double val) const
+    {
+        return {
+            (Polynomial(num_array_) + Polynomial(den_array_)*val).coeff(),
+            den_array_,
+            dt_
+        };
+    }
+
+    tf_t operator-(double val) const
+    {
+        return {
+            (Polynomial(num_array_) - Polynomial(den_array_)*val).coeff(),
+            den_array_,
+            dt_
+        };
+    }
+
+    tf_t operator*(double val) const
+    {
+        return {
+            (Polynomial(num_array_)*val).coeff(),
+            den_array_,
+            dt_
+        };
+    }
+
+    tf_t operator/(double val) const
+    {
+        return {
+            (Polynomial(num_array_)/val).coeff(),
+            den_array_,
+            dt_
+        };
+    }
+
+    friend tf_t operator+(double val, const TransferFunction &tf)
+    {
+        return tf + val;
+    }
+
+    friend tf_t operator-(double val, const TransferFunction &tf)
+    {
+        return tf - val;
+    }
+
+    friend tf_t operator*(const tf_t &a, const tf_t &b)
+    {
+        return {
+            (Polynomial(a.num)*Polynomial(b.num)).coeff(),
+            (Polynomial(a.den)*Polynomial(b.den)).coeff(),
+            a.Ts
+        };
+    }
+
+    friend tf_t operator/(const tf_t &a, const tf_t &b)
+    {
+        return {
+            (Polynomial(a.num)*Polynomial(b.den)).coeff(),
+            (Polynomial(a.den)*Polynomial(b.num)).coeff(),
+            a.Ts
+        };
+    }
 
 private:
     std::vector<double> num_array_;

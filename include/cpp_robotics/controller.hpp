@@ -7,3 +7,4 @@
 #include "controller/nctf.hpp"
 #include "controller/modern_control.hpp"
 #include "controller/pfc.hpp"
+#include "controller/vrft.hpp"

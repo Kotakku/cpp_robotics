@@ -6,6 +6,7 @@
 class MyAllPassSystem
 {
 public:
+    void reset() {}
     double responce(double u)
     {
         return u;
@@ -17,6 +18,7 @@ public:
 class MyAllPassFilter
 {
 public:
+    void reset() {}
     double filtering(double u)
     {
         return u;

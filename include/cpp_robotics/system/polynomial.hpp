@@ -19,14 +19,23 @@ struct Polynomial
     Polynomial() = default;
 
     Polynomial(std::initializer_list<double> coeff):
-        _coeff(coeff.begin(), coeff.end()) {}
+        _coeff(coeff.begin(), coeff.end())
+    {
+        check_degree();
+    }
 
     Polynomial(const std::vector<double> &coeff):
-        _coeff(coeff) {}
+        _coeff(coeff)
+    {
+        check_degree();
+    }
 
     template<class IteratorType>
     Polynomial(IteratorType begin, IteratorType end):
-        _coeff(begin, end) {}
+        _coeff(begin, end)
+    {
+        check_degree();
+    }
 
     // (x-a1)(x-a2)...(x-aN)の{a...aN}を引数にとり展開した多項式を返す
     static Polynomial expand(std::vector<double> roots)
@@ -74,16 +83,6 @@ struct Polynomial
 
     double &operator [](size_t i) { return at(i); }
     double operator [](size_t i) const { return at(i); }
-
-    void check_degree()
-    {
-        while(size())
-        {
-            if(at(degree()) != 0)
-                return;
-            _coeff.erase(_coeff.begin() + _coeff.size()-1);
-        }
-    }
 
     double evalute(double x) const
     {
@@ -411,6 +410,16 @@ struct Polynomial
     }
 
 private:
+    void check_degree()
+    {
+        while(size())
+        {
+            if(_coeff[0] != 0)
+                return;
+            _coeff.erase(_coeff.begin());
+        }
+    }
+    
     std::vector<double> _coeff;
 };
 

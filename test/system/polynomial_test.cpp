@@ -24,6 +24,17 @@ TEST(polynomial, construct) {
     EXPECT_FALSE(p2 == p4);
 }
 
+TEST(polynomial, check) {
+    using namespace cpp_robotics;
+
+    std::vector<double> coeff = {2.0, 3.0, 0.0};
+    Polynomial p({0.0, 2.0, 3.0, 0.0});
+    // std::cout << "size: " << p.coeff().size() << std::endl;
+    // for(auto &v : p.coeff())
+    //     std::cout << v << std::endl;
+    EXPECT_TRUE(coeff == p.coeff());
+}
+
 TEST(polynomial, expand) {
     using namespace cpp_robotics;
 
@@ -128,4 +139,13 @@ TEST(polynomial, with_poly) {
     p2 = p2 - p1;
     p2 -= p1;
     EXPECT_TRUE(ref1 == p2);
+}
+
+TEST(polynomial, evalute) {
+    using namespace cpp_robotics;
+
+    Polynomial p({1, 2, 1});
+
+    EXPECT_DOUBLE_EQ(p.evalute(0), 1);
+    EXPECT_DOUBLE_EQ(p.evalute(10), 121);
 }

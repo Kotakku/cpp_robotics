@@ -114,33 +114,76 @@ static std::tuple<std::vector<double>, std::vector<double>> step(FilterType &fil
 /**
  * @brief 任意の入力による応答を求める
  * 
+ * @tparam DataIterativeType 
  * @param sys 
  * @param dt 
  * @param input 
- * @return std::tuple<std::vector<double>, std::vector<double>> 
+ * @return std::tuple<DataIterativeType, DataIterativeType> 
  */
-static std::tuple<std::vector<double>, std::vector<double>> lsim(const std::function<double(double)> &sys, double dt, const std::vector<double> &input)
+template<class DataIterativeType>
+static std::tuple<DataIterativeType, DataIterativeType> lsim(const std::function<double(double)> &sys, double dt, const DataIterativeType &input)
 {
-    std::vector<double> t = linspace(0, dt*input.size(), input.size());
-    std::vector<double> res(t.size());
-    for(size_t i = 0; i < res.size(); i++)
+    DataIterativeType t = linspace<DataIterativeType>(0, dt*input.size(), input.size());
+    DataIterativeType res(t.size());
+    for(decltype(res.size()) i = 0; i < res.size(); i++)
     {
         res[i] = sys(input[i]);
     }
     return {t, res};
 }
 
-template<class SysType, typename std::enable_if<internal::is_system_class<SysType>::value>::type* = nullptr>
-static std::tuple<std::vector<double>, std::vector<double>> lsim(SysType &sys, std::vector<double> input)
+template<class DataIterativeType, class SysType, typename std::enable_if<internal::is_system_class<SysType>::value>::type* = nullptr>
+static std::tuple<DataIterativeType, DataIterativeType> lsim(SysType sys, const DataIterativeType &input, bool skip_reset = false)
 {
+    if(not skip_reset)
+        sys.reset();
     return lsim([&](double u){ return sys.responce(u); }, sys.Ts(), input);
 }
 
-template<class SysType, typename std::enable_if<internal::is_pure_filter_class<SysType>::value>::type* = nullptr>
-static std::tuple<std::vector<double>, std::vector<double>> lsim(SysType &sys, std::vector<double> input)
+template<class DataIterativeType, class SysType, typename std::enable_if<internal::is_pure_filter_class<SysType>::value>::type* = nullptr>
+static std::tuple<DataIterativeType, DataIterativeType> lsim(SysType sys, const DataIterativeType &input, bool skip_reset = false)
 {
+    if(not skip_reset)
+        sys.reset();
     return lsim([&](double u){ return sys.filtering(u); }, sys.Ts(), input);
 }
 
+template<class DataIterativeType>
+static std::tuple<DataIterativeType, DataIterativeType> lsim(TransferFunction::tf_t sys_config, const DataIterativeType &input)
+{
+    TransferFunction sys(sys_config);
+    return lsim([&](double u){ return sys.responce(u); }, sys.Ts(), input);
+}
+
+
+template<class DataIterativeType>
+static DataIterativeType lsim_y(const std::function<double(double)> &sys, double dt, const DataIterativeType &input)
+{
+    auto [t, res] = lsim(sys, dt, input);
+    return res;
+}
+
+template<class DataIterativeType, class SysType, typename std::enable_if<internal::is_system_class<SysType>::value>::type* = nullptr>
+static DataIterativeType lsim_y(SysType sys, const DataIterativeType &input, bool skip_reset = false)
+{
+    if(not skip_reset)
+        sys.reset();
+    return lsim_y([&](double u){ return sys.responce(u); }, sys.Ts(), input);
+}
+
+template<class DataIterativeType, class SysType, typename std::enable_if<internal::is_pure_filter_class<SysType>::value>::type* = nullptr>
+static DataIterativeType lsim_y(SysType sys, const DataIterativeType &input, bool skip_reset = false)
+{
+    if(not skip_reset)
+        sys.reset();
+    return lsim_y([&](double u){ return sys.filtering(u); }, sys.Ts(), input);
+}
+
+template<class DataIterativeType>
+static DataIterativeType lsim_y(TransferFunction::tf_t sys_config, const DataIterativeType &input)
+{
+    TransferFunction sys(sys_config);
+    return lsim_y([&](double u){ return sys.responce(u); }, sys.Ts(), input);
+}
 
 }
