@@ -11,7 +11,7 @@
 - その他実装してみたい機能を実装する
 
 # 環境
-- C++17
+- C++20
 - Eigen
 - Python3 (matplotlib用)
 - gtest
@@ -59,4 +59,5 @@ doxybook2とmkdocsをインストール後に
 ```sh
 sh gen_doc.sh
 mkdocs build
+mkdocs serve
 ```

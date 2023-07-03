@@ -82,6 +82,7 @@ set(test_files
   system/discret_tf_test
   system/time_responce_test
   system/link_robot_test
+  system/transfer_function_test
 
   filter/tf_filter_test
   filter/extended_kalman_filter_test
