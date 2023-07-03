@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
@@ -480,6 +480,20 @@
     <li class="md-nav__item">
       <a href="../../../tech_note/control/place/" class="md-nav__link">
         極配置による状態フィードバック
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tech_note/control/frit_vrft_turning/" class="md-nav__link">
+        FRIT,VRFTによるゲインチューニング
       </a>
     </li>
   
@@ -1264,6 +1278,21 @@
 <p>伝達関数モデル </p>
 <p><code>#include &lt;transfer_function.hpp&gt;</code></p>
 <p>Inherited by <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1BandPassFilter/">cpp_robotics::BandPassFilter</a>, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ButterworthFilter/">cpp_robotics::ButterworthFilter</a>, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Differentiator/">cpp_robotics::Differentiator</a>, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1HighPassFilter/">cpp_robotics::HighPassFilter</a>, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Integrator/">cpp_robotics::Integrator</a>, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LowPassFilter/">cpp_robotics::LowPassFilter</a>, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1NotchFilter/">cpp_robotics::NotchFilter</a></p>
+<h2 id="public-classes">Public Classes</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>struct</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></strong></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-functions">Public Functions</h2>
 <table>
 <thead>
@@ -1287,7 +1316,11 @@
 </tr>
 <tr>
 <td></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#function-transferfunction">TransferFunction</a></strong>(std::vector&lt; double &gt; num, std::vector&lt; double &gt; den, const double Ts)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#function-transferfunction">TransferFunction</a></strong>(std::vector&lt; double &gt; num, std::vector&lt; double &gt; den, const double Ts)<br>Construct a new Transfer Function object.</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#function-transferfunction">TransferFunction</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a> &amp; tf_config)</td>
 </tr>
 <tr>
 <td>void</td>
@@ -1325,6 +1358,89 @@
 <td>std::vector&lt; double &gt;</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#function-den-array">den_array</a></strong>() const</td>
 </tr>
+<tr>
+<td></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#function-operator-tf-t">operator tf_t</a></strong>() const</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#function-inv">inv</a></strong>() const</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#function-operator+">operator+</a></strong>(double val) const</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#function-operator-">operator-</a></strong>(double val) const</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#function-operator*">operator*</a></strong>(double val) const</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#function-operator/">operator/</a></strong>(double val) const</td>
+</tr>
+</tbody>
+</table>
+<h2 id="friends">Friends</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#friend-operator+">operator+</a></strong>(double val, const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &amp; tf)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#friend-operator-">operator-</a></strong>(double val, const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &amp; tf)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#friend-operator*">operator*</a></strong>(double val, const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &amp; tf)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#friend-operator/">operator/</a></strong>(double val, const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &amp; tf)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#friend-operator+">operator+</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &amp; b)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#friend-operator-">operator-</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &amp; b)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#friend-operator*">operator*</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &amp; b)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#friend-operator/">operator/</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &amp; b)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#friend-operator+">operator+</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a> &amp; b)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#friend-operator-">operator-</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a> &amp; b)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#friend-operator*">operator*</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a> &amp; b)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/#friend-operator/">operator/</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">tf_t</a> &amp; b)</td>
+</tr>
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation</h2>
@@ -1349,6 +1465,18 @@
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">num</span><span class="p">,</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">den</span><span class="p">,</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Ts</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Construct a new Transfer Function object. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>num</strong> 分子の係数 配列の先頭が最高次の係数 </li>
+<li><strong>den</strong> 分母の係数 配列の先頭が最高次の係数 </li>
+<li><strong>Ts</strong> サンプリング周期 </li>
+</ul>
+<h3 id="function-transferfunction_2">function TransferFunction</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">TransferFunction</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tf_config</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-set_continuous">function set_continuous</h3>
@@ -1396,8 +1524,119 @@
 <h3 id="function-den_array">function den_array</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">den_array</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </code></pre></div>
+<h3 id="function-operator-tf_t">function operator tf_t</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="n">tf_t</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</code></pre></div>
+<h3 id="function-inv">function inv</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="n">inv</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</code></pre></div>
+<h3 id="function-operator">function operator+</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">val</span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span>
+</code></pre></div>
+<h3 id="function-operator-">function operator-</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">val</span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span>
+</code></pre></div>
+<h3 id="function-operator_1">function operator*</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">val</span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span>
+</code></pre></div>
+<h3 id="function-operator_2">function operator/</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">/</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">val</span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span>
+</code></pre></div>
+<h2 id="friends_1">Friends</h2>
+<h3 id="friend-operator">friend operator+</h3>
+<div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tf</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="friend-operator-">friend operator-</h3>
+<div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tf</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="friend-operator_1">friend operator*</h3>
+<div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tf</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="friend-operator_2">friend operator/</h3>
+<div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">/</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tf</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="friend-operator_3">friend operator+</h3>
+<div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="friend-operator-_1">friend operator-</h3>
+<div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="friend-operator_4">friend operator*</h3>
+<div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="friend-operator_5">friend operator/</h3>
+<div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">/</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="friend-operator_6">friend operator+</h3>
+<div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="friend-operator-_2">friend operator-</h3>
+<div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="friend-operator_7">friend operator*</h3>
+<div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="friend-operator_8">friend operator/</h3>
+<div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">/</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
+<span class="p">);</span>
+</code></pre></div>
 <hr />
-<p>Updated on 2023-07-01 at 09:03:12 +0000</p>
+<p>Updated on 2023-07-03 at 11:56:52 +0000</p>
 
 
 
@@ -1439,10 +1678,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.b425cdc4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
       
         
           <script src="../../../javascripts/mathjax.js"></script>

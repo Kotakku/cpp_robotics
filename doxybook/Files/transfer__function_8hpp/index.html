@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
@@ -480,6 +480,20 @@
     <li class="md-nav__item">
       <a href="../../../tech_note/control/place/" class="md-nav__link">
         極配置による状態フィードバック
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tech_note/control/frit_vrft_turning/" class="md-nav__link">
+        FRIT,VRFTによるゲインチューニング
       </a>
     </li>
   
@@ -1287,6 +1301,10 @@
 <td>class</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">cpp_robotics::TransferFunction</a></strong> <br>伝達関数モデル</td>
 </tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">cpp_robotics::TransferFunction::tf_t</a></strong></td>
+</tr>
 </tbody>
 </table>
 <h2 id="source-code">Source code</h2>
@@ -1294,6 +1312,7 @@
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Eigen/Dense&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cpp_robotics/system/discret.hpp&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cpp_robotics/system/polynomial.hpp&gt;</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">cpp_robotics</span>
 <span class="p">{</span>
@@ -1301,12 +1320,143 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">TransferFunction</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
-<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="n">make_first_order_system</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Ts</span><span class="p">)</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">tf_t</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">den</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">Ts</span><span class="p">;</span>
+
+<span class="w">        </span><span class="n">tf_t</span><span class="w"> </span><span class="nf">inv</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">den</span><span class="p">,</span>
+<span class="w">                </span><span class="n">num</span><span class="p">,</span>
+<span class="w">                </span><span class="n">Ts</span>
+<span class="w">            </span><span class="p">};</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Polynomial</span><span class="p">(</span><span class="n">den</span><span class="p">)</span><span class="o">*</span><span class="n">val</span><span class="p">).</span><span class="n">coeff</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">den</span><span class="p">,</span>
+<span class="w">                </span><span class="n">Ts</span>
+<span class="w">            </span><span class="p">};</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Polynomial</span><span class="p">(</span><span class="n">den</span><span class="p">)</span><span class="o">*</span><span class="n">val</span><span class="p">).</span><span class="n">coeff</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">den</span><span class="p">,</span>
+<span class="w">                </span><span class="n">Ts</span>
+<span class="w">            </span><span class="p">};</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="o">*</span><span class="n">val</span><span class="p">).</span><span class="n">coeff</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">den</span><span class="p">,</span>
+<span class="w">                </span><span class="n">Ts</span>
+<span class="w">            </span><span class="p">};</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="o">/</span><span class="n">val</span><span class="p">).</span><span class="n">coeff</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">den</span><span class="p">,</span>
+<span class="w">                </span><span class="n">Ts</span>
+<span class="w">            </span><span class="p">};</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tf</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="o">*</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">den</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Polynomial</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">num</span><span class="p">)</span><span class="o">*</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">den</span><span class="p">)).</span><span class="n">coeff</span><span class="p">(),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">den</span><span class="p">)</span><span class="o">*</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">den</span><span class="p">)).</span><span class="n">coeff</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">Ts</span>
+<span class="w">            </span><span class="p">};</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tf</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="o">*</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">den</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Polynomial</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">num</span><span class="p">)</span><span class="o">*</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">den</span><span class="p">)).</span><span class="n">coeff</span><span class="p">(),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">den</span><span class="p">)</span><span class="o">*</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">den</span><span class="p">)).</span><span class="n">coeff</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">Ts</span>
+<span class="w">            </span><span class="p">};</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tf</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="o">*</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">num</span><span class="p">)).</span><span class="n">coeff</span><span class="p">(),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">den</span><span class="p">)</span><span class="o">*</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">den</span><span class="p">)).</span><span class="n">coeff</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">Ts</span>
+<span class="w">            </span><span class="p">};</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tf</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="o">*</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">den</span><span class="p">)).</span><span class="n">coeff</span><span class="p">(),</span>
+<span class="w">                </span><span class="p">(</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">den</span><span class="p">)</span><span class="o">*</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">num</span><span class="p">)).</span><span class="n">coeff</span><span class="p">(),</span>
+<span class="w">                </span><span class="n">Ts</span>
+<span class="w">            </span><span class="p">};</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tf</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">tf</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tf</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">tf</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tf</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">val</span><span class="o">*</span><span class="n">tf</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tf</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">val</span><span class="o">*</span><span class="n">tf</span><span class="p">.</span><span class="n">inv</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// friend tf_t operator*(const tf_t &amp;a, const tf_t &amp;b)</span>
+<span class="w">        </span><span class="c1">// {</span>
+<span class="w">        </span><span class="c1">//     return {</span>
+<span class="w">        </span><span class="c1">//         (Polynomial(a.num)*Polynomial(b.num)).coeff(),</span>
+<span class="w">        </span><span class="c1">//         (Polynomial(a.den)*Polynomial(b.den)).coeff(),</span>
+<span class="w">        </span><span class="c1">//         a.Ts</span>
+<span class="w">        </span><span class="c1">//     };</span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="c1">// friend tf_t operator/(const tf_t &amp;a, const tf_t &amp;b)</span>
+<span class="w">        </span><span class="c1">// {</span>
+<span class="w">        </span><span class="c1">//     return {</span>
+<span class="w">        </span><span class="c1">//         (Polynomial(a.num)*Polynomial(b.den)).coeff(),</span>
+<span class="w">        </span><span class="c1">//         (Polynomial(a.den)*Polynomial(b.num)).coeff(),</span>
+<span class="w">        </span><span class="c1">//         a.Ts</span>
+<span class="w">        </span><span class="c1">//     };</span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="n">TransferFunction</span><span class="w"> </span><span class="n">simulatable</span><span class="p">()</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">TransferFunction</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">,</span><span class="w"> </span><span class="n">Ts</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="nf">make_first_order_system</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Ts</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TransferFunction</span><span class="p">({</span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="n">Ts</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="n">make_second_order_system</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">omega</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">zeta</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Ts</span><span class="p">)</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="nf">make_second_order_system</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">omega</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">zeta</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Ts</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TransferFunction</span><span class="p">({</span><span class="n">omega</span><span class="o">*</span><span class="n">omega</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">omega</span><span class="p">,</span><span class="w"> </span><span class="n">omega</span><span class="o">*</span><span class="n">omega</span><span class="p">},</span><span class="w"> </span><span class="n">Ts</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
@@ -1319,8 +1469,23 @@
 <span class="w">        </span><span class="n">set_continuous</span><span class="p">(</span><span class="n">num_array_</span><span class="p">,</span><span class="w"> </span><span class="n">den_array_</span><span class="p">,</span><span class="w"> </span><span class="n">Ts</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="n">TransferFunction</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tf_config</span><span class="p">)</span><span class="o">:</span>
+<span class="w">        </span><span class="n">num_array_</span><span class="p">(</span><span class="n">tf_config</span><span class="p">.</span><span class="n">num</span><span class="p">),</span><span class="w"> </span><span class="n">den_array_</span><span class="p">(</span><span class="n">tf_config</span><span class="p">.</span><span class="n">den</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">set_continuous</span><span class="p">(</span><span class="n">num_array_</span><span class="p">,</span><span class="w"> </span><span class="n">den_array_</span><span class="p">,</span><span class="w"> </span><span class="n">tf_config</span><span class="p">.</span><span class="n">Ts</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_continuous</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">den</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">den</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">num_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+<span class="w">            </span><span class="n">den_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">den</span><span class="p">;</span>
+<span class="w">            </span><span class="n">dt_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dt</span><span class="p">;</span>
+<span class="w">            </span><span class="n">u_</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="n">y_</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">num_disc</span><span class="p">,</span><span class="w"> </span><span class="n">den_disc</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DiscretTransferFunction</span><span class="o">::</span><span class="n">discritize</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">,</span><span class="w"> </span><span class="n">dt</span><span class="p">);</span>
 <span class="w">        </span><span class="n">set_discrite</span><span class="p">(</span><span class="n">num_disc</span><span class="p">,</span><span class="w"> </span><span class="n">den_disc</span><span class="p">,</span><span class="w"> </span><span class="n">dt</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
@@ -1364,9 +1529,12 @@
 <span class="w">            </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">num_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">u_</span><span class="p">.</span><span class="n">at_circular</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">den_</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">den_</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">y</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">den_</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y_</span><span class="p">.</span><span class="n">at_circular</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">den_</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">y</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">den_</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y_</span><span class="p">.</span><span class="n">at_circular</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">den_</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 
@@ -1386,6 +1554,120 @@
 
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">num_array</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">num_array_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">den_array</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">den_array_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">operator</span><span class="w"> </span><span class="n">tf_t</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">{</span>
+<span class="w">            </span><span class="n">num_array_</span><span class="p">,</span>
+<span class="w">            </span><span class="n">den_array_</span><span class="p">,</span>
+<span class="w">            </span><span class="n">dt_</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span>
+
+<span class="w">    </span><span class="n">tf_t</span><span class="w"> </span><span class="n">inv</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">den_array_</span><span class="p">,</span>
+<span class="w">            </span><span class="n">num_array_</span><span class="p">,</span>
+<span class="w">            </span><span class="n">dt_</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">(</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">num_array_</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Polynomial</span><span class="p">(</span><span class="n">den_array_</span><span class="p">)</span><span class="o">*</span><span class="n">val</span><span class="p">).</span><span class="n">coeff</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">den_array_</span><span class="p">,</span>
+<span class="w">            </span><span class="n">dt_</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">(</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">num_array_</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Polynomial</span><span class="p">(</span><span class="n">den_array_</span><span class="p">)</span><span class="o">*</span><span class="n">val</span><span class="p">).</span><span class="n">coeff</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">den_array_</span><span class="p">,</span>
+<span class="w">            </span><span class="n">dt_</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">(</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">num_array_</span><span class="p">)</span><span class="o">*</span><span class="n">val</span><span class="p">).</span><span class="n">coeff</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">den_array_</span><span class="p">,</span>
+<span class="w">            </span><span class="n">dt_</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">(</span><span class="n">Polynomial</span><span class="p">(</span><span class="n">num_array_</span><span class="p">)</span><span class="o">/</span><span class="n">val</span><span class="p">).</span><span class="n">coeff</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">den_array_</span><span class="p">,</span>
+<span class="w">            </span><span class="n">dt_</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tf</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tf</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tf</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tf</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tf</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tf</span><span class="o">*</span><span class="n">val</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tf</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">val</span><span class="o">*</span><span class="n">tf</span><span class="p">.</span><span class="n">inv</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">tf_t</span><span class="p">)(</span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">tf_t</span><span class="p">)(</span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">tf_t</span><span class="p">)(</span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">tf_t</span><span class="p">)(</span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">tf_t</span><span class="p">)(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">tf_t</span><span class="p">)(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">tf_t</span><span class="p">)(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="k">operator</span><span class="o">/</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">tf_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">tf_t</span><span class="p">)(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">num_array_</span><span class="p">;</span>
@@ -1429,7 +1711,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2023-07-01 at 09:03:13 +0000</p>
+<p>Updated on 2023-07-03 at 11:56:52 +0000</p>
 
 
 
@@ -1471,10 +1753,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.b425cdc4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
       
         
           <script src="../../../javascripts/mathjax.js"></script>

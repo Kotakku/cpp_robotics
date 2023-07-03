@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
@@ -480,6 +480,20 @@
     <li class="md-nav__item">
       <a href="../../tech_note/control/place/" class="md-nav__link">
         極配置による状態フィードバック
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tech_note/control/frit_vrft_turning/" class="md-nav__link">
+        FRIT,VRFTによるゲインチューニング
       </a>
     </li>
   
@@ -1308,6 +1322,7 @@
 <li><strong>file <a href="/cpp_robotics/doxybook/Files/pid2_8hpp/#file-pid2.hpp">hpp</a></strong> </li>
 <li><strong>file <a href="/cpp_robotics/doxybook/Files/psmc_8hpp/#file-psmc.hpp">hpp</a></strong> </li>
 <li><strong>file <a href="/cpp_robotics/doxybook/Files/pure__pursuit_8hpp/#file-pure-pursuit.hpp">hpp</a></strong> </li>
+<li><strong>file <a href="/cpp_robotics/doxybook/Files/vrft_8hpp/#file-vrft.hpp">hpp</a></strong> </li>
 </ul>
 </li>
 <li><strong>dir <a href="/cpp_robotics/doxybook/Files/dir_d46e09745d41c5a7827c5b81f13e5fde/#dir-include/cpp-robotics/filter">include/cpp_robotics/filter</a></strong> <ul>
@@ -1348,6 +1363,7 @@
 <li><strong>file <a href="/cpp_robotics/doxybook/Files/derivative_8hpp/#file-derivative.hpp">hpp</a></strong> </li>
 <li><strong>file <a href="/cpp_robotics/doxybook/Files/golden__serach_8hpp/#file-golden-serach.hpp">hpp</a></strong> </li>
 <li><strong>file <a href="/cpp_robotics/doxybook/Files/interior__point__method_8hpp/#file-interior-point-method.hpp">hpp</a></strong> </li>
+<li><strong>file <a href="/cpp_robotics/doxybook/Files/least__squares__method_8hpp/#file-least-squares-method.hpp">hpp</a></strong> </li>
 <li><strong>file <a href="/cpp_robotics/doxybook/Files/lesi__doc_8hpp/#file-lesi-doc.hpp">hpp</a></strong> </li>
 <li><strong>file <a href="/cpp_robotics/doxybook/Files/linprog_8hpp/#file-linprog.hpp">hpp</a></strong> </li>
 <li><strong>file <a href="/cpp_robotics/doxybook/Files/lsei__transition_8hpp/#file-lsei-transition.hpp">hpp</a></strong> </li>
@@ -1420,7 +1436,7 @@
 </li>
 </ul>
 <hr />
-<p>Updated on 2023-07-01 at 09:03:13 +0000</p>
+<p>Updated on 2023-07-03 at 11:56:52 +0000</p>
 
 
 
@@ -1462,10 +1478,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.b425cdc4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.220ee61c.min.js"></script>
       
         
           <script src="../../javascripts/mathjax.js"></script>

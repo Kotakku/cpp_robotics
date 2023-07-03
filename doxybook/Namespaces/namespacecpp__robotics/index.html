@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
@@ -480,6 +480,20 @@
     <li class="md-nav__item">
       <a href="../../../tech_note/control/place/" class="md-nav__link">
         極配置による状態フィードバック
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tech_note/control/frit_vrft_turning/" class="md-nav__link">
+        FRIT,VRFTによるゲインチューニング
       </a>
     </li>
   
@@ -1988,6 +2002,14 @@
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-place">place</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/">StateSpaceSystem</a> &amp; sys, std::vector&lt; double &gt; poles)<br>アッカーマン法によるSISOモデルの極配置</td>
 </tr>
 <tr>
+<td>Eigen::VectorXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-vrft">vrft</a></strong>(const Eigen::VectorXd &amp; u, const Eigen::VectorXd &amp; y, const double Ts, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> ref_model, std::vector&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &gt; &amp; control_base, std::optional&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &gt; prefilter)</td>
+</tr>
+<tr>
+<td>Eigen::VectorXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-vrft-pid">vrft_pid</a></strong>(const Eigen::VectorXd &amp; u, const Eigen::VectorXd &amp; y, const double Ts, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> ref_model, std::optional&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1TransferFunction/">TransferFunction</a> &gt; prefilter, double Td =0.01)</td>
+</tr>
+<tr>
 <td>std::ostream &amp;</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; v)</td>
 </tr>
@@ -2140,6 +2162,10 @@
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-golden-search">golden_search</a></strong>(std::function&lt; double(double)&gt; f, double low, double high, const double tol =1e-6, const size_t max_iter =100)<br>黄金探索</td>
 </tr>
 <tr>
+<td>Eigen::VectorXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-leastsq">leastsq</a></strong>(const Eigen::MatrixXd &amp; A, const Eigen::VectorXd &amp; b)</td>
+</tr>
+<tr>
 <td>std::tuple&lt; Eigen::MatrixXd, Eigen::VectorXd &gt;</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lsi2qp">lsi2qp</a></strong>(const Eigen::MatrixXd &amp; C, const Eigen::VectorXd &amp; d)</td>
 </tr>
@@ -2236,12 +2262,28 @@
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-step">step</a></strong>(FilterType &amp; filter, double time, const double gain =1.0)</td>
 </tr>
 <tr>
-<td>std::tuple&lt; std::vector&lt; double &gt;, std::vector&lt; double &gt; &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lsim">lsim</a></strong>(const std::function&lt; double(double)&gt; &amp; sys, double dt, const std::vector&lt; double &gt; &amp; input)<br>任意の入力による応答を求める</td>
+<td>template &lt;class DataIterativeType > <br>std::tuple&lt; DataIterativeType, DataIterativeType &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lsim">lsim</a></strong>(const std::function&lt; double(double)&gt; &amp; sys, double dt, const DataIterativeType &amp; input)<br>任意の入力による応答を求める</td>
 </tr>
 <tr>
-<td>template &lt;class SysType ,typename std::enable_if&lt; internal::is_system_class&lt; SysType &gt;::value &gt;::type *  =nullptr> <br>std::tuple&lt; std::vector&lt; double &gt;, std::vector&lt; double &gt; &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lsim">lsim</a></strong>(SysType &amp; sys, std::vector&lt; double &gt; input)</td>
+<td>template &lt;class DataIterativeType ,class SysType ,typename std::enable_if&lt; internal::is_system_class&lt; SysType &gt;::value &gt;::type *  =nullptr> <br>std::tuple&lt; DataIterativeType, DataIterativeType &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lsim">lsim</a></strong>(SysType sys, const DataIterativeType &amp; input, bool skip_reset =false)</td>
+</tr>
+<tr>
+<td>template &lt;class DataIterativeType > <br>std::tuple&lt; DataIterativeType, DataIterativeType &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lsim">lsim</a></strong>(<a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">TransferFunction::tf_t</a> sys_config, const DataIterativeType &amp; input)</td>
+</tr>
+<tr>
+<td>template &lt;class DataIterativeType > <br>DataIterativeType</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lsim-y">lsim_y</a></strong>(const std::function&lt; double(double)&gt; &amp; sys, double dt, const DataIterativeType &amp; input)</td>
+</tr>
+<tr>
+<td>template &lt;class DataIterativeType ,class SysType ,typename std::enable_if&lt; internal::is_system_class&lt; SysType &gt;::value &gt;::type *  =nullptr> <br>DataIterativeType</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lsim-y">lsim_y</a></strong>(SysType sys, const DataIterativeType &amp; input, bool skip_reset =false)</td>
+</tr>
+<tr>
+<td>template &lt;class DataIterativeType > <br>DataIterativeType</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-lsim-y">lsim_y</a></strong>(<a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1TransferFunction_1_1tf__t/">TransferFunction::tf_t</a> sys_config, const DataIterativeType &amp; input)</td>
 </tr>
 <tr>
 <td>template &lt;class UnitDimType ,int FromTag,int ToTag,bool IsNormalTag =tag::is_normal_tag<FromTag>::value &amp;&amp; tag::is_normal_tag<ToTag>::value> <br>constexpr double</td>
@@ -2380,15 +2422,23 @@
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-approx-zero">approx_zero</a></strong>(const double a)</td>
 </tr>
 <tr>
-<td>std::vector&lt; double &gt;</td>
+<td>template &lt;class DataType  =std::vector<double>> <br>DataType</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-arrange">arrange</a></strong>(double start, double end, double step =1.0)<br>startからendまでstepずつ増える点のベクトルを返す</td>
 </tr>
 <tr>
-<td>std::vector&lt; double &gt;</td>
+<td>template &lt;class DataType  =std::vector<double>> <br>DataType</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-linspace">linspace</a></strong>(double start, double end, size_t n =100)<br>startからendまでをn分割した点のベクトルを返す</td>
 </tr>
 <tr>
-<td>std::vector&lt; double &gt;</td>
+<td>template &lt;class DataType  =std::vector<double>> <br>DataType</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-implusespace">implusespace</a></strong>(double time, double dt =1.0)</td>
+</tr>
+<tr>
+<td>template &lt;class DataType  =std::vector<double>> <br>DataType</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-stepspace">stepspace</a></strong>(double time, double dt =1.0)</td>
+</tr>
+<tr>
+<td>template &lt;class DataType  =std::vector<double>> <br>DataType</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-logspace">logspace</a></strong>(double start, double end, size_t n =100)<br>10^startから10^endまで対数的に等間隔なn個の点のベクトルを返す</td>
 </tr>
 <tr>
@@ -3053,6 +3103,26 @@
 <li><strong>poles</strong> </li>
 </ul>
 <p><strong>Return</strong>: Eigen::VectorXd </p>
+<h3 id="function-vrft">function vrft</h3>
+<div class="highlight"><pre><span></span><code><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">vrft</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Ts</span><span class="p">,</span>
+<span class="w">    </span><span class="n">TransferFunction</span><span class="w"> </span><span class="n">ref_model</span><span class="p">,</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">control_base</span><span class="p">,</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">prefilter</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-vrft_pid">function vrft_pid</h3>
+<div class="highlight"><pre><span></span><code><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">vrft_pid</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Ts</span><span class="p">,</span>
+<span class="w">    </span><span class="n">TransferFunction</span><span class="w"> </span><span class="n">ref_model</span><span class="p">,</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">TransferFunction</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">prefilter</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">Td</span><span class="w"> </span><span class="o">=</span><span class="mf">0.01</span>
+<span class="p">)</span>
+</code></pre></div>
 <h3 id="function-operator">function operator&lt;&lt;</h3>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span>
@@ -3431,6 +3501,12 @@
 <li><strong>max_iter</strong> </li>
 </ul>
 <p><strong>Return</strong>: double </p>
+<h3 id="function-leastsq">function leastsq</h3>
+<div class="highlight"><pre><span></span><code><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">leastsq</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">A</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span>
+<span class="p">)</span>
+</code></pre></div>
 <h3 id="function-lsi2qp">function lsi2qp</h3>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">lsi2qp</span><span class="p">(</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">C</span><span class="p">,</span>
@@ -3691,10 +3767,11 @@
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-lsim">function lsim</h3>
-<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">lsim</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DataIterativeType</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">DataIterativeType</span><span class="p">,</span><span class="w"> </span><span class="n">DataIterativeType</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">lsim</span><span class="p">(</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sys</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">DataIterativeType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span>
 <span class="p">)</span>
 </code></pre></div>
 <p>任意の入力による応答を求める </p>
@@ -3704,13 +3781,51 @@
 <li><strong>dt</strong> </li>
 <li><strong>input</strong> </li>
 </ul>
-<p><strong>Return</strong>: std::tuple<std::vector\<double>, std::vector\<double>> </p>
+<p><strong>Template Parameters</strong>: </p>
+<ul>
+<li><strong>DataIterativeType</strong> </li>
+</ul>
+<p><strong>Return</strong>: std::tuple<DataIterativeType, DataIterativeType> </p>
 <h3 id="function-lsim_1">function lsim</h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">SysType</span><span class="w"> </span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DataIterativeType</span><span class="w"> </span><span class="p">,</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SysType</span><span class="w"> </span><span class="p">,</span>
 <span class="k">typename</span><span class="w"> </span><span class="nc">std</span><span class="o">::</span><span class="n">enable_if</span><span class="o">&lt;</span><span class="w"> </span><span class="n">internal</span><span class="o">::</span><span class="n">is_system_class</span><span class="o">&lt;</span><span class="w"> </span><span class="n">SysType</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">type</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="o">=</span><span class="k">nullptr</span><span class="o">&gt;</span>
-<span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">lsim</span><span class="p">(</span>
-<span class="w">    </span><span class="n">SysType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sys</span><span class="p">,</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">input</span>
+<span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">DataIterativeType</span><span class="p">,</span><span class="w"> </span><span class="n">DataIterativeType</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">lsim</span><span class="p">(</span>
+<span class="w">    </span><span class="n">SysType</span><span class="w"> </span><span class="n">sys</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">DataIterativeType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">skip_reset</span><span class="w"> </span><span class="o">=</span><span class="nb">false</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-lsim_2">function lsim</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DataIterativeType</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="w"> </span><span class="n">DataIterativeType</span><span class="p">,</span><span class="w"> </span><span class="n">DataIterativeType</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">lsim</span><span class="p">(</span>
+<span class="w">    </span><span class="n">TransferFunction</span><span class="o">::</span><span class="n">tf_t</span><span class="w"> </span><span class="n">sys_config</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">DataIterativeType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-lsim_y">function lsim_y</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DataIterativeType</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="k">static</span><span class="w"> </span><span class="n">DataIterativeType</span><span class="w"> </span><span class="n">lsim_y</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sys</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">DataIterativeType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-lsim_y_1">function lsim_y</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DataIterativeType</span><span class="w"> </span><span class="p">,</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SysType</span><span class="w"> </span><span class="p">,</span>
+<span class="k">typename</span><span class="w"> </span><span class="nc">std</span><span class="o">::</span><span class="n">enable_if</span><span class="o">&lt;</span><span class="w"> </span><span class="n">internal</span><span class="o">::</span><span class="n">is_system_class</span><span class="o">&lt;</span><span class="w"> </span><span class="n">SysType</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">type</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="o">=</span><span class="k">nullptr</span><span class="o">&gt;</span>
+<span class="k">static</span><span class="w"> </span><span class="n">DataIterativeType</span><span class="w"> </span><span class="n">lsim_y</span><span class="p">(</span>
+<span class="w">    </span><span class="n">SysType</span><span class="w"> </span><span class="n">sys</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">DataIterativeType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">skip_reset</span><span class="w"> </span><span class="o">=</span><span class="nb">false</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-lsim_y_2">function lsim_y</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DataIterativeType</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="k">static</span><span class="w"> </span><span class="n">DataIterativeType</span><span class="w"> </span><span class="n">lsim_y</span><span class="p">(</span>
+<span class="w">    </span><span class="n">TransferFunction</span><span class="o">::</span><span class="n">tf_t</span><span class="w"> </span><span class="n">sys_config</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">DataIterativeType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-conv_factor">function conv_factor</h3>
@@ -4102,7 +4217,8 @@
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-arrange">function arrange</h3>
-<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">arrange</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DataType</span><span class="w">  </span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span>
+<span class="k">static</span><span class="w"> </span><span class="n">DataType</span><span class="w"> </span><span class="n">arrange</span><span class="p">(</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">start</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">end</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="mf">1.0</span>
@@ -4117,7 +4233,8 @@
 </ul>
 <p><strong>Return</strong>: std::vector<double> </p>
 <h3 id="function-linspace">function linspace</h3>
-<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">linspace</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DataType</span><span class="w">  </span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span>
+<span class="k">static</span><span class="w"> </span><span class="n">DataType</span><span class="w"> </span><span class="n">linspace</span><span class="p">(</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">start</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">end</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="mi">100</span>
@@ -4131,8 +4248,23 @@
 <li><strong>n</strong> </li>
 </ul>
 <p><strong>Return</strong>: std::vector<double> </p>
+<h3 id="function-implusespace">function implusespace</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DataType</span><span class="w">  </span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span>
+<span class="k">static</span><span class="w"> </span><span class="n">DataType</span><span class="w"> </span><span class="n">implusespace</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">time</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">=</span><span class="mf">1.0</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-stepspace">function stepspace</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DataType</span><span class="w">  </span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span>
+<span class="k">static</span><span class="w"> </span><span class="n">DataType</span><span class="w"> </span><span class="n">stepspace</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">time</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">=</span><span class="mf">1.0</span>
+<span class="p">)</span>
+</code></pre></div>
 <h3 id="function-logspace">function logspace</h3>
-<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">logspace</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">DataType</span><span class="w">  </span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span>
+<span class="k">static</span><span class="w"> </span><span class="n">DataType</span><span class="w"> </span><span class="n">logspace</span><span class="p">(</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">start</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">end</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="mi">100</span>
@@ -4291,7 +4423,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">gfcm2mNm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">gfm2Nm</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2023-07-01 at 09:03:12 +0000</p>
+<p>Updated on 2023-07-03 at 11:56:51 +0000</p>
 
 
 
@@ -4333,10 +4465,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.b425cdc4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
       
         
           <script src="../../../javascripts/mathjax.js"></script>
