@@ -181,8 +181,6 @@ static void bode_plot(TransferFunction &tf, const std::vector<double> &omegas = 
     plt::ylabel("Phase(deg)");
     plt::semilogx(omegas, ph);
     plt::xlim(std::pow(10,-2), std::pow(10,2));
-    plt::ylim(-90, 90);
-    plt::yticks(std::vector<double>{-90, -45, 0, 45, 90});
     plt::grid(true, "both");
 
     plt::show();

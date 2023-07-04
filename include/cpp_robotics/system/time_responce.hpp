@@ -4,6 +4,7 @@
 #include <type_traits>
 #include "../utility/space.hpp"
 #include "./transfer_function.hpp"
+#include "./siso_system.hpp"
 
 namespace cpp_robotics
 {
@@ -155,6 +156,20 @@ static std::tuple<DataIterativeType, DataIterativeType> lsim(TransferFunction::t
     return lsim([&](double u){ return sys.responce(u); }, sys.Ts(), input);
 }
 
+template<class DataIterativeType>
+static std::tuple<DataIterativeType, DataIterativeType, DataIterativeType> lsim(SisoFeedbackSystem sys, const DataIterativeType &input, bool skip_reset = false)
+{
+    if(not skip_reset)
+        sys.reset();
+    DataIterativeType t = linspace<DataIterativeType>(0, sys.Ts()*input.size(), input.size());
+    DataIterativeType u(t.size());
+    DataIterativeType res(t.size());
+    for(decltype(res.size()) i = 0; i < res.size(); i++)
+    {
+        std::tie(u[i], res[i]) = sys.responce_uy(input[i]);
+    }
+    return {t, u, res};
+}
 
 template<class DataIterativeType>
 static DataIterativeType lsim_y(const std::function<double(double)> &sys, double dt, const DataIterativeType &input)
@@ -184,6 +199,20 @@ static DataIterativeType lsim_y(TransferFunction::tf_t sys_config, const DataIte
 {
     TransferFunction sys(sys_config);
     return lsim_y([&](double u){ return sys.responce(u); }, sys.Ts(), input);
+}
+
+template<class DataIterativeType>
+static std::tuple<DataIterativeType, DataIterativeType> lsim_uy(SisoFeedbackSystem sys, const DataIterativeType &input, bool skip_reset = false)
+{
+    auto [t, u, res] = lsim(sys, input, skip_reset);
+    return {u, res};
+}
+
+template<class DataIterativeType>
+static DataIterativeType lsim_y(SisoFeedbackSystem sys, const DataIterativeType &input, bool skip_reset = false)
+{
+    auto [t, u, res] = lsim(sys, input, skip_reset);
+    return res;
 }
 
 }

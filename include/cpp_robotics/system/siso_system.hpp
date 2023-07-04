@@ -61,6 +61,13 @@ public:
         return y_;
     }
 
+    std::tuple<double, double> responce_uy(double target)
+    {
+        u_ = func_list_.controller(target - y_);
+        y_ = func_list_.system(u_);
+        return {u_, y_};
+    }
+
     double Ts() const { return dt_; }
 
     double u() const { return u_; }
