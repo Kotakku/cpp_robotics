@@ -121,28 +121,58 @@ public:
             return val*tf.inv();
         }
 
-        // friend tf_t operator*(const tf_t &a, const tf_t &b)
-        // {
-        //     return {
-        //         (Polynomial(a.num)*Polynomial(b.num)).coeff(),
-        //         (Polynomial(a.den)*Polynomial(b.den)).coeff(),
-        //         a.Ts
-        //     };
-        // }
-
-        // friend tf_t operator/(const tf_t &a, const tf_t &b)
-        // {
-        //     return {
-        //         (Polynomial(a.num)*Polynomial(b.den)).coeff(),
-        //         (Polynomial(a.den)*Polynomial(b.num)).coeff(),
-        //         a.Ts
-        //     };
-        // }
-
         TransferFunction simulatable()
         {
             return TransferFunction(num, den, Ts);
         }
+
+#ifndef CR_NO_USE_COUT
+        friend std::ostream& operator<<(std::ostream& stream, const tf_t& tf)
+        {
+            std::stringstream ssnum, ssden;
+        
+            for(size_t i = 0; i < tf.num.size(); i++)
+            {
+                if(tf.num[i] > 0 && i != 0)
+                    ssnum << "+";
+                ssnum << tf.num[i];
+                if(auto deg = tf.num.size()-1-i; deg != 0)
+                {
+                    if(deg == 1)
+                        ssnum << "s";
+                    else
+                        ssnum << "s^" << deg;
+                }
+                if(i != tf.num.size()-1)
+                    ssnum << " ";
+            }
+
+            for(size_t i = 0; i < tf.den.size(); i++)
+            {
+                if(tf.den[i] > 0 && i != 0)
+                    ssden << "+";
+                ssden << tf.den[i];
+                if(auto deg = tf.den.size()-1-i; deg != 0)
+                {
+                    if(deg == 1)
+                        ssden << "s";
+                    else
+                        ssden << "s^" << deg;
+                }
+                if(i != tf.den.size()-1)
+                    ssden << " ";
+            }
+
+            size_t len = std::max(ssnum.str().length(), ssden.str().length());
+            std::string bar(len, '-');
+
+            stream << std::string((len-ssnum.str().length())/2, ' ') + ssnum.str() + "\n"
+                        + bar + "\n" 
+                        + std::string((len-ssden.str().length())/2, ' ') + ssden.str();
+
+            return stream;
+        };
+#endif
     };
 
     static TransferFunction make_first_order_system(const double T, const double Ts)
@@ -373,6 +403,74 @@ public:
     {
         return (tf_t)(a) / b;
     }
+
+    friend tf_t operator+(const TransferFunction &a, const TransferFunction &b)
+    {
+        return (tf_t)(a) + (tf_t)(b);
+    }
+
+    friend tf_t operator-(const TransferFunction &a, const TransferFunction &b)
+    {
+        return (tf_t)(a) - (tf_t)(b);
+    }
+
+    friend tf_t operator*(const TransferFunction &a, const TransferFunction &b)
+    {
+        return (tf_t)(a) * (tf_t)(b);
+    }
+
+    friend tf_t operator/(const TransferFunction &a, const TransferFunction &b)
+    {
+        return (tf_t)(a) / (tf_t)(b);
+    }
+
+#ifndef CR_NO_USE_COUT
+    friend std::ostream& operator<<(std::ostream& stream, const TransferFunction& tf)
+    {
+        std::stringstream ssnum, ssden;
+    
+        for(size_t i = 0; i < tf.num_array_.size(); i++)
+        {
+            if(tf.num_array_[i] > 0 && i != 0)
+                ssnum << "+";
+            ssnum << tf.num_array_[i];
+            if(auto deg = tf.num_deg(i); deg != 0)
+            {
+                if(deg == 1)
+                    ssnum << "s";
+                else
+                    ssnum << "s^" << deg;
+            }
+            if(i != tf.num_array_.size()-1)
+                ssnum << " ";
+        }
+
+        for(size_t i = 0; i < tf.den_array_.size(); i++)
+        {
+            if(tf.den_array_[i] > 0 && i != 0)
+                ssden << "+";
+            ssden << tf.den_array_[i];
+            if(auto deg = tf.den_deg(i); deg != 0)
+            {
+                if(deg == 1)
+                    ssden << "s";
+                else
+                    ssden << "s^" << deg;
+            }
+            if(i != tf.den_array_.size()-1)
+                ssden << " ";
+        }
+
+        size_t len = std::max(ssnum.str().length(), ssden.str().length());
+        std::string bar(len, '-');
+
+        stream << std::string((len-ssnum.str().length())/2, ' ') + ssnum.str() + "\n"
+                    + bar + "\n" 
+                    + std::string((len-ssden.str().length())/2, ' ') + ssden.str();
+
+        return stream;
+    };
+#endif
 
 private:
     std::vector<double> num_array_;
