@@ -37,6 +37,7 @@ theme:
   icon:
     logo: fontawesome/solid/robot
     repo: fontawesome/brands/github
+  custom_dir: docs/overrides
 
 markdown_extensions:
     - admonition

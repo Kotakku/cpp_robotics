@@ -28,7 +28,6 @@ jobs:
         run: |
           sh gen_doc.sh
           mkdocs build
-          cp docs/google*.html site/
 
       - name: mkdocs deploy
         uses: peaceiris/actions-gh-pages@v3
