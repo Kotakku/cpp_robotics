@@ -1236,6 +1236,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://kotakku.github.io/cpp_robotics/example/template/</loc>
+         <lastmod>2023-07-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://kotakku.github.io/cpp_robotics/example/algorithm/icp_sample/</loc>
          <lastmod>2023-07-04</lastmod>
          <changefreq>daily</changefreq>
@@ -1271,6 +1276,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://kotakku.github.io/cpp_robotics/example/control/vrft_pid/</loc>
+         <lastmod>2023-07-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://kotakku.github.io/cpp_robotics/example/optimize/active_set_method_example/</loc>
          <lastmod>2023-07-04</lastmod>
          <changefreq>daily</changefreq>
@@ -1282,11 +1292,6 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/example/optimize/optimize_scalar/</loc>
-         <lastmod>2023-07-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/example/optimize/optimize_with_constraint/</loc>
          <lastmod>2023-07-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1307,11 +1312,6 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/example/system/bode_nyquist/</loc>
-         <lastmod>2023-07-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/example/system/disc_tf/</loc>
          <lastmod>2023-07-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1642,6 +1642,11 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/tech_note/system/discrete/</loc>
+         <lastmod>2023-07-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kotakku.github.io/cpp_robotics/tech_note/system/link_dynamics/</loc>
          <lastmod>2023-07-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
