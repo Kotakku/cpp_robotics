@@ -392,7 +392,7 @@ public:
             case 1:
                 {
                     Vector2d& p0 = points[0];
-                    _spline.push_back({spline::catumull_spline(p0, p0, p0, p0), 0});
+                    _spline.push_back({spline::catumull_spline(p0, p0, p0, p0), 0, {}});
                     return;
                 }
             case 2:

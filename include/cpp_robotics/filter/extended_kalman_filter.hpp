@@ -126,6 +126,7 @@ public:
     /// @brief 観測線形化行列
     virtual void linearized_observe_matrix(Eigen::MatrixXd &H, Eigen::VectorXd x, Eigen::VectorXd z)
     {
+        (void) z;
         H = derivative(std::bind(&ExtendedKalmanFilter::observe, this, std::placeholders::_1), x);
     }
 
