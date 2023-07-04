@@ -90,7 +90,7 @@ int main()
     {
         cr::SisoFeedbackSystem siso_sys = cr::make_feedback_system(pid, plant);
         siso_sys.reset();
-        auto [t, responce] = cr::lsim(siso_sys, ref_trajecoty);
+        auto [t, u, responce] = cr::lsim(siso_sys, ref_trajecoty);
         plt::named_plot("PID responce(dt = 0.001)", t, responce);
     }
 
@@ -98,7 +98,7 @@ int main()
     {
         cr::SisoFeedbackSystem siso_sys = cr::make_feedback_system(nctf, plant);
         siso_sys.reset();
-        auto [t, responce] = cr::lsim(siso_sys, ref_trajecoty);
+        auto [t, u, responce] = cr::lsim(siso_sys, ref_trajecoty);
         plt::named_plot("NCTF responce(dt = 0.001)", t, responce);
     }
 
@@ -110,7 +110,7 @@ int main()
         cr::SisoFeedbackSystem siso_sys = cr::make_feedback_system(nctf2, plant2);
         siso_sys.reset();
         auto [tref, ref_trajecoty] = ref_trajectory(5.0, ldt);
-        auto [t, responce] = cr::lsim(siso_sys, ref_trajecoty);
+        auto [t, u, responce] = cr::lsim(siso_sys, ref_trajecoty);
         plt::named_plot("NCTF responce(dt = 0.01)", t, responce);
     }
 

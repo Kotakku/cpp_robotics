@@ -56,17 +56,18 @@ extra_javascript:
 nav:
   - 概要: index.md
   - API: /cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/
-  # - プログラム例:
-  #   - HelloWorld: example/hello_world.md
+  - プログラム例:
+    - HelloWorld: example/hello_world.md
   #   - アルゴリズム:
   #     - ICP: example/algorithm/icp_sample.md
   #     - KDtree: example/algorithm/kdtree_sample.md
-  #   - 制御:
-  #     - PID vs NCTF: example/control/pid_vs_nctf.md
+    - 制御:
+      # - PID vs NCTF: example/control/pid_vs_nctf.md
   #     - LQR: example/control/lqr.md
   #     - 正準形: example/control/canonicalize.md
   #     - 極配置: example/control/place.md
   #     - Pure pursuit: example/control/pure_pursuit.md
+      - VRFTによるPIDゲインの自動チューニング: example/control/vrft_pid.md
   #   - 最適化:
   #     - スカラー関数の最適化: example/optimize/optimize_scalar.md
   #     - 無制約最適化: example/optimize/optimize_without_constraint.md

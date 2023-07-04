@@ -50,7 +50,7 @@ int main()
     plt::named_plot("ref trajecoty", t, ref_trajecoty, "--");
 
     cr::SisoFeedbackSystem siso_sys = cr::make_feedback_system(pid, plant);
-    auto [t2, responce] = cr::lsim(siso_sys, ref_trajecoty);
+    auto [t2, u, responce] = cr::lsim(siso_sys, ref_trajecoty);
     plt::named_plot("PID feedback system responce", t2, responce);
 
     // show
