@@ -29,7 +29,7 @@ set(example_files
   controller/canonicalize
   controller/place
   controller/linear_mpc
-  controller/vrft
+  controller/vrft_pid
 
   filter/lpf_step
   filter/hpf_step
@@ -45,7 +45,7 @@ set(example_files
   algorithm/random_example
 
   optimize/optimize_scalar
-  optimize/optimize
+  optimize/optimize_without_constraint
   optimize/optimize_rosenbrock
   optimize/optimize_with_constraint
   optimize/active_set_method_example
@@ -69,7 +69,7 @@ endif()
 find_package(GTest REQUIRED)
 enable_testing()
 set(test_files
-  # common/lib_test
+  common/lib_test
   utility/singleton_test
 
   algorithm/poly_regression_test

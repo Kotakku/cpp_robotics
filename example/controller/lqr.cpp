@@ -21,26 +21,29 @@ int main()
 
     //////////////////// controller ////////////////////
     Eigen::MatrixXd Q(2,2), R(1,1);
-    Q << 3000, 0, 0, 60;
-    R << 0.01;
+    Q << 100, 0, 0, 1;
+    R << 0.001;
     Eigen::MatrixXd K = cr::lqr(A, B, Q, R);
 
-    std::cout << "fb gain" << std::endl;
+    std::cout << "feedback gain" << std::endl;
     std::cout << K << std::endl;
 
     Eigen::Vector2d target_vec;
-    target_vec << 30, 0;
+    target_vec << 20, 0;
     
+    const double input_limit = 400;
 
     {
         
-        auto t = cr::arrange(0, 5.0, dt);
+        auto t = cr::arrange(0, 2.0, dt);
         std::vector<double> x1(t.size()), x2(t.size()), x1_ref(t.size());
 
         //////////////////// simulation ////////////////////
         for(size_t i = 0; i < t.size(); i++)
         {
             Eigen::VectorXd u = K*(target_vec-sys.x());
+
+            u[0] = std::clamp(u[0], -input_limit, input_limit);
 
             auto x = sys.responce(u);
             x1[i] = x(0);

@@ -33,6 +33,6 @@ int main()
     };
     LinkRobot robot = {config_};
     
-    // robot.show_kinematics();
+    robot.show_kinematics();
     robot.show_dynamics();
 }

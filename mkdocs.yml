@@ -63,25 +63,24 @@ nav:
   #     - KDtree: example/algorithm/kdtree_sample.md
     - 制御:
       # - PID vs NCTF: example/control/pid_vs_nctf.md
-  #     - LQR: example/control/lqr.md
-  #     - 正準形: example/control/canonicalize.md
-  #     - 極配置: example/control/place.md
-  #     - Pure pursuit: example/control/pure_pursuit.md
+      - LQR: example/control/lqr.md
+      - 正準形: example/control/canonicalize.md
+      - 極配置: example/control/place.md
+      # - Pure pursuit: example/control/pure_pursuit.md
       - VRFTによるPIDゲインの自動チューニング: example/control/vrft_pid.md
-  #   - 最適化:
-  #     - スカラー関数の最適化: example/optimize/optimize_scalar.md
-  #     - 無制約最適化: example/optimize/optimize_without_constraint.md
-  #     - Rosenbrock関数の最適化: example/optimize/optimize_rosenbrock.md
-  #     - 制約付き最適化: example/optimize/optimize_with_constraint.md
-  #     - 有効制約法: example/optimize/active_set_method_example.md
-  #     - SQP(逐次二次計画法): example/optimize/sqp_example.md
-  #   - システム:
-  #     - 伝達関数のステップ応答: example/system/step_responce.md
-  #     - ボード線図・ナイキスト線図: example/system/bode_nyquist.md
-  #     - 状態空間表現: example/system/state_space_system.md
-  #     - z伝達関数のステップ応答: example/system/disc_tf.md
-  #   - パスプランニング:
-  #     - Dubins曲線: example/path_planning/dubins_path.md
+    - 最適化:
+      - スカラー関数の最適化: example/optimize/optimize_scalar.md
+      - 無制約最適化: example/optimize/optimize_without_constraint.md
+      - Rosenbrock関数の最適化: example/optimize/optimize_rosenbrock.md
+      # - 制約付き最適化: example/optimize/optimize_with_constraint.md
+      # - 有効制約法: example/optimize/active_set_method_example.md
+      # - SQP(逐次二次計画法): example/optimize/sqp_example.md
+    - システム:
+      - 伝達関数のステップ応答: example/system/step_responce.md
+      - ボード線図・ナイキスト線図: example/system/bode_nyquist.md
+      - 状態空間表現: example/system/state_space_system.md
+    - パスプランニング:
+      - Dubins曲線: example/path_planning/dubins_path.md
   #   - 単位系:
   #     - constexpr単位系: example/units/units.md
 

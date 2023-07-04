@@ -1,37 +1,17 @@
 # Dubins曲線
 
-```cpp
-#include <iostream>
-#include "cpp_robotics/cpp_robotics.hpp"
+!!! example "ソースコード"
+    [example/path_planning/dubins_path.cpp](https://github.com/Kotakku/cpp_robotics/blob/develop/example/path_planning/dubins_path.cpp)
 
-int main()
-{
-    using namespace cpp_robotics;
-    namespace plt = matplotlibcpp;
+(4, 3)地点-45度の方向からスタートして(1,1)に45度の方向に到達する経路を生成します。  
+曲線の箇所は曲率が1になるように設定します。
 
-    const Transformd start(4.0, 3.0, radians(-45));
-    const Transformd end(1.0, 1.0, radians(45));
-    const double cavature = 1;
-    DubinsPath dpath(start, end, cavature);
-
-    std::cout << dpath.path_type() << std::endl;
-
-    for(size_t i = 0; i < 3; i++)
-        std::cout << dpath.segment_length(i) << std::endl;
-
-    auto l = linspace(0, dpath.length());
-
-    std::vector<double> x(l.size()), y(l.size());
-
-    for(size_t i = 0; i < l.size(); i++)
-    {
-        auto pos = dpath.position(l[i]);
-        x[i] = pos.x;
-        y[i] = pos.y;
-    }
-    
-    plt::plot(x, y);
-    plt::set_aspect(1.0);
-    plt::show();
-}
+出力
 ```
+RSR
+1.45579
+2.55239
+3.2566
+```
+
+![](../fig/dubins_path.png)

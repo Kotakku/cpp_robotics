@@ -1,18 +1,15 @@
 # スカラー関数の最適化
 
-```cpp
-#include <iostream>
-#include <Eigen/Dense>
-#include <cpp_robotics/optimize.hpp>
+!!! example "ソースコード"
+    [example/optimize/optmize_scalar.cpp](https://github.com/Kotakku/cpp_robotics/blob/develop/optimize/system/optmize_scalar.cpp)
 
-int main()
-{
-    namespace cr = cpp_robotics;
+スカラー値関数の最適化に使える関数の例を示します。  
+黄金探索は連続な下に凸の関数の効率的な最小化ができます
+2つ目の出力ではsin関数のx=0周りでの数値微分を求めています。
 
-    std::cout << "optimize_scalar" << std::endl;
-
-    std::cout << "min x => (x+1)^2 = " << cr::golden_search([](double x){ return std::pow(x+1, 2); }, -10, 10) << std::endl;
-
-    std::cout << "sin'(0) = cos(0) = " << cr::derivative([](double x){ return std::sin(x); }, 0) << std::endl;
-}
+出力
+```
+optimize_scalar
+min x => (x+1)^2 = -1
+sin'(0) = cos(0) = 1
 ```

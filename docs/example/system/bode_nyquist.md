@@ -1,5 +1,9 @@
 # ボード線図・ナイキスト線図
 
+!!! example "ソースコード"
+    [example/system/bode_nyquist.cpp](https://github.com/Kotakku/cpp_robotics/blob/develop/example/system/bode_nyquist.cpp)
+
+
 以下の伝達関数のボード線図とナイキスト線図を表示します
 
 $$
