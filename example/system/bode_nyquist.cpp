@@ -7,9 +7,9 @@ int main()
 {
     namespace cr = cpp_robotics;
 
-    // 伝達関数
-    // tf(s) = 1 / (s + 1)
-    cr::TransferFunction tf({1.0}, {1.0, 1.0}, 0.01);
+    const double omega = 4.0;
+    const double zeta = 0.5;
+    cr::TransferFunction tf({omega*omega}, {1.0, 2.0*zeta*omega, omega*omega}, 0.01);
 
     // ボード線図
     cr::bode_plot(tf);

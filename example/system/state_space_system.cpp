@@ -16,6 +16,21 @@ int main()
 
     cr::StateSpaceSystem sys(A, B, C, dt);
 
-    std::cout << cr::is_controllable(A, B) << std::endl;
-    std::cout << cr::is_observable(A, C) << std::endl;
+    if(cr::is_controllable(A, B))
+    {
+        std::cout << "Controllable" << std::endl;
+    }
+    else
+    {
+        std::cout << "Uncontrollable" << std::endl;
+    }
+    
+    if(cr::is_observable(A, C))
+    {
+        std::cout << "Observable" << std::endl;
+    }
+    else
+    {
+        std::cout << "Unobservable" << std::endl;
+    }
 }

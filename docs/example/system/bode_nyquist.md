@@ -1,22 +1,10 @@
 # ボード線図・ナイキスト線図
 
-```cpp
-#include <iostream>
-#include <Eigen/Dense>
-#include <cpp_robotics/system.hpp>
+以下の伝達関数のボード線図とナイキスト線図を表示します
 
-int main()
-{
-    namespace cr = cpp_robotics;
+$$
+G(s) = \frac{4^2}{s^2 + 2 \cdot 0.5 \cdot 4 \cdot s + 4^2}
+$$
 
-    // 伝達関数
-    // tf(s) = 1 / (s + 1)
-    cr::TransferFunction tf({1.0}, {1.0, 1.0}, 0.01);
-
-    // ボード線図
-    cr::bode_plot(tf);
-
-    // ナイキスト線図
-    cr::nyquist_plot(tf);
-}
-```
+![](../fig/bode.png)
+![](../fig/nyquist.png)
