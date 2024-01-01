@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Eigen/Dense>
+#include <Eigen/../unsupported/Eigen/MatrixFunctions>
 #include <tuple>
 #include "./polynomial.hpp"
 
