@@ -60,8 +60,8 @@ public:
 private:
     std::function<double(double)> nct_;
     Differentiator diff_;
-    Integrator itg_;
     PID pid_;
+    Integrator itg_;
     PID::pid_param_t pid_param_;
 };
 

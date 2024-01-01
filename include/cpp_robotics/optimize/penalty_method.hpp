@@ -40,6 +40,8 @@ static std::tuple<bool, Eigen::VectorXd, size_t> penalty_method(std::function<do
                 case Constraint::Type::Ineq:
                     y += r*std::pow(std::max(0.0, con.con_f(x)), 2);
                     break;
+                default:
+                    break;
             }
         }
 

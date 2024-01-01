@@ -32,6 +32,8 @@ static std::tuple<bool, Eigen::VectorXd, size_t> barrier_method(std::function<do
                 case Constraint::Type::Ineq:
                     y += r * std::log(std::abs(con.con_f(x))); // / std::pow(, 2);
                     break;
+                default:
+                    break;
             }
         }
 
