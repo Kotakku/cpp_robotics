@@ -16,11 +16,15 @@ endif()
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 
 find_package(Eigen3 REQUIRED)
-find_package(ginac REQUIRED)
-find_package(Python3 COMPONENTS Development NumPy)
+
+option(BUILD_EXAMPLES "build examples" OFF)
+option(BUILD_TESTS "build tests" OFF)
 
 #################### example ####################
-if("${CR_BUILD_EXAMPLE}" STREQUAL "ON")
+if(BUILD_EXAMPLES)
+
+find_package(Python3 COMPONENTS Development NumPy)
+
 set(example_files
   hello_world
   controller/motor_pid_control
@@ -30,6 +34,7 @@ set(example_files
   controller/place
   controller/linear_mpc
   controller/vrft_pid
+  controller/nctf_example
 
   filter/lpf_step
   filter/hpf_step
@@ -37,7 +42,6 @@ set(example_files
 
   system/step_responce
   system/bode_nyquist
-  system/link_robot
   system/state_space_system
   algorithm/kdtree_sample
   algorithm/icp_sample
@@ -61,11 +65,12 @@ foreach(example_file ${example_files})
 get_filename_component(example_name example/${example_file}.cpp NAME_WE)
 add_executable(${example_name} example/${example_file}.cpp)
 target_include_directories(${example_name} PRIVATE include ${EIGEN3_INCLUDE_DIR} ${Python3_INCLUDE_DIRS} ${Python3_NumPy_INCLUDE_DIRS})
-target_link_libraries(${example_name} PRIVATE Python3::Python Python3::NumPy ginac)
+target_link_libraries(${example_name} PRIVATE Python3::Python Python3::NumPy)
 endforeach()
 endif()
 
 #################### test ####################
+if(BUILD_TESTS)
 find_package(GTest REQUIRED)
 enable_testing()
 set(test_files
@@ -81,7 +86,6 @@ set(test_files
   system/polynomial_test
   system/discret_tf_test
   system/time_responce_test
-  system/link_robot_test
   system/transfer_function_test
 
   filter/tf_filter_test
@@ -113,9 +117,10 @@ foreach(test_file ${test_files})
 get_filename_component(test_name test/${test_file}.cpp NAME_WE)
 add_executable(${test_name} test/${test_file}.cpp)
 target_include_directories(${test_name} PRIVATE include ${EIGEN3_INCLUDE_DIR})
-target_link_libraries(${test_name} PRIVATE GTest::GTest GTest::Main ginac)
+target_link_libraries(${test_name} PRIVATE GTest::GTest GTest::Main)
 gtest_discover_tests(${test_name})
 endforeach()
+endif()
 
 #################### install ####################
 install(
@@ -123,33 +128,27 @@ install(
   DESTINATION share/${PROJECT_NAME}/
 )
 
-# ヘッダオンリーでコンパイルを要求しない
 add_library(${PROJECT_NAME} INTERFACE)
 
-# C++17以上
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_17)
 
 target_include_directories(${PROJECT_NAME} INTERFACE
-    # 通常のビルドで使われるインクルードパス
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    # インストールされたパッケージを利用するとき使われるインクルードパス
-    $<INSTALL_INTERFACE:include>)
+    $<INSTALL_INTERFACE:include>
+)
 
-# configの生成(*-config.cmake)
 install(TARGETS ${PROJECT_NAME}
-  # 生成するconfigファイルの名前
-  EXPORT ${PROJECT_NAME}-config)
+  EXPORT ${PROJECT_NAME}-config
+)
 
-# インストールするconfigの指定、前項で生成したもの
 install(EXPORT ${PROJECT_NAME}-config
-  # 名前空間の指定
   NAMESPACE ${PROJECT_NAME}::
-  # インストール先
-  DESTINATION lib/cmake/${PROJECT_NAME})
+  DESTINATION lib/cmake/${PROJECT_NAME}
+)
 
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
-  # コピー先
-  DESTINATION include)
+install(
+  DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
+  DESTINATION include
+)
 
-# エイリアスの登録
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})

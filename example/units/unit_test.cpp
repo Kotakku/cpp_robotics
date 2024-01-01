@@ -1,6 +1,4 @@
 #include <iostream>
-// #include <cpp_robotics/core.hpp>
-
 #include "cpp_robotics/utility.hpp"
 #include "cpp_robotics/vector.hpp"
 #include "cpp_robotics/unit.hpp"
@@ -18,8 +16,6 @@ int main()
 
     constexpr Volt voltage = 20_V;
     constexpr Ohm res = 5_ohm;
-
-
 
     constexpr Ampere current = voltage / res; // 4.0
 }
