@@ -6,7 +6,7 @@
 namespace cpp_robotics
 {
 
-Eigen::VectorXd vrft(const Eigen::VectorXd &u, const Eigen::VectorXd &y, const double Ts, TransferFunction ref_model, std::vector<TransferFunction> &control_base, std::optional<TransferFunction> prefilter)
+Eigen::VectorXd vrft_leastsq(const Eigen::VectorXd &u, const Eigen::VectorXd &y, const double Ts, TransferFunction ref_model, std::vector<TransferFunction> &control_base, std::optional<TransferFunction> prefilter)
 {
     (void) Ts;
 
@@ -19,7 +19,7 @@ Eigen::VectorXd vrft(const Eigen::VectorXd &u, const Eigen::VectorXd &y, const d
     else
     {
         uf = u;
-        ef = lsim_y((ref_model.inv()-1.0), y);;
+        ef = lsim_y((ref_model.inv()-1.0), y);
     }
 
     Eigen::MatrixXd phi(ef.size(), control_base.size());
@@ -39,7 +39,36 @@ Eigen::VectorXd vrft_pid(const Eigen::VectorXd &u, const Eigen::VectorXd &y, con
         TransferFunction({1.0, 0.0}, {Td, 1.0}, Ts) // D
     };
 
-    return vrft(u, y, Ts, ref_model, control_base, prefilter);
+    return vrft_leastsq(u, y, Ts, ref_model, control_base, prefilter);
+}
+
+Eigen::VectorXd vrft_p(const Eigen::VectorXd &u, const Eigen::VectorXd &y, const double Ts, TransferFunction ref_model, std::optional<TransferFunction> prefilter)
+{
+    std::vector<TransferFunction> control_base = {
+        TransferFunction({1.0}, {1.0}, Ts)
+    };
+
+    return vrft_leastsq(u, y, Ts, ref_model, control_base, prefilter);
+}
+
+Eigen::VectorXd vrft_pi(const Eigen::VectorXd &u, const Eigen::VectorXd &y, const double Ts, TransferFunction ref_model, std::optional<TransferFunction> prefilter)
+{
+    std::vector<TransferFunction> control_base = {
+        TransferFunction({1.0}, {1.0}, Ts),
+        TransferFunction({1.0}, {1.0, 0.0}, Ts)
+    };
+
+    return vrft_leastsq(u, y, Ts, ref_model, control_base, prefilter);
+}
+
+Eigen::VectorXd vrft_pd(const Eigen::VectorXd &u, const Eigen::VectorXd &y, const double Ts, TransferFunction ref_model, std::optional<TransferFunction> prefilter, double Td = 0.01)
+{
+    std::vector<TransferFunction> control_base = {
+        TransferFunction({1.0}, {1.0}, Ts),
+        TransferFunction({1.0, 0.0}, {Td, 1.0}, Ts)
+    };
+
+    return vrft_leastsq(u, y, Ts, ref_model, control_base, prefilter);
 }
 
 }

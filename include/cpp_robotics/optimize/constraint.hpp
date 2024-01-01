@@ -5,6 +5,7 @@
 #include <vector>
 #include <optional>
 #include <numeric>
+#include <variant>
 #include <Eigen/Dense>
 #include "derivative.hpp"
 
@@ -27,7 +28,10 @@ struct Constraint
         Eq,
 
         // g(x) <= 0
-        Ineq
+        Ineq,
+
+        // undefined
+        None
     };
     
     Type type;
@@ -35,6 +39,8 @@ struct Constraint
     std::optional<grad_func_type> con_grad_f;
     std::optional<hessian_func_type> con_hessian_f;
 
+    Constraint():
+        type(Type::None), con_f([](Eigen::VectorXd x) { (void)x; return 0; }) {}
     Constraint(Type type_, func_type con_):
         type(type_), con_f(con_) {}
 
@@ -79,6 +85,19 @@ struct Constraint
  */
 class ConstraintArray : public std::vector<Constraint>
 {
+    template<class Type1, class Type2>
+    struct VariItem
+    {
+        using vari_type = std::variant<Type1, Type2>;
+        // VariItem() = default;
+        VariItem(Type1 val) { val_ = val; }
+        VariItem(Type2 val) { val_ = val; }
+
+        vari_type &item() { return val_; } 
+
+    private:
+        vari_type val_;
+    };
 public:
     // std::vector<Constraint>::size_type size() const
     // {
@@ -88,6 +107,23 @@ public:
     ConstraintArray() = default;
     ConstraintArray(std::initializer_list<Constraint> con):
         vector(con.begin(), con.end()) {}
+
+    ConstraintArray(std::initializer_list<VariItem<Constraint, ConstraintArray>> cons)
+    {
+        for(auto c : cons)
+        {
+            if(std::holds_alternative<Constraint>(c.item()))
+            {
+                auto & cval = std::get<Constraint>(c.item());
+                this->insert(this->end(), cval);
+            }
+            else
+            {
+                auto & cary = std::get<ConstraintArray>(c.item());
+                this->insert(this->end(), cary.begin(), cary.end());
+            }
+        }
+    }
 
     std::vector<double> eval(const Eigen::VectorXd &x) const
     {

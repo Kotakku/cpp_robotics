@@ -3,6 +3,7 @@
 #include <functional>
 #include "./pid.hpp"
 #include "../filter/differentiator.hpp"
+#include "../filter/integrator.hpp"
 
 namespace cpp_robotics
 {
@@ -28,7 +29,9 @@ public:
     NctfController(std::function<double(double)> nct, PID::pid_param_t pid_param, double dt):
         nct_(nct),
         diff_(pid_param.gpd, dt),
-        pid_(pid_param)
+        pid_(pid_param),
+        itg_(dt),
+        pid_param_(pid_param)
     {
 
     }
@@ -39,12 +42,14 @@ public:
         pid_.reset();
     }
 
+    double nct_error = 0;
     double control(double target, double state) { return control(target-state); }
     double control(double e)
     {
         double state_e_dot = diff_.filtering(e);
         double nct_e_dot = nct_(e);
-        return pid_.calculate(-(nct_e_dot - state_e_dot));
+        nct_error = -(nct_e_dot - state_e_dot);
+        return pid_.calculate(nct_error);
     }
 
     std::function<double(double)> nct() const
@@ -56,6 +61,8 @@ private:
     std::function<double(double)> nct_;
     Differentiator diff_;
     PID pid_;
+    Integrator itg_;
+    PID::pid_param_t pid_param_;
 };
 
 }

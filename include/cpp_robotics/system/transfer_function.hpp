@@ -472,7 +472,7 @@ public:
     };
 #endif
 
-private:
+protected:
     std::vector<double> num_array_;
     std::vector<double> den_array_;
 

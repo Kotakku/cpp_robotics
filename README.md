@@ -13,8 +13,8 @@
 # 環境
 - C++20
 - Eigen
-- Python3 (matplotlib用)
 - gtest
+- Python3 (examplesをビルドする時に使用するmatplotlib用)
 
 # サードパーティライブラリ
 - [matplotlib-cpp](https://github.com/lava/matplotlib-cpp)
