@@ -84,6 +84,34 @@ static double second_derivative(std::function<double(double)> f, double x, doubl
 }
 
 /**
+ * @brief R^n -> Rの2回数値微分
+ * 
+ * @param f
+ * @param x
+ * @param eps
+ * @return Eigen::MatrixXd
+*/
+static Eigen::MatrixXd second_derivative(std::function<double(Eigen::VectorXd)> f, Eigen::VectorXd x, double eps = std::pow(std::numeric_limits<double>::epsilon(), 0.5))
+{
+    int n = x.size();
+    Eigen::MatrixXd H(n, n);
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            Eigen::VectorXd e_i = Eigen::VectorXd::Zero(n);
+            Eigen::VectorXd e_j = Eigen::VectorXd::Zero(n);
+            e_i[i] = eps;
+            e_j[j] = eps;
+            
+            double f_ij = f(x + e_i + e_j) - f(x + e_i - e_j) - f(x - e_i + e_j) + f(x - e_i - e_j);
+            H(i, j) = f_ij / (4 * eps * eps);
+        }
+    }
+
+    return H;
+}
+
+/**
  * @brief 
  * 
  * @param f 

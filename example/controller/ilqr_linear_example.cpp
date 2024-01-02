@@ -12,13 +12,13 @@ int main()
     Eigen::MatrixXd A(4, 4);
     A << 0, 0, 1, 0,
          0, 0, 0, 1,
-         0, 0, -0.3, 0.0,
+         0, 0, -0.6, 0.0,
          0, 0, 0, -0.3;
     
     Eigen::MatrixXd B(4, 2);
     B << 0,0,
          0,0,
-         1, 0,
+         0.7, 0,
          0, 1;
     
     Eigen::MatrixXd Q(4, 4);
@@ -29,34 +29,26 @@ int main()
 
     Eigen::MatrixXd Qf = Q;
 
-    Q = Q * Ts;
-    R = R * Ts;
-
-    std::cout << "tp0" << std::endl;
-
     auto model = cr::DiscreteLinearOCP::from_continuous(A, B, Q, R, Qf, Ts, 30);
 
     Eigen::VectorXd ulim(2);
-    ulim << 5, 5;
+    ulim << 3, 3;
     model.u_limit = std::make_pair(-ulim, ulim);
 
-    std::cout << "tp1" << std::endl;
     cr::iLQR ilqr(model);
 
-    std::cout << "tp2" << std::endl;
-
     Eigen::VectorXd x0(4);
-    x0 << 5, 3, 0, 0;
+    x0 << 5, 5, 0, 0;
 
-    model.set_x_ref((Eigen::VectorXd(4) << 4, -1, 0, 0).finished());
+    model.set_x_ref((Eigen::VectorXd(4) << 1, -1, 0, 0).finished());
 
-    if(ilqr.generate_trajectory(x0) == cr::iLQR<>::Result::SUCCESS)
+    if(ilqr.generate_trajectory(x0) == cr::iLQRResult::SUCCESS)
     {
         std::cout << "Success" << std::endl;
 
         namespace plt = matplotlibcpp;
 
-        std::vector<double> u, x1, x2, t, solve_time;
+        std::vector<double> u1, u2, x1, x2, t, solve_time;
 
         for(size_t i = 0; i < 100; i++)
         {
@@ -66,16 +58,18 @@ int main()
 
             double microseconds = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
-            x0 = model.model(x0, ilqr.get_input()[0]);
+            x0 = model.dynamics(x0, ilqr.get_input()[0]);
 
             t.push_back(i * Ts);
-            u.push_back(ilqr.get_input()[0](0));
+            u1.push_back(ilqr.get_input()[0](0));
+            u2.push_back(ilqr.get_input()[0](1));
             x1.push_back(ilqr.get_state()[0](0));
             x2.push_back(ilqr.get_state()[0](1));
             solve_time.push_back(microseconds);
         }
 
-        plt::named_plot("u", t, u);
+        plt::named_plot("u1", t, u1);
+        plt::named_plot("u2", t, u2);
         plt::named_plot("x1", t, x1);
         plt::named_plot("x2", t, x2);
         plt::legend();

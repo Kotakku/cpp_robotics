@@ -35,7 +35,9 @@ set(example_files
   # controller/linear_mpc
   # controller/vrft_pid
   # controller/nctf_example
-  controller/ilqr_example
+  # controller/ilqr_linear_example
+  # controller/ilqr_diffbot_example
+  controller/alilqr_example
 
   # filter/lpf_step
   # filter/hpf_step
