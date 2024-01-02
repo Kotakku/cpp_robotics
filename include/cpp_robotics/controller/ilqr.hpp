@@ -4,10 +4,10 @@
 #include "optimal_control_problem.hpp"
 #include <cpp_robotics/optimize/quadprog.hpp>
 
-#include <iostream>
+// #include <iostream>
 
-#define MAT_SIZE(mat) std::cout << #mat << ": " << mat.rows() << "x" << mat.cols() << std::endl;
-#define MAT(mat) std::cout << #mat << ": \n" << mat << std::endl;
+// #define MAT_SIZE(mat) std::cout << #mat << ": " << mat.rows() << "x" << mat.cols() << std::endl;
+// #define MAT(mat) std::cout << #mat << ": \n" << mat << std::endl;
 namespace cpp_robotics
 {
 

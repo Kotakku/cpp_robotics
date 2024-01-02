@@ -5,6 +5,14 @@
 namespace cpp_robotics
 {
 
+bool isPositiveDefinite(const Eigen::MatrixXd& matrix) {
+    Eigen::LLT<Eigen::MatrixXd> llt(matrix);  // Compute the Cholesky decomposition
+    if(llt.info() == Eigen::NumericalIssue) {
+        return false;  // Matrix is not positive definite
+    }
+    return true;
+}
+
 // 疑似逆行列
 template<typename MatrixType>
 MatrixType pseudo_inverse(const MatrixType &a, double epsilon = std::numeric_limits<double>::epsilon()) //, Eigen::MatrixXd W = Eigen::MatrixXd())

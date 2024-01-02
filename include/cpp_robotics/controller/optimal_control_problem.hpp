@@ -93,11 +93,200 @@ private:
     size_t N;
 };
 
+class OCPConstraint
+{
+public:
+    using func_type = std::function<double(Eigen::VectorXd, Eigen::VectorXd)>;
+    using grad_func_type = std::function<Eigen::VectorXd(Eigen::VectorXd, Eigen::VectorXd)>;
+    using hessian_func_type = std::function<Eigen::MatrixXd(Eigen::VectorXd, Eigen::VectorXd)>;
+    
+    enum Type : uint8_t
+    {
+        // g(x) = 0
+        Eq,
+
+        // g(x) <= 0
+        Ineq,
+
+        // undefined
+        None
+    };
+    
+    Type type;
+    func_type con_f;
+    std::optional<grad_func_type> con_grad_fx;
+    std::optional<grad_func_type> con_grad_fu;
+    std::optional<hessian_func_type> con_hessian_fxx;
+    std::optional<hessian_func_type> con_hessian_fux;
+    std::optional<hessian_func_type> con_hessian_fuu;
+
+    OCPConstraint(double eps = 1e-4):
+        type(Type::None), con_f([](Eigen::VectorXd x, Eigen::VectorXd u) { (void)x; (void)u; return 0; }), eps_(eps) {}
+    OCPConstraint(Type type, func_type con, double eps = 1e-4):
+        type(type), con_f(con), eps_(eps) {}
+
+    double eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const
+    {
+        return con_f(x, u);
+    }
+
+    bool satisfy(const Eigen::VectorXd &x, const Eigen::VectorXd &u, const double tol) const
+    {
+        const double val = eval(x, u);
+        if(type == Type::Eq)
+        {
+            return std::abs(val) < tol;
+        }
+        else
+        {
+            return val < tol;
+        }
+    }
+
+    Eigen::VectorXd grad_fx(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const
+    {
+        if(con_grad_fx)
+            return con_grad_fx.value()(x, u);
+        
+        return derivative([&](const Eigen::VectorXd &x){ return con_f(x, u); }, x, eps_);
+    }
+
+    Eigen::VectorXd grad_fu(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const
+    {
+        if(con_grad_fu)
+            return con_grad_fu.value()(x, u);
+        
+        return derivative([&](const Eigen::VectorXd &u){ return con_f(x, u); }, u, eps_);
+    }
+
+    Eigen::MatrixXd hessian_fxx(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const
+    {
+        if(con_hessian_fxx)
+            return con_hessian_fxx.value()(x, u);
+        
+        return second_derivative([&](const Eigen::VectorXd &x){ return con_f(x, u); }, x, eps_);
+    }
+
+    Eigen::MatrixXd hessian_fuu(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const
+    {
+        if(con_hessian_fuu)
+            return con_hessian_fuu.value()(x, u);
+        
+        return second_derivative([&](const Eigen::VectorXd &u){ return con_f(x, u); }, u, eps_);
+    }
+
+    Eigen::MatrixXd hessian_fux(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const
+    {
+        if(con_hessian_fux)
+            return con_hessian_fux.value()(x, u);
+        
+        Eigen::MatrixXd Q(u.size(), x.size());
+
+        for (int c = 0; c < x.size(); c++)
+        {
+            for (int r = 0; r < u.size(); r++)
+            {
+                Eigen::VectorXd e_u = Eigen::VectorXd::Zero(u.size());
+                Eigen::VectorXd e_x = Eigen::VectorXd::Zero(x.size());
+                e_u[r] = eps_;
+                e_x[c] = eps_;
+
+                double f_rc = con_f(x + e_x, u + e_u) - con_f(x + e_x, u - e_u) - con_f(x - e_x, u + e_u) + con_f(x - e_x, u - e_u);
+                Q(r, c) = f_rc / (4 * eps_ * eps_);
+            }
+        }
+
+        return Q;
+    }
+
+private:
+    double eps_;
+};
+
+class OCPConstraintArray : public std::vector<OCPConstraint>
+{
+    template<class Type1, class Type2>
+    struct VariItem
+    {
+        using vari_type = std::variant<Type1, Type2>;
+        // VariItem() = default;
+        VariItem(Type1 val) { val_ = val; }
+        VariItem(Type2 val) { val_ = val; }
+
+        vari_type &item() { return val_; } 
+
+    private:
+        vari_type val_;
+    };
+public:
+    OCPConstraintArray() = default;
+    OCPConstraintArray(std::initializer_list<OCPConstraint> con):
+        vector(con.begin(), con.end()) {}
+
+    OCPConstraintArray(std::initializer_list<VariItem<OCPConstraint, OCPConstraintArray>> cons)
+    {
+        for(auto c : cons)
+        {
+            if(std::holds_alternative<OCPConstraint>(c.item()))
+            {
+                auto & cval = std::get<OCPConstraint>(c.item());
+                this->insert(this->end(), cval);
+            }
+            else
+            {
+                auto & cary = std::get<OCPConstraintArray>(c.item());
+                this->insert(this->end(), cary.begin(), cary.end());
+            }
+        }
+    }
+
+    using std::vector<OCPConstraint>::push_back;
+    void push_back(const OCPConstraintArray &cons)
+    {
+        this->insert(this->end(), cons.begin(), cons.end());
+    }
+
+    Eigen::VectorXd eval_all_vec(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const
+    {
+        Eigen::VectorXd ret(size());
+        for (size_t i = 0; i < size(); i++)
+        {
+            ret[i] = at(i).eval(x, u);
+        }
+        return ret;
+    }
+
+    std::vector<double> eval_all(const Eigen::VectorXd &x, const Eigen::VectorXd &u)
+    {
+        std::vector<double> ret(size());
+        for (size_t i = 0; i < size(); i++)
+        {
+            ret[i] = at(i).eval(x, u);
+        }
+        return ret;
+    }
+};
+
+static OCPConstraintArray OCPInputBoundConstraints(const Eigen::VectorXd &lb, const Eigen::VectorXd &ub)
+{
+    assert(lb.size() == ub.size());
+
+    const size_t input_size = lb.size();
+
+    OCPConstraintArray constraints;
+    for(size_t i = 0; i < input_size; i++)
+    {
+        constraints.push_back(OCPConstraint(OCPConstraint::Type::Ineq, [lb, i](Eigen::VectorXd /*x*/, Eigen::VectorXd u){ return 10.0*(lb[i] - u[i]); })); // lb <= u
+        constraints.push_back(OCPConstraint(OCPConstraint::Type::Ineq, [ub, i](Eigen::VectorXd /*x*/, Eigen::VectorXd u){ return 10.0*(u[i] - ub[i]); })); // u <= ub
+    }
+    return constraints;
+}
+
 class DiscreteNonlinearOCP
 {
 public:
     std::optional<std::pair<Eigen::VectorXd, Eigen::VectorXd>> u_limit; // lower, upper
-    ConstraintArray constraints;
+    OCPConstraintArray constraints;
 
     DiscreteNonlinearOCP(size_t state_size, size_t input_size, size_t horizon):
         state_size_(state_size), input_size_(input_size), horizon_(horizon)
