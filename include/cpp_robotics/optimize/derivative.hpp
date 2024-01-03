@@ -111,6 +111,27 @@ static Eigen::MatrixXd second_derivative(std::function<double(Eigen::VectorXd)> 
     return H;
 }
 
+static Eigen::MatrixXd mixed_derivative(std::function<double(Eigen::VectorXd, Eigen::VectorXd)> f, Eigen::VectorXd x, Eigen::VectorXd y, double eps = std::pow(std::numeric_limits<double>::epsilon(), 0.5))
+{
+    int n = x.size();
+    int m = y.size();
+    Eigen::MatrixXd H(n, m);
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; j++) {
+            Eigen::VectorXd e_i = Eigen::VectorXd::Zero(n);
+            Eigen::VectorXd e_j = Eigen::VectorXd::Zero(m);
+            e_i[i] = eps;
+            e_j[j] = eps;
+            
+            double f_ij = f(x + e_i, y + e_j) - f(x + e_i, y - e_j) - f(x - e_i, y + e_j) + f(x - e_i, y - e_j);
+            H(i, j) = f_ij / (4 * eps * eps);
+        }
+    }
+
+    return H;
+}
+
 /**
  * @brief 
  * 

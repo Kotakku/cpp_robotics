@@ -10,8 +10,11 @@ if(NOT CMAKE_CXX_STANDARD)
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_compile_options(-O2 -Wall -Wextra -Wpedantic -Wno-unused-variable -Wno-unused-function)
+  add_compile_options(-O3 -g -Wall -Wextra -Wpedantic -Wno-unused-variable -Wno-unused-function)
 endif()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -g")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 
@@ -38,6 +41,7 @@ set(example_files
   # controller/ilqr_linear_example
   # controller/ilqr_diffbot_example
   controller/alilqr_example
+  # controller/autodiff_example
 
   # filter/lpf_step
   # filter/hpf_step

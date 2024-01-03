@@ -27,96 +27,94 @@ enum class ALiLQRResult
     FAILED
 };
 
-template<class Model>
+struct ALConfig
+{
+    size_t max_iter = 30;
+    size_t max_ilqr_iter = 100;
+
+    // cost torelance
+    double cost_torelance = 1e-4;
+
+    // constraint torelance
+    double constraint_torelance = 1e-3;
+    
+    // forward pass line search stopping criteria
+    double beta1 = 1e-4;
+    double beta2 = 10.0;
+
+    // forward pass update rate
+    double alpha_scale = 0.5;
+    size_t max_forward_itr = 10;
+
+    // dual tolerance
+    double dual_torelance = 1e-4;
+
+    // penalty update rate
+    double penalty_initial = 1e-4;
+    double penalty_scale_factor = 10;
+    double penalty_max = 1e8;
+
+    // regularization
+    double reg_initial = 1e-6;
+    double reg_min = 1e-8;
+    double reg_max = 1e8;
+    double reg_scale_factor = 1.6;
+
+    // finite difference step
+    double eps = 1e-4;
+};
+
 class ALiLQR
 {
-    static constexpr bool is_linear_ocp = std::is_base_of<DiscreteLinearOCP, Model>::value;
-    static constexpr bool is_nonlinear_ocp = std::is_base_of<DiscreteNonlinearOCP, Model>::value;
 public:
-    struct Config
+    ALiLQR(OCPDynamics::SharedPtr dynamics, OCPCost::SharedPtr cost, const OCPConstraintArray &constraints = OCPConstraintArray(), ALConfig config = ALConfig()):
+        ALiLQR(OptimalControlProblem(dynamics, cost, constraints), config) {}
+    
+    ALiLQR(const OptimalControlProblem &prob, ALConfig config = ALConfig()):
+        prob_(prob), config_(config)
     {
-        size_t max_iter = 30;
-        size_t max_ilqr_iter = 50;
-
-        // cost torelance
-        double cost_torelance = 1e-4;
-
-        // constraint torelance
-        double constraint_torelance = 1e-3;
-        
-        // forward pass line search stopping criteria
-        double beta1 = 1e-4;
-        double beta2 = 10.0;
-
-        // forward pass update rate
-        double alpha_scale = 0.5;
-        size_t max_forward_itr = 10;
-
-        // dual tolerance
-        double dual_torelance = 1e-4;
-
-        // penalty update rate
-        double penalty_initial = 1e-4;
-        double penalty_scale_factor = 4;
-        double penalty_max = 1e8;
-
-        // regularization
-        double reg_initial = 1e-4;
-        double reg_min = 1e-8;
-        double reg_max = 1e8;
-        double reg_scale_factor = 1.6;
-
-        // finite difference step
-        double eps = 1e-4;
-    };
-
-    ALiLQR(const Model &model, Config config = Config()):
-        model_(model), config_(config)
-    {
-        static_assert(is_nonlinear_ocp, "Model must be DiscreteNonlinearOCP");
-
         // setup workspace
-        U.resize(model_.horizon());
-        tmpU.resize(model_.horizon());
-        for(size_t i = 0; i < model_.horizon(); i++)
+        U.resize(prob_.horizon());
+        tmpU.resize(prob_.horizon());
+        for(size_t i = 0; i < prob_.horizon(); i++)
         {
-            U[i] = Eigen::VectorXd::Zero(model_.input_size());
-            tmpU[i] = Eigen::VectorXd::Zero(model_.input_size());
+            U[i] = Eigen::VectorXd::Zero(prob_.input_size());
+            tmpU[i] = Eigen::VectorXd::Zero(prob_.input_size());
         }
-        X.resize(model_.horizon() + 1);
-        tmpX.resize(model_.horizon() + 1);
-        for(size_t i = 0; i < model_.horizon() + 1; i++)
+        X.resize(prob_.horizon() + 1);
+        tmpX.resize(prob_.horizon() + 1);
+        for(size_t i = 0; i < prob_.horizon() + 1; i++)
         {
-            X[i] = Eigen::VectorXd::Zero(model_.state_size());
-            tmpX[i] = Eigen::VectorXd::Zero(model_.state_size());
+            X[i] = Eigen::VectorXd::Zero(prob_.state_size());
+            tmpX[i] = Eigen::VectorXd::Zero(prob_.state_size());
         }
-        K.resize(model_.horizon());
-        for(size_t i = 0; i < model_.horizon(); i++)
+        K.resize(prob_.horizon());
+        for(size_t i = 0; i < prob_.horizon(); i++)
         {
-            K[i] = Eigen::MatrixXd::Zero(model_.input_size(), model_.state_size());
+            K[i] = Eigen::MatrixXd::Zero(prob_.input_size(), prob_.state_size());
         }
-        d.resize(model_.horizon());
-        for(size_t i = 0; i < model_.horizon(); i++)
+        d.resize(prob_.horizon());
+        for(size_t i = 0; i < prob_.horizon(); i++)
         {
-            d[i] = Eigen::VectorXd::Zero(model_.input_size());
-        }
-
-        lambdas.resize(model_.horizon());
-        for(size_t i = 0; i < model_.horizon(); i++)
-        {
-            lambdas[i] = Eigen::VectorXd::Zero(model_.constraints.size());
+            d[i] = Eigen::VectorXd::Zero(prob_.input_size());
         }
 
-        penaltys.resize(model_.horizon());
-        for(size_t i = 0; i < model_.horizon(); i++)
+        lambdas.resize(prob_.horizon());
+        for(size_t i = 0; i < prob_.horizon(); i++)
         {
-            penaltys[i] = Eigen::VectorXd::Zero(model_.constraints.size());
+            lambdas[i] = Eigen::VectorXd::Zero(prob_.constraints.size());
         }
 
-        constraints_val.resize(model_.horizon());
-        for(size_t i = 0; i < model_.horizon(); i++)
+        penaltys.resize(prob_.horizon());
+        for(size_t i = 0; i < prob_.horizon(); i++)
         {
-            constraints_val[i] = Eigen::VectorXd::Zero(model_.constraints.size());
+            penaltys[i] = Eigen::VectorXd::Zero(prob_.constraints.size());
+        }
+
+        constraints_val.resize(prob_.horizon());
+        for(size_t i = 0; i < prob_.horizon(); i++)
+        {
+            constraints_val[i] = Eigen::VectorXd::Zero(prob_.constraints.size());
         }
     }
 
@@ -124,9 +122,9 @@ public:
     {
         // debug("1");
 
-        for(size_t i = 0; i < model_.horizon(); i++)
+        for(size_t i = 0; i < prob_.horizon(); i++)
         {
-            for(size_t j = 0; j < model_.constraints.size(); j++)
+            for(size_t j = 0; j < prob_.constraints.size(); j++)
             {
                 lambdas[i](j) = 0.0;
                 penaltys[i](j) = config_.penalty_initial;
@@ -191,16 +189,14 @@ public:
 private:
     bool has_constraints() const
     {
-        if (model_.constraints.size())
-        {
+        if (prob_.constraints.size())
             return true;
-        }
-
         return false;
     }
 
     ALiLQRResult ilqr(const Eigen::VectorXd &x0)
     {
+        // debug("1");
         rho = config_.reg_initial;
         drho = 0.0;
 
@@ -235,13 +231,13 @@ private:
 
     void update_duals()
     {
-        for(size_t i = 0; i < model_.horizon(); i++)
+        for(size_t i = 0; i < prob_.horizon(); i++)
         {
-            auto &constraints = model_.constraints;
+            auto &constraints = prob_.constraints;
             for(size_t j = 0; j < constraints.size(); j++)
             {
                 double new_lambda = lambdas[i](j) + penaltys[i](j) * constraints_val[i](j);
-                if(constraints[j].type == OCPConstraint::Type::Ineq)
+                if(constraints[j]->type == OCPConstraintType::Ineq)
                 {
                     lambdas[i](j) = std::max(new_lambda, 0.0);
                 }
@@ -256,9 +252,9 @@ private:
     double update_penalties()
     {
         double max_penalty = 0.0;
-        for(size_t i = 0; i < model_.horizon(); i++)
+        for(size_t i = 0; i < prob_.horizon(); i++)
         {
-            for(size_t j = 0; j < model_.constraints.size(); j++)
+            for(size_t j = 0; j < prob_.constraints.size(); j++)
             {
                 penaltys[i](j) *= config_.penalty_scale_factor;
                 max_penalty = std::max(max_penalty, penaltys[i](j));
@@ -272,6 +268,8 @@ private:
     {
         drho = std::max(drho*config_.reg_scale_factor, config_.reg_scale_factor);
         rho = std::max(config_.reg_min, rho*drho);
+        rho = std::min(config_.reg_max, rho);
+        debug("rho: " << rho);
     }
 
     void decrease_regularization()
@@ -283,34 +281,41 @@ private:
     void predict_trajectory(const Eigen::VectorXd &x0)
     {
         X[0] = x0;
-        for (size_t i = 0; i < model_.horizon(); ++i)
+        for (size_t i = 0; i < prob_.horizon(); ++i)
         {
-            X[i + 1] = model_.dynamics(X[i], U[i]);
+            X[i + 1] = prob_.dynamics->eval(X[i], U[i]);
         }
     }
 
     double total_cost(std::vector<Eigen::VectorXd> &X, std::vector<Eigen::VectorXd> &U)
     {
+        // debug("1");
         double J = 0.0;
 
-        for (size_t i = 0; i < model_.horizon(); ++i)
+        for (size_t i = 0; i < prob_.horizon(); i++)
         {
-            J += model_.running_cost(X[i], U[i], i) + arglag_cost(X[i], U[i], i);
+            J += prob_.cost->eval(X[i], U[i], i) + arglag_cost(X[i], U[i], i);
         }
-        J += model_.terminal_cost(X[model_.horizon()]);
-        
+        // debug("2");
+        J += prob_.cost->eval_terminal(X[prob_.horizon()]);
+        // debug("3");
         return J;
     }
 
     double arglag_cost(const Eigen::VectorXd &X, const Eigen::VectorXd &U, size_t i)
     {
-        auto &constraints = model_.constraints;
+        if(not has_constraints())
+        {
+            return 0.0;
+        }
+        auto &constraints = prob_.constraints;
+        Eigen::VectorXd tmp_constraint_val = constraints.eval_all_vec(X, U);
         Eigen::VectorXd Ivec(constraints.size());
         for(size_t j = 0; j < constraints.size(); j++)
         {
-            if(constraints[j].type == OCPConstraint::Type::Ineq)
+            if(constraints[j]->type == OCPConstraintType::Ineq)
             {
-                if(constraints_val[i](j) < config_.constraint_torelance && std::abs(lambdas[i](j)) < config_.dual_torelance)
+                if(tmp_constraint_val(j) < config_.constraint_torelance && std::abs(lambdas[i](j)) < config_.dual_torelance)
                 {
                     Ivec[j] = 0.0;
                 }
@@ -325,38 +330,35 @@ private:
             }
         }
         Eigen::MatrixXd I = Ivec.asDiagonal();
-        Eigen::VectorXd ret = constraints.eval_all_vec(X, U);
-        double cost = ((lambdas[i].transpose() + 0.5*ret.transpose()*I) * ret)[0];
+        double cost = ((lambdas[i].transpose() + 0.5*tmp_constraint_val.transpose()*I) * tmp_constraint_val)[0];
         return cost;
     }
 
     bool backward_pass()
     {
-        // debug("1");
-        OCPDifferentiator diff(model_, config_.eps);
-
         // debug("2");
         // Todo: add terminal constraints term
-        Vx = diff.lNx(X.back());
-        Vxx = diff.lNxx(X.back());
+        Vx = prob_.cost->jacobian_x_terminal(X.back());
+        Vxx = prob_.cost->hessian_xx_terminal(X.back());
 
         // debug("3");
 
+        size_t rho_increase_count = 0;
         c_max = 0.0;
         dV1 = 0.0;
         dV2 = 0.0;
         Eigen::MatrixXd Quu_inv;
-        for(int i = static_cast<int>(model_.horizon()) - 1; i >= 0;)
+        for(int i = static_cast<int>(prob_.horizon()) - 1; i >= 0;)
         {
             // debug("4");
-            Eigen::MatrixXd fx = diff.fx(X[i], U[i]);
-            Eigen::MatrixXd fu = diff.fu(X[i], U[i]);
+            Eigen::MatrixXd fx = prob_.dynamics->jacobian_x(X[i], U[i]);
+            Eigen::MatrixXd fu = prob_.dynamics->jacobian_u(X[i], U[i]);
 
-            Qx  = diff.lx(X[i], U[i], i) + fx.transpose() * Vx;
-            Qu  = diff.lu(X[i], U[i], i) + fu.transpose() * Vx;
-            Qxx = diff.lxx(X[i], U[i], i) + fx.transpose() * Vxx * fx;
-            Quu = diff.luu(X[i], U[i], i) + fu.transpose() * Vxx * fu;
-            Qux = diff.lux(X[i], U[i], i) + fu.transpose() * Vxx * fx;
+            Qx  = prob_.cost->jacobian_x(X[i], U[i], i) + fx.transpose() * Vx;
+            Qu  = prob_.cost->jacobian_u(X[i], U[i], i) + fu.transpose() * Vx;
+            Qxx = prob_.cost->hessian_xx(X[i], U[i], i) + fx.transpose() * Vxx * fx;
+            Quu = prob_.cost->hessian_uu(X[i], U[i], i) + fu.transpose() * Vxx * fu;
+            Qux = prob_.cost->hessian_ux(X[i], U[i], i) + fu.transpose() * Vxx * fx;
 
             // debug("5");
 
@@ -364,33 +366,19 @@ private:
             if(has_constraints())
             {
                 // debug("5-1");
-                auto &constraints = model_.constraints;
-                Eigen::MatrixXd cx(constraints.size(),  model_.state_size());
+                auto &constraints = prob_.constraints;
+                Eigen::MatrixXd cx(constraints.size(),  prob_.state_size());
                 for(size_t j = 0; j < constraints.size(); j++)
                 {
-                    // debug("5-1-1");
-
-                    // auto tmp = constraints[j].grad_fx(X[i], U[i]);
-
-                    // MAT_SIZE(tmp);
-                    // MAT(tmp);
-
-                    // debug("5-1-2");
-                    cx.row(j) = constraints[j].grad_fx(X[i], U[i]);
+                    cx.row(j) = constraints[j]->grad_x(X[i], U[i]);
                 }
 
                 // debug("5-2");
 
-                Eigen::MatrixXd cu(constraints.size(),  model_.input_size());
+                Eigen::MatrixXd cu(constraints.size(),  prob_.input_size());
                 for(size_t j = 0; j < constraints.size(); j++)
                 {
-                    // debug("5-2-1");
-
-                    // auto tmp = constraints[j].grad_fu(X[i], U[i]);
-                    // MAT_SIZE(tmp);
-                    // MAT(tmp);
-
-                    cu.row(j) = constraints[j].grad_fu(X[i], U[i]);
+                    cu.row(j) = constraints[j]->grad_u(X[i], U[i]);
                 }
 
                 // debug("5-3");
@@ -406,7 +394,7 @@ private:
                     
 
                     // debug("5-6");
-                    if(constraints[j].type == OCPConstraint::Type::Ineq)
+                    if(constraints[j]->type == OCPConstraintType::Ineq)
                     {
                         if(constraints_val[i](j) < config_.constraint_torelance && std::abs(lambdas[i](j)) < config_.dual_torelance)
                         {
@@ -441,33 +429,71 @@ private:
             {
                 // debug("Quu is not positive definite");
                 increase_regularization();
+                rho_increase_count++;
+
+                if(rho_increase_count > 50)
+                {
+                    debug("rho increase count exceeded");
+                    return false;
+                }
                 continue;
             }
 
             // debug("7: rho: " << rho);
 
             // du = K*dx + d
+            // MAT_SIZE(Qxx);
+            // MAT_SIZE(Quu);
+            if(1)
             {
-                auto I = Eigen::MatrixXd::Identity(model_.input_size(), model_.input_size());
+                // auto I = Eigen::MatrixXd::Identity(prob_.input_size(), prob_.input_size());
                 // Eigen::MatrixXd Quu_inv = (Quu + rho * I).inverse();
                 // K[i] = -Quu_inv * Qux;
                 // d[i] = -Quu_inv * Qu;
 
-                Eigen::MatrixXd QuuReg = Quu + rho * I;
-                Eigen::LLT<Eigen::MatrixXd> Quu_chol;
-                Quu_chol.compute(QuuReg);
-                if(Quu_chol.info() == Eigen::Success)
+                // Eigen::MatrixXd QuuReg = Quu + rho * I;
+                // Eigen::LLT<Eigen::MatrixXd> Quu_chol;
+                // Eigen::LLT<Eigen::MatrixXd> Qxx_chol;
+                // Quu_chol.compute(QuuReg);
+                // if(Quu_chol.info() == Eigen::Success && Quu_chol.info() == Eigen::Success)
+                // {
+                //     // K[i] = -Quu_chol.solve(Qux);
+                //     // d[i] = -Quu_chol.solve(Qu);
+
+                //     Eigen::MatrixXd Zxx = Qxx_chol.matrixU();
+                //     Eigen::MatrixXd Zuu = Quu_chol.matrixU();
+
+                //     K[i] = -Zuu.inverse() * Zuu.transpose() * Qux;
+                //     d[i] = -Zuu.inverse() * Zuu.transpose() * Qu;
+                // }
+                // else
                 {
-                    K[i] = -Quu_chol.solve(Qux);
-                    d[i] = -Quu_chol.solve(Qu);
+                    // debug("LLT failed");
+                    Eigen::MatrixXd Quu_reg = Quu; //(Quu + rho * I).inverse();
+                    for(int j = 0; j < Quu.rows(); j++)
+                    {
+                        Quu_reg(j, j) += rho;
+                    }
+                    // Eigen::MatrixXd Quu_inv = Quu_reg.inverse();
+                    // K[i] = -Quu_inv * Qux;
+                    // d[i] = -Quu_inv * Qu;
+                    Eigen::LLT<Eigen::MatrixXd> Quu_chol(Quu_reg);
+                    if(Quu_chol.info() == Eigen::Success)
+                    {
+                        K[i] = -Quu_chol.solve(Qux);
+                        d[i] = -Quu_chol.solve(Qu);
+                    }
+                    else
+                    {
+                        debug("LLT failed");
+                        return false;
+                    }
                 }
-                else
-                {
-                    debug("LLT failed");
-                    Eigen::MatrixXd Quu_inv = (Quu + rho * I).inverse();
-                    K[i] = -Quu_inv * Qux;
-                    d[i] = -Quu_inv * Qu;
-                }
+            }
+            else
+            {
+                // QR
+                // Eigen::HouseholderQR<Eigen::MatrixXd> qr(Quu);
             }
 
             // debug("8");
@@ -499,12 +525,12 @@ private:
         tmpX[0] = x0;
         for(size_t j = 0; j < config_.max_forward_itr; j++)
         {
-            for(size_t i = 0; i < model_.horizon(); i++)
+            for(size_t i = 0; i < prob_.horizon(); i++)
             {
                 tmpU[i] = U[i] + K[i]*(tmpX[i]-X[i]) + alpha * d[i];
 
                 // rollout
-                tmpX[i + 1] = model_.dynamics(tmpX[i], tmpU[i]);
+                tmpX[i + 1] = prob_.dynamics->eval(tmpX[i], tmpU[i]);
             }
 
             double new_J = total_cost(tmpX, tmpU);
@@ -523,8 +549,8 @@ private:
         return J; // already optimal
     }
 
-    const Model &model_;
-    Config config_;
+    const OptimalControlProblem prob_;
+    ALConfig config_;
 
     // workspace
     std::vector<Eigen::VectorXd> U, X, tmpU, tmpX;
@@ -544,45 +570,45 @@ private:
 
 } // namespace detail
 
-class ALTRO : private detail::ALiLQR<DiscreteNonlinearOCP>
-{
-    using ALiLQR = detail::ALiLQR<DiscreteNonlinearOCP>;
-public:
-    using ALTROResult = detail::ALiLQRResult;
-    using Config = ALiLQR::Config;
+// class ALTRO : private detail::ALiLQR<DiscreteNonlinearOCP>
+// {
+//     using ALiLQR = detail::ALiLQR<DiscreteNonlinearOCP>;
+// public:
+//     using ALTROResult = detail::ALiLQRResult;
+//     using Config = ALiLQR::Config;
 
-    ALTRO(const DiscreteNonlinearOCP &model):
-        ALiLQR(model)
-    {
+//     ALTRO(const DiscreteNonlinearOCP &model):
+//         ALiLQR(model)
+//     {
         
-    }
+//     }
 
-    ALTROResult generate_trajectory(const Eigen::VectorXd &x0)
-    {
-        // if infeasible
+//     ALTROResult generate_trajectory(const Eigen::VectorXd &x0)
+//     {
+//         // if infeasible
 
-        auto ret = ALiLQR::generate_trajectory(x0);
+//         auto ret = ALiLQR::generate_trajectory(x0);
 
-        projection();
+//         projection();
 
-        return ALTROResult::SUCCESS;
-    }
+//         return ALTROResult::SUCCESS;
+//     }
 
-    using ALiLQR::get_input;
-    using ALiLQR::get_state;
+//     using ALiLQR::get_input;
+//     using ALiLQR::get_state;
 
-private:
-    void projection()
-    {
+// private:
+//     void projection()
+//     {
 
-    }
+//     }
 
-    void line_search()
-    {
+//     void line_search()
+//     {
 
-    }
+//     }
 
-};
+// };
 
 
 } // namespace cpp_robotics
