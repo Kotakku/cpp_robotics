@@ -19,7 +19,7 @@ find_package(Eigen3 REQUIRED)
 
 option(BUILD_EXAMPLES "build examples" OFF)
 option(BUILD_TESTS "build tests" OFF)
-option(BUILD_PERFORMANCE_TESTS "build performance tests" OFF)
+option(BUILD_BENCHMARKS "build benchmarks" OFF)
 
 #################### example ####################
 if(BUILD_EXAMPLES)
@@ -27,43 +27,43 @@ if(BUILD_EXAMPLES)
 find_package(Python3 COMPONENTS Development NumPy)
 
 set(example_files
-  # hello_world
-  # controller/motor_pid_control
-  # controller/pid_vs_nctf
-  # controller/lqr
-  # controller/canonicalize
-  # controller/place
-  # controller/linear_mpc
-  # controller/vrft_pid
-  # controller/nctf_example
+  hello_world
+  controller/motor_pid_control
+  controller/pid_vs_nctf
+  controller/lqr
+  controller/canonicalize
+  controller/place
+  controller/linear_mpc
+  controller/vrft_pid
+  controller/nctf_example
   controller/ilqr_linear_example
   controller/ilqr_diffbot_example
   controller/alilqr_cartpole_example
   controller/alilqr_diffbot_example
 
-  # filter/lpf_step
-  # filter/hpf_step
-  # filter/vel_limit_filter
+  filter/lpf_step
+  filter/hpf_step
+  filter/vel_limit_filter
 
-  # system/step_responce
-  # system/bode_nyquist
-  # system/state_space_system
-  # algorithm/kdtree_sample
-  # algorithm/icp_sample
-  # algorithm/mahalanobis
-  # algorithm/random_example
+  system/step_responce
+  system/bode_nyquist
+  system/state_space_system
+  algorithm/kdtree_sample
+  algorithm/icp_sample
+  algorithm/mahalanobis
+  algorithm/random_example
 
-  # optimize/optimize_scalar
-  # optimize/optimize_without_constraint
-  # optimize/optimize_rosenbrock
-  # optimize/optimize_with_constraint
-  # optimize/active_set_method_example
-  # optimize/sqp_example
-  # optimize/quadprog
+  optimize/optimize_scalar
+  optimize/optimize_without_constraint
+  optimize/optimize_rosenbrock
+  optimize/optimize_with_constraint
+  optimize/active_set_method_example
+  optimize/sqp_example
+  optimize/quadprog
 
-  # path_planning/dubins_path
+  path_planning/dubins_path
 
-  # units/unit_test
+  units/unit_test
 )
 
 foreach(example_file ${example_files})
@@ -103,9 +103,6 @@ set(test_files
   chassis/omni_test
   chassis/swerve_test
 
-  arm_ik/xy_2deg_robot_test
-
-  optimize/fmin_search_test
   optimize/bfgs_test
   optimize/quadprog_test
   optimize/breacketing_search_test
@@ -127,21 +124,23 @@ gtest_discover_tests(${test_name})
 endforeach()
 endif()
 
-#################### performance test ####################
-if(BUILD_PERFORMANCE_TESTS)
-set(perf_test_files
+#################### benchmark ####################
+if(BUILD_BENCHMARKS)
+
+find_package(Python3 COMPONENTS Development NumPy)
+
+set(bench_test_files
   autodiff
   eigen_arg_ret
 )
 
-foreach(perf_test_files ${perf_test_files})
-get_filename_component(perf_test_files performance_test/${perf_test_files}.cpp NAME_WE)
-add_executable(${perf_test_files} performance_test/${perf_test_files}.cpp)
-target_include_directories(${perf_test_files} PRIVATE include)
-target_link_libraries(${perf_test_files} PRIVATE Eigen3::Eigen)
+foreach(bench_test_file ${bench_test_files})
+get_filename_component(bench_test_file benckmark/${bench_test_file}.cpp NAME_WE)
+add_executable(bench_${bench_test_file} benckmark/${bench_test_file}.cpp)
+target_include_directories(bench_${bench_test_file} PRIVATE include)
+target_link_libraries(bench_${bench_test_file} PRIVATE Eigen3::Eigen Python3::Python Python3::NumPy)
 endforeach()
 endif()
-
 
 #################### install ####################
 install(
