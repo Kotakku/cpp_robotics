@@ -32,15 +32,16 @@ static double derivative(std::function<double(double)> f, double x, double eps =
  */
 static Eigen::VectorXd derivative(std::function<double(Eigen::VectorXd)> f, Eigen::VectorXd x, double eps = std::pow(std::numeric_limits<double>::epsilon(), 0.5))
 {
-    Eigen::VectorXd der(x.rows());
+    Eigen::VectorXd J(x.rows());
+    Eigen::VectorXd diff(x.rows());
     for(Eigen::VectorXd::Index i = 0; i < x.rows(); i++)
     {
-        Eigen::VectorXd diff = Eigen::VectorXd::Zero(x.rows());
+        diff.setZero();
         diff(i) = eps;
         // 中央差分
-        der(i) = ( f(x + diff) - f(x - diff) ) / (2.0*eps);
+        J(i) = ( f(x + diff) - f(x - diff) ) / (2.0*eps);
     }
-    return der;
+    return J;
 }
 
 /**
@@ -53,20 +54,22 @@ static Eigen::VectorXd derivative(std::function<double(Eigen::VectorXd)> f, Eige
  */
 static Eigen::MatrixXd derivative(std::function<Eigen::VectorXd(Eigen::VectorXd)> f, Eigen::VectorXd x, double eps = std::pow(std::numeric_limits<double>::epsilon(), 0.5))
 {
-    Eigen::MatrixXd der;
+    Eigen::MatrixXd J;
+    Eigen::VectorXd J_col;
+    Eigen::VectorXd diff(x.rows());
     for(Eigen::VectorXd::Index i = 0; i < x.rows(); i++)
     {
-        Eigen::VectorXd diff = Eigen::VectorXd::Zero(x.rows());
+        diff.setZero();
         diff(i) = eps;
         // 中央差分
-        Eigen::VectorXd der_col = ( f(x + diff) - f(x - diff) ) / (2.0*eps);
+        J_col = ( f(x + diff) - f(x - diff) ) / (2.0*eps);
         if(i == 0)
         {
-            der = Eigen::MatrixXd::Zero(der_col.size(), x.rows());
+            J = Eigen::MatrixXd::Zero(J_col.rows(), x.rows());
         }
-        der.col(i) = der_col;
+        J.col(i) = J_col;
     }
-    return der;
+    return J;
 }
 
 /**
@@ -81,6 +84,67 @@ static double second_derivative(std::function<double(double)> f, double x, doubl
 {
     // 中央2階差分
     return ( f(x + eps) - 2*f(x) + f(x - eps) ) / std::pow(eps,2);
+}
+
+/**
+ * @brief R^n -> Rの2回数値微分
+ * 
+ * @param f
+ * @param x
+ * @param eps
+ * @return Eigen::MatrixXd
+*/
+static Eigen::MatrixXd second_derivative(std::function<double(Eigen::VectorXd)> f, Eigen::VectorXd x, double eps = std::pow(std::numeric_limits<double>::epsilon(), 0.5))
+{
+    int n = x.size();
+    Eigen::MatrixXd H(n, n);
+    Eigen::VectorXd e_i(n);
+    Eigen::VectorXd e_j(n);
+    for (int i = 0; i < n; ++i) 
+    {
+        for (int j = 0; j < n; ++j) 
+        {
+            e_i.setZero();
+            e_j.setZero();
+            e_i[i] = eps;
+            e_j[j] = eps;
+            
+            double f_ij = f(x + e_i + e_j) - f(x + e_i - e_j) - f(x - e_i + e_j) + f(x - e_i - e_j);
+            H(i, j) = f_ij / (4 * eps * eps);
+        }
+    }
+    return H;
+}
+
+/**
+ * @brief R^(n, m) -> Rのn,mでの偏微分
+ * 
+ * @param f
+ * @param x
+ * @param eps
+ * @return Eigen::MatrixXd
+*/
+static Eigen::MatrixXd mixed_derivative(std::function<double(Eigen::VectorXd, Eigen::VectorXd)> f, Eigen::VectorXd x, Eigen::VectorXd y, double eps = std::pow(std::numeric_limits<double>::epsilon(), 0.5))
+{
+    int n = x.size();
+    int m = y.size();
+    Eigen::MatrixXd H(n, m);
+    Eigen::VectorXd e_i(n);
+    Eigen::VectorXd e_j(m);
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < m; j++) 
+        {
+            e_i.setZero();
+            e_j.setZero();
+            e_i[i] = eps;
+            e_j[j] = eps;
+            
+            double f_ij = f(x + e_i, y + e_j) - f(x + e_i, y - e_j) - f(x - e_i, y + e_j) + f(x - e_i, y - e_j);
+            H(i, j) = f_ij / (4 * eps * eps);
+        }
+    }
+    return H;
 }
 
 /**

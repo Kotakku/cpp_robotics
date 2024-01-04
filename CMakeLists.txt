@@ -19,6 +19,7 @@ find_package(Eigen3 REQUIRED)
 
 option(BUILD_EXAMPLES "build examples" OFF)
 option(BUILD_TESTS "build tests" OFF)
+option(BUILD_BENCHMARKS "build benchmarks" OFF)
 
 #################### example ####################
 if(BUILD_EXAMPLES)
@@ -35,6 +36,10 @@ set(example_files
   controller/linear_mpc
   controller/vrft_pid
   controller/nctf_example
+  controller/ilqr_linear_example
+  controller/ilqr_diffbot_example
+  controller/alilqr_cartpole_example
+  controller/alilqr_diffbot_example
 
   filter/lpf_step
   filter/hpf_step
@@ -98,9 +103,6 @@ set(test_files
   chassis/omni_test
   chassis/swerve_test
 
-  arm_ik/xy_2deg_robot_test
-
-  optimize/fmin_search_test
   optimize/bfgs_test
   optimize/quadprog_test
   optimize/breacketing_search_test
@@ -119,6 +121,24 @@ add_executable(${test_name} test/${test_file}.cpp)
 target_include_directories(${test_name} PRIVATE include)
 target_link_libraries(${test_name} PRIVATE Eigen3::Eigen GTest::GTest GTest::Main)
 gtest_discover_tests(${test_name})
+endforeach()
+endif()
+
+#################### benchmark ####################
+if(BUILD_BENCHMARKS)
+
+find_package(Python3 COMPONENTS Development NumPy)
+
+set(bench_test_files
+  autodiff
+  eigen_arg_ret
+)
+
+foreach(bench_test_file ${bench_test_files})
+get_filename_component(bench_test_file benckmark/${bench_test_file}.cpp NAME_WE)
+add_executable(bench_${bench_test_file} benckmark/${bench_test_file}.cpp)
+target_include_directories(bench_${bench_test_file} PRIVATE include)
+target_link_libraries(bench_${bench_test_file} PRIVATE Eigen3::Eigen Python3::Python Python3::NumPy)
 endforeach()
 endif()
 
