@@ -8,7 +8,7 @@ public:
     DiffBot(size_t horizon, double dt):
         OCPDiscreteNonlinearDynamics(3,2,horizon), dt_(dt) {}
 
-    Eigen::VectorXd eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    Eigen::VectorXd eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u) override
     {
         Eigen::VectorXd x_next(3);
         x_next << x[0] + dt_ * (u[0] * std::cos(x[2]) - u[1] * std::sin(x[2])),

@@ -7,9 +7,9 @@ class CartPole : public cpp_robotics::OCPContinuousNonlinearDynamics
 {
 public:
     CartPole(size_t horizon, double dt):
-        OCPContinuousNonlinearDynamics(4,1,horizon,dt) {}
+        OCPContinuousNonlinearDynamics(cpp_robotics::OCPIntegrationMethod::ForwardEuler, 4,1,horizon,dt) {}
 
-    Eigen::VectorXd dynamics(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    Eigen::VectorXd dynamics(const Eigen::VectorXd &x, const Eigen::VectorXd &u) override
     {
         auto y = x(0);     // cart の水平位置[m]
         auto th = x(1);    // pole の傾き角[rad]
@@ -32,13 +32,43 @@ public:
     const double g = 9.8;
 };
 
+class CartPoleAD : public cpp_robotics::OCPContinuousNonlinearDynamicsAD<CartPoleAD>
+{
+public:
+    CartPoleAD(size_t horizon, double dt):
+        OCPContinuousNonlinearDynamicsAD(cpp_robotics::OCPIntegrationMethod::ForwardEuler, 4,1,horizon,dt) {}
+
+    template<class Vector, class Scalar = Vector::Scalar>
+    void dynamics(const Vector &x, const Vector &u, Vector &dx) const
+    {
+        Scalar y = x(0);     // cart の水平位置[m]
+        Scalar th = x(1);    // pole の傾き角[rad]
+        Scalar dy = x(2);    // cart の水平速度[m/s]
+        Scalar dth = x(3);   // pole の傾き角速度[rad/s]
+        Scalar f = u(0);     // cart を押す力[N]（制御入力）
+        Scalar s_th = sin(th);
+        Scalar c_th = cos(th);
+        // cart の水平加速度
+        Scalar ddy = (f+mp*s_th*(l*dth*dth+g*c_th)) / (mc+mp*s_th*s_th);
+        // pole の傾き角加速度
+        Scalar ddth = (-f*c_th-mp*l*dth*dth*c_th*s_th-(mc+mp)*g*s_th) / (l * (mc+mp*s_th*s_th));  
+
+        dx << dy, dth, ddy, ddth;
+    }
+
+    const double mc = 2.0;
+    const double mp = 0.2;
+    const double l = 0.5;
+    const double g = 9.8;
+};
+
 int main()
 {
     using namespace cpp_robotics;
     namespace plt = matplotlibcpp;
 
     const double Ts = 0.05;
-    auto model = std::make_shared<CartPole>(30, Ts);
+    auto model = std::make_shared<CartPoleAD>(30, Ts);
     auto cost = std::make_shared<OCPCostServoQuadratic>(model);
     cost->Q = (Eigen::VectorXd(4) << 5, 10, 0.01, 0.01).finished().asDiagonal();
     cost->R = 0.1 * Eigen::MatrixXd::Identity(1, 1);
