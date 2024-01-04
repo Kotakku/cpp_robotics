@@ -19,6 +19,7 @@ find_package(Eigen3 REQUIRED)
 
 option(BUILD_EXAMPLES "build examples" OFF)
 option(BUILD_TESTS "build tests" OFF)
+option(BUILD_PERFORMANCE_TESTS "build performance tests" OFF)
 
 #################### example ####################
 if(BUILD_EXAMPLES)
@@ -126,6 +127,22 @@ target_link_libraries(${test_name} PRIVATE Eigen3::Eigen GTest::GTest GTest::Mai
 gtest_discover_tests(${test_name})
 endforeach()
 endif()
+
+#################### performance test ####################
+if(BUILD_PERFORMANCE_TESTS)
+set(perf_test_files
+  autodiff
+  eigen_arg_ret
+)
+
+foreach(perf_test_files ${perf_test_files})
+get_filename_component(perf_test_files performance_test/${perf_test_files}.cpp NAME_WE)
+add_executable(${perf_test_files} performance_test/${perf_test_files}.cpp)
+target_include_directories(${perf_test_files} PRIVATE include)
+target_link_libraries(${perf_test_files} PRIVATE Eigen3::Eigen)
+endforeach()
+endif()
+
 
 #################### install ####################
 install(

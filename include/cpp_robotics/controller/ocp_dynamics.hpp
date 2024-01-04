@@ -17,39 +17,16 @@ public:
     OCPDynamics(size_t nx, size_t nu, size_t horizon):
         nx_(nx), nu_(nu), horizon_(horizon) {}
 
-    virtual void eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u, Eigen::VectorXd &x_next) const = 0;
+    virtual Eigen::VectorXd eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const = 0;
 
-    Eigen::VectorXd eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const
+    virtual Eigen::MatrixXd jacobian_x(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const
     {
-        Eigen::VectorXd x_next(state_size());
-        eval(x, u, x_next);
-        return x_next;
+        return derivative(std::bind(&OCPDynamics::eval, this, std::placeholders::_1, u), x, eps);
     }
 
-    virtual void jacobian_x(const Eigen::VectorXd &x, const Eigen::VectorXd &u, Eigen::MatrixXd &Jx) const
+    virtual Eigen::MatrixXd jacobian_u(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const
     {
-        using EvalFunc = Eigen::VectorXd (OCPDynamics::*)(const Eigen::VectorXd &, const Eigen::VectorXd &) const;
-        derivative(std::bind(static_cast<EvalFunc>(&OCPDynamics::eval), this, std::placeholders::_1, u), x, Jx, eps);
-    }
-
-    Eigen::MatrixXd jacobian_x(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const
-    {
-        Eigen::MatrixXd Jx(state_size(), state_size());
-        jacobian_x(x, u, Jx);
-        return Jx;
-    }
-
-    virtual void jacobian_u(const Eigen::VectorXd &x, const Eigen::VectorXd &u, Eigen::MatrixXd &Ju) const
-    {
-        using EvalFunc = Eigen::VectorXd (OCPDynamics::*)(const Eigen::VectorXd &, const Eigen::VectorXd &) const;
-        derivative(std::bind(static_cast<EvalFunc>(&OCPDynamics::eval), this, x, std::placeholders::_1), u, Ju, eps);
-    }
-
-    Eigen::MatrixXd jacobian_u(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const
-    {
-        Eigen::MatrixXd Ju(state_size(), input_size());
-        jacobian_u(x, u, Ju);
-        return Ju;
+        return derivative(std::bind(&OCPDynamics::eval, this, x, std::placeholders::_1), u, eps);
     }
 
     size_t state_size() const { return nx_; }
@@ -147,15 +124,12 @@ public:
     OCPContinuousNonlinearDynamics(size_t nx, size_t nu, size_t horizon, double dt):
         OCPDynamics(nx, nu, horizon), dt_(dt) {}
 
-    virtual void dynamics(const Eigen::VectorXd &x, const Eigen::VectorXd &u, Eigen::VectorXd &dx) const = 0;
+    virtual Eigen::VectorXd dynamics(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const = 0;
 
-    using OCPDynamics::eval;
-    void eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u, Eigen::VectorXd &x_next) const override
+    Eigen::VectorXd eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
     {
         // Todo: other integration methods
-        Eigen::VectorXd dx(state_size());
-        dynamics(x, u, dx);
-        x_next = x + dt_ * dx;
+        return x + dt_ * dynamics(x, u);
     }
 
     double dt() const { return dt_; }

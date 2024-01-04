@@ -272,7 +272,7 @@ private:
         X[0] = x0;
         for (size_t i = 0; i < prob_.horizon(); ++i)
         {
-            prob_.dynamics->eval(X[i], U[i], X[i + 1]);
+            X[i + 1] = prob_.dynamics->eval(X[i], U[i]);
         }
     }
 
@@ -347,8 +347,8 @@ private:
         Eigen::MatrixXd cu(constraints.size(),  prob_.input_size());
         for(int i = static_cast<int>(prob_.horizon()) - 1; i >= 0;)
         {
-            prob_.dynamics->jacobian_x(X[i], U[i], fx);
-            prob_.dynamics->jacobian_u(X[i], U[i], fu);
+            fx = prob_.dynamics->jacobian_x(X[i], U[i]);
+            fu = prob_.dynamics->jacobian_u(X[i], U[i]);
 
             // argumented lagrangian
             if(has_constraints())
@@ -438,7 +438,7 @@ private:
             for(size_t i = 0; i < prob_.horizon(); i++)
             {
                 tmpU[i] = U[i] + K[i]*(tmpX[i]-X[i]) + alpha * d[i];
-                prob_.dynamics->eval(tmpX[i], tmpU[i], tmpX[i + 1]);
+                tmpX[i + 1] = prob_.dynamics->eval(tmpX[i], tmpU[i]);
             }
 
             double new_J = total_cost(tmpX, tmpU);

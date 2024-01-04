@@ -9,7 +9,7 @@ public:
     CartPole(size_t horizon, double dt):
         OCPContinuousNonlinearDynamics(4,1,horizon,dt) {}
 
-    void dynamics(const Eigen::VectorXd &x, const Eigen::VectorXd &u, Eigen::VectorXd &dx) const override
+    Eigen::VectorXd dynamics(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
     {
         auto y = x(0);     // cart の水平位置[m]
         auto th = x(1);    // pole の傾き角[rad]
@@ -23,7 +23,7 @@ public:
         // pole の傾き角加速度
         double ddth = (-f*c_th-mp*l*dth*dth*c_th*s_th-(mc+mp)*g*s_th) / (l * (mc+mp*s_th*s_th));  
 
-        dx << dy, dth, ddy, ddth;
+        return (Eigen::VectorXd(4) << dy, dth, ddy, ddth).finished();
     }
 
     const double mc = 2.0;
@@ -66,6 +66,7 @@ int main()
         double milliseconds = 1e-3 * std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
         x0 = model->eval(x0, ilqr.get_input()[0]);
+        // x0 = model->eval(x0, (Eigen::VectorXd(1) << 15.0).finished());
 
         t.push_back(i * Ts);
         u.push_back(ilqr.get_input()[0](0));
