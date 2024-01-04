@@ -14,7 +14,7 @@
         <meta name="author" content="Takumi Odashima">
       
       
-        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/">
+        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/">
       
       
       
@@ -25,7 +25,7 @@
 
     
       
-        <title>cpp_robotics::AutoDiffAdaptor - cpp_robotics</title>
+        <title>cpp_robotics::OCPCost - cpp_robotics</title>
       
     
     
@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cpp_roboticsautodiffadaptor" class="md-skip">
+        <a href="#cpp_roboticsocpcost" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              cpp_robotics::AutoDiffAdaptor
+              cpp_robotics::OCPCost
             
           </span>
         </div>
@@ -2211,9 +2211,9 @@
                   
 
 
-<h1 id="cpp_roboticsautodiffadaptor">cpp_robotics::AutoDiffAdaptor</h1>
-<p>自動微分でヤコビアンを求めるクラス  <a href="#detailed-description">More...</a></p>
-<p><code>#include &lt;auto_diff.hpp&gt;</code></p>
+<h1 id="cpp_roboticsocpcost">cpp_robotics::OCPCost</h1>
+<p><code>#include &lt;ocp_cost.hpp&gt;</code></p>
+<p>Inherited by <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostQuadratic/">cpp_robotics::OCPCostQuadratic</a>, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostServoQuadratic/">cpp_robotics::OCPCostServoQuadratic</a></p>
 <h2 id="public-types">Public Types</h2>
 <table>
 <thead>
@@ -2224,24 +2224,8 @@
 </thead>
 <tbody>
 <tr>
-<td>enum</td>
-<td InputsAtCompileTime="InputsAtCompileTime"><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#enum-@0">@0</a></strong></td>
-</tr>
-<tr>
-<td>using Eigen::Matrix&lt; Scalar, NX, 1 &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector">InputVector</a></strong></td>
-</tr>
-<tr>
-<td>using Eigen::Matrix&lt; Scalar, NY, 1 &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-valuevector">ValueVector</a></strong></td>
-</tr>
-<tr>
-<td>using Eigen::Matrix&lt; Scalar, NY, NX &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-jacobianmatrix">JacobianMatrix</a></strong></td>
-</tr>
-<tr>
-<td>using Eigen::Matrix&lt; Scalar, NX, NX &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-hessianmatrix">HessianMatrix</a></strong></td>
+<td>using std::shared_ptr&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/">OCPCost</a> &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#using-sharedptr">SharedPtr</a></strong></td>
 </tr>
 </tbody>
 </table>
@@ -2256,183 +2240,184 @@
 <tbody>
 <tr>
 <td></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-autodiffadaptor">AutoDiffAdaptor</a></strong>(Functor &amp; functor)<br>引数/戻り値が静的サイズのベクトルである場合のコンストラクタ</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-ocpcost">OCPCost</a></strong>(size_t nx, size_t nu, size_t horizon)</td>
 </tr>
 <tr>
 <td></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-autodiffadaptor">AutoDiffAdaptor</a></strong>(Functor &amp; functor, const size_t input_size, const size_t value_size)<br>引数/戻り値が動的サイズのベクトルである場合のコンストラクタ</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-ocpcost">OCPCost</a></strong>(std::shared_ptr&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/">OCPDynamics</a> &gt; model)</td>
 </tr>
 <tr>
-<td>void</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-evalute">evalute</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector">InputVector</a> &amp; x, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-valuevector">ValueVector</a> &amp; y)<br>関数の評価</td>
+<td>virtual double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-eval">eval</a></strong>(const Eigen::VectorXd &amp; x, const Eigen::VectorXd &amp; u, const size_t i) const =0</td>
 </tr>
 <tr>
-<td><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-valuevector">ValueVector</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-evalute">evalute</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector">InputVector</a> &amp; x)<br>関数の評価</td>
+<td>virtual double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-eval-terminal">eval_terminal</a></strong>(const Eigen::VectorXd &amp; x) const =0</td>
 </tr>
 <tr>
-<td>std::function&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-valuevector">ValueVector</a>(<a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector">InputVector</a>)&gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-evalute-func">evalute_func</a></strong>()</td>
+<td>virtual Eigen::VectorXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-jacobian-x">jacobian_x</a></strong>(const Eigen::VectorXd &amp; x, const Eigen::VectorXd &amp; u, const size_t i) const</td>
 </tr>
 <tr>
-<td>std::function&lt; double(<a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector">InputVector</a>)&gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-evalute-func-scalar">evalute_func_scalar</a></strong>()</td>
+<td>virtual Eigen::VectorXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-jacobian-u">jacobian_u</a></strong>(const Eigen::VectorXd &amp; x, const Eigen::VectorXd &amp; u, const size_t i) const</td>
 </tr>
 <tr>
-<td>void</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-jacobian">jacobian</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector">InputVector</a> &amp; x, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-jacobianmatrix">JacobianMatrix</a> &amp; jac)<br>ヤコビアンの評価</td>
+<td>virtual Eigen::MatrixXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-hessian-xx">hessian_xx</a></strong>(const Eigen::VectorXd &amp; x, const Eigen::VectorXd &amp; u, const size_t i) const</td>
 </tr>
 <tr>
-<td><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-jacobianmatrix">JacobianMatrix</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-jacobian">jacobian</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector">InputVector</a> &amp; x)<br>ヤコビアンの評価</td>
+<td>virtual Eigen::MatrixXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-hessian-uu">hessian_uu</a></strong>(const Eigen::VectorXd &amp; x, const Eigen::VectorXd &amp; u, const size_t i) const</td>
 </tr>
 <tr>
-<td>std::function&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-jacobianmatrix">JacobianMatrix</a>(<a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector">InputVector</a>)&gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-jacobian-func">jacobian_func</a></strong>()</td>
+<td>virtual Eigen::MatrixXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-hessian-ux">hessian_ux</a></strong>(const Eigen::VectorXd &amp; x, const Eigen::VectorXd &amp; u, const size_t i) const</td>
 </tr>
 <tr>
-<td>std::function&lt; Eigen::Matrix&lt; Scalar, NX, 1 &gt;<a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#using-inputvector">InputVector</a>)&gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1AutoDiffAdaptor/#function-jacobian-func-row-vector">jacobian_func_row_vector</a></strong>()</td>
+<td>virtual Eigen::VectorXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-jacobian-x-terminal">jacobian_x_terminal</a></strong>(const Eigen::VectorXd &amp; x) const</td>
+</tr>
+<tr>
+<td>virtual Eigen::MatrixXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-hessian-xx-terminal">hessian_xx_terminal</a></strong>(const Eigen::VectorXd &amp; x) const</td>
+</tr>
+<tr>
+<td>bool</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-is-terminal">is_terminal</a></strong>(const size_t i) const</td>
+</tr>
+<tr>
+<td>size_t</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-state-size">state_size</a></strong>() const</td>
+</tr>
+<tr>
+<td>size_t</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-input-size">input_size</a></strong>() const</td>
+</tr>
+<tr>
+<td>size_t</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-horizon">horizon</a></strong>() const</td>
 </tr>
 </tbody>
 </table>
-<h2 id="detailed-description">Detailed Description</h2>
-<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">Functor</span><span class="w"> </span><span class="p">,</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">DerType</span><span class="w">  </span><span class="o">=</span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="p">,</span>
-<span class="k">typename</span><span class="w"> </span><span class="nc">Scalar</span><span class="w">  </span><span class="o">=</span><span class="kt">double</span><span class="p">,</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">NX</span><span class="w"> </span><span class="o">=</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="p">,</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">NY</span><span class="w"> </span><span class="o">=</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">cpp_robotics</span><span class="o">::</span><span class="n">AutoDiffAdaptor</span><span class="p">;</span>
-</code></pre></div>
-<p>自動微分でヤコビアンを求めるクラス </p>
-<p><strong>Template Parameters</strong>: </p>
-<ul>
-<li><strong>Functor</strong> 関数のクラス, template<typename T> static void eval_func(const Eigen::Matrix<T,Eigen::Dynamic,1>&amp; x, Eigen::Matrix<T,Eigen::Dynamic,1>&amp; y)を持つ必要がある </li>
-<li><strong>DerType</strong> </li>
-<li><strong>Scalar</strong> </li>
-<li><strong>NX</strong> </li>
-<li><strong>NY</strong> </li>
-</ul>
-<h2 id="public-types-documentation">Public Types Documentation</h2>
-<h3 id="enum-0">enum @0</h3>
+<h2 id="public-attributes">Public Attributes</h2>
 <table>
 <thead>
 <tr>
-<th>Enumerator</th>
-<th>Value</th>
-<th>Description</th>
+<th></th>
+<th>Name</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>InputsAtCompileTime</td>
-<td>NX</td>
-<td></td>
-</tr>
-<tr>
-<td>ValuesAtCompileTime</td>
-<td>NY</td>
-<td></td>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#variable-eps">eps</a></strong></td>
 </tr>
 </tbody>
 </table>
-<h3 id="using-inputvector">using InputVector</h3>
-<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">AutoDiffAdaptor</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Functor</span><span class="p">,</span><span class="w"> </span><span class="n">DerType</span><span class="p">,</span><span class="w"> </span><span class="n">Scalar</span><span class="p">,</span><span class="w"> </span><span class="n">NX</span><span class="p">,</span><span class="w"> </span><span class="n">NY</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">InputVector</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span><span class="w"> </span><span class="n">NX</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
-</code></pre></div>
-<h3 id="using-valuevector">using ValueVector</h3>
-<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">AutoDiffAdaptor</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Functor</span><span class="p">,</span><span class="w"> </span><span class="n">DerType</span><span class="p">,</span><span class="w"> </span><span class="n">Scalar</span><span class="p">,</span><span class="w"> </span><span class="n">NX</span><span class="p">,</span><span class="w"> </span><span class="n">NY</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">ValueVector</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span><span class="w"> </span><span class="n">NY</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
-</code></pre></div>
-<h3 id="using-jacobianmatrix">using JacobianMatrix</h3>
-<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">AutoDiffAdaptor</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Functor</span><span class="p">,</span><span class="w"> </span><span class="n">DerType</span><span class="p">,</span><span class="w"> </span><span class="n">Scalar</span><span class="p">,</span><span class="w"> </span><span class="n">NX</span><span class="p">,</span><span class="w"> </span><span class="n">NY</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">JacobianMatrix</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span><span class="w"> </span><span class="n">NY</span><span class="p">,</span><span class="w"> </span><span class="n">NX</span><span class="o">&gt;</span><span class="p">;</span>
-</code></pre></div>
-<h3 id="using-hessianmatrix">using HessianMatrix</h3>
-<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">AutoDiffAdaptor</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Functor</span><span class="p">,</span><span class="w"> </span><span class="n">DerType</span><span class="p">,</span><span class="w"> </span><span class="n">Scalar</span><span class="p">,</span><span class="w"> </span><span class="n">NX</span><span class="p">,</span><span class="w"> </span><span class="n">NY</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">HessianMatrix</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span><span class="w"> </span><span class="n">NX</span><span class="p">,</span><span class="w"> </span><span class="n">NX</span><span class="o">&gt;</span><span class="p">;</span>
+<h2 id="public-types-documentation">Public Types Documentation</h2>
+<h3 id="using-sharedptr">using SharedPtr</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">OCPCost</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">OCPCost</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="public-functions-documentation">Public Functions Documentation</h2>
-<h3 id="function-autodiffadaptor">function AutoDiffAdaptor</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">AutoDiffAdaptor</span><span class="p">(</span>
-<span class="w">    </span><span class="n">Functor</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">functor</span>
+<h3 id="function-ocpcost">function OCPCost</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">OCPCost</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nx</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nu</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">horizon</span>
 <span class="p">)</span>
 </code></pre></div>
-<p>引数/戻り値が静的サイズのベクトルである場合のコンストラクタ </p>
-<p><strong>Parameters</strong>: </p>
-<ul>
-<li><strong>functor</strong> </li>
-</ul>
-<h3 id="function-autodiffadaptor_1">function AutoDiffAdaptor</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">AutoDiffAdaptor</span><span class="p">(</span>
-<span class="w">    </span><span class="n">Functor</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">functor</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">input_size</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">value_size</span>
+<h3 id="function-ocpcost_1">function OCPCost</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">OCPCost</span><span class="p">(</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">OCPDynamics</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">model</span>
 <span class="p">)</span>
 </code></pre></div>
-<p>引数/戻り値が動的サイズのベクトルである場合のコンストラクタ </p>
-<p><strong>Parameters</strong>: </p>
-<ul>
-<li><strong>functor</strong> </li>
-<li><strong>input_size</strong> 関数の引数の次元 </li>
-<li><strong>value_size</strong> 関数の戻り値の次元 </li>
-</ul>
-<h3 id="function-evalute">function evalute</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">evalute</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">InputVector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
-<span class="w">    </span><span class="n">ValueVector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span>
-<span class="p">)</span>
+<h3 id="function-eval">function eval</h3>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">eval</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span>
 </code></pre></div>
-<p>関数の評価 </p>
-<p><strong>Parameters</strong>: </p>
-<ul>
-<li><strong>x</strong> </li>
-<li><strong>y</strong> </li>
-</ul>
-<h3 id="function-evalute_1">function evalute</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">ValueVector</span><span class="w"> </span><span class="n">evalute</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">InputVector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span>
-<span class="p">)</span>
+<p><strong>Reimplemented by</strong>: <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostQuadratic/#function-eval">cpp_robotics::OCPCostQuadratic::eval</a>, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostServoQuadratic/#function-eval">cpp_robotics::OCPCostServoQuadratic::eval</a></p>
+<h3 id="function-eval_terminal">function eval_terminal</h3>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">eval_terminal</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span>
 </code></pre></div>
-<p>関数の評価 </p>
-<p><strong>Parameters</strong>: </p>
-<ul>
-<li><strong>x</strong> </li>
-</ul>
-<p><strong>Return</strong>: ValueVector </p>
-<h3 id="function-evalute_func">function evalute_func</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ValueVector</span><span class="p">(</span><span class="n">InputVector</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">evalute_func</span><span class="p">()</span>
+<p><strong>Reimplemented by</strong>: <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostQuadratic/#function-eval-terminal">cpp_robotics::OCPCostQuadratic::eval_terminal</a>, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostServoQuadratic/#function-eval-terminal">cpp_robotics::OCPCostServoQuadratic::eval_terminal</a></p>
+<h3 id="function-jacobian_x">function jacobian_x</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">jacobian_x</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </code></pre></div>
-<h3 id="function-evalute_func_scalar">function evalute_func_scalar</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="n">InputVector</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">evalute_func_scalar</span><span class="p">()</span>
+<p><strong>Reimplemented by</strong>: <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostQuadratic/#function-jacobian-x">cpp_robotics::OCPCostQuadratic::jacobian_x</a>, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostServoQuadratic/#function-jacobian-x">cpp_robotics::OCPCostServoQuadratic::jacobian_x</a></p>
+<h3 id="function-jacobian_u">function jacobian_u</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">jacobian_u</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </code></pre></div>
-<h3 id="function-jacobian">function jacobian</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">jacobian</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">InputVector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
-<span class="w">    </span><span class="n">JacobianMatrix</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">jac</span>
-<span class="p">)</span>
+<p><strong>Reimplemented by</strong>: <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostQuadratic/#function-jacobian-u">cpp_robotics::OCPCostQuadratic::jacobian_u</a>, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostServoQuadratic/#function-jacobian-u">cpp_robotics::OCPCostServoQuadratic::jacobian_u</a></p>
+<h3 id="function-hessian_xx">function hessian_xx</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">hessian_xx</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </code></pre></div>
-<p>ヤコビアンの評価 </p>
-<p><strong>Parameters</strong>: </p>
-<ul>
-<li><strong>x</strong> </li>
-<li><strong>jac</strong> </li>
-</ul>
-<h3 id="function-jacobian_1">function jacobian</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">JacobianMatrix</span><span class="w"> </span><span class="n">jacobian</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">InputVector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span>
-<span class="p">)</span>
+<p><strong>Reimplemented by</strong>: <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostQuadratic/#function-hessian-xx">cpp_robotics::OCPCostQuadratic::hessian_xx</a>, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostServoQuadratic/#function-hessian-xx">cpp_robotics::OCPCostServoQuadratic::hessian_xx</a></p>
+<h3 id="function-hessian_uu">function hessian_uu</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">hessian_uu</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </code></pre></div>
-<p>ヤコビアンの評価 </p>
-<p><strong>Parameters</strong>: </p>
-<ul>
-<li><strong>x</strong> </li>
-</ul>
-<p><strong>Return</strong>: JacobianMatrix </p>
-<h3 id="function-jacobian_func">function jacobian_func</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="n">JacobianMatrix</span><span class="p">(</span><span class="n">InputVector</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">jacobian_func</span><span class="p">()</span>
+<p><strong>Reimplemented by</strong>: <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostQuadratic/#function-hessian-uu">cpp_robotics::OCPCostQuadratic::hessian_uu</a>, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostServoQuadratic/#function-hessian-uu">cpp_robotics::OCPCostServoQuadratic::hessian_uu</a></p>
+<h3 id="function-hessian_ux">function hessian_ux</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">hessian_ux</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </code></pre></div>
-<h3 id="function-jacobian_func_row_vector">function jacobian_func_row_vector</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Scalar</span><span class="p">,</span><span class="w"> </span><span class="n">NX</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;</span><span class="n">InputVector</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">jacobian_func_row_vector</span><span class="p">()</span>
+<p><strong>Reimplemented by</strong>: <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostQuadratic/#function-hessian-ux">cpp_robotics::OCPCostQuadratic::hessian_ux</a>, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostServoQuadratic/#function-hessian-ux">cpp_robotics::OCPCostServoQuadratic::hessian_ux</a></p>
+<h3 id="function-jacobian_x_terminal">function jacobian_x_terminal</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">jacobian_x_terminal</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span>
+</code></pre></div>
+<p><strong>Reimplemented by</strong>: <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostQuadratic/#function-jacobian-x-terminal">cpp_robotics::OCPCostQuadratic::jacobian_x_terminal</a>, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostServoQuadratic/#function-jacobian-x-terminal">cpp_robotics::OCPCostServoQuadratic::jacobian_x_terminal</a></p>
+<h3 id="function-hessian_xx_terminal">function hessian_xx_terminal</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">hessian_xx_terminal</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span>
+</code></pre></div>
+<p><strong>Reimplemented by</strong>: <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostQuadratic/#function-hessian-xx-terminal">cpp_robotics::OCPCostQuadratic::hessian_xx_terminal</a>, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCostServoQuadratic/#function-hessian-xx-terminal">cpp_robotics::OCPCostServoQuadratic::hessian_xx_terminal</a></p>
+<h3 id="function-is_terminal">function is_terminal</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_terminal</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span>
+</code></pre></div>
+<h3 id="function-state_size">function state_size</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">state_size</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</code></pre></div>
+<h3 id="function-input_size">function input_size</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">input_size</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</code></pre></div>
+<h3 id="function-horizon">function horizon</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">horizon</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</code></pre></div>
+<h2 id="public-attributes-documentation">Public Attributes Documentation</h2>
+<h3 id="variable-eps">variable eps</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">eps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">;</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2024-01-01 at 05:59:03 +0000</p>
+<p>Updated on 2024-01-04 at 15:10:50 +0000</p>
 
 
 

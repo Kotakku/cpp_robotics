@@ -2233,6 +2233,14 @@
 <span class="k">namespace</span><span class="w"> </span><span class="nn">cpp_robotics</span>
 <span class="p">{</span>
 
+<span class="kt">bool</span><span class="w"> </span><span class="nf">isPositiveDefinite</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="o">&amp;</span><span class="w"> </span><span class="n">matrix</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">LLT</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="o">&gt;</span><span class="w"> </span><span class="n">llt</span><span class="p">(</span><span class="n">matrix</span><span class="p">);</span><span class="w">  </span><span class="c1">// Compute the Cholesky decomposition</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">llt</span><span class="p">.</span><span class="n">info</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">NumericalIssue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w">  </span><span class="c1">// Matrix is not positive definite</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
 <span class="c1">// 疑似逆行列</span>
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">MatrixType</span><span class="o">&gt;</span>
 <span class="n">MatrixType</span><span class="w"> </span><span class="n">pseudo_inverse</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MatrixType</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">epsilon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;::</span><span class="n">epsilon</span><span class="p">())</span><span class="w"> </span><span class="c1">//, Eigen::MatrixXd W = Eigen::MatrixXd())</span>
@@ -2278,7 +2286,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2024-01-01 at 05:59:03 +0000</p>
+<p>Updated on 2024-01-04 at 15:10:50 +0000</p>
 
 
 

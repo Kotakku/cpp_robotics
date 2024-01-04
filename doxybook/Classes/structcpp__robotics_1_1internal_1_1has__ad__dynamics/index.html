@@ -14,7 +14,7 @@
         <meta name="author" content="Takumi Odashima">
       
       
-        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1XY2degRobot/">
+        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1internal_1_1has__ad__dynamics/">
       
       
       
@@ -25,7 +25,7 @@
 
     
       
-        <title>cpp_robotics::XY2degRobot - cpp_robotics</title>
+        <title>cpp_robotics::internal::has_ad_dynamics - cpp_robotics</title>
       
     
     
@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cpp_roboticsxy2degrobot" class="md-skip">
+        <a href="#cpp_roboticsinternalhas_ad_dynamics" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              cpp_robotics::XY2degRobot
+              cpp_robotics::internal::has_ad_dynamics
             
           </span>
         </div>
@@ -2211,100 +2211,18 @@
                   
 
 
-<h1 id="cpp_roboticsxy2degrobot">cpp_robotics::XY2degRobot</h1>
-<p><code>#include &lt;xy_2deg_robot.hpp&gt;</code></p>
-<h2 id="public-types">Public Types</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>enum uint8_t</td>
-<td Analytical_="Analytical," Numerical="Numerical"><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1XY2degRobot/#enum-iksolvemethod">IkSolveMethod</a></strong></td>
-</tr>
-</tbody>
-</table>
-<h2 id="public-functions">Public Functions</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1XY2degRobot/#function-xy2degrobot">XY2degRobot</a></strong>(double l1, double l2, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1XY2degRobot/#enum-iksolvemethod">IkSolveMethod</a> method =IkSolveMethod::Analytical)</td>
-</tr>
-<tr>
-<td>Eigen::Vector2d</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1XY2degRobot/#function-solve-fk">solve_fk</a></strong>(double joint_angle1, double joint_angle2)</td>
-</tr>
-<tr>
-<td>Eigen::Vector2d</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1XY2degRobot/#function-solve-fk">solve_fk</a></strong>(Eigen::Vector2d joint_angles)</td>
-</tr>
-<tr>
-<td>Eigen::Vector2d</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1XY2degRobot/#function-solve-ik">solve_ik</a></strong>(Eigen::Vector2d pos, Eigen::Vector2d joint_angles0 =Eigen::Vector2d::Zero())</td>
-</tr>
-</tbody>
-</table>
-<h2 id="public-types-documentation">Public Types Documentation</h2>
-<h3 id="enum-iksolvemethod">enum IkSolveMethod</h3>
-<table>
-<thead>
-<tr>
-<th>Enumerator</th>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Analytical</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Numerical</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="public-functions-documentation">Public Functions Documentation</h2>
-<h3 id="function-xy2degrobot">function XY2degRobot</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">XY2degRobot</span><span class="p">(</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">l1</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">l2</span><span class="p">,</span>
-<span class="w">    </span><span class="n">IkSolveMethod</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="n">IkSolveMethod</span><span class="o">::</span><span class="n">Analytical</span>
-<span class="p">)</span>
-</code></pre></div>
-<h3 id="function-solve_fk">function solve_fk</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span><span class="w"> </span><span class="n">solve_fk</span><span class="p">(</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">joint_angle1</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">joint_angle2</span>
-<span class="p">)</span>
-</code></pre></div>
-<h3 id="function-solve_fk_1">function solve_fk</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span><span class="w"> </span><span class="n">solve_fk</span><span class="p">(</span>
-<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span><span class="w"> </span><span class="n">joint_angles</span>
-<span class="p">)</span>
-</code></pre></div>
-<h3 id="function-solve_ik">function solve_ik</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span><span class="w"> </span><span class="n">solve_ik</span><span class="p">(</span>
-<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span>
-<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span><span class="w"> </span><span class="n">joint_angles0</span><span class="w"> </span><span class="o">=</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span><span class="o">::</span><span class="n">Zero</span><span class="p">()</span>
-<span class="p">)</span>
+<h1 id="cpp_roboticsinternalhas_ad_dynamics">cpp_robotics::internal::has_ad_dynamics</h1>
+<p><a href="#detailed-description">More...</a></p>
+<p><code>#include &lt;ocp_dynamics.hpp&gt;</code></p>
+<p>Inherits from std::false_type</p>
+<h2 id="detailed-description">Detailed Description</h2>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">DerClass</span><span class="w"> </span><span class="p">,</span>
+<span class="k">typename</span><span class="w"> </span><span class="nc">Scalar</span><span class="w"> </span><span class="p">,</span>
+<span class="k">typename</span><span class="w">  </span><span class="o">=</span><span class="kt">void</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">cpp_robotics</span><span class="o">::</span><span class="n">internal</span><span class="o">::</span><span class="n">has_ad_dynamics</span><span class="p">;</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2024-01-01 at 05:59:03 +0000</p>
+<p>Updated on 2024-01-04 at 15:10:50 +0000</p>
 
 
 

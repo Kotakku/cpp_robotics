@@ -14,7 +14,7 @@
         <meta name="author" content="Takumi Odashima">
       
       
-        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1XY2degRobot_1_1Kinematics/">
+        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDiscreteLinearDynamics/">
       
       
       
@@ -25,7 +25,7 @@
 
     
       
-        <title>cpp_robotics::XY2degRobot::Kinematics - cpp_robotics</title>
+        <title>cpp_robotics::OCPDiscreteLinearDynamics - cpp_robotics</title>
       
     
     
@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cpp_roboticsxy2degrobotkinematics" class="md-skip">
+        <a href="#cpp_roboticsocpdiscretelineardynamics" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              cpp_robotics::XY2degRobot::Kinematics
+              cpp_robotics::OCPDiscreteLinearDynamics
             
           </span>
         </div>
@@ -2211,7 +2211,9 @@
                   
 
 
-<h1 id="cpp_roboticsxy2degrobotkinematics">cpp_robotics::XY2degRobot::Kinematics</h1>
+<h1 id="cpp_roboticsocpdiscretelineardynamics">cpp_robotics::OCPDiscreteLinearDynamics</h1>
+<p><code>#include &lt;ocp_dynamics.hpp&gt;</code></p>
+<p>Inherits from <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/">cpp_robotics::OCPDynamics</a></p>
 <h2 id="public-functions">Public Functions</h2>
 <table>
 <thead>
@@ -2223,23 +2225,28 @@
 <tbody>
 <tr>
 <td></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1XY2degRobot_1_1Kinematics/#function-kinematics">Kinematics</a></strong>(double l1, double l2)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDiscreteLinearDynamics/#function-ocpdiscretelineardynamics">OCPDiscreteLinearDynamics</a></strong>(const size_t nx, const size_t nu, const size_t horizon)</td>
 </tr>
 <tr>
-<td>template &lt;typename T &gt; <br>Eigen::Matrix&lt; T, 2, 1 &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1XY2degRobot_1_1Kinematics/#function-solve-fk">solve_fk</a></strong>(const Eigen::Matrix&lt; T, 2, 1 &gt; &amp; x)</td>
+<td></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDiscreteLinearDynamics/#function-ocpdiscretelineardynamics">OCPDiscreteLinearDynamics</a></strong>(const Eigen::MatrixXd &amp; A, const Eigen::MatrixXd &amp; B, size_t horizon)</td>
 </tr>
 <tr>
-<td>Eigen::Vector2d</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1XY2degRobot_1_1Kinematics/#function-solve-ik-analytical">solve_ik_analytical</a></strong>(Eigen::Vector2d pos)</td>
+<td>virtual Eigen::VectorXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDiscreteLinearDynamics/#function-eval">eval</a></strong>(const Eigen::VectorXd &amp; x, const Eigen::VectorXd &amp; u) override</td>
 </tr>
 <tr>
-<td>template &lt;typename T &gt; <br>void</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1XY2degRobot_1_1Kinematics/#function-eval-func">eval_func</a></strong>(const Eigen::Matrix&lt; T, 2, 1 &gt; &amp; x, Eigen::Matrix&lt; T, 1, 1 &gt; &amp; y)</td>
+<td>virtual Eigen::MatrixXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDiscreteLinearDynamics/#function-jacobian-x">jacobian_x</a></strong>(const Eigen::VectorXd &amp; x, const Eigen::VectorXd &amp; u) override</td>
+</tr>
+<tr>
+<td>virtual Eigen::MatrixXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDiscreteLinearDynamics/#function-jacobian-u">jacobian_u</a></strong>(const Eigen::VectorXd &amp; x, const Eigen::VectorXd &amp; u) override</td>
 </tr>
 </tbody>
 </table>
-<h2 id="public-attributes">Public Attributes</h2>
+<h2 id="additional-inherited-members">Additional inherited members</h2>
+<p><strong>Public Types inherited from <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/">cpp_robotics::OCPDynamics</a></strong></p>
 <table>
 <thead>
 <tr>
@@ -2249,56 +2256,91 @@
 </thead>
 <tbody>
 <tr>
-<td>Eigen::Vector2d</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1XY2degRobot_1_1Kinematics/#variable-target-pos">target_pos</a></strong></td>
+<td>using std::shared_ptr&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/">OCPDynamics</a> &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/#using-sharedptr">SharedPtr</a></strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Public Functions inherited from <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/">cpp_robotics::OCPDynamics</a></strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/#function-ocpdynamics">OCPDynamics</a></strong>(size_t nx, size_t nu, size_t horizon)</td>
 </tr>
 <tr>
-<td>const double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1XY2degRobot_1_1Kinematics/#variable-l1">l1</a></strong></td>
+<td>size_t</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/#function-state-size">state_size</a></strong>() const</td>
 </tr>
 <tr>
-<td>const double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1XY2degRobot_1_1Kinematics/#variable-l2">l2</a></strong></td>
+<td>size_t</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/#function-input-size">input_size</a></strong>() const</td>
+</tr>
+<tr>
+<td>size_t</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/#function-horizon">horizon</a></strong>() const</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Public Attributes inherited from <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/">cpp_robotics::OCPDynamics</a></strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/#variable-eps">eps</a></strong></td>
 </tr>
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation</h2>
-<h3 id="function-kinematics">function Kinematics</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Kinematics</span><span class="p">(</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">l1</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">l2</span>
+<h3 id="function-ocpdiscretelineardynamics">function OCPDiscreteLinearDynamics</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">OCPDiscreteLinearDynamics</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nx</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nu</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">horizon</span>
 <span class="p">)</span>
 </code></pre></div>
-<h3 id="function-solve_fk">function solve_fk</h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">&gt;</span>
-<span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">solve_fk</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span>
+<h3 id="function-ocpdiscretelineardynamics_1">function OCPDiscreteLinearDynamics</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">OCPDiscreteLinearDynamics</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">A</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">B</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">horizon</span>
 <span class="p">)</span>
 </code></pre></div>
-<h3 id="function-solve_ik_analytical">function solve_ik_analytical</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span><span class="w"> </span><span class="n">solve_ik_analytical</span><span class="p">(</span>
-<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span><span class="w"> </span><span class="n">pos</span>
-<span class="p">)</span>
+<h3 id="function-eval">function eval</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">eval</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u</span>
+<span class="p">)</span><span class="w"> </span><span class="k">override</span>
 </code></pre></div>
-<h3 id="function-eval_func">function eval_func</h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">&gt;</span>
-<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">eval_func</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
-<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span>
-<span class="p">)</span>
+<p><strong>Reimplements</strong>: <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/#function-eval">cpp_robotics::OCPDynamics::eval</a></p>
+<h3 id="function-jacobian_x">function jacobian_x</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">jacobian_x</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u</span>
+<span class="p">)</span><span class="w"> </span><span class="k">override</span>
 </code></pre></div>
-<h2 id="public-attributes-documentation">Public Attributes Documentation</h2>
-<h3 id="variable-target_pos">variable target_pos</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector2d</span><span class="w"> </span><span class="n">target_pos</span><span class="p">;</span>
+<p><strong>Reimplements</strong>: <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/#function-jacobian-x">cpp_robotics::OCPDynamics::jacobian_x</a></p>
+<h3 id="function-jacobian_u">function jacobian_u</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">jacobian_u</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u</span>
+<span class="p">)</span><span class="w"> </span><span class="k">override</span>
 </code></pre></div>
-<h3 id="variable-l1">variable l1</h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">l1</span><span class="p">;</span>
-</code></pre></div>
-<h3 id="variable-l2">variable l2</h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">l2</span><span class="p">;</span>
-</code></pre></div>
+<p><strong>Reimplements</strong>: <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/#function-jacobian-u">cpp_robotics::OCPDynamics::jacobian_u</a></p>
 <hr />
-<p>Updated on 2024-01-01 at 05:59:03 +0000</p>
+<p>Updated on 2024-01-04 at 15:10:50 +0000</p>
 
 
 
