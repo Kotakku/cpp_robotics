@@ -12,17 +12,6 @@
 namespace cpp_robotics
 {
 
-enum class ALiLQRResult
-{
-    SUCCESS = 0,
-
-    // failed
-    MAX_INNER_ITER_REACHED,
-    MAX_ITER_REACHED,
-    MAX_PENALTY_EXCEEDED,
-    FAILED
-};
-
 struct ALConfig
 {
     size_t max_iter = 30;
@@ -64,6 +53,17 @@ struct ALConfig
 class ALiLQR
 {
 public:
+    enum class Result
+    {
+        SUCCESS = 0,
+
+        // failed
+        MAX_INNER_ITER_REACHED,
+        MAX_ITER_REACHED,
+        MAX_PENALTY_EXCEEDED,
+        FAILED
+    };
+
     ALiLQR(OCPDynamics::SharedPtr dynamics, OCPCost::SharedPtr cost, const OCPConstraintArray &constraints = OCPConstraintArray(), ALConfig config = ALConfig()):
         ALiLQR(OptimalControlProblem(dynamics, cost, constraints), config) {}
     
@@ -118,7 +118,7 @@ public:
         fu.setZero(prob_.state_size(), prob_.input_size());
     }
 
-    ALiLQRResult generate_trajectory(const Eigen::VectorXd &x0)
+    Result generate_trajectory(const Eigen::VectorXd &x0)
     {
         // slide ws data
         for(size_t i = 0; i < prob_.horizon()-1; i++)
@@ -151,7 +151,7 @@ public:
         {
             auto ret = ilqr(x0);
 
-            if(ret == ALiLQRResult::FAILED)
+            if(ret == Result::FAILED)
             {
                 // debug("sub iLQR failed");
                 return ret;
@@ -163,18 +163,18 @@ public:
             if(c_max < config_.constraint_torelance)
             {
                 // debug("constraint torelance reached: " << c_max);
-                return ALiLQRResult::SUCCESS;
+                return Result::SUCCESS;
             }
 
             if(u_max >= config_.penalty_max)
             {
                 // debug("max penalty exceeded");
-                return ALiLQRResult::MAX_PENALTY_EXCEEDED;
+                return Result::MAX_PENALTY_EXCEEDED;
             }
         }
 
         // debug("max iter reached");
-        return ALiLQRResult::MAX_ITER_REACHED;
+        return Result::MAX_ITER_REACHED;
     }
 
     const std::vector<Eigen::VectorXd> &get_input() const { return U; }
@@ -188,7 +188,7 @@ private:
         return false;
     }
 
-    ALiLQRResult ilqr(const Eigen::VectorXd &x0)
+    Result ilqr(const Eigen::VectorXd &x0)
     {
         rho = config_.reg_initial;
         drho = 0.0;
@@ -202,7 +202,7 @@ private:
             if(not backward_done)
             {
                 // debug("backward pass failed");
-                return ALiLQRResult::FAILED;
+                return Result::FAILED;
             }
 
             double new_J = forward_pass(x0, J);
@@ -210,13 +210,13 @@ private:
             // torelance check
             if(std::abs(new_J - J) < config_.cost_torelance)
             {
-                return ALiLQRResult::SUCCESS;
+                return Result::SUCCESS;
             }
             J = new_J;
         }
 
         // debug("max inner iter reached");
-        return ALiLQRResult::MAX_INNER_ITER_REACHED;
+        return Result::MAX_INNER_ITER_REACHED;
     }
 
     void update_duals()
@@ -481,7 +481,7 @@ private:
 // {
 //     using ALiLQR = detail::ALiLQR<DiscreteNonlinearOCP>;
 // public:
-//     using ALTROResult = detail::ALiLQRResult;
+//     using ALTROResult = detail::Result;
 //     using Config = ALiLQR::Config;
 
 //     ALTRO(const DiscreteNonlinearOCP &model):

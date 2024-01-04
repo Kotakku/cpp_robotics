@@ -39,77 +39,83 @@ private:
     const size_t horizon_;
 };
 
-// class OCPDiscreteLinearDynamics : public OCPDynamics
-// {
-// public:
-//     OCPDiscreteLinearDynamics(const size_t nx, const size_t nu, const size_t horizon):
-//         OCPDynamics(nx, nu, horizon),
-//         A(Eigen::MatrixXd::Zero(nx, nx)),
-//         B(Eigen::MatrixXd::Zero(nx, nu)){}
+class OCPDiscreteLinearDynamics : public OCPDynamics
+{
+public:
+    OCPDiscreteLinearDynamics(const size_t nx, const size_t nu, const size_t horizon):
+        OCPDynamics(nx, nu, horizon),
+        A(Eigen::MatrixXd::Zero(nx, nx)),
+        B(Eigen::MatrixXd::Zero(nx, nu)){}
 
-//     OCPDiscreteLinearDynamics(const Eigen::MatrixXd &A, const Eigen::MatrixXd &B, size_t horizon):
-//         OCPDynamics(A.rows(), B.cols(), horizon),
-//         A(A),
-//         B(B){}
+    OCPDiscreteLinearDynamics(const Eigen::MatrixXd &A, const Eigen::MatrixXd &B, size_t horizon):
+        OCPDynamics(A.rows(), B.cols(), horizon),
+        A(A),
+        B(B){}
 
-//     Eigen::VectorXd eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
-//     {
-//         return A * x + B * u;
-//     }
+    Eigen::VectorXd eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
+        return A * x + B * u;
+    }
 
-//     Eigen::MatrixXd jacobian_x(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
-//     {
-//         (void) x;
-//         (void) u;
-//         return A;
-//     }
+    Eigen::MatrixXd jacobian_x(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
+        (void) x;
+        (void) u;
+        return A;
+    }
 
-//     Eigen::MatrixXd jacobian_u(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
-//     {
-//         (void) x;
-//         (void) u;
-//         return B;
-//     }
+    Eigen::MatrixXd jacobian_u(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
+        (void) x;
+        (void) u;
+        return B;
+    }
 
-// private:
-//     Eigen::MatrixXd A;
-//     Eigen::MatrixXd B;
-// };
+private:
+    Eigen::MatrixXd A;
+    Eigen::MatrixXd B;
+};
 
-// class OCPContinuousLinearDynamics : public OCPDynamics
-// {
-// public:
-//     OCPContinuousLinearDynamics(const size_t nx, const size_t nu, const size_t horizon):
-//         OCPDynamics(nx, nu, horizon){}
+class OCPContinuousLinearDynamics : public OCPDynamics
+{
+public:
+    OCPContinuousLinearDynamics(const size_t nx, const size_t nu, const size_t horizon):
+        OCPDynamics(nx, nu, horizon){}
 
-//     void set_continuous_dynamics(const Eigen::MatrixXd &Acon, const Eigen::MatrixXd &Bcon, double dt)
-//     {
-//         std::tie(A, B) = Discret::discritize(Acon, Bcon, dt);
-//     }
+    OCPContinuousLinearDynamics(const Eigen::MatrixXd &Acon, const Eigen::MatrixXd &Bcon, double dt, size_t horizon):
+        OCPDynamics(Acon.rows(), Bcon.cols(), horizon)
+    {
+        set_continuous_dynamics(Acon, Bcon, dt);
+    }
 
-//     Eigen::VectorXd eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
-//     {
-//         return A * x + B * u;
-//     }
+    void set_continuous_dynamics(const Eigen::MatrixXd &Acon, const Eigen::MatrixXd &Bcon, double dt)
+    {
+        std::tie(A, B) = Discret::discritize(Acon, Bcon, dt);
+    }
 
-//     Eigen::MatrixXd jacobian_x(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
-//     {
-//         (void) x;
-//         (void) u;
-//         return A;
-//     }
+    Eigen::VectorXd eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
+        return A * x + B * u;
+    }
 
-//     Eigen::MatrixXd jacobian_u(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
-//     {
-//         (void) x;
-//         (void) u;
-//         return B;
-//     }
+    Eigen::MatrixXd jacobian_x(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
+        (void) x;
+        (void) u;
+        return A;
+    }
 
-// private:
-//     Eigen::MatrixXd A;
-//     Eigen::MatrixXd B;
-// };
+    Eigen::MatrixXd jacobian_u(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
+        (void) x;
+        (void) u;
+        return B;
+    }
+
+private:
+    Eigen::MatrixXd A;
+    Eigen::MatrixXd B;
+};
 
 class OCPDiscreteNonlinearDynamics : public OCPDynamics
 {

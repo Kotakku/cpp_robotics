@@ -35,9 +35,8 @@ public:
 int main()
 {
     using namespace cpp_robotics;
+    namespace plt = matplotlibcpp;
 
-    assert(-1 > 0);
-    
     const double Ts = 0.05;
     auto model = std::make_shared<CartPole>(30, Ts);
     auto cost = std::make_shared<OCPCostServoQuadratic>(model);
@@ -54,19 +53,21 @@ int main()
     Eigen::VectorXd x0(4);
     x0 << 0, 0, 0, 0;
 
-    namespace plt = matplotlibcpp;
-
     std::vector<double> u, x, theta, t, solve_time;
     for(size_t i = 0; i < 100; i++)
     {
         auto start = std::chrono::system_clock::now();
-        ilqr.generate_trajectory(x0);
+        auto ret = ilqr.generate_trajectory(x0);
         auto end = std::chrono::system_clock::now();
+
+        if(ret != ALiLQR::Result::SUCCESS)
+        {
+            std::cout << "Failed to solve at " << i << " code: " << static_cast<int>(ret) << std::endl;
+        }
 
         double milliseconds = 1e-3 * std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
         x0 = model->eval(x0, ilqr.get_input()[0]);
-        // x0 = model->eval(x0, (Eigen::VectorXd(1) << 15.0).finished());
 
         t.push_back(i * Ts);
         u.push_back(ilqr.get_input()[0](0));

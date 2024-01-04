@@ -85,64 +85,6 @@ public:
     }
 };
 
-class OCPFunctionalConstraint : public OCPConstraint
-{
-public:
-    using func_t = std::function<double(const Eigen::VectorXd &, const Eigen::VectorXd &)>;
-    using grad_func_t = std::function<Eigen::VectorXd(const Eigen::VectorXd &, const Eigen::VectorXd &)>;
-    using hessian_func_t = std::function<Eigen::MatrixXd(const Eigen::VectorXd &, const Eigen::VectorXd &)>;
-    
-    OCPFunctionalConstraint(OCPConstraintType type, func_t f):
-        OCPConstraint(type), f(f) {}
-
-    func_t f;
-    std::optional<grad_func_t> f_grad_x;
-    std::optional<grad_func_t> f_grad_u;
-    std::optional<hessian_func_t> f_hessian_xx;
-    std::optional<hessian_func_t> f_hessian_ux;
-    std::optional<hessian_func_t> f_hessian_uu;
-    
-    double eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
-    {
-        return f(x, u);
-    }
-
-    Eigen::VectorXd grad_x(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
-    {
-        if(f_grad_x)
-            return f_grad_x.value()(x, u);
-        return OCPConstraint::grad_x(x, u);
-    }
-
-    Eigen::VectorXd grad_u(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
-    {
-        if(f_grad_u)
-            return f_grad_u.value()(x, u);
-        return OCPConstraint::grad_u(x, u);
-    }
-
-    Eigen::MatrixXd hessian_xx(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
-    {
-        if(f_hessian_xx)
-            return f_hessian_xx.value()(x, u);
-        return OCPConstraint::hessian_xx(x, u);
-    }
-
-    Eigen::MatrixXd hessian_uu(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
-    {
-        if(f_hessian_uu)
-            return f_hessian_uu.value()(x, u);
-        return OCPConstraint::hessian_uu(x, u);
-    }
-
-    Eigen::MatrixXd hessian_ux(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
-    {
-        if(f_hessian_ux)
-            return f_hessian_ux.value()(x, u);
-        return OCPConstraint::hessian_ux(x, u);
-    }
-};
-
 class OCPConstraintArray : public std::vector<OCPConstraint::SharedPtr>
 {
     template<class Type1, class Type2>
@@ -206,6 +148,64 @@ public:
     }
 };
 
+class OCPFunctionalConstraint : public OCPConstraint
+{
+public:
+    using func_t = std::function<double(const Eigen::VectorXd &, const Eigen::VectorXd &)>;
+    using grad_func_t = std::function<Eigen::VectorXd(const Eigen::VectorXd &, const Eigen::VectorXd &)>;
+    using hessian_func_t = std::function<Eigen::MatrixXd(const Eigen::VectorXd &, const Eigen::VectorXd &)>;
+    
+    OCPFunctionalConstraint(OCPConstraintType type, func_t f):
+        OCPConstraint(type), f(f) {}
+
+    func_t f;
+    std::optional<grad_func_t> f_grad_x;
+    std::optional<grad_func_t> f_grad_u;
+    std::optional<hessian_func_t> f_hessian_xx;
+    std::optional<hessian_func_t> f_hessian_ux;
+    std::optional<hessian_func_t> f_hessian_uu;
+    
+    double eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
+        return f(x, u);
+    }
+
+    Eigen::VectorXd grad_x(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
+        if(f_grad_x)
+            return f_grad_x.value()(x, u);
+        return OCPConstraint::grad_x(x, u);
+    }
+
+    Eigen::VectorXd grad_u(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
+        if(f_grad_u)
+            return f_grad_u.value()(x, u);
+        return OCPConstraint::grad_u(x, u);
+    }
+
+    Eigen::MatrixXd hessian_xx(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
+        if(f_hessian_xx)
+            return f_hessian_xx.value()(x, u);
+        return OCPConstraint::hessian_xx(x, u);
+    }
+
+    Eigen::MatrixXd hessian_uu(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
+        if(f_hessian_uu)
+            return f_hessian_uu.value()(x, u);
+        return OCPConstraint::hessian_uu(x, u);
+    }
+
+    Eigen::MatrixXd hessian_ux(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
+        if(f_hessian_ux)
+            return f_hessian_ux.value()(x, u);
+        return OCPConstraint::hessian_ux(x, u);
+    }
+};
+
 class OCPInputIndexedBoundConstraint : public OCPConstraint
 {
 public:
@@ -265,7 +265,75 @@ public:
 
     Eigen::MatrixXd hessian_ux(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
     {
+        return Eigen::MatrixXd::Zero(u.size(), x.size());
+    }
+
+private:
+    BoundType type_;
+    size_t index_;
+    double bound_val_;
+    double scale_;
+};
+
+class OCPStateIndexedBoundConstraint : public OCPConstraint
+{
+public:
+    enum BoundType : uint8_t
+    {
+        Lower,
+        Upper
+    };
+    OCPStateIndexedBoundConstraint(BoundType type, size_t index, double bound_val, double scale = 1.0):
+        OCPConstraint(OCPConstraintType::Ineq), type_(type), index_(index), bound_val_(bound_val), scale_(scale) {}
+
+    double eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
+        (void) u;
+        if(type_ == BoundType::Lower)
+        {
+            return scale_ * (bound_val_ - x[index_]); // lb <= x
+        }
+        else
+        {
+            return scale_ * (x[index_] - bound_val_); // x <= ub
+        }
+    }
+
+    Eigen::VectorXd grad_x(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
+        (void) u;
+        Eigen::VectorXd grad = Eigen::VectorXd::Zero(x.size());
+        if(type_ == BoundType::Lower)
+        {
+            grad[index_] = -scale_;
+        }
+        else
+        {
+            grad[index_] = scale_;
+        }
+        return grad;
+    }
+
+    Eigen::VectorXd grad_u(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
         (void) x;
+        return Eigen::VectorXd::Zero(u.size());
+    }
+
+    Eigen::MatrixXd hessian_xx(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
+        (void) u;
+        return Eigen::MatrixXd::Zero(x.size(), x.size());
+    }
+
+    Eigen::MatrixXd hessian_uu(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
+        (void) x;
+        return Eigen::MatrixXd::Zero(u.size(), u.size());
+    }
+
+    Eigen::MatrixXd hessian_ux(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    {
         return Eigen::MatrixXd::Zero(u.size(), x.size());
     }
 
@@ -292,6 +360,26 @@ static OCPConstraintArray OCPInputBoundConstraints(const Eigen::VectorXd &lb, co
         // u <= ub
         constraints.push_back(
             std::make_shared<OCPInputIndexedBoundConstraint>(OCPInputIndexedBoundConstraint::BoundType::Upper, i, ub[i], slope));
+    }
+    return constraints;
+}
+
+static OCPConstraintArray OCPStateBoundConstrants(const Eigen::VectorXd &lb, const Eigen::VectorXd &ub, double slope = 10.0)
+{
+    assert(lb.size() == ub.size());
+
+    const size_t state_size = lb.size();
+
+    OCPConstraintArray constraints;
+    for(size_t i = 0; i < state_size; i++)
+    {
+        // lb <= x
+        constraints.push_back(
+            std::make_shared<OCPStateIndexedBoundConstraint>(OCPStateIndexedBoundConstraint::BoundType::Lower, i, lb[i], slope));
+
+        // x <= ub
+        constraints.push_back(
+            std::make_shared<OCPStateIndexedBoundConstraint>(OCPStateIndexedBoundConstraint::BoundType::Upper, i, ub[i], slope));
     }
     return constraints;
 }

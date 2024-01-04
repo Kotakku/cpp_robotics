@@ -2,82 +2,79 @@
 
 #include <Eigen/Dense>
 #include "optimal_control_problem.hpp"
-#include <cpp_robotics/optimize/quadprog.hpp>
 
-// #include <iostream>
-
-// #define MAT_SIZE(mat) std::cout << #mat << ": " << mat.rows() << "x" << mat.cols() << std::endl;
-// #define MAT(mat) std::cout << #mat << ": \n" << mat << std::endl;
 namespace cpp_robotics
 {
 
-enum class iLQRResult
+struct iLQRConfig
 {
-    SUCCESS = 0,
-    MAX_ITER_REACHED,
-    FAILED
+    size_t max_iter = 100;
+
+    // cost torelance
+    double cost_torelance = 1e-3;
+    
+    // forward pass line search stopping criteria
+    double beta1 = 1e-4;
+    double beta2 = 10.0;
+
+    // forward pass update rate
+    double alpha_scale = 0.5;
+    size_t max_forward_itr = 10;
+
+    // finite difference step
+    double eps = 1e-4;
 };
 
-template<class Model>
 class iLQR
 {
-    static constexpr bool is_linear_ocp = std::is_base_of<DiscreteLinearOCP, Model>::value;
-    static constexpr bool is_nonlinear_ocp = std::is_base_of<DiscreteNonlinearOCP, Model>::value;
 public:
-    struct Config
+    enum class Result
     {
-        size_t max_iter = 100;
-
-        // cost torelance
-        double cost_torelance = 1e-3;
-        
-        // forward pass line search stopping criteria
-        double beta1 = 1e-4;
-        double beta2 = 10.0;
-
-        // forward pass update rate
-        double alpha_scale = 0.5;
-        size_t max_forward_itr = 10;
-
-        // finite difference step
-        double eps = 1e-4;
+        SUCCESS = 0,
+        MAX_ITER_REACHED,
+        FAILED
     };
 
-    iLQR(const Model &model, Config config = Config()):
-        model_(model), config_(config)
-    {
-        static_assert(is_linear_ocp || is_nonlinear_ocp, "Model must be DiscreteLinearOCP or DiscreteNonlinearOCP");
+    iLQR(OCPDynamics::SharedPtr dynamics, OCPCost::SharedPtr cost, iLQRConfig config = iLQRConfig()):
+        iLQR(OptimalControlProblem(dynamics, cost), config) {}
 
+    // Note: constraints are ignored
+    iLQR(const OptimalControlProblem &prob, iLQRConfig config = iLQRConfig()):
+        prob_(prob), config_(config)
+    {
         // setup workspace
-        U.resize(model_.horizon());
-        tmpU.resize(model_.horizon());
-        for(size_t i = 0; i < model_.horizon(); i++)
+        U.resize(prob_.horizon());
+        tmpU.resize(prob_.horizon());
+        for(size_t i = 0; i < prob_.horizon(); i++)
         {
-            U[i] = Eigen::VectorXd::Zero(model_.input_size());
-            tmpU[i] = Eigen::VectorXd::Zero(model_.input_size());
+            U[i].setZero(prob_.input_size());
+            tmpU[i].setZero(prob_.input_size());
         }
-        X.resize(model_.horizon() + 1);
-        tmpX.resize(model_.horizon() + 1);
-        for(size_t i = 0; i < model_.horizon() + 1; i++)
+        X.resize(prob_.horizon() + 1);
+        tmpX.resize(prob_.horizon() + 1);
+        for(size_t i = 0; i < prob_.horizon() + 1; i++)
         {
-            X[i] = Eigen::VectorXd::Zero(model_.state_size());
-            tmpX[i] = Eigen::VectorXd::Zero(model_.state_size());
+            X[i].setZero(prob_.state_size());
+            tmpX[i].setZero(prob_.state_size());
         }
-        K.resize(model_.horizon());
-        for(size_t i = 0; i < model_.horizon(); i++)
+        K.resize(prob_.horizon());
+        for(size_t i = 0; i < prob_.horizon(); i++)
         {
-            K[i] = Eigen::MatrixXd::Zero(model_.input_size(), model_.state_size());
+            K[i].setZero(prob_.input_size(), prob_.state_size());
         }
-        d.resize(model_.horizon());
-        for(size_t i = 0; i < model_.horizon(); i++)
+        d.resize(prob_.horizon());
+        for(size_t i = 0; i < prob_.horizon(); i++)
         {
-            d[i] = Eigen::VectorXd::Zero(model_.input_size());
+            d[i].setZero(prob_.input_size());
         }
+
+        fx.setZero(prob_.state_size(), prob_.state_size());
+        fu.setZero(prob_.state_size(), prob_.input_size());
     }
 
-    iLQRResult generate_trajectory(const Eigen::VectorXd &x0)
+    Result generate_trajectory(const Eigen::VectorXd &x0)
     {
-        predict_trajectory(x0);
+        rollout_trajectory(x0);
 
         double J = total_cost(X, U);
         for(size_t itr = 0; itr < config_.max_iter; ++itr)
@@ -86,107 +83,65 @@ public:
             double new_J = forward_pass(x0, J);
             if(std::abs(new_J - J) < config_.cost_torelance)
             {
-                return iLQRResult::SUCCESS;
+                return Result::SUCCESS;
             }
             J = new_J;
         }
 
-        return iLQRResult::MAX_ITER_REACHED;
+        return Result::MAX_ITER_REACHED;
     }
 
     const std::vector<Eigen::VectorXd> &get_input() const { return U; }
     const std::vector<Eigen::VectorXd> &get_state() const { return X; }
 
 private:
-    void predict_trajectory(const Eigen::VectorXd &x0)
+    void rollout_trajectory(const Eigen::VectorXd &x0)
     {
         X[0] = x0;
-        for (size_t i = 0; i < model_.horizon(); ++i)
+        for (size_t i = 0; i < prob_.horizon(); ++i)
         {
-            X[i + 1] = model_.dynamics(X[i], U[i]);
+            X[i + 1] = prob_.dynamics->eval(X[i], U[i]);
         }
     }
 
     double total_cost(std::vector<Eigen::VectorXd> &X, std::vector<Eigen::VectorXd> &U)
     {
         double J = 0.0;
-
-        for (size_t i = 0; i < model_.horizon(); ++i)
+        for (size_t i = 0; i < prob_.horizon(); ++i)
         {
-            J += model_.running_cost(X[i], U[i], i);
+            J += prob_.cost->eval(X[i], U[i], i);
         }
-        J += model_.terminal_cost(X[model_.horizon()]);
-        
+        J += prob_.cost->eval_terminal(X[prob_.horizon()]);
         return J;
     }
 
     bool backward_pass()
     {
-        OCPDifferentiator diff(model_, config_.eps);
-        Vx = diff.lNx(X.back());
-        Vxx = diff.lNxx(X.back());
+        auto &constraints = prob_.constraints;
+        Vx = prob_.cost->jacobian_x_terminal(X.back());
+        Vxx = prob_.cost->hessian_xx_terminal(X.back());
 
         dV1 = 0.0;
         dV2 = 0.0;
         Eigen::MatrixXd Quu_inv;
-        for(int i = static_cast<int>(model_.horizon()) - 1; i >= 0; i--)
+        for(int i = static_cast<int>(prob_.horizon()) - 1; i >= 0; i--)
         {
-            Eigen::MatrixXd fx = diff.fx(X[i], U[i]);
-            Eigen::MatrixXd fu = diff.fu(X[i], U[i]);
+            // Eigen::MatrixXd fx = diff.fx(X[i], U[i]);
+            // Eigen::MatrixXd fu = diff.fu(X[i], U[i]);
+            fx = prob_.dynamics->jacobian_x(X[i], U[i]);
+            fu = prob_.dynamics->jacobian_u(X[i], U[i]);
 
-            Qx  = diff.lx(X[i], U[i], i) + fx.transpose() * Vx;
-            Qu  = diff.lu(X[i], U[i], i) + fu.transpose() * Vx;
-            Qxx = diff.lxx(X[i], U[i], i) + fx.transpose() * Vxx * fx;
-            Quu = diff.luu(X[i], U[i], i) + fu.transpose() * Vxx * fu;
-            Qux = diff.lux(X[i], U[i], i) + fu.transpose() * Vxx * fx;
+            Qx  = prob_.cost->jacobian_x(X[i], U[i], i) + fx.transpose() * Vx;
+            Qu  = prob_.cost->jacobian_u(X[i], U[i], i) + fu.transpose() * Vx;
+            Qxx = prob_.cost->hessian_xx(X[i], U[i], i) + fx.transpose() * Vxx * fx;
+            Quu = prob_.cost->hessian_uu(X[i], U[i], i) + fu.transpose() * Vxx * fu;
+            Qux = prob_.cost->hessian_ux(X[i], U[i], i) + fu.transpose() * Vxx * fx;
 
             // du = K*dx + d
-            if constexpr (is_linear_ocp)
-            {
-                // Todo: 入力のbox制約がある場合
-                // if(model_.u_limit)
-                // {
-                //     QuadProg prob;
-                //     const size_t n = model_.input_size();
-                //     prob.set_problem_size(n, 2*n, 0);
-                //     prob.Q = Quu; // + lambda * Eigen::MatrixXd::Identity(n,n);
-                //     prob.c = Qu;
-
-                //     // std::cout << "tpA" << std::endl;
-                //     prob.A << Eigen::MatrixXd::Identity(n,n), -Eigen::MatrixXd::Identity(n,n);
-                //     // std::cout << "tpB" << std::endl;
-                //     prob.b << model_.u_limit->second - U[i], -(model_.u_limit->first - U[i]);
-                    
-                //     auto ret = prob.solve(Eigen::VectorXd::Zero(n));
-
-                //     if(ret.is_solved)
-                //     {
-                //         // Todo
-                //         K[i] = -Qux;
-                //         d[i] = ret.x;
-                //     }
-                //     else
-                //     {
-                //         return false;
-                //     }
-                // }
-                // else
-                {
-                    // 制約がない場合
-                    Quu_inv = Quu.inverse();
-                    K[i] = -Quu_inv * Qux;
-                    d[i] = -Quu_inv * Qu;
-                }
-            }
-            else if constexpr (is_nonlinear_ocp)
-            {
-                // Todo: 制約がある場合
-
-                // 制約がない場合
-                Eigen::MatrixXd Quu_inv = Quu.inverse();
-                K[i] = -Quu_inv * Qux;
-                d[i] = -Quu_inv * Qu;
-            }
+            // 制約がない場合
+            Quu_inv = Quu.inverse();
+            K[i] = -Quu_inv * Qux;
+            d[i] = -Quu_inv * Qu;
 
             // update Vx, Vxx
             Vxx = Qxx + (K[i].transpose()*Quu*K[i]) + K[i].transpose()*Qux + Qux.transpose()*K[i];
@@ -207,18 +162,12 @@ private:
         tmpX[0] = x0;
         for(size_t j = 0; j < config_.max_forward_itr; j++)
         {
-            for(size_t i = 0; i < model_.horizon(); i++)
+            for(size_t i = 0; i < prob_.horizon(); i++)
             {
                 tmpU[i] = U[i] + K[i]*(tmpX[i]-X[i]) + alpha * d[i];
 
-                // Todo: Tessa 2012のbox制約の実装
-                if(model_.u_limit)
-                {
-                    tmpU[i] = tmpU[i].cwiseMax(model_.u_limit->first).cwiseMin(model_.u_limit->second);
-                }
-
                 // rollout
-                tmpX[i + 1] = model_.dynamics(tmpX[i], tmpU[i]);
+                tmpX[i + 1] = prob_.dynamics->eval(tmpX[i], tmpU[i]);
             }
 
             double new_J = total_cost(tmpX, tmpU);
@@ -237,8 +186,8 @@ private:
         return J; // already optimal
     }
 
-    const Model &model_;
-    Config config_;
+    const OptimalControlProblem prob_;
+    iLQRConfig config_;
 
     // workspace
     std::vector<Eigen::VectorXd> U, X, tmpU, tmpX;
@@ -247,6 +196,7 @@ private:
     Eigen::VectorXd Vx;
     Eigen::MatrixXd Vxx;
     Eigen::MatrixXd Qx, Qu, Qxx, Quu, Qux, Quxu;
+    Eigen::MatrixXd fx, fu;
     double dV1, dV2;
 };
 
