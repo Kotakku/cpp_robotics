@@ -9,13 +9,11 @@ public:
     DiffBot(size_t horizon, double dt):
         OCPDiscreteNonlinearDynamics(3,2,horizon), dt_(dt) {}
 
-    Eigen::VectorXd eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    void eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u, Eigen::VectorXd &x_next) const override
     {
-        Eigen::VectorXd x_next(3);
         x_next << x[0] + dt_ * (u[0] * std::cos(x[2]) - u[1] * std::sin(x[2])),
                   x[1] + dt_ * (u[0] * std::sin(x[2]) + u[1] * std::cos(x[2])),
                   x[2] + dt_ * (u[0] - u[1]);
-        return x_next;
     }
 private:
     double dt_;
@@ -27,7 +25,7 @@ public:
     CartPole(size_t horizon, double dt):
         OCPContinuousNonlinearDynamics(4,1,horizon,dt) {}
 
-    Eigen::VectorXd dynamics(const Eigen::VectorXd &x, const Eigen::VectorXd &u) const override
+    void dynamics(const Eigen::VectorXd &x, const Eigen::VectorXd &u, Eigen::VectorXd &dx) const override
     {
         auto y = x(0);     // cart の水平位置[m]
         auto th = x(1);    // pole の傾き角[rad]
@@ -41,7 +39,7 @@ public:
         // pole の傾き角加速度
         double ddth = (-f*c_th-mp*l*dth*dth*c_th*s_th-(mc+mp)*g*s_th) / (l * (mc+mp*s_th*s_th));  
 
-        return (Eigen::VectorXd(4) << dy, dth, ddy, ddth).finished();
+        dx << dy, dth, ddy, ddth;
     }
 
     const double mc = 2.0;
@@ -63,18 +61,18 @@ int main()
     cost->set_x_ref_const((Eigen::VectorXd(4) << 0, M_PI, 0, 0).finished());
     OCPConstraintArray constraints =
     {
-        OCPInputBoundConstraints(Eigen::VectorXd::Constant(2, -15), Eigen::VectorXd::Constant(2, 15))
+        OCPInputBoundConstraints(Eigen::VectorXd::Constant(1, -15), Eigen::VectorXd::Constant(1, 15))
     };
-    detail::ALiLQR ilqr(model, cost, constraints);
+    ALiLQR ilqr(model, cost, constraints);
 
     Eigen::VectorXd x0(4);
     x0 << 0, 0, 0, 0;
 
-    std::cout << "start" << std::endl;
+    // std::cout << "start" << std::endl;
 
-    if(ilqr.generate_trajectory(x0) == detail::ALiLQRResult::SUCCESS)
+    if(1) //ilqr.generate_trajectory(x0) == detail::ALiLQRResult::SUCCESS)
     {
-        std::cout << "Success" << std::endl;
+        // std::cout << "Success" << std::endl;
         // return 0;
 
         namespace plt = matplotlibcpp;
@@ -102,10 +100,11 @@ int main()
         plt::named_plot("x", t, x);
         plt::named_plot("theta", t, theta);
         plt::legend();
+        plt::ylim(-20, 20);
         plt::show(false);
 
         plt::figure();
-        plt::named_plot("solve_time[ms]", t, solve_time);
+        plt::named_plot("solve_time[ms]", t, solve_time, ".");
         plt::legend();
         plt::show();
 
