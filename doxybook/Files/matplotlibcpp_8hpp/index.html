@@ -14,7 +14,7 @@
         <meta name="author" content="Takumi Odashima">
       
       
-        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Files/frenet__frame_8hpp/">
+        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Files/matplotlibcpp_8hpp/">
       
       
       
@@ -25,7 +25,7 @@
 
     
       
-        <title>include/cpp_robotics/path_planning/frenet_frame.hpp - cpp_robotics</title>
+        <title>include/cpp_robotics/matplotlibcpp.hpp - cpp_robotics</title>
       
     
     
@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#includecpp_roboticspath_planningfrenet_framehpp" class="md-skip">
+        <a href="#includecpp_roboticsmatplotlibcpphpp" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              include/cpp_robotics/path_planning/frenet_frame.hpp
+              include/cpp_robotics/matplotlibcpp.hpp
             
           </span>
         </div>
@@ -2211,349 +2211,12 @@
                   
 
 
-<h1 id="includecpp_roboticspath_planningfrenet_framehpp">include/cpp_robotics/path_planning/frenet_frame.hpp</h1>
+<h1 id="includecpp_roboticsmatplotlibcpphpp">include/cpp_robotics/matplotlibcpp.hpp</h1>
 <h2 id="source-code">Source code</h2>
-<div class="highlight"><pre><span></span><code><span class="c1">// #pragma once</span>
-
-<span class="c1">// // #include &quot;Polynomial.hpp&quot;</span>
-<span class="c1">// // #include &quot;../../Control/Trajectory/Trajectory2/Trajectory2.hpp&quot;</span>
-<span class="c1">// #include &lt;cstdio&gt;</span>
-<span class="c1">// #include &lt;string&gt;</span>
-<span class="c1">// #include &lt;limits&gt;</span>
-<span class="c1">// #include &lt;tuple&gt;</span>
-
-<span class="c1">// namespace cpp_robotics</span>
-<span class="c1">// {</span>
-<span class="c1">// // template &lt;typename double&gt;</span>
-<span class="c1">// // void d_print_vector(const std::string name, const std::vector&lt;double&gt; &amp;vec,</span>
-<span class="c1">// //                   std::string fmt = &quot;%8.3f&quot;)</span>
-<span class="c1">// // {</span>
-<span class="c1">// //     std::cout &lt;&lt; name &lt;&lt; &quot; =&quot; &lt;&lt; std::endl;</span>
-<span class="c1">// //     printf(&quot;[&quot;);</span>
-<span class="c1">// //     for (auto &amp;val : vec) printf(fmt.c_str(), val);</span>
-<span class="c1">// //     printf(&quot;]\n&quot;);</span>
-<span class="c1">// // }</span>
-
-
-<span class="c1">//     /**</span>
-<span class="c1">//      * @brief 4次式補間</span>
-<span class="c1">//      * </span>
-<span class="c1">//      * @param x0 始点位置</span>
-<span class="c1">//      * @param v0 始点速度</span>
-<span class="c1">//      * @param a0 始点加速度</span>
-<span class="c1">//      * @param v1 終点速度</span>
-<span class="c1">//      * @param a1 終点加速度</span>
-<span class="c1">//      * @param Time 区間長さ</span>
-<span class="c1">//      */</span>
-<span class="c1">//     Polynomial&lt;double&gt; quartic_poly(double x0, double v0, double a0, double v1, double a1, double Time)</span>
-<span class="c1">//     {</span>
-<span class="c1">//         std::vector&lt;double&gt; coeff;</span>
-<span class="c1">//         coeff.resize(5);</span>
-
-<span class="c1">//         const double T2 = sq(Time);</span>
-<span class="c1">//         const double T3 = T2 * Time;</span>
-
-<span class="c1">//         coeff[0] = x0;</span>
-<span class="c1">//         coeff[1] = v0;</span>
-<span class="c1">//         coeff[2] = 0.5 * a0;</span>
-<span class="c1">//         coeff[3] = (3*(v1 - v0) - Time*(a1 + 2*a0)) / (3*T2);</span>
-<span class="c1">//         coeff[4] = (-2*(v1 - v0) + Time*(a1 + a0)) / (4*T3);</span>
-
-<span class="c1">//         return Polynomial&lt;double&gt;(coeff);</span>
-<span class="c1">//     }</span>
-
-<span class="c1">//     /**</span>
-<span class="c1">//      * @brief 5次補間</span>
-<span class="c1">//      * </span>
-<span class="c1">//      * @tparam double </span>
-<span class="c1">//      * @param x0 始点位置</span>
-<span class="c1">//      * @param v0 始点速度</span>
-<span class="c1">//      * @param a0 始点加速度</span>
-<span class="c1">//      * @param x1 終点位置</span>
-<span class="c1">//      * @param v1 終点速度</span>
-<span class="c1">//      * @param a1 終点加速度</span>
-<span class="c1">//      * @param Time 区間長さ</span>
-<span class="c1">//      * @return Polynomial&lt;double&gt; </span>
-<span class="c1">//      */</span>
-<span class="c1">//     template &lt;typename double&gt;</span>
-<span class="c1">//     Polynomial&lt;double&gt; quintic_poly(double x0, double v0, double a0, double x1, double v1, double a1, double Time)</span>
-<span class="c1">//     {</span>
-<span class="c1">//         std::vector&lt;double&gt; coeff;</span>
-<span class="c1">//         coeff.resize(6);</span>
-
-<span class="c1">//         const double T2 = sq(Time);</span>
-<span class="c1">//         const double T3 = T2 * Time;</span>
-<span class="c1">//         const double T4 = T3 * Time;</span>
-<span class="c1">//         const double T5 = T4 * Time;</span>
-
-<span class="c1">//         coeff[0] = x0;</span>
-<span class="c1">//         coeff[1] = v0;</span>
-<span class="c1">//         coeff[2] = 0.5 * a0;</span>
-<span class="c1">//         coeff[3] = ( 20*(x1 - x0) -   Time*( 8*v1 + 12*v0) + T2*(a1 - 3*a0)) / (2*T3);</span>
-<span class="c1">//         coeff[4] = (-30*(x1 - x0) +   Time*(14*v1 + 16*v0) - T2*(a1 - 3*a0)) / (2*T4);</span>
-<span class="c1">//         coeff[5] = ( 12*(x1 - x0) - 6*Time*(   v1 +    v0) + T2*(a1 -   a0)) / (2*T5);</span>
-
-<span class="c1">//         return Polynomial&lt;double&gt;(coeff);</span>
-<span class="c1">//     }</span>
-
-<span class="c1">//     /**</span>
-<span class="c1">//      * @brief 探索範囲用設定</span>
-<span class="c1">//      * </span>
-<span class="c1">//      * @tparam double </span>
-<span class="c1">//      */</span>
-<span class="c1">//     struct frenet_path_config_t</span>
-<span class="c1">//     {</span>
-<span class="c1">//         double dt;</span>
-<span class="c1">//         double width;</span>
-<span class="c1">//         size_t width_num;</span>
-<span class="c1">//         double length_min, length_max;</span>
-<span class="c1">//         size_t length_num;</span>
-<span class="c1">//         double target_speed;</span>
-<span class="c1">//         double speed_interval;</span>
-<span class="c1">//         size_t speed_num;</span>
-<span class="c1">//         double K_J, K_T, K_D, K_LAT, K_LON;</span>
-<span class="c1">//     };</span>
-
-<span class="c1">//     struct frenet_path_point_t</span>
-<span class="c1">//     {</span>
-<span class="c1">//         double t;</span>
-<span class="c1">//         double d, d_d, d_dd, d_ddd;</span>
-<span class="c1">//         double s, s_d, s_dd, s_ddd;</span>
-<span class="c1">//         Vector2&lt;double&gt; pos;</span>
-<span class="c1">//         double theta;</span>
-<span class="c1">//         double ds;</span>
-<span class="c1">//         double curvature;</span>
-<span class="c1">//     };</span>
-
-<span class="c1">//     struct frenet_path_t : public std::vector&lt;frenet_path_point_t&lt;double&gt;&gt;</span>
-<span class="c1">//     {</span>
-<span class="c1">//         double cd, cv, cf;</span>
-<span class="c1">//     };</span>
-
-<span class="c1">//     struct frenet_path_state_t</span>
-<span class="c1">//     {</span>
-<span class="c1">//         double c_speed;</span>
-<span class="c1">//         double c_d;</span>
-<span class="c1">//         double c_d_d;</span>
-<span class="c1">//         double c_d_dd;</span>
-<span class="c1">//         double s0;</span>
-<span class="c1">//     };</span>
-
-<span class="c1">//     template &lt;typename double&gt;</span>
-<span class="c1">//     struct frenet_path_th_t</span>
-<span class="c1">//     {</span>
-<span class="c1">//         double max_speed;</span>
-<span class="c1">//         double max_accel;</span>
-<span class="c1">//         double max_curvature;</span>
-<span class="c1">//         double radius;</span>
-<span class="c1">//     };</span>
-
-<span class="c1">//     std::vector&lt;frenet_path_t&lt;double&gt;&gt; frenet_path(</span>
-<span class="c1">//         const frenet_path_config_t&lt;double&gt;&amp; config, </span>
-<span class="c1">//         const frenet_path_state_t&lt;double&gt;&amp; state)</span>
-<span class="c1">//     {</span>
-<span class="c1">//         double c_speed = state.c_speed;</span>
-<span class="c1">//         double c_d = state.c_d;</span>
-<span class="c1">//         double c_d_d = state.c_d_d;</span>
-<span class="c1">//         double c_d_dd = state.c_d_dd;</span>
-<span class="c1">//         double s0 = state.s0;</span>
-
-<span class="c1">//         auto dt = config.dt;</span>
-<span class="c1">//         std::vector&lt;frenet_path_t&lt;double&gt;&gt; paths;</span>
-
-<span class="c1">//         // 側方距離変化</span>
-<span class="c1">//         for(size_t di_idx = 0; di_idx &lt; config.width_num; di_idx++)</span>
-<span class="c1">//         {</span>
-<span class="c1">//             //printf(&quot;di, %ld, %ld, %lf, %lf\n&quot;, di_idx, config.width_num-1, -config.width, config.width);</span>
-<span class="c1">//             double di = map&lt;double&gt;(di_idx, 0, config.width_num-1, -config.width, config.width);</span>
-
-
-<span class="c1">//             // 距離変化</span>
-<span class="c1">//             for(size_t Ti_idx = 0; Ti_idx &lt; config.length_num; Ti_idx++)</span>
-<span class="c1">//             {</span>
-<span class="c1">//                 double Ti = map&lt;double&gt;(Ti_idx, 0, config.length_num-1, config.length_min, config.length_max);</span>
-
-<span class="c1">//                 //printf(&quot;%lf, %lf, %lf, %lf, %lf\n&quot;, c_d, c_d_d, c_d_dd, di, Ti);</span>
-<span class="c1">//                 auto d_func = quintic_poly&lt;double&gt;(c_d, c_d_d, c_d_dd, di, 0, 0, Ti);</span>
-<span class="c1">//                 frenet_path_t&lt;double&gt; fp;</span>
-<span class="c1">//                 fp.resize(static_cast&lt;size_t&gt;(Ti/dt));</span>
-
-<span class="c1">//                 //d_print_vector(&quot;d_func&quot;, d_func.coeff());</span>
-
-<span class="c1">//                 for(size_t t_idx = 0; t_idx &lt; fp.size(); t_idx++)</span>
-<span class="c1">//                 {</span>
-<span class="c1">//                     auto &amp;fpp = fp[t_idx];</span>
-<span class="c1">//                     fpp.t = t_idx * dt;</span>
-<span class="c1">//                     fpp.d = d_func(fpp.t);</span>
-<span class="c1">//                     //printf(&quot;fpp.t = %lf, d = %lf\n&quot;, fpp.t, fpp.d);</span>
-<span class="c1">//                     fpp.d_d   = d_func.polyder(1)(fpp.t);</span>
-<span class="c1">//                     fpp.d_dd  = d_func.polyder(2)(fpp.t);</span>
-<span class="c1">//                     fpp.d_ddd = d_func.polyder(3)(fpp.t);</span>
-<span class="c1">//                 }</span>
-
-<span class="c1">//                 // 速度変化</span>
-<span class="c1">//                 for(size_t tv_idx = 0; tv_idx &lt; config.speed_num; tv_idx++)</span>
-<span class="c1">//                 {</span>
-<span class="c1">//                     double tv = map&lt;double&gt;(tv_idx, 0, config.speed_num-1, config.target_speed - config.speed_interval, config.target_speed + config.speed_interval);</span>
-<span class="c1">//                     frenet_path_t&lt;double&gt; tfp = fp;</span>
-<span class="c1">//                     auto s_func = quartic_poly&lt;double&gt;(s0, c_speed, 0, tv, 0, Ti);</span>
-
-<span class="c1">//                     double Jp = 0, Js = 0;</span>
-<span class="c1">//                     for(size_t t_idx = 0; t_idx &lt; tfp.size(); t_idx++)</span>
-<span class="c1">//                     {</span>
-<span class="c1">//                         auto &amp;tfpp = tfp[t_idx];</span>
-<span class="c1">//                         tfpp.t = t_idx * dt;</span>
-<span class="c1">//                         tfpp.s = s_func(tfpp.t);</span>
-<span class="c1">//                         tfpp.s_d   = s_func.polyder(1)(tfpp.t);</span>
-<span class="c1">//                         tfpp.s_dd  = s_func.polyder(2)(tfpp.t);</span>
-<span class="c1">//                         tfpp.s_ddd = s_func.polyder(3)(tfpp.t);</span>
-
-<span class="c1">//                         Jp += sq(tfpp.d_ddd);</span>
-<span class="c1">//                         Js += sq(tfpp.s_ddd);</span>
-<span class="c1">//                     }</span>
-
-<span class="c1">//                     double ds = sq(config.target_speed - tfp.back().s_d);</span>
-
-<span class="c1">//                     tfp.cd = config.K_J * Jp + config.K_T * Ti + config.K_D * sq(tfp.back().d);</span>
-<span class="c1">//                     tfp.cv = config.K_J * Js + config.K_T * Ti + config.K_D * ds;</span>
-<span class="c1">//                     tfp.cf = config.K_LAT * tfp.cd + config.K_LON * tfp.cv;</span>
-
-<span class="c1">//                     paths.push_back(tfp);</span>
-<span class="c1">//                 }</span>
-<span class="c1">//             }</span>
-<span class="c1">//         }</span>
-
-<span class="c1">//         return paths;</span>
-<span class="c1">//     }</span>
-
-<span class="c1">//     void frenet_path_to_global_path(std::vector&lt;frenet_path_t&lt;double&gt;&gt; &amp;fpath, const Trajectory2 &amp;ref_path)</span>
-<span class="c1">//     {</span>
-<span class="c1">//         // パスごと</span>
-<span class="c1">//         for(auto &amp;fp : fpath)</span>
-<span class="c1">//         {</span>
-<span class="c1">//             // 点ごと</span>
-<span class="c1">//             for(auto &amp;fpp : fp)</span>
-<span class="c1">//             {</span>
-<span class="c1">//                 auto patht = min&lt;double&gt;(fpp.s, ref_path.length());</span>
-<span class="c1">//                 //printf(&quot;patht: %lfm %lf\n&quot;, patht, fpp.s);</span>
-<span class="c1">//                 auto ref_idx = ref_path.linear_index(patht);</span>
-
-<span class="c1">//                 Vec2F pos = ref_path.position(ref_idx);</span>
-<span class="c1">//                 Vec2F vel = ref_path.velocity(ref_idx);</span>
-<span class="c1">//                 vel.normalize();</span>
-<span class="c1">//                 double yaw = vel.angle();</span>
-<span class="c1">//                 fpp.pos.x = pos.x + fpp.d * cos(yaw + HALF_PI);</span>
-<span class="c1">//                 fpp.pos.y = pos.y + fpp.d * sin(yaw + HALF_PI);</span>
-<span class="c1">//             }</span>
-
-<span class="c1">//             for(size_t i = 0; i &lt; fp.size()-1; i++)</span>
-<span class="c1">//             {</span>
-<span class="c1">//                 auto dpos = fp[i+1].pos - fp[i].pos;</span>
-<span class="c1">//                 if(!dpos.is_zero())</span>
-<span class="c1">//                 {</span>
-<span class="c1">//                     fp[i].theta = dpos.angle();</span>
-<span class="c1">//                     fp[i].ds = hypot(dpos.x, dpos.y);</span>
-<span class="c1">//                 }</span>
-<span class="c1">//                 else</span>
-<span class="c1">//                 {</span>
-<span class="c1">//                     fp[i].theta = fp[i].ds = 0;</span>
-<span class="c1">//                 }</span>
-<span class="c1">//             }</span>
-
-<span class="c1">//             for(size_t i = 0; i &lt; fp.size()-1; i++)</span>
-<span class="c1">//             {</span>
-<span class="c1">//                 fp[i].curvature = (fp[i+1].theta - fp[i].theta) / fp[i].ds;</span>
-<span class="c1">//             }</span>
-<span class="c1">//             fp.back().curvature = 0;</span>
-<span class="c1">//         }</span>
-<span class="c1">//     }</span>
-
-<span class="c1">//     bool check_collision(const Vector2&lt;double&gt; &amp;pos, double r, const std::vector&lt;Vector2&lt;double&gt;&gt;&amp; obstacles)</span>
-<span class="c1">//     {</span>
-<span class="c1">//         const double r2 = sq(r);</span>
-<span class="c1">//         for(auto &amp; ob : obstacles)</span>
-<span class="c1">//         {</span>
-<span class="c1">//             if(r2 &gt; (ob-pos).norm_sq())</span>
-<span class="c1">//                 return true; // 衝突する判定</span>
-<span class="c1">//         }</span>
-<span class="c1">//         return false;</span>
-<span class="c1">//     }</span>
-
-<span class="c1">//     void check_path(std::vector&lt;</span>
-<span class="c1">//         frenet_path_t&lt;double&gt;&gt; &amp;fpath, </span>
-<span class="c1">//         const frenet_path_th_t&lt;double&gt;&amp; ths,</span>
-<span class="c1">//         const std::vector&lt;Vector2&lt;double&gt;&gt;&amp; obstacles)</span>
-<span class="c1">//     {</span>
-<span class="c1">//         auto pit = fpath.begin();</span>
-<span class="c1">//         while(pit != fpath.end())</span>
-<span class="c1">//         {</span>
-<span class="c1">//             bool path_delete = false;</span>
-<span class="c1">//             for(auto &amp;fpp : (*pit))</span>
-<span class="c1">//             {</span>
-<span class="c1">//                 if(fpp.s_d &gt; ths.max_speed)</span>
-<span class="c1">//                     path_delete = true;</span>
-
-<span class="c1">//                 if(abs(fpp.s_dd) &gt; ths.max_accel)</span>
-<span class="c1">//                     path_delete = true;</span>
-
-<span class="c1">//                 // if(abs(fpp.curvature) &gt; ths.max_curvature)</span>
-<span class="c1">//                 //     path_delete = true;</span>
-
-<span class="c1">//                 if(check_collision&lt;double&gt;(fpp.pos, ths.radius, obstacles))</span>
-<span class="c1">//                     path_delete = true;</span>
-<span class="c1">//             }</span>
-
-<span class="c1">//             if (path_delete == true)</span>
-<span class="c1">//             {</span>
-<span class="c1">//                 //printf(&quot;erase\n&quot;);</span>
-<span class="c1">//                 pit = fpath.erase(pit);</span>
-<span class="c1">//             }</span>
-<span class="c1">//             else</span>
-<span class="c1">//             {</span>
-<span class="c1">//                 //printf(&quot;pit++;\n&quot;);</span>
-<span class="c1">//                 pit++;</span>
-<span class="c1">//             }</span>
-<span class="c1">//         }</span>
-<span class="c1">//     }</span>
-
-<span class="c1">//     std::tuple&lt;frenet_path_t&lt;double&gt;, std::vector&lt;frenet_path_t&lt;double&gt;&gt;&gt; frenet_optimal_planning(</span>
-<span class="c1">//         const frenet_path_config_t&lt;double&gt;&amp; config, </span>
-<span class="c1">//         const frenet_path_state_t&lt;double&gt;&amp; state,</span>
-<span class="c1">//         const Trajectory2 &amp;ref_path, </span>
-<span class="c1">//         const frenet_path_th_t&lt;double&gt;&amp; ths,</span>
-<span class="c1">//         const std::vector&lt;Vector2&lt;double&gt;&gt;&amp; obstacles)</span>
-<span class="c1">//     {</span>
-<span class="c1">//         auto frenet_paths = frenet_path(config, state);</span>
-
-<span class="c1">//         //printf(&quot;opt 1\n&quot;);</span>
-
-<span class="c1">//         frenet_path_to_global_path(frenet_paths, ref_path);</span>
-
-<span class="c1">//         //printf(&quot;opt 2\n&quot;);</span>
-
-
-<span class="c1">//         check_path&lt;double&gt;(frenet_paths, ths, obstacles);</span>
-
-<span class="c1">//         //printf(&quot;opt 3\n&quot;);</span>
-
-<span class="c1">//         auto it = frenet_paths.begin();</span>
-<span class="c1">//         double min_cost = (*it).cf;</span>
-
-<span class="c1">//         for(auto cit = frenet_paths.begin()+1; cit &lt; frenet_paths.end(); cit++)</span>
-<span class="c1">//         {</span>
-<span class="c1">//             if (min_cost &gt; (*cit).cf)</span>
-<span class="c1">//             {</span>
-<span class="c1">//                 min_cost = (*cit).cf;</span>
-<span class="c1">//                 it = cit;</span>
-<span class="c1">//             }</span>
-<span class="c1">//         }</span>
-
-<span class="c1">//         return {*it, frenet_paths};</span>
-<span class="c1">//     }</span>
-<span class="c1">// }</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cpp_robotics/third_party/matplotlib-cpp/matplotlibcpp.h&gt;</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2024-01-04 at 15:10:50 +0000</p>
+<p>Updated on 2024-01-05 at 06:51:03 +0000</p>
 
 
 

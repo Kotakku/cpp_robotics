@@ -2231,7 +2231,6 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdio&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 
 <span class="c1">// platform</span>
 <span class="cp">#if defined(linux) || defined(__linux) || defined(__linux__)</span>
@@ -2325,16 +2324,10 @@
 <span class="cp">#pragma GCC diagnostic warning &quot;-Wformat-security&quot;</span>
 <span class="p">}</span>
 
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
-<span class="kt">void</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="n">Args</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">c_format</span><span class="p">(</span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">...);</span>
-<span class="p">}</span>
-
 <span class="p">}</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2024-01-04 at 15:10:50 +0000</p>
+<p>Updated on 2024-01-05 at 06:51:03 +0000</p>
 
 
 

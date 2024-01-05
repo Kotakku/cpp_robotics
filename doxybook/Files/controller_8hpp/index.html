@@ -2217,15 +2217,25 @@
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;controller/pid.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;controller/pid2.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;controller/lqr.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;controller/pure_pursuit.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;controller/psmc.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;controller/nctf.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;controller/modern_control.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;controller/pfc.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;controller/vrft.hpp&quot;</span>
+
+<span class="c1">// #include &quot;controller/pfc.hpp&quot;</span>
+<span class="c1">// #include &quot;controller/pure_pursuit.hpp&quot;</span>
+
+<span class="c1">// // ここから時間かかる</span>
+<span class="c1">// #include &quot;controller/lqr.hpp&quot; // + 7.0s</span>
+<span class="c1">// #include &quot;controller/modern_control.hpp&quot; // +1.7s</span>
+<span class="c1">// #include &quot;controller/vrft.hpp&quot; // +4.0s</span>
+<span class="c1">// #include &quot;controller/linear_mpc.hpp&quot; // +2.6s</span>
+<span class="c1">// #include &quot;controller/linear_regulator_mpc.hpp&quot; // +2.6s</span>
+<span class="c1">// #include &quot;controller/ocp_dynamics.hpp&quot;</span>
+<span class="c1">// #include &quot;controller/ocp_cost.hpp&quot;</span>
+<span class="c1">// #include &quot;controller/ocp_constraint.hpp&quot;</span>
+<span class="c1">// #include &quot;controller/optimal_control_problem.hpp&quot;</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2024-01-04 at 15:10:50 +0000</p>
+<p>Updated on 2024-01-05 at 06:51:03 +0000</p>
 
 
 
