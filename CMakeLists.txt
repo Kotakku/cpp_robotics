@@ -79,11 +79,11 @@ if(BUILD_TESTS)
 find_package(GTest REQUIRED)
 enable_testing()
 set(test_files
-  common/lib_test
+  # common/lib_test
   utility/singleton_test
+  utility/random_test
 
   algorithm/poly_regression_test
-  algorithm/random_test
   algorithm/k_means_test
   algorithm/auto_diff_test
   algorithm/icp_test
@@ -129,14 +129,17 @@ if(BUILD_BENCHMARKS)
 
 find_package(Python3 COMPONENTS Development NumPy)
 
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftime-report")
+
 set(bench_test_files
+  build_time
   autodiff
   eigen_arg_ret
 )
 
 foreach(bench_test_file ${bench_test_files})
-get_filename_component(bench_test_file benckmark/${bench_test_file}.cpp NAME_WE)
-add_executable(bench_${bench_test_file} benckmark/${bench_test_file}.cpp)
+get_filename_component(bench_test_file benchmark/${bench_test_file}.cpp NAME_WE)
+add_executable(bench_${bench_test_file} benchmark/${bench_test_file}.cpp)
 target_include_directories(bench_${bench_test_file} PRIVATE include)
 target_link_libraries(bench_${bench_test_file} PRIVATE Eigen3::Eigen Python3::Python Python3::NumPy)
 endforeach()

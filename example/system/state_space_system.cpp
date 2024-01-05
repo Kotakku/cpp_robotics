@@ -1,5 +1,7 @@
+#include <iostream>
 #include <cpp_robotics/system.hpp>
 #include <cpp_robotics/controller.hpp>
+#include <cpp_robotics/controller/modern_control.hpp>
 
 int main()
 {

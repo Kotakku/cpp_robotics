@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cpp_robotics/algorithm.hpp>
+#include <cpp_robotics/utility.hpp>
 
 double random_std()
 {

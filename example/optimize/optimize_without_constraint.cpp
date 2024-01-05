@@ -1,6 +1,6 @@
 #include <iostream>
 #include <Eigen/Dense>
-#include <cpp_robotics/optimize.hpp>
+#include <cpp_robotics/optimize/no_constraint_method.hpp>
 
 int main()
 {

@@ -3,7 +3,6 @@
 #include <string>
 #include <cstdio>
 #include <vector>
-#include <iostream>
 
 // platform
 #if defined(linux) || defined(__linux) || defined(__linux__)
@@ -121,19 +120,6 @@ std::string c_format(const std::string &format, Args const&... args)
     std::snprintf(&buf[0], len + 1, format.c_str(), args...);
     return std::string{&buf[0], &buf[0] + len};
 #pragma GCC diagnostic warning "-Wformat-security"
-}
-
-/**
- * @brief std::coutにprintfの形式でフォーマットされた文字列を出力する
- * 
- * @tparam Args 
- * @param format 
- * @param args 
- */
-template <typename... Args>
-void print(const std::string &format, Args const&... args)
-{
-    std::cout << c_format(format, args...);
 }
 
 }

@@ -1,6 +1,7 @@
 #define CR_USE_MATPLOTLIB
 #include <iostream>
-#include "cpp_robotics/cpp_robotics.hpp"
+#include <cpp_robotics/matplotlibcpp.hpp>
+#include "cpp_robotics/path_planning/dubins_path.hpp"
 
 int main()
 {

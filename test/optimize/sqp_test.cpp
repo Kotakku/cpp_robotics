@@ -1,8 +1,6 @@
 #include <gtest/gtest.h>
 
 #include <iostream>
-#include <limits>
-#include <cpp_robotics/algorithm.hpp>
 #include <cpp_robotics/optimize/sqp.hpp>
 
 

@@ -1,8 +1,9 @@
 #pragma once
 
-#include "../vector/transform.hpp"
+#include "cpp_robotics/utility.hpp"
+#include "cpp_robotics/vector/transform.hpp"
+#include <optional>
 #include <functional>
-#include "../utility/math_utils.hpp"
 
 namespace cpp_robotics
 {

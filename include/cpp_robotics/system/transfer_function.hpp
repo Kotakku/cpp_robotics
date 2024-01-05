@@ -1,6 +1,5 @@
 #pragma once
 
-#include <Eigen/Dense>
 #include <cpp_robotics/system/discret.hpp>
 #include <cpp_robotics/system/polynomial.hpp>
 
