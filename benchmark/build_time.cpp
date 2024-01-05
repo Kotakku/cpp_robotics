@@ -10,13 +10,6 @@
 #include "cpp_robotics/chassis.hpp" // 1.9
 #include "cpp_robotics/motor.hpp" // 2.0
 
-
-// 廃止
-// #include "cpp_robotics/path_planning.hpp"
-// #include "cpp_robotics/algorithm.hpp"
-// #include "cpp_robotics/optimize.hpp"
-
-
 int main() {
   return 0;
 }

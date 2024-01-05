@@ -138,8 +138,8 @@ set(bench_test_files
 )
 
 foreach(bench_test_file ${bench_test_files})
-get_filename_component(bench_test_file benckmark/${bench_test_file}.cpp NAME_WE)
-add_executable(bench_${bench_test_file} benckmark/${bench_test_file}.cpp)
+get_filename_component(bench_test_file benchmark/${bench_test_file}.cpp NAME_WE)
+add_executable(bench_${bench_test_file} benchmark/${bench_test_file}.cpp)
 target_include_directories(bench_${bench_test_file} PRIVATE include)
 target_link_libraries(bench_${bench_test_file} PRIVATE Eigen3::Eigen Python3::Python Python3::NumPy)
 endforeach()
