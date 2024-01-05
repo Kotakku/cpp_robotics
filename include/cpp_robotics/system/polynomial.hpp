@@ -1,9 +1,8 @@
 #pragma once
 
 #include <vector>
-// #include <initializer_list>
 #include <cassert>
-#include "../utility/cpp_support.hpp"
+#include <cpp_robotics/utility/cpp_support.hpp>
 
 namespace cpp_robotics
 {

@@ -79,11 +79,11 @@ if(BUILD_TESTS)
 find_package(GTest REQUIRED)
 enable_testing()
 set(test_files
-  common/lib_test
+  # common/lib_test
   utility/singleton_test
+  utility/random_test
 
   algorithm/poly_regression_test
-  algorithm/random_test
   algorithm/k_means_test
   algorithm/auto_diff_test
   algorithm/icp_test

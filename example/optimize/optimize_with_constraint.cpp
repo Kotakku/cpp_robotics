@@ -1,6 +1,7 @@
 #include <iostream>
 #include <Eigen/Dense>
-#include <cpp_robotics/optimize.hpp>
+#include <cpp_robotics/optimize/barrier_method.hpp>
+#include <cpp_robotics/optimize/penalty_method.hpp>
 
 int main()
 {

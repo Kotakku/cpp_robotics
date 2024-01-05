@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <cpp_robotics/system.hpp>
 #include <cpp_robotics/controller.hpp>
+#include <cpp_robotics/controller/modern_control.hpp>
 
 #define PRINT_MAT(MAT) \
     std::cout << #MAT << std::endl;\

@@ -2,7 +2,7 @@
 
 #include <cmath>
 #include <random>
-#include "../utility/singleton.hpp"
+#include "cpp_robotics/utility/singleton.hpp"
 
 namespace cpp_robotics
 {

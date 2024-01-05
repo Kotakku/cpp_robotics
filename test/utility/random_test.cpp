@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
 #include <iostream>
-#include <cpp_robotics/algorithm/random.hpp>
+#include <cpp_robotics/utility/random.hpp>
 #include <array>
 
 TEST(random, constructor) {

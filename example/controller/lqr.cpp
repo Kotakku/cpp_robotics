@@ -1,7 +1,8 @@
 #define CR_USE_MATPLOTLIB
 #include <iostream>
-#include <cpp_robotics/core.hpp>
-
+#include <cpp_robotics/system.hpp>
+#include <cpp_robotics/controller/lqr.hpp>
+#include <cpp_robotics/matplotlibcpp.hpp>
 
 int main()
 {

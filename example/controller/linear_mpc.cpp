@@ -1,10 +1,9 @@
 #define CR_USE_MATPLOTLIB
 #include <iostream>
-
-#include <cpp_robotics/core.hpp>
+#include <cpp_robotics/utility.hpp>
 #include <cpp_robotics/controller/linear_mpc.hpp>
 #include <cpp_robotics/system/state_space_system.hpp>
-#include <limits>
+#include <cpp_robotics/matplotlibcpp.hpp>
 
 
 int main()

@@ -1,10 +1,11 @@
 #define CR_USE_MATPLOTLIB
 #include <cpp_robotics/system.hpp>
 #include <cpp_robotics/controller.hpp>
-#include <cpp_robotics/motor/dc_motor_list.hpp>
-#include <cpp_robotics/motor/motor_tf.hpp>
+#include <cpp_robotics/controller/vrft.hpp>
+#include <cpp_robotics/optimize/derivative.hpp>
+#include <cpp_robotics/optimize/quasi_newton_method.hpp>
+#include <cpp_robotics/motor.hpp>
 #include <cpp_robotics/filter.hpp>
-#include <cpp_robotics/optimize.hpp>
 #include <string>
 #include <iomanip>
 

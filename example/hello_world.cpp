@@ -1,7 +1,10 @@
 #define CR_USE_MATPLOTLIB
 #include <iostream>
 #include <Eigen/Dense>
-#include <cpp_robotics/cpp_robotics.hpp>
+#include <cpp_robotics/vector.hpp>
+#include <cpp_robotics/controller/lqr.hpp>
+#include <cpp_robotics/system.hpp>
+#include <cpp_robotics/matplotlibcpp.hpp>
 
 int main()
 {

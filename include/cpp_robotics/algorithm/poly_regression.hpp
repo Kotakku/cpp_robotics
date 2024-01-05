@@ -1,7 +1,5 @@
 #pragma once
 
-#include <array>
-#include <vector>
 #include <Eigen/Dense>
 #include "cpp_robotics/system/polynomial.hpp"
 

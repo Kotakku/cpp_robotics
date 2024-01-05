@@ -1,8 +1,8 @@
 #define CR_USE_MATPLOTLIB
 #include <iostream>
-#include <cpp_robotics/core.hpp>
-#include <cpp_robotics/motor/dc_motor_list.hpp>
-#include <cpp_robotics/motor/motor_tf.hpp>
+#include <cpp_robotics/utility.hpp>
+#include <cpp_robotics/system.hpp>
+#include <cpp_robotics/motor.hpp>
 
 static std::tuple<std::vector<double>, std::vector<double>> ref_trajectory(double time, double dt)
 {

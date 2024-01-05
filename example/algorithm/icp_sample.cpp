@@ -1,9 +1,9 @@
 #define CR_USE_MATPLOTLIB
 #include <iostream>
 #include <iomanip>
-#include <cpp_robotics/algorithm.hpp>
+#include <cpp_robotics/matplotlibcpp.hpp>
+#include <cpp_robotics/algorithm/icp.hpp>
 #include <cpp_robotics/vector/vector2.hpp>
-#include <cpp_robotics/third_party/matplotlib-cpp/matplotlibcpp.h>
 #include <Eigen/Geometry> 
 
 int main()
