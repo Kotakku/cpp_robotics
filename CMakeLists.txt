@@ -129,7 +129,10 @@ if(BUILD_BENCHMARKS)
 
 find_package(Python3 COMPONENTS Development NumPy)
 
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftime-report")
+
 set(bench_test_files
+  build_time
   autodiff
   eigen_arg_ret
 )

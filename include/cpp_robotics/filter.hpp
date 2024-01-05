@@ -12,4 +12,6 @@
 #include "filter/acceleration_limit_filter.hpp"
 #include "filter/filter_state_holder.hpp"
 #include "filter/kalman_filter.hpp"
-#include "filter/extended_kalman_filter.hpp"
+
+// 時間かかる
+#include "filter/extended_kalman_filter.hpp" // +2.3s

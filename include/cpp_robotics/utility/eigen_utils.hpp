@@ -5,10 +5,12 @@
 namespace cpp_robotics
 {
 
-bool isPositiveDefinite(const Eigen::MatrixXd& matrix) {
-    Eigen::LLT<Eigen::MatrixXd> llt(matrix);  // Compute the Cholesky decomposition
+// 行列が正定値かどうか
+template<typename MatrixType>
+bool isPositiveDefinite(const MatrixType& matrix) {
+    Eigen::LLT<MatrixType> llt(matrix);
     if(llt.info() == Eigen::NumericalIssue) {
-        return false;  // Matrix is not positive definite
+        return false;
     }
     return true;
 }

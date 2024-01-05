@@ -6,6 +6,6 @@
 #include "unit.hpp"
 
 // control core
+#include "system.hpp"
 #include "controller.hpp"
 #include "filter.hpp"
-#include "system.hpp"

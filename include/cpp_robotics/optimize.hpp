@@ -7,8 +7,6 @@
 #include "optimize/quasi_newton_method.hpp"
 #include "optimize/penalty_method.hpp"
 #include "optimize/barrier_method.hpp"
-#include "optimize/linprog.hpp"
 #include "optimize/quadprog.hpp"
 #include "optimize/sqp.hpp"
-#include "optimize/interior_point_method.hpp"
 #include "optimize/active_set_method.hpp"
