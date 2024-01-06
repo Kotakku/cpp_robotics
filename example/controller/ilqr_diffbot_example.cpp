@@ -31,7 +31,7 @@ int main()
     cost->Q = (Eigen::VectorXd(3) << 5, 5, 3).finished().asDiagonal();
     cost->R = 1.0 * Eigen::MatrixXd::Identity(2, 2);
     cost->Qf = cost->Q;
-    cost->set_x_ref_const((Eigen::VectorXd(4) << 3, 4, M_PI/2).finished());
+    cost->set_x_ref_const((Eigen::VectorXd(3) << 3, 4, M_PI/2).finished());
     iLQR ilqr(model, cost);
 
     Eigen::VectorXd x0(3);
