@@ -113,6 +113,8 @@ set(test_files
   controller/psmc_test
   controller/pfc_test
   controller/vrft_test
+
+  arm_kinematics/xy_2link_robot_test
 )
 include(GoogleTest)
 foreach(test_file ${test_files})
