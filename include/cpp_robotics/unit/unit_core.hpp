@@ -395,7 +395,7 @@ constexpr auto operator *(const Unit<T1, UnitDim, Prefix, Tag> &l_value, const T
 {
     static_assert(std::is_arithmetic_v<T1> && std::is_arithmetic_v<T2>, "Type is not arithmetic");
     using unit_type = Unit<T1, UnitDim, Prefix, Tag>;
-    return unit_type(static_cast<T1>(l_value) * r_value);
+    return unit_type(l_value.value() * r_value);
 }
 
 // 数値*単位
@@ -404,7 +404,7 @@ constexpr auto operator *(const T1 &l_value, const Unit<T2, UnitDim, Prefix, Tag
 {
     static_assert(std::is_arithmetic_v<T1> && std::is_arithmetic_v<T2>, "Type is not arithmetic");
     using unit_type = Unit<T2, UnitDim, Prefix, Tag>;
-    return unit_type(l_value * static_cast<T1>(r_value));
+    return unit_type(l_value * r_value.value());
 }
 
 // 数値/単位
@@ -413,7 +413,7 @@ constexpr auto operator /(const T1 &l_value, const Unit<T2, UnitDim, Prefix, Tag
 {
     static_assert(std::is_arithmetic_v<T1> && std::is_arithmetic_v<T2>, "Type is not arithmetic");
     using unit_type = Unit<T2, UnitDim, Prefix, Tag>;
-    return typename unit_assem::unit_inv<unit_type>::unit(l_value / static_cast<T2>(r_value));
+    return typename unit_assem::unit_inv<unit_type>::unit(l_value / r_value.value());
 }
 
 // 単位/数値
@@ -422,7 +422,7 @@ constexpr auto operator /(const Unit<T1, UnitDim, Prefix, Tag> &l_value, const T
 {
     static_assert(std::is_arithmetic_v<T1> && std::is_arithmetic_v<T2>, "Type is not arithmetic");
     using unit_type = Unit<T1, UnitDim, Prefix, Tag>;
-    return unit_type(static_cast<T1>(l_value) / r_value);
+    return unit_type(l_value.value() / r_value);
 }
 
 // 単位*単位
