@@ -1321,11 +1321,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/example/template/</loc>
-         <lastmod>2024-01-06</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kotakku.github.io/cpp_robotics/example/algorithm/icp_sample/</loc>
          <lastmod>2024-01-06</lastmod>
          <changefreq>daily</changefreq>
@@ -1431,7 +1426,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kotakku.github.io/cpp_robotics/example/units/units/</loc>
+         <loc>https://kotakku.github.io/cpp_robotics/example/unit/unit/</loc>
          <lastmod>2024-01-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
