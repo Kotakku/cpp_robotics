@@ -69,6 +69,11 @@ nav:
       - 極配置: example/control/place.md
       # - Pure pursuit: example/control/pure_pursuit.md
       - VRFTによるPIDゲインの自動チューニング: example/control/vrft_pid.md
+      - iLQR: example/control/ilqr.md
+      - AL-iLQR: example/control/alilqr.md
+    - フィルター:
+      - LPF, HPF: example/filter/lpf_hpf.md
+      - 制限フィルタ: example/filter/limit_filter.md
     - 最適化:
       - スカラー関数の最適化: example/optimize/optimize_scalar.md
       - 無制約最適化: example/optimize/optimize_without_constraint.md
