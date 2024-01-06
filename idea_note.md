@@ -7,16 +7,12 @@
     - PID
         - アンチワインドアップ
         - pidtune
-    - オートゲインチューニング
-        - FRIT
-        - VRFT
     - 零位相誤差追従制御
     - スミス補償器
     - LMI制御
     - モデル化誤差抑制補償器(MEC)
     - システム同定
         - 伝達関数同定
-            - 同定対象のボード線図的なデータが取れてて、近似する伝達関数の分母分子の次数を手動で与えればゴリ押し最適化でそれっぽくなるのでは？
     - ループ整形
 - 安定性とロバスト性
     - ゲイン余裕
@@ -25,6 +21,7 @@
     - アームのモデルを表現するオブジェクト
     - 何個かIK実装しておく
         - デルタロボット
+- ロボットアームの動力学
     - ニュートンオイラー法による順運動学の導出
 - パスプランニング
     - DWA
@@ -32,17 +29,6 @@
 - アルゴリズム
     - K-means++法
 - 整数最適化問題
-- ICP, NDT(2D, 3D)
-    - [NDT勉強会](https://docs.google.com/presentation/d/1rWhCQtZv4YSWdedoJWPAF3Q4umwaA8yuDADyWIhrM20/edit?usp=sharing)
-    - [Scan Matching 自己位置推定手法](chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/https://web.wakayama-u.ac.jp/~nakajima/SelfDrivingSystem/assets/pdf/method_pmv_03.pdf)
-- 最適制御
-    - DDR, iLQR
-    - MPC(できたら非線形も)
-- SLAM
-- ドローン
-    - 力学モデルによるシミュレーション
-- 多脚
-    - SpotMicro
 
 # 理論的なものではない&あったら便利そうなもの
 - 多段フィルタ構成用クラス

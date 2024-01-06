@@ -21,7 +21,7 @@
 
 # 依存関係の環境構築
 ```
-sudo apt install libeigen3-dev libgtest-dev libginac-dev
+sudo apt install libeigen3-dev libgtest-dev
 pip install numpy matplotlib
 ```
 
@@ -36,7 +36,7 @@ sudo cmake --install .
 exampleをビルドするときは以下
 ```
 mkdir build && cd build
-cmake -DCR_BUILD_EXAMPLE=ON ..
+cmake -DBUILD_EXAMPLES=ON ..
 cmake --build .
 ```
 
@@ -54,7 +54,7 @@ find_package(cpp_robotics REQUIRED)
 - [https://kotakku.github.io/cpp_robotics/](https://kotakku.github.io/cpp_robotics/)
 
 # ドキュメント生成
-doxybook2とmkdocsをインストール後に
+doxybook2とmkdocsをインストール後に以下を実行
 
 ```sh
 sh gen_doc.sh
