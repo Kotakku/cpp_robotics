@@ -1,9 +1,5 @@
 # 状態空間表現
 
-!!! example "ソースコード"
-    [example/system/state_space_system.cpp](https://github.com/Kotakku/cpp_robotics/blob/develop/example/system/state_space_system.cpp)
-
-
 以下のシステムを表すオブジェクトを作成します。またシステムが可制御・可観測であるかを判定します
 
 $$
@@ -44,6 +40,8 @@ x_2
 \right ]
 \end{align}
 $$
+
+{{ include_example("example/system/state_space_system.cpp") }}
 
 出力
  

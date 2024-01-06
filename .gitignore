@@ -10,3 +10,4 @@ site/
 docs/doxybook
 
 # docs/doxybook/
+__pycache__/

@@ -1,8 +1,5 @@
 # Hello World
 
-!!! example "ソースコード"
-    [example/hello_world.cpp](https://github.com/Kotakku/cpp_robotics/blob/develop/example/hello_world.cpp)
-
 cpp_roboticsの機能の一例として以下の機能を使っています  
 
 - Vector : EigenのVector2d, Vector3d etcと違ってconstexprにでき、数学関数もいくつかメンバ関数として実装しています
@@ -10,6 +7,8 @@ cpp_roboticsの機能の一例として以下の機能を使っています
 - Polynomal : 多項式の評価や合成を行います
 - TransferFunction : 伝達関数の合成やシミュレーションを行います
 - bode/nyquist : ボード線図やナイキスト線図を表示します
+
+{{ include_example("example/hello_world.cpp") }}
 
 出力
 

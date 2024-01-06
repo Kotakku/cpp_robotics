@@ -63,7 +63,7 @@ set(example_files
 
   path_planning/dubins_path
 
-  units/unit_test
+  unit/unit_example
 )
 
 foreach(example_file ${example_files})

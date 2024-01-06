@@ -39,6 +39,9 @@ theme:
     repo: fontawesome/brands/github
   custom_dir: docs/overrides
 
+plugins:
+  - macros
+
 markdown_extensions:
     - admonition
     - attr_list
@@ -87,8 +90,8 @@ nav:
       - 状態空間表現: example/system/state_space_system.md
     - パスプランニング:
       - Dubins曲線: example/path_planning/dubins_path.md
-  #   - 単位系:
-  #     - constexpr単位系: example/units/units.md
+    - 単位系:
+      - constexpr単位系: example/unit/unit.md
 
   - 技術資料:
     - システムモデル:

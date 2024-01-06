@@ -1,10 +1,9 @@
 # 無制約最適化
 
-!!! example "ソースコード"
-    [example/optimize/optimize_without_constraint.cpp](https://github.com/Kotakku/cpp_robotics/blob/develop/optimize/system/optimize_without_constraint.cpp)
-
 簡単な2値関数の最適化を行います。  
 最急降下法と準ニュートン法で同じ問題を解いて準ニュートン法では反復回数が少ないことが確認できます。
+
+{{ include_example("example/optimize/optimize_without_constraint.cpp") }}
 
 出力
 ```

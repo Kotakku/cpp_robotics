@@ -1,9 +1,5 @@
 # LQR
 
-!!! example "ソースコード"
-    [example/controller/lqr.cpp](https://github.com/Kotakku/cpp_robotics/blob/develop/example/controller/lqr.cpp)
-
-
 以下のシステムをLQRで制御します
 
 $$
@@ -45,6 +41,7 @@ Q=
 , \space R=0.001
 $$
 
+{{ include_example("example/controller/lqr.cpp") }}
 
 出力
 ```
