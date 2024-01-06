@@ -48,7 +48,7 @@ public:
         return static_cast<Derived*>(this)->forward_kinematics(joint_angles);
     }
 
-    Eigen::VectorXd solve_ik(Eigen::VectorXd pos, Eigen::VectorXd joint_angles0 = Eigen::VectorXd::Zero(nq_))
+    Eigen::VectorXd solve_ik(Eigen::VectorXd pos, Eigen::VectorXd joint_angles0)
     {
         return static_cast<Derived*>(this)->inverse_kinematics(pos, joint_angles0);
     }
