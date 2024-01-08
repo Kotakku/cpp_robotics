@@ -5,6 +5,7 @@
 #include <cpp_robotics/controller/lqr.hpp>
 #include <cpp_robotics/system.hpp>
 #include <cpp_robotics/matplotlibcpp.hpp>
+#include <cpp_robotics/system/polynomial_stream.hpp>
 
 int main()
 {

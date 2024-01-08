@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <cassert>
+#include <tuple>
 #include <cpp_robotics/utility/cpp_support.hpp>
 
 namespace cpp_robotics
@@ -421,36 +422,5 @@ private:
     
     std::vector<double> _coeff;
 };
-
-std::ostream& operator << (std::ostream& os, const Polynomial& v)
-{
-    os << "( ";
-
-    bool is_outputed = false;
-    for(size_t i = 0; i < v.size(); i++)
-    {
-        double coeff = v.coeff()[i];
-        size_t deg = v.degree() - i;
-        if(coeff != 0)
-        {
-            if(is_outputed)
-            {
-                if(coeff >= 0)
-                    os << " + ";
-                else
-                    os << " - ";
-            }
-            
-            os << std::abs(coeff);
-            if(deg > 0)
-                os << "x^" + std::to_string(deg);
-
-            is_outputed = true;
-        }
-    }
-    
-    os << " )";
-    return os;
-}
 
 }
