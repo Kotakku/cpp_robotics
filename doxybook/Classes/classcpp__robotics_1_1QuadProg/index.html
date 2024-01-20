@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4">
     
 
     
@@ -2391,6 +2391,21 @@
 </tr>
 </tbody>
 </table>
+<h2 id="public-types">Public Types</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enum class</td>
+<td ADMM="ADMM" InteriorPointMethod_="InteriorPointMethod,"><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#enum-method">Method</a></strong></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-functions">Public Functions</h2>
 <table>
 <thead>
@@ -2401,28 +2416,32 @@
 </thead>
 <tbody>
 <tr>
-<td>void</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-set-problem-size">set_problem_size</a></strong>(const size_t valiable_size, const size_t ineq_constraint_size, const size_t eq_constraint_size)</td>
+<td></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-quadprog">QuadProg</a></strong>(<a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#enum-method">Method</a> method =<a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#enumvalue-admm">Method::ADMM</a>)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-quadprog">QuadProg</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProgProblem/">QuadProgProblem</a> &amp; prob, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#enum-method">Method</a> method =<a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#enumvalue-admm">Method::ADMM</a>)</td>
 </tr>
 <tr>
 <td>void</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-debug-prog">debug_prog</a></strong>()</td>
-</tr>
-<tr>
-<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Result/">Result</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-solve">solve</a></strong>(Eigen::VectorXd x_init)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-set-problem">set_problem</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProgProblem/">QuadProgProblem</a> &amp; prob)</td>
 </tr>
 <tr>
 <td>double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-evaluate">evaluate</a></strong>(const Eigen::VectorXd &amp; x)</td>
 </tr>
 <tr>
-<td>Eigen::VectorXd</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-grad-lagrange">grad_lagrange</a></strong>(const Eigen::VectorXd &amp; x, const Eigen::VectorXd &amp; u, const Eigen::VectorXd &amp; v)</td>
+<td>bool</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-satisfy">satisfy</a></strong>(const Eigen::MatrixXd &amp; x, double eps =2e-2)</td>
 </tr>
 <tr>
-<td>bool</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-satisfy">satisfy</a></strong>(const Eigen::MatrixXd &amp; x, double eps =1e-5)</td>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Result/">Result</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-solve">solve</a></strong>()</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Result/">Result</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#function-solve">solve</a></strong>(Eigen::VectorXd x0)</td>
 </tr>
 </tbody>
 </table>
@@ -2436,28 +2455,8 @@
 </thead>
 <tbody>
 <tr>
-<td>Eigen::MatrixXd</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#variable-q">Q</a></strong></td>
-</tr>
-<tr>
-<td>Eigen::VectorXd</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#variable-c">c</a></strong></td>
-</tr>
-<tr>
-<td>Eigen::MatrixXd</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#variable-aeq">Aeq</a></strong></td>
-</tr>
-<tr>
-<td>Eigen::VectorXd</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#variable-beq">beq</a></strong></td>
-</tr>
-<tr>
-<td>Eigen::MatrixXd</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#variable-a">A</a></strong></td>
-</tr>
-<tr>
-<td>Eigen::VectorXd</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#variable-b">b</a></strong></td>
+<td>constexpr static double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1QuadProg/#variable-huge-value">huge_value</a></strong></td>
 </tr>
 <tr>
 <td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/">Param</a></td>
@@ -2465,20 +2464,44 @@
 </tr>
 </tbody>
 </table>
+<h2 id="public-types-documentation">Public Types Documentation</h2>
+<h3 id="enum-method">enum Method</h3>
+<table>
+<thead>
+<tr>
+<th>Enumerator</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>InteriorPointMethod</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ADMM</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-functions-documentation">Public Functions Documentation</h2>
-<h3 id="function-set_problem_size">function set_problem_size</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">set_problem_size</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">valiable_size</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">ineq_constraint_size</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">eq_constraint_size</span>
+<h3 id="function-quadprog">function QuadProg</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">QuadProg</span><span class="p">(</span>
+<span class="w">    </span><span class="n">Method</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="n">Method</span><span class="o">::</span><span class="n">ADMM</span>
 <span class="p">)</span>
 </code></pre></div>
-<h3 id="function-debug_prog">function debug_prog</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">debug_prog</span><span class="p">()</span>
+<h3 id="function-quadprog_1">function QuadProg</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">QuadProg</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">QuadProgProblem</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">prob</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Method</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="n">Method</span><span class="o">::</span><span class="n">ADMM</span>
+<span class="p">)</span>
 </code></pre></div>
-<h3 id="function-solve">function solve</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span>
-<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">x_init</span>
+<h3 id="function-set_problem">function set_problem</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">set_problem</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">QuadProgProblem</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">prob</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-evaluate">function evaluate</h3>
@@ -2486,43 +2509,29 @@
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span>
 <span class="p">)</span>
 </code></pre></div>
-<h3 id="function-grad_lagrange">function grad_lagrange</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">grad_lagrange</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">v</span>
-<span class="p">)</span>
-</code></pre></div>
 <h3 id="function-satisfy">function satisfy</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">satisfy</span><span class="p">(</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">eps</span><span class="w"> </span><span class="o">=</span><span class="mf">1e-5</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">eps</span><span class="w"> </span><span class="o">=</span><span class="mf">2e-2</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-solve">function solve</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="n">solve</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="function-solve_1">function solve</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">x0</span>
 <span class="p">)</span>
 </code></pre></div>
 <h2 id="public-attributes-documentation">Public Attributes Documentation</h2>
-<h3 id="variable-q">variable Q</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">Q</span><span class="p">;</span>
-</code></pre></div>
-<h3 id="variable-c">variable c</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
-</code></pre></div>
-<h3 id="variable-aeq">variable Aeq</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">Aeq</span><span class="p">;</span>
-</code></pre></div>
-<h3 id="variable-beq">variable beq</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">beq</span><span class="p">;</span>
-</code></pre></div>
-<h3 id="variable-a">variable A</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">A</span><span class="p">;</span>
-</code></pre></div>
-<h3 id="variable-b">variable b</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<h3 id="variable-huge_value">variable huge_value</h3>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">huge_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e6</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="variable-param">variable param</h3>
 <div class="highlight"><pre><span></span><code><span class="n">Param</span><span class="w"> </span><span class="n">param</span><span class="p">;</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2024-01-08 at 05:12:06 +0000</p>
+<p>Updated on 2024-01-20 at 07:24:10 +0000</p>
 
 
 
@@ -2576,10 +2585,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.7389ff0e.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
