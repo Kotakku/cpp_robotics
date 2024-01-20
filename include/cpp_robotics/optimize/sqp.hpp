@@ -35,7 +35,7 @@ public:
         double tol_step = 1e-6;
         double tol_con = 1e-6;
         size_t max_iter = 100;
-        bool print_variable = false;
+        // bool print_variable = false;
     };
 
     struct Result
@@ -75,7 +75,7 @@ public:
 
         // サブ問題の2次計画問題のソルバー
         QuadProgProblem qp_prob;
-        QuadProg qp_solver;
+        QuadProg qp_solver(QuadProg::Method::InteriorPointMethod);
         qp_solver.param.tol_con = 1e-3;
         qp_solver.param.tol_step = 1e-3;
         qp_prob.set_problem_size(x.size(), ineq_con.size(), eq_con.size(), false);
@@ -136,10 +136,10 @@ public:
 
         for(size_t i = 1; i < prob.max_iter+1; i++)
         {
-            if(prob.print_variable)
-            {
-                std::cout << "\n////////////////////////////////" << std::endl;
-            }
+            // if(prob.print_variable)
+            // {
+            //     std::cout << "\n////////////////////////////////" << std::endl;
+            // }
 
             // 探索方向の決定
             // サブの問題設定
@@ -187,7 +187,7 @@ public:
                 result.iter_cnt = i;
                 result.x = x;
                 // result.lambda_opt = sub_result.lambda_opt;
-                std::cout << "cant solve sub qp: " << sub_result.iter_cnt << std::endl;
+                // std::cout << "cant solve sub qp: " << sub_result.iter_cnt << std::endl;
                 // qp_solver.debug_prog();
                 return result;
             }
@@ -219,13 +219,13 @@ public:
             };
             double alpha = bracketing_serach(merit_func, [&](const Eigen::VectorXd &x){ return derivative(merit_func, x); }, x, d);
 
-            if(prob.print_variable)
-            {
-                std::cout << "d" << std::endl;
-                std::cout << d << std::endl;
-                std::cout << "alpha" << std::endl;
-                std::cout << alpha << std::endl;
-            }
+            // if(prob.print_variable)
+            // {
+            //     std::cout << "d" << std::endl;
+            //     std::cout << d << std::endl;
+            //     std::cout << "alpha" << std::endl;
+            //     std::cout << alpha << std::endl;
+            // }
 
             if(callback)
                 callback.value()(x);
@@ -243,14 +243,14 @@ public:
             }
 
             // メリット関数の重み更新
-            // for(size_t con_i = 0; con_i < eq_con.size(); con_i++)
-            // {
-            //     eq_mw(con_i) = std::max(eq_mw(con_i), 0.5*(eq_mw(con_i) + sub_result.lambda_eq(con_i)));
-            // }
-            // for(size_t con_i = 0; con_i < ineq_con.size(); con_i++)
-            // {
-            //     ineq_mw(con_i) = std::max(ineq_mw(con_i), 0.5*(ineq_mw(con_i) + sub_result.lambda_ineq(con_i)));
-            // }
+            for(size_t con_i = 0; con_i < eq_con.size(); con_i++)
+            {
+                eq_mw(con_i) = std::max(eq_mw(con_i), 0.5*(eq_mw(con_i) + sub_result.lambda_eq(con_i)));
+            }
+            for(size_t con_i = 0; con_i < ineq_con.size(); con_i++)
+            {
+                ineq_mw(con_i) = std::max(ineq_mw(con_i), 0.5*(ineq_mw(con_i) + sub_result.lambda_ineq(con_i)));
+            }
 
             // 解の保存
             result.x = x;
@@ -296,17 +296,17 @@ public:
             powells_modified_bfgs_step(B, step, delta_grad_L, new_dgg - dgg);
             dgg = new_dgg;
 
-            if(prob.print_variable)
-            {
-                std::cout << "B=" << std::endl;
-                std::cout << B << std::endl;
-                std::cout << "x=" << std::endl;
-                std::cout << x << std::endl;
-            }
+            // if(prob.print_variable)
+            // {
+            //     std::cout << "B=" << std::endl;
+            //     std::cout << B << std::endl;
+            //     std::cout << "x=" << std::endl;
+            //     std::cout << x << std::endl;
+            // }
 
             if(B.array().isNaN().any())
             {
-                std::cout << "NaNが存在します" << std::endl;
+                // std::cout << "NaNが存在します" << std::endl;
                 break;
             }
         }

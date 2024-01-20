@@ -153,8 +153,6 @@ TEST(sqp, test2) {
     SQP solver;
     SQP::Problem prob;
 
-    prob.print_variable = false;
-
     //////////////////// 目的関数設定 ////////////////////
     prob.func = [](Eigen::VectorXd x) -> double
     {
@@ -207,8 +205,6 @@ TEST(sqp, test_inf) {
     SQP solver;
     SQP::Problem prob;
 
-    prob.print_variable = false;
-
     //////////////////// 目的関数設定 ////////////////////
     prob.func = [](Eigen::VectorXd x) -> double
     {
@@ -250,7 +246,6 @@ TEST(sqp, test_inf) {
             return x(0) + std::numeric_limits<double>::infinity();
         },
     });
-    prob.print_variable = true;
     
     auto result = solver.solve(prob, x0);
     std::cout << "x = " << std::endl;
