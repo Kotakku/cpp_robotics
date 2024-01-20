@@ -10,6 +10,8 @@
 #include "bracketing_serach.hpp"
 #include "newton_method.hpp"
 
+#include <iostream>
+
 namespace cpp_robotics
 {
 
@@ -68,9 +70,9 @@ public:
         struct
         {
             double rho_init = 0.1;
-            double sigma = 1e-6;
+            double sigma = 1e-5;
             double alpha = 1.6;
-            double tol_abs = 1e-4;
+            double tol_abs = 1e-3;
             double tol_rel = 1e-3;
         }admm;
 
@@ -236,7 +238,7 @@ public:
         return 0.5*(x.transpose()*prob_.Q).dot(x) + prob_.c.dot(x);
     }
 
-    bool satisfy(const Eigen::MatrixXd &x, double eps = 1e-2)
+    bool satisfy(const Eigen::MatrixXd &x, double eps = 2e-2)
     {
         bool satisfy = true;
 
@@ -457,27 +459,27 @@ private:
         Eigen::VectorXd new_z, z_tilde, x_tilde, B(n+m);
         Eigen::VectorXd r_prim, r_dual;
 
-        if(not satisfy(x0) && (int)m_b == x0.size())
+        if(not satisfy(x) && (int)m_b == x.size())
         {
             for(size_t i = 0; i < m_b; i++)
             {
-                if(x0(i) < lb(i) || ub(i) < x0(i))
+                if(x(i) < lb(i) || ub(i) < x(i))
                 {
                     if(-huge_value < lb(i) && ub(i) < huge_value)
                     {
-                        x0(i) = (lb(i) + ub(i)) / 2.0;
+                        x(i) = (lb(i) + ub(i)) / 2.0;
                     }
                     else if(-huge_value < lb(i))
                     {
-                        x0(i) = lb(i);
+                        x(i) = lb(i);
                     }
                     else if(ub(i) < huge_value)
                     {
-                        x0(i) = ub(i);
+                        x(i) = ub(i);
                     }
                     else
                     {
-                        x0(i) = 0;
+                        x(i) = 0;
                     }
                 }
             }
@@ -527,6 +529,8 @@ private:
             }
             y += rho_mat*(alpha*z_tilde + (1.0-alpha)*z - new_z);
             z = new_z;
+
+            // std::cout << x.transpose() << std::endl;
 
             // 収束判定
             r_prim = A_bar*x - z;
@@ -580,13 +584,13 @@ private:
 };
 
 
-static QuadProg::Result quad_prog(const QuadProgProblem &prob, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
+static QuadProg::Result quadprog(const QuadProgProblem &prob, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
 {
     QuadProg qp(prob, method);
     return qp.solve(x0);
 }
 
-static QuadProg::Result quad_prob(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
+static QuadProg::Result quadprog(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
 {
     QuadProgProblem prob;
     prob.set_problem_size(x0.size(), 0, 0, false);
@@ -597,7 +601,7 @@ static QuadProg::Result quad_prob(const Eigen::MatrixXd &Q, const Eigen::VectorX
     return qp.solve(x0);
 }
 
-static QuadProg::Result quad_prob(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::MatrixXd &A, const Eigen::VectorXd &b, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
+static QuadProg::Result quadprog(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::MatrixXd &A, const Eigen::VectorXd &b, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
 {
     QuadProgProblem prob;
     prob.set_problem_size(x0.size(), A.rows(), 0, false);
@@ -610,7 +614,7 @@ static QuadProg::Result quad_prob(const Eigen::MatrixXd &Q, const Eigen::VectorX
     return qp.solve(x0);
 }
 
-static QuadProg::Result quad_prob(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::MatrixXd &A, const Eigen::VectorXd &b, const Eigen::MatrixXd &Aeq, const Eigen::VectorXd &beq, const Eigen::VectorXd &lb, const Eigen::VectorXd &ub, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
+static QuadProg::Result quadprog(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::MatrixXd &A, const Eigen::VectorXd &b, const Eigen::MatrixXd &Aeq, const Eigen::VectorXd &beq, const Eigen::VectorXd &lb, const Eigen::VectorXd &ub, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
 {
     QuadProgProblem prob;
     prob.set_problem_size(x0.size(), A.rows(), Aeq.rows(), true);
@@ -627,7 +631,7 @@ static QuadProg::Result quad_prob(const Eigen::MatrixXd &Q, const Eigen::VectorX
     return qp.solve(x0);
 }
 
-static QuadProg::Result quad_prob_ineq_con(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::MatrixXd &A, const Eigen::VectorXd &b, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
+static QuadProg::Result quadprog_ineq_con(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::MatrixXd &A, const Eigen::VectorXd &b, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
 {
     QuadProgProblem prob;
     prob.set_problem_size(x0.size(), A.rows(), 0, false);
@@ -640,7 +644,7 @@ static QuadProg::Result quad_prob_ineq_con(const Eigen::MatrixXd &Q, const Eigen
     return qp.solve(x0);
 }
 
-static QuadProg::Result quad_prob_eq_con(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::MatrixXd &Aeq, const Eigen::VectorXd &beq, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
+static QuadProg::Result quadprog_eq_con(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::MatrixXd &Aeq, const Eigen::VectorXd &beq, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
 {
     QuadProgProblem prob;
     prob.set_problem_size(x0.size(), 0, Aeq.rows(), false);
@@ -653,7 +657,7 @@ static QuadProg::Result quad_prob_eq_con(const Eigen::MatrixXd &Q, const Eigen::
     return qp.solve(x0);
 }
 
-static QuadProg::Result quad_prob_bound_con(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::VectorXd &lb, const Eigen::VectorXd &ub, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
+static QuadProg::Result quadprog_bound_con(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::VectorXd &lb, const Eigen::VectorXd &ub, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
 {
     QuadProgProblem prob;
     prob.set_problem_size(x0.size(), 0, 0, true);
