@@ -4,13 +4,12 @@
 #include <tuple>
 #include <functional>
 #include <Eigen/Dense>
+#include <Eigen/IterativeLinearSolvers>
 #include <cassert>
 #include "constraint.hpp"
 #include "derivative.hpp"
 #include "bracketing_serach.hpp"
 #include "newton_method.hpp"
-
-#include <iostream>
 
 namespace cpp_robotics
 {
@@ -70,14 +69,15 @@ public:
         struct
         {
             double rho_init = 0.1;
-            double sigma = 1e-5;
+            double sigma = 1e-6;
             double alpha = 1.6;
             double tol_abs = 1e-3;
             double tol_rel = 1e-3;
+            bool use_indirect_method = true;
         }admm;
 
         // 最大反復回数
-        size_t max_iter = 100;
+        size_t max_iter = 300;
     };
     Param param;
 
@@ -187,7 +187,7 @@ public:
             m_ineq = prob_.A.rows();
             m_b = prob_.lb.size();
             m = m_eq + m_ineq + m_b; // 制約の数
-            rho_eq_bound_scale = Eigen::VectorXd::Ones(m);
+            // rho_eq_bound_scale = Eigen::VectorXd::Ones(m);
 
             A_bar = Eigen::MatrixXd(m, n);
             z_lb = Eigen::VectorXd(m);
@@ -198,7 +198,7 @@ public:
                 A_bar.block(0,0,m_eq,n) = Aeq;
                 z_lb.segment(0,m_eq) = beq;
                 z_ub.segment(0,m_eq) = beq;
-                rho_eq_bound_scale.segment(0,m_eq) = Eigen::VectorXd::Constant(m_eq, 1e3);
+                // rho_eq_bound_scale.segment(0,m_eq) = Eigen::VectorXd::Constant(m_eq, 1e3);
             }
             if(m_ineq > 0)
             {
@@ -225,11 +225,11 @@ public:
                 z_ub.segment(m_eq+m_ineq,m_b) = ub_tmp;
             }
 
-            rho_eq_bound_scale_inv = Eigen::VectorXd(m);
-            for(size_t i = 0; i < m; i++)
-            {
-                rho_eq_bound_scale_inv(i) = 1.0 / rho_eq_bound_scale(i);
-            }
+            // rho_eq_bound_scale_inv = Eigen::VectorXd(m);
+            // for(size_t i = 0; i < m; i++)
+            // {
+                // rho_eq_bound_scale_inv(i) = 1.0 / rho_eq_bound_scale(i);
+            // }
         }
     }
 
@@ -452,13 +452,19 @@ private:
         assert(sigma > 0);
         assert(alpha > 0 && alpha < 2.0);
 
-        Eigen::VectorXd x = x0;
-        Eigen::VectorXd z(m);  // A*x
-        Eigen::VectorXd y(m);  // 双対変数
-        Eigen::VectorXd nu;    // 制約のラグランジュ乗数
-        Eigen::VectorXd new_z, z_tilde, x_tilde, B(n+m);
-        Eigen::VectorXd r_prim, r_dual;
-
+        x = x0;
+        z.setZero(m);
+        y.setZero(m);
+        if(admm_param.use_indirect_method)
+        {
+            M.resize(n,n);
+            B.resize(n);
+        }
+        else
+        {
+            M.resize(n+m, n+m);
+            B.resize(n+m);
+        }
         if(not satisfy(x) && (int)m_b == x.size())
         {
             for(size_t i = 0; i < m_b; i++)
@@ -485,36 +491,44 @@ private:
             }
         }
 
-        z.setZero();
-        y.setZero();
-
-        Eigen::MatrixXd M(n+m, n+m);
         bool update_M = true;
-
         for(size_t i = 0; i < max_iter; i++)
         {
-            Eigen::MatrixXd rho_mat = rho_eq_bound_scale.asDiagonal() * rho;
-            Eigen::MatrixXd rho_mat_inv = (Eigen::MatrixXd)(rho_eq_bound_scale_inv.asDiagonal()) / rho;
-            if(update_M)
+            // Eigen::MatrixXd rho_mat = rho_eq_bound_scale.asDiagonal() * rho;
+            // Eigen::MatrixXd rho_mat_inv = (Eigen::MatrixXd)(rho_eq_bound_scale_inv.asDiagonal()) / rho;
+            if(admm_param.use_indirect_method)
             {
-                M.setZero();
-                M.block(0,0,n,n) = Q + sigma*Eigen::MatrixXd::Identity(n,n);
-                M.block(n,0,m,n) = A_bar;
-                M.block(0,n,n,m) = A_bar.transpose();
-                M.block(n,n,m,m) = -rho_mat_inv;
-                M = M.inverse();
-                update_M = false;
+                // 間接法(勾配共役法)
+                M = Q + sigma*Eigen::MatrixXd::Identity(n,n) + rho*A_bar.transpose()*A_bar;
+                B = sigma*x - c + A_bar.transpose()*(rho*z - y);
+                cg.compute(M);
+                x_tilde = cg.solve(B);
+                z_tilde = A_bar*x_tilde;
             }
-            B.head(n) = sigma*x - c;
-            B.tail(m) = z-rho_mat_inv*y;
+            else
+            {
+                // 直接法
+                if(update_M)
+                {
+                    M.setZero();
+                    M.block(0,0,n,n) = Q + sigma*Eigen::MatrixXd::Identity(n,n);
+                    M.block(n,0,m,n) = A_bar;
+                    M.block(0,n,n,m) = A_bar.transpose();
+                    M.block(n,n,m,m) = -1.0/rho*Eigen::MatrixXd::Identity(m,m);
+                    M_ldlt.compute(M);
+                    update_M = false;
+                }
+                B.head(n) = sigma*x - c;
+                B.tail(m) = z-y/rho;
 
-            auto linopt = M*B;
-            x_tilde = linopt.head(n);
-            nu = linopt.tail(m);
+                auto linopt = M_ldlt.solve(B);
+                x_tilde = linopt.head(n);
+                nu = linopt.tail(m);
+                z_tilde = z + (nu-y)/rho;
+            }
 
-            z_tilde = z + rho_mat_inv*(nu-y);
             x = alpha*x_tilde + (1.0-alpha)*x;
-            new_z = alpha*z_tilde + (1.0-alpha)*z + rho_mat_inv*y;
+            new_z = alpha*z_tilde + (1.0-alpha)*z + y/rho;
             // Euclidean projection
             for(size_t i = 0; i < m; i++)
             {
@@ -527,10 +541,8 @@ private:
                     new_z(i) = z_ub(i);
                 }
             }
-            y += rho_mat*(alpha*z_tilde + (1.0-alpha)*z - new_z);
+            y += rho*(alpha*z_tilde + (1.0-alpha)*z - new_z);
             z = new_z;
-
-            // std::cout << x.transpose() << std::endl;
 
             // 収束判定
             r_prim = A_bar*x - z;
@@ -575,12 +587,21 @@ private:
     size_t m_eq;
     size_t m_ineq;
     size_t m_b;
-    // size_t m_ub;
     size_t m; // 制約の数
     
     Eigen::MatrixXd A_bar;
     Eigen::VectorXd z_lb, z_ub;
-    Eigen::VectorXd rho_eq_bound_scale, rho_eq_bound_scale_inv;
+    // Eigen::VectorXd rho_eq_bound_scale, rho_eq_bound_scale_inv;
+
+    Eigen::VectorXd x;
+    Eigen::VectorXd z;  // A*x
+    Eigen::VectorXd y;  // 双対変数
+    Eigen::VectorXd nu; // 制約のラグランジュ乗数
+    Eigen::VectorXd new_z, z_tilde, x_tilde, B;
+    Eigen::VectorXd r_prim, r_dual;
+    Eigen::MatrixXd M;
+    Eigen::LDLT<Eigen::MatrixXd> M_ldlt;
+    Eigen::ConjugateGradient<Eigen::MatrixXd/*, Eigen::Lower|Eigen::Upper*/> cg;
 };
 
 

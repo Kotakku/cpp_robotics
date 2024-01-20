@@ -81,26 +81,24 @@ public:
 
         H_ = Bd_mat_.transpose()*Q_mat_*Bd_mat_ + R_mat_;
         g_ = -Bd_mat_.transpose()*Q_mat_;
-        qp_solver_.Q = H_;
+
+        qp_prob_.set_problem_size(input_size_*N_, 0, 0, u_limit_.has_value());
+        qp_prob_.Q = H_;
 
         if(u_limit_)
         {
             // Todo infinityがあったら制限なしということでG_mat_, h_mat_にいれない操作をする
-            Eigen::MatrixXd G_mat_ = Eigen::MatrixXd::Zero(input_size_*N_*2, input_size_*N_);
-            Eigen::VectorXd h_mat_ = Eigen::VectorXd::Zero(input_size_*N_*2);
-
-            G_mat_.block(0,0,input_size_*N_, input_size_*N_) = Eigen::MatrixXd::Identity(input_size_*N_, input_size_*N_);
-            G_mat_.block(input_size_*N_,0,input_size_*N_, input_size_*N_) = -Eigen::MatrixXd::Identity(input_size_*N_, input_size_*N_);
+            Eigen::VectorXd ulb_vec = Eigen::VectorXd::Zero(input_size_*N_);
+            Eigen::VectorXd uub_vec = Eigen::VectorXd::Zero(input_size_*N_);
 
             auto &[umin, umax] = u_limit_.value();
             for(size_t i = 0; i < N_; i++)
             {
-                h_mat_.segment(input_size_*i, input_size_) = umax;
-                h_mat_.segment(input_size_*(N_+i), input_size_) = -umin;
+                ulb_vec.segment(input_size_*i, input_size_) = umin;
+                uub_vec.segment(input_size_*i, input_size_) = umax;
             }
-
-            qp_solver_.A = G_mat_;
-            qp_solver_.b = h_mat_;
+            qp_prob_.lb = ulb_vec;
+            qp_prob_.ub = uub_vec;
         }
 
         U_ = Eigen::VectorXd::Zero(input_size_*N_);
@@ -129,7 +127,8 @@ public:
             eps_mat.block(i*state_size_, 0, state_size_, 1) += x_ref[i];
         }
 
-        qp_solver_.c = (g_*eps_mat).transpose();
+        qp_prob_.c = (g_*eps_mat).transpose();
+        qp_solver_.set_problem(qp_prob_);
         latest_qp_result_ = qp_solver_.solve(U_);
 
         if(latest_qp_result_.is_solved)
@@ -190,7 +189,8 @@ private:
     Eigen::MatrixXd g_;
     
     // QPソルバ
-    QuadProg qp_solver_;
+    QuadProgProblem qp_prob_;
+    QuadProg qp_solver_ = {QuadProg::Method::InteriorPointMethod};
     Eigen::VectorXd U_;
     QuadProg::Result latest_qp_result_;
 };
