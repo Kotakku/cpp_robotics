@@ -10,12 +10,6 @@
 #include "bracketing_serach.hpp"
 #include "newton_method.hpp"
 
-// #include <iostream>
-
-#define debug(x) // std::cout << __func__ << ": " << x << std::endl;
-// #define debug2(x) std::cout << __func__ << ": " << x << std::endl;
-#define debug_mat(x) //std::cout << #x << std::endl << x << std::endl;
-
 namespace cpp_robotics
 {
 
@@ -145,7 +139,6 @@ public:
 
         if(method_ == Method::InteriorPointMethod)
         {
-            debug("1");
             m_eq = prob_.Aeq.rows();
             m_b = prob_.lb.size();
             size_t m_original_ineq = prob_.A.rows();
@@ -185,7 +178,6 @@ public:
                 z_ub.segment(m_original_ineq,m_b) = -lb_tmp;
                 z_ub.segment(m_original_ineq+m_b,m_b) = ub_tmp;
             }
-            debug("2");
         }
         if(method_ == Method::ADMM)
         {
@@ -195,7 +187,6 @@ public:
             m = m_eq + m_ineq + m_b; // 制約の数
             rho_eq_bound_scale = Eigen::VectorXd::Ones(m);
 
-            debug("1");
             A_bar = Eigen::MatrixXd(m, n);
             z_lb = Eigen::VectorXd(m);
             z_ub = Eigen::VectorXd(m);
@@ -237,7 +228,6 @@ public:
             {
                 rho_eq_bound_scale_inv(i) = 1.0 / rho_eq_bound_scale(i);
             }
-            debug("2");
         }
     }
 
@@ -338,13 +328,9 @@ private:
 
         Result result;
 
-        debug("start");
         // 変数のサイズ
         const size_t m = Aeq.rows();
         const size_t l = A_bar.rows();
-
-        debug("setup workspace");
-
         Eigen::VectorXd x = x0;
 
         double rho = l; // 不等式制約の平均相補性残差
@@ -353,7 +339,6 @@ private:
         Eigen::VectorXd v = Eigen::VectorXd::Zero(m); // 等式制約のラグランジュ乗数
         Eigen::VectorXd foom = grad_lagrange(x, u, v); // KKT条件1次の最適性
 
-        debug("start loop");
         for(size_t i = 0; i < max_iter; i++)
         {
             Eigen::MatrixXd P = Eigen::MatrixXd::Zero(n + 2*l + m, n + 2*l + m);
@@ -474,7 +459,6 @@ private:
 
         if(not satisfy(x0) && (int)m_b == x0.size())
         {
-            debug("initial point is not satisfied");
             for(size_t i = 0; i < m_b; i++)
             {
                 if(x0(i) < lb(i) || ub(i) < x0(i))
@@ -505,15 +489,12 @@ private:
         Eigen::MatrixXd M(n+m, n+m);
         bool update_M = true;
 
-        debug("start loop");
-
         for(size_t i = 0; i < max_iter; i++)
         {
             Eigen::MatrixXd rho_mat = rho_eq_bound_scale.asDiagonal() * rho;
             Eigen::MatrixXd rho_mat_inv = (Eigen::MatrixXd)(rho_eq_bound_scale_inv.asDiagonal()) / rho;
             if(update_M)
             {
-                debug("update M");
                 M.setZero();
                 M.block(0,0,n,n) = Q + sigma*Eigen::MatrixXd::Identity(n,n);
                 M.block(n,0,m,n) = A_bar;
@@ -525,13 +506,9 @@ private:
             B.head(n) = sigma*x - c;
             B.tail(m) = z-rho_mat_inv*y;
 
-            debug("solve linear system");
-
             auto linopt = M*B;
             x_tilde = linopt.head(n);
             nu = linopt.tail(m);
-
-            debug("update x, z, y");
 
             z_tilde = z + rho_mat_inv*(nu-y);
             x = alpha*x_tilde + (1.0-alpha)*x;
@@ -539,22 +516,17 @@ private:
             // Euclidean projection
             for(size_t i = 0; i < m; i++)
             {
-                debug("check");
                 if(new_z(i) <= z_lb(i))
                 {
-                    debug("project lb(" << i << "): " << new_z(i) << " -> " << z_lb(i));
                     new_z(i) = z_lb(i);
                 }
                 if(z_ub(i) <= new_z(i))
                 {
-                    debug("project ub(" << i << "): " << new_z(i) << " -> " << z_ub(i));
                     new_z(i) = z_ub(i);
                 }
             }
             y += rho_mat*(alpha*z_tilde + (1.0-alpha)*z - new_z);
             z = new_z;
-
-            debug("check convergence");
 
             // 収束判定
             r_prim = A_bar*x - z;
@@ -566,16 +538,15 @@ private:
             if(r_prim_inf_norm < admm_param.tol_abs + admm_param.tol_rel*rel_prim_val && 
                 r_dual_inf_norm < admm_param.tol_abs + admm_param.tol_rel*rel_dual_val)
             {
-                debug("success");
                 result.is_solved = true;
                 result.x = x;
+                // Todo ラグランジュ定数を返す
                 // result.lambda_ineq = nu;
                 // result.lambda_eq = Eigen::VectorXd::Zero(m_eq);
                 result.iter_cnt = i;
                 return result;
             }
 
-            debug("update rho");
             // update rho
             double rho_scale = sqrt( (r_prim_inf_norm/rel_prim_val) / (r_dual_inf_norm/rel_dual_val) );
             rho *= rho_scale;
@@ -586,7 +557,6 @@ private:
             }
         }
 
-        debug("failed");
         result.is_solved = false;
         result.x = x;
         result.iter_cnt = max_iter;
