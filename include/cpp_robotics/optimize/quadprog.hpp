@@ -10,11 +10,11 @@
 #include "bracketing_serach.hpp"
 #include "newton_method.hpp"
 
-#include <iostream>
+// #include <iostream>
 
 #define debug(x) // std::cout << __func__ << ": " << x << std::endl;
 // #define debug2(x) std::cout << __func__ << ": " << x << std::endl;
-#define debug_mat(x) std::cout << #x << std::endl << x << std::endl;
+#define debug_mat(x) //std::cout << #x << std::endl << x << std::endl;
 
 namespace cpp_robotics
 {
@@ -59,22 +59,25 @@ public:
     constexpr static double huge_value = 1e6;
     struct Param
     {
-        // ステップに対する収束条件
-        double tol_step = 1e-6;
+        struct
+        {
+            // ステップに対する収束条件
+            double tol_step = 1e-6;
 
-        // 制約に対する収束条件
-        double tol_con = 1e-6;
+            // 制約に対する収束条件
+            double tol_con = 1e-6;
 
-        // ゲイン
-        double t = 0.5;
+            // ゲイン
+            double t = 0.5;
+        }interior_point;
 
         struct
         {
             double rho_init = 0.1;
             double sigma = 1e-6;
             double alpha = 1.6;
-            double eps_abs = 1e-4;
-            double eps_rel = 1e-3;
+            double tol_abs = 1e-4;
+            double tol_rel = 1e-3;
         }admm;
 
         // 最大反復回数
@@ -323,7 +326,7 @@ public:
 private:
     Result solve_interior_point_method(Eigen::VectorXd x0)
     {
-        const auto [tol_step, tol_con, t, admm_param, max_iter] = param;
+        const auto [interior_point_param, admm_param, max_iter] = param;
         auto &Q = prob_.Q;
         auto &c = prob_.c;
         auto &Aeq = prob_.Aeq;
@@ -339,28 +342,6 @@ private:
         // 変数のサイズ
         const size_t m = Aeq.rows();
         const size_t l = A_bar.rows();
-        
-
-        // auto preprossesing = [&]()
-        // {
-        //     for(int i = 0; i < Aeq.rows(); i++)
-        //     {
-        //         if(not Aeq.row(i).allFinite() || not std::isfinite(beq(i)))
-        //         {
-        //             Aeq.row(i).setZero();
-        //             beq(i) = 0;
-        //         }
-        //     }
-        //     for(int i = 0; i < A.rows(); i++)
-        //     {
-        //         if(not A.row(i).allFinite() || not std::isfinite(b(i)))
-        //         {
-        //             A.row(i).setZero();
-        //             b(i) = 0;
-        //         }
-        //     }
-        // };
-        // preprossesing();
 
         debug("setup workspace");
 
@@ -419,7 +400,7 @@ private:
             {
                 s += ds;
                 u += du;
-                rho = t * (u.dot(s)) / l;
+                rho = interior_point_param.t * (u.dot(s)) / l;
             }
             if(m>0)
             {
@@ -428,7 +409,7 @@ private:
 
             // Todo 最適性と制約をチェックする
             Eigen::VectorXd new_foom = grad_lagrange(x, u, v);
-            if(dx.norm() <= tol_step*(1.0+x.norm()) && (new_foom - foom).norm() <= tol_con*(1.0+foom.norm()))
+            if(dx.norm() <= interior_point_param.tol_step*(1.0+x.norm()) && (new_foom - foom).norm() <= interior_point_param.tol_con*(1.0+foom.norm()))
             {
                 result.is_solved = true;
                 result.x = x;
@@ -463,7 +444,7 @@ private:
 
     Result solve_admm_based_method(Eigen::VectorXd x0)
     {
-        const auto [tol_step, tol_con, t, admm_param, max_iter] = param;
+        const auto [interior_point_param, admm_param, max_iter] = param;
         auto &Q = prob_.Q;
         auto &c = prob_.c;
         auto &Aeq = prob_.Aeq;
@@ -490,6 +471,33 @@ private:
         Eigen::VectorXd nu;    // 制約のラグランジュ乗数
         Eigen::VectorXd new_z, z_tilde, x_tilde, B(n+m);
         Eigen::VectorXd r_prim, r_dual;
+
+        if(not satisfy(x0) && (int)m_b == x0.size())
+        {
+            debug("initial point is not satisfied");
+            for(size_t i = 0; i < m_b; i++)
+            {
+                if(x0(i) < lb(i) || ub(i) < x0(i))
+                {
+                    if(-huge_value < lb(i) && ub(i) < huge_value)
+                    {
+                        x0(i) = (lb(i) + ub(i)) / 2.0;
+                    }
+                    else if(-huge_value < lb(i))
+                    {
+                        x0(i) = lb(i);
+                    }
+                    else if(ub(i) < huge_value)
+                    {
+                        x0(i) = ub(i);
+                    }
+                    else
+                    {
+                        x0(i) = 0;
+                    }
+                }
+            }
+        }
 
         z.setZero();
         y.setZero();
@@ -555,8 +563,8 @@ private:
             double r_dual_inf_norm = r_dual.cwiseAbs().maxCoeff();
             double rel_prim_val = std::max((A_bar*x).cwiseAbs().maxCoeff(), z.cwiseAbs().maxCoeff());
             double rel_dual_val = std::max({(Q*x).cwiseAbs().maxCoeff(), (A_bar.transpose()*y).cwiseAbs().maxCoeff(), c.cwiseAbs().maxCoeff()});
-            if(r_prim_inf_norm < admm_param.eps_abs + admm_param.eps_rel*rel_prim_val && 
-                r_dual_inf_norm < admm_param.eps_abs + admm_param.eps_rel*rel_dual_val)
+            if(r_prim_inf_norm < admm_param.tol_abs + admm_param.tol_rel*rel_prim_val && 
+                r_dual_inf_norm < admm_param.tol_abs + admm_param.tol_rel*rel_dual_val)
             {
                 debug("success");
                 result.is_solved = true;
@@ -600,5 +608,92 @@ private:
     Eigen::VectorXd z_lb, z_ub;
     Eigen::VectorXd rho_eq_bound_scale, rho_eq_bound_scale_inv;
 };
+
+
+static QuadProg::Result quad_prog(const QuadProgProblem &prob, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
+{
+    QuadProg qp(prob, method);
+    return qp.solve(x0);
+}
+
+static QuadProg::Result quad_prob(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
+{
+    QuadProgProblem prob;
+    prob.set_problem_size(x0.size(), 0, 0, false);
+    prob.Q = Q;
+    prob.c = c;
+
+    QuadProg qp(prob, method);
+    return qp.solve(x0);
+}
+
+static QuadProg::Result quad_prob(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::MatrixXd &A, const Eigen::VectorXd &b, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
+{
+    QuadProgProblem prob;
+    prob.set_problem_size(x0.size(), A.rows(), 0, false);
+    prob.Q = Q;
+    prob.c = c;
+    prob.A = A;
+    prob.b = b;
+
+    QuadProg qp(prob, method);
+    return qp.solve(x0);
+}
+
+static QuadProg::Result quad_prob(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::MatrixXd &A, const Eigen::VectorXd &b, const Eigen::MatrixXd &Aeq, const Eigen::VectorXd &beq, const Eigen::VectorXd &lb, const Eigen::VectorXd &ub, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
+{
+    QuadProgProblem prob;
+    prob.set_problem_size(x0.size(), A.rows(), Aeq.rows(), true);
+    prob.Q = Q;
+    prob.c = c;
+    prob.A = A;
+    prob.b = b;
+    prob.Aeq = Aeq;
+    prob.beq = beq;
+    prob.lb = lb;
+    prob.ub = ub;
+
+    QuadProg qp(prob, method);
+    return qp.solve(x0);
+}
+
+static QuadProg::Result quad_prob_ineq_con(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::MatrixXd &A, const Eigen::VectorXd &b, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
+{
+    QuadProgProblem prob;
+    prob.set_problem_size(x0.size(), A.rows(), 0, false);
+    prob.Q = Q;
+    prob.c = c;
+    prob.A = A;
+    prob.b = b;
+
+    QuadProg qp(prob, method);
+    return qp.solve(x0);
+}
+
+static QuadProg::Result quad_prob_eq_con(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::MatrixXd &Aeq, const Eigen::VectorXd &beq, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
+{
+    QuadProgProblem prob;
+    prob.set_problem_size(x0.size(), 0, Aeq.rows(), false);
+    prob.Q = Q;
+    prob.c = c;
+    prob.Aeq = Aeq;
+    prob.beq = beq;
+
+    QuadProg qp(prob, method);
+    return qp.solve(x0);
+}
+
+static QuadProg::Result quad_prob_bound_con(const Eigen::MatrixXd &Q, const Eigen::VectorXd &c, const Eigen::VectorXd &lb, const Eigen::VectorXd &ub, const Eigen::VectorXd &x0, QuadProg::Method method = QuadProg::Method::ADMM)
+{
+    QuadProgProblem prob;
+    prob.set_problem_size(x0.size(), 0, 0, true);
+    prob.Q = Q;
+    prob.c = c;
+    prob.lb = lb;
+    prob.ub = ub;
+
+    QuadProg qp(prob, method);
+    return qp.solve(x0);
+}
 
 }

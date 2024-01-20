@@ -76,8 +76,8 @@ public:
         // サブ問題の2次計画問題のソルバー
         QuadProgProblem qp_prob;
         QuadProg qp_solver(QuadProg::Method::InteriorPointMethod);
-        qp_solver.param.tol_con = 1e-3;
-        qp_solver.param.tol_step = 1e-3;
+        qp_solver.param.interior_point.tol_con = 1e-3;
+        qp_solver.param.interior_point.tol_step = 1e-3;
         qp_prob.set_problem_size(x.size(), ineq_con.size(), eq_con.size(), false);
 
         // 直線探索用メリット関数の制約重み

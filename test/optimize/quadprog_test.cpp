@@ -29,6 +29,9 @@ TEST(quadprog, newton_method) {
     EXPECT_TRUE(result.is_solved);
     EXPECT_TRUE(qp.satisfy(result.x));
     EXPECT_NEAR_VEC(result.x, Eigen::Vector2d(3, 2), 1e-2);
+
+    auto result2 = quad_prob(qp_prob.Q, qp_prob.c, x0);
+    EXPECT_NEAR_VEC(result2.x, result.x, 1e-2);
 }
 
 TEST(quadprog, ineq_inactive_constraint) {
@@ -60,6 +63,9 @@ TEST(quadprog, ineq_inactive_constraint) {
     EXPECT_TRUE(result.is_solved);
     EXPECT_TRUE(qp.satisfy(result.x));
     EXPECT_NEAR_VEC(result.x, Eigen::Vector2d(3, 1), 1e-2);
+
+    auto result2 = quad_prob_ineq_con(qp_prob.Q, qp_prob.c, qp_prob.A, qp_prob.b, x0);
+    EXPECT_NEAR_VEC(result2.x, result.x, 1e-2);
 }
 
 TEST(quadprog, ineq_active_constraint) {
@@ -91,6 +97,9 @@ TEST(quadprog, ineq_active_constraint) {
     EXPECT_TRUE(result.is_solved);
     EXPECT_TRUE(qp.satisfy(result.x));
     EXPECT_NEAR_VEC(result.x, Eigen::Vector2d(2, 2), 1e-2);
+
+    auto result2 = quad_prob_ineq_con(qp_prob.Q, qp_prob.c, qp_prob.A, qp_prob.b, x0);
+    EXPECT_NEAR_VEC(result2.x, result.x, 1e-2);
 }
 
 TEST(quadprog, bound_active_constraint) {
@@ -120,6 +129,9 @@ TEST(quadprog, bound_active_constraint) {
     EXPECT_TRUE(result.is_solved);
     EXPECT_TRUE(qp.satisfy(result.x));
     EXPECT_NEAR_VEC(result.x, Eigen::Vector2d(1, 1), 1e-2);
+
+    auto result2 = quad_prob_bound_con(qp_prob.Q, qp_prob.c, qp_prob.lb, qp_prob.ub, x0);
+    EXPECT_NEAR_VEC(result2.x, result.x, 1e-2);
 }
 
 TEST(quadprog, eq_active_constraint) {
@@ -151,4 +163,7 @@ TEST(quadprog, eq_active_constraint) {
     EXPECT_TRUE(result.is_solved);
     EXPECT_TRUE(qp.satisfy(result.x));
     EXPECT_NEAR_VEC(result.x, Eigen::Vector2d(-10, 10), 1e-2);
+
+    auto result2 = quad_prob_eq_con(qp_prob.Q, qp_prob.c, qp_prob.Aeq, qp_prob.beq, x0);
+    EXPECT_NEAR_VEC(result2.x, result.x, 1e-2);
 }
