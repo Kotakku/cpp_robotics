@@ -35,7 +35,7 @@ public:
         double tol_step = 1e-6;
         double tol_con = 1e-6;
         size_t max_iter = 100;
-        bool print_variable = false;
+        // bool print_variable = false;
     };
 
     struct Result
@@ -74,10 +74,11 @@ public:
         auto ineq_con = prob.con.gen_ineq_constraint_list();
 
         // サブ問題の2次計画問題のソルバー
-        QuadProg qp_solver;
-        qp_solver.param.tol_con = 1e-3;
-        qp_solver.param.tol_step = 1e-3;
-        qp_solver.set_problem_size(x.size(), ineq_con.size(), eq_con.size());
+        QuadProgProblem qp_prob;
+        QuadProg qp_solver(QuadProg::Method::InteriorPointMethod);
+        qp_solver.param.interior_point.tol_con = 1e-3;
+        qp_solver.param.interior_point.tol_step = 1e-3;
+        qp_prob.set_problem_size(x.size(), ineq_con.size(), eq_con.size(), false);
 
         // 直線探索用メリット関数の制約重み
         const double df0_norm = grad_f(x).norm();
@@ -95,21 +96,21 @@ public:
         // 等式制約の一次近似
         for(size_t con_i = 0; con_i < eq_con.size(); con_i++)
         {
-            qp_solver.Aeq.row(con_i) = eq_con[con_i].grad(x).transpose();
-            qp_solver.beq(con_i) = -eq_con[con_i].eval(x);
+            qp_prob.Aeq.row(con_i) = eq_con[con_i].grad(x).transpose();
+            qp_prob.beq(con_i) = -eq_con[con_i].eval(x);
         }
 
         // 不等式制約の一次近似
         for(size_t con_i = 0; con_i < ineq_con.size(); con_i++)
         {
-            qp_solver.A.row(con_i) = ineq_con[con_i].grad(x).transpose();
-            qp_solver.b(con_i) = -ineq_con[con_i].eval(x);
+            qp_prob.A.row(con_i) = ineq_con[con_i].grad(x).transpose();
+            qp_prob.b(con_i) = -ineq_con[con_i].eval(x);
         }
 
-        Eigen::MatrixXd new_Aeq(qp_solver.Aeq.rows(), qp_solver.Aeq.cols());
-        Eigen::VectorXd new_beq(qp_solver.beq.size());
-        Eigen::MatrixXd new_A(qp_solver.A.rows(), qp_solver.A.cols());
-        Eigen::VectorXd new_b(qp_solver.b.size());
+        Eigen::MatrixXd new_Aeq(qp_prob.Aeq.rows(), qp_prob.Aeq.cols());
+        Eigen::VectorXd new_beq(qp_prob.beq.size());
+        Eigen::MatrixXd new_A(qp_prob.A.rows(), qp_prob.A.cols());
+        Eigen::VectorXd new_b(qp_prob.b.size());
 
         // Todo: この前処理が有効になった時にdelta_grad_L？がおかしくなってヘッシアンが発散する？
         auto preprossesing = [&](Eigen::MatrixXd &Aeq, Eigen::VectorXd &beq, Eigen::MatrixXd &A, Eigen::VectorXd &b)
@@ -131,14 +132,14 @@ public:
                 }
             }
         };
-        preprossesing(qp_solver.Aeq, qp_solver.beq, qp_solver.A, qp_solver.b);
+        preprossesing(qp_prob.Aeq, qp_prob.beq, qp_prob.A, qp_prob.b);
 
         for(size_t i = 1; i < prob.max_iter+1; i++)
         {
-            if(prob.print_variable)
-            {
-                std::cout << "\n////////////////////////////////" << std::endl;
-            }
+            // if(prob.print_variable)
+            // {
+            //     std::cout << "\n////////////////////////////////" << std::endl;
+            // }
 
             // 探索方向の決定
             // サブの問題設定
@@ -162,7 +163,7 @@ public:
                 
                 Eigen::MatrixXd C = Dsq.asDiagonal()*LT;
                 Eigen::VectorXd d = Dinvsq.asDiagonal()*Linv*grad_f(x);
-                std::tie(qp_solver.Q, qp_solver.c) = lsi2qp(C, d);
+                std::tie(qp_prob.Q, qp_prob.c) = lsi2qp(C, d);
 
                 // std::cout << "qp_solver.Q" << std::endl;
                 // std::cout << qp_solver.Q << std::endl;
@@ -171,13 +172,14 @@ public:
             }
             else
             {
-                qp_solver.Q = B;
-                qp_solver.c = grad_f(x).transpose();
+                qp_prob.Q = B;
+                qp_prob.c = grad_f(x).transpose();
             }
 
             // Todo QPの制約で矛盾したもの、満たせないものを取り除く
 
             // サブの2次計画問題を解く
+            qp_solver.set_problem(qp_prob);
             auto sub_result = qp_solver.solve(Eigen::VectorXd::Zero(x.size()));
             if(not sub_result.is_solved)
             {
@@ -185,8 +187,8 @@ public:
                 result.iter_cnt = i;
                 result.x = x;
                 // result.lambda_opt = sub_result.lambda_opt;
-                std::cout << "cant solve sub qp: " << sub_result.iter_cnt << std::endl;
-                qp_solver.debug_prog();
+                // std::cout << "cant solve sub qp: " << sub_result.iter_cnt << std::endl;
+                // qp_solver.debug_prog();
                 return result;
             }
             auto d = sub_result.x;
@@ -217,13 +219,13 @@ public:
             };
             double alpha = bracketing_serach(merit_func, [&](const Eigen::VectorXd &x){ return derivative(merit_func, x); }, x, d);
 
-            if(prob.print_variable)
-            {
-                std::cout << "d" << std::endl;
-                std::cout << d << std::endl;
-                std::cout << "alpha" << std::endl;
-                std::cout << alpha << std::endl;
-            }
+            // if(prob.print_variable)
+            // {
+            //     std::cout << "d" << std::endl;
+            //     std::cout << d << std::endl;
+            //     std::cout << "alpha" << std::endl;
+            //     std::cout << alpha << std::endl;
+            // }
 
             if(callback)
                 callback.value()(x);
@@ -279,13 +281,13 @@ public:
 
             preprossesing(new_Aeq, new_beq, new_A, new_b);
 
-            delta_grad_L += (new_Aeq - qp_solver.Aeq).transpose() * sub_result.lambda_eq;
-            delta_grad_L += (new_A   - qp_solver.A  ).transpose() * sub_result.lambda_ineq;
+            delta_grad_L += (new_Aeq - qp_prob.Aeq).transpose() * sub_result.lambda_eq;
+            delta_grad_L += (new_A   - qp_prob.A  ).transpose() * sub_result.lambda_ineq;
 
-            qp_solver.Aeq = new_Aeq;
-            qp_solver.beq = new_beq;
-            qp_solver.A = new_A;
-            qp_solver.b = new_b;
+            qp_prob.Aeq = new_Aeq;
+            qp_prob.beq = new_beq;
+            qp_prob.A = new_A;
+            qp_prob.b = new_b;
 
             // \grad_g(x) * g(x) = [n]*[1]
             Eigen::VectorXd new_dgg = -new_Aeq.transpose()*new_beq -new_A.transpose()*new_b - x;
@@ -294,17 +296,17 @@ public:
             powells_modified_bfgs_step(B, step, delta_grad_L, new_dgg - dgg);
             dgg = new_dgg;
 
-            if(prob.print_variable)
-            {
-                std::cout << "B=" << std::endl;
-                std::cout << B << std::endl;
-                std::cout << "x=" << std::endl;
-                std::cout << x << std::endl;
-            }
+            // if(prob.print_variable)
+            // {
+            //     std::cout << "B=" << std::endl;
+            //     std::cout << B << std::endl;
+            //     std::cout << "x=" << std::endl;
+            //     std::cout << x << std::endl;
+            // }
 
             if(B.array().isNaN().any())
             {
-                std::cout << "NaNが存在します" << std::endl;
+                // std::cout << "NaNが存在します" << std::endl;
                 break;
             }
         }

@@ -3,13 +3,14 @@
 以下の最適化問題を考える
 
 $$
-\begin{array}
+\begin{array}{}
 \text{min} \space \dfrac{1}{2}x^TQx + c^T x\\
-\text{s.t.} \space Ax = b, A_{eq}x \leq b_{eq}, l_x \leq x \leq u_x \\
+\text{s.t.} \space Ax = b, A_{eq}x \leq b_{eq} \\
 x \in \mathbb{R}^n
 \end{array}
 $$
 
+# 内点法による最適化
 ## KKT条件
 与えられた問題に対するKKT条件は以下
 
@@ -67,6 +68,11 @@ D_s = \text{diag}(s)\\
 $$
 
 この方程式を解いて各変数を更新していく
+
+# ActiveSet法による最適化
+
+# ADMMによる最適化
+
 
 ## 参考文献
 - [二次計画法のアルゴリズム](https://jp.mathworks.com/help/optim/ug/quadratic-programming-algorithms.html#bvjx020-1)
