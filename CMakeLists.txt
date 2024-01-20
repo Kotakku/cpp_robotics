@@ -57,9 +57,8 @@ set(example_files
   optimize/optimize_without_constraint
   optimize/optimize_rosenbrock
   optimize/optimize_with_constraint
-  optimize/active_set_method_example
-  optimize/sqp_example
   optimize/quadprog
+  optimize/sqp_example
 
   path_planning/dubins_path
 
@@ -148,11 +147,6 @@ endforeach()
 endif()
 
 #################### install ####################
-install(
-  DIRECTORY include
-  DESTINATION share/${PROJECT_NAME}/
-)
-
 add_library(${PROJECT_NAME} INTERFACE)
 
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_17)
