@@ -61,6 +61,7 @@ set(example_files
   optimize/sqp_example
 
   path_planning/dubins_path
+  path_planning/fmt_star
 
   unit/unit_example
 )

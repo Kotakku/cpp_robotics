@@ -61,7 +61,7 @@ public:
      * 
      * @return distribution_t::result_type 
      */
-    typename distribution_t::result_type value()
+    typename distribution_t::result_type value() const
     {
         auto &dist = *(distribution_t*)(this);
         return dist(engine_wrapper_->get_engine());

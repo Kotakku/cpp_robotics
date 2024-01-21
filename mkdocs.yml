@@ -90,6 +90,7 @@ nav:
       - 状態空間表現: example/system/state_space_system.md
     - パスプランニング:
       - Dubins曲線: example/path_planning/dubins_path.md
+      - FMT* (Fast Marching Tree): example/path_planning/fmt_star.md
     - 単位系:
       - constexpr単位系: example/unit/unit.md
 
