@@ -6,8 +6,8 @@
 class DiffBot : public cpp_robotics::OCPDiscreteNonlinearDynamics
 {
 public:
-    DiffBot(size_t horizon, double dt):
-        OCPDiscreteNonlinearDynamics(3,2,horizon), dt_(dt) {}
+    DiffBot(double dt):
+        OCPDiscreteNonlinearDynamics(3,2), dt_(dt) {}
 
     Eigen::VectorXd eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u) override
     {
@@ -27,8 +27,8 @@ int main()
     namespace plt = matplotlibcpp;
     
     const double Ts = 0.05;
-    auto model = std::make_shared<DiffBot>(30, Ts);
-    auto cost = std::make_shared<OCPCostServoQuadratic>(model);
+    auto model = std::make_shared<DiffBot>(Ts);
+    auto cost = std::make_shared<OCPCostServoQuadratic>(model, 30);
     cost->Q = (Eigen::VectorXd(3) << 5, 5, 3).finished().asDiagonal();
     cost->R = 0.1 * Eigen::MatrixXd::Identity(2, 2);
     cost->Qf = cost->Q;

@@ -6,8 +6,8 @@
 class CartPole : public cpp_robotics::OCPContinuousNonlinearDynamics
 {
 public:
-    CartPole(size_t horizon, double dt):
-        OCPContinuousNonlinearDynamics(cpp_robotics::OCPIntegrationMethod::ForwardEuler, 4,1,horizon,dt) {}
+    CartPole(double dt):
+        OCPContinuousNonlinearDynamics(cpp_robotics::OCPIntegrationMethod::ForwardEuler, 4,1,dt) {}
 
     Eigen::VectorXd dynamics(const Eigen::VectorXd &x, const Eigen::VectorXd &u) override
     {
@@ -35,8 +35,8 @@ public:
 class CartPoleAD : public cpp_robotics::OCPContinuousNonlinearDynamicsAD<CartPoleAD>
 {
 public:
-    CartPoleAD(size_t horizon, double dt):
-        OCPContinuousNonlinearDynamicsAD(cpp_robotics::OCPIntegrationMethod::ForwardEuler, 4,1,horizon,dt) {}
+    CartPoleAD(double dt):
+        OCPContinuousNonlinearDynamicsAD(cpp_robotics::OCPIntegrationMethod::ForwardEuler, 4,1,dt) {}
 
     template<class Vector, class Scalar = Vector::Scalar>
     void dynamics(const Vector &x, const Vector &u, Vector &dx) const
@@ -68,8 +68,8 @@ int main()
     namespace plt = matplotlibcpp;
 
     const double Ts = 0.05;
-    auto model = std::make_shared<CartPoleAD>(30, Ts);
-    auto cost = std::make_shared<OCPCostServoQuadratic>(model);
+    auto model = std::make_shared<CartPoleAD>(Ts);
+    auto cost = std::make_shared<OCPCostServoQuadratic>(model, 30);
     cost->Q = (Eigen::VectorXd(4) << 5, 10, 0.01, 0.01).finished().asDiagonal();
     cost->R = 0.1 * Eigen::MatrixXd::Identity(1, 1);
     cost->Qf = cost->Q;

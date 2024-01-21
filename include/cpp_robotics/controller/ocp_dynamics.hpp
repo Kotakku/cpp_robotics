@@ -16,8 +16,8 @@ public:
     using SharedPtr = std::shared_ptr<OCPDynamics>;
 
     double eps = 1e-6;
-    OCPDynamics(size_t nx, size_t nu, size_t horizon):
-        nx_(nx), nu_(nu), horizon_(horizon) {}
+    OCPDynamics(size_t nx, size_t nu):
+        nx_(nx), nu_(nu) {}
 
     virtual Eigen::VectorXd eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u) = 0;
 
@@ -33,24 +33,21 @@ public:
 
     size_t state_size() const { return nx_; }
     size_t input_size() const { return nu_; }
-    size_t horizon() const { return horizon_; }
-
 private:
     const size_t nx_;
     const size_t nu_;
-    const size_t horizon_;
 };
 
 class OCPDiscreteLinearDynamics : public OCPDynamics
 {
 public:
-    OCPDiscreteLinearDynamics(const size_t nx, const size_t nu, const size_t horizon):
-        OCPDynamics(nx, nu, horizon),
+    OCPDiscreteLinearDynamics(const size_t nx, const size_t nu):
+        OCPDynamics(nx, nu),
         A(Eigen::MatrixXd::Zero(nx, nx)),
         B(Eigen::MatrixXd::Zero(nx, nu)){}
 
-    OCPDiscreteLinearDynamics(const Eigen::MatrixXd &A, const Eigen::MatrixXd &B, size_t horizon):
-        OCPDynamics(A.rows(), B.cols(), horizon),
+    OCPDiscreteLinearDynamics(const Eigen::MatrixXd &A, const Eigen::MatrixXd &B):
+        OCPDynamics(A.rows(), B.cols()),
         A(A),
         B(B){}
 
@@ -81,11 +78,11 @@ private:
 class OCPContinuousLinearDynamics : public OCPDynamics
 {
 public:
-    OCPContinuousLinearDynamics(const size_t nx, const size_t nu, const size_t horizon):
-        OCPDynamics(nx, nu, horizon){}
+    OCPContinuousLinearDynamics(const size_t nx, const size_t nu):
+        OCPDynamics(nx, nu){}
 
-    OCPContinuousLinearDynamics(const Eigen::MatrixXd &Acon, const Eigen::MatrixXd &Bcon, double dt, size_t horizon):
-        OCPDynamics(Acon.rows(), Bcon.cols(), horizon)
+    OCPContinuousLinearDynamics(const Eigen::MatrixXd &Acon, const Eigen::MatrixXd &Bcon, double dt):
+        OCPDynamics(Acon.rows(), Bcon.cols())
     {
         set_continuous_dynamics(Acon, Bcon, dt);
     }
@@ -122,8 +119,8 @@ private:
 class OCPDiscreteNonlinearDynamics : public OCPDynamics
 {
 public:
-    OCPDiscreteNonlinearDynamics(size_t nx, size_t nu, size_t horizon):
-        OCPDynamics(nx, nu, horizon){}
+    OCPDiscreteNonlinearDynamics(size_t nx, size_t nu):
+        OCPDynamics(nx, nu){}
 };
 
 enum class OCPIntegrationMethod
@@ -136,8 +133,8 @@ enum class OCPIntegrationMethod
 class OCPContinuousNonlinearDynamics : public OCPDynamics
 {
 public:
-    OCPContinuousNonlinearDynamics(OCPIntegrationMethod method, size_t nx, size_t nu, size_t horizon, double dt):
-        OCPDynamics(nx, nu, horizon), method_(method), dt_(dt) {}
+    OCPContinuousNonlinearDynamics(OCPIntegrationMethod method, size_t nx, size_t nu, double dt):
+        OCPDynamics(nx, nu), method_(method), dt_(dt) {}
 
     virtual Eigen::VectorXd dynamics(const Eigen::VectorXd &x, const Eigen::VectorXd &u) = 0;
 
@@ -190,8 +187,8 @@ template<class Derived>
 class OCPContinuousNonlinearDynamicsAD : public OCPDynamics
 {
 public:
-    OCPContinuousNonlinearDynamicsAD(OCPIntegrationMethod method, size_t nx, size_t nu, size_t horizon, double dt):
-        OCPDynamics(nx, nu, horizon), method_(method), dt_(dt),
+    OCPContinuousNonlinearDynamicsAD(OCPIntegrationMethod method, size_t nx, size_t nu, double dt):
+        OCPDynamics(nx, nu), method_(method), dt_(dt),
         x_(nx, nx + nu, 0), u_(nu, nx + nu, nx), dx_(nx, nx + nu, 0), x_next_(nx, nx + nu, 0)
     {
         static_assert(internal::has_ad_dynamics<Derived, Eigen::VectorXd::Scalar>::value, 
