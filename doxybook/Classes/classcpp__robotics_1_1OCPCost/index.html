@@ -927,6 +927,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/path_planning/navigation_diffbot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    差動二輪ロボットのナビゲーション(FMT* + DWA)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2420,7 +2441,7 @@
 </tr>
 <tr>
 <td></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-ocpcost">OCPCost</a></strong>(std::shared_ptr&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/">OCPDynamics</a> &gt; model)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPCost/#function-ocpcost">OCPCost</a></strong>(std::shared_ptr&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/">OCPDynamics</a> &gt; model, size_t horizon)</td>
 </tr>
 <tr>
 <td>virtual double</td>
@@ -2505,7 +2526,8 @@
 </code></pre></div>
 <h3 id="function-ocpcost_1">function OCPCost</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">OCPCost</span><span class="p">(</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">OCPDynamics</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">model</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">OCPDynamics</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">model</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">horizon</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-eval">function eval</h3>
@@ -2593,7 +2615,7 @@
 <div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">eps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">;</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2024-01-21 at 12:49:54 +0000</p>
+<p>Updated on 2024-01-21 at 17:33:05 +0000</p>
 
 
 

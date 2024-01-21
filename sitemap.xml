@@ -101,6 +101,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DWA/</loc>
+         <lastmod>2024-01-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DelayFilter/</loc>
          <lastmod>2024-01-21</lastmod>
          <changefreq>daily</changefreq>
@@ -167,6 +172,11 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1KalmanFilter/</loc>
+         <lastmod>2024-01-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1LinePath/</loc>
          <lastmod>2024-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -427,6 +437,11 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCMotorParam/</loc>
+         <lastmod>2024-01-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DWAConfig/</loc>
          <lastmod>2024-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -866,6 +881,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/dwa_8hpp/</loc>
+         <lastmod>2024-01-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/dynamics__integrate_8hpp/</loc>
          <lastmod>2024-01-21</lastmod>
          <changefreq>daily</changefreq>
@@ -957,6 +977,11 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/least__squares__method_8hpp/</loc>
+         <lastmod>2024-01-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Files/line__path_8hpp/</loc>
          <lastmod>2024-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1442,6 +1467,11 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/example/path_planning/fmt_star/</loc>
+         <lastmod>2024-01-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kotakku.github.io/cpp_robotics/example/path_planning/navigation_diffbot/</loc>
          <lastmod>2024-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>

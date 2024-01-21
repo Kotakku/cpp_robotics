@@ -927,6 +927,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/path_planning/navigation_diffbot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    差動二輪ロボットのナビゲーション(FMT* + DWA)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2401,11 +2422,11 @@
 <tbody>
 <tr>
 <td></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPContinuousLinearDynamics/#function-ocpcontinuouslineardynamics">OCPContinuousLinearDynamics</a></strong>(const size_t nx, const size_t nu, const size_t horizon)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPContinuousLinearDynamics/#function-ocpcontinuouslineardynamics">OCPContinuousLinearDynamics</a></strong>(const size_t nx, const size_t nu)</td>
 </tr>
 <tr>
 <td></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPContinuousLinearDynamics/#function-ocpcontinuouslineardynamics">OCPContinuousLinearDynamics</a></strong>(const Eigen::MatrixXd &amp; Acon, const Eigen::MatrixXd &amp; Bcon, double dt, size_t horizon)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPContinuousLinearDynamics/#function-ocpcontinuouslineardynamics">OCPContinuousLinearDynamics</a></strong>(const Eigen::MatrixXd &amp; Acon, const Eigen::MatrixXd &amp; Bcon, double dt)</td>
 </tr>
 <tr>
 <td>void</td>
@@ -2452,7 +2473,7 @@
 <tbody>
 <tr>
 <td></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/#function-ocpdynamics">OCPDynamics</a></strong>(size_t nx, size_t nu, size_t horizon)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/#function-ocpdynamics">OCPDynamics</a></strong>(size_t nx, size_t nu)</td>
 </tr>
 <tr>
 <td>size_t</td>
@@ -2461,10 +2482,6 @@
 <tr>
 <td>size_t</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/#function-input-size">input_size</a></strong>() const</td>
-</tr>
-<tr>
-<td>size_t</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/#function-horizon">horizon</a></strong>() const</td>
 </tr>
 </tbody>
 </table>
@@ -2487,16 +2504,14 @@
 <h3 id="function-ocpcontinuouslineardynamics">function OCPContinuousLinearDynamics</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">OCPContinuousLinearDynamics</span><span class="p">(</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nx</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nu</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">horizon</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nu</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-ocpcontinuouslineardynamics_1">function OCPContinuousLinearDynamics</h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">OCPContinuousLinearDynamics</span><span class="p">(</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Acon</span><span class="p">,</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Bcon</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">horizon</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-set_continuous_dynamics">function set_continuous_dynamics</h3>
@@ -2528,7 +2543,7 @@
 </code></pre></div>
 <p><strong>Reimplements</strong>: <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1OCPDynamics/#function-jacobian-u">cpp_robotics::OCPDynamics::jacobian_u</a></p>
 <hr />
-<p>Updated on 2024-01-21 at 12:49:54 +0000</p>
+<p>Updated on 2024-01-21 at 17:33:05 +0000</p>
 
 
 

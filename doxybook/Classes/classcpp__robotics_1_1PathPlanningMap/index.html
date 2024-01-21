@@ -927,6 +927,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/path_planning/navigation_diffbot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    差動二輪ロボットのナビゲーション(FMT* + DWA)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2428,7 +2449,11 @@
 </tr>
 <tr>
 <td>virtual bool</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PathPlanningMap/#function-is-valid">is_valid</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PathPlanningMap/#using-vector">Vector</a> &amp; p1, const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PathPlanningMap/#using-vector">Vector</a> &amp; p2) const =0</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PathPlanningMap/#function-is-valid">is_valid</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PathPlanningMap/#using-vector">Vector</a> &amp; point) const =0</td>
+</tr>
+<tr>
+<td>virtual bool</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PathPlanningMap/#function-is-valid">is_valid</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PathPlanningMap/#using-vector">Vector</a> &amp; from, const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PathPlanningMap/#using-vector">Vector</a> &amp; to) const =0</td>
 </tr>
 <tr>
 <td>virtual <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PathPlanningMap/#using-vector">Vector</a></td>
@@ -2466,8 +2491,13 @@
 </code></pre></div>
 <h3 id="function-is_valid">function is_valid</h3>
 <div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_valid</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p2</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">point</span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span>
+</code></pre></div>
+<h3 id="function-is_valid_1">function is_valid</h3>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_valid</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">from</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">to</span>
 <span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span>
 </code></pre></div>
 <h3 id="function-random_sampling">function random_sampling</h3>
@@ -2479,7 +2509,7 @@
 </code></pre></div>
 <p><strong>Reimplemented by</strong>: <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/#function-map-size">cpp_robotics::GridMap::map_size</a></p>
 <hr />
-<p>Updated on 2024-01-21 at 12:49:54 +0000</p>
+<p>Updated on 2024-01-21 at 17:33:05 +0000</p>
 
 
 
