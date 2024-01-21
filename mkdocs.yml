@@ -37,7 +37,6 @@ theme:
   icon:
     logo: fontawesome/solid/robot
     repo: fontawesome/brands/github
-  custom_dir: docs/overrides
 
 plugins:
   - macros
