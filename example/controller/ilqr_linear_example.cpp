@@ -21,8 +21,8 @@ int main()
          0.7, 0,
          0, 1;
 
-    auto model = std::make_shared<OCPContinuousLinearDynamics>(A, B, Ts, 30);
-    auto cost = std::make_shared<OCPCostQuadratic>(model);
+    auto model = std::make_shared<OCPContinuousLinearDynamics>(A, B, Ts);
+    auto cost = std::make_shared<OCPCostQuadratic>(model, 30);
     cost->Q = (Eigen::VectorXd(4) << 5,5,0.5,0.5).finished().asDiagonal();
     cost->R = (Eigen::VectorXd(2) << 0.1,0.1).finished().asDiagonal();
     cost->Qf = cost->Q;

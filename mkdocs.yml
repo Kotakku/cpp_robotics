@@ -90,6 +90,7 @@ nav:
     - パスプランニング:
       - Dubins曲線: example/path_planning/dubins_path.md
       - FMT* (Fast Marching Tree): example/path_planning/fmt_star.md
+      - 差動二輪ロボットのナビゲーション(FMT* + DWA): example/path_planning/navigation_diffbot.md
     - 単位系:
       - constexpr単位系: example/unit/unit.md
 

@@ -62,6 +62,8 @@ set(example_files
 
   path_planning/dubins_path
   path_planning/fmt_star
+  path_planning/dwa
+  path_planning/navigation_diffbot
 
   unit/unit_example
 )

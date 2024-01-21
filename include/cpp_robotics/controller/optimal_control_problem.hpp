@@ -22,7 +22,7 @@ public:
 
     size_t input_size() const { return dynamics->input_size(); }
     size_t state_size() const { return dynamics->state_size(); }
-    size_t horizon() const { return dynamics->horizon(); }
+    size_t horizon() const { return cost->horizon(); }
 
 };
 

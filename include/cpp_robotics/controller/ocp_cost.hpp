@@ -19,8 +19,8 @@ public:
     OCPCost(size_t nx, size_t nu, size_t horizon):
         nx_(nx), nu_(nu), horizon_(horizon){}
 
-    OCPCost(std::shared_ptr<OCPDynamics> model):
-        OCPCost(model->state_size(), model->input_size(), model->horizon()){}
+    OCPCost(std::shared_ptr<OCPDynamics> model, size_t horizon):
+        OCPCost(model->state_size(), model->input_size(), horizon){}
 
     virtual double eval(const Eigen::VectorXd &x, const Eigen::VectorXd &u, const size_t i) const = 0;
 
@@ -85,8 +85,8 @@ private:
 class OCPCostQuadratic : public OCPCost
 {
 public:
-    OCPCostQuadratic(OCPDynamics::SharedPtr model):
-        OCPCostQuadratic(model->state_size(), model->input_size(), model->horizon()){}
+    OCPCostQuadratic(OCPDynamics::SharedPtr model, size_t horizon):
+        OCPCostQuadratic(model->state_size(), model->input_size(), horizon){}
 
     OCPCostQuadratic(size_t nx, size_t nu, size_t horizon):
         OCPCost(nx, nu, horizon)
@@ -162,8 +162,8 @@ public:
 class OCPCostServoQuadratic : public OCPCost
 {
 public:
-    OCPCostServoQuadratic(OCPDynamics::SharedPtr model):
-        OCPCostServoQuadratic(model->state_size(), model->input_size(), model->horizon()){}
+    OCPCostServoQuadratic(OCPDynamics::SharedPtr model, size_t horizon):
+        OCPCostServoQuadratic(model->state_size(), model->input_size(), horizon){}
 
     OCPCostServoQuadratic(size_t nx, size_t nu, size_t horizon):
         OCPCost(nx, nu, horizon)
