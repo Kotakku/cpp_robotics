@@ -33,18 +33,14 @@ void draw_robot(Eigen::Vector3d state, double width = 0.4, double height = 0.4, 
     double theta = state[2];
     double x1 = x + cos(theta) * (-width / 2) - sin(theta) * (-height / 2);
     double y1 = y + sin(theta) * (-width / 2) + cos(theta) * (-height / 2);
-
     double x2 = x + cos(theta) * (width / 2) - sin(theta) * (-height / 2);
     double y2 = y + sin(theta) * (width / 2) + cos(theta) * (-height / 2);
-
     double x3 = x + cos(theta) * (width / 2) - sin(theta) * (height / 2);
     double y3 = y + sin(theta) * (width / 2) + cos(theta) * (height / 2);
-
     double x4 = x + cos(theta) * (-width / 2) - sin(theta) * (height / 2);
     double y4 = y + sin(theta) * (-width / 2) + cos(theta) * (height / 2);
     std::vector<double> x_data = {x1, x2, x3, x4, x1};
     std::vector<double> y_data = {y1, y2, y3, y4, y1};
-
     plt::plot(x_data, y_data, "b-");
 
     std::vector<double> dir_x_data = {x, x + cos(theta) * heading};
@@ -101,13 +97,19 @@ int main() {
     Eigen::Vector2d x_goal(4.75, 4.75);
     auto waypoint_list = fmt_star<Eigen::Vector2d>(map, x_init, x_goal);
 
-    namespace plt = matplotlibcpp;
-    // result
     if(waypoint_list.size() == 0)
     {
         std::cout << "No path found" << std::endl;
         return 0;
     }
+    std::vector<double> waypoint_list_x, waypoint_list_y;
+    for(const auto& p : waypoint_list)
+    {
+        waypoint_list_x.push_back(p(0));
+        waypoint_list_y.push_back(p(1));
+    }
+
+    LinePath path(waypoint_list);
 
     DWAConfig config;
     config.robot_radius = 0.5;
@@ -121,21 +123,10 @@ int main() {
     config.to_goal_weight = 3.0;
     DWA dwa(map, config);
 
-    std::vector<double> waypoint_list_x, waypoint_list_y;
-    for(const auto& p : waypoint_list)
-    {
-        waypoint_list_x.push_back(p(0));
-        waypoint_list_y.push_back(p(1));
-    }
-
-    LinePath path(waypoint_list);
-
     const double sim_dt = 0.1;
     DiffBot robot(sim_dt);
     Eigen::Vector3d x(x_init[0], x_init[1], 0.0);
-
     double folowing_point = 0;
-    size_t count = 0;
     while(1)
     {
         plt::clf();
@@ -184,9 +175,6 @@ int main() {
         plt::ylim(0, 5);
         plt::set_aspect_equal();
         plt::pause(0.05);
-        plt::save("./img_nav/img_" + std::to_string(count) + ".png");
-
-        count++;
     }   
 
     std::cout << "navigation finished" << std::endl;
