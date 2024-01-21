@@ -909,6 +909,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/path_planning/fmt_star/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FMT* (Fast Marching Tree)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2674,6 +2695,26 @@
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DubinsPath/">cpp_robotics::DubinsPath</a></strong> <br>Dubinsパス</td>
 </tr>
 <tr>
+<td>struct</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1FMTStarConfig/">cpp_robotics::FMTStarConfig</a></strong></td>
+</tr>
+<tr>
+<td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1FMTStar/">cpp_robotics::FMTStar</a></strong></td>
+</tr>
+<tr>
+<td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PathPlanningNode/">cpp_robotics::PathPlanningNode</a></strong></td>
+</tr>
+<tr>
+<td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PathPlanningMap/">cpp_robotics::PathPlanningMap</a></strong></td>
+</tr>
+<tr>
+<td>class</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/">cpp_robotics::GridMap</a></strong> <br><a href="">GridMap</a> は障害物を格子点の集合で表現するマップ、座標は正の値かつmap_size未満であること</td>
+</tr>
+<tr>
 <td>class</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/">cpp_robotics::Spline2D</a></strong> <br>2次元のスプライン曲線のインターフェイスクラス</td>
 </tr>
@@ -2803,6 +2844,18 @@
 <tr>
 <td>using unit_assem::unit_mul&lt; <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-torque">Torque</a>, <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-second">Second</a> &gt;::unit</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-frictionconstant">FrictionConstant</a></strong></td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/">GridMap</a>&lt; 2 &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-gridmap2d">GridMap2d</a></strong></td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/">GridMap</a>&lt; 3 &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-gridmap3d">GridMap3d</a></strong></td>
+</tr>
+<tr>
+<td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/">GridMap</a>&lt; Eigen::Dynamic &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-gridmapxd">GridMapXd</a></strong></td>
 </tr>
 <tr>
 <td>using <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1unit_1_1Unit/">Unit</a>&lt; double, unit_dimention::second, prefix::none &gt;</td>
@@ -3412,6 +3465,10 @@
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-a-star">a_star</a></strong>(const Eigen::Vector2i &amp; start, const Eigen::Vector2i &amp; end, const Eigen::MatrixXi &amp; map)<br>A*法</td>
 </tr>
 <tr>
+<td>template &lt;class EigenVector ,class Map &gt; <br>std::vector&lt; EigenVector &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-fmt-star">fmt_star</a></strong>(const Map &amp; map, const EigenVector &amp; x_init, const EigenVector &amp; x_goal, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1FMTStarConfig/">FMTStarConfig</a> &amp; config =<a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1FMTStarConfig/">FMTStarConfig</a>())</td>
+</tr>
+<tr>
 <td>double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#function-normalized-mjm-position">normalized_mjm_position</a></strong>(double t)</td>
 </tr>
@@ -3923,6 +3980,15 @@
 </code></pre></div>
 <h3 id="using-frictionconstant">using FrictionConstant</h3>
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">unit</span><span class="o">::</span><span class="n">FrictionConstant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">unit_assem</span><span class="o">::</span><span class="n">unit_mul</span><span class="o">&lt;</span><span class="n">Torque</span><span class="p">,</span><span class="w"> </span><span class="n">Second</span><span class="o">&gt;::</span><span class="n">unit</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="using-gridmap2d">using GridMap2d</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">GridMap2d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">GridMap</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="using-gridmap3d">using GridMap3d</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">GridMap3d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">GridMap</span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="using-gridmapxd">using GridMapXd</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">GridMapXd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">GridMap</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="using-second">using Second</h3>
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">unit</span><span class="o">::</span><span class="n">Second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">Unit</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">unit_dimention</span><span class="o">::</span><span class="n">second</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="o">::</span><span class="n">none</span><span class="o">&gt;</span><span class="p">;</span>
@@ -5008,6 +5074,16 @@
 <li><strong>map</strong> </li>
 </ul>
 <p><strong>Return</strong>: std::vector<Eigen::Vector2i> </p>
+<h3 id="function-fmt_star">function fmt_star</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">EigenVector</span><span class="w"> </span><span class="p">,</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">EigenVector</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">fmt_star</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">map</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">EigenVector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x_init</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">EigenVector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x_goal</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FMTStarConfig</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="n">FMTStarConfig</span><span class="p">()</span>
+<span class="p">)</span>
+</code></pre></div>
 <h3 id="function-normalized_mjm_position">function normalized_mjm_position</h3>
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">normalized_mjm_position</span><span class="p">(</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span>
@@ -5835,7 +5911,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">gfcm2mNm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">gfm2Nm</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2024-01-20 at 07:24:10 +0000</p>
+<p>Updated on 2024-01-21 at 09:30:19 +0000</p>
 
 
 

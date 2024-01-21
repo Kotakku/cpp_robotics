@@ -20,7 +20,7 @@
         <link rel="prev" href="../../system/state_space_system/">
       
       
-        <link rel="next" href="../../unit/unit/">
+        <link rel="next" href="../fmt_star/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -924,6 +924,27 @@
 
       </a>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fmt_star/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FMT* (Fast Marching Tree)
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2390,6 +2411,15 @@
 
 
 <h1 id="dubins">Dubins曲線</h1>
+<p>(4, 3)地点-45度の方向からスタートして(1,1)に45度の方向に到達する経路を生成します。<br />
+曲線の箇所は曲率が1になるように設定します。</p>
+<p>出力
+<div class="highlight"><pre><span></span><code>RSR
+1.45579
+2.55239
+3.2566
+</code></pre></div></p>
+<p><img alt="" src="../../fig/dubins_path.png" /></p>
 <div class="admonition example">
 <p class="admonition-title">ソースコード</p>
 <p><a href="https://github.com/Kotakku/cpp_robotics/blob/develop/example/path_planning/dubins_path.cpp">example/path_planning/dubins_path.cpp</a></p>
@@ -2430,15 +2460,6 @@
 <span class="w">    </span><span class="n">plt</span><span class="o">::</span><span class="n">show</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>(4, 3)地点-45度の方向からスタートして(1,1)に45度の方向に到達する経路を生成します。<br />
-曲線の箇所は曲率が1になるように設定します。</p>
-<p>出力
-<div class="highlight"><pre><span></span><code>RSR
-1.45579
-2.55239
-3.2566
-</code></pre></div></p>
-<p><img alt="" src="../../fig/dubins_path.png" /></p>
 
 
 

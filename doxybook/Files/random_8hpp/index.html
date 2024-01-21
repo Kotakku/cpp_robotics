@@ -909,6 +909,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/path_planning/fmt_star/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FMT* (Fast Marching Tree)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2443,7 +2464,7 @@
 <span class="w">        </span><span class="n">engine_wrapper_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Singleton</span><span class="o">&lt;</span><span class="n">engine_t</span><span class="o">&gt;::</span><span class="n">get_shared_instance</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">typename</span><span class="w"> </span><span class="nc">distribution_t</span><span class="o">::</span><span class="n">result_type</span><span class="w"> </span><span class="n">value</span><span class="p">()</span>
+<span class="w">    </span><span class="k">typename</span><span class="w"> </span><span class="nc">distribution_t</span><span class="o">::</span><span class="n">result_type</span><span class="w"> </span><span class="n">value</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">distribution_t</span><span class="o">*</span><span class="p">)(</span><span class="k">this</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">engine_wrapper_</span><span class="o">-&gt;</span><span class="n">get_engine</span><span class="p">());</span>
@@ -2495,7 +2516,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2024-01-20 at 07:24:11 +0000</p>
+<p>Updated on 2024-01-21 at 09:30:20 +0000</p>
 
 
 
