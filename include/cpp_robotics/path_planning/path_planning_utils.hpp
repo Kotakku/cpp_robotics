@@ -40,7 +40,8 @@ public:
 
     size_t dimension() const { return dimension_; }
 
-    virtual bool is_valid(const Vector &p1, const Vector &p2) const = 0;
+    virtual bool is_valid(const Vector &point) const = 0;
+    virtual bool is_valid(const Vector &from, const Vector &to) const = 0;
 
     virtual Vector random_sampling() const = 0;
 
@@ -74,22 +75,32 @@ public:
     {
     }
 
-    bool is_valid(const Vector &p1, const Vector &p2) const override
+    bool is_valid(const Vector &point) const override
     {
-        GridVector gp1 = (p1/resolution_).template cast<int>();
-        GridVector gp2 = (p2/resolution_).template cast<int>();
-        if(auto it = std::find(obstacles_.begin(), obstacles_.end(), gp1); it != obstacles_.end())
+        GridVector gp = (point/resolution_).template cast<int>();
+        if(auto it = std::find(obstacles_.begin(), obstacles_.end(), gp); it != obstacles_.end())
         {
             return false;
         }
-        if(auto it = std::find(obstacles_.begin(), obstacles_.end(), gp2); it != obstacles_.end())
+        return true;
+    }
+
+    bool is_valid(const Vector &from, const Vector &to) const override
+    {
+        GridVector gp1 = (from/resolution_).template cast<int>();
+        GridVector gp2 = (to/resolution_).template cast<int>();
+        if(not is_valid(from))
+        {
+            return false;
+        }
+        if(not is_valid(to))
         {
             return false;
         }
 
         GridVector look = gp1;
-        Eigen::VectorXd look_start = (p1/resolution_);
-        Eigen::VectorXd diff = (p2/resolution_) - look_start;
+        Eigen::VectorXd look_start = (from/resolution_);
+        Eigen::VectorXd diff = (to/resolution_) - look_start;
         for(size_t i = 0; i < 100; i++) {
             GridVector next = (look_start + i*diff/100.0).template cast<int>();
             if(next == gp2) {
