@@ -2442,11 +2442,11 @@
 <tbody>
 <tr>
 <td>template &lt;int N =Vector::RowsAtCompileTime,typename std::enable_if&lt; N !=Eigen::Dynamic, int &gt;::type  =0&gt; <br></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/#function-gridmap">GridMap</a></strong>(std::vector&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/#using-gridvector">GridVector</a> &gt; obstacles, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/#using-gridvector">GridVector</a> map_size, double resolution)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/#function-gridmap">GridMap</a></strong>(std::vector&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/#using-gridvector">GridVector</a> &gt; obstacles, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/#using-gridvector">GridVector</a> map_size, double resolution, double margin =0.0)</td>
 </tr>
 <tr>
 <td>template &lt;int N =Vector::RowsAtCompileTime,typename std::enable_if&lt; N==Eigen::Dynamic, int &gt;::type  =0&gt; <br></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/#function-gridmap">GridMap</a></strong>(size_t dim, std::vector&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/#using-gridvector">GridVector</a> &gt; obstacles, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/#using-gridvector">GridVector</a> map_size, double resolution)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/#function-gridmap">GridMap</a></strong>(size_t dim, std::vector&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/#using-gridvector">GridVector</a> &gt; obstacles, <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1GridMap/#using-gridvector">GridVector</a> map_size, double resolution, double margin =0.0)</td>
 </tr>
 <tr>
 <td>bool</td>
@@ -2509,7 +2509,8 @@
 <span class="kr">inline</span><span class="w"> </span><span class="n">GridMap</span><span class="p">(</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">GridVector</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">obstacles</span><span class="p">,</span>
 <span class="w">    </span><span class="n">GridVector</span><span class="w"> </span><span class="n">map_size</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">resolution</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">resolution</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">margin</span><span class="w"> </span><span class="o">=</span><span class="mf">0.0</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-gridmap_1">function GridMap</h3>
@@ -2519,7 +2520,8 @@
 <span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">dim</span><span class="p">,</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">GridVector</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">obstacles</span><span class="p">,</span>
 <span class="w">    </span><span class="n">GridVector</span><span class="w"> </span><span class="n">map_size</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">resolution</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">resolution</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">margin</span><span class="w"> </span><span class="o">=</span><span class="mf">0.0</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-is_valid">function is_valid</h3>
@@ -2542,7 +2544,7 @@
 </code></pre></div>
 <p><strong>Reimplements</strong>: <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1PathPlanningMap/#function-map-size">cpp_robotics::PathPlanningMap::map_size</a></p>
 <hr />
-<p>Updated on 2024-01-21 at 17:33:05 +0000</p>
+<p>Updated on 2024-01-22 at 08:22:37 +0000</p>
 
 
 
