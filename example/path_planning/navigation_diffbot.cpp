@@ -41,7 +41,7 @@ void draw_robot(Eigen::Vector3d state, double width = 0.4, double height = 0.4, 
     double y4 = y + sin(theta) * (-width / 2) + cos(theta) * (height / 2);
     std::vector<double> x_data = {x1, x2, x3, x4, x1};
     std::vector<double> y_data = {y1, y2, y3, y4, y1};
-    plt::plot(x_data, y_data, "b-");
+    plt::plot(x_data, y_data, "k-");
 
     std::vector<double> dir_x_data = {x, x + cos(theta) * heading};
     std::vector<double> dir_y_data = {y, y + sin(theta) * heading};
@@ -91,11 +91,14 @@ int main() {
         {8, 1},
     };
     double obstacle_size = 0.5;
-    GridMap2d map(obstalces, Eigen::Vector2i(10, 10), obstacle_size);
+    double margin = 0.2;
+    GridMap2d global_planning_map(obstalces, Eigen::Vector2i(10, 10), obstacle_size, margin);
 
     Eigen::Vector2d x_init(0.25, 0.25);
     Eigen::Vector2d x_goal(4.75, 4.75);
-    auto waypoint_list = fmt_star<Eigen::Vector2d>(map, x_init, x_goal);
+    FMTStarConfig fmt_star_config;
+    fmt_star_config.sampling_num = 2000;
+    auto waypoint_list = fmt_star<Eigen::Vector2d>(global_planning_map, x_init, x_goal, fmt_star_config);
 
     if(waypoint_list.size() == 0)
     {
@@ -111,17 +114,18 @@ int main() {
 
     LinePath path(waypoint_list);
 
-    DWAConfig config;
-    config.robot_radius = 0.5;
-    config.max_velocity = 3.0;
-    config.max_angular_velocity = 3.0;
-    config.windows_size = 100;
-    config.dt = 0.1;
-    config.predict_time = 0.5;
-    config.heading_angle_weight = 3.0;
-    config.heading_velocity_weight = 0.5;
-    config.to_goal_weight = 3.0;
-    DWA dwa(map, config);
+    GridMap2d local_planning_map(obstalces, Eigen::Vector2i(10, 10), obstacle_size);
+    DWAConfig dwa_config;
+    dwa_config.robot_radius = 0.5;
+    dwa_config.max_velocity = 3.0;
+    dwa_config.max_angular_velocity = 3.0;
+    dwa_config.windows_size = 100;
+    dwa_config.dt = 0.1;
+    dwa_config.predict_time = 0.5;
+    dwa_config.heading_angle_weight = 3.0;
+    dwa_config.heading_velocity_weight = 0.5;
+    dwa_config.to_goal_weight = 3.0;
+    DWA dwa(local_planning_map, dwa_config);
 
     const double sim_dt = 0.1;
     DiffBot robot(sim_dt);
@@ -147,11 +151,11 @@ int main() {
         // シミュレーション
         x = robot.eval(x, u);
 
-        draw_robot(x);
         plt::plot(waypoint_list_x, waypoint_list_y, "b");
         plt::plot({x_init(0)}, {x_init(1)}, "go");
         plt::plot({x_goal(0)}, {x_goal(1)}, "ro");
         plt::plot({dwa_goal(0)}, {dwa_goal(1)}, "bo");
+        draw_robot(x);
 
         // obstacles
         for(auto o : obstalces)

@@ -2,6 +2,8 @@
 
 #include <Eigen/Dense>
 #include "cpp_robotics/utility/random.hpp"
+#include "cpp_robotics/algorithm/kdtree.hpp"
+#include <unordered_set>
 
 namespace cpp_robotics
 {
@@ -63,24 +65,60 @@ public:
 
     template <int N = Vector::RowsAtCompileTime,
               typename std::enable_if<N != Eigen::Dynamic, int>::type = 0>
-    GridMap(std::vector<GridVector> obstacles, GridVector map_size, double resolution)
-        : PathPlanningMap<Vector>(), obstacles_(obstacles), map_size_(map_size), resolution_(resolution) 
+    GridMap(std::vector<GridVector> obstacles, GridVector map_size, double resolution, double margin = 0.0)
+        : PathPlanningMap<Vector>(), map_size_(map_size), resolution_(resolution), margin_(margin)
     {
+        for(const auto& o : obstacles)
+        {
+            obstacles_.insert(o);
+        }
+        if(0.0 < margin_)
+        {
+            kdtree_.build(obstacles, this->dimension());
+        }
     }
 
     template <int N = Vector::RowsAtCompileTime,
               typename std::enable_if<N == Eigen::Dynamic, int>::type = 0>
-    GridMap(size_t dim, std::vector<GridVector> obstacles, GridVector map_size, double resolution)
-        : PathPlanningMap<Vector>(dim), obstacles_(obstacles), map_size_(map_size), resolution_(resolution) 
+    GridMap(size_t dim, std::vector<GridVector> obstacles, GridVector map_size, double resolution, double margin = 0.0)
+        : PathPlanningMap<Vector>(dim), map_size_(map_size), resolution_(resolution), margin_(margin)
     {
+        for(const auto& o : obstacles)
+        {
+            obstacles_.insert(o);
+        }
+        if(0.0 < margin_)
+        {
+            kdtree_.build(obstacles, this->dimension());
+        }
     }
 
     bool is_valid(const Vector &point) const override
     {
         GridVector gp = (point/resolution_).template cast<int>();
-        if(auto it = std::find(obstacles_.begin(), obstacles_.end(), gp); it != obstacles_.end())
+        if(obstacles_.find(gp) != obstacles_.end())
         {
             return false;
+        }
+        if(0.0 < margin_)
+        {
+            Vector min_diff;
+            if constexpr( Dim == Eigen::Dynamic )
+            {
+                min_diff.resize(this->dimension());
+            }
+            auto near_points = kdtree_.radius_search_points(gp, margin_/resolution_ + 2);
+            for(auto& ngp : near_points)
+            {
+                for(size_t i = 0; i < this->dimension(); i++)
+                {
+                    min_diff(i) = std::max({ngp(i)*resolution_ - point(i), point(i) - (ngp(i)+1)*resolution_, 0.0});
+                }
+                if(min_diff.squaredNorm() < margin_*margin_)
+                {
+                    return false;
+                }
+            }
         }
         return true;
     }
@@ -98,21 +136,36 @@ public:
             return false;
         }
 
-        GridVector look = gp1;
-        Eigen::VectorXd look_start = (from/resolution_);
-        Eigen::VectorXd diff = (to/resolution_) - look_start;
-        for(size_t i = 0; i < 100; i++) {
-            GridVector next = (look_start + i*diff/100.0).template cast<int>();
-            if(next == gp2) {
-                break;
-            }
-            if(next != look) {
-                if(auto it = std::find(obstacles_.begin(), obstacles_.end(), next); it != obstacles_.end()) {
+        const size_t split = 30;
+        if (0.0 < margin_)
+        {
+            Eigen::VectorXd diff = to - from;
+            for(size_t i = 0; i < split; i++) {
+                Vector nextd = (from + i*diff/split);
+                if(not is_valid(nextd)) {
                     return false;
                 }
-                look = next;
             }
         }
+        else
+        {
+            GridVector look = gp1;
+            Eigen::VectorXd diff = to - from;
+            for(size_t i = 0; i < split; i++) {
+                Vector nextd = (from + i*diff/split);
+                GridVector next = (nextd/resolution_).template cast<int>();
+                if(next == gp2) {
+                    break;
+                }
+                if(next != look) {
+                    if(not is_valid(nextd)) {
+                        return false;
+                    }
+                    look = next;
+                }
+            }
+        }
+
         return true;
     }
 
@@ -123,8 +176,15 @@ public:
         {
             p.resize(this->dimension());
         }
-        for (size_t i = 0; i < this->dimension(); i++) {
-            p(i) = rand_engine_.value() * map_size_(i)*resolution_;
+        for(size_t r = 0; r < 1000; r++)
+        {
+            for (size_t i = 0; i < this->dimension(); i++) {
+                p(i) = rand_engine_.value() * map_size_(i)*resolution_;
+            }
+            if(is_valid(p))
+            {
+                return p;
+            }
         }
         return p;
     }
@@ -135,9 +195,26 @@ public:
     }
 
 private:
-    std::vector<GridVector> obstacles_;
+    struct VectorHash {
+        size_t operator()(const GridVector& v) const {
+            size_t seed = 0;
+            for (int i = 0; i < v.size(); ++i) {
+                seed ^= std::hash<int>()(v[i]) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+            }
+            return seed;
+        }
+    };
+
+    struct VectorEqual {
+        bool operator()(const GridVector& v1, const GridVector& v2) const {
+            return v1 == v2;
+        }
+    };
+    std::unordered_set<GridVector, VectorHash, VectorEqual> obstacles_;
+    KDTree<GridVector> kdtree_;
     GridVector map_size_;
     double resolution_;
+    double margin_;
     UniformRealRandomEngine rand_engine_ = {0.0, 1.0};
 };
 

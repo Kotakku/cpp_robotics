@@ -44,29 +44,32 @@ int main() {
         {8, 1},
     };
     double obstacle_size = 0.5;
-    GridMap2d map(obstalces, Eigen::Vector2i(10, 10), obstacle_size);
+    double margin = 0.15;
+    GridMap2d map(obstalces, Eigen::Vector2i(10, 10), obstacle_size, margin);
 
     Eigen::Vector2d x_init(0.25, 0.25);
     Eigen::Vector2d x_goal(4.75, 4.75);
-    auto path = fmt_star<Eigen::Vector2d>(map, x_init, x_goal);
+    FMTStarConfig config;
+    config.sampling_num = 1000;
+    FMTStar<Eigen::Vector2d> fmt_star(map, config);
+    auto path = fmt_star.solve(x_init, x_goal);
 
     namespace plt = matplotlibcpp;
-    // result
-    if(path.size() == 0)
+
+    // sampling points
     {
-        std::cout << "No path found" << std::endl;
-    }
-    else
-    {
+        auto nodes = fmt_star.get_nodes();
         std::vector<double> x, y;
-        for(const auto& p : path)
+        for(const auto& p : nodes)
         {
-            x.push_back(p(0));
-            y.push_back(p(1));
+            x.push_back(p.point(0));
+            y.push_back(p.point(1));
         }
-        plt::plot(x, y, "b");
-        plt::plot({x_init(0)}, {x_init(1)}, "go");
-        plt::plot({x_goal(0)}, {x_goal(1)}, "ro");
+        std::map<std::string, std::string> kwargs;
+        kwargs["c"] = "gray";
+        kwargs["marker"] = ".";
+        kwargs["linestyle"] = "none";
+        plt::plot(x, y, kwargs);
     }
 
     // obstacles
@@ -85,6 +88,24 @@ int main() {
         y.push_back(obstacle_size*o(1)+obstacle_size);
         y.push_back(obstacle_size*o(1));
         plt::fill(x, y, std::map<std::string, std::string>{{"c", "k"}});
+    }
+
+    // result
+    if(path.size() == 0)
+    {
+        std::cout << "No path found" << std::endl;
+    }
+    else
+    {
+        std::vector<double> x, y;
+        for(const auto& p : path)
+        {
+            x.push_back(p(0));
+            y.push_back(p(1));
+        }
+        plt::plot(x, y, "b");
+        plt::plot({x_init(0)}, {x_init(1)}, "go");
+        plt::plot({x_goal(0)}, {x_goal(1)}, "ro");
     }
 
     plt::xlim(0, 5);

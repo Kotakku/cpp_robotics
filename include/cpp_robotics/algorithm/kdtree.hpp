@@ -197,8 +197,8 @@ private:
             return;
         
         auto p = points_[node->idx];
-        double dist = distance(p, point);
-        if(dist < radius)
+        double sq_dist = squared_distance(p, point);
+        if(sq_dist < radius*radius)
         {
             result.push_back(node->idx);
         }
@@ -225,14 +225,19 @@ private:
         debug_node_recursive(node->child[1], depth+1);
     }
 
-    double distance(const point_type &a, const point_type &b) const
+    double squared_distance(const point_type &a, const point_type &b) const
     {
         double len_sq = 0;
         for(size_t i = 0; i < dimention_; i++)
         {
             len_sq += std::pow(a[i]-b[i], 2);
         }
-        return std::sqrt(len_sq);
+        return len_sq;
+    }
+
+    double distance(const point_type &a, const point_type &b) const
+    {
+        return std::sqrt(squared_distance(a, b));
     }
 
     size_t dimention_;
