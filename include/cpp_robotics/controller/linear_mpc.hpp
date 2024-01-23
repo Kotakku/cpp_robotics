@@ -190,7 +190,7 @@ private:
     
     // QPソルバ
     QuadProgProblem qp_prob_;
-    QuadProg qp_solver_ = {QuadProg::Method::InteriorPointMethod};
+    QuadProg qp_solver_;
     Eigen::VectorXd U_;
     QuadProg::Result latest_qp_result_;
 };

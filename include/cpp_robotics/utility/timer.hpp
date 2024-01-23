@@ -28,6 +28,12 @@ public:
         return std::chrono::duration_cast<std::chrono::milliseconds>(end_-start_).count();
     }
 
+    template<class Second>
+    int count()
+    {
+        return std::chrono::duration_cast<Second>(end_-start_).count();
+    }
+
 private:
     std::chrono::system_clock::time_point start_, end_; 
 };

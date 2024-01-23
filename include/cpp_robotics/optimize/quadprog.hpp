@@ -68,12 +68,14 @@ public:
 
         struct
         {
-            double rho_init = 0.1;
-            double sigma = 1e-6;
-            double alpha = 1.6;
             double tol_abs = 1e-3;
             double tol_rel = 1e-3;
+            double sigma = 1e-6;
+            double rho_init = 0.1;
+            double alpha = 1.6;
             bool use_indirect_method = true;
+            size_t max_equil_iter = 100;
+            double eps_equil = 1e-6;
         }admm;
 
         // 最大反復回数
@@ -148,12 +150,12 @@ public:
             
             m = m_eq + m_ineq; // 制約の数
 
-            A_bar = Eigen::MatrixXd(m_ineq, n);
+            A_all = Eigen::MatrixXd(m_ineq, n);
             z_ub = Eigen::VectorXd(m_ineq);
 
             if(m_ineq > 0)
             {
-                A_bar.block(0,0,m_original_ineq,n) = A;
+                A_all.block(0,0,m_original_ineq,n) = A;
                 z_ub.segment(0,m_original_ineq) = b;
             }
             if(m_b > 0)
@@ -175,8 +177,8 @@ public:
                         ub_tmp(i) = 0;
                     }
                 }
-                A_bar.block(m_original_ineq,0,m_b,n) = -Ilb;
-                A_bar.block(m_original_ineq+m_b,0,m_b,n) = Iub;
+                A_all.block(m_original_ineq,0,m_b,n) = -Ilb;
+                A_all.block(m_original_ineq+m_b,0,m_b,n) = Iub;
                 z_ub.segment(m_original_ineq,m_b) = -lb_tmp;
                 z_ub.segment(m_original_ineq+m_b,m_b) = ub_tmp;
             }
@@ -187,22 +189,21 @@ public:
             m_ineq = prob_.A.rows();
             m_b = prob_.lb.size();
             m = m_eq + m_ineq + m_b; // 制約の数
-            // rho_eq_bound_scale = Eigen::VectorXd::Ones(m);
 
-            A_bar = Eigen::MatrixXd(m, n);
+            A_all = Eigen::MatrixXd(m, n);
             z_lb = Eigen::VectorXd(m);
             z_ub = Eigen::VectorXd(m);
 
             if(m_eq > 0)
             {
-                A_bar.block(0,0,m_eq,n) = Aeq;
+                A_all.block(0,0,m_eq,n) = Aeq;
                 z_lb.segment(0,m_eq) = beq;
                 z_ub.segment(0,m_eq) = beq;
                 // rho_eq_bound_scale.segment(0,m_eq) = Eigen::VectorXd::Constant(m_eq, 1e3);
             }
             if(m_ineq > 0)
             {
-                A_bar.block(m_eq,0,m_ineq,n) = A;
+                A_all.block(m_eq,0,m_ineq,n) = A;
                 z_lb.segment(m_eq,m_ineq) = Eigen::VectorXd::Constant(m_ineq, -huge_value);
                 z_ub.segment(m_eq,m_ineq) = b;
             }
@@ -220,16 +221,11 @@ public:
                         ub_tmp(i) = 0;
                     }
                 }
-                A_bar.block(m_eq+m_ineq,0,m_b,n) = I;
+                A_all.block(m_eq+m_ineq,0,m_b,n) = I;
                 z_lb.segment(m_eq+m_ineq,m_b) = lb_tmp;
                 z_ub.segment(m_eq+m_ineq,m_b) = ub_tmp;
             }
-
-            // rho_eq_bound_scale_inv = Eigen::VectorXd(m);
-            // for(size_t i = 0; i < m; i++)
-            // {
-                // rho_eq_bound_scale_inv(i) = 1.0 / rho_eq_bound_scale(i);
-            // }
+            modified_ruiz_equilibration();
         }
     }
 
@@ -332,7 +328,7 @@ private:
 
         // 変数のサイズ
         const size_t m = Aeq.rows();
-        const size_t l = A_bar.rows();
+        const size_t l = A_all.rows();
         Eigen::VectorXd x = x0;
 
         double rho = l; // 不等式制約の平均相補性残差
@@ -352,14 +348,14 @@ private:
             // 不等式制約
             if(l>0)
             {
-                P.block(0, n+l, n, l) = A_bar.transpose();
-                P.block(n,0,l,n) = A_bar;
+                P.block(0, n+l, n, l) = A_all.transpose();
+                P.block(n,0,l,n) = A_all;
                 P.block(n,n,l,l) = Eigen::MatrixXd::Identity(l,l);
                 P.block(n+l, n, l,l) = u.asDiagonal();
                 P.block(n+l, n+l, l,l) = s.asDiagonal();
 
-                r.segment(0,n) += A_bar.transpose() * u;
-                r.segment(n,l) = A_bar*x - z_ub + s;
+                r.segment(0,n) += A_all.transpose() * u;
+                r.segment(n,l) = A_all*x - z_ub + s;
                 r.segment(n+l,l) = -rho*Eigen::VectorXd::Ones(l) + Eigen::VectorXd(u.array()*s.array());
             }
 
@@ -422,25 +418,86 @@ private:
         gl = prob_.Q*x + prob_.c;
         
         if(u.size() > 0)
-            gl += A_bar.transpose()*u;
+            gl += A_all.transpose()*u;
             
         if(v.size() > 0)
             gl += prob_.Aeq.transpose()*v;
         return gl;
     }
 
+    void modified_ruiz_equilibration()
+    {
+        auto &admm_param = param.admm;
+        double c = 1.0;
+        Eigen::MatrixXd S = Eigen::MatrixXd::Identity(n+m, n+m);
+        Eigen::VectorXd delta = Eigen::VectorXd::Zero(n+m);
+        double gamma;
+
+        Q_bar = prob_.Q;
+        c_bar = prob_.c;
+        A_all_bar = A_all;
+        z_lb_bar = z_lb;
+        z_ub_bar = z_ub;
+
+        Eigen::MatrixXd M(n+m, n+m);
+        M.block(n,n,m,m) = Eigen::MatrixXd::Zero(m,m);
+
+        for (size_t iter = 0; iter < admm_param.max_equil_iter; iter++)
+        {
+            M.block(0,0,n,n) = Q_bar;
+            M.block(n,0,m,n) = A_all_bar;
+            M.block(0,n,n,m) = A_all_bar.transpose();
+
+            // M equilibration
+            for (size_t i = 0; i < n+m; i++)
+            {
+                double cnorm = std::sqrt(M.col(i).cwiseAbs().maxCoeff());
+                delta(i) = 1.0 / (cnorm + 1e-8);
+            }
+
+            auto delta_mat_n = delta.head(n).asDiagonal();
+            auto delta_mat_m = delta.tail(m).asDiagonal();
+            
+            // Scale P, q, A, C using diag(delta)
+            Q_bar = delta_mat_n * Q_bar * delta_mat_n;
+            c_bar = delta_mat_n * c_bar;
+            A_all_bar = delta_mat_m * A_all_bar * delta_mat_n;
+            z_lb_bar = delta_mat_m * z_lb_bar;
+            z_ub_bar = delta_mat_m * z_ub_bar;
+            
+            // Cost scaling
+            double Pi_mean = 0.0;
+            for(size_t i = 0; i < n; i++)
+            {
+                Pi_mean += (Q_bar.col(i).cwiseAbs().maxCoeff()) / static_cast<double>(n);
+            }
+            gamma = 1.0 / std::max(Pi_mean, c_bar.cwiseAbs().maxCoeff());
+            Q_bar *= gamma;
+            c_bar *= gamma;
+            
+            // Update S and c
+            S = delta.asDiagonal() * S;
+            c *= gamma;
+            
+            // Check for convergence
+            if ((Eigen::VectorXd::Ones(n+m)-delta).cwiseAbs().maxCoeff() < admm_param.eps_equil)
+                break;
+        }
+        D_diag = S.block(0,0,n,n).diagonal();
+        E_diag = S.block(n,n,m,m).diagonal();
+        D_inv_diag = D_diag.cwiseInverse();
+        E_inv_diag = E_diag.cwiseInverse();
+        ruiz_c = c;
+        // debug_mat(S);
+        // debug_mat(E_diag.transpose());
+        // debug_mat(E_inv_diag.transpose());
+        // debug_mat(c);
+        
+    }
+
     Result solve_admm_based_method(Eigen::VectorXd x0)
     {
         const auto [interior_point_param, admm_param, max_iter] = param;
-        auto &Q = prob_.Q;
-        auto &c = prob_.c;
-        auto &Aeq = prob_.Aeq;
-        auto &beq = prob_.beq;
-        auto &A = prob_.A;
-        auto &b = prob_.b;
-        auto &lb = prob_.lb;
-        auto &ub = prob_.ub;
-
         Result result;
 
         // 変数のサイズ
@@ -452,6 +509,8 @@ private:
         assert(sigma > 0);
         assert(alpha > 0 && alpha < 2.0);
 
+        auto &lb = prob_.lb;
+        auto &ub = prob_.ub;
         x = x0;
         z.setZero(m);
         y.setZero(m);
@@ -491,19 +550,18 @@ private:
             }
         }
 
+        x = D_inv_diag.asDiagonal() * x;
         bool update_M = true;
         for(size_t i = 0; i < max_iter; i++)
         {
-            // Eigen::MatrixXd rho_mat = rho_eq_bound_scale.asDiagonal() * rho;
-            // Eigen::MatrixXd rho_mat_inv = (Eigen::MatrixXd)(rho_eq_bound_scale_inv.asDiagonal()) / rho;
             if(admm_param.use_indirect_method)
             {
                 // 間接法(勾配共役法)
-                M = Q + sigma*Eigen::MatrixXd::Identity(n,n) + rho*A_bar.transpose()*A_bar;
-                B = sigma*x - c + A_bar.transpose()*(rho*z - y);
+                M = Q_bar + sigma*Eigen::MatrixXd::Identity(n,n) + rho*A_all_bar.transpose()*A_all_bar;
+                B = sigma*x - c_bar + A_all_bar.transpose()*(rho*z - y);
                 cg.compute(M);
                 x_tilde = cg.solve(B);
-                z_tilde = A_bar*x_tilde;
+                z_tilde = A_all_bar*x_tilde;
             }
             else
             {
@@ -511,14 +569,14 @@ private:
                 if(update_M)
                 {
                     M.setZero();
-                    M.block(0,0,n,n) = Q + sigma*Eigen::MatrixXd::Identity(n,n);
-                    M.block(n,0,m,n) = A_bar;
-                    M.block(0,n,n,m) = A_bar.transpose();
+                    M.block(0,0,n,n) = Q_bar + sigma*Eigen::MatrixXd::Identity(n,n);
+                    M.block(n,0,m,n) = A_all_bar;
+                    M.block(0,n,n,m) = A_all_bar.transpose();
                     M.block(n,n,m,m) = -1.0/rho*Eigen::MatrixXd::Identity(m,m);
                     M_ldlt.compute(M);
                     update_M = false;
                 }
-                B.head(n) = sigma*x - c;
+                B.head(n) = sigma*x - c_bar;
                 B.tail(m) = z-y/rho;
 
                 auto linopt = M_ldlt.solve(B);
@@ -532,30 +590,33 @@ private:
             // Euclidean projection
             for(size_t i = 0; i < m; i++)
             {
-                if(new_z(i) <= z_lb(i))
+                if(new_z(i) <= z_lb_bar(i))
                 {
-                    new_z(i) = z_lb(i);
+                    new_z(i) = z_lb_bar(i);
                 }
-                if(z_ub(i) <= new_z(i))
+                if(z_ub_bar(i) <= new_z(i))
                 {
-                    new_z(i) = z_ub(i);
+                    new_z(i) = z_ub_bar(i);
                 }
             }
             y += rho*(alpha*z_tilde + (1.0-alpha)*z - new_z);
             z = new_z;
 
             // 収束判定
-            r_prim = A_bar*x - z;
-            r_dual = Q*x + c + A_bar.transpose()*y;
+            auto D_inv = D_inv_diag.asDiagonal();
+            auto E_inv = E_inv_diag.asDiagonal();
+            r_prim = E_inv*(A_all_bar*x - z);
+            r_dual = 1.0/ruiz_c*D_inv*(Q_bar*x + c_bar + A_all_bar.transpose()*y);
             double r_prim_inf_norm = r_prim.cwiseAbs().maxCoeff();
             double r_dual_inf_norm = r_dual.cwiseAbs().maxCoeff();
-            double rel_prim_val = std::max((A_bar*x).cwiseAbs().maxCoeff(), z.cwiseAbs().maxCoeff());
-            double rel_dual_val = std::max({(Q*x).cwiseAbs().maxCoeff(), (A_bar.transpose()*y).cwiseAbs().maxCoeff(), c.cwiseAbs().maxCoeff()});
+            double rel_prim_val = std::max((E_inv*A_all_bar*x).cwiseAbs().maxCoeff(), (E_inv*z).cwiseAbs().maxCoeff());
+            double rel_dual_val = 1.0/ruiz_c*std::max({(D_inv*Q_bar*x).cwiseAbs().maxCoeff(), (D_inv*A_all_bar.transpose()*y).cwiseAbs().maxCoeff(), (D_inv*c_bar).cwiseAbs().maxCoeff()});
+            
             if(r_prim_inf_norm < admm_param.tol_abs + admm_param.tol_rel*rel_prim_val && 
                 r_dual_inf_norm < admm_param.tol_abs + admm_param.tol_rel*rel_dual_val)
             {
                 result.is_solved = true;
-                result.x = x;
+                result.x = D_diag.asDiagonal()*x;
                 // Todo ラグランジュ定数を返す
                 // result.lambda_ineq = nu;
                 // result.lambda_eq = Eigen::VectorXd::Zero(m_eq);
@@ -564,7 +625,7 @@ private:
             }
 
             // update rho
-            double rho_scale = sqrt( (r_prim_inf_norm/rel_prim_val) / (r_dual_inf_norm/rel_dual_val) );
+            double rho_scale = sqrt( ((r_prim_inf_norm+1e-8)/(rel_prim_val+1e-8)) / ((r_dual_inf_norm+1e-8)/(rel_dual_val+1e-8)) );
             rho *= rho_scale;
             constexpr double rho_scale_threshold = 5.0;
             if(rho_scale > rho_scale_threshold || rho_scale < 1.0/rho_scale_threshold)
@@ -574,7 +635,7 @@ private:
         }
 
         result.is_solved = false;
-        result.x = x;
+        result.x = D_diag.asDiagonal()*x;
         result.iter_cnt = max_iter;
         return result;
     }
@@ -589,9 +650,8 @@ private:
     size_t m_b;
     size_t m; // 制約の数
     
-    Eigen::MatrixXd A_bar;
+    Eigen::MatrixXd A_all;
     Eigen::VectorXd z_lb, z_ub;
-    // Eigen::VectorXd rho_eq_bound_scale, rho_eq_bound_scale_inv;
 
     Eigen::VectorXd x;
     Eigen::VectorXd z;  // A*x
@@ -601,7 +661,11 @@ private:
     Eigen::VectorXd r_prim, r_dual;
     Eigen::MatrixXd M;
     Eigen::LDLT<Eigen::MatrixXd> M_ldlt;
-    Eigen::ConjugateGradient<Eigen::MatrixXd/*, Eigen::Lower|Eigen::Upper*/> cg;
+    Eigen::ConjugateGradient<Eigen::MatrixXd> cg;
+    Eigen::MatrixXd Q_bar, A_all_bar;
+    Eigen::VectorXd c_bar, z_lb_bar, z_ub_bar;
+    Eigen::VectorXd D_diag, D_inv_diag, E_diag, E_inv_diag;
+    double ruiz_c;
 };
 
 
