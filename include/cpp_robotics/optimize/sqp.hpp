@@ -8,7 +8,6 @@
 #include "./bracketing_serach.hpp"
 #include "./bfgs.hpp"
 #include "./quasi_newton_method.hpp"
-// #include "./quadprog.hpp"
 #include <cpp_robotics/optimize/quadprog.hpp>
 #include "./lsei_transition.hpp"
 
@@ -31,10 +30,10 @@ public:
         std::optional<grad_func_type> grad;
         ConstraintArray con;
 
-        bool use_slsqp = false;
-        double tol_step = 1e-6;
-        double tol_con = 1e-6;
-        size_t max_iter = 100;
+        bool use_slsqp = true;
+        double tol_step = 1e-4;
+        double tol_con = 2e-3;
+        size_t max_iter = 300;
         // bool print_variable = false;
     };
 
@@ -75,9 +74,9 @@ public:
 
         // サブ問題の2次計画問題のソルバー
         QuadProgProblem qp_prob;
-        QuadProg qp_solver(QuadProg::Method::InteriorPointMethod);
-        qp_solver.param.interior_point.tol_con = 1e-3;
-        qp_solver.param.interior_point.tol_step = 1e-3;
+        QuadProg qp_solver;
+        qp_solver.param.admm.tol_abs = 5e-3;
+        qp_solver.param.admm.tol_rel = 5e-3;
         qp_prob.set_problem_size(x.size(), ineq_con.size(), eq_con.size(), false);
 
         // 直線探索用メリット関数の制約重み
@@ -136,11 +135,6 @@ public:
 
         for(size_t i = 1; i < prob.max_iter+1; i++)
         {
-            // if(prob.print_variable)
-            // {
-            //     std::cout << "\n////////////////////////////////" << std::endl;
-            // }
-
             // 探索方向の決定
             // サブの問題設定
             if (prob.use_slsqp)
@@ -152,31 +146,15 @@ public:
                 Eigen::VectorXd D = ldlt_obj.vectorD();
                 Eigen::VectorXd Dsq = D.array().sqrt();
                 Eigen::VectorXd Dinvsq = (D.array()).inverse();
-
-                // std::cout << "D" << std::endl;
-                // std::cout << D << std::endl;
-                // std::cout << "Dsq" << std::endl;
-                // std::cout << Dsq << std::endl;
-                // std::cout << "Dinvsq" << std::endl;
-                // std::cout << Dinvsq << std::endl;
-                
-                
                 Eigen::MatrixXd C = Dsq.asDiagonal()*LT;
                 Eigen::VectorXd d = Dinvsq.asDiagonal()*Linv*grad_f(x);
                 std::tie(qp_prob.Q, qp_prob.c) = lsi2qp(C, d);
-
-                // std::cout << "qp_solver.Q" << std::endl;
-                // std::cout << qp_solver.Q << std::endl;
-                // std::cout << "qp_solver.c" << std::endl;
-                // std::cout << qp_solver.c << std::endl;
             }
             else
             {
                 qp_prob.Q = B;
                 qp_prob.c = grad_f(x).transpose();
             }
-
-            // Todo QPの制約で矛盾したもの、満たせないものを取り除く
 
             // サブの2次計画問題を解く
             qp_solver.set_problem(qp_prob);
@@ -218,14 +196,6 @@ public:
                 return val;
             };
             double alpha = bracketing_serach(merit_func, [&](const Eigen::VectorXd &x){ return derivative(merit_func, x); }, x, d);
-
-            // if(prob.print_variable)
-            // {
-            //     std::cout << "d" << std::endl;
-            //     std::cout << d << std::endl;
-            //     std::cout << "alpha" << std::endl;
-            //     std::cout << alpha << std::endl;
-            // }
 
             if(callback)
                 callback.value()(x);
@@ -295,14 +265,6 @@ public:
             // ラグランジュ関数の疑似ヘッシアンの更新
             powells_modified_bfgs_step(B, step, delta_grad_L, new_dgg - dgg);
             dgg = new_dgg;
-
-            // if(prob.print_variable)
-            // {
-            //     std::cout << "B=" << std::endl;
-            //     std::cout << B << std::endl;
-            //     std::cout << "x=" << std::endl;
-            //     std::cout << x << std::endl;
-            // }
 
             if(B.array().isNaN().any())
             {

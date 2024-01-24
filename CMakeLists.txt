@@ -139,6 +139,7 @@ set(bench_test_files
   build_time
   autodiff
   eigen_arg_ret
+  quadprog
 )
 
 foreach(bench_test_file ${bench_test_files})
