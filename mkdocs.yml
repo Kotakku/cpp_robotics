@@ -82,7 +82,7 @@ nav:
       - Rosenbrock関数の最適化: example/optimize/optimize_rosenbrock.md
       # - 制約付き最適化: example/optimize/optimize_with_constraint.md
       # - 有効制約法: example/optimize/active_set_method_example.md
-      # - SQP(逐次二次計画法): example/optimize/sqp_example.md
+      - SQP(逐次二次計画法): example/optimize/sqp_example.md
     - システム:
       - 伝達関数のステップ応答: example/system/step_responce.md
       - ボード線図・ナイキスト線図: example/system/bode_nyquist.md
