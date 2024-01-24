@@ -19,12 +19,29 @@ void init_mat(Matrix &mat, std::function<double(double)> f)
     }
 }
 
+void show_qp(const cpp_robotics::QuadProgProblem &qp)
+{
+    std::cout << "Q:" << std::endl;
+    std::cout << qp.Q << std::endl;
+    std::cout << "c:" << std::endl;
+    std::cout << qp.c << std::endl;
+    std::cout << "A:" << std::endl;
+    std::cout << qp.A << std::endl;
+    std::cout << "b:" << std::endl;
+    std::cout << qp.b << std::endl;
+    std::cout << "lb:" << std::endl;
+    std::cout << qp.lb << std::endl;
+    std::cout << "ub:" << std::endl;
+    std::cout << qp.ub << std::endl;
+
+}
+
 int main(void)
 {
     using namespace cpp_robotics;
-    const size_t batch_num = 100;
+    const size_t batch_num = 50;
 
-    std::vector<size_t> dim_list = {10, 50, 100}; 
+    std::vector<size_t> dim_list = {2, 4, 10, 50, 100}; 
 
     std::vector<double> ipm_avg_time_ms(dim_list.size());
     std::vector<double> ipm_success_ratio(dim_list.size());
@@ -89,6 +106,12 @@ int main(void)
                 auto result = solver.solve();
                 timer.stop();
                 std::cout << " solve iter: " << result.iter_cnt << std::endl;
+
+                if(not result.is_solved)
+                {
+                    // std::cout << "ADMM failed" << std::endl;
+                    // show_qp(qp);
+                }
 
                 int microsec = timer.count<std::chrono::microseconds>();
                 bool success = result.is_solved && solver.satisfy(result.x);

@@ -12,6 +12,10 @@
 #include <cpp_robotics/optimize/quadprog.hpp>
 #include "./lsei_transition.hpp"
 
+// #include <iostream>
+// #define debug(x) std::cout << __func__ << ":" << __LINE__ << ": " << x << std::endl;
+// #define debug_mat(x) std::cout << #x << "=" << std::endl << x << std::endl;
+
 namespace cpp_robotics
 {
 
@@ -31,10 +35,10 @@ public:
         std::optional<grad_func_type> grad;
         ConstraintArray con;
 
-        bool use_slsqp = false;
+        bool use_slsqp = true;
         double tol_step = 1e-6;
-        double tol_con = 1e-6;
-        size_t max_iter = 100;
+        double tol_con = 1e-3;
+        size_t max_iter = 300;
         // bool print_variable = false;
     };
 
@@ -75,9 +79,9 @@ public:
 
         // サブ問題の2次計画問題のソルバー
         QuadProgProblem qp_prob;
-        QuadProg qp_solver(QuadProg::Method::InteriorPointMethod);
-        qp_solver.param.interior_point.tol_con = 1e-3;
-        qp_solver.param.interior_point.tol_step = 1e-3;
+        QuadProg qp_solver;
+        qp_solver.param.admm.tol_abs = 5e-3;
+        qp_solver.param.admm.tol_rel = 5e-3;
         qp_prob.set_problem_size(x.size(), ineq_con.size(), eq_con.size(), false);
 
         // 直線探索用メリット関数の制約重み
@@ -132,7 +136,7 @@ public:
                 }
             }
         };
-        preprossesing(qp_prob.Aeq, qp_prob.beq, qp_prob.A, qp_prob.b);
+        // preprossesing(qp_prob.Aeq, qp_prob.beq, qp_prob.A, qp_prob.b);
 
         for(size_t i = 1; i < prob.max_iter+1; i++)
         {
@@ -175,8 +179,6 @@ public:
                 qp_prob.Q = B;
                 qp_prob.c = grad_f(x).transpose();
             }
-
-            // Todo QPの制約で矛盾したもの、満たせないものを取り除く
 
             // サブの2次計画問題を解く
             qp_solver.set_problem(qp_prob);
@@ -307,10 +309,12 @@ public:
             if(B.array().isNaN().any())
             {
                 // std::cout << "NaNが存在します" << std::endl;
+                // debug("NaNが存在します");
                 break;
             }
         }
 
+        // debug("cant solve. max iteration");
         return result;
     }
 
