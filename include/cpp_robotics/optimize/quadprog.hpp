@@ -12,10 +12,6 @@
 #include "bracketing_serach.hpp"
 #include "newton_method.hpp"
 
-// #include <iostream>
-// #define debug(x) std::cout << __func__ << ":" << __LINE__ << ": " << x << std::endl;
-// #define debug_mat(x) std::cout << #x << "=" << std::endl << x << std::endl;
-
 namespace cpp_robotics
 {
 
@@ -604,8 +600,6 @@ private:
         {
             result.x = D_diag.asDiagonal()*x;
             Eigen::VectorXd original_y = 1.0/ruiz_c*E_diag.asDiagonal()*y;
-
-            // Todo: idx使ってラグランジュ定数を抽出する
             result.lambda_eq.setZero(prob_.Aeq.rows());
             for(size_t i = 0; i < valid_eq_con_idx.size(); i++)
             {
@@ -616,7 +610,6 @@ private:
             {
                 result.lambda_ineq(valid_ineq_con_idx[i]) = original_y(valid_eq_con_idx.size() + i);
             }
-            // result.lambda_ineq = original_y.segment(prob_.Aeq.rows(), prob_.A.rows());
             Eigen::VectorXd lamda_bound = original_y.segment(valid_eq_con_idx.size()+valid_ineq_con_idx.size(), m_b);
             result.lambda_lb.setZero(m_b);
             result.lambda_ub.setZero(m_b);
@@ -657,7 +650,7 @@ private:
                     M.block(0,0,n,n) = Q_bar + sigma*Eigen::MatrixXd::Identity(n,n);
                     M.block(n,0,m,n) = A_all_bar;
                     M.block(0,n,n,m) = A_all_bar.transpose();
-                    M.block(n,n,m,m) = -rho_inv_mat; //*Eigen::MatrixXd::Identity(m,m);
+                    M.block(n,n,m,m) = -rho_inv_mat;
                     M_ldlt.compute(M);
                     update_M = false;
                 }
@@ -696,16 +689,6 @@ private:
             double r_dual_inf_norm = r_dual.cwiseAbs().maxCoeff();
             double rel_prim_val = std::max((E_inv*A_all_bar*x).cwiseAbs().maxCoeff(), (E_inv*z).cwiseAbs().maxCoeff());
             double rel_dual_val = 1.0/ruiz_c*std::max({(D_inv*Q_bar*x).cwiseAbs().maxCoeff(), (D_inv*A_all_bar.transpose()*y).cwiseAbs().maxCoeff(), (D_inv*c_bar).cwiseAbs().maxCoeff()});
-            
-            // debug(i << ": " << r_prim_inf_norm << "<" << admm_param.tol_abs + admm_param.tol_rel*rel_prim_val << " && " << r_dual_inf_norm << "<" << admm_param.tol_abs + admm_param.tol_rel*rel_dual_val)
-            // debug_mat(Q_bar);
-            // debug_mat(c_bar);
-            // debug_mat(A_all_bar);
-            // debug_mat(z_lb_bar);
-            // debug_mat(z_ub_bar);
-            // debug_mat(D_diag.transpose());
-            // debug_mat(E_diag.transpose());
-            // debug_mat(ruiz_c);
             if(r_prim_inf_norm < admm_param.tol_abs + admm_param.tol_rel*rel_prim_val && 
                 r_dual_inf_norm < admm_param.tol_abs + admm_param.tol_rel*rel_dual_val)
             {

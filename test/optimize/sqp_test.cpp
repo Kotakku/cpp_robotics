@@ -54,14 +54,14 @@ TEST(sqp, test) {
             },
         },
 
-        // {
-        //     Constraint::Eq,
-        //     [](Eigen::VectorXd x)
-        //     {
-        //         const double radius = 1.0;
-        //         return (x.squaredNorm() - std::pow(radius, 2.0));
-        //     },
-        // },
+        {
+            Constraint::Eq,
+            [](Eigen::VectorXd x)
+            {
+                const double radius = 1.0;
+                return (x.squaredNorm() - std::pow(radius, 2.0));
+            },
+        },
 
         {
             Constraint::Eq,
@@ -72,13 +72,13 @@ TEST(sqp, test) {
             },
         },
 
-        // {
-        //     Constraint::Ineq,
-        //     [](Eigen::VectorXd x)
-        //     {
-        //         return (-x(1));
-        //     },
-        // },
+        {
+            Constraint::Ineq,
+            [](Eigen::VectorXd x)
+            {
+                return (-x(1));
+            },
+        },
 
         {
             Constraint::Ineq,
@@ -142,6 +142,8 @@ TEST(sqp, test) {
         prob.con.clear();
         prob.con.push_back(c);
         auto result = solver.solve(prob, x0);
+        if(not result.is_solved or not prob.con.all_satisfy(result.x, prob.tol_con))
+            std::cout << result.x.transpose() << " -> norm: " << result.x.squaredNorm() << std::endl;
         EXPECT_TRUE(result.is_solved);
         EXPECT_TRUE(prob.con.all_satisfy(result.x, prob.tol_con));
     }

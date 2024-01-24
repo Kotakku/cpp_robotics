@@ -22,39 +22,12 @@ int main()
         return 0.5*(x.transpose()*Q).dot(x) + c.dot(x);
     };
 
-    // prob.con.push_back({
-    //     Constraint::Ineq,
-    //     [](Eigen::VectorXd x)
-    //     {
-    //         const double radius = 2.0;
-    //         return (x.squaredNorm() - std::pow(radius, 2.0));
-    //     },
-    // });
-
-    // 解けない NAN
-    // prob.con.push_back({
-    //     Constraint::Ineq,
-    //     [](Eigen::VectorXd x)
-    //     {
-    //         const double radius = 1.0;
-    //         return (x.squaredNorm() - std::pow(radius, 2.0));
-    //     },
-    // });
-
-    // prob.con.push_back({
-    //     Constraint::Ineq,
-    //     [](Eigen::VectorXd x)
-    //     {
-    //         // -sin(x(1)*pi/2) < 2
-    //         return -std::sin(x(1)*M_PI/2) - 2;
-    //     },
-    // });
-
     prob.con.push_back({
         Constraint::Ineq,
         [](Eigen::VectorXd x)
         {
-            return -x(0)*x(1) - 1;
+            const double radius = 1.0;
+            return (x.squaredNorm() - std::pow(radius, 2.0));
         },
     });
 
@@ -67,29 +40,36 @@ int main()
     prob.use_slsqp = false; // Todo
     auto result = solver.solve(prob, x0, [&](auto x){ x_.push_back(x(0)); y_.push_back(x(1)); });
 
-    std::cout << "min (x(0))^2 + x(1)^2" << std::endl;
+    std::cout << "min (x(0)-3)^2 + (x(1)+1)^2" << std::endl;
     std::cout << "s.t. x(0)^2 + x(1)^2 <= 1" << std::endl;
 
-    if(result.is_solved)
+    if(not result.is_solved)
     {
-        std::cout << "解けた" << std::endl;
-    }
-    else
-    {
-        std::cout << "解けなかった" << std::endl;
+        std::cout << "solve failed" << std::endl;
     }
 
     std::cout << "iter: " << result.iter_cnt << std::endl;
     std::cout << "constraint satisfy: " << ((prob.con.all_satisfy(result.x, prob.tol_con)) ? "true" : "false") << std::endl;
     std::cout << "optimal x =" << std::endl;
     std::cout << result.x << std::endl;
+    std::cout << "optimal x norm =" << std::endl;
+    std::cout << result.x.norm() << std::endl;
+
+    std::vector<double> radius_x, radius_y;
+    for(size_t i = 0; i < 100; i++)
+    {
+        double theta = 2*M_PI*i/100;
+        radius_x.push_back(std::cos(theta));
+        radius_y.push_back(std::sin(theta));
+    }
 
     namespace plt = matplotlibcpp;
+    plt::plot(radius_x, radius_y, "--"); // 制約
     plt::plot(x_, y_, "o--");
-    plt::xlim(-4, 4);
-    plt::ylim(-4, 4);
+    plt::plot(std::vector{3}, std::vector{-1}, "*");
+    plt::xlim(-3.5, 3.5);
+    plt::ylim(-2.0, 2.0);
+    plt::set_aspect_equal();
     
     plt::show();
-
-
 }
