@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.5">
     
     
       
@@ -723,6 +723,27 @@
   
   <span class="md-ellipsis">
     Rosenbrock関数の最適化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/optimize/sqp_example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQP(逐次二次計画法)
   </span>
   
 
@@ -2437,18 +2458,6 @@
 </tr>
 <tr>
 <td>double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-rho-init">rho_init</a></strong></td>
-</tr>
-<tr>
-<td>double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-sigma">sigma</a></strong></td>
-</tr>
-<tr>
-<td>double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-alpha">alpha</a></strong></td>
-</tr>
-<tr>
-<td>double</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-tol-abs">tol_abs</a></strong></td>
 </tr>
 <tr>
@@ -2456,8 +2465,28 @@
 <td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-tol-rel">tol_rel</a></strong></td>
 </tr>
 <tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-sigma">sigma</a></strong></td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-rho-init">rho_init</a></strong></td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-alpha">alpha</a></strong></td>
+</tr>
+<tr>
 <td>bool</td>
 <td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-use-indirect-method">use_indirect_method</a></strong></td>
+</tr>
+<tr>
+<td>size_t</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-max-equil-iter">max_equil_iter</a></strong></td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1QuadProg_1_1Param/#variable-eps-equil">eps_equil</a></strong></td>
 </tr>
 <tr>
 <td>struct cpp_robotics::QuadProg::Param::@1</td>
@@ -2482,23 +2511,29 @@
 <h3 id="variable-interior_point">variable interior_point</h3>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">cpp_robotics</span><span class="o">::</span><span class="n">QuadProg</span><span class="o">::</span><span class="n">Param</span><span class="o">::</span><span class="err">@</span><span class="mi">0</span><span class="w"> </span><span class="n">interior_point</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="variable-rho_init">variable rho_init</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">rho_init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
-</code></pre></div>
-<h3 id="variable-sigma">variable sigma</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">sigma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">;</span>
-</code></pre></div>
-<h3 id="variable-alpha">variable alpha</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.6</span><span class="p">;</span>
-</code></pre></div>
 <h3 id="variable-tol_abs">variable tol_abs</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">tol_abs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-3</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="variable-tol_rel">variable tol_rel</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">tol_rel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-3</span><span class="p">;</span>
 </code></pre></div>
+<h3 id="variable-sigma">variable sigma</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">sigma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-rho_init">variable rho_init</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">rho_init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-alpha">variable alpha</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.6</span><span class="p">;</span>
+</code></pre></div>
 <h3 id="variable-use_indirect_method">variable use_indirect_method</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">use_indirect_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-max_equil_iter">variable max_equil_iter</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">size_t</span><span class="w"> </span><span class="n">max_equil_iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="variable-eps_equil">variable eps_equil</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">eps_equil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="variable-admm">variable admm</h3>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">cpp_robotics</span><span class="o">::</span><span class="n">QuadProg</span><span class="o">::</span><span class="n">Param</span><span class="o">::</span><span class="err">@</span><span class="mi">1</span><span class="w"> </span><span class="n">admm</span><span class="p">;</span>
@@ -2507,7 +2542,7 @@
 <div class="highlight"><pre><span></span><code><span class="kt">size_t</span><span class="w"> </span><span class="n">max_iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">300</span><span class="p">;</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2024-01-22 at 08:22:37 +0000</p>
+<p>Updated on 2024-01-24 at 07:38:27 +0000</p>
 
 
 
@@ -2561,10 +2596,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.instant"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.7389ff0e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c18c5fb9.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
