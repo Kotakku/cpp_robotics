@@ -418,130 +418,131 @@ private:
     double error_ = DEFAULT_LENGTH_ERROR;
 };
 
-// template<class VectorType>
-// class CubicSplinePath : public SplinePathBase<VectorType>
-// {
-//     using spline_api = eigen_spline_api<VectorType>;
-//     using segment_t = typename SplinePathBase<VectorType>::segment_t;
-//     using Vector4d = typename spline_api::Vector4d;
-// public:
-//     static constexpr double DEFAULT_LENGTH_ERROR = 0.05;
-//     using Vector = VectorType;
+template<class VectorType>
+class CubicSplinePath : public SplinePathBase<VectorType>
+{
+    using spline_api = eigen_spline_api<VectorType>;
+    using segment_t = typename SplinePathBase<VectorType>::segment_t;
+public:
+    static constexpr double DEFAULT_LENGTH_ERROR = 0.05;
+    using Vector = VectorType;
 
-//     CubicSplinePath() = default;
-//     CubicSplinePath(std::vector<Vector>& waypoints, const double error = DEFAULT_LENGTH_ERROR)
-//     {
-//         set_path_with_config(waypoints, error);
-//     }
+    CubicSplinePath() = default;
+    CubicSplinePath(std::vector<Vector>& waypoints, const double error = DEFAULT_LENGTH_ERROR)
+    {
+        set_path_with_config(waypoints, error);
+    }
     
-//     void set_path_with_config(std::vector<Vector>& waypoints, const double error = DEFAULT_LENGTH_ERROR)
-//     {
-//         error_ = error;
-//         set_path(waypoints);
-//     }
+    void set_path_with_config(std::vector<Vector>& waypoints, const double error = DEFAULT_LENGTH_ERROR)
+    {
+        error_ = error;
+        set_path(waypoints);
+    }
 
-//     virtual void set_path(const std::vector<Vector> &waypoints) override
-//     {
-//         auto &waypoints_ = this->waypoints_;
-//         auto &spline_segments_ = this->spline_segments_;
-//         auto &total_length_ = this->total_length_;
+    virtual void set_path(const std::vector<Vector> &waypoints) override
+    {
+        auto &waypoints_ = this->waypoints_;
+        auto &spline_segments_ = this->spline_segments_;
+        auto &total_length_ = this->total_length_;
 
-//         waypoints_ = waypoints;
-//         const size_t p_size = this->waypoints_.size();
+        waypoints_ = waypoints;
+        const size_t p_size = waypoints_.size();
 
-//         switch (p_size)
-//         {
-//             case 0:
-//                 return;
-//             case 1:
-//                 {
-//                     Vector& p0 = waypoints_[0];
-//                     spline_segments_.push_back({spline_api::catumull_spline(p0, p0, p0, p0), 0, {}});
-//                     return;
-//                 }
-//         }
+        switch (p_size)
+        {
+            case 0:
+                return;
+            case 1:
+                {
+                    Vector& p0 = waypoints_[0];
+                    spline_segments_.push_back({spline_api::catumull_spline(p0, p0, p0, p0), 0, {}});
+                    return;
+                }
+        }
 
-//         const size_t p_size = points.size();
-//         std::vector<double> w;
+        std::vector<double> w;
+        const size_t segment_size = p_size - 1;
+        spline_segments_.resize(p_size);
+        w.resize(p_size);
 
-//         const size_t segment_size = p_size - 1;
-//         spline_segments_.resize(p_size);
-//         w.resize(p_size);
+        Vector zero;
+        if constexpr (Vector::RowsAtCompileTime == Eigen::Dynamic)
+        {
+            zero = Vector::Zero(waypoints[0].size());
+        }
+        else
+        {
+            zero = Vector::Zero();
+        }
 
-//         // for(size_t dim = 0; xy < 2; xy++)
-//         {
-//             for(size_t i = 0; i <= segment_size; i++)
-//             {
-//                 // spline(i, xy).x = p(points, i, xy);
-//                 spline_segments_[i].coeff
-//             }
-//             // spline(0, xy).z = spline(segment_size, xy).z = 0.0;
-//             // for(size_t i = 1; i < segment_size; i++)
-//             // {
-//             //     spline(i, xy).z = 3.0 * (spline(i-1, xy).x - 2.0 * spline(i, xy).x + spline(i+1, xy).x);
-//             // }
-//             // w[0] = 0.0;
-//             // for(size_t i = 1; i < segment_size; i++)
-//             // {
-//             //     double temp = 4.0 - w[i-1];
-//             //     spline(i, xy).z = (spline(i, xy).z - spline(i-1, xy).z)/temp;
-//             //     w[i] = 1.0 / temp;
-//             // }
-//             // for(size_t i = segment_size-1; i > 0; i--) {
-//             //     spline(i, xy).z = spline(i, xy).z - spline(i+1, xy).z * w[i];
-//             // }
-//             // spline(segment_size, xy).y = spline(segment_size, xy).w = 0.0;
-//             // for(size_t i = 0; i < segment_size; i++)
-//             // {
-//             //     spline(i, xy).w = ( spline(i+1, xy).z - spline(i, xy).z) / 3.0;
-//             //     spline(i, xy).y = spline(i+1, xy).x - spline(i, xy).x - spline(i, xy).z - spline(i, xy).w;
-//             // }
-//         }
-//         spline_segments_.erase(spline_segments_.begin()+spline_segments_.size()-1);
+        // f(t) = a t^3 + b t^2 + c t + d 
+        auto coeff_a = [&](size_t i) -> Vector { return spline_segments_[i].coeff.col(0); };
+        auto coeff_b = [&](size_t i) -> Vector { return spline_segments_[i].coeff.col(1); };
+        // auto coeff_c = [&](size_t i) -> Vector { return spline_segments_[i].coeff.col(2); };
+        auto coeff_d = [&](size_t i) -> Vector { return spline_segments_[i].coeff.col(3); };
+        auto set_coeff_a = [&](size_t i, const Vector& v) { spline_segments_[i].coeff.col(0) = v; };
+        auto set_coeff_b = [&](size_t i, const Vector& v) { spline_segments_[i].coeff.col(1) = v; };
+        auto set_coeff_c = [&](size_t i, const Vector& v) { spline_segments_[i].coeff.col(2) = v; };
+        auto set_coeff_d = [&](size_t i, const Vector& v) { spline_segments_[i].coeff.col(3) = v; };
 
-//         // _all_length = 0;
-//         // for(auto& seg : spline_segments_)
-//         // {
-//         //     auto c = seg.coeff;
-//         //     seg.coeff = spline::cubic_function_to_bezier(
-//         //         Vector2d(c.xb.w, c.yb.w),
-//         //         Vector2d(c.xb.z, c.yb.z),
-//         //         Vector2d(c.xb.y, c.yb.y),
-//         //         Vector2d(c.xb.x, c.yb.x)
-//         //     );
-//         //     seg.length = spline::length(seg.coeff, error);
-//         //     seg.split_lengths.resize(100);
-//         //     for(size_t i = 0; i < 100; i++)
-//         //     {
-//         //         seg.split_lengths[i] = spline::length(seg.coeff, 0.0, static_cast<double>(i) / 100.0, error);
-//         //     }
-//         //     _all_length += seg.length;
-//         // }
-//     }
+        {
+            for(size_t i = 0; i < p_size; i++)
+            {
+                set_coeff_d(i, waypoints[i]);
+            }
 
-// private:
-//     // Vector4d& spline(size_t i, size_t dim_index)
-//     // {
-//     //     if (xy == 0)
-//     //         return spline_segments_[i].coeff.xb;
-//     //     else
-//     //         return spline_segments_[i].coeff.yb;
-//     // }
+            set_coeff_b(0, zero);
+            set_coeff_b(segment_size, zero);
+            for(size_t i = 1; i < segment_size; i++)
+            {
+                set_coeff_b(i, 3.0 * (coeff_d(i-1) - 2.0 * coeff_d(i) + coeff_d(i+1)));
+            }
 
-//     // double& p(std::vector<Vector2d>& points, size_t i, size_t xy)
-//     // {
-//     //     if (xy == 0)
-//     //         return points[i].x;
-//     //     else
-//     //         return points[i].y;
-//     // }
+            w[0] = 0.0;
+            for(size_t i = 1; i < segment_size; i++)
+            {
+                double tmp = 4.0 - w[i-1];
+                w[i] = 1.0 / tmp;
+                set_coeff_b(i, (coeff_b(i) - coeff_b(i-1)) / tmp);
+            }
 
-//     double error_;
-// };
+            for(size_t i = segment_size-1; i > 0; i--) {
+                set_coeff_b(i, coeff_b(i) - coeff_b(i+1) * w[i]);
+            }
+
+            set_coeff_a(segment_size, zero);
+            set_coeff_c(segment_size, zero);
+            for(size_t i = 0; i < segment_size; i++)
+            {
+                set_coeff_a(i, (coeff_b(i+1) - coeff_b(i)) / 3.0);
+                set_coeff_c(i, coeff_d(i+1) - coeff_d(i) - coeff_b(i) - coeff_a(i));
+            }
+        }
+        spline_segments_.erase(spline_segments_.begin()+spline_segments_.size()-1);
+
+        total_length_ = 0;
+        for(auto& seg : spline_segments_)
+        {
+            auto c = seg.coeff;
+            seg.coeff = spline_api::cubic_function_to_bezier(c.col(0), c.col(1), c.col(2), c.col(3));
+            seg.length = spline_api::length(seg.coeff, error_);
+            seg.split_lengths.resize(100);
+            for(size_t i = 0; i < 100; i++)
+            {
+                seg.split_lengths[i] = spline_api::length(seg.coeff, 0.0, static_cast<double>(i) / 100.0, error_);
+            }
+            total_length_ += seg.length;
+        }
+    }
+
+private:
+    double error_;
+};
 
 using CatumullRomSplinePath2d = CatumullRomSplinePath<Eigen::Vector2d>;
 using CatumullRomSplinePath3d = CatumullRomSplinePath<Eigen::Vector3d>;
 
-
+using CubicSplinePath2d = CubicSplinePath<Eigen::Vector2d>;
+using CubicSplinePath3d = CubicSplinePath<Eigen::Vector3d>;
 
 }
