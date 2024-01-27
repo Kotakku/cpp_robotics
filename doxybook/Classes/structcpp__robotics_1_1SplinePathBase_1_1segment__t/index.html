@@ -12,7 +12,7 @@
         <meta name="author" content="Takumi Odashima">
       
       
-        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__t/">
+        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SplinePathBase_1_1segment__t/">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>cpp_robotics::Spline2D::segment_t - cpp_robotics</title>
+        <title>cpp_robotics::SplinePathBase::segment_t - cpp_robotics</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cpp_roboticsspline2dsegment_t" class="md-skip">
+        <a href="#cpp_roboticssplinepathbasesegment_t" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              cpp_robotics::Spline2D::segment_t
+              cpp_robotics::SplinePathBase::segment_t
             
           </span>
         </div>
@@ -918,6 +918,27 @@
   
   <span class="md-ellipsis">
     Dubins曲線
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/path_planning/spline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    スプライン曲線
   </span>
   
 
@@ -2429,8 +2450,8 @@
                   
 
 
-<h1 id="cpp_roboticsspline2dsegment_t">cpp_robotics::Spline2D::segment_t</h1>
-<p><code>#include &lt;spline.hpp&gt;</code></p>
+<h1 id="cpp_roboticssplinepathbasesegment_t">cpp_robotics::SplinePathBase::segment_t</h1>
+<p><code>#include &lt;spline_path.hpp&gt;</code></p>
 <h2 id="public-attributes">Public Attributes</h2>
 <table>
 <thead>
@@ -2441,22 +2462,22 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline::spline_c</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__t/#variable-coeff">coeff</a></strong></td>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">spline_api::SplineCoeff</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SplinePathBase_1_1segment__t/#variable-coeff">coeff</a></strong></td>
 </tr>
 <tr>
 <td>double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__t/#variable-length">length</a></strong></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SplinePathBase_1_1segment__t/#variable-length">length</a></strong></td>
 </tr>
 <tr>
 <td>std::vector&lt; double &gt;</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__t/#variable-split-lengths">split_lengths</a></strong></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SplinePathBase_1_1segment__t/#variable-split-lengths">split_lengths</a></strong></td>
 </tr>
 </tbody>
 </table>
 <h2 id="public-attributes-documentation">Public Attributes Documentation</h2>
 <h3 id="variable-coeff">variable coeff</h3>
-<div class="highlight"><pre><span></span><code><span class="n">spline</span><span class="o">::</span><span class="n">spline_c</span><span class="w"> </span><span class="n">coeff</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">spline_api</span><span class="o">::</span><span class="n">SplineCoeff</span><span class="w"> </span><span class="n">coeff</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="variable-length">variable length</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">length</span><span class="p">;</span>
@@ -2465,7 +2486,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">split_lengths</span><span class="p">;</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2024-01-24 at 07:38:27 +0000</p>
+<p>Updated on 2024-01-27 at 13:41:10 +0000</p>
 
 
 

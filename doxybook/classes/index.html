@@ -934,6 +934,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../example/path_planning/spline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    スプライン曲線
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../example/path_planning/fmt_star/" class="md-nav__link">
         
   
@@ -2446,14 +2467,14 @@
 <li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ArmKinematics/">ArmKinematics</a></strong> </li>
 <li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1BandPassFilter/">BandPassFilter</a></strong> <br>バンドパスフィルタ </li>
 <li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ButterworthFilter/">ButterworthFilter</a></strong> <br>バターワースフィルタ </li>
-<li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRom2D/">CatumullRom2D</a></strong> <br>Catumull曲線 </li>
+<li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRomSplinePath/">CatumullRomSplinePath</a></strong> </li>
 <li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Circle/">Circle</a></strong> <br>円クラス </li>
 <li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Constraint/">Constraint</a></strong> <br>数理最適問題に使用する制約クラス </li>
 <li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ConstraintArray/">ConstraintArray</a></strong> <br>数理最適化問題の制約の集合 <ul>
 <li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1ConstraintArray_1_1VariItem/">VariItem</a></strong> </li>
 </ul>
 </li>
-<li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CubicSpline/">CubicSpline</a></strong> <br>3次スプライン曲線 </li>
+<li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CubicSplinePath/">CubicSplinePath</a></strong> </li>
 <li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCGearedMotorParam/">DCGearedMotorParam</a></strong> <br>ギアヘッド付きDCモーターモデル </li>
 <li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1DCMotorParam/">DCMotorParam</a></strong> <br>DCモーターモデル </li>
 <li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1DWA/">DWA</a></strong> </li>
@@ -2561,9 +2582,9 @@
 <li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SisoFeedbackSystem_1_1func__list__t/">func_list_t</a></strong> </li>
 </ul>
 </li>
-<li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1Spline2D/">Spline2D</a></strong> <br>2次元のスプライン曲線のインターフェイスクラス <ul>
-<li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__info__t/">segment_info_t</a></strong> </li>
-<li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__t/">segment_t</a></strong> </li>
+<li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/">SplinePathBase</a></strong> <ul>
+<li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SplinePathBase_1_1segment__info__t/">segment_info_t</a></strong> </li>
+<li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SplinePathBase_1_1segment__t/">segment_t</a></strong> </li>
 </ul>
 </li>
 <li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1StateSpaceSystem/">StateSpaceSystem</a></strong> <br>状態空間モデル </li>
@@ -2586,6 +2607,7 @@
 </li>
 <li><strong>class <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1XY2LinkRobot/">XY2LinkRobot</a></strong> </li>
 <li><strong>namespace <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/">constants</a></strong> <br>数学・物理定数 </li>
+<li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/">eigen_spline_api</a></strong> </li>
 <li><strong>namespace <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1grid__path__planning__utils/">grid_path_planning_utils</a></strong> <br>グリッドパスプランニング用関数・クラス郡 <ul>
 <li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1grid__path__planning__utils_1_1GridNode/">GridNode</a></strong> </li>
 </ul>
@@ -2599,10 +2621,6 @@
 <li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1internal_1_1has__forward__kinematics_3_01T_00_01std_1_1void__t_3/">has_forward_kinematics&lt; T, std::void_t&lt; decltype(std::declval&lt; T &gt;().forward_kinematics(std::declval&lt; Eigen::VectorXd &gt;(), std::declval&lt; Eigen::VectorXd &amp; &gt;()))&gt; &gt;</a></strong> </li>
 <li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1internal_1_1has__inverse__kinematics/">has_inverse_kinematics</a></strong> </li>
 <li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1internal_1_1has__inverse__kinematics_3_01T_00_01std_1_1void__t_3/">has_inverse_kinematics&lt; T, std::void_t&lt; decltype(std::declval&lt; T &gt;().inverse_kinematics(std::declval&lt; Eigen::VectorXd &gt;(), std::declval&lt; Eigen::VectorXd &amp; &gt;()))&gt; &gt;</a></strong> </li>
-</ul>
-</li>
-<li><strong>namespace <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/">spline</a></strong> <br>スプライン曲線用関数郡 <ul>
-<li><strong>struct <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a></strong> </li>
 </ul>
 </li>
 <li><strong>namespace <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1unit/">unit</a></strong> <br>単位系 <ul>
@@ -2647,7 +2665,7 @@
 <li><strong>namespace <a href="/cpp_robotics/doxybook/Namespaces/namespaceunit__dim__assem/">unit_dim_assem</a></strong> </li>
 </ul>
 <hr />
-<p>Updated on 2024-01-24 at 07:38:27 +0000</p>
+<p>Updated on 2024-01-27 at 13:41:10 +0000</p>
 
 
 

@@ -12,7 +12,7 @@
         <meta name="author" content="Takumi Odashima">
       
       
-        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/">
+        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>cpp_robotics::spline - cpp_robotics</title>
+        <title>cpp_robotics::eigen_spline_api - cpp_robotics</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cpp_roboticsspline" class="md-skip">
+        <a href="#cpp_roboticseigen_spline_api" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              cpp_robotics::spline
+              cpp_robotics::eigen_spline_api
             
           </span>
         </div>
@@ -918,6 +918,27 @@
   
   <span class="md-ellipsis">
     Dubins曲線
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/path_planning/spline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    スプライン曲線
   </span>
   
 
@@ -2429,9 +2450,10 @@
                   
 
 
-<h1 id="cpp_roboticsspline">cpp_robotics::spline</h1>
-<p>スプライン曲線用関数郡 </p>
-<h2 id="classes">Classes</h2>
+<h1 id="cpp_roboticseigen_spline_api">cpp_robotics::eigen_spline_api</h1>
+<p><a href="#detailed-description">More...</a></p>
+<p><code>#include &lt;spline_path.hpp&gt;</code></p>
+<h2 id="public-types">Public Types</h2>
 <table>
 <thead>
 <tr>
@@ -2441,12 +2463,24 @@
 </thead>
 <tbody>
 <tr>
-<td>struct</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">cpp_robotics::spline::spline_c</a></strong></td>
+<td>using VectorType</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a></strong></td>
+</tr>
+<tr>
+<td>using typename Vector::Scalar</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-scalar">Scalar</a></strong></td>
+</tr>
+<tr>
+<td>using Eigen::Matrix&lt; <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-scalar">Scalar</a>, <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#variable-dim">Dim</a>, 4 &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a></strong></td>
+</tr>
+<tr>
+<td>using Eigen::Matrix&lt; <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-scalar">Scalar</a>, 4, 1 &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-weightvector">WeightVector</a></strong></td>
 </tr>
 </tbody>
 </table>
-<h2 id="functions">Functions</h2>
+<h2 id="public-functions">Public Functions</h2>
 <table>
 <thead>
 <tr>
@@ -2456,204 +2490,230 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-bezier-spline">bezier_spline</a></strong>(const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; p0, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; p1, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; p2, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; p3)</td>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-bezier-spline">bezier_spline</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a> &amp; p0, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a> &amp; p1, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a> &amp; p2, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a> &amp; p3)</td>
 </tr>
 <tr>
-<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-hermite-spline">hermite_spline</a></strong>(const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; p0, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; p1, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; v0, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; v1)</td>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-hermite-spline">hermite_spline</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a> &amp; p0, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a> &amp; p1, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a> &amp; v0, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a> &amp; v1)</td>
 </tr>
 <tr>
-<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-catumull-spline">catumull_spline</a></strong>(const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; p0, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; p1, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; p2, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; p3)</td>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-catumull-spline">catumull_spline</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a> &amp; p0, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a> &amp; p1, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a> &amp; p2, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a> &amp; p3)</td>
 </tr>
 <tr>
-<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-cubic-function-to-bezier">cubic_function_to_bezier</a></strong>(const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; a, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; b, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; c, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a> &amp; d)</td>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-cubic-function-to-bezier">cubic_function_to_bezier</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a> &amp; a, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a> &amp; b, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a> &amp; c, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a> &amp; d)</td>
 </tr>
 <tr>
-<td><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector4d">Vector4d</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-bezier-weight">bezier_weight</a></strong>(const double t)</td>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-weightvector">WeightVector</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-bezier-weight">bezier_weight</a></strong>(const double t)</td>
 </tr>
 <tr>
-<td><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector4d">Vector4d</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-bezier-weight">bezier_weight</a></strong>(const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector4d">Vector4d</a> t)</td>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-weightvector">WeightVector</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-bezier-weight">bezier_weight</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-weightvector">WeightVector</a> t)</td>
 </tr>
 <tr>
-<td><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-evaluate">evaluate</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a> &amp; spline, const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector4d">Vector4d</a> &amp; w)</td>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-evaluate">evaluate</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a> &amp; spline, const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-weightvector">WeightVector</a> &amp; w)</td>
 </tr>
 <tr>
-<td><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-position">position</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a> &amp; spline, double t)</td>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-position">position</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a> &amp; spline, double t)</td>
 </tr>
 <tr>
-<td><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-velocity">velocity</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a> &amp; spline, double t)</td>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-velocity">velocity</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a> &amp; spline, double t)</td>
 </tr>
 <tr>
-<td><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector2d">Vector2d</a></td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-acceleration">acceleration</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a> &amp; spline, double t)</td>
-</tr>
-<tr>
-<td>void</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-split">split</a></strong>(const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector4d">Vector4d</a> &amp; spline, <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector4d">Vector4d</a> &amp; spline0, <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector4d">Vector4d</a> &amp; spline1, double t)</td>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-vector">Vector</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-acceleration">acceleration</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a> &amp; spline, double t)</td>
 </tr>
 <tr>
 <td>void</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-split">split</a></strong>(const <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector4d">Vector4d</a> &amp; spline, <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector4d">Vector4d</a> &amp; spline0, <a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics/#using-vector4d">Vector4d</a> &amp; spline1)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-split">split</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-weightvector">WeightVector</a> &amp; spline, <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-weightvector">WeightVector</a> &amp; spline0, <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-weightvector">WeightVector</a> &amp; spline1, double t)</td>
 </tr>
 <tr>
 <td>void</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-split">split</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a> &amp; spline, <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a> &amp; spline0, <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a> &amp; spline1)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-split">split</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-weightvector">WeightVector</a> &amp; spline, <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-weightvector">WeightVector</a> &amp; spline0, <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-weightvector">WeightVector</a> &amp; spline1)</td>
 </tr>
 <tr>
 <td>void</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-split">split</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a> &amp; spline, <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a> &amp; spline0, <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a> &amp; spline1, double t)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-split">split</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a> &amp; spline, <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a> &amp; spline0, <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a> &amp; spline1)</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-split">split</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a> &amp; spline, <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a> &amp; spline0, <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a> &amp; spline1, double t)</td>
 </tr>
 <tr>
 <td>double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-length-estimate">length_estimate</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a> &amp; s, double * error)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-length-estimate">length_estimate</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a> &amp; s, double &amp; error)</td>
 </tr>
 <tr>
 <td>double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-length">length</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a> &amp; s, double maxError)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-length">length</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a> &amp; s, double max_error)</td>
 </tr>
 <tr>
 <td>double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-length">length</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a> &amp; s, double t0, double t1, double maxError)</td>
-</tr>
-<tr>
-<td>double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1spline/#function-curvature">curvature</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1spline_1_1spline__c/">spline_c</a> &amp; spline, double t)</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#function-length">length</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#using-splinecoeff">SplineCoeff</a> &amp; s, double t0, double t1, double max_error)</td>
 </tr>
 </tbody>
 </table>
-<h2 id="functions-documentation">Functions Documentation</h2>
+<h2 id="public-attributes">Public Attributes</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>constexpr int</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1eigen__spline__api/#variable-dim">Dim</a></strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="detailed-description">Detailed Description</h2>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">VectorType</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">cpp_robotics</span><span class="o">::</span><span class="n">eigen_spline_api</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="public-types-documentation">Public Types Documentation</h2>
+<h3 id="using-vector">using Vector</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">eigen_spline_api</span><span class="o">&lt;</span><span class="w"> </span><span class="n">VectorType</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">Vector</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">VectorType</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="using-scalar">using Scalar</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">eigen_spline_api</span><span class="o">&lt;</span><span class="w"> </span><span class="n">VectorType</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">Scalar</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="k">typename</span><span class="w"> </span><span class="nc">Vector</span><span class="o">::</span><span class="n">Scalar</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="using-splinecoeff">using SplineCoeff</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">eigen_spline_api</span><span class="o">&lt;</span><span class="w"> </span><span class="n">VectorType</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">SplineCoeff</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span><span class="w"> </span><span class="n">Dim</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="using-weightvector">using WeightVector</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">eigen_spline_api</span><span class="o">&lt;</span><span class="w"> </span><span class="n">VectorType</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">WeightVector</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">Scalar</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
 <h3 id="function-bezier_spline">function bezier_spline</h3>
-<div class="highlight"><pre><span></span><code><span class="n">spline_c</span><span class="w"> </span><span class="n">bezier_spline</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p0</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p2</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p3</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="n">bezier_spline</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p0</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p2</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p3</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-hermite_spline">function hermite_spline</h3>
-<div class="highlight"><pre><span></span><code><span class="n">spline_c</span><span class="w"> </span><span class="n">hermite_spline</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p0</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">v0</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">v1</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="n">hermite_spline</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p0</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">v0</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">v1</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-catumull_spline">function catumull_spline</h3>
-<div class="highlight"><pre><span></span><code><span class="n">spline_c</span><span class="w"> </span><span class="n">catumull_spline</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p0</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p2</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p3</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="n">catumull_spline</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p0</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p2</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p3</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-cubic_function_to_bezier">function cubic_function_to_bezier</h3>
-<div class="highlight"><pre><span></span><code><span class="n">spline_c</span><span class="w"> </span><span class="n">cubic_function_to_bezier</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">d</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="n">cubic_function_to_bezier</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">d</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-bezier_weight">function bezier_weight</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Vector4d</span><span class="w"> </span><span class="n">bezier_weight</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">WeightVector</span><span class="w"> </span><span class="n">bezier_weight</span><span class="p">(</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-bezier_weight_1">function bezier_weight</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Vector4d</span><span class="w"> </span><span class="n">bezier_weight</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector4d</span><span class="w"> </span><span class="n">t</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">WeightVector</span><span class="w"> </span><span class="n">bezier_weight</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">WeightVector</span><span class="w"> </span><span class="n">t</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-evaluate">function evaluate</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Vector2d</span><span class="w"> </span><span class="n">evaluate</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">spline_c</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector4d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">w</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">evaluate</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">WeightVector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">w</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-position">function position</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Vector2d</span><span class="w"> </span><span class="n">position</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">spline_c</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">position</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-velocity">function velocity</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Vector2d</span><span class="w"> </span><span class="n">velocity</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">spline_c</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">velocity</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-acceleration">function acceleration</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Vector2d</span><span class="w"> </span><span class="n">acceleration</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">spline_c</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="n">acceleration</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-split">function split</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">split</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector4d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
-<span class="w">    </span><span class="n">Vector4d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline0</span><span class="p">,</span>
-<span class="w">    </span><span class="n">Vector4d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline1</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">split</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">WeightVector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
+<span class="w">    </span><span class="n">WeightVector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">WeightVector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline1</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-split_1">function split</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">split</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vector4d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
-<span class="w">    </span><span class="n">Vector4d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline0</span><span class="p">,</span>
-<span class="w">    </span><span class="n">Vector4d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline1</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">split</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">WeightVector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
+<span class="w">    </span><span class="n">WeightVector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">WeightVector</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline1</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-split_2">function split</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">split</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">spline_c</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spline_c</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline0</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spline_c</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline1</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">split</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline1</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-split_3">function split</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">split</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">spline_c</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spline_c</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline0</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spline_c</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline1</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">split</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline1</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-length_estimate">function length_estimate</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">length_estimate</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">spline_c</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">error</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">length_estimate</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">error</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-length">function length</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">length</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">spline_c</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">maxError</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">length</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">max_error</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-length_1">function length</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">length</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">spline_c</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">length</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">SplineCoeff</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">t0</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">t1</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">maxError</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">max_error</span>
 <span class="p">)</span>
 </code></pre></div>
-<h3 id="function-curvature">function curvature</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">curvature</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">spline_c</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">spline</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span>
-<span class="p">)</span>
+<h2 id="public-attributes-documentation">Public Attributes Documentation</h2>
+<h3 id="variable-dim">variable Dim</h3>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Dim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector</span><span class="o">::</span><span class="n">RowsAtCompileTime</span><span class="p">;</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2024-01-24 at 07:38:27 +0000</p>
+<p>Updated on 2024-01-27 at 13:41:10 +0000</p>
 
 
 

@@ -12,7 +12,7 @@
         <meta name="author" content="Takumi Odashima">
       
       
-        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__info__t/">
+        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRomSplinePath/">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>cpp_robotics::Spline2D::segment_info_t - cpp_robotics</title>
+        <title>cpp_robotics::CatumullRomSplinePath - cpp_robotics</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cpp_roboticsspline2dsegment_info_t" class="md-skip">
+        <a href="#cpp_roboticscatumullromsplinepath" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              cpp_robotics::Spline2D::segment_info_t
+              cpp_robotics::CatumullRomSplinePath
             
           </span>
         </div>
@@ -918,6 +918,27 @@
   
   <span class="md-ellipsis">
     Dubins曲線
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../example/path_planning/spline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    スプライン曲線
   </span>
   
 
@@ -2429,8 +2450,52 @@
                   
 
 
-<h1 id="cpp_roboticsspline2dsegment_info_t">cpp_robotics::Spline2D::segment_info_t</h1>
-<p><code>#include &lt;spline.hpp&gt;</code></p>
+<h1 id="cpp_roboticscatumullromsplinepath">cpp_robotics::CatumullRomSplinePath</h1>
+<p><a href="#detailed-description">More...</a></p>
+<p><code>#include &lt;spline_path.hpp&gt;</code></p>
+<p>Inherits from <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/">cpp_robotics::SplinePathBase&lt; VectorType &gt;</a></p>
+<h2 id="public-types">Public Types</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>using VectorType</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRomSplinePath/#using-vector">Vector</a></strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-functions">Public Functions</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRomSplinePath/#function-catumullromsplinepath">CatumullRomSplinePath</a></strong>() =default</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRomSplinePath/#function-catumullromsplinepath">CatumullRomSplinePath</a></strong>(std::vector&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#using-vector">Vector</a> &gt; &amp; waypoints, bool trajectory_loop =false, const double error =<a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRomSplinePath/#variable-default-length-error">DEFAULT_LENGTH_ERROR</a>)</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRomSplinePath/#function-set-path-with-config">set_path_with_config</a></strong>(std::vector&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#using-vector">Vector</a> &gt; &amp; waypoints, bool trajectory_loop =false, const double error =<a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRomSplinePath/#variable-default-length-error">DEFAULT_LENGTH_ERROR</a>)</td>
+</tr>
+<tr>
+<td>virtual void</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRomSplinePath/#function-set-path">set_path</a></strong>(const std::vector&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#using-vector">Vector</a> &gt; &amp; waypoints) override</td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-attributes">Public Attributes</h2>
 <table>
 <thead>
@@ -2441,24 +2506,158 @@
 </thead>
 <tbody>
 <tr>
-<td>size_t</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__info__t/#variable-i">i</a></strong></td>
-</tr>
-<tr>
-<td>double</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1Spline2D_1_1segment__info__t/#variable-t">t</a></strong></td>
+<td>constexpr double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1CatumullRomSplinePath/#variable-default-length-error">DEFAULT_LENGTH_ERROR</a></strong></td>
 </tr>
 </tbody>
 </table>
-<h2 id="public-attributes-documentation">Public Attributes Documentation</h2>
-<h3 id="variable-i">variable i</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<h2 id="additional-inherited-members">Additional inherited members</h2>
+<p><strong>Protected Classes inherited from <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/">cpp_robotics::SplinePathBase&lt; VectorType &gt;</a></strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>struct</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SplinePathBase_1_1segment__info__t/">segment_info_t</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SplinePathBase_1_1segment__t/">segment_t</a></strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Public Functions inherited from <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/">cpp_robotics::SplinePathBase&lt; VectorType &gt;</a></strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#function-splinepathbase">SplinePathBase</a></strong>() =default</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#function-splinepathbase">SplinePathBase</a></strong>(const std::vector&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#using-vector">Vector</a> &gt; &amp; waypoints)</td>
+</tr>
+<tr>
+<td>bool</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#function-is-empty">is_empty</a></strong>() const</td>
+</tr>
+<tr>
+<td>size_t</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#function-waypoints-size">waypoints_size</a></strong>() const</td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#function-length">length</a></strong>() const</td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#function-nearest-position">nearest_position</a></strong>(const <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#using-vector">Vector</a> pos, double now_length =-1, double search_range =-1)</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#using-vector">Vector</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#function-position">position</a></strong>(double length) const</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#using-vector">Vector</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#function-direction">direction</a></strong>(double length) const</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Protected Functions inherited from <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/">cpp_robotics::SplinePathBase&lt; VectorType &gt;</a></strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SplinePathBase_1_1segment__info__t/">segment_info_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#function-get-segmet-idx">get_segmet_idx</a></strong>(const double t) const</td>
+</tr>
+<tr>
+<td><a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SplinePathBase_1_1segment__info__t/">segment_info_t</a></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#function-get-segmet-idx-length">get_segmet_idx_length</a></strong>(double length) const</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Protected Attributes inherited from <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/">cpp_robotics::SplinePathBase&lt; VectorType &gt;</a></strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>std::vector&lt; <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#using-vector">Vector</a> &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#variable-waypoints-">waypoints_</a></strong></td>
+</tr>
+<tr>
+<td>std::vector&lt; double &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#variable-length-">length_</a></strong></td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#variable-total-length-">total_length_</a></strong></td>
+</tr>
+<tr>
+<td>std::vector&lt; <a href="/cpp_robotics/doxybook/Classes/structcpp__robotics_1_1SplinePathBase_1_1segment__t/">segment_t</a> &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#variable-spline-segments-">spline_segments_</a></strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="detailed-description">Detailed Description</h2>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">VectorType</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">cpp_robotics</span><span class="o">::</span><span class="n">CatumullRomSplinePath</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="variable-t">variable t</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
+<h2 id="public-types-documentation">Public Types Documentation</h2>
+<h3 id="using-vector">using Vector</h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">cpp_robotics</span><span class="o">::</span><span class="n">CatumullRomSplinePath</span><span class="o">&lt;</span><span class="w"> </span><span class="n">VectorType</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">Vector</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">VectorType</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+<h3 id="function-catumullromsplinepath">function CatumullRomSplinePath</h3>
+<div class="highlight"><pre><span></span><code><span class="n">CatumullRomSplinePath</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="k">default</span>
+</code></pre></div>
+<h3 id="function-catumullromsplinepath_1">function CatumullRomSplinePath</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">CatumullRomSplinePath</span><span class="p">(</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">waypoints</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">trajectory_loop</span><span class="w"> </span><span class="o">=</span><span class="nb">false</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="n">DEFAULT_LENGTH_ERROR</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-set_path_with_config">function set_path_with_config</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">set_path_with_config</span><span class="p">(</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">waypoints</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">trajectory_loop</span><span class="w"> </span><span class="o">=</span><span class="nb">false</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="n">DEFAULT_LENGTH_ERROR</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-set_path">function set_path</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">set_path</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Vector</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">waypoints</span>
+<span class="p">)</span><span class="w"> </span><span class="k">override</span>
+</code></pre></div>
+<p><strong>Reimplements</strong>: <a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1SplinePathBase/#function-set-path">cpp_robotics::SplinePathBase::set_path</a></p>
+<h2 id="public-attributes-documentation">Public Attributes Documentation</h2>
+<h3 id="variable-default_length_error">variable DEFAULT_LENGTH_ERROR</h3>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">DEFAULT_LENGTH_ERROR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.05</span><span class="p">;</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2024-01-24 at 07:38:27 +0000</p>
+<p>Updated on 2024-01-27 at 13:41:10 +0000</p>
 
 
 
