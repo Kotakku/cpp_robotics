@@ -56,7 +56,7 @@ int main()
         x.push_back(p[0]);
         y.push_back(p[1]);
     }
-    plt::named_plot("Waypoints", x, y, "o");
+    plt::named_plot("Waypoint", x, y, "o");
     plt::legend();
     plt::show();
 
