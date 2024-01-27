@@ -64,6 +64,7 @@ set(example_files
   path_planning/fmt_star
   path_planning/dwa
   path_planning/navigation_diffbot
+  path_planning/spline
 
   unit/unit_example
 )
