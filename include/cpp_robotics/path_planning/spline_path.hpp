@@ -305,6 +305,21 @@ protected:
         segment_info_t result;
         result.i = 0;
         result.t = 1.0;
+
+        if(total_length_ <= length)
+        {
+            result.i = spline_segments_.size()-1;
+            result.t = 1.0;
+            return result;
+        }
+
+        if(length <= 0)
+        {
+            result.i = 0;
+            result.t = 0;
+            return result;
+        }
+
         while (length > spline_segments_[result.i].length)
         {
             length -= spline_segments_[result.i].length;

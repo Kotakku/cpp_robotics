@@ -5,11 +5,11 @@
 namespace cpp_robotics
 {
 
-class XY2LinkRobot : public ArmForwardKinematics<XY2LinkRobot>
+class XY2LinkKinematics : public ArmForwardKinematics<XY2LinkKinematics>
 {
 public:
-    XY2LinkRobot(double l1, double l2):
-        ArmForwardKinematics<XY2LinkRobot>(2, 2), l1(l1), l2(l2) {}
+    XY2LinkKinematics(double l1, double l2):
+        ArmForwardKinematics<XY2LinkKinematics>(2, 2), l1(l1), l2(l2) {}
 
     template<typename Vector>
     void forward_kinematics(const Vector& q, Vector& x)

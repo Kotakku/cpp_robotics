@@ -25,6 +25,7 @@ option(BUILD_BENCHMARKS "build benchmarks" OFF)
 if(BUILD_EXAMPLES)
 
 find_package(Python3 COMPONENTS Development NumPy)
+find_package(matplotlibcpp17 REQUIRED)
 
 set(example_files
   hello_world
@@ -66,6 +67,8 @@ set(example_files
   path_planning/navigation_diffbot
   path_planning/spline
 
+  arm_kinematics/3dof_arm
+
   unit/unit_example
 )
 
@@ -73,7 +76,7 @@ foreach(example_file ${example_files})
 get_filename_component(example_name example/${example_file}.cpp NAME_WE)
 add_executable(${example_name} example/${example_file}.cpp)
 target_include_directories(${example_name} PRIVATE include)
-target_link_libraries(${example_name} PRIVATE Eigen3::Eigen Python3::Python Python3::NumPy)
+target_link_libraries(${example_name} PRIVATE Eigen3::Eigen matplotlibcpp17::matplotlibcpp17 Python3::Python Python3::NumPy)
 endforeach()
 endif()
 
