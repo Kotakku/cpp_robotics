@@ -23,28 +23,34 @@ int main()
     matplotlibcpp17::mplot3d::import();
     auto fig = plt.figure();
     auto ax = fig.add_subplot(Args(), Kwargs("projection"_a = "3d"));
+    std::vector<double> x, y, z;
     for(size_t i = 0; i <= 110; i++)
     {
         Eigen::VectorXd q = qspline.position(qspline.length() * i/100.0);
         std::vector<Eigen::Vector3d> pos_list = arm.solve_each_fk(q);
 
-        std::vector<double> x = {0};
-        std::vector<double> y = {0};
-        std::vector<double> z = {0};
+        std::vector<double> link_x = {0};
+        std::vector<double> link_y = {0};
+        std::vector<double> link_z = {0};
         for(auto &pos: pos_list)
         {
-            x.push_back(pos[0]);
-            y.push_back(pos[1]);
-            z.push_back(pos[2]);
+            link_x.push_back(pos[0]);
+            link_y.push_back(pos[1]);
+            link_z.push_back(pos[2]);
         }
+        x.push_back(pos_list.back()[0]);
+        y.push_back(pos_list.back()[1]);
+        z.push_back(pos_list.back()[2]);
 
-        ax.plot(Args(x, y, z), Kwargs("marker"_a = "o"));
+        plt.cla();
+        ax.plot(Args(link_x, link_y, link_z), Kwargs("marker"_a = "o"));
+        ax.plot(Args(x, y, z), Kwargs("color"_a = "red", "linestyle"_a = "--"));
         ax.set_xlim(Args(-1.0, 1.0));
         ax.set_ylim(Args(-1.0, 1.0));
         ax.set_zlim(Args(-1.0, 1.0));
         plt.pause(Args(0.03));
-        plt.cla();
     }
+    plt.show();
 
     return 0;
 }
