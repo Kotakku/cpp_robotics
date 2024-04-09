@@ -62,6 +62,7 @@ set(example_files
 
   path_planning/dubins_path
   path_planning/fmt_star
+  path_planning/fmt_star_geometry
   path_planning/dwa
   path_planning/navigation_diffbot
   path_planning/spline
