@@ -116,7 +116,6 @@ private:
     ADVectorXd adq_, adx_;
 };
 
-namespace cpp_robotics {
 template <class Derived>
 class ArmForwardKinematicsWithPose {
 public:
@@ -207,8 +206,6 @@ private:
     size_t nx_;
     ADVectorXd adq_, adx_;
 };
-
-} // namespace cpp_robotics
 
 template <class Derived>
 class ArmInverseKinematics {
