@@ -66,6 +66,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ArmForwardKinematicsWithPose/</loc>
+         <lastmod>2024-05-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ArmInverseKinematics/</loc>
          <lastmod>2024-05-28</lastmod>
          <changefreq>daily</changefreq>
@@ -402,11 +407,6 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1XY2LinkRobot/</loc>
-         <lastmod>2024-05-28</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1cpp__robotics_1_1ArmForwardKinematicsWithPose/</loc>
          <lastmod>2024-05-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1347,11 +1347,6 @@
     </url>
     <url>
          <loc>https://kotakku.github.io/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1constants/</loc>
-         <lastmod>2024-05-28</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kotakku.github.io/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1cpp__robotics/</loc>
          <lastmod>2024-05-28</lastmod>
          <changefreq>daily</changefreq>
     </url>

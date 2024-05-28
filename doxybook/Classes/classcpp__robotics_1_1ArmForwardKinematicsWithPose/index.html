@@ -12,7 +12,7 @@
         <meta name="author" content="Takumi Odashima">
       
       
-        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Namespaces/namespacecpp__robotics_1_1cpp__robotics/">
+        <link rel="canonical" href="https://kotakku.github.io/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ArmForwardKinematicsWithPose/">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>cpp_robotics::cpp_robotics - cpp_robotics</title>
+        <title>cpp_robotics::ArmForwardKinematicsWithPose - cpp_robotics</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cpp_roboticscpp_robotics" class="md-skip">
+        <a href="#cpp_roboticsarmforwardkinematicswithpose" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              cpp_robotics::cpp_robotics
+              cpp_robotics::ArmForwardKinematicsWithPose
             
           </span>
         </div>
@@ -2464,8 +2464,10 @@
                   
 
 
-<h1 id="cpp_roboticscpp_robotics">cpp_robotics::cpp_robotics</h1>
-<h2 id="classes">Classes</h2>
+<h1 id="cpp_roboticsarmforwardkinematicswithpose">cpp_robotics::ArmForwardKinematicsWithPose</h1>
+<p><a href="#detailed-description">More...</a></p>
+<p><code>#include &lt;arm_kinematics.hpp&gt;</code></p>
+<h2 id="public-functions">Public Functions</h2>
 <table>
 <thead>
 <tr>
@@ -2475,13 +2477,117 @@
 </thead>
 <tbody>
 <tr>
-<td>class</td>
-<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1cpp__robotics_1_1ArmForwardKinematicsWithPose/">cpp_robotics::cpp_robotics::ArmForwardKinematicsWithPose</a></strong></td>
+<td></td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ArmForwardKinematicsWithPose/#function-armforwardkinematicswithpose">ArmForwardKinematicsWithPose</a></strong>(size_t nq)<br>Construct a new Arm IK object.</td>
+</tr>
+<tr>
+<td>std::pair&lt; Eigen::VectorXd, Eigen::Quaterniond &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ArmForwardKinematicsWithPose/#function-solve-fk">solve_fk</a></strong>(Eigen::VectorXd joint_angles)</td>
+</tr>
+<tr>
+<td>Eigen::VectorXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ArmForwardKinematicsWithPose/#function-solve-ik">solve_ik</a></strong>(Eigen::VectorXd ref_pos, Eigen::Quaterniond ref_pose, Eigen::VectorXd joint_angles0)</td>
+</tr>
+<tr>
+<td>Eigen::VectorXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ArmForwardKinematicsWithPose/#function-solve-ik">solve_ik</a></strong>(Eigen::VectorXd pos, Eigen::Quaterniond quat)</td>
+</tr>
+<tr>
+<td>Eigen::VectorXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ArmForwardKinematicsWithPose/#function-solve-ik-with-dir">solve_ik_with_dir</a></strong>(Eigen::VectorXd pos, Eigen::Vector3d axis, double angle)</td>
+</tr>
+<tr>
+<td>Eigen::MatrixXd</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ArmForwardKinematicsWithPose/#function-jacobian">jacobian</a></strong>(Eigen::VectorXd joint_angles)</td>
+</tr>
+<tr>
+<td>template &lt;typename Scalar &gt; <br>Eigen::Matrix&lt; Scalar, 4, 4 &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ArmForwardKinematicsWithPose/#function-transform-x">transform_x</a></strong>(const Scalar &amp; q, const Scalar &amp; x, const Scalar &amp; y, const Scalar &amp; z)</td>
+</tr>
+<tr>
+<td>template &lt;typename Scalar &gt; <br>Eigen::Matrix&lt; Scalar, 4, 4 &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ArmForwardKinematicsWithPose/#function-transform-y">transform_y</a></strong>(const Scalar &amp; q, const Scalar &amp; x, const Scalar &amp; y, const Scalar &amp; z)</td>
+</tr>
+<tr>
+<td>template &lt;typename Scalar &gt; <br>Eigen::Matrix&lt; Scalar, 4, 4 &gt;</td>
+<td><strong><a href="/cpp_robotics/doxybook/Classes/classcpp__robotics_1_1ArmForwardKinematicsWithPose/#function-transform-z">transform_z</a></strong>(const Scalar &amp; q, const Scalar &amp; x, const Scalar &amp; y, const Scalar &amp; z)</td>
 </tr>
 </tbody>
 </table>
+<h2 id="detailed-description">Detailed Description</h2>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">Derived</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">cpp_robotics</span><span class="o">::</span><span class="n">ArmForwardKinematicsWithPose</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+<h3 id="function-armforwardkinematicswithpose">function ArmForwardKinematicsWithPose</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">ArmForwardKinematicsWithPose</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nq</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Construct a new Arm IK object. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>nq</strong> Number of joints </li>
+</ul>
+<h3 id="function-solve_fk">function solve_fk</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="p">,</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Quaterniond</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">solve_fk</span><span class="p">(</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">joint_angles</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-solve_ik">function solve_ik</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">solve_ik</span><span class="p">(</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">ref_pos</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Quaterniond</span><span class="w"> </span><span class="n">ref_pose</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">joint_angles0</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-solve_ik_1">function solve_ik</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">solve_ik</span><span class="p">(</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Quaterniond</span><span class="w"> </span><span class="n">quat</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-solve_ik_with_dir">function solve_ik_with_dir</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">solve_ik_with_dir</span><span class="p">(</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span><span class="w"> </span><span class="n">axis</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">angle</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-jacobian">function jacobian</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">MatrixXd</span><span class="w"> </span><span class="n">jacobian</span><span class="p">(</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">joint_angles</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-transform_x">function transform_x</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Scalar</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Scalar</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">transform_x</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scalar</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">q</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scalar</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scalar</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scalar</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">z</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-transform_y">function transform_y</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Scalar</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Scalar</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">transform_y</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scalar</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">q</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scalar</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scalar</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scalar</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">z</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-transform_z">function transform_z</h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Scalar</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="kr">inline</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Scalar</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">transform_z</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scalar</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">q</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scalar</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scalar</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scalar</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">z</span>
+<span class="p">)</span>
+</code></pre></div>
 <hr />
-<p>Updated on 2024-05-28 at 06:38:53 +0000</p>
+<p>Updated on 2024-05-28 at 06:39:36 +0000</p>
 
 
 
