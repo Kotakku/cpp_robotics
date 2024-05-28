@@ -124,7 +124,7 @@ public:
      *
      * @param nq Number of joints
      */
-    ArmForwardKinematicsWithPose(size_t nq) : nq_(nq), nx_(3 + 4) {}
+    ArmForwardKinematicsWithPose(size_t nq) : nq_(nq), nx_(3 + 4), adq_(nq), adx_(3) {}
 
     std::pair<Eigen::VectorXd, Eigen::Quaterniond> solve_fk(Eigen::VectorXd joint_angles) {
         Eigen::VectorXd x(3);
