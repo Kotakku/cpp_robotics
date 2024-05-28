@@ -139,7 +139,7 @@ public:
 
         auto eval_func = [&](Eigen::VectorXd q) {
             auto [pos, pose] = solve_fk(q);
-            return (pos - ref_pos).squaredNorm() + std::pow((1 - ref_pose.dot(pose)), 2);
+            return (pos - ref_pos).squaredNorm() + (1 - std::pow(ref_pose.dot(pose), 2));
         };
 
         auto jacobian_func = [&](Eigen::VectorXd q) {
@@ -154,10 +154,14 @@ public:
         return solve_ik(pos, quat, Eigen::VectorXd::Zero(nq_));
     }
 
-    Eigen::VectorXd solve_ik_with_dir(Eigen::VectorXd pos, Eigen::Vector3d axis, double angle) {
+    Eigen::VectorXd solve_ik_with_dir(Eigen::VectorXd pos, Eigen::Vector3d axis, double angle, Eigen::VectorXd joint_angles0) {
         Eigen::AngleAxisd rotation_vector(angle, axis);
         Eigen::Quaterniond pose(rotation_vector);
-        return solve_ik(pos, pose);
+        return solve_ik(pos, pose, joint_angles0);
+    }
+
+    Eigen::VectorXd solve_ik_with_dir(Eigen::VectorXd pos, Eigen::Vector3d axis, double angle) {
+        return solve_ik_with_dir(pos, axis, angle, Eigen::VectorXd::Zero(nq_));
     }
 
     Eigen::MatrixXd jacobian(Eigen::VectorXd joint_angles) {
