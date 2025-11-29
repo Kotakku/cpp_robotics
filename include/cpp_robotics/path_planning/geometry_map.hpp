@@ -6,7 +6,7 @@
 
 namespace cpp_robotics {
 
-using ObstacleShapeType = std::variant<Rect, Circle>;
+using ObstacleShapeType = std::variant<Rect, Circle, Quad, Triangle>;
 class GeometryMap : public PathPlanningMap<Eigen::Vector2d> {
 public:
     GeometryMap(const std::vector<ObstacleShapeType> &obstacles, const Rect &boundary) : obstacles_(obstacles), boundary_(boundary) {

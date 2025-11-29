@@ -145,80 +145,203 @@ bool intersect(const Line &a, const Circle &b) {
     return (ac.dot(ac) - e * e / f) <= rr;
 }
 
-// bool intersect(const Line& a, const Rect& b)
-// {
-//     return false; // Todo
-// }
+bool intersect(const Line &a, const Triangle &b) {
+    // 三角形の辺ベクトル
+    auto outlines = b.outline();
+    for (auto &line : outlines) {
+        if (intersect(a, line))
+            return true;
+    }
+    return false;
+}
 
-// bool intersect(const Line& a, const Quad& b)
-// {
-//     return false; // Todo
-// }
+bool intersect(const Line &a, const Rect &b) {
+    auto vertices = b.vertex();
+    const Triangle t1(vertices[0], vertices[1], vertices[2]);
+    const Triangle t2(vertices[0], vertices[2], vertices[3]);
+    return intersect(a, t1) || intersect(a, t2);
+}
 
-// bool intersect(const Line& a, const Triangle& b)
-// {
-//     return false; // Todo
-// }
+bool intersect(const Line &a, const Quad &b) {
+    // Quadを2つの三角形に分割
+    const Triangle t1(b.p0, b.p1, b.p2);
+    const Triangle t2(b.p0, b.p2, b.p3);
+    return intersect(a, t1) || intersect(a, t2);
+}
+
+////////// Triangle vs //////////
+bool intersect(const Triangle &a, const Triangle &b) {
+    // 辺の交差判定
+    auto outlines_a = a.outline();
+    auto outlines_b = b.outline();
+    for (auto &line_a : outlines_a) {
+        for (auto &line_b : outlines_b) {
+            if (intersect(line_a, line_b))
+                return true;
+        }
+    }
+
+    // 頂点の内包判定
+    auto vertices_a = a.vertex();
+    auto vertices_b = b.vertex();
+    for (auto &v : vertices_a) {
+        if (intersect(v, b))
+            return true;
+    }
+    for (auto &v : vertices_b) {
+        if (intersect(v, a))
+            return true;
+    }
+
+    return false;
+}
+
+bool intersect(const Triangle &a, const Vector2d &b) {
+    return intersect(b, a);
+}
+
+bool intersect(const Triangle &a, const Line &b) {
+    return intersect(b, a);
+}
+
+bool intersect(const Triangle &a, const Quad &b) {
+    const Triangle t1(b.p0, b.p1, b.p2);
+    const Triangle t2(b.p0, b.p2, b.p3);
+    return intersect(t1, a) || intersect(t2, a);
+}
+
+bool intersect(const Triangle &a, const Rect &b) {
+    // Rectを2つの三角形に分割
+    auto vertices = b.vertex();
+    const Triangle t1(vertices[0], vertices[1], vertices[2]);
+    const Triangle t2(vertices[0], vertices[2], vertices[3]);
+    return intersect(t1, a) || intersect(t2, a);
+}
+
+bool intersect(const Triangle &a, const Circle &b) {
+    // 円の中心が三角形の内部にある
+    if (intersect(b.center, a))
+        return true;
+
+    // 三角形の各辺と円が交差するかを確認
+    for (auto &edge : a.outline()) {
+        if (intersect(edge, b))
+            return true;
+    }
+
+    return false;
+}
+
+////////// Quad vs //////////
+bool intersect(const Quad &a, const Vector2d &b) {
+    return intersect(b, a);
+}
+
+bool intersect(const Quad &a, const Line &b) {
+    return intersect(b, a);
+}
+
+bool intersect(const Quad &a, const Quad &b) {
+    // 2つの三角形に分割
+    const Triangle t0(b.p0, b.p1, b.p2);
+    const Triangle t1(b.p0, b.p2, b.p3);
+    return intersect(t0, a) || intersect(t1, a);
+}
+
+bool intersect(const Quad &a, const Rect &b) {
+    // Quadを2つの三角形に分割
+    const Triangle t1(a.p0, a.p1, a.p2);
+    const Triangle t2(a.p0, a.p2, a.p3);
+    return intersect(t1, b) || intersect(t2, b);
+}
+
+bool intersect(const Quad &a, const Triangle &b) {
+    // Quadを2つの三角形に分割
+    const Triangle t1(a.p0, a.p1, a.p2);
+    const Triangle t2(a.p0, a.p2, a.p3);
+    return intersect(t1, b) || intersect(t2, b);
+}
+
+bool intersect(const Quad &a, const Circle &b) {
+    // 円の中心が四角形の内部にある
+    if (intersect(b.center, a))
+        return true;
+
+    // 四角形の各辺と円が交差する
+    std::array<Line, 4> outlines = a.outline();
+    for (auto &line : outlines) {
+        if (intersect(line, b))
+            return true;
+    }
+    return false;
+}
 
 ////////// Rect vs //////////
 bool intersect(const Rect &a, const Vector2d &b) {
     return intersect(b, a);
 }
 
-// bool intersect(const Rect& a, const Line& b)
-// {
-//     return false; // Todo
-// }
+bool intersect(const Rect &a, const Line &b) {
+    return intersect(b, a);
+}
 
-// bool intersect(const Rect& a, const Rect& b)
-// {
-//     return false; // Todo
-// }
+bool intersect(const Rect &a, const Rect &b) {
+    const Vector2d half_a = a.size / 2;
+    const Vector2d half_b = b.size / 2;
 
-// bool intersect(const Rect& a, const Quad& b)
-// {
-//     return false; // Todo
-// }
+    const double dx = std::abs(a.center.x - b.center.x);
+    const double dy = std::abs(a.center.y - b.center.y);
 
-// bool intersect(const Rect& a, const Triangle& b)
-// {
-//     return false; // Todo
-// }
+    const double span_x = half_a.x + half_b.x;
+    const double span_y = half_a.y + half_b.y;
 
-// bool intersect(const Rect& a, const Circle& b)
-// {
-//     return false; // Todo
-// }
+    return (dx <= span_x) && (dy <= span_y);
+}
+
+bool intersect(const Rect &a, const Quad &b) {
+    return intersect(b, a);
+}
+
+bool intersect(const Rect &a, const Triangle &b) {
+    return intersect(b, a);
+}
+
+bool intersect(const Rect &a, const Circle &b) {
+    const Vector2d half = a.size / 2;
+
+    const double closest_x = std::clamp(b.center.x, a.center.x - half.x, a.center.x + half.x);
+    const double closest_y = std::clamp(b.center.y, a.center.y - half.y, a.center.y + half.y);
+
+    const double dx = b.center.x - closest_x;
+    const double dy = b.center.y - closest_y;
+
+    return (dx * dx + dy * dy) <= square(b.r);
+}
 
 ////////// Ciecle vs //////////
 bool intersect(const Circle &a, const Vector2d &b) {
     return intersect(b, a);
 }
 
-// bool intersect(const Circle& a, const Line& b)
-// {
-//     return false; // Todo
-// }
+bool intersect(const Circle &a, const Line &b) {
+    return intersect(b, a);
+}
 
-// bool intersect(const Circle& a, const Rect& b)
-// {
-//     return false; // Todo
-// }
+bool intersect(const Circle &a, const Rect &b) {
+    return intersect(b, a);
+}
 
-// bool intersect(const Circle& a, const Quad& b)
-// {
-//     return false; // Todo
-// }
+bool intersect(const Circle &a, const Quad &b) {
+    return intersect(b, a);
+}
 
-// bool intersect(const Circle& a, const Triangle& b)
-// {
-//     return false; // Todo
-// }
+bool intersect(const Circle &a, const Triangle &b) {
+    return intersect(b, a);
+}
 
-// bool intersect(const Circle& a, const Circle& b)
-// {
-//     return false; // Todo
-// }
+bool intersect(const Circle &a, const Circle &b) {
+    return (a.center - b.center).norm_sq() <= square(a.r + b.r);
+}
 
 ////////////////////////////// intersect_at //////////////////////////////
 std::optional<std::vector<Vector2d>> intersect_at(const Vector2d &a, const Vector2d &b) {
